@@ -139,3 +139,7 @@ margin-bottom:4px;
 #fullcalendar{
 	overflow: scroll;
 }
+
+#addEvent{
+	font-weight: bold;
+}

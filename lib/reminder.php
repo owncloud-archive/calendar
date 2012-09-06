@@ -8,6 +8,7 @@
 /*
  * This class manages reminders for calendars
  */
-class OC_Calendar_Alarm{
+namespace OCA\Calendar;
+class Reminder{
 	
 }

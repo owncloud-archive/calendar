@@ -9,6 +9,6 @@
  * This class manages reminders for calendars
  */
 namespace OCA\Calendar;
-class Attendees{
+class recurrence{
 	
 }

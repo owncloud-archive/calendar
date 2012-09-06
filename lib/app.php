@@ -8,9 +8,11 @@
  * 
  * This class manages our app actions
  */
+namespace OCA;
+
 OC_Calendar_App::$l10n = new OC_L10N('calendar');
 OC_Calendar_App::$tz = OC_Calendar_App::getTimezone();
-class OC_Calendar_App{
+class Calendar{
 	const CALENDAR = 'calendar';
 	const EVENT = 'event';
 	/**
