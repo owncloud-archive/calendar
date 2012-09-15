@@ -1,20 +1,42 @@
-/**
+*
  * Copyright (c) 2012 Georg Ehrke <ownclouddev at georgswebsite dot de>
  * Copyright (c) 2011 Bart Visscher <bartv@thisnet.nl>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
- */
+ 
 
-Calendar={
-	/**
+CalendarManagement={
+	create:function(){
+		
+	},
+	edit:function(){
+		
+	},
+	remove:function(){
+		
+	},
+	merge:function(){
+		
+	},
+	validate:function(){
+		
+	}
+}
+/*
+
+
+
+
+
+	*
 	 * This wrapper contains all methods for calendar management
 	 * Methods: 
 	 *  - create
 	 *  - edit
 	 *  - remove
 	 *  - merge
-	 */
+	 
 	Calendar:{
 		create:function(){
 			//TODO
@@ -29,7 +51,7 @@ Calendar={
 			//TODO
 		}
 	},
-	/**
+	*
 	 * This wrapper contains all methods for event management
 	 * Methods: 
 	 *  - create
@@ -38,14 +60,14 @@ Calendar={
 	 *  - move
 	 *  - resize
 	 *  - validate
-	 */
+	 
 	Event:{
-		/**
+		*
 		 * validate the user's input and create a new event
 		 *
 		 * @brief creates an event
 		 * @return Boolean
-		 */
+		 
 		create:function(){
 			//check if the user's inputs are valid
 			if(Calendar.Event.validate()){
@@ -66,12 +88,12 @@ Calendar={
 			},'json');
 			return true;
 		},
-		/**
+		*
 		 * validate the user's input and edit an existing event
 		 *
 		 * @brief edits an event
 		 * @return Boolean
-		 */
+		 
 		edit:function(){
 			//check if the user's inputs are valid
 			if(Calendar.Event.validate()){
@@ -154,25 +176,25 @@ Calendar={
 			//TODO rewrite
 		}
 	},
-	/**
+	*
 	 * This wrapper contains all methods for advanced export
 	 * Methods: 
 	 *  - generate
 	 *  - catchFile
-	 */
+	 
 	Export:{
-		/**
+		*
 		 * @brief generates a list of selected events to export and transfers them to the server
 		 * @return Boolean
-		 */
+		 
 		generate:function(){
 			//TODO
 			return true;
 		},
-		/**
+		*
 		 * @brief catches the file from the server
 		 * @return Boolean
-		 */
+		 
 		catchFile:function(){
 			$.post(OC.filePath('calendar', 'ajax/export', 'catchFile.php'), {'data':event.target.result},function(result) {
 				if(result.status == 'success'){
@@ -196,17 +218,17 @@ Calendar={
 			});
 		}
 	},
-	/**
+	*
 	 * This wrapper contains all methods for Drag&Drop import
 	 * Methods: 
 	 *  - init
 	 *  - ondrop
-	 */
+	 
 	Import:{
-		/**
+		*
 		 * @brief initializes the Drag&Drop import
 		 * @return Boolean
-		 */
+		 
 		init:function(){
 			//check if the FileReader API is available
 			if (typeof window.FileReader === 'undefined') {
@@ -222,11 +244,11 @@ Calendar={
 			}
 			return true;
 		},
-		/**
+		*
 		 * @brief catch files and import them
 		 * @param Object e
 		 * @return Boolean
-		 */
+		 
 		ondrop:function(e){
 			//get all files
 			var files = e.dataTransfer.files;
@@ -265,19 +287,16 @@ Calendar={
 			}
 		}
 	},
-	/**
+	*
 	 * This wrapper contains all methods for repeating events management
 	 * Methods: 
 	 *  - create
 	 *  - edit
 	 *  - remove
-	 */
+	 
 	Repeat:{
 		//TODO
 	},
-	/**
-	 * This method initializes sharing
-	 */
 	Share:function(){
 		var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP];
 			$('#sharewith').autocomplete({minLength: 2, source: function(search, response) {
@@ -351,14 +370,6 @@ Calendar={
 			});
 		});
 	},
-	/**
-	 * This wrapper contains all UI functions
-	 * Divided into: 
-	 *  - Calendar
-	 *  - Event
-	 *  - Repeat
-	 *  - Scroll
-	 */
 	UI:{
 		Calendar:{
 			caldavurl:function(id){
@@ -371,12 +382,6 @@ Calendar={
 			}
 		},
 		Event:{
-			/**
-			 * This function initilizes the Dialog for creation or editing of an event
-			 *
-			 * @brief loads form for a new event
-			 * @return Boolean
-			 */
 			init:function(){
 				//disable loading icon
 				Calendar.UI.loading(false);
@@ -411,12 +416,6 @@ Calendar={
 				});
 				Calendar.Share();
 			},
-			/**
-			 * This function loads the Dialog for the creation of a new event
-			 *
-			 * @brief loads form for a new event
-			 * @return Boolean
-			 */
 			create:function(){
 				//estimate start time
 				start = Math.round(start.getTime()/1000);
@@ -434,12 +433,6 @@ Calendar={
 					$('#dialog_holder').load(OC.filePath('calendar', 'ajax/event', 'new.form.php'), {start:start, end:end, allday:allday?1:0}, Calendar.UI.startEventDialog);
 				}
 			},
-			/**
-			 * This function loads the Dialog for editing an existing event
-			 *
-			 * @brief loads form for a new event
-			 * @return Boolean
-			 */
 			edit:function(calEvent, jsEvent, view){
 				//check if the event is writable at all
 				if (calEvent.editable == false || calEvent.source.editable == false) {
@@ -488,58 +481,6 @@ Calendar={
 				}		
 			}
 		},
-		Scroll:{
-			init:function(){
-				if(window.addEventListener)
-					document.addEventListener('DOMMouseScroll', Calendar.UI.scrollCalendar, false);
-					
-				document.onmousewheel = Calendar.UI.scrollCalendar;
-			},
-			scroll:function(event){
-				$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
-				$('.tipsy').remove();
-				var direction;
-				if(event.detail){
-					if(event.detail < 0){
-						direction = 'top';
-					}else{
-						direction = 'down';
-					}
-				}
-				if (event.wheelDelta){
-					if(event.wheelDelta > 0){
-						direction = 'top';
-					}else{
-						direction = 'down';
-					}
-				}
-				Calendar.UI.scrollcount++;
-				if(Calendar.UI.scrollcount < 5){
-					return;
-				}
-				
-				var scroll = $(document).scrollTop(),
-					doc_height = $(document).height(),
-					win_height = $(window).height();
-				if(direction == 'down'/* && win_height == (doc_height - scroll)*/){
-					$('#fullcalendar').fullCalendar('next');
-					$(document).scrollTop(0);
-					event.preventDefault();
-				}else/* if (direction == 'top' && scroll == 0) */{
-					$('#fullcalendar').fullCalendar('prev');
-					$(document).scrollTop(win_height);
-					event.preventDefault();
-				}
-				Calendar.UI.scrollcount = 0;
-			},
-		},
-		/**
-		 * This function loads the fancy loading icon aside the view buttons
-		 *
-		 * @brief loads a fancy loading icon
-		 * @param Boolean isLoading
-		 * @return Boolean
-		 */
 		loading: function(isLoading){
 			if (isLoading){
 				$('#loading').show();
@@ -722,4 +663,4 @@ Calendar={
 			}
 		}
 	}
-}
+}*/

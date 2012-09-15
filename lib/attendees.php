@@ -6,7 +6,7 @@
  * See the COPYING-README file.
  */
 /*
- * This class manages reminders for calendars
+ * This class manages attendees for calendars
  */
 namespace OCA\Calendar;
 class Attendees{

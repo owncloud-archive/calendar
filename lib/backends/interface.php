@@ -6,7 +6,7 @@
  * See the COPYING-README file.
  */
 namespace OCA\Calendar\Backend;
-interface Interface {
+interface CalendarInterface {
 	/**
 	* @brief Check if backend implements actions
 	* @param $actions bitwise-or'ed actions
@@ -26,12 +26,21 @@ interface Interface {
 	public function cacheIt();
 	
 	/**
+	* @brief is the calendar $uri writable by a specific user
+	* @param $uri - uri of the calendar
+	* @returns boolean true/false
+	*
+	* Get information if the calendar is writable by a specific user
+	*/
+	public function isCalendarWritableByUser($uri, $userid);
+	
+	/**
 	* @brief Get information about a calendars
 	* @returns array with all calendar informations
 	*
 	* Get all calendar informations the backend provides.
 	*/
-	public function findCalendar($calid = '');
+	public function findCalendar($uri);
 
 	/**
 	* @brief Get a list of all calendars
@@ -47,7 +56,7 @@ interface Interface {
 	*
 	* Get icalendar of an event
 	*/
-	public function findObject($uid = '');
+	public function findObject($uri, $uid);
 
 	/**
 	* @brief Get a list of all objects

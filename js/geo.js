@@ -4,20 +4,13 @@
  * later.
  * See the COPYING-README file.
  */
-$(document).ready(function() {
-	var timezone = jstz.determine();
-	$.post(OC.filePath('calendar', 'ajax/timezone', 'set.php'), {tz: timezone.name()},
-	function(data){
-		if (data.status == 'success'){
-			if(data.message == 'updated'){
-				$('#notification').html(data.l10nmessage);
-				$('#notification').slideDown();
-				window.setTimeout(function(){$('#notification').slideUp();}, 5000);
-			}else{
-				console.log('timezone not changed since last visit');
-			}
-		}else{
-			console.log('internal server error');
-		}
-	});
+//initialize our timezone object
+var timezone = jstz.determine();
+//send the timezone informations to the server
+$.post(OC.filePath('calendar', 'ajax/timezone', 'set.php'), {tz: timezone.name()}, function(data){
+	if (data.status == 'success'){
+		console.log('timezone updated');
+	}else{
+		console.log('internal server error');
+	}
 });

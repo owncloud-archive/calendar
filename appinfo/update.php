@@ -44,3 +44,4 @@ if (version_compare($installedVersion, '0.6', '<=')) {
 		$result = $stmt->execute(array($evnt['share'],$evnt['owner'],$evnt['eventid'], ($evnt['permissions'])?31:17));
 	}
 }
+//make backup of all ics before updating!!!

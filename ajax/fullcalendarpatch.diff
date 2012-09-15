@@ -1,0 +1,12 @@
+diff --git a/3rdparty/fullcalendar/js/fullcalendar.js b/3rdparty/fullcalendar/js/fullcalendar.js
+index 314f8c8..ca436bb 100644
+--- a/3rdparty/fullcalendar/js/fullcalendar.js
++++ b/3rdparty/fullcalendar/js/fullcalendar.js
+@@ -2096,6 +2096,7 @@ setDefaults({
+ 	weekMode: 'fixed'
+ });
+ 
++fcViews.basic = BasicView;
+ 
+ function BasicView(element, calendar, viewName) {
+ 	var t = this;

@@ -1,32 +1,28 @@
 <?php
 /**
+ * Copyright (c) 2012 Georg Ehrke <ownclouddev at georgswebsite dot de>
  * Copyright (c) 2011 Bart Visscher <bartv@thisnet.nl>
- * Copyright (c) 2012 Georg Ehrke <georg@owncloud.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
- * 
- * This class manages our app actions
  */
-namespace OCA;
-
-OC_Calendar_App::$l10n = new OC_L10N('calendar');
-OC_Calendar_App::$tz = OC_Calendar_App::getTimezone();
-class Calendar{
-	const CALENDAR = 'calendar';
-	const EVENT = 'event';
+namespace OCA\Calendar;
+class Util{
 	/**
-	 * @brief language object for calendar app
+	 * @brief calendar language object
+	 * @type object
 	 */
 	public static $l10n;
 	
 	/**
 	 * @brief categories of the user
+	 * @type object
 	 */
 	protected static $categories = null;
 
 	/**
 	 * @brief timezone of the user
+	 * @type string
 	 */
 	public static $tz;
 	
@@ -63,7 +59,7 @@ class Calendar{
 		$event = OC_Calendar_Object::find($id);
 		if($shared === true || $security === true) {
 			$permissions = self::getPermissions($id, self::EVENT);
-			OCP\Util::writeLog('contacts', __METHOD__.' id: '.$id.', permissions: '.$permissions, OCP\Util::DEBUG);
+			\OCP\Util::writeLog('contacts', __METHOD__.' id: '.$id.', permissions: '.$permissions, \OCP\Util::DEBUG);
 			if(self::getPermissions($id, self::EVENT)) {
 				return $event;
 			}
@@ -137,7 +133,7 @@ class Calendar{
 	 */
 	protected static function getVCategories() {
 		if (is_null(self::$categories)) {
-			self::$categories = new OC_VCategories('calendar', null, self::getDefaultCategories());
+			self::$categories = new \OC_VCategories('calendar', null, self::getDefaultCategories());
 		}
 		return self::$categories;
 	}
@@ -157,7 +153,7 @@ class Calendar{
 	 */
 	public static function scanCategories($events = null) {
 		if (is_null($events)) {
-			$calendars = OC_Calendar_Calendar::allCalendars(OCP\USER::getUser());
+			$calendars = OC_Calendar_Calendar::allCalendars(\OCP\User::getUser());
 			if(count($calendars) > 0) {
 				$events = array();
 				foreach($calendars as $calendar) {
@@ -282,7 +278,7 @@ class Calendar{
 	 * @return (string) $timezone as set by user or the default timezone
 	 */
 	public static function getTimezone() {
-		return OCP\Config::getUserValue(OCP\User::getUser(),
+		return \OCP\Config::getUserValue(\OCP\User::getUser(),
 						'calendar',
 						'timezone',
 						date_default_timezone_get());
@@ -302,7 +298,7 @@ class Calendar{
 
 		if($type == self::CALENDAR) {
 			$calendar = self::getCalendar($id, false, false);
-			if($calendar['userid'] == OCP\USER::getUser()) {
+			if($calendar['userid'] == \OCP\User::getUser()) {
 				return $permissions_all;
 			} else {
 				$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
@@ -312,7 +308,7 @@ class Calendar{
 			}
 		}
 		elseif($type == self::EVENT) {
-			if(OC_Calendar_Object::getowner($id) == OCP\USER::getUser()) {
+			if(OC_Calendar_Object::getowner($id) == \OCP\User::getUser()) {
 				return $permissions_all;
 			} else {
 				$object = OC_Calendar_Object::find($id);
@@ -354,7 +350,7 @@ class Calendar{
 				OCP\Response::setETagHeader($calendar['ctag']);
 				$events = OC_Calendar_Object::allInPeriod($calendarid, $start, $end);
 			} else {
-				OCP\Util::emitHook('OC_Calendar', 'getEvents', array('calendar_id' => $calendarid, 'events' => &$events));
+				\OCP\Util::emitHook('OC_Calendar', 'getEvents', array('calendar_id' => $calendarid, 'events' => &$events));
 			}
 		}
 		return $events;
@@ -419,4 +415,79 @@ class Calendar{
 		}
 		return $return;
 	}
+	public static function createDefaultCalendar($userid){
+		// Create default calendar with read&write permission ...
+		$allCalendar = \OCA\Calendar::getAllCalendarsByUser($userid, false, true);
+		if( count(\OCA\Calendar::getAllCalendarsByUser($userid, false, true)) == 0){
+			$calendarsname = self::$l10n->t('%s\'s calendar',$userid);
+			//Todo
+			// - add some properties to array
+			\OCA\Calendar::createCalendar('database', array());
+		}
+		return true;
+	}
+
+
+	public static function getConfigForFullcalendar(){
+		$return = array();
+		$return[] = \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'currentview', 'month');
+		$return[] = \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'firstday', 'mo') == 'mo' ? '1' : '0';
+		$return[] = ((int) \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt') .  '{ - ' . ((int) \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt') .  '}';
+		$return[] = (int) \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt';
+		return $return;
+	}
+
+
+
+	public static function loadScriptsAndStyles(){
+		\OCP\Util::addscript('3rdparty/fullcalendar', 'fullcalendar');
+		//\OCP\Util::addScript('3rdparty/javascripttimezone', 'jstz.min');
+		\OCP\Util::addscript('3rdparty/timepicker', 'jquery.ui.timepicker');
+		\OCP\Util::addscript('contacts','jquery.multi-autocomplete');
+		\OCP\Util::addscript('', 'jquery.multiselect');
+		\OCP\Util::addscript('','oc-vcategories');
+		\OCP\Util::addscript('calendar', 'app');
+		\OCP\Util::addScript('calendar', 'geo');
+		\OCP\Util::addscript('calendar', 'basic2Weeks');
+		\OCP\Util::addScript('calendar', 'basic4Weeks');
+		\OCP\Util::addscript('calendar', 'listview');
+		\OCP\Util::addscript('calendar', 'init');
+		\OCP\Util::addStyle('calendar', 'style');
+		\OCP\Util::addStyle('3rdparty/fullcalendar', 'fullcalendar');
+		\OCP\Util::addStyle('3rdparty/timepicker', 'jquery.ui.timepicker');
+		\OCP\Util::addStyle('', 'jquery.multiselect');
+	}
+	
+	public static function fetchEventSources($userid){
+		$calendars = \OCA\Calendar::getAllCalendarsByUser($userid);
+		$eventSources = array();
+		foreach($calendars as $calendar){
+			unset($_SESSION['calendar']['calid']);
+			//TODO - make md5 more random !!!
+			$md5 = md5($calendar['backend'] . '.' . $calendar['uid']);
+			$_SESSION['calendar']['calid'][$md5] = $calendar['uri'];
+			$eventSources[] = array(
+				'url' => \OCP\Util::linkTo('calendar', 'ajax/events.php').'?calendar_id='.$md5,
+				'backgroundColor' => $calendar['color'],
+				'borderColor' => '#888',
+				'textColor' => self::generateTextColor($calendar['color']),
+				'cache' => true,
+			);
+		}
+		return $eventSources;
+	}
+	
+	public static function generateTextColor($calendarcolor){
+		if(substr_count($calendarcolor, '#') == 1){
+			$calendarcolor = substr($calendarcolor,1);
+		}
+		$red = hexdec(substr($calendarcolor,0,2));
+		$green = hexdec(substr($calendarcolor,2,2));
+		$blue = hexdec(substr($calendarcolor,2,2));
+		//recommendation by W3C
+		$computation = ((($red * 299) + ($green * 587) + ($blue * 114)) / 1000);
+		return ($computation > 130)?'#000000':'#FAFAFA';	}
 }
+
+
+

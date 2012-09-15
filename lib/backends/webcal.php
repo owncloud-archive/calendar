@@ -6,7 +6,9 @@
  * See the COPYING-README file.
  */
 namespace OCA\Calendar\Backend;
-class WebCal extends OCA\Calendar\Backend;Backend {
+class WebCal extends Backend {
+	private $ical;
+	private $rawics;
 	/**
 	* @brief Get information about a calendars
 	* @param $calid calendarid
@@ -36,7 +38,7 @@ class WebCal extends OCA\Calendar\Backend;Backend {
 	*
 	* Get icalendar of an event
 	*/
-	public function findObject($uid = ''){
+	public function findObject($uri, $uid){
 		return false;
 	}
 

@@ -1,0 +1,44 @@
+$.fullCalendar.views.basic2Weeks = basic2WeeksView;
+ 
+function basic2WeeksView(element, calendar) {
+	var t = this;
+	
+	// exports
+	t.render = render;
+	
+	
+	// imports
+	$.fullCalendar.views.basic.call(t, element, calendar, 'month');
+	var opt = t.opt;
+	var renderBasic = t.renderBasic;
+	var formatDate = calendar.formatDate;
+	
+	
+	
+	function render(date, delta) {
+		if (delta) {
+			$.fullCalendar.addDays(date, delta * 7);
+		}
+		var start = $.fullCalendar.cloneDate(date, true);
+		var end = $.fullCalendar.addDays($.fullCalendar.cloneDate(start), 8);
+		var visStart = $.fullCalendar.cloneDate(start);
+		var visEnd = $.fullCalendar.cloneDate(end);
+		var firstDay = opt('firstDay');
+		var nwe = opt('weekends') ? 0 : 1;
+		if (nwe) {
+			$.fullCalendar.skipWeekend(visStart);
+			$.fullCalendar.skipWeekend(visEnd, -1, true);
+		}
+		$.fullCalendar.addDays(visStart, -((visStart.getDay() - Math.max(firstDay, nwe) + 7) % 7));
+		$.fullCalendar.addDays(visEnd, (7 - visEnd.getDay() + Math.max(firstDay, nwe)) % 7);
+		var rowCnt = 2;
+		t.name = 'basic2Weeks';
+		t.title = $.fullCalendar.formatDate(start, opt('titleFormat'));
+		t.start = start;
+		t.end = end;
+		t.visStart = visStart;
+		t.visEnd = visEnd;
+		renderBasic(2, rowCnt, nwe ? 5 : 7, true);
+		$('.fc-day-number').css('opacity', 1);
+	}
+}

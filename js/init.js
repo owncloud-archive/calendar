@@ -1,10 +1,117 @@
 $(document).ready(function(){
-	Calendar.UI.Scroll.init();
+	//initialize buttons in control-bar
+	//week view
+	$('#agendaWeek').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'agendaWeek');
+	});
+	//2 weeks view
+	$('#basic2Weeks').click(function(){	
+		$('#fullcalendar').fullCalendar('changeView', 'basic2Weeks');
+	});
+	//"month" view
+	$('#basic4Weeks').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'basic4Weeks');
+	});
+	//list view
+	$('#list').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'list');
+	});
+	$('#addEvent').click(function(){
+		Calendar.Event.smartAdd();
+	});
+	//buttons in the top middle
+	$('#backward').click(function(){
+		$('#fullcalendar').fullCalendar('prev');
+	});
+	//TODO - improve datepicker implementation
+	$('#date').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		showButtonPanel: true,
+		beforeShow: function(input, inst) {
+			var calendar_holder = $('#fullcalendar');
+			var date = calendar_holder.fullCalendar('getDate');
+			inst.input.datepicker('setDate', date);
+			inst.input.val(calendar_holder.fullCalendar('getView').title);
+			return inst;
+		},
+		onSelect: function(value, inst) {
+			var date = inst.input.datepicker('getDate');
+			$('#fullcalendar').fullCalendar('gotoDate', date);
+		}
+	});
+	$('#forward').click(function(){
+		$('#fullcalendar').fullCalendar('next');
+	});
+	//buttons in the top right corner
+	$('#choosecalendar .generalsettings').on('click keydown', function() {
+		OC.appSettings({appid:'calendar', loadJS:true, cache:false});
+	});
+	$('#showcalendarmanagement').on('click keydown', 
+	function(){
+		Calendar.UI.toggleCalendarManagement()
+	});
+	//some UI tweaks
+	fillWindow($('#content'));
+	$(window).resize(function() {
+		Calendar.UI.resize();
+	});
+	//initialize Drag&Drop import
+	//TODO - add initialization script for drag&drop import 
+	//initialize scroll
+	document.addEventListener('DOMMouseScroll', Calendar.UI.scrollCalendar, false);
+	document.onmousewheel = Calendar.UI.scrollCalendar;
+	//
+	//initialize some arrays necessary for localization
+	var dayNames = new Array		 (t('calendar', 'Sunday'),
+									  t('calendar', 'Monday'),
+									  t('calendar', 'Tuesday'),
+									  t('calendar', 'Wednesday'),
+									  t('calendar', 'Thursday'),
+									  t('calendar', 'Friday'),
+									  t('calendar', 'Saturday'));
+	var dayNamesShort = new Array	 (t('calendar', 'Sun.'),
+									  t('calendar', 'Mon.'),
+									  t('calendar', 'Tue.'),
+									  t('calendar', 'Wed.'),
+									  t('calendar', 'Thu.'),
+									  t('calendar', 'Fri.'),
+									  t('calendar', 'Sat.'));
+	var monthNames = new Array		 (t('calendar', 'January'),
+									  t('calendar', 'February'),
+									  t('calendar', 'March'),
+									  t('calendar', 'April'),
+									  t('calendar', 'May'),
+									  t('calendar', 'June'),
+									  t('calendar', 'July'),
+									  t('calendar', 'August'),
+									  t('calendar', 'September'),
+									  t('calendar', 'October'),
+									  t('calendar', 'November'),
+									  t('calendar', 'December'));
+	var monthNamesShort = new Array	 (t('calendar', 'Jan.'),
+									  t('calendar', 'Feb.'),
+									  t('calendar', 'Mar.'),
+									  t('calendar', 'Apr.'),
+									  t('calendar', 'May.'),
+									  t('calendar', 'Jun.'),
+									  t('calendar', 'Jul.'),
+									  t('calendar', 'Aug.'),
+									  t('calendar', 'Sep.'),
+									  t('calendar', 'Oct.'),
+									  t('calendar', 'Nov.'),
+									  t('calendar', 'Dec.'));
+	//initialize fullcalendar with all necessary parameters
 	$('#fullcalendar').fullCalendar({
+		//no default header
 		header: false,
+		//set first day with variable assigned in index.php
 		firstDay: firstDay,
+		//calendar is editable for sure
 		editable: true,
+		//set defaultview with variable assigned in index.php
 		defaultView: defaultView,
+		//set some formats
 		timeFormat: {
 			agenda: agendatime,
 			'': defaulttime
@@ -23,36 +130,43 @@ $(document).ready(function(){
 					// Tuesday, Sep 8, 2009
 			},
 		axisFormat: defaulttime,
-		monthNames: new Array(t('calendar', 'January'), t('calendar', 'February'), t('calendar', 'March'), t('calendar', 'April'), t('calendar', 'May'), t('calendar', 'June'), t('calendar', 'July'), t('calendar', 'August'), t('calendar', 'September'), t('calendar', 'October'), t('calendar', 'November'), t('calendar', 'December')),
-		monthNamesShort: new Array(t('calendar', 'Jan.'), t('calendar', 'Feb.'), t('calendar', 'Mar.'), t('calendar', 'Apr.'), t('calendar', 'May.'), t('calendar', 'Jun.'), t('calendar', 'Jul.'), t('calendar', 'Aug.'), t('calendar', 'Sep.'), t('calendar', 'Oct.'), t('calendar', 'Nov.'), t('calendar', 'Dec.')),
-		dayNames: new Array(t('calendar', 'Sunday'), t('calendar', 'Monday'), t('calendar', 'Tuesday'), t('calendar', 'Wednesday'), t('calendar', 'Thursday'), t('calendar', 'Friday'), t('calendar', 'Saturday')),
-		dayNamesShort: new Array(t('calendar', 'Sun.'), t('calendar', 'Mon.'), t('calendar', 'Tue.'), t('calendar', 'Wed.'), t('calendar', 'Thu.'), t('calendar', 'Fri.'), t('calendar', 'Sat.')),
+		columnFormat: {
+		    week: 'ddd d. MMM'
+		},
+		//localization
+		monthNames: monthNames,
+		monthNamesShort: monthNamesShort,
+		dayNames: dayNames,
+		dayNamesShort: dayNamesShort,
 		allDayText: t('calendar', 'All day'),
 		viewDisplay: function(view) {
-			$('#date').val($('<p>').html(view.title).text());
+			//set new date informations
+			$('#current_date').html($('<p>').html(view.title).text());
+			//save the current view
 			if (view.name != defaultView) {
 				$.post(OC.filePath('calendar', 'ajax', 'changeview.php'), {v:view.name});
 				defaultView = view.name;
 			}
+			//highlight the button of the current view
 			Calendar.UI.setViewActive(view.name);
+			//some UI tweaks
 			if (view.name == 'agendaWeek') {
 				$('#fullcalendar').fullCalendar('option', 'aspectRatio', 0.1);
-			}
-			else {
+			} else {
 				$('#fullcalendar').fullCalendar('option', 'aspectRatio', 1.35);
 			}
 		},
-		columnFormat: {
-		    week: 'ddd d. MMM'
-		},
 		selectable: true,
 		selectHelper: true,
-		select: Event.smartAdd,
+		select: Calendar.Event.quickAdd,
 		eventClick: Calendar.UI.editEvent,
 		eventDrop: Calendar.UI.moveEvent,
 		eventResize: Calendar.UI.resizeEvent,
 		eventRender: function(event, element) {
+			//render sth. for current selected event
+			//fix display of event title
 			element.find('.fc-event-title').html(element.find('.fc-event-title').text());
+			//show tipsy - the fancy event info
 			element.tipsy({
 				className: 'tipsy-event',
 				opacity: 0.9,
@@ -61,86 +175,17 @@ $(document).ready(function(){
 				delayIn: 400,
 				html:true,
 				title:function() {
-					return Calendar.UI.getEventPopupText(event);
+					return Calendar.Event.getEventPopupText(event);
 				}
 			});
 		},
 		loading: Calendar.UI.loading,
 		eventSources: eventSources
 	});
-	$('#date').datepicker({
-		changeMonth: true,
-		changeYear: true,
-		showButtonPanel: true,
-		beforeShow: function(input, inst) {
-			var calendar_holder = $('#fullcalendar');
-			var date = calendar_holder.fullCalendar('getDate');
-			inst.input.datepicker('setDate', date);
-			inst.input.val(calendar_holder.fullCalendar('getView').title);
-			return inst;
-		},
-		onSelect: function(value, inst) {
-			var date = inst.input.datepicker('getDate');
-			$('#fullcalendar').fullCalendar('gotoDate', date);
-		}
-	});
-	fillWindow($('#content'));
-	OCCategories.changed = Calendar.UI.categoriesChanged;
-	OCCategories.app = 'calendar';
-	$('#week').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'agendaWeek');
-	});
-	$('#month').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'month');
-	});
-	$('#list').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'list');
-	});
-	$('#backward').click(function(){
-		$('#fullcalendar').fullCalendar('prev');
-	});
-	$('#forward').click(function(){
-		$('#fullcalendar').fullCalendar('next');
-	});
-	Calendar.Import.init();
-	$('#choosecalendar .generalsettings').on('click keydown', function() {
-		OC.appSettings({appid:'calendar', loadJS:true, cache:false});
-	});
-	$('#choosecalendar .calendarsettings').on('click keydown', function() {
-		OC.appSettings({appid:'calendar', loadJS:true, cache:false, scriptName:'calendar.php'});
-	});
+	//initialize category system
+	//OCCategories.changed = Calendar.UI.categoriesChanged;
+	//OCCategories.app = 'calendar';
+	//UI tweak - fix height of fullcalendar
 	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
-	$(window).resize(function() {
-		Calendar.UI.resize();
-	});
+	$('#calendars').css('height', $(window).height() - $('#controls').height() - $('#header').height() - 20);
 });
-
-/*
-				
-								<script type='text/javascript'>
-				var agendatime = '<?php echo ((int) OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt'); ?>{ - <?php echo ((int) OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt'); ?>}';
-				var defaulttime = '<?php echo ((int) OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt'); ?>';
-				var allDayText = '<?php echo addslashes($l->t('All day')) ?>';
-				var newcalendar = '<?php echo addslashes($l->t('New Calendar')) ?>';
-				var missing_field = '<?php echo addslashes($l->t('Missing fields')) ?>';
-				var missing_field_title = '<?php echo addslashes($l->t('Title')) ?>';
-				var missing_field_calendar = '<?php echo addslashes($l->t('Calendar')) ?>';
-				var missing_field_fromdate = '<?php echo addslashes($l->t('From Date')) ?>';
-				var missing_field_fromtime = '<?php echo addslashes($l->t('From Time')) ?>';
-				var missing_field_todate = '<?php echo addslashes($l->t('To Date')) ?>';
-				var missing_field_totime = '<?php echo addslashes($l->t('To Time')) ?>';
-				var missing_field_startsbeforeends = '<?php echo addslashes($l->t('The event ends before it starts')) ?>';
-				var missing_field_dberror = '<?php echo addslashes($l->t('There was a database fail')) ?>';
-				var totalurl = '<?php echo OCP\Util::linkToRemote('caldav'); ?>calendars';
-				$(document).ready(function() {
-				<?php
-				if(array_key_exists('showevent', $_)){
-					$data = OC_Calendar_App::getEventObject($_['showevent']);
-					$date = substr($data['startdate'], 0, 10);
-					list($year, $month, $day) = explode('-', $date);
-					echo '$(\'#calendar_holder\').fullCalendar(\'gotoDate\', ' . $year . ', ' . --$month . ', ' . $day . ');';
-					echo '$(\'#dialog_holder\').load(OC.filePath(\'calendar\', \'ajax\', \'editeventform.php\') + \'?id=\' +  ' . $_['showevent'] . ' , Calendar.UI.startEventDialog);';
-				}
-				?>
-				});
-				</script>*/

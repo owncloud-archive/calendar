@@ -10,7 +10,8 @@ OCP\JSON::checkAppEnabled('calendar');
 $view = $_POST['v'];
 switch($view){
 	case 'agendaWeek':
-	case 'month';
+	case 'basic2Weeks':
+	case 'basic4Weeks':
 	case 'list':
 		break;
 	default:

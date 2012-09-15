@@ -5,6 +5,7 @@
  * later.
  * See the COPYING-README file.
  */
+namespace OCA\Calendar\Backend;
 /**
  * error code for functions not provided by the user backend
  */
@@ -32,8 +33,7 @@ define('OC_CALENDAR_BACKEND_MOVE_OBJECT',		0x01000000000);
  *
  * Subclass this for your own backends, and see OCA\Calendar\Backend\Example for descriptions
  */
-namespace OCA\Calendar\Backend;
-abstract class Backend implements OCA\Calendar\Backend\Interface {
+abstract class Backend implements CalendarInterface {
 
 	protected $possibleActions = array(
 		OC_CALENDAR_BACKEND_CREATE_CALENDAR => 'createCalendar',
@@ -89,6 +89,17 @@ abstract class Backend implements OCA\Calendar\Backend\Interface {
 	}
 
 	/**
+	* @brief is the calendar $uri writable
+	* @param $uri - uri of the calendar
+	* @returns boolean true/false
+	*
+	* Get information if the calendar is writable
+	*/
+	public function isCalendarWritableByUser($uri, $userid){
+		return false;
+	}
+
+	/**
 	* @brief Get information about a calendars
 	* @param $calid calendarid
 	* @returns array with all calendar informations
@@ -117,7 +128,7 @@ abstract class Backend implements OCA\Calendar\Backend\Interface {
 	*
 	* Get icalendar of an event
 	*/
-	public function findObject($uid = ''){
+	public function findObject($uri, $uid){
 		return false;
 	}
 
