@@ -23,6 +23,10 @@ $agendaTime = ((int) \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar',
 $defaultTime = (int) \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt';
 $defaultView = \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'currentview', 'month');;
 $firstDay = \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'firstday', 'mo') == 'mo' ? '1' : '0';
+//get all available calendars
+$allcalendars = OCA\Calendar::getAllCalendarsByUser($userid);
+$writablecalendars = OCA\Calendar::getAllCalendarsByUser($userid, false, true);
+$readablecalendars = array_diff($allcalendars, $writablecalendars);
 //Scripts and Styles
 \OCP\Util::addscript('3rdparty/fullcalendar', 'fullcalendar');
 //\OCP\Util::addScript('3rdparty/javascripttimezone', 'jstz.min');
@@ -51,5 +55,7 @@ $tmpl->assign('agendatime', $agendaTime);
 $tmpl->assign('defaulttime', $defaultTime);
 $tmpl->assign('firstDay', $firstDay);
 $tmpl->assign('defaultView', $defaultView);
+$tmpl->assign('calendars', $writablecalendars);
+$tmpl->assign('subscriptions', $readablecalendars);
 //let's go - print the page
 $tmpl->printPage();

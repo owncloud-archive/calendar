@@ -38,7 +38,9 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	if(count($_['calendars']) == 0){
 		echo '<p class="info">' . $l->t('No calendars yet') . "</p>";
 	}else{
-		
+		foreach($_['calendars'] as $calendar){
+			echo '<li>' . $calendar['displayname'] . '</li>';
+		}
 	}
 	?>
 	<br><br>
