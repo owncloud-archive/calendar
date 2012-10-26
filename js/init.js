@@ -140,6 +140,7 @@ $(document).ready(function(){
 		dayNamesShort: dayNamesShort,
 		allDayText: t('calendar', 'All day'),
 		viewDisplay: function(view) {
+			
 			//set new date informations
 			$('#current_date').html($('<p>').html(view.title).text());
 			//save the current view
@@ -188,4 +189,42 @@ $(document).ready(function(){
 	//UI tweak - fix height of fullcalendar
 	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
 	$('#calendars').css('height', $(window).height() - $('#controls').height() - $('#header').height() - 20);
+	$(document).keydown(function(e){
+		//get current view
+		var view = $('#fullcalendar').fullCalendar('getView');
+		//get the firstday
+		var firstday = $('#fullcalendar');
+		// up
+		if (e.keyCode == 38) {
+			//no scroll in agendaWeek view, because it's a pain
+			if(view.name != 'agendaWeek'){
+				$('#fullcalendar').fullCalendar('prev');
+			}
+		}
+		//down
+		if(e.keyCode == 40) {
+			//no scroll in agendaWeek view, because it's a pain
+			if(view.name != 'agendaWeek'){
+				$('#fullcalendar').fullCalendar('next');
+			}
+		}
+		/*//left
+		if(e.keyCode == 37) {
+			//no scroll in agendaWeek view, because it's a pain
+			if(view.name == 'agendaWeek'){
+				//you can't edit the firstDay value after initializing fullcalendar yet
+				//feature request already submitted
+				//$('#fullcalendar').fullCalendar('next');
+			}
+		}
+		//right
+		if(e.keyCode == 39) {
+			//no scroll in agendaWeek view, because it's a pain
+			if(view.name == 'agendaWeek'){
+				//you can't edit the firstDay value after initializing fullcalendar yet
+				//feature request already submitted
+				//$('#fullcalendar').fullCalendar('next');
+			}
+		}*/
+	});
 });
