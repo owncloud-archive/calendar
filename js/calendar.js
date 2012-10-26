@@ -1,4 +1,4 @@
-*
+/*
  * Copyright (c) 2012 Georg Ehrke <ownclouddev at georgswebsite dot de>
  * Copyright (c) 2011 Bart Visscher <bartv@thisnet.nl>
  * This file is licensed under the Affero General Public License version 3 or
@@ -191,6 +191,7 @@ CalendarManagement={
 			//TODO
 			return true;
 		},
+<<<<<<< HEAD
 		*
 		 * @brief catches the file from the server
 		 * @return Boolean
@@ -234,6 +235,20 @@ CalendarManagement={
 			if (typeof window.FileReader === 'undefined') {
 				console.log('Drag&Drop is not yet supported in your webbrowser. Please update or use an more modern webbrowser');
 				return false;
+=======
+		getEventPopupText:function(event){
+			if (event.allDay){
+				var timespan = $.fullCalendar.formatDates(event.start, event.end, 'ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}', {monthNamesShort: monthNamesShort, monthNames: monthNames, dayNames: dayNames, dayNamesShort: dayNamesShort}); //t('calendar', "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}")
+			}else{
+				var timespan = $.fullCalendar.formatDates(event.start, event.end, 'ddd d MMMM[ yyyy] ' + defaulttime + '{ - [ ddd d MMMM yyyy]' + defaulttime + '}', {monthNamesShort: monthNamesShort, monthNames: monthNames, dayNames: dayNames, dayNamesShort: dayNamesShort}); //t('calendar', "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}")
+				// Tue 18 October 2011 08:00 - 16:00
+			}
+			var html =
+				'<div class="summary">' + event.title + '</div>' +
+				'<div class="timespan">' + timespan + '</div>';
+			if (event.description){
+				html += '<div class="description">' + event.description + '</div>';
+>>>>>>> master
 			}
 			//initializes drop area
 			droparea = document.getElementById('fullcalendar');
@@ -244,6 +259,7 @@ CalendarManagement={
 			}
 			return true;
 		},
+<<<<<<< HEAD
 		*
 		 * @brief catch files and import them
 		 * @param Object e
@@ -281,6 +297,29 @@ CalendarManagement={
 					});
 					//catch events
 					$('#fullcalendar').fullCalendar('refetchEvents');
+=======
+		showCalDAVUrl:function(username, calname){
+			$('#caldav_url').val(totalurl + '/' + username + '/' + calname);
+			$('#caldav_url').show();
+			$("#caldav_url_close").show();
+		},
+		initScroll:function(){
+			if(window.addEventListener)
+				document.addEventListener('DOMMouseScroll', Calendar.UI.scrollCalendar, false);
+			//}else{
+				document.onmousewheel = Calendar.UI.scrollCalendar;
+			//}
+		},
+		scrollCalendar:function(event){
+			$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
+			$('.tipsy').remove();
+			var direction;
+			if(event.detail){
+				if(event.detail < 0){
+					direction = 'top';
+				}else{
+					direction = 'down';
+>>>>>>> master
 				}
 				//set Data url for reading the file
 				reader.readAsDataURL(file);
@@ -350,11 +389,26 @@ CalendarManagement={
 			} else if($(this).hasClass('delete')) {
 				permission = OC.PERMISSION_DELETE;
 			}
+<<<<<<< HEAD
 			// This is probably not the right way, but it works :-P
 			if($(this).is(':checked')) {
 				permissions += permission;
 			} else {
 				permissions -= permission;
+=======
+
+			var scroll = $(document).scrollTop(),
+				doc_height = $(document).height(),
+				win_height = $(window).height();
+			if(direction == 'down'/* && win_height == (doc_height - scroll)*/){
+				$('#fullcalendar').fullCalendar('next');
+				$(document).scrollTop(0);
+				event.preventDefault();
+			}else/* if (direction == 'top' && scroll == 0) */{
+				$('#fullcalendar').fullCalendar('prev');
+				$(document).scrollTop(win_height);
+				event.preventDefault();
+>>>>>>> master
 			}
 			OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
 		});
@@ -502,6 +556,7 @@ CalendarManagement={
 				var timespan = $.fullCalendar.formatDates(event.start, event.end, 'ddd d MMMM[ yyyy] ' + defaulttime + '{ -[ ddd d MMMM yyyy]' + defaulttime + '}', {monthNamesShort: monthNamesShort, monthNames: monthNames, dayNames: dayNames, dayNamesShort: dayNamesShort}); //t('calendar', 'ddd d MMMM[ yyyy] HH:mm{ -[ ddd d MMMM yyyy] HH:mm}')
 				// Tue 18 October 2011 08:00 - 16:00
 			}
+<<<<<<< HEAD
 			var html =
 				'<div class="summary">' + event.title + '</div>' +
 				'<div class="timespan">' + timespan + '</div>';
@@ -509,6 +564,9 @@ CalendarManagement={
 				html += '<div class="description">' + event.description + '</div>';
 			}
 			return html;
+=======
+
+>>>>>>> master
 		},
 		setViewActive: function(view){
 			$('#view input[type="button"]').removeClass('active');
@@ -608,7 +666,7 @@ CalendarManagement={
 						$('#displayname_'+calendarid).css('background-color', '#F8F8F8');
 					});
 				}
-				
+
 				var url;
 				if (calendarid == 'new'){
 					url = OC.filePath('calendar', 'ajax/calendar', 'new.php');
@@ -661,6 +719,215 @@ CalendarManagement={
 					left: -10000
 				});
 			}
+<<<<<<< HEAD
+=======
+		},
+		Share:{
+			init:function(){
+				var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP];
+				$('#sharewith').autocomplete({minLength: 2, source: function(search, response) {
+					$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
+						if (result.status == 'success' && result.data.length > 0) {
+							response(result.data);
+						}
+					});
+				},
+				focus: function(event, focused) {
+					event.preventDefault();
+				},
+				select: function(event, selected) {
+					var itemType = 'event';
+					var itemSource = $('#sharewith').data('item-source');
+					var shareType = selected.item.value.shareType;
+					var shareWith = selected.item.value.shareWith;
+					$(this).val(shareWith);
+					// Default permissions are Read and Share
+					var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
+					OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
+						var newitem = '<li data-item-type="event"'
+							+ 'data-share-with="'+shareWith+'" '
+							+ 'data-permissions="'+permissions+'" '
+							+ 'data-share-type="'+shareType+'">'+shareWith+' ('+(shareType == OC.Share.SHARE_TYPE_USER ? t('core', 'user') : t('core', 'group'))+')'
+							+ '<span class="shareactions"><input class="update" type="checkbox" title="'+t('core', 'Editable')+'">'
+							+ '<input class="share" type="checkbox" title="'+t('core', 'Shareable')+'" checked="checked">'
+							+ '<input class="delete" type="checkbox" title="'+t('core', 'Deletable')+'">'
+							+ '<img class="svg action delete" title="Unshare"src="'+ OC.imagePath('core', 'actions/delete.svg') +'"></span></li>';
+						$('.sharedby.eventlist').append(newitem);
+						$('#sharedWithNobody').remove();
+						$('#sharewith').val('');
+					});
+					return false;
+				}
+				});
+
+				$('.shareactions > input:checkbox').change(function() {
+					var container = $(this).parents('li').first();
+					var permissions = parseInt(container.data('permissions'));
+					var itemType = container.data('item-type');
+					var shareType = container.data('share-type');
+					var itemSource = container.data('item');
+					var shareWith = container.data('share-with');
+					var permission = null;
+					if($(this).hasClass('update')) {
+						permission = OC.PERMISSION_UPDATE;
+					} else if($(this).hasClass('share')) {
+						permission = OC.PERMISSION_SHARE;
+					} else if($(this).hasClass('delete')) {
+						permission = OC.PERMISSION_DELETE;
+					}
+					// This is probably not the right way, but it works :-P
+					if($(this).is(':checked')) {
+						permissions += permission;
+					} else {
+						permissions -= permission;
+					}
+					OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
+				});
+
+				$('.shareactions > .delete').click(function() {
+					var container = $(this).parents('li').first();
+					var itemType = container.data('item-type');
+					var shareType = container.data('share-type');
+					var itemSource = container.data('item');
+					var shareWith = container.data('share-with');
+					OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
+						container.remove();
+					});
+				});
+			}
+		},
+		Drop:{
+			init:function(){
+				if (typeof window.FileReader === 'undefined') {
+					console.log('The drop-import feature is not supported in your browser :(');
+					return false;
+				}
+				droparea = document.getElementById('fullcalendar');
+				droparea.ondrop = function(e){
+					e.preventDefault();
+					Calendar.UI.Drop.drop(e);
+				}
+				console.log('Drop initialized successfully');
+			},
+			drop:function(e){
+				var files = e.dataTransfer.files;
+				for(var i = 0;i < files.length;i++){
+					var file = files[i];
+					reader = new FileReader();
+					reader.onload = function(event){
+						Calendar.UI.Drop.import(event.target.result);
+						$('#fullcalendar').fullCalendar('refetchEvents');
+					}
+					reader.readAsDataURL(file);
+				}
+			},
+			import:function(data){
+				$.post(OC.filePath('calendar', 'ajax/import', 'dropimport.php'), {'data':data},function(result) {
+					if(result.status == 'success'){
+						$('#fullcalendar').fullCalendar('addEventSource', result.eventSource);
+						$('#notification').html(result.message);
+						$('#notification').slideDown();
+						window.setTimeout(function(){$('#notification').slideUp();}, 5000);
+						return true;
+					}else{
+						$('#notification').html(result.message);
+						$('#notification').slideDown();
+						window.setTimeout(function(){$('#notification').slideUp();}, 5000);
+					}
+				});
+			}
+		}
+	},
+	Settings:{
+		//
+	},
+
+}
+$.fullCalendar.views.list = ListView;
+function ListView(element, calendar) {
+	var t = this;
+
+	// imports
+	jQuery.fullCalendar.views.month.call(t, element, calendar);
+	var opt = t.opt;
+	var trigger = t.trigger;
+	var eventElementHandlers = t.eventElementHandlers;
+	var reportEventElement = t.reportEventElement;
+	var formatDate = calendar.formatDate;
+	var formatDates = calendar.formatDates;
+	var addDays = $.fullCalendar.addDays;
+	var cloneDate = $.fullCalendar.cloneDate;
+	function skipWeekend(date, inc, excl) {
+		inc = inc || 1;
+		while (!date.getDay() || (excl && date.getDay()==1 || !excl && date.getDay()==6)) {
+			addDays(date, inc);
+		}
+		return date;
+	}
+
+	// overrides
+	t.name='list';
+	t.render=render;
+	t.renderEvents=renderEvents;
+	t.setHeight=setHeight;
+	t.setWidth=setWidth;
+	t.clearEvents=clearEvents;
+
+	function setHeight(height, dateChanged) {
+	}
+
+	function setWidth(width) {
+	}
+
+	function clearEvents() {
+		this.reportEventClear();
+	}
+
+	// main
+	function sortEvent(a, b) {
+		return a.start - b.start;
+	}
+
+	function render(date, delta) {
+		if (!t.start){
+			t.start = addDays(cloneDate(date, true), -7);
+			t.end = addDays(cloneDate(date, true), 7);
+		}
+		if (delta) {
+			if (delta < 0){
+				addDays(t.start, -7);
+				addDays(t.end, -7);
+				if (!opt('weekends')) {
+					skipWeekend(t.start, delta < 0 ? -1 : 1);
+				}
+			}else{
+				addDays(t.start, 7);
+				addDays(t.end, 7);
+				if (!opt('weekends')) {
+					skipWeekend(t.end, delta < 0 ? -1 : 1);
+				}
+			}
+		}
+		t.title = formatDates(
+			t.start,
+			t.end,
+			opt('titleFormat', 'week')
+		);
+		t.visStart = cloneDate(t.start);
+		t.visEnd = cloneDate(t.end);
+	}
+
+	function eventsOfThisDay(events, theDate) {
+		var start = cloneDate(theDate, true);
+		var end = addDays(cloneDate(start), 1);
+		var retArr = new Array();
+		for (i in events) {
+			var event_end = t.eventEnd(events[i]);
+			if (events[i].start < end && event_end >= start) {
+				retArr.push(events[i]);
+			}
+>>>>>>> master
 		}
 	}
+<<<<<<< HEAD
 }*/
