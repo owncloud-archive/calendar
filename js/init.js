@@ -196,6 +196,8 @@ $(document).ready(function(){
 		var firstday = $('#fullcalendar');
 		// up
 		if (e.keyCode == 38) {
+			//remove tipsy
+			$('.tipsy').remove();
 			//no scroll in agendaWeek view, because it's a pain
 			if(view.name != 'agendaWeek'){
 				$('#fullcalendar').fullCalendar('prev');
@@ -203,6 +205,8 @@ $(document).ready(function(){
 		}
 		//down
 		if(e.keyCode == 40) {
+			//remove tipsy
+			$('.tipsy').remove();
 			//no scroll in agendaWeek view, because it's a pain
 			if(view.name != 'agendaWeek'){
 				$('#fullcalendar').fullCalendar('next');

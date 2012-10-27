@@ -33,6 +33,7 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	</div>
 </div>
 <div id="calendars">
+	<p class="addCalendarButton" id="addNewCalendar">+</p>
 	<h2><?php echo $l->t('Your calendars'); ?>:</h2>
 	<?php
 	if(count($_['calendars']) == 0){
@@ -44,6 +45,7 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	}
 	?>
 	<br><br>
+	<p class="addCalendarButton" id="addNewSubscription">+</p>
 	<h2><?php echo $l->t('Your subscriptions');?>:</h2>
 	<?php
 	if(count($_['subscriptions']) == 0){

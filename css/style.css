@@ -218,3 +218,9 @@ margin-bottom:4px;
 #datecontrol{
 	margin-right: 12em;
 }
+
+.addCalendarButton{
+	font-weight: normal;
+	font-size: medium;
+	float: right;
+}
