@@ -374,7 +374,7 @@ class Util{
 		$vevent = $object->VEVENT;
 		$return = array();
 		$id = $event['id'];
-		$allday = ($vevent->DTSTART->getDateType() == Sabre_VObject_Element_DateTime::DATE)?true:false;
+		$allday = ($vevent->DTSTART->getDateType() == Sabre\VObject\Property\DateTime::DATE)?true:false;
 		$last_modified = @$vevent->__get('LAST-MODIFIED');
 		$lastmodified = ($last_modified)?$last_modified->getDateTime()->format('U'):0;
 		$staticoutput = array('id'=>(int)$event['id'],
@@ -406,7 +406,7 @@ class Util{
 				$object->expand($start, $end);
 			}
 			foreach($object->getComponents() as $singleevent) {
-				if(!($singleevent instanceof Sabre_VObject_Component_VEvent)) {
+				if(!($singleevent instanceof Sabre\VObject\Component\VEvent)) {
 					continue;
 				}
 				$dynamicoutput = OC_Calendar_Object::generateStartEndDate($singleevent->DTSTART, OC_Calendar_Object::getDTEndFromVEvent($singleevent), $allday, self::$tz);
