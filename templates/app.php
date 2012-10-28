@@ -39,9 +39,11 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	if(count($_['calendars']) == 0){
 		echo '<p class="info">' . $l->t('No calendars yet') . "</p>";
 	}else{
+		echo '<ul id="sortablecalendars">';
 		foreach($_['calendars'] as $calendar){
-			echo '<li>' . $calendar['displayname'] . '</li>';
+			echo '<li class="ui-state-default">' . $calendar['displayname'] . '</li>';
 		}
+		echo '</ul>';
 	}
 	?>
 	<br><br>

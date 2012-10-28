@@ -231,4 +231,6 @@ $(document).ready(function(){
 			}
 		}*/
 	});
+	$('#sortablecalendars').sortable();
+	$('#sortablecalendars').disableSelection();
 });
