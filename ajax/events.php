@@ -50,7 +50,7 @@ foreach($requestedEvents as $requestedEvent){
 	//get the 
 	$id = $requestedEvent['id'];
 	//is the event allday?
-	$allday = ($vevent->DTSTART->getDateType() == Sabre_VObject_Element_DateTime::DATE)?true:false;
+	$allday = ($vevent->DTSTART->getDateType() == \Sabre\VObject\Property\DateTime::DATE)?true:false;
 	//when was the event modified the last time?
 	$lastmodified = @$vevent->__get('LAST-MODIFIED');
 	//get the lastmodified as unixtime
@@ -92,7 +92,7 @@ foreach($requestedEvents as $requestedEvent){
 			$object->expand($start, $end);
 		}
 		foreach($object->getComponents() as $singleevent){
-			if(!($singleevent instanceof Sabre_VObject_Component_VEvent)){
+			if(!($singleevent instanceof \Sabre\VObject\Component\VEvent)){
 				continue;
 			}
 			$start_dt = $singleevent->DTSTART->getDateTime();
