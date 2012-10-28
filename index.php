@@ -29,7 +29,7 @@ $writablecalendars = OCA\Calendar::getAllCalendarsByUser($userid, false, true);
 $readablecalendars = array_diff($allcalendars, $writablecalendars);
 //Scripts and Styles
 \OCP\Util::addscript('3rdparty/fullcalendar', 'fullcalendar');
-//\OCP\Util::addScript('3rdparty/javascripttimezone', 'jstz.min');
+\OCP\Util::addScript('3rdparty/jstz', 'jstz.min');
 \OCP\Util::addscript('3rdparty/timepicker', 'jquery.ui.timepicker');
 \OCP\Util::addscript('contacts','jquery.multi-autocomplete');
 //\OCP\Util::addscript('', 'jquery.multiselect');
