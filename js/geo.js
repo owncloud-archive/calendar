@@ -8,9 +8,11 @@
 var timezone = jstz.determine();
 //send the timezone informations to the server
 $.post(OC.filePath('calendar', 'ajax/timezone', 'set.php'), {tz: timezone.name()}, function(data){
+	console.log('current timezone send to server');
 	if (data.status == 'success'){
+		Calendar.timezone = timezone.name();
 		console.log('timezone updated');
 	}else{
-		console.log('internal server error');
+		console.warn('internal server error - timezone wasn\'t set properly');
 	}
 });

@@ -13,7 +13,7 @@
 Calendar={
 	/*
 	 * Current timezone of the user
-	 * will be properly set in ./init.js
+	 * will be properly set in ./geo.js
 	 */
 	timezone:'UTC',
 	/**
