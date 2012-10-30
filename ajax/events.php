@@ -118,7 +118,7 @@ foreach($requestedEvents as $requestedEvent){
 			$outputEvents[] = array_merge($staticoutput, $dynamicoutput);			
 		}
 	}catch(Exception $e){
-		OCP\Util::logerror('calendar', $e->getMessage(), OCP\Util::WARN);
+		OCP\Util::writeLog('calendar', $e->getMessage(), OCP\Util::WARN);
 		return false;
 	}
 }
