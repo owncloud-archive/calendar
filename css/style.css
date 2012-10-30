@@ -206,7 +206,9 @@ margin-bottom:4px;
 }
 
 #quickAdd_newEvent{
-	height: 10px;
+	margin: 0;
+	padding: 0;
+	height: 13px;
 	width: 98%;
 	border: 0;
 	border-color: transparent;
