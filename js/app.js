@@ -52,6 +52,7 @@ Calendar={
 		 * @return Boolean
 		 */
 		quickAdd:function(start, end, allDay){
+			//remove selection
 			$('#fullcalendar').fullCalendar('unselect');
 			if($('#quickAdd_newEvent').length != 0){
 				return false;
@@ -67,19 +68,24 @@ Calendar={
 						 allDay: allDay,
 						 backgroundColor: bgColor,
 						 borderColor: borderColor,
-						 textColor: textColor}
+						 textColor: textColor,
+						 editable: false}
 			$('#fullcalendar').fullCalendar('renderEvent', event);
 			$('.quickAdd_newEvent:first > div > span.fc-event-title').html('<input type="text" id="quickAdd_newEvent"></input>');
 			$('#quickAdd_newEvent').focus();
+			$('#quickAdd_newEvent').keypress(function(e) {
+				if(e.which == 13) {
+					$('#quickAdd_newEvent').trigger('focusout');
+				}
+			});
 			$('#quickAdd_newEvent').focusout(function(){
 				var title = $('#quickAdd_newEvent').val();
-				if(title != ''){
-					start = Math.round(start.getTime()/1000);
-					console.log(start);
-					end = Math.round(end.getTime()/1000);
-					console.log(end);
-					$.post(OC.filePath('calendar', 'ajax/event', 'quickAdd.php'), {title: title, start: start, end: end, allDay: allDay});
+				if(title == ''){
+					title = t('calendar', 'Untitled event');
 				}
+				start = Math.round(start.getTime()/1000);
+				end = Math.round(end.getTime()/1000);
+				$.post(OC.filePath('calendar', 'ajax/event', 'quickAdd.php'), {title: title, start: start, end: end, allDay: allDay});
 				$('#fullcalendar').fullCalendar('refetchEvents');
 				$('.quickAdd_newEvent').remove();
 			});

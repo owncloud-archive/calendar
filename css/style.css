@@ -226,3 +226,15 @@ margin-bottom:4px;
 	font-size: medium;
 	float: right;
 }
+
+.fc-widget-content{
+	background: -webkit-linear-gradient(#fcfcfc 0%, #fefefe 100%);
+}
+
+.fc-event{
+	opacity: 1.0;
+}
+
+.fc-event:hover{
+	opacity: 1.0;
+}
