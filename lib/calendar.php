@@ -563,6 +563,10 @@ class Calendar {
 	public static function setCalendarActive(){
 		//UI stuff only
 	}
+	
+	public static function getUsersDefaultCalendar(){
+		
+	}
 
 		/***************************************
 		**   Private methods of this class    **
