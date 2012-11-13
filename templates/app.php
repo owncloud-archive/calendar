@@ -6,16 +6,8 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	agendatime = '<?php echo $_['agendatime']; ?>',
 	defaulttime = '<?php echo $_['defaulttime']; ?>';
 </script>
-<div id="notification" style="display:none;"></div>
+<div id="notification" style="display:none;"></div><!--
 <div id="controls">
-	<form id="view">
-		<input type="button" value="<?php echo $l->t('Week');?>" id="agendaWeek" class="controlitem" />
-		<input type="button" value="<?php echo $l->t('2 Weeks');?>" id="basic2Weeks" class="controlitem" />
-		<input type="button" value="<?php echo $l->t('Month');?>" id="basic4Weeks" class="controlitem" />
-		<input type="button" value="<?php echo $l->t('List');?>" id="list" class="controlitem" />
-		<input type="button" value="+" id="addEvent" />&nbsp;&nbsp;
-		<img id="loading" src="<?php echo OCP\Util::imagePath('core', 'loading.gif'); ?>" />
-	</form>
 	<form id="choosecalendar">
 		<button type="button">
 			<a class="settings generalsettings" title="<?php echo $l->t('Settings'); ?>">
@@ -25,14 +17,23 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	</form>
 	<div id="datecontrols">
 		<form>
-			<span class="button controlitem" id="backward">&nbsp;&lt;&nbsp;</span>
-			<span class="button controlitem" id="current_date"/></span>
-			<input type="hidden" id="date" />
-			<span class="button controlitem" id="forward">&nbsp;&gt;&nbsp;</span>
 		</form>
 	</div>
-</div>
+</div>-->
 <div id="calendars">
+	<button class="button" id="currentdate"></button>
+	<button class="button arrowbutton">&larr;</button>
+	<button class="button today"><?php echo $l->t('Today');?></button>
+	<button class="button arrowbutton">&rarr;</button>
+	<hr>
+	<div id="views">
+		<button class="button view" id="agendaWeek"><?php echo $l->t('Week');?></button>
+		<button class="button view" id="basic2Weeks"><?php echo $l->t('2 Weeks');?></button>
+		<button class="button view" id="basic4Weeks"><?php echo $l->t('Month');?></button>
+		<button class="button view" id="list"><?php echo $l->t('List');?></button>
+	</div>
+	<hr>
+	<!-- find better alternative to current + -->
 	<p class="addCalendarButton" id="addNewCalendar">+</p>
 	<h2><?php echo $l->t('Your calendars'); ?>:</h2>
 	<?php
@@ -46,7 +47,8 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 		echo '</ul>';
 	}
 	?>
-	<br><br>
+	<br>
+	<!-- find better alternative to current + -->
 	<p class="addCalendarButton" id="addNewSubscription">+</p>
 	<h2><?php echo $l->t('Your subscriptions');?>:</h2>
 	<?php
@@ -56,8 +58,10 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 		
 	}
 	?>
-	
-	
+	<hr>
+	<div style="vertical-align:bottom;bottom:0;">
+		Here belongs a datepicker
+	</div>
 </div>
 <div id="fullcalendar"></div>
 <div id="appsettings" class="popup topright hidden"></div>

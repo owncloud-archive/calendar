@@ -128,8 +128,8 @@ Calendar={
 	UI:{
 		resize:function(){
 			$('.tipsy').remove();
-			$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
-			$('#calendars').css('height', $(window).height() - $('#controls').height() - $('#header').height() - 20);
+			$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#header').height() - 15);
+			$('#calendars').css('height', $(window).height() - $('#header').height() - 20);
 		},
 		/**
 		 * sets the active calendar view

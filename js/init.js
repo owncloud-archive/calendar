@@ -233,4 +233,12 @@ $(document).ready(function(){
 	});
 	$('#sortablecalendars').sortable();
 	$('#sortablecalendars').disableSelection();
+	
+        $( "#datepicker" ).datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            changeMonth: true,
+            changeYear: true
+
+        });
 });

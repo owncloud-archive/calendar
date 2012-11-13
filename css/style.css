@@ -5,10 +5,13 @@
  * See the COPYING-README file.
  */
 /* controls Bar */
-#view{
-	float: left;
+#views{
 	font-size: 12px;
-	height: 100%;
+}
+
+.view{
+	width: 5.5em;
+	margin: 0.25em;
 }
 
 #loading{
@@ -41,17 +44,14 @@
 
 /* right calendar bar */
 #calendars{
-	margin-top: 2.8em;
 	padding-top: 0.5em;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	width: 12em;
 	background: #EEE;
-	float: right;
+	float: left;
 	border-left: 1px #CCC solid;
-	-moz-box-shadow: -3px 0 7px #000;
-	-webkit-box-shadow: 7px 0 3px black;
-	box-shadow: 1px 0px 3px black;
+	box-shadow: 0px 0px 3px black;
 	z-index:75;
 }
 
@@ -64,24 +64,29 @@
 	text-align: center;
 }
 
-/* fullcalendar */
-#fullcalendar{
-	margin-top: 3em;
+#datepicker > .ui-datepicker-header{
+	width: 9em;
 }
 
-/* style classes */
-.controlitem{
-	font-size: 13px;
-	font-weight: lighter;
+div.ui-datepicker{
+ font-size:8px;
+ margin: 0;
+ padding: 0;
 }
 
+#currentdate{
+	width: 11em;
+	margin: 0.5em;
+}
 
+.arrowbutton{
+	width: 2em;
+}
 
-
-
-
-
-
+.today{
+	margin: 0;
+	width: 6em;
+}
 
 #choosecalendar {margin-right: 170px; float: right; font-size: 12px;}
 .fc-content{padding:2px 4px;}
