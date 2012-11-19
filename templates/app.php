@@ -59,8 +59,8 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	}
 	?>
 	<hr>
-	<div style="vertical-align:bottom;bottom:0;">
-		Here belongs a datepicker
+	<div>
+		at the bottom will be a datepicker
 	</div>
 </div>
 <div id="fullcalendar"></div>

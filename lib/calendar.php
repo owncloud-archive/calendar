@@ -9,7 +9,7 @@
  * structure of objectid 
  * backendname.calendaridentifier.uid
  * 
- * examples for an objectid:
+ * example for an objectid:
  * database.defaultcalendar.7sm626oar9a7t5k4p4ljhlnqbk
  * 
  */
