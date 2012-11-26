@@ -355,11 +355,15 @@ Calendar={
 				// Tue 18 October 2011 08:00 - 16:00
 			}
 			var html =
-				'<div class="summary">' + event.title + '</div>' +
+				'<div class="summary">' + escapeHTML(event.title) + '</div>' +
 				'<div class="timespan">' + timespan + '</div>';
 			if (event.description){
+<<<<<<< HEAD:calendar/js/old js/calendar.js
 				html += '<div class="description">' + event.description + '</div>';
 >>>>>>> master
+=======
+				html += '<div class="description">' + escapeHTML(event.description) + '</div>';
+>>>>>>> master:calendar/js/calendar.js
 			}
 			//initializes drop area
 			droparea = document.getElementById('fullcalendar');
@@ -1039,6 +1043,68 @@ function ListView(element, calendar) {
 			}
 >>>>>>> master
 		}
+<<<<<<< HEAD:calendar/js/old js/calendar.js
+=======
+		return retArr;
+	}
+
+	function renderEvent(event) {
+		if (event.allDay) { //all day event
+			var time = opt('allDayText');
+		}
+		else {
+			var time = formatDates(event.start, event.end, opt('timeFormat', 'agenda'));
+		}
+		var classes = ['fc-event', 'fc-list-event'];
+		classes = classes.concat(event.className);
+		if (event.source) {
+			classes = classes.concat(event.source.className || []);
+		}
+		var html = '<tr>' +
+			'<td>&nbsp;</td>' +
+			'<td class="fc-list-time">' +
+			time +
+			'</td>' +
+			'<td>&nbsp;</td>' +
+			'<td class="fc-list-event">' +
+			'<span id="list' + event.id + '"' +
+			' class="' + classes.join(' ') + '"' +
+			'>' +
+			'<span class="fc-event-title">' +
+			escapeHTML(event.title) +
+			'</span>' +
+			'</span>' +
+			'</td>' +
+			'</tr>';
+		return html;
+	}
+
+	function renderDay(date, events) {
+		var dayRows = $('<tr>' +
+			'<td colspan="4" class="fc-list-date">' +
+			'<span>' +
+			formatDate(date, opt('titleFormat', 'day')) +
+			'</span>' +
+			'</td>' +
+			'</tr>');
+		for (i in events) {
+			var event = events[i];
+			var eventElement = $(renderEvent(event));
+			triggerRes = trigger('eventRender', event, event, eventElement);
+			if (triggerRes === false) {
+				eventElement.remove();
+			}else{
+				if (triggerRes && triggerRes !== true) {
+					eventElement.remove();
+					eventElement = $(triggerRes);
+				}
+				$.merge(dayRows, eventElement);
+				eventElementHandlers(event, eventElement);
+				reportEventElement(event, eventElement);
+			}
+		}
+		return dayRows;
+>>>>>>> master:calendar/js/calendar.js
 	}
 <<<<<<< HEAD:calendar/js/old js/calendar.js
 <<<<<<< HEAD
@@ -1119,7 +1185,7 @@ $(document).ready(function(){
 		eventDrop: Calendar.UI.moveEvent,
 		eventResize: Calendar.UI.resizeEvent,
 		eventRender: function(event, element) {
-			element.find('.fc-event-title').text($("<div/>").html(event.title).text())
+			element.find('.fc-event-title').text($("<div/>").html(escapeHTML(event.title)).text())
 			element.tipsy({
 				className: 'tipsy-event',
 				opacity: 0.9,

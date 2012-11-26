@@ -122,4 +122,4 @@ foreach($requestedEvents as $requestedEvent){
 		return false;
 	}
 }
-OCP\JSON::encodedPrint(OCP\Util::sanitizeHTML($outputEvents));
+OCP\JSON::encodedPrint($output);
