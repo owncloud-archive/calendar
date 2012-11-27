@@ -11,20 +11,29 @@
  * 
  * example for an objectid:
  * database.defaultcalendar.7sm626oar9a7t5k4p4ljhlnqbk
+ *
+ * Objects:
+ * - OCA\Calendar\Objects\Calendar
+ * - OCA\Calendar\Objects\Event
+ * - OCA\Calendar\Objects\Todo
+ * - OCA\Calendar\Objects\Journal
+ * 
+ * Full documentation will be available on github.com/ownCloud/documentation soon
  * 
  */
 namespace OCA;
 class Calendar {
-	// The backends used for calendar management
+	// backends used for calendar management
 	private static $_usedBackends = array();
 	private static $_setupedBackends = array();
-	
-	// Backends available
+	// available backends
 	private static $_backends = array();
 
 	/**
-	 * @brief registers backend
-	 * @param $name name of the backend
+	 * @brief registers a backend
+	 * @param $backend name of the backend
+	 * @param $classname name of the class
+	 * @param $arguments some arguments that might be necessary
 	 * @returns true/false
 	 *
 	 * Makes a list of backends that can be used by other modules
