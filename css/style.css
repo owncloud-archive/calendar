@@ -232,9 +232,9 @@ margin-bottom:4px;
 	float: right;
 }
 
-.fc-widget-content{
+/*.fc-widget-content{
 	background: -webkit-linear-gradient(#fcfcfc 0%, #fefefe 100%);
-}
+}*/
 
 .fc-event{
 	opacity: 1.0;
@@ -242,4 +242,8 @@ margin-bottom:4px;
 
 .fc-event:hover{
 	opacity: 1.0;
+}
+
+.fc-sat, .fc-sun{
+	background-color: #F0F0F0;
 }
