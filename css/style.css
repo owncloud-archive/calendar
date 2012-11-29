@@ -111,7 +111,7 @@ div.ui-datepicker{
 .event {position:relative;}
 .event.colored {border-bottom: 1px solid white;}
 
-input[type="button"].active {color: #6193CF}
+.active, .active:hover {color: #6193CF}
 #fromtime, #totime {
 color:#333;
 }

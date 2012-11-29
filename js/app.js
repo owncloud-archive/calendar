@@ -138,7 +138,7 @@ Calendar={
 		 * @return Boolean
 		 */
 		setViewActive: function(view){
-			$('#view input[type="button"]').removeClass('active');
+			$('#views button').removeClass('active');
 			$('#'+view).addClass('active');
 		},
 		/**
