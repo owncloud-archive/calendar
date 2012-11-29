@@ -22,9 +22,9 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 </div>-->
 <div id="calendars">
 	<button class="button" id="currentdate"></button>
-	<button class="button arrowbutton">&larr;</button>
+	<button class="button arrowbutton backward">&larr;</button>
 	<button class="button today"><?php echo $l->t('Today');?></button>
-	<button class="button arrowbutton">&rarr;</button>
+	<button class="button arrowbutton forward">&rarr;</button>
 	<hr>
 	<div id="views">
 		<button class="button view" id="agendaWeek"><?php echo $l->t('Week');?></button>

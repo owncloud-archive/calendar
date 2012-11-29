@@ -20,11 +20,14 @@ $(document).ready(function(){
 		Calendar.Event.smartAdd();
 	});
 	//buttons in the top middle
-	$('#backward').click(function(){
+	$('button.backward').click(function(){
 		$('#fullcalendar').fullCalendar('prev');
 	});
 	//TODO - improve datepicker implementation
-	$('#date').datepicker({
+	$('button.today').click(function(){
+		$('#fullcalendar').fullCalendar('today');
+	});
+	/*$('#date').datepicker({
 		changeMonth: true,
 		changeYear: true,
 		showButtonPanel: true,
@@ -39,8 +42,8 @@ $(document).ready(function(){
 			var date = inst.input.datepicker('getDate');
 			$('#fullcalendar').fullCalendar('gotoDate', date);
 		}
-	});
-	$('#forward').click(function(){
+	});*/
+	$('button.forward').click(function(){
 		$('#fullcalendar').fullCalendar('next');
 	});
 	//buttons in the top right corner
