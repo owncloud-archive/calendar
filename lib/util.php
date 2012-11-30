@@ -486,7 +486,7 @@ class Util{
 		foreach($calendars as $calendar){
 			unset($_SESSION['calendar']['calid']);
 			//TODO - make md5 more random !!!
-			$md5 = md5($calendar['backend'] . '.' . $calendar['uid']);
+			$md5 = md5($calendar['uri']);
 			$_SESSION['calendar']['calid'][$md5] = $calendar['uri'];
 			$eventSources[] = array(
 				'url' => \OCP\Util::linkTo('calendar', 'ajax/events.php').'?calendar_id='.$md5,
