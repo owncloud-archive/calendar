@@ -21,9 +21,9 @@ if(array_key_exists($_GET['calendar_id'], $_SESSION['calendar']['calid'])){
 	OCP\JSON::error(array('message'=>'calendar not found'));
 }
 //get the start DateTime object
-$start = (version_compare(PHP_VERSION, '5.3.0', '>='))?DateTime::createFromFormat('U', $_GET['start']):new DateTime('@' . $_GET['start']);
+$start = DateTime::createFromFormat('U', $_GET['start']);
 //get the end DateTime object
-$end = (version_compare(PHP_VERSION, '5.3.0', '>='))?DateTime::createFromFormat('U', $_GET['end']):new DateTime('@' . $_GET['end']);
+$end = DateTime::createFromFormat('U', $_GET['end']);
 //get an array of all requested events
 $requestedEvents = OCA\Calendar::allObjectsInPeriod($calendarid, $start, $end);
 //array for events to send to client
