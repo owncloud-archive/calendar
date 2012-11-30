@@ -25,7 +25,7 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	<button class="button arrowbutton backward">&larr;</button>
 	<button class="button today"><?php echo $l->t('Today');?></button>
 	<button class="button arrowbutton forward">&rarr;</button>
-	<hr>
+	<br>
 	<div id="views">
 		<button class="button view" id="agendaWeek"><?php echo $l->t('Week');?></button>
 		<button class="button view" id="basic2Weeks"><?php echo $l->t('2 Weeks');?></button>
@@ -42,7 +42,12 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 	}else{
 		echo '<ul id="sortablecalendars">';
 		foreach($_['calendars'] as $calendar){
-			echo '<li class="ui-state-default">' . $calendar['displayname'] . '</li>';
+			echo '<li class="ui-state-default">';
+			echo '<span style="background-color: ' . $calendar['calendarcolor'] . ';">';
+			echo '<input type="checkbox" style="background: ' . $calendar['calendarcolor'] . '"/>';
+			echo '</span>';
+			echo $calendar['displayname'];
+			echo '</li>';
 		}
 		echo '</ul>';
 	}
@@ -58,10 +63,6 @@ var	defaultView = '<?php echo $_['defaultView'];?>',
 		
 	}
 	?>
-	<hr>
-	<div>
-		at the bottom will be a datepicker
-	</div>
 </div>
 <div id="fullcalendar"></div>
-<div id="appsettings" class="popup topright hidden"></div>
+<div id="appsettings" class="popup bottomright hidden"></div>
