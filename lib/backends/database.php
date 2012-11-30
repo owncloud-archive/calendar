@@ -245,11 +245,11 @@ class Database extends \OCA\Calendar\Backend\Backend {
 	*/
 	public static function getInPeriod($uri, $start, $end){
 		$calendarid = self::getCalendarIdByURI($uri);
-		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendar_objects` WHERE `calendarid` = ?'
-		.' AND ((`startdate` >= ? AND `startdate` <= ? AND `repeating` = 0)'
-		.' OR (`enddate` >= ? AND `enddate` <= ? AND `repeating` = 0)'
-		.' OR (`startdate` <= ? AND `repeating` = 1))' );
-		
+		$sql =  'SELECT * FROM `*PREFIX*calendar_objects` WHERE `calendarid` = ?';
+		$sql .= 'AND ((`startdate` >= ? AND `startdate` <= ?  AND `repeating` = 0)';
+		$sql .= ' OR (`enddate` >= ? AND `enddate` <= ? AND `repeating` = 0)';
+		$sql .= ' OR (`startdate` <= ? AND `repeating` = 1))';
+		$stmt = \OCP\DB::prepare($sql);
 		$start = self::getUTCforMDB($start);
 		$end = self::getUTCforMDB($end);
 		$result = $stmt->execute(array($calendarid,
@@ -275,7 +275,7 @@ class Database extends \OCA\Calendar\Backend\Backend {
 	}
 	
 	private static function getUTCforMDB($datetime){
-		return date('Y-m-d H:i', $datetime->format('U') - $datetime->getOffset());
+		return date('Y-m-d H:i:s', $datetime->format('U') - $datetime->getOffset());
 	}
 	
 	private static function getCalendarIdByURI($uri){

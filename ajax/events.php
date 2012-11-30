@@ -122,4 +122,4 @@ foreach($requestedEvents as $requestedEvent){
 		return false;
 	}
 }
-OCP\JSON::encodedPrint($output);
+OCP\JSON::encodedPrint($outputEvents);
