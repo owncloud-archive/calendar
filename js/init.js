@@ -145,7 +145,7 @@ $(document).ready(function(){
 		viewDisplay: function(view) {
 			
 			//set new date informations
-			$('#current_date').html($('<p>').html(view.title).text());
+			$('#currentdate').html($('<p>').html(view.title).text());
 			//save the current view
 			if (view.name != defaultView) {
 				$.post(OC.filePath('calendar', 'ajax', 'changeview.php'), {v:view.name});
