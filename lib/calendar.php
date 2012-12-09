@@ -12,14 +12,17 @@
  * example for an objectid:
  * database.defaultcalendar.7sm626oar9a7t5k4p4ljhlnqbk
  *
+ * Objects used for information interchange:
+ * Calendar:
+ * - \OCA\Calendar\Objects\Calendar
  * Objects:
- * - OCA\Calendar\Objects\Calendar
- * - OCA\Calendar\Objects\Event
- * - OCA\Calendar\Objects\Todo
- * - OCA\Calendar\Objects\Journal
+ * - \OCA\Calendar\Objects\Event
+ * - \OCA\Calendar\Objects\Journal
+ * - \OCA\Calendar\Objects\Todo
+ *
+ * All these classes extend the OC_VObject class
  * 
  * Full documentation will be available on github.com/ownCloud/documentation soon
- * 
  */
 namespace OCA;
 class Calendar {
@@ -34,20 +37,19 @@ class Calendar {
 	 * @param $backend name of the backend
 	 * @param $classname name of the class
 	 * @param $arguments some arguments that might be necessary
-	 * @returns true/false
+	 * @returns void
 	 *
-	 * Makes a list of backends that can be used by other modules
+	 * register a calendar backend
 	 */
 	public static function registerBackend( $backend, $classname, $arguments = array()) {
 		self::$_backends[] = array('backend' => $backend, 'class' => $classname, 'arguments' => $arguments);
-		return true;
 	}
-
+	
 	/**
 	 * @brief gets available backends
-	 * @returns array of backends
+	 * @returns array
 	 *
-	 * Returns the names of all backends.
+	 * returns a list of all backends
 	 */
 	public static function getBackends() {
 		return self::$_backends;
@@ -57,7 +59,7 @@ class Calendar {
 	 * @brief gets used backends
 	 * @returns array of backends
 	 *
-	 * Returns the names of all used backends.
+	 * returns the names of all used backends
 	 */
 	public static function getUsedBackends() {
 		return array_keys(self::$_usedBackends);
@@ -68,7 +70,7 @@ class Calendar {
 	 * @param $backend default: database The backend to use for calendar managment
 	 * @returns true/false
 	 *
-	 * Set the User Authentication Module
+	 * enables a calendar backend
 	 */
 	public static function useBackend( $backend = null ) {
 		if(is_null($backend)){
@@ -83,14 +85,20 @@ class Calendar {
 	}
 
 	/**
-	 * remove all used backends
+	 * @brief removes all used backends
+	 * @returns void
+	 * 
+	 * removes all used backends
 	 */
 	public static function clearBackends() {
 		self::$_usedBackends = array();
 	}
 
 	/**
-	 * setup the configured backends in calendarbackends.php in the users' home directory
+	 * @brief initializes all registered calendar backends
+	 * @return void
+	 * 
+	 * initializes all registered calendar backends
 	 */
 	public static function setupBackends() {
 		//setup backends
@@ -113,7 +121,6 @@ class Calendar {
 	
 	/* ================================================================================================= */
 
-	private static $uidMap = array();
 	/**
 	 * @brief get all calendars by a user with the userid given in the $userid parameter
 	 * @param $userid string - userid of the user
@@ -121,7 +128,7 @@ class Calendar {
 	 * @ @param $writable boolean - return writable calendars only ?
 	 * @ @param $backend mixed (array of strings / string) - return calendars of a specific backend only ?
 	 *
-	 * @return array
+	 * @return array of calendar pbject
 	 *
 	 * This method returns all calendars that are available for a user with the userid given in the first parameter.
 	 * If you set the second parameter to true, this method will only return enabled calendars.
@@ -146,7 +153,7 @@ class Calendar {
 			//check all given backends
 			foreach($useBackend as $backendToCheck){
 				//does the given backend exists at all?
-				if(self::checkBackendExists($backendToCheck)){
+				if(self::doesBackendExist($backendToCheck)){
 					//add backend to array of all backends to search in
 					$backends[] = self::$_usedBackends[$backendToCheck];
 				}
@@ -191,28 +198,39 @@ class Calendar {
 	/**
 	 * @brief get information about a calendar
 	 * @param $calendarid string id of the calendar
-	 * @returns array
+	 * @returns mixed (object / false)
 	 *
 	 *  Get information about a calendar with the calendar id given in calendarid parameter
 	 * 
-	 * Structure of array that will be returned
-	 * [uri => calendar's uri, 
-	 *  userid => owner's uid, 
-	 *  displayname => public visible display name,
-	 *  ctag => current ctag,
-	 *  color => calendar's color,
-	 *  timezone => default timezone of calendar,
-	 *  components =>  supported components]
 	 */
 	public static function findCalendarByCalendarID($calendarid){
+		//get the cached calendar
+		$cached = self::findCachedCalendarByCalendarID($calendarid);
+		//does the calendar exist in the cache?
+		if($cached && !self::isCalendarCacheOutdated($calendarid)){
+			//return calendar object if it's cached and not outdated
+			return $cached;
+		}
+		//get the name of the backend
+		$backendname = self::getBackendNameById($calendarid);
+		//check if the given backend exists
+		if(!self::doesBackendExist($backendname)){
+			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
+			return false;
+		}
 		//get the backend object
-		$backend = self::$_usedBackends[self::getBackendNameById($calendarid)];
+		$backend = self::$_usedBackends[$backendname];
 		//get the calendar info
-		$calendarinfo = $backend->findCalendar(self::getCalendarURIById($calendarid));
-		//add the backendname to the URI
-		$calendarinfo['uri'] = self::getBackendNameById($calendarid) . '.' . $calendarinfo['uri'];
-		//return the calendar information 
-		return $calendarinfo;
+		$calendar = $backend->findCalendar(self::getCalendarURIById($calendarid));
+		//is the returned object a calendar?
+		if($calendar instanceof \OCA\Calendar\Objects\Calendar) {
+			//add calendarid as a property
+			$calendar->addProperty('X-ownCloud-CalendarID', $calendarid);
+			//return the calendar object
+			return $calendar;
+		}
+		\OCP\Util::writeLog('calendar', __METHOD__.', Calendar with ID: ' . $calendarid . ' was not found', \OCP\Util::DEBUG);
+		return false;
 	}
 	
 	/**
@@ -221,33 +239,36 @@ class Calendar {
 	 * @param $properties array
 	 * @returns boolean
 	 * 
-	 * Structure of $properties array
-	 * [uri => calendar's uri, 
-	 *  userid => owner's uid, 
-	 *  displayname => public visible display name,
-	 *  color => calendar's color,
-	 *  timezone => default timezone of calendar,
-	 *  components =>  supported components]
-	 * 
 	 * Create a calendar in a specific backend using the given properties
 	 */
-	public static function createCalendar($backendname, $properties){
-		return true;
-		//check if the given backend exists
-		if(!self::checkBackendExists($backendname)){
+	public static function createCalendar($backendname, $calendarobject){
+		//does the backend exist?
+		if(!self::doesBackendExist($backendname)){
+			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
-		//yeah, everything is fine
+		//is the calendar object valid?
+		if(!($calendarobject instanceof \OCA\Calendar\Objects\Calendar)) {
+			\OCP\Util::writeLog('calendar', __METHOD__.', No valid calendar object was submitted', \OCP\Util::ERROR);
+			return false;
+		}
+		//get the backend object
 		$backend = self::$_usedBackends[$backendname];
-		//is creating calendars implemented in the backend at all?
+		//is creating calendars implemented at all?
 		if($backend->implementsActionss(OC_CALENDAR_BACKEND_CREATE_CALENDAR)) {
 			//create the calendar with some properties
-			$result = $backend->createCalendar($properties);
+			$result = $backend->createCalendar($calendarobject);
 			//was creating successful?
 			if($result) {
+				//TODO - emit hook - //
+				//TODO - add calendar to cache - //
 				return true;
+			}else{
+				\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $backendname. ' failed to create a calendar', \OCP\Util::ERROR);
+				return false;
 			}
 		}
+		\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $backendname. ' does not implement OC_CALENDAR_BACKEND_CREATE_CALENDAR', \OCP\Util::DEBUG);
 		return false;
 	}
 	
@@ -261,22 +282,34 @@ class Calendar {
 	 * 
 	 * Edit a calendar with a specific calendarid
 	 */
-	public static function editCalendar($calendarid, $properties){
+	public static function editCalendar($calendarid, $calendarobject){
 		//check if the given backend exists
-		if(!self::checkBackendExists(self::getBackendNameById($calendarid))){
+		if(!self::doesBackendExist(self::getBackendNameById($calendarid))){
+			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
-		//yeah, everything is fine
+		//is the calendar object valid?
+		if(!($calendarobject instanceof \OCA\Calendar\Objects\Calendar)) {
+			\OCP\Util::writeLog('calendar', __METHOD__.', No valid calendar object was submitted', \OCP\Util::ERROR);
+			return false;
+		}
+		//get the backend object
 		$backend = self::$_usedBackends[self::getBackendNameById($calendarid)];
 		//is editing calendars implemented in the backend at all?
 		if($backend->implementsActionss(OC_CALENDAR_BACKEND_EDIT_CALENDAR)) {
 			//edit the calendar with the new properties
-			$result = $backend->editCalendar(self::getCalendarURIById($calendarid), $properties);
+			$result = $backend->editCalendar(self::getCalendarURIById($calendarid), $calendarobject);
 			//was editing successful?
 			if($result) {
+				//TODO - emit hook - //
+				//TODO - update calendar cache - //
 				return true;
+			}else{
+				\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $backendname. ' failed to edit a calendar', \OCP\Util::ERROR);
+				return false;
 			}
 		}
+		\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $backendname. ' does not implement OC_CALENDAR_BACKEND_EDIT_CALENDAR', \OCP\Util::DEBUG);
 		return false;
 	}
 	
@@ -289,22 +322,29 @@ class Calendar {
 	 */
 	public static function deleteCalendar($calendarid){
 		//check if the given backend exists
-		if(!self::checkBackendExists(self::getBackendNameById($calendarid))){
+		if(!self::doesBackendExist(self::getBackendNameById($calendarid))){
+			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
-		//yeah, everything is fine
+		//get the backend object
 		$backend = self::$_usedBackends[self::getBackendNameById($calendarid)];
 		//is deleting calendars implemented in the backend at all?
 		if($backend->implementsActionss(OC_CALENDAR_BACKEND_DELETE_CALENDAR)) {
 			//delete the calendar
 			$result = $backend->deleteCalendar(self::getCalendarURIById($calendarid));
-			//was deleting successful
+			//was deleting successful?
 			if($result) {
+				//TODO - emit hook - //
+				//TODO - delete from  calendar cache - //
 				return true;
 			}
 		}
 		//hide the calendar if deleting it is not available
 		self::hideCalendar($calendarid);
+		//TODO - emit hook - //
+		//TODO - delete from  calendar cache - //
+		\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $backendname. ' does not implement OC_CALENDAR_BACKEND_DELETE_CALENDAR', \OCP\Util::DEBUG);
+		\OCP\Util::writeLog('calendar', __METHOD__.', ' . $calendarid . ' will be hidden', \OCP\Util::DEBUG);
 		return true;
 	}
 	
@@ -317,10 +357,11 @@ class Calendar {
 	 */
 	public static function touchCalendar($calendarid){
 		//check if the given backend exists
-		if(!self::checkBackendExists(self::getBackendNameById($calendarid))){
+		if(!self::doesBackendExist(self::getBackendNameById($calendarid))){
+			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
-		//yeah, everything is fine
+		//get the backend object
 		$backend = self::$_usedBackends[self::getBackendNameById($calendarid)];
 		//is touching calendars implemented in the backend at all?
 		if($backend->implementsActionss(OC_CALENDAR_BACKEND_TOUCH_CALENDAR)) {
@@ -632,7 +673,7 @@ class Calendar {
 		return $calendars;
 	}
 	
-	private static function checkBackendExists($backendname){
+	private static function doesBackendExist($backendname){
 		//does the given backend exists at all?
 		if(array_key_exists($backendname, self::$_usedBackends)){
 			//yeah, everything is fine
@@ -643,9 +684,10 @@ class Calendar {
 			return false;
 		}
 	}
-		/***************************************
-		** All of this class' backend methods **
-		***************************************/
+	
+	private static function getCachedCalendarsByCalendarID(){
+		
+	}
 	
 
 }
