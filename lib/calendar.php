@@ -31,6 +31,17 @@ class Calendar {
 	private static $_setupedBackends = array();
 	// available backends
 	private static $_backends = array();
+	//attemp to minimize the number of database requests
+	private static $_allCalendarsByUser = array();
+	private static $_allEventsByUser = array();
+	private static $_allJournalsByUser = array();
+	private static $_allTodosByUser = array();
+	
+	/** * * * * * * * * * * * * * * * * * * * *
+	 *                                        *
+	 * Implementation of some backend methods *
+	 *                                        *
+	 ** * * * * * * * * * * * * * * * * * * * */
 
 	/**
 	 * @brief registers a backend
@@ -73,7 +84,7 @@ class Calendar {
 	 * enables a calendar backend
 	 */
 	public static function useBackend( $backend = null ) {
-		if(is_null($backend)){
+		if(is_null($backend)) {
 			$backend = new \OCA\Calendar\Backend\Database();
 		}
 		if($backend instanceof \OCA\Calendar\Backend\Backend) {
@@ -102,7 +113,7 @@ class Calendar {
 	 */
 	public static function setupBackends() {
 		//setup backends
-		foreach(self::$_backends as $backend){
+		foreach(self::$_backends as $backend) {
 			$class = $backend['class'];
 			$arguments = $backend['arguments'];
 			if(class_exists($class) and array_search($i,self::$_setupedBackends) === false) {
@@ -119,7 +130,11 @@ class Calendar {
 		}
 	}
 	
-	/* ================================================================================================= */
+	/** * * * * * * * * * * * * * * * * * * * * * * * *
+	 *                                                *
+	 * Implementation of all public calendar methods  *
+	 *                                                *
+	 ** * * * * * * * * * * * * * * * * * * * * * * * */
 
 	/**
 	 * @brief get all calendars by a user with the userid given in the $userid parameter
@@ -128,7 +143,7 @@ class Calendar {
 	 * @ @param $writable boolean - return writable calendars only ?
 	 * @ @param $backend mixed (array of strings / string) - return calendars of a specific backend only ?
 	 *
-	 * @return array of calendar pbject
+	 * @return array of calendar object
 	 *
 	 * This method returns all calendars that are available for a user with the userid given in the first parameter.
 	 * If you set the second parameter to true, this method will only return enabled calendars.
@@ -138,36 +153,45 @@ class Calendar {
 	 * The returned array will be multidimensional.
 	 * For information about the structure take a look at the findCalendarByCalendarID method
 	 */
-	public static function getAllCalendarsByUser($userid, $active = false, $writable = false, $useBackend = null){
+	public static function getAllCalendarsByUser($userid, $active = false, $writable = false, $useBackend = null) {
 		$allCalendars = array();
 		//generate an array with backends to use for this search
 		$backends = array();
-		if(is_null($useBackend)){
+		if(is_null($useBackend)) {
 			//no backends given, just use all available
 			$backends = self::$_usedBackends;
 		}else{
 			//make $useBackend an array if it isn't one yet
-			if(!is_array($useBackend)){
+			if(!is_array($useBackend)) {
 				$useBackend = array($useBackend);
 			}
 			//check all given backends
-			foreach($useBackend as $backendToCheck){
+			foreach($useBackend as $backendToCheck) {
 				//does the given backend exists at all?
-				if(self::doesBackendExist($backendToCheck)){
+				if(self::doesBackendExist($backendToCheck)) {
 					//add backend to array of all backends to search in
-					$backends[] = self::$_usedBackends[$backendToCheck];
+					$backends[$backendToCheck] = self::$_usedBackends[$backendToCheck];
 				}
 			}
 		}
 		//get all calendars of the backends to search in
-		foreach($backends as $backend){
-			$allCalendarsOfBackend = $backend->getCalendars($userid);
+		foreach($backends as $backendName => $backend) {
+			if(array_key_exists($backendName, self::$_allCalendarsByUser)){
+				$allCalendarsOfBackend = self::$_allCalendarsByUser[$backendName];
+			}else{
+				$allCalendarsOfBackend = $backend->getCalendars($userid);
+				foreach($allCalendarsOfBackend as $key => $value){
+					$value->add('X-OWNCLOUD-CALENADRID', $backendName . '.' . $value->__get('X-OWNCLOUD-URI'));
+					$allCalendarsOfBackend[$key] = $value;
+				}
+				self::$_allCalendarsByUser[$backendName] = $allCalendarsOfBackend;
+			}
 			//remove the disabled calendars if requested
-			if($active){
+			if($active) {
 				$activeCalendars = array();
 				//check for each calendar if it is enabled
-				foreach($allCalendarsOfBackend as $calendar){
-					if(!self::isCalendarDisabled($calendar['uri'])){
+				foreach($allCalendarsOfBackend as $calendar) {
+					if(!self::isCalendarDisabled($calendar->__get('X-OWNCLOUD-CALENADRID'))) {
 						$activeCalendars[] = $calendar;
 					}
 				}
@@ -175,19 +199,17 @@ class Calendar {
 				$allCalendarsOfBackend = $activeCalendars;
 			}
 			//remove the non-writable calendars if requested
-			if($writable){
+			if($writable) {
 				$writableCalendars = array();
 				//check for each calendar if it is writable
-				foreach($allCalendarsOfBackend as $calendar){
-					if($backend->isCalendarWritableByUser($calendar['uri'], $userid)){
+				foreach($allCalendarsOfBackend as $calendar) {
+					if($backend->isCalendarWritableByUser($calendar->__get('X-OWNCLOUD-CALENADRID'), $userid)) {
 						$writableCalendars[] = $calendar;
 					}
 				}
 				//overwrite old array
 				$allCalendarsOfBackend = $writableCalendars;
 			}
-			//add the backendname to all uri's
-			$allCalendarsOfBackend = self::addBackendNameToURIs($allCalendarsOfBackend, self::getClassNameByBackendObject($backend));
 			//merge both arrays
 			$allCalendars = array_merge($allCalendars, $allCalendarsOfBackend);
 		}
@@ -203,18 +225,18 @@ class Calendar {
 	 *  Get information about a calendar with the calendar id given in calendarid parameter
 	 * 
 	 */
-	public static function findCalendarByCalendarID($calendarid){
+	public static function findCalendarByCalendarID($calendarid) {
 		//get the cached calendar
 		$cached = self::findCachedCalendarByCalendarID($calendarid);
 		//does the calendar exist in the cache?
-		if($cached && !self::isCalendarCacheOutdated($calendarid)){
+		if($cached && !self::isCalendarCacheOutdated($calendarid)) {
 			//return calendar object if it's cached and not outdated
 			return $cached;
 		}
 		//get the name of the backend
 		$backendname = self::getBackendNameById($calendarid);
 		//check if the given backend exists
-		if(!self::doesBackendExist($backendname)){
+		if(!self::doesBackendExist($backendname)) {
 			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
@@ -241,9 +263,9 @@ class Calendar {
 	 * 
 	 * Create a calendar in a specific backend using the given properties
 	 */
-	public static function createCalendar($backendname, $calendarobject){
+	public static function createCalendar($backendname, $calendarobject) {
 		//does the backend exist?
-		if(!self::doesBackendExist($backendname)){
+		if(!self::doesBackendExist($backendname)) {
 			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
@@ -282,9 +304,9 @@ class Calendar {
 	 * 
 	 * Edit a calendar with a specific calendarid
 	 */
-	public static function editCalendar($calendarid, $calendarobject){
+	public static function editCalendar($calendarid, $calendarobject) {
 		//check if the given backend exists
-		if(!self::doesBackendExist(self::getBackendNameById($calendarid))){
+		if(!self::doesBackendExist(self::getBackendNameById($calendarid))) {
 			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
@@ -320,9 +342,9 @@ class Calendar {
 	 *
 	 * Delete a calendar with a specific calendarid
 	 */
-	public static function deleteCalendar($calendarid){
+	public static function deleteCalendar($calendarid) {
 		//check if the given backend exists
-		if(!self::doesBackendExist(self::getBackendNameById($calendarid))){
+		if(!self::doesBackendExist(self::getBackendNameById($calendarid))) {
 			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
@@ -355,9 +377,9 @@ class Calendar {
 	 *
 	 * Touch a calendar with a specific calendarid
 	 */
-	public static function touchCalendar($calendarid){
+	public static function touchCalendar($calendarid) {
 		//check if the given backend exists
-		if(!self::doesBackendExist(self::getBackendNameById($calendarid))){
+		if(!self::doesBackendExist(self::getBackendNameById($calendarid))) {
 			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $calendarid . ' does not exist', \OCP\Util::ERROR);
 			return false;
 		}
@@ -387,25 +409,25 @@ class Calendar {
 	 * Merge all given calendars into calendar one
 	 * Each one of the parameters must be a valid calendarid!
 	 */
-	public static function mergeCalendar(){
+	public static function mergeCalendar() {
 		$numberofarguments = func_num_args();
 		$mergeintocalendar = func_get_arg(0);
 		//informations about the calendar all others will be merged in
 		$destination = array('backendname' => self::getBackendNameById($mergeintocalendar), 'calendaruri' => self::getCalendarURIById($mergeintocalendar));
 		//let's merge it
-		for($i = 1; $i < $numberofarguments; $i++){
+		for($i = 1; $i < $numberofarguments; $i++) {
 			//get the current calendar
 			$currentcalendar = func_get_arg($i);
 			$origin = array('backendname' => self::getBackendNameById($currentcalendar), 'calendaruri' => self::getCalendarURIById($currentcalendar));
 			//are both calendar in the same backend and does this backend support merging at all?
-			if($origin['backendname'] == $destination['backendname'] && self::$_usedBackends[$destination['backendname']]->implementsActionss(OC_CALENDAR_BACKEND_MERGE_CALENDAR)){
+			if($origin['backendname'] == $destination['backendname'] && self::$_usedBackends[$destination['backendname']]->implementsActionss(OC_CALENDAR_BACKEND_MERGE_CALENDAR)) {
 				//yeah
 				$backend->mergeCalendar($origin['calendaruri'], $destination['calendaruri']);
 			}else{
 				//nope, either not in the same backend or backend doesn't support merging at all
 				$allobjectsofcurrentcalendar = self::allObjects($currentcalendar);
 				//merge each single object
-				foreach($allobjectsofcurrentcalendar as $currentobject){
+				foreach($allobjectsofcurrentcalendar as $currentobject) {
 					//get object information
 					$object = self::findObject($currentobject);
 					//create the object in the new calendar
@@ -427,13 +449,13 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function allObjects($calendarid){
+	public static function allObjects($calendarid) {
 		//get the backend
 		$backend = self::$_usedBackends[self::getBackendNameById($calendarid)];
 		//get the object
 		$objects = $backend->getObjects(self::getCalendarURIById($calendarid));
 		//prepare objects
-		for($i = 0; $i < count($objects); $i++){
+		for($i = 0; $i < count($objects); $i++) {
 			//add objectid to event information
 			$objects[$i]['objectid'] = $calendarid . '.' . $objects[$i]['uid'];
 		}
@@ -451,23 +473,23 @@ class Calendar {
 	 * get all object of a calendar in a specific period
 	 * ! $start and $end MUST be DateTime Objects !
 	 */
-	public static function allObjectsInPeriod($calendarid, $start, $end){
+	public static function allObjectsInPeriod($calendarid, $start, $end) {
 		//get the backend object
 		$backend = self::$_usedBackends[self::getBackendNameById($calendarid)];
 		//does the backend support searching for objects in a specific period at all?
-		if($backend->implementsActions(OC_CALENDAR_BACKEND_GET_IN_PERIOD)){
+		if($backend->implementsActions(OC_CALENDAR_BACKEND_GET_IN_PERIOD)) {
 			//yeah, it does :D
 			$objects = $backend->getInPeriod(self::getCalendarURIById($calendarid), $start, $end);
 		}else{
 			//nope, it doesn't :(
 			$allobjects = self::allObjects($calendarid);
 			$objects = array();
-			foreach($allobjects as $object){
+			foreach($allobjects as $object) {
 				//TODO - only put objects in the period into the objects array
 			}
 		}
 		//prepare objects
-		for($i = 0; $i < count($objects); $i++){
+		for($i = 0; $i < count($objects); $i++) {
 			//add objectid to event information
 			$objects[$i]['objectid'] = $calendarid . '.' . $objects[$i]['uid'];
 		}
@@ -483,7 +505,7 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function findObject($objectid){
+	public static function findObject($objectid) {
 		//get the backend object
 		$backend = self::$_usedBackends[self::getBackendNameById($objectid)];
 		//get the calendar info
@@ -502,7 +524,7 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function findObjectByUid($uid){
+	public static function findObjectByUid($uid) {
 		return self::findObject(self::getObjectIdByUID($uid));
 	}
 	
@@ -514,7 +536,7 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function createObject($calendarid, $properties){
+	public static function createObject($calendarid, $properties) {
 		//get the backend object
 		$backend = self::$_usedBackends[self::getBackendNameById($id)];
 		//does the backend support creating objects at all?
@@ -537,7 +559,7 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function editObject($objectid, $properties){
+	public static function editObject($objectid, $properties) {
 		//get the backend object
 		$backend = self::$_usedBackends[self::getBackendNameById($objectid)];
 		//does the backend support editing objects at all?
@@ -560,7 +582,7 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function deleteObject($objectid){
+	public static function deleteObject($objectid) {
 		//get the backend object
 		$backend = self::$_usedBackends[self::getBackendNameById($objectid)];
 		//does the backend support deleting objects at all?
@@ -587,10 +609,10 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function moveObject($objectid, $newcalendarid){
+	public static function moveObject($objectid, $newcalendarid) {
 		$oldbackend = self::getBackendNameById($objectid);
 		$newbackend = self::getBackendNameById($newcalendarid);
-		if($oldbackend == $newbackend && self::$_usedBackends[$oldbackend]->implementsActionss(OC_CALENDAR_BACKEND_MOVE_OBJECT)){
+		if($oldbackend == $newbackend && self::$_usedBackends[$oldbackend]->implementsActionss(OC_CALENDAR_BACKEND_MOVE_OBJECT)) {
 			$backend = self::$_usedBackends[$oldbackend];
 			$uid = self::getObjectUIDById($objectid);
 			$newcalendar = self::getCalendarURIById($newcalendarid);
@@ -610,82 +632,83 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function setCalendarActive(){
+	public static function setCalendarActive() {
 		//UI stuff only
 	}
 	
-	public static function getUsersDefaultCalendar(){
+	public static function getUsersDefaultCalendar() {
 		
 	}
 
-		/***************************************
-		**   Private methods of this class    **
-		***************************************/
+	/** * * * * * * * * * * * * * * * * * * * * * * * *
+	 *                                                *
+	 * Implementation of all private calendar methods *
+	 *                                                *
+	 ** * * * * * * * * * * * * * * * * * * * * * * * */
 	
 	//UIDMap
 	//[key: (string) $uid -> value: (string) $objectid]
-	private static $_uidmap = array();
-	private static function hideObject(){
+	private static function hideObject() {
 		
 	}
-	private static function hideCalendar(){
+	private static function hideCalendar() {
 		
 	}
-	private static function isCalendarDisabled(){
+	private static function isCalendarDisabled() {
 		return false;
 	}
-	private static function getBackendNameById($id){
+	private static function getBackendNameById($id) {
 		$splittedId = self::splitObjectId($id);
 		return $splittedId['backend'];
 	}
 	
-	private static function getCalendarURIById($id){
+	private static function getCalendarURIById($id) {
 		$splittedId = self::splitObjectId($id);
 		return $splittedId['calendar'];
 	}
 
-	private static function getObjectUIDById($id){
+	private static function getObjectUIDById($id) {
 		$splittedId = self::splitObjectId($id);
 		return $splittedId['object'];
 	}
 	
-	private static function splitObjectId($id){
+	private static function splitObjectId($id) {
 		list($backend, $calendar, $object) = explode('.', $id);
 		return array('backend' => $backend, 'calendar' => $calendar, 'object' => $object);
 	}
 	
-	private static function getObjectIdByUID($uid){
-		if(array_key_exists($uid, self::$_uidmap)){
+	private static function getObjectIdByUID($uid) {
+		if(array_key_exists($uid, self::$_uidmap)) {
 			return self::$_uidmap[$uid];
 		}
 		return false;
 	}
 	
-	private static function getClassNameByBackendObject($backend){
+	private static function getClassNameByBackendObject($backend) {
 		$classname = explode('\\', get_class($backend));
 		return strtolower(end($classname));
 	}
 	
-	private static function addBackendNameToURIs($calendars, $backendname){
-		for($i = 0;$i < count($calendars); $i++){
+	private static function addBackendNameToURIs($calendars, $backendname) {
+		for($i = 0;$i < count($calendars); $i++) {
 			$calendars[$i]['uri'] = $backendname . '.' . $calendars[$i]['uri'];
 		}
 		return $calendars;
 	}
 	
-	private static function doesBackendExist($backendname){
+	private static function doesBackendExist($backendname) {
 		//does the given backend exists at all?
-		if(array_key_exists($backendname, self::$_usedBackends)){
+		if(array_key_exists($backendname, self::$_usedBackends)) {
 			//yeah, everything is fine
 			return true;
 		}else{
 			//nope, backend not found
-			OCP\Util::writeLog('calendar', 'Backend with the name "' . $backendname . '" was not found', OCP\Util::WARN);
+			//\OCP\Util::writeLog('calendar', 'Backend with the name "' . $backendname . '" was not found', OCP\Util::WARN);
 			return false;
 		}
 	}
 	
-	private static function getCachedCalendarsByCalendarID(){
+	private static function getCachedCalendarsByCalendarID() {
 		
 	}
 	

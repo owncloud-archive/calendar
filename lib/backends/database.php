@@ -80,24 +80,18 @@ class Database extends \OCA\Calendar\Backend\Backend {
 	*
 	* Get a list of all calendars.
 	* 
-	* [1=>
-	*  [uri => calendar's uri, 
-	*   userid => owner's uid, 
-	*   displayname => public visible display name,
-	*   ctag => current ctag,
-	*   color => calendar's color,
-	*   timezone => default timezone of calendar,
-	*   components => supported components],
-	*  2=>
-	*   ...
-	* ]
 	*/
 	public function getCalendars($userid, $rw = null){
 		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendar_calendars` WHERE `userid` = ?' );
 		$result = $stmt->execute(array($userid));
 		$calendars = array();
 		while( $row = $result->fetchRow()){
-			$calendars[] = $row;
+			$calendar = \Sabre\VObject\Component::create('VCALENDAR');
+			$calendar->add('X-OWNCLOUD-CALENDARCOLOR', $row['calendarcolor']);
+			$calendar->add('X-OWNCLOUD-ISEDITABLE', TRUE);
+			$calendar->add('X-OWNCLOUD-DISPLAYNAME', $row['displayname']);
+			$calendar->add('X-OWNCLOUD-URI', $row['uri']);
+			$calendars[] = $calendar;
 		}
 		return $calendars;
 	}
