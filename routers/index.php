@@ -20,6 +20,7 @@ $firstDay = \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'firstda
 \OCP\Util::addscript('calendar/3rdparty/fullcalendar', 'fullcalendar');
 \OCP\Util::addScript('calendar/3rdparty/jstz', 'jstz.min');
 \OCP\Util::addscript('calendar/3rdparty/timepicker', 'jquery.ui.timepicker');
+\OCP\Util::addscript('calendar/3rdparty/tipsy', 'tipsy');
 \OCP\Util::addscript('contacts','jquery.multi-autocomplete');
 //\OCP\Util::addscript('', 'jquery.multiselect');
 //\OCP\Util::addscript('','oc-vcategories');
@@ -32,6 +33,7 @@ $firstDay = \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'firstda
 \OCP\Util::addStyle('calendar', 'style');
 \OCP\Util::addStyle('calendar/3rdparty/fullcalendar', 'fullcalendar');
 \OCP\Util::addStyle('calendar/3rdparty/timepicker', 'jquery.ui.timepicker');
+\OCP\Util::addStyle('calendar/3rdparty/tipsy', 'tipsy');
 //\OCP\Util::addStyle('', 'jquery.multiselect');
 //make the calendar's navigation entry active
 OCP\App::setActiveNavigationEntry('calendar_index');

@@ -12,14 +12,6 @@ OCP\JSON::checkAppEnabled('calendar');
 session_write_close();
 //setup all registered calendar backends
 OCA\Calendar::setupBackends();
-//get the calendarid
-if(array_key_exists($_GET['calendar_id'], $_SESSION['calendar']['calid'])){
-	//yeah, calendarid found
-	$calendarid = $_SESSION['calendar']['calid'][$_GET['calendar_id']];
-}else{
-	//calendar not found
-	OCP\JSON::error(array('message'=>'calendar not found'));
-}
 //get the start DateTime object
 $start = DateTime::createFromFormat('U', $_GET['start']);
 //get the end DateTime object

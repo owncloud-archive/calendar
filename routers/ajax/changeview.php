@@ -7,7 +7,6 @@
  */
 OCP\JSON::checkLoggedIn();
 OCP\JSON::checkAppEnabled('calendar');
-$view = $_POST['v'];
 switch($view) {
 	case 'agendaWeek':
 	case 'basic2Weeks':
