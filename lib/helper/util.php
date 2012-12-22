@@ -83,6 +83,8 @@ class Util{
 			$md5 = md5((string) $calendar->__get('X-OWNCLOUD-CALENADRID'));
 			//add some properties to the array
 			$eventSources[] = array(
+				//displayname of the calendar
+				'displayname'		=> (string) $calendar->__get('X-OWNCLOUD-DISPLAYNAME'),
 				//the background color for this calendar
 				'backgroundColor'	=> (string) $backgroundColor,
 				//the border color differs slightly from the text color
@@ -93,10 +95,12 @@ class Util{
 				'editable'			=> (boolean) $calendar->__get('X-OWNCLOUD-ISEDITABLE'),
 				//check if the calendar is enabled
 				'enabled'			=> (boolean) true, //$calendar->__get('ENABLED'),
-				//the md5 hash is used as a calendar's id
+				//the calendarid is used as an uid for calendars
+				'calendarid'		=> (string) $calendar->__get('X-OWNCLOUD-CALENADRID'),
+				//the md5 hash of the calendarid
 				'md5' 				=> (string) $md5,
 				//set a unique class for the events of each calendar
-				'class' 			=> (string) 'calendar_' . $md5,
+				'className' 			=> (string) 'calendar_' . $md5,
 				//enable caching
 				'cache'				=> (boolean) true,
 			);
