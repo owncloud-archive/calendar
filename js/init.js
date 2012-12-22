@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#calendarList').calendarList();
 	//initialize buttons in control-bar
 	//week view
 	$('#agendaWeek').click(function(){

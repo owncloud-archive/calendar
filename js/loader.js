@@ -4,6 +4,13 @@
  * later.
  * See the COPYING-README file.
  */
+ 
+OCP\Util::addscript("3rdparty", "chosen/chosen.jquery.min");
+OCP\Util::addStyle("3rdparty", "chosen/chosen");
+OCP\Util::addStyle('3rdparty/miniColors', 'jquery.miniColors');
+OCP\Util::addscript('3rdparty/miniColors', 'jquery.miniColors.min');
+ 
+ 
 Calendar_Import={
 	Store:{
 		file: '',
