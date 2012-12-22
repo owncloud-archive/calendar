@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2012 Georg Ehrke <ownclouddev at georgswebsite dot de>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -237,7 +237,7 @@ margin-bottom:4px;
 }*/
 
 .fc-event{
-	opacity: 1.0;
+	/*opacity: .85;*/
 }
 
 .fc-event:hover{
@@ -246,4 +246,18 @@ margin-bottom:4px;
 
 .fc-sat, .fc-sun{
 	background-color: #F0F0F0;
+}
+
+.calendarListItemColorbox{
+	height: 20px;
+	width: 5px;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0;
+	margin-right: 5px;
+	border-radius: 0px 2px 2px 0px; 
+	-moz-border-radius: 0px 2px 2px 0px; 
+	-webkit-border-radius: 0px 2px 2px 0px;
+	opacity: 0.65;
 }
