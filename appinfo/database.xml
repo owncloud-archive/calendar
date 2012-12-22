@@ -3,18 +3,18 @@
 
  <name>*dbname*</name>
  <create>true</create>
- <overwrite>false</overwrite>
+ <overwrite>true</overwrite>
 
  <charset>utf8</charset>
 
- <!-- tables used for calendar caching -->
+ <!-- calendars and calendar_cache are used for caching and managing calendars with the backend system in ownCloud 5.0 and later -->
 
  <table>
 
-  <name>*dbprefix*calendar_cache_calendars</name>
+  <name>*dbprefix*calendars</name>
 
   <declaration>
-
+  
    <field>
     <name>id</name>
     <type>integer</type>
@@ -24,12 +24,20 @@
     <unsigned>true</unsigned>
     <length>4</length>
    </field>
+   
+   <field>
+    <name>calendarid</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
 
    <field>
     <name>userid</name>
     <type>text</type>
     <default></default>
-    <notnull>false</notnull>
+    <notnull>true</notnull>
     <length>255</length>
    </field>
 
@@ -37,24 +45,16 @@
     <name>displayname</name>
     <type>text</type>
     <default></default>
-    <notnull>false</notnull>
-    <length>100</length>
-   </field>
-
-   <field>
-    <name>uri</name>
-    <type>text</type>
-    <default></default>
-    <notnull>false</notnull>
+    <notnull>true</notnull>
     <length>255</length>
    </field>
 
    <field>
-    <name>active</name>
+    <name>visibility</name>
     <type>integer</type>
     <default>1</default>
     <notnull>true</notnull>
-    <length>4</length>
+    <length>1</length>
    </field>
 
    <field>
@@ -67,20 +67,28 @@
    </field>
 
    <field>
-    <name>calendarorder</name>
+    <name>color</name>
+    <type>text</type>
+    <default>#000000</default>
+    <notnull>false</notnull>
+    <length>10</length>
+   </field>
+
+   <field>
+    <name>order</name>
     <type>integer</type>
     <default>0</default>
     <notnull>true</notnull>
     <unsigned>true</unsigned>
-    <length>4</length>
+    <length>4  </length>
    </field>
 
    <field>
-    <name>calendarcolor</name>
-    <type>text</type>
-    <default></default>
-    <notnull>false</notnull>
-    <length>10</length>
+    <name>writable</name>
+    <type>integer</type>
+    <default>1</default>
+    <notnull>true</notnull>
+    <length>1</length>
    </field>
 
    <field>
@@ -101,10 +109,9 @@
 
  </table>
 
-
  <table>
 
-  <name>*dbprefix*calendar_cache_objects</name>
+  <name>*dbprefix*calendar_cache</name>
 
   <declaration>
 
@@ -117,22 +124,29 @@
     <unsigned>true</unsigned>
     <length>4</length>
    </field>
-
+   
    <field>
-    <name>calendarid</name>
-    <type>integer</type>
+    <name>objectid</name>
+    <type>text</type>
     <default></default>
     <notnull>true</notnull>
-    <unsigned>true</unsigned>
-    <length>4</length>
+    <length>255</length>
    </field>
 
    <field>
-    <name>objecttype</name>
+    <name>type</name>
     <type>text</type>
     <default></default>
     <notnull>true</notnull>
     <length>40</length>
+   </field>
+
+   <field>
+    <name>visibility</name>
+    <type>integer</type>
+    <default>1</default>
+    <notnull>true</notnull>
+    <length>1</length>
    </field>
 
    <field>
@@ -165,33 +179,51 @@
     <length>255</length>
    </field>
 
-   <field>
-    <name>calendardata</name>
-    <type>clob</type>
-    <notnull>false</notnull>
-   </field>
+  </declaration>
+
+ </table>
+
+ <!-- calendar_backends is used for managing the new awesome calendar backend system -->
+ 
+ <table>
+
+  <name>*dbprefix*calendar_backends</name>
+
+  <declaration>
 
    <field>
-    <name>uri</name>
+    <name>id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <unsigned>true</unsigned>
+    <length>4</length>
+   </field>
+   
+   <field>
+    <name>backendname</name>
     <type>text</type>
     <default></default>
-    <notnull>false</notnull>
+    <notnull>true</notnull>
     <length>255</length>
    </field>
 
    <field>
-    <name>lastmodified</name>
+    <name>visibility</name>
     <type>integer</type>
-    <default></default>
-    <notnull>false</notnull>
-    <length>4</length>
+    <default>1</default>
+    <notnull>true</notnull>
+    <length>1</length>
    </field>
 
   </declaration>
 
  </table>
+
+ <!-- calendar_repeat is used for caching repeating objects -->
  
-  <table>
+ <table>
 
   <name>*dbprefix*calendar_repeat</name>
 
@@ -206,23 +238,13 @@
     <unsigned>true</unsigned>
     <length>4</length>
    </field>
-  
+   
    <field>
-    <name>eventid</name>
-    <type>integer</type>
-    <default>0</default>
+    <name>objectid</name>
+    <type>text</type>
+    <default></default>
     <notnull>true</notnull>
-    <unsigned>true</unsigned>
-    <length>4</length>
-   </field>
-  
-   <field>
-    <name>calid</name>
-    <type>integer</type>
-    <default>0</default>
-    <notnull>true</notnull>
-    <unsigned>true</unsigned>
-    <length>4</length>
+    <length>255</length>
    </field>
 
    <field>
@@ -243,7 +265,7 @@
 
  </table>
 
- <!-- tables used for our database backend -->
+ <!-- calendar_objects and calendar_calendars are used for the database backend -->
 
  <table>
 
@@ -426,7 +448,9 @@
 
  </table>
  
- <table>
+ <!-- calendar_share_event and calendar_share_calendar were used for calendar sharing in ownCloud 4.0.x or less - they'll remain for legacy reasons -->
+ 
+ <!--<table>
 
   <name>*dbprefix*calendar_share_event</name>
 
@@ -526,6 +550,6 @@
 
   </declaration>
 
- </table>
+ </table>-->
  
 </database>
