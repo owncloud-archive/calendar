@@ -32,10 +32,10 @@ class Calendar {
 	// available backends
 	private static $_backends = array();
 	//attemp to minimize the number of database requests
-	private static $_allCalendarsByUser = array();
-	private static $_allEventsByUser = array();
-	private static $_allJournalsByUser = array();
-	private static $_allTodosByUser = array();
+	private static $allCalendarsByUser = array();
+	private static $allEventsByUser = array();
+	private static $allJournalsByUser = array();
+	private static $allTodosByUser = array();
 	
 	/** * * * * * * * * * * * * * * * * * * * *
 	 *                                        *
@@ -176,15 +176,15 @@ class Calendar {
 		}
 		//get all calendars of the backends to search in
 		foreach($backends as $backendName => $backend) {
-			if(array_key_exists($backendName, self::$_allCalendarsByUser)){
-				$allCalendarsOfBackend = self::$_allCalendarsByUser[$backendName];
+			if(array_key_exists($backendName, self::$allCalendarsByUser)){
+				$allCalendarsOfBackend = self::$allCalendarsByUser[$backendName];
 			}else{
 				$allCalendarsOfBackend = $backend->getCalendars($userid);
 				foreach($allCalendarsOfBackend as $key => $value){
 					$value->add('X-OWNCLOUD-CALENADRID', $backendName . '.' . $value->__get('X-OWNCLOUD-URI'));
 					$allCalendarsOfBackend[$key] = $value;
 				}
-				self::$_allCalendarsByUser[$backendName] = $allCalendarsOfBackend;
+				self::$allCalendarsByUser[$backendName] = $allCalendarsOfBackend;
 			}
 			//remove the disabled calendars if requested
 			if($active) {
@@ -523,10 +523,10 @@ class Calendar {
 	 * @returns boolean
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
-	 */
+	 * /
 	public static function findObjectByUid($uid) {
 		return self::findObject(self::getObjectIdByUID($uid));
-	}
+	}*/
 	
 	/**
 	 * @brief merge calendar two into calendar one
@@ -632,31 +632,45 @@ class Calendar {
 	 *
 	 * Merge calendar two into calendar one, both with a specific calendarid
 	 */
-	public static function setCalendarActive() {
+	public static function setCalendarsVisibility($calendarid, $visibility) {
 		//UI stuff only
 	}
 	
 	public static function getUsersDefaultCalendar() {
 		
 	}
+	
+	/* Backend management */ 
+	
+	public static function getEnabledBackends(){
+		
+	}
+	
+	public static function setBackendsAvailability(){
+		
+	}
 
+	public static function getDefaultBackend(){
+		
+	}
+	
 	/** * * * * * * * * * * * * * * * * * * * * * * * *
 	 *                                                *
 	 * Implementation of all private calendar methods *
 	 *                                                *
 	 ** * * * * * * * * * * * * * * * * * * * * * * * */
-	
-	//UIDMap
-	//[key: (string) $uid -> value: (string) $objectid]
 	private static function hideObject() {
 		
 	}
+	
 	private static function hideCalendar() {
 		
 	}
-	private static function isCalendarDisabled() {
-		return false;
+	
+	private static function getCalendarsVisibility(){
+		
 	}
+	
 	private static function getBackendNameById($id) {
 		$splittedId = self::splitObjectId($id);
 		return $splittedId['backend'];
@@ -677,23 +691,9 @@ class Calendar {
 		return array('backend' => $backend, 'calendar' => $calendar, 'object' => $object);
 	}
 	
-	private static function getObjectIdByUID($uid) {
-		if(array_key_exists($uid, self::$_uidmap)) {
-			return self::$_uidmap[$uid];
-		}
-		return false;
-	}
-	
 	private static function getClassNameByBackendObject($backend) {
 		$classname = explode('\\', get_class($backend));
 		return strtolower(end($classname));
-	}
-	
-	private static function addBackendNameToURIs($calendars, $backendname) {
-		for($i = 0;$i < count($calendars); $i++) {
-			$calendars[$i]['uri'] = $backendname . '.' . $calendars[$i]['uri'];
-		}
-		return $calendars;
 	}
 	
 	private static function doesBackendExist($backendname) {
