@@ -198,6 +198,7 @@
 				//inset all the content
 				html.append(title_calendars);
 				html.append(calendars);
+				html.append('<br>');
 				html.append(title_subscriptions);
 				html.append(subscriptions);
 				//display the new awesome calendar list
