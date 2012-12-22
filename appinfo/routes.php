@@ -6,7 +6,7 @@
  * See the COPYING-README file.
  */
 namespace OCA\Calendar;
-
+	
 //bootstrap the calendar
 require_once \OC_App::getAppPath('calendar') . '/appinfo/bootstrap.php';
 
@@ -19,6 +19,12 @@ function routerCheck($types = array()){
 	Util::createDefaultCalendar(\OCP\User::getUser());
 	foreach($types as $type){
 		switch($type){
+			case 'page':
+				
+				break;
+			case 'ajax':
+				
+				break;
 			default:
 				break;
 		}
@@ -26,30 +32,34 @@ function routerCheck($types = array()){
 }
 
 /**
- * Normal Routes
+ * Routes
  */
-$this->create('calendar_index', '/')->action(
-	function(){
+//the calendar itself
+//objectid may be used to jump to an event
+$this->create('calendar_index', '/{objectid}')
+	 ->defaults(array('objectid' => null))
+	 ->requirements(array('objectid'))
+	 ->action(function($params){
+		$objectid = $param['objectid'];
 		routerCheck(array('page'));
 		require_once \OC_App::getAppPath('calendar') . '/routers/index.php';
-	}
-);
+	});
 
-/**
- * Admin Settings
- */
-
-
-
-/**
- * Ajax Routes
- */
-$this->create('calendar_ajax_get_events', '/events')->defaults()->requirements(array())->post()->action(
-	function($params){
+//the interface for fetching the json events
+//md5 is the md5 hash of the calendarid
+$this->create('calendar_get_events', '/events/{calendarid}')
+	 ->action(function($params){
+	 	$calendarid = $params['calendarid'];
 		routerCheck(array('ajax'));
 		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/events.php';
-	}
-);
+	});
+
+$this->create('calendar_set_view', '/setView/{view}')
+	 ->action(function($params){
+	 	$view = $params['view'];
+		routerCheck(array('ajax'));
+		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/changeview.php';
+	});
 
 //attendees
 
