@@ -37,9 +37,10 @@ class Util{
 		//generate a name for the new calendar
 		$calendarname = self::t('%s\'s calendar', $userid);
 		//get the name of the default backend
-		$defaultbackend = self::getDefaultBackend();
+		$defaultbackend = \OCA\Calendar::getDefaultBackend();
+		$defaultbackend = 'database';
 		//create a new calendar object
-		$calendar = new Objects\Calendar();
+		$calendar = \Sabre\VObject\Component::create('VCALENDAR');
 		//create a new calendar
 		$newcalendar = \OCA\Calendar::createCalendar($defaultbackend, $calendar);
 		//check if the calendar was created successfully
