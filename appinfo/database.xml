@@ -26,6 +26,14 @@
    </field>
    
    <field>
+    <name>backend</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+   
+   <field>
     <name>calendarid</name>
     <type>text</type>
     <default></default>
