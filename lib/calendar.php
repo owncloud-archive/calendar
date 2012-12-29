@@ -113,12 +113,12 @@ class Calendar {
 				// use Reflection to create a new instance, using the $args
 				$_backend = $reflectionObj->newInstanceArgs($arguments);
 				self::useBackend($_backend);
-				$_setupedBackends[]=$backend;
+				self::$_setupedBackends[]=$backend;
 			}else{
-				\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' not found.', \OCP\Util::ERROR);
+				\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' not found or not enabled', \OCP\Util::DEBUG);
 			}
 		}
-		if(count($_setupedBackends)){
+		if(count(self::$_setupedBackends) === 0){
 			\OCP\Util::writeLog('calendar', 'No backend was setup', \OCP\Util::ERROR);
 		}
 	}
@@ -134,7 +134,7 @@ class Calendar {
 		//get the enabled backends saved in the database
 		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendar_backends` WHERE `visibility` = ?' );
 		$result = $stmt->execute( array(1) );
-		if(!$result){
+		if(\OCP\DB::isError($result)){
 			\OCP\Util::writeLog('calendar', __METHOD__.', An error occurred while fetching all enabled backends', \OCP\Util::ERROR);
 		}
 		//create empty array for all enabled backends
@@ -160,7 +160,7 @@ class Calendar {
 		$stmt = \OCP\DB::prepare( 'UPDATE `*PREFIX*calendar_backends` SET `visibility` = ? WHERE `backendname` = ?' );
 		$result = $stmt->execute( array($visibility, $backend) );
 		//check if the backend's visibility was changed successfully
-		if($result){
+		if(!\OCP\DB::isError($result)){
 			return true;
 		}
 		\OCP\Util::writeLog('calendar', __METHOD__.', An error occurred while ' . (($visibility === 0)?'disabling':'enabling') . ' the backend: ' . $backend, \OCP\Util::ERROR);
@@ -201,7 +201,7 @@ class Calendar {
 		$stmt = \OCP\DB::prepare( 'INSERT INTO `*PREFIX*calendar_backends` (`backendname`, `visibility`) VALUES(?, ?)' );
 		$result = $stmt->execute( array($backend, 0) );
 		//was creating the database entry successful
-		if($result){
+		if(!\OCP\DB::isError($result)){
 			return true;
 		}
 		\OCP\Util::writeLog('calendar', __METHOD__.', An error occurred while installing the backend: ' . $backend, \OCP\Util::ERROR);
@@ -267,6 +267,10 @@ class Calendar {
 		
 		$stmt = \OCP\DB::prepare( $sql );
 		$result = $stmt->execute( $param );
+		
+		if(\OCP\DB::isError($result)){
+			\OCP\Util::writeLog('calendar', __METHOD__.', An unknown database error occured', \OCP\Util::ERROR);
+		}
 		
 		//create empty array for all calendars
 		$calendars = array();
@@ -353,6 +357,9 @@ class Calendar {
 	public static function findCalendarByCalendarID($calendarid){
 		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendars` WHERE `calendarid` = ?' );
 		$result = $stmt->execute( array($calendarid) );
+		if(\OCP\DB::isError($result)){
+			\OCP\Util::writeLog('calendar', __METHOD__.', An unknown database error occured', \OCP\Util::ERROR);
+		}
 		$row = $result->fetchRow();
 		//check if the returned row is valid
 		if(!$row){
@@ -404,6 +411,10 @@ class Calendar {
 	 * Create a calendar in a specific backend using the given properties
 	 */
 	public static function createCalendar($backendname, $calendarobject) {
+		//get the default backend if no backend was given
+		if($backendname == '' || $backendname == null) {
+			$backendname = self::getDefaultBackend();
+		}
 		//does the backend exist?
 		if(!self::doesBackendExist($backendname)) {
 			\OCP\Util::writeLog('calendar', __METHOD__.', Backend: ' . $backendname . ' does not exist or was not set up properly', \OCP\Util::ERROR);
@@ -460,7 +471,7 @@ class Calendar {
 		//is editing calendars implemented in the backend at all?
 		if($backend->implementsActions(OC_CALENDAR_BACKEND_EDIT_CALENDAR)) {
 			//edit the calendar with the new properties
-			$result = $backend->editCalendar(self::getCalendarURIById($calendarid), $calendarobject);
+			$result = $backend->editCalendar($calendarobject);
 			//was editing successful?
 			if($result) {
 				//TODO - emit hook - //
@@ -946,10 +957,10 @@ class Calendar {
 										$calendarobject->__get('X-OWNCLOUD-ISEDITABLE'),
 										$calendarobject->__get('X-OWNCLOUD-TZ'),
 										$calendarobject->__get('X-OWNCLOUD-COMPONENTS')) );
-		if($result){
-			return true;
+		if(\OCP\DB::isError($result)){
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	private static function updateCalendarCacheByCalendarObject($calendarobject){
@@ -966,19 +977,19 @@ class Calendar {
 										$calendarobject->__get('X-OWNCLOUD-TZ'),
 										$calendarobject->__get('X-OWNCLOUD-COMPONENTS'),
 										!is_null($calendarobject->__get('X-OWNCLOUD-OLDCALENDARID')) ? $calendarobject->__get('X-OWNCLOUD-OLDCALENDARID') : $calendarobject->__get('X-OWNCLOUD-CALENADRID')) );
-		if($result){
-			return true;
+		if(\OCP\DB::isError($result)){
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	private static function deleteCalendarCacheByCalendarID($calendarid){
 		$stmt = \OCP\DB::prepare( 'DELETE FROM `*PREFIX*calendars` WHERE `calendarid` = ?' );
 		$result = $stmt->execute( array($calendarid) );
-		if($result){
-			return true;
+		if(\OCP\DB::isError($result)){
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	private static function wipeCalendarCacheByUserID($userid){
@@ -1011,19 +1022,19 @@ class Calendar {
 	private static function deleteObjectCacheByObjectID($objectid){
 		$stmt = \OCP\DB::prepare( 'DELETE FROM `*PREFIX*calendar_cache` WHERE `objectid` = ?' );
 		$result = $stmt->execute( array($objectid) );
-		if($result){
-			return true;
+		if(\OCP\DB::isError($result)){
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	private static function wipeObjectCacheByUserID($userid){
 		$stmt = \OCP\DB::prepare( 'DELETE FROM `*PREFIX*calendar_cache` WHERE `userid` = ?' );
 		$result = $stmt->execute( array($userid) );
-		if($result){
-			return true;
+		if(\OCP\DB::isError($result)){
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	private static function createObjectCacheByUserID($userid){
