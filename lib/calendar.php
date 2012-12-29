@@ -269,7 +269,7 @@ class Calendar {
 		$result = $stmt->execute( $param );
 		
 		if(\OCP\DB::isError($result)){
-			\OCP\Util::writeLog('calendar', __METHOD__.', An unknown database error occured', \OCP\Util::ERROR);
+			\OCP\Util::writeLog('calendar', __METHOD__.', An unknown database error occurred', \OCP\Util::ERROR);
 		}
 		
 		//create empty array for all calendars
@@ -358,7 +358,7 @@ class Calendar {
 		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendars` WHERE `calendarid` = ?' );
 		$result = $stmt->execute( array($calendarid) );
 		if(\OCP\DB::isError($result)){
-			\OCP\Util::writeLog('calendar', __METHOD__.', An unknown database error occured', \OCP\Util::ERROR);
+			\OCP\Util::writeLog('calendar', __METHOD__.', An unknown database error occurred', \OCP\Util::ERROR);
 		}
 		$row = $result->fetchRow();
 		//check if the returned row is valid
