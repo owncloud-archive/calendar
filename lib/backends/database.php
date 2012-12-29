@@ -73,7 +73,7 @@ class Database extends \OCA\Calendar\Backend\Backend {
 		$result = $stmt->execute(array($uri));
 		//check for errors
 		if(\OCP\DB::isError($result)){
-			\OCP\Util::writeLog('calendar', 'Database Backend - ' . __METHOD__ . ', An unknown database error occured while selecting the calendar with the uri: ' . $uri, \OCP\Util::ERROR);
+			\OCP\Util::writeLog('calendar', 'Database Backend - ' . __METHOD__ . ', An unknown database error occurred while selecting the calendar with the uri: ' . $uri, \OCP\Util::ERROR);
 			return false;
 		}
 		//get the current database row
@@ -100,7 +100,7 @@ class Database extends \OCA\Calendar\Backend\Backend {
 		$result = $stmt->execute(array($userid));
 		//check for errors
 		if(\OCP\DB::isError($result)){
-			\OCP\Util::writeLog('calendar', 'Database Backend - ' . __METHOD__ . ', An unknown database error occured while selecting all calendars of the user: ' . $userid, \OCP\Util::ERROR);
+			\OCP\Util::writeLog('calendar', 'Database Backend - ' . __METHOD__ . ', An unknown database error occurred while selecting all calendars of the user: ' . $userid, \OCP\Util::ERROR);
 			return false;
 		}
 		//create empty array for all calendars
