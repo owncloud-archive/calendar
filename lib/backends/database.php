@@ -38,67 +38,85 @@ namespace OCA\Calendar\Backend;
 class Database extends \OCA\Calendar\Backend\Backend {
 	/**
 	* @brief should the calendar be cached?
-	* @returns array with all calendar informations
+	* @returns bool
 	*
 	* Get information if the calendar should be cached
 	*/
 	public function cacheIt(){
+		//There's no need to cache the calendar.
 		return false;
 	}
 	
+	/**
+	* @brief is the calendar $uri writeable by the user $user
+	* @returns bool
+	*
+	* Get information if the calendar is writeable by the given user
+	*/
 	public function isCalendarWritableByUser($uri, $userid){
-		//no need to really check, 'cause all db calendars are writable anyhow
+		//It's not necessary to check,
+		//because all calendars in this backend are writeable anyhow.
 		return true;
 	}
 	
 	/**
-	* @brief Get information about a calendar
-	* @param $calid calendarid
-	* @returns array with all calendar informations
+	* @brief get the calendarobject of the calendar with the uri $uri
+	* @param $uri string - URI of the searched calendar
+	* @returns calendarobject
 	*
-	* Get all calendar informations the backend provides.
-	* 
-	* [uri => calendar's uri, 
-	*  userid => owner's uid, 
-	*  displayname => public visible display name,
-	*  ctag => current ctag,
-	*  color => calendar's color,
-	*  timezone => default timezone of calendar,
-	*  components => supported components]
-	*
+	* get the calendarobject of the calendar with the uri $uri
 	*/
 	public function findCalendar($uri){
+		//prepare sql statement
 		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendar_calendars` WHERE `uri` = ?' );
+		//execute sql statement
 		$result = $stmt->execute(array($uri));
-		return $result->fetchRow();
+		//check for errors
+		if(\OCP\DB::isError($result)){
+			\OCP\Util::writeLog('calendar', 'Database Backend - ' . __METHOD__ . ', An unknown database error occured while selecting the calendar with the uri: ' . $uri, \OCP\Util::ERROR);
+			return false;
+		}
+		//get the current database row
+		$row = $result->fetchRow();
+		//return a calendar object
+		return self::getCalendarObjectByDatabaseBackendRow($row);
 	}
 
 	/**
-	* @brief Get a list of all calendars
-	* @param $rw boolean about read&write support
-	* @returns array with all calendars
+	* @brief get a list of all calendars
+	* @param $userid string ID of the user
+	* @param $rw boolean Read-Write calendars only?
+	* @returns array with calendarobjects of all calendars
 	*
-	* Get a list of all calendars.
-	* 
+	* get a list with calendarobjects of all calendars
+	*
+	* The second parameter will have no influence on the result at all,
+	* because all calendars in this backend are writable 
 	*/
 	public function getCalendars($userid, $rw = null){
+		//prepare sql statement
 		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendar_calendars` WHERE `userid` = ?' );
+		//execute sql statement
 		$result = $stmt->execute(array($userid));
+		//check for errors
+		if(\OCP\DB::isError($result)){
+			\OCP\Util::writeLog('calendar', 'Database Backend - ' . __METHOD__ . ', An unknown database error occured while selecting all calendars of the user: ' . $userid, \OCP\Util::ERROR);
+			return false;
+		}
+		//create empty array for all calendars
 		$calendars = array();
 		while( $row = $result->fetchRow()){
-			$calendar = \Sabre\VObject\Component::create('VCALENDAR');
-			$calendar->add('X-OWNCLOUD-CALENDARCOLOR', $row['calendarcolor']);
-			$calendar->add('X-OWNCLOUD-ISEDITABLE', TRUE);
-			$calendar->add('X-OWNCLOUD-DISPLAYNAME', $row['displayname']);
-			$calendar->add('X-OWNCLOUD-URI', $row['uri']);
-			$calendars[] = $calendar;
+			//get the calendarobject of each calendar
+			$calendars[] = self::getCalendarObjectByDatabaseBackendRow($row);
 		}
+		//return array with all calendar objects
 		return $calendars;
 	}
 
 	/**
-	* @brief Get information about an event
-	* @param $uniqueid
+	* @brief get information about an event
+	* @param $uri string - URI of the searched calendar
+	* @param $uid string - UID of the searched object
 	* @returns array with all event informations
 	*
 	* Get icalendar of an event
@@ -106,8 +124,8 @@ class Database extends \OCA\Calendar\Backend\Backend {
 	public function findObject($uri, $uid){
 		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendar_objects` WHERE `uid` = ?' );
 		$result = $stmt->execute(array($uniqueid));
-		$result =  $result->fetchRow();
-		return $result['calendardata'];
+		$row =  $result->fetchRow();
+		return self::getObjectObjectByDatabaseBackendRow($row);
 	}
 
 	/**
@@ -121,66 +139,54 @@ class Database extends \OCA\Calendar\Backend\Backend {
 		$stmt = \OCP\DB::prepare( 'SELECT * FROM `*PREFIX*calendar_objects` WHERE `uri` = ?' );
 		$result = $stmt->execute(array($uri));
 
-		$calendarobjects = array();
+		$objects = array();
 		while( $row = $result->fetchRow()){
-			$calendarobjects[] = $row;
+			$objects[] = self::getObjectObjectByDatabaseBackendRow($row);
 		}
-		return $calendarobjects;
+		return $objects;
 	}
 	
 	/**
 	* @brief create a new calendar
-	* @param $userid uid of the user
-	* @param $name human readable name
-	* @param $components list of supported components
-	* @param $timezone timezone of calendar
-	* @param $order order of calendar in a list
-	* @param $color color of calendar
+	* @param $calendarobject
 	* @returns boolean if a calendar exists or not
 	*
 	* create a new calendar
 	*/
-	public static function createCalendar($uid, $name, $components='VEVENT,VTODO,VJOURNAL',$timezone=null,$order=0,$color=null){
+	public static function createCalendar($calendarobject){
 		return false;
 	}
 	
 	/**
 	* @brief edit a calendar
-	* @param $calid calendarid
-	* @param $userid uid of the user
-	* @param $name human readable name
-	* @param $components list of supported components
-	* @param $timezone timezone of calendar
-	* @param $order order of calendar in a list
-	* @param $color color of calendar
-	* @param $calid calendarid
+	* @param $calendarobject
 	* @returns boolean if a calendar exists or not
 	*
 	* edit a calendar
 	*/
-	public static function editCalendar($calid, $uid, $name, $components='VEVENT,VTODO,VJOURNAL',$timezone=null,$order=0,$color=null){
+	public static function editCalendar($calendarobject){
 		return false;
 	}
 	
 	/**
 	* @brief delete a calendar
-	* @param $calid calendarid
+	* @param $uri uri of the calendar
 	* @returns boolean if a calendar exists or not
 	*
 	* delete a calendar by it's id
 	*/
-	public static function deleteCalendar($calid){
+	public static function deleteCalendar($uri){
 		return false;
 	}
 	
 	/**
 	* @brief touch a calendar
-	* @param $calid calendarid
+	* @param $uri uri of the calendar
 	* @returns boolean if a calendar exists or not
 	*
 	* touch a calendar
 	*/
-	public static function touchCalendar($calid){
+	public static function touchCalendar($uri){
 		return false;
 	}
 	
@@ -269,7 +275,7 @@ class Database extends \OCA\Calendar\Backend\Backend {
 	}
 	
 	private static function getUTCforMDB($datetime){
-		return date('Y-m-d H:i:s', $datetime->format('U') - $datetime->getOffset());
+		return date('Y-m-d H:i:s', $datetime->format('U'));
 	}
 	
 	private static function getCalendarIdByURI($uri){
@@ -277,5 +283,18 @@ class Database extends \OCA\Calendar\Backend\Backend {
 		$result = $stmt->execute(array($uri));
 		$result =  $result->fetchRow();
 		return $result['id'];
+	}
+	
+	private static function getCalendarObjectByDatabaseBackendRow($row){
+		$calendar = \Sabre\VObject\Component::create('VCALENDAR');
+		$calendar->add('X-OWNCLOUD-CALENDARCOLOR', $row['calendarcolor']);
+		$calendar->add('X-OWNCLOUD-ISEDITABLE', TRUE);
+		$calendar->add('X-OWNCLOUD-DISPLAYNAME', $row['displayname']);
+		$calendar->add('X-OWNCLOUD-URI', $row['uri']);
+		return $calendar;
+	}
+	
+	private static function getObjectObjectByDatabaseBackendRow($row){
+		
 	}
 }
