@@ -48,7 +48,7 @@ interface CalendarInterface {
 	*
 	* Get a list of all calendars.
 	*/
-	public function getCalendars($rw);
+	public function getCalendars($userid, $rw);
 
 	/**
 	* @brief Get information about an event

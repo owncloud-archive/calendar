@@ -27,7 +27,7 @@ class WebCal extends Backend {
 	*
 	* Get a list of all calendars.
 	*/
-	public function getCalendars($rw){
+	public function getCalendars($userid, $rw){
 		return array();
 	}
 
