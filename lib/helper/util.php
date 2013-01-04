@@ -351,5 +351,12 @@ class Util{
 		}
 		return 0;
 	}
-
+	
+	public static function generateCalendarObjectByArray($properties){
+		$allproperties = array('backend'	=> null,
+							   'color' 		=> null,
+							   'calendarid'	=> null,
+							   'components' => null);
+				
+	}
 }
