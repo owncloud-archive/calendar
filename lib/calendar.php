@@ -1046,5 +1046,17 @@ class Calendar {
 		}
 		return true;
 	}
+	
+	private static function validateCalendarObject($calendarobject){
+		
+	}
+	
+	private static function validateObjectObject($objectobject){
+		
+	}
+	
+	private static function validateObjectType($type){
+		
+	}
 	 
 }
