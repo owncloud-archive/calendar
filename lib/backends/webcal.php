@@ -17,6 +17,8 @@ class WebCal extends Backend {
 	* Get all calendar informations the backend provides.
 	*/
 	public function findCalendar($calid = ''){
+		$source = \OCA\Calendar\Source::find($calid);
+		
 		return false;
 	}
 
