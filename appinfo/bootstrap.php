@@ -62,8 +62,8 @@ namespace OCA\Calendar;
 //\OC_Search::registerProvider('\OCA\Calendar\SearchProvider');
 
 //register sharing backend
-\OCP\Share::registerBackend('calendar', 'OC_Share_Backend_Calendar');
-\OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
+//\OCP\Share::registerBackend('calendar', 'OC_Share_Backend_Calendar');
+//\OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
 //\OCP\Share::registerBackend('calendar', '\OCA\Calendar\Share\Calendar');
 //\OCP\Share::registerBackend('event', '\OCA\Calendar\Share\Event');
 

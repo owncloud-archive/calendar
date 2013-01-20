@@ -115,7 +115,13 @@ class Calendar {
 				self::useBackend($_backend);
 				self::$_setupedBackends[]=$backend;
 			}else{
-				\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' not found or not enabled', \OCP\Util::DEBUG);
+				if(!class_exists($class)){
+					\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' was not found', \OCP\Util::DEBUG);
+				}elseif(!array_search($class, $enabledbackends)){
+					\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' is not enabled', \OCP\Util::DEBUG);
+				}else{
+					\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' was not setup due to an unknown error', \OCP\Util::DEBUG);
+				}
 			}
 		}
 		if(count(self::$_setupedBackends) === 0){

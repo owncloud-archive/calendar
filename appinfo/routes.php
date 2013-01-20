@@ -16,7 +16,7 @@ function routerCheck($types = array()){
 	//is the calendar app enabled?
 	\OCP\App::checkAppEnabled('calendar');
 	//create a default calendar if no one exists
-	Util::createDefaultCalendar(\OCP\User::getUser());
+	//Util::createDefaultCalendar(\OCP\User::getUser());
 	foreach($types as $type){
 		switch($type){
 			case 'page':

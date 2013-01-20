@@ -8,9 +8,9 @@
 //get the current userid
 $userid = \OCP\User::getUser();
 //fetch all eventSources
-$eventSources = OCA\Calendar\Util::fetchEventSources($userid);
+//$eventSources = OCA\Calendar\Util::fetchEventSources($userid);
 //fetch all categories 
-$categories = OCA\Calendar\Util::getCategoryOptions($userid);
+//$categories = OCA\Calendar\Util::getCategoryOptions($userid);
 //get some translations necessary for the calendar app
 $agendaTime = ((int) \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt') .  '{ - ' . ((int) \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt') .  '}';
 $defaultTime = (int) \OCP\Config::getUserValue(\OCP\User::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt';

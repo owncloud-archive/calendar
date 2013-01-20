@@ -33,13 +33,13 @@ $(document).ready(function(){
 	
 	//initialize the new fancy calendar list
 	$('#calendarList').oCCalendarList({
-		calendars: eventSources,
+		calendars: {},
 		editable: iseditable
 	});
 	
 	//initialize the calendar
 	$('#fullcalendar').oCCalendar({
-		calendars: eventSources,
+		calendars: {},
 		scrollNavigation: true,
 		keyboardNavigation: true,
 		editable: iseditable,
@@ -56,9 +56,8 @@ $(document).ready(function(){
 	
 	//some UI tweaks
 	$(window).resize(function() {
-		fillWindow($('#content'));
-		$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#header').height() - 15);
-		$('#calendars').css('height', $(window).height() - $('#header').height() - 20);
+		$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#header').height());
+		$('#calendarsidebar').css('height', $(window).height() - $('#header').height() - 6);
 	});
 	$(window).trigger('resize');
 });

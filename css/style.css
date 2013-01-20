@@ -10,8 +10,13 @@
 }
 
 .view{
-	width: 5.5em;
+	width: 7.75em;
 	margin: 0.25em;
+}
+
+.view-select{
+	background: #b7b7b7;
+	color: #114bda
 }
 
 #loading{
@@ -43,11 +48,11 @@
 }
 
 /* right calendar bar */
-#calendars{
+#calendarsidebar{
 	padding-top: 0.5em;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
-	width: 12em;
+	width: 16em;
 	background: #EEE;
 	float: left;
 	border-left: 1px #CCC solid;
@@ -55,11 +60,11 @@
 	z-index:75;
 }
 
-#calendars .info{
+#calendarsidebar .info{
 	text-align: center;
 }
 
-#calendars h2{
+#calendarsidebar h2{
 	font-weight: bold;
 	text-align: center;
 }
@@ -74,8 +79,8 @@ div.ui-datepicker{
  padding: 0;
 }
 
-#currentdate{
-	width: 11em;
+#selecteddate{
+	width: 15em;
 	margin: 0.5em;
 }
 
@@ -83,9 +88,13 @@ div.ui-datepicker{
 	width: 2em;
 }
 
+#fullcalendar{
+	overflow: scroll;
+}
+
 .today{
 	margin: 0;
-	width: 6em;
+	width: 10em;
 }
 
 #choosecalendar {margin-right: 170px; float: right; font-size: 12px;}
@@ -200,10 +209,6 @@ padding:0 8px 2px;
 .tipsy-event .description{
 line-height:1.2;
 margin-bottom:4px;
-}
-
-#fullcalendar{
-	overflow: scroll;
 }
 
 #addEvent{

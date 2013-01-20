@@ -87,7 +87,7 @@
 					//initialize the routing framework
 					OC.Router.registerLoadedCallback(function(){
 						//set new title
-						$('#currentdate').html($('<p>').html(view.title).text());
+						$('#selecteddate').html($('<p>').html(view.title).text());
 						//update settings
 						$.post(OC.Router.generate( 'calendar_set_view', { view: view.name } ));
 						//update aspectRatio
