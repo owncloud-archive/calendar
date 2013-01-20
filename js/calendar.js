@@ -23,7 +23,7 @@
 				//is the calendar embedded into another site?
 				embedded: false,
 				//launch options for fullCalendar
-				fullCalendar: {}
+				fullCalendar: {},
 			}, options);
 			
 			return this.each( function () {
