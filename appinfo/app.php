@@ -7,16 +7,22 @@
  */
 define('DEBUG', TRUE);
 
-//bootstrap the calendar
-require_once \OC_App::getAppPath('calendar') . '/appinfo/bootstrap.php';
 //register admin settings
 \OCP\App::registerAdmin('calendar', 'admin/settings');
+
 //initialize a l10n object
 $l10n = new OC_L10N('calendar');
+
 //add the navigation entry
 OCP\App::addNavigationEntry( array(
-  'id' => 'calendar_index',
-  'order' => 10,
-  'href' => \OC_Helper::linkToRoute('calendar_index'),
-  'icon' => OCP\Util::imagePath( 'calendar', 'icon.svg' ),
-  'name' => $l10n->t('Calendar')));
+	//id of the calendar navigation entry
+	'id' => 'calendar_index',
+	//order of the calendar in the menu
+	'order' => 10,
+	//link to calendar app
+	'href' => \OC_Helper::linkToRoute('calendar_index'),
+	//icon of calendar app
+	'icon' => OCP\Util::imagePath( 'calendar', 'icon.svg' ),
+	//localize "calendar"
+	'name' => \OC_L10N::get('calendar')->t('Calendar')
+));
