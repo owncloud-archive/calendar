@@ -8,6 +8,7 @@
 namespace OCA\Calendar;
 //set classpath
 \OC::$CLASSPATH['OCA\Calendar'] = 'calendar/lib/calendar.php';
+\OC::$CLASSPATH['OCA\Calendar\DIContainer'] = 'calendar/appinfo/dicontainer.php';
 //backend classes
 //\OCA\Calendar\Util::registerEnabledBackends();
 \OC::$CLASSPATH['OCA\Calendar\Backend\Backend'] = 'calendar/lib/backends/backend.php';

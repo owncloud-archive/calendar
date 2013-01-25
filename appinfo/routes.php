@@ -6,172 +6,36 @@
  * See the COPYING-README file.
  */
 namespace OCA\Calendar;
-	
-//bootstrap the calendar
-require_once \OC_App::getAppPath('calendar') . '/appinfo/bootstrap.php';
+require_once(__DIR__ . '/bootstrap.php');
 
-function routerCheck($types = array()){
-	//is the user logged in?
-	\OCP\User::checkLoggedIn();
-	//is the calendar app enabled?
-	\OCP\App::checkAppEnabled('calendar');
-	//create a default calendar if no one exists
-	//Util::createDefaultCalendar(\OCP\User::getUser());
-	foreach($types as $type){
-		switch($type){
-			case 'page':
-				
-				break;
-			case 'ajax':
-				
-				break;
-			default:
-				break;
-		}
-	}
-}
+use \OCA\AppFramework\App as App;
 
 /**
- * Routes
+ * Normal Routes
  */
-//the calendar itself
-//objectid may be used to jump to an event
-$this->create('calendar_index', '/{objectid}')
-	 ->defaults(array('objectid' => null))
-	 ->requirements(array('objectid'))
-	 ->action(function($params){
-		$objectid = $param['objectid'];
-		routerCheck(array('page'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/index.php';
-	});
-
-//the interface for fetching the json events
-//md5 is the md5 hash of the calendarid
-$this->create('calendar_get_events', '/events/{calendarid}')
-	 ->action(function($params){
-	 	$calendarid = $params['calendarid'];
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/events.php';
-	});
-
-$this->create('calendar_set_view', '/setView/{view}')
-	 ->action(function($params){
-	 	$view = $params['view'];
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/changeview.php';
-	});
-
-//attendees
-
-//backend
-
-//caching
-
-//calendar management
-$this->create('calendar_ajax_calendar_create', '/createCalendar')->post()->action(
+$this->create('calendar_index', '/')->action(
 	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/create.php';
+		App::main('CalendarController', 'index', $params, new DIContainer());
 	}
 );
 
-$this->create('calendar_ajax_calendar_delete', '/deleteCalendar')->post()->action(
+$this->create('calendar_index_param', '/test/{test}')->action(
 	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/delete.php';
+		App::main('CalendarController', 'index', $params, new DIContainer());
 	}
 );
 
-$this->create('calendar_ajax_calendar_edit', '/editCalendar')->post()->action(
+$this->create('apptemplate_advanced_index_redirect', '/redirect')->action(
 	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/edit.php';
+		App::main('ItemController', 'redirectToIndex', $params, new DIContainer());
 	}
 );
 
-$this->create('calendar_ajax_calendar_get', '/getCalendar')->post()->action(
+/**
+ * Ajax Routes
+ */
+$this->create('apptemplate_advanced_ajax_setsystemvalue', '/setsystemvalue')->post()->action(
 	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/get.php';
+		App::main('ItemController', 'setSystemValue', $params, new DIContainer());
 	}
 );
-
-$this->create('calendar_ajax_calendar_trigger', '/triggerCalendar')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/trigger.php';
-	}
-);
-
-//categories
-
-//event management
-$this->create('calendar_ajax_event_create', '/createEvent')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/create.php';
-	}
-);
-
-$this->create('calendar_ajax_event_delete', '/deleteEvent')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/delete.php';
-	}
-);
-
-$this->create('calendar_ajax_event_edit', '/editEvent')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/edit.php';
-	}
-);
-
-$this->create('calendar_ajax_event_get', '/getEvent')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/get.php';
-	}
-);
-
-$this->create('calendar_ajax_event_move', '/moveEvent')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/get.php';
-	}
-);
-
-$this->create('calendar_ajax_event_resize', '/resizeEvent')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/calendar/get.php';
-	}
-);
-
-//export & import
-$this->create('calendar_ajax_export', '/export')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/export/export.php';
-	}
-);
-
-$this->create('calendar_ajax_import', '/import')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/import/import.php';
-	}
-);
-
-$this->create('calendar_ajax_import_drop', '/dropimport')->post()->action(
-	function($params){
-		routerCheck(array('ajax'));
-		require_once \OC_App::getAppPath('calendar') . '/routers/ajax/import/drop.php';
-	}
-);
-
-//settings
-
-
-
-//user interface

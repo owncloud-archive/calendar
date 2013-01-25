@@ -39,8 +39,6 @@
 	font-size: 15px;
 	font-weight: 100;
 	width: auto;
-	margin: 0;
-	padding: 0;
 }
 
 #forward{
@@ -80,8 +78,19 @@ div.ui-datepicker{
 }
 
 #selecteddate{
-	width: 15em;
-	margin: 0.5em;
+	width: 11.1em;
+	height: 1.5em;
+	-webkit-box-align: center;
+	font-size: 1.5em;
+	font-family: Arial, Verdana, sans-serif;
+	color: #F0F0F0;
+	background: #30343a;
+	margin-top: -0.5em;
+	margin-left: -0.5em;
+	padding: 0.2em;
+	padding-top: 0.5em;
+	text-align: center;
+	box-shadow: 0px 1px 5px 0px black;
 }
 
 .arrowbutton{
@@ -265,4 +274,8 @@ margin-bottom:4px;
 	-moz-border-radius: 0px 2px 2px 0px; 
 	-webkit-border-radius: 0px 2px 2px 0px;
 	opacity: 0.65;
+}
+
+#calendarsidebar{
+	
 }

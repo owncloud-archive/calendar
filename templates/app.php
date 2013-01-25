@@ -8,12 +8,14 @@ var	defaultView  = '<?php echo $_['defaultView'];?>',
 </script>
 <div id="notification" style="display:none;"></div>
 <div id="calendarsidebar">
-	<div id="calendarnavigation">
+	<div id="selecteddate" class="ribbon"></div>
+	<div id="calendarlist"></div>
+	<!--<div id="calendarnavigation">
 		<button class="button" id="selecteddate"></button>
-		<button class="button arrowbutton backward">&larr;</button>
+		<!--<button class="button arrowbutton backward">&larr;</button>
 		<button class="button today"><?php echo $l->t('Today');?></button>
-		<button class="button arrowbutton forward">&rarr;</button>
-		<br>
+		<button class="button arrowbutton forward">&rarr;</button>--
+		<br><br>
 		<div id="views">
 			<button class="button view" id="agendaWeek"><?php echo $l->t('Week');?></button>
 			<button class="button view" id="basic2Weeks"><?php echo $l->t('2 Weeks');?></button>
@@ -21,7 +23,7 @@ var	defaultView  = '<?php echo $_['defaultView'];?>',
 			<button class="button view" id="list"><?php echo $l->t('List');?></button>
 		</div>
 	</div>
-	<hr>
+	<hr>-->
 	<div id="calendarList"></div>
 </div>
 <div id="fullcalendar"></div>

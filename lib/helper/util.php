@@ -39,6 +39,10 @@ class Util{
 		//get the name of the default backend
 		$defaultbackend = \OCA\Calendar::getDefaultBackend();
 		$defaultbackend = 'database';
+		//check if there is a default backend
+		if($defaultbackend === null){
+			return false;
+		}
 		//create a new calendar object
 		$calendar = \Sabre\VObject\Component::create('VCALENDAR');
 		//create a new calendar
