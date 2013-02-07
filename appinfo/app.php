@@ -16,7 +16,7 @@ $l10n = new OC_L10N('calendar');
 //add the navigation entry
 OCP\App::addNavigationEntry( array(
 	//id of the calendar navigation entry
-	'id' => 'calendar_index',
+	'id' => 'calendar',
 	//order of the calendar in the menu
 	'order' => 10,
 	//link to calendar app
