@@ -22,7 +22,7 @@ OCP\App::addNavigationEntry( array(
 	//link to calendar app
 	'href' => \OC_Helper::linkToRoute('calendar_index'),
 	//icon of calendar app
-	'icon' => OCP\Util::imagePath( 'calendar', 'icon.svg' ),
+	'icon' => OCP\Util::imagePath( 'calendar', 'calendar.svg' ),
 	//localize "calendar"
 	'name' => \OC_L10N::get('calendar')->t('Calendar')
 ));

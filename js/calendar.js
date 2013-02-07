@@ -337,6 +337,7 @@
 								$this.fullCalendar('next');
 							}
 						}
+<<<<<<< HEAD
 						//left
 						if(e.keyCode == 37 || e.keyCode == 72) {
 							//no scroll in agendaWeek view, because it's a pain
@@ -344,6 +345,37 @@
 								//you can't edit the firstDay value after initializing fullCalendar yet
 								//feature request already submitted
 								//$('#fullCalendar').fullCalendar('next');
+=======
+					  });
+				}
+			},
+			submit:function(button, calendarid){
+				var displayname = $.trim($("#displayname_"+calendarid).val());
+				var active = $("#edit_active_"+calendarid+":checked").length;
+				var description = $("#description_"+calendarid).val();
+				var calendarcolor = $("#calendarcolor_"+calendarid).val();
+				if(displayname == ''){
+					$("#displayname_"+calendarid).css('background-color', '#FF2626');
+					$("#displayname_"+calendarid).focus(function(){
+						$("#displayname_"+calendarid).css('background-color', '#F8F8F8');
+					});
+				}
+
+				var url;
+				if (calendarid == 'new'){
+					url = OC.filePath('calendar', 'ajax/calendar', 'new.php');
+				}else{
+					url = OC.filePath('calendar', 'ajax/calendar', 'update.php');
+				}
+				$.post(url, { id: calendarid, name: displayname, active: active, description: description, color: calendarcolor },
+					function(data){
+						if(data.status == 'success'){
+							$(button).closest('tr').prev().html(data.page).show().next().remove();
+							$('#fullcalendar').fullCalendar('removeEventSource', data.eventSource.url);
+							$('#fullcalendar').fullCalendar('addEventSource', data.eventSource);
+							if (calendarid == 'new'){
+								$('#choosecalendar_dialog > table:first').append('<tr><td colspan="6"><a href="#" id="chooseCalendar"><input type="button" value="' + newcalendar + '"></a></td></tr>');
+>>>>>>> master
 							}
 						}
 						//right
@@ -378,5 +410,39 @@
 				$.error( 'Method ' +  method + ' does not exist on jQuery.calendarList' );
 			}
 		}
+<<<<<<< HEAD
 	};
 })( jQuery );
+=======
+	});
+	fillWindow($('#content'));
+	OCCategories.changed = Calendar.UI.categoriesChanged;
+	OCCategories.app = 'calendar';
+	OCCategories.type = 'event';
+	$('#oneweekview_radio').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'agendaWeek');
+	});
+	$('#onemonthview_radio').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'month');
+	});
+	$('#listview_radio').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'list');
+	});
+	$('#today_input').click(function(){
+		$('#fullcalendar').fullCalendar('today');
+	});
+	$('#datecontrol_left').click(function(){
+		$('#fullcalendar').fullCalendar('prev');
+	});
+	$('#datecontrol_right').click(function(){
+		$('#fullcalendar').fullCalendar('next');
+	});
+	Calendar.UI.Share.init();
+	Calendar.UI.Drop.init();
+	$('#choosecalendar .generalsettings').on('click keydown', function(event) {
+		event.preventDefault();
+		OC.appSettings({appid:'calendar', loadJS:true, cache:false, scriptName:'settingswrapper.php'});
+	});
+	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
+});
+>>>>>>> master

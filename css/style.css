@@ -9,6 +9,7 @@
 	font-size: 12px;
 }
 
+<<<<<<< HEAD
 .view{
 	width: 7.75em;
 	margin: 0.25em;
@@ -25,6 +26,14 @@
 	margin-top: 5px;
 	padding: 0;
 }
+=======
+#view { float: left; font-size: 12px; height: 100%;}
+#datecontrol {text-align: center;}
+#datecontrol_left{font-size: 12px;}
+#datecontrol_right{font-size: 12px;}
+#datecontrol_date_label {margin: 0; padding: 0; font-size: 12px;}
+#choosecalendar {margin-right: 74px; float: right; font-size: 12px;}
+>>>>>>> master
 
 #datecontrols{
 	text-align: center;
@@ -220,6 +229,7 @@ line-height:1.2;
 margin-bottom:4px;
 }
 
+<<<<<<< HEAD
 #addEvent{
 	font-weight: bold;
 }
@@ -278,4 +288,8 @@ margin-bottom:4px;
 
 #calendarsidebar{
 	
+=======
+#fullcalendar{
+	overflow: auto;
+>>>>>>> master
 }
