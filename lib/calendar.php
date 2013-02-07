@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright (c) 2012 Frank Karlitschek <frank @ ownCloud.org>
- * Copyright (c) 2012 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2013 Frank Karlitschek <frank @ ownCloud.org>
+ * Copyright (c) 2013 Georg Ehrke <ownclouddev at georgswebsite dot de>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -106,7 +106,7 @@ class Calendar {
 		foreach(self::$_backends as $backend) {
 			$class = $backend['class'];
 			$arguments = $backend['arguments'];
-			if(class_exists($class) && !array_search($class,self::$_setupedBackends) && array_search($class, $enabledbackends)) {
+			if(class_exists($class) && !in_array($class,self::$_setupedBackends) && in_array($class, $enabledbackends)) {
 				// make a reflection object
 				$reflectionObj = new \ReflectionClass($class);
 

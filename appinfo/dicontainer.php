@@ -18,19 +18,36 @@ class DIContainer extends \OCA\AppFramework\DIContainer {
 		/** 
 		 * CONTROLLERS
 		 */
-		$this['ItemController'] = $this->share(function($c){
-			return new ItemController($c['API'], $c['Request'], $c['ItemMapper']);
+		//controller for calendars
+		$this['CalendarController'] = $this->share(function($c){
+			return new Controller\Calendar($c['API'], $c['Request'], $c['CalendarMapper']);
 		});
-
+		
+		//controller for objects like events, journals, todos
+		$this['ObjectController'] = $this->share(function($c){
+			return new Controller\Object($c['API'], $c['Request'], $c['ObjectMapper']);
+		});
+		
+		//controller for settings
 		$this['SettingsController'] = $this->share(function($c){
-			return new SettingsController($c['API'], $c['Request']);
+			return new Controller\Settings($c['API'], $c['Request']);
+		});
+		
+		//controller for view
+		$this['ViewController'] = $this->share(function($c){
+			return new Controller\View($c['API'], $c['Request']);
 		});
 
 		/**
 		 * MAPPERS
 		 */
-		$this['ItemMapper'] = $this->share(function($c){
-			return new ItemMapper($c['API']);
+		//mapper for calendars
+		$this['CalendarMapper'] = $this->share(function($c){
+			return new Mapper\Calendar($c['API']);
+		});
+		//mapper for objects like events, journals, todos
+		$this['ObjectMapper'] = $this->share(function($c){
+			return new Mapper\Object($c['API']);
 		});
 	}
 }

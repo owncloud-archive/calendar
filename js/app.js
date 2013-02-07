@@ -34,7 +34,7 @@ $(document).ready(function(){
 	//initialize the new fancy calendar list
 	$('#calendarList').oCCalendarList({
 		calendars: {},
-		editable: iseditable
+		editable: true
 	});
 	
 	//initialize the calendar
@@ -42,15 +42,15 @@ $(document).ready(function(){
 		calendars: {},
 		scrollNavigation: true,
 		keyboardNavigation: true,
-		editable: iseditable,
-		dragdropimport: iseditable,
+		editable: true,
+		dragdropimport: true,
 		fullCalendar: {
 			timeFormat: {
-				agenda: agendatime,
-				'': defaulttime
+				agenda: 'HH:mm',
+				'': 'HH:mm'
 			},
 			firstDay: 0,
-			defaultView: defaultView
+			defaultView: 'basic4weeks'
 		}
 	});
 	

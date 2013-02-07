@@ -225,8 +225,8 @@
 					selectable: options.editable,
 					selectHelper: options.editable,
 					timeFormat: {
-						agenda: agendatime,
-						'': defaulttime
+						agenda: options.agendatime,
+						'': options.defaulttime
 						},
 					columnFormat: {
 						month: t('calendar', 'ddd'),    // Mon
@@ -314,12 +314,13 @@
 				
 				if(settings.keyboardNavigation){
 					$(document).keydown(function(e){
+						//!TODO - check if there is an opened dialog!!!
 						//get current view
 						var view = $this.fullCalendar('getView');
 						//get the firstday
 						//var firstday = $(this);
 						//up
-						if (e.keyCode == 38) {
+						if (e.keyCode == 38 || e.keyCode == 75) {
 							//remove tipsy
 							$('.tipsy').remove();
 							//no scroll in agendaWeek view, because it's a pain
@@ -328,7 +329,7 @@
 							}
 						}
 						//down
-						if(e.keyCode == 40) {
+						if(e.keyCode == 40 || e.keyCode == 74) {
 							//remove tipsy
 							$('.tipsy').remove();
 							//no scroll in agendaWeek view, because it's a pain
@@ -337,7 +338,7 @@
 							}
 						}
 						//left
-						if(e.keyCode == 37) {
+						if(e.keyCode == 37 || e.keyCode == 72) {
 							//no scroll in agendaWeek view, because it's a pain
 							if(view.name == 'agendaWeek'){
 								//you can't edit the firstDay value after initializing fullCalendar yet
@@ -346,7 +347,7 @@
 							}
 						}
 						//right
-						if(e.keyCode == 39) {
+						if(e.keyCode == 39 || e.keyCode == 76) {
 							//no scroll in agendaWeek view, because it's a pain
 							if(view.name == 'agendaWeek'){
 								//you can't edit the firstDay value after initializing fullCalendar yet

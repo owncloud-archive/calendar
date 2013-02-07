@@ -1,29 +1,20 @@
-<script>
-var	defaultView  = '<?php echo $_['defaultView'];?>',
-	categories   = <?php echo json_encode($_['categories']); ?>,
-	firstDay     = <?php echo $_['firstDay']; ?>,
-	agendatime   = '<?php echo $_['agendatime']; ?>',
-	defaulttime  = '<?php echo $_['defaulttime']; ?>',
-	iseditable   = true;
-</script>
+<!-- !Load some translations -->
+<script type="text/javascript" src="<?php echo OC_Helper::linkTo('calendar/js', 'l10n.php');?>"></script>
+<!-- !load some settings -->
+<script type="text/javascript" src="<?php echo OC_Helper::linkTo('calendar/js', 'loader.php');?>"></script>
+<!-- !main calendar html stuff-->
 <div id="notification" style="display:none;"></div>
 <div id="calendarsidebar">
-	<div id="selecteddate" class="ribbon"></div>
 	<div id="calendarlist"></div>
-	<!--<div id="calendarnavigation">
-		<button class="button" id="selecteddate"></button>
-		<!--<button class="button arrowbutton backward">&larr;</button>
-		<button class="button today"><?php echo $l->t('Today');?></button>
-		<button class="button arrowbutton forward">&rarr;</button>--
-		<br><br>
+	<div class="bottom">
+		<div id="selecteddate" class="ribbon"></div>
 		<div id="views">
 			<button class="button view" id="agendaWeek"><?php echo $l->t('Week');?></button>
+			<button class="button view" id="list"><?php echo $l->t('List');?></button>
 			<button class="button view" id="basic2Weeks"><?php echo $l->t('2 Weeks');?></button>
 			<button class="button view" id="basic4Weeks"><?php echo $l->t('Month');?></button>
-			<button class="button view" id="list"><?php echo $l->t('List');?></button>
 		</div>
+		<div id="globaldatepicker"></div>
 	</div>
-	<hr>-->
-	<div id="calendarList"></div>
 </div>
 <div id="fullcalendar"></div>

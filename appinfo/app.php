@@ -5,7 +5,7 @@
  * later.
  * See the COPYING-README file.
  */
-define('DEBUG', TRUE);
+//define('DEBUG', TRUE);
 
 //register admin settings
 \OCP\App::registerAdmin('calendar', 'admin/settings');
