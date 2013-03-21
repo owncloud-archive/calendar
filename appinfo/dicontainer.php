@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2012 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2013 Georg Ehrke <ownclouddev at georgswebsite dot de>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -18,6 +18,11 @@ class DIContainer extends \OCA\AppFramework\DIContainer {
 		/** 
 		 * CONTROLLERS
 		 */
+		//controller for backends
+		$this['BackendController'] = $this->share(function($c){
+			return new Controller\Backend($c['API'], $c['Request'], $c['BackendMapper']);
+		});
+		
 		//controller for calendars
 		$this['CalendarController'] = $this->share(function($c){
 			return new Controller\Calendar($c['API'], $c['Request'], $c['CalendarMapper']);
@@ -42,12 +47,29 @@ class DIContainer extends \OCA\AppFramework\DIContainer {
 		 * MAPPERS
 		 */
 		//mapper for calendars
+		$this['BackendMapper'] = $this->share(function($c){
+			return new Mapper\Backend($c['API']);
+		});
+				
+		//mapper for calendars
 		$this['CalendarMapper'] = $this->share(function($c){
 			return new Mapper\Calendar($c['API']);
 		});
+		
 		//mapper for objects like events, journals, todos
 		$this['ObjectMapper'] = $this->share(function($c){
 			return new Mapper\Object($c['API']);
 		});
+		
+		//mapper for calendars
+		$this['SettingsMapper'] = $this->share(function($c){
+			return new Mapper\Calendar($c['API']);
+		});
+		
+		//mapper for objects like events, journals, todos
+		$this['ViewMapper'] = $this->share(function($c){
+			return new Mapper\Object($c['API']);
+		});
+
 	}
 }

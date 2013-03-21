@@ -1,7 +1,7 @@
 <?php
 /**
- * Copyright (c) 2012 Georg Ehrke <ownclouddev at georgswebsite dot de>
- * Copyright (c) 2012 Bart Visscher <bartv@thisnet.nl>
+ * Copyright (c) 2013 Georg Ehrke <developer at georgehrke dot com>
+ * Copyright (c) 2013 Bart Visscher <bartv@thisnet.nl>
  * Copyright (c) 2011 Jakob Sack <mail@jakobsack.de>
  * This file is licensed under the Affero General Public License version 3 or
  * later.

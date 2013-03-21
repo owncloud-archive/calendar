@@ -5,7 +5,10 @@
  * later.
  * See the COPYING-README file.
  */
-namespace OCA\Calendar;
-class Validation{
-	
+namespace OCA\Calendar\Cache\Calendar;
+
+use \OCA\Calendar\Calendar\Item as UncachedCalendarItem;
+
+class Item extends UncachedCalendarItem {
+
 }
