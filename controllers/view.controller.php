@@ -10,7 +10,7 @@ namespace OCA\Calendar\Controller;
 use OCA\AppFramework\DoesNotExistException as DoesNotExistException;
 use OCA\AppFramework\RedirectResponse as RedirectResponse;
 
-class View extends \OCA\AppFramework\Controller {
+class View extends \OCA\AppFramework\Controller\Controller {
 	
 
 	/**
@@ -45,7 +45,8 @@ class View extends \OCA\AppFramework\Controller {
 	 * @return an instance of a Response implementation
 	 */
 	public function index(){
-
+		print_r($this);
+		exit;
 		// thirdparty javscripts
 		$this->api->add3rdPartyScript('backbone-min');
 		$this->api->add3rdPartyScript('fullcalendar-min');
