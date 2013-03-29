@@ -6,8 +6,7 @@
  * See the COPYING-README file.
  */
 namespace OCA\Calendar;
-//set classpath
-\OC::$CLASSPATH['OCA\Calendar'] = 'calendar/lib/calendar.php';
+//set classpa
 //!Controllers & Mappers
 //DI Container
 \OC::$CLASSPATH['OCA\Calendar\DIContainer'] = 'calendar/appinfo/dicontainer.php';
@@ -84,13 +83,5 @@ namespace OCA\Calendar;
 //\OCP\Share::registerBackend('calendar', '\OCA\Calendar\Share\Calendar');
 //\OCP\Share::registerBackend('event', '\OCA\Calendar\Share\Event');
 
-//register all the shipped backends
-\OCA\Calendar::registerBackend('database', '\OCA\Calendar\Backend\Database');
-//\OCA\Calendar::registerBackend('localstorage', '\OCA\Calendar\Backend\LocalStorage');
-//\OCA\Calendar::registerBackend('share', '\OCA\Calendar\Backend\Share');
-\OCA\Calendar::registerBackend('webcal', '\OCA\Calendar\Backend\WebCal');
-//\OCA\Calendar::registerBackend('caldav', ...);
-//\OCA\Calendar::registerBackend('activesync', ...);
-
 //setup all registered calendar backends
-\OCA\Calendar::setupBackends();
+//\OCA\Calendar::setupBackends();
