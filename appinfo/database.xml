@@ -102,8 +102,7 @@
 			<field>
 				<name>timezone</name>
 				<type>text</type>
-				<default>UTC</default>
-				<notnull>true</notnull>
+				<notnull>false</notnull>
 			</field>
 			<field>
 				<name>color</name>
@@ -326,7 +325,7 @@
 			</field>
 			<field>
 				<name>timezone</name>
-				<type>clob</type>
+				<type>text</type>
 				<notnull>false</notnull>
 			</field>
 			<field>
