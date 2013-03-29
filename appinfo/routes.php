@@ -8,10 +8,10 @@
 namespace OCA\Calendar;
 //bootstrap the calendar app
 require_once(__DIR__ . '/bootstrap.php');
+require_once(__DIR__ . '/dicontainer.php');
 //create alias for \OCA\AppFramework\App
 use \OCA\AppFramework\App as App;
 
-//define the routes
 //!Index
 $this->create('calendar_index', '/')->action(
 	function($params){
@@ -206,13 +206,3 @@ $this->create('calendar_import_raw_timerange', '/import/raw/{raw}/{from}/{to}')-
 		App::main('ViewController', 'setView', $params, new DIContainer());
 	}
 );
-
-
-
-
-
-
-
-
-
-
