@@ -24,8 +24,7 @@ class Item {
 
 	public function __construct($fromRow=null){
 		if($fromRow){
-			$this->fromRow($fromRow);
-		}
+			$this->fromRow($fromRow);		}
 	}
 
 	public function fromRow($row){
