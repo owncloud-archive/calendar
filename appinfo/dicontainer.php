@@ -7,7 +7,7 @@
  */
 namespace OCA\Calendar;
 
-class DIContainer extends \OCA\AppFramework\DIContainer {
+class DIContainer extends \OCA\AppFramework\DependencyInjection\DIContainer {
 	/**
 	 * Define your dependencies in here
 	 */
