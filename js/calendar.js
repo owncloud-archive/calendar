@@ -961,6 +961,9 @@ $(document).ready(function(){
 	$('#datecontrol_left').click(function(){
 		$('#fullcalendar').fullCalendar('prev');
 	});
+	$('#datecontrol_today').click(function(){
+		$('#fullcalendar').fullCalendar('today');
+	});
 	$('#datecontrol_right').click(function(){
 		$('#fullcalendar').fullCalendar('next');
 	});
