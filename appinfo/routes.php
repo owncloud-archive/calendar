@@ -9,6 +9,7 @@ namespace OCA\Calendar;
 //bootstrap the calendar app
 require_once(__DIR__ . '/bootstrap.php');
 require_once(__DIR__ . '/dicontainer.php');
+
 //create alias for \OCA\AppFramework\App
 use \OCA\AppFramework\App as App;
 
@@ -19,21 +20,14 @@ $this->create('calendar_index', '/')->action(
 	}
 );
 
-$this->create('calendar_index_readonly', '/readonly')->action(
-	function($params){
-		App::main('ViewController', 'index', $params, new DIContainer());
-	}
-);
-
-
 //!Goto date / event
-$this->create('calendar_index_goto_date', '/date/{date}')->action(
+$this->create('calendar_index_goto_date', '/show/date/{date}')->action(
 	function($params){
 		App::main('ViewController', 'index', $params, new DIContainer());
 	}
 );
 
-$this->create('calendar_index_goto_event', '/event/{event}')->action(
+$this->create('calendar_index_goto_event', '/show/event/{event}')->action(
 	function($params){
 		App::main('ViewController', 'index', $params, new DIContainer());
 	}
@@ -69,13 +63,20 @@ $this->create('calendar_set_view', '/set/view/{view}')->action(
 
 
 //!Calendar
-$this->create('calendar_get_calendar', '/get/calendar/{uri}')->action(
+$this->create('calendar_get_all_calendars', '/calendar')->action(
 	function($params){
 		App::main('ViewController', 'setView', $params, new DIContainer());
 	}
 );
 
-$this->create('calendar_get_calendars_property', '/get/calendar/{uri}/{property}')->action(
+
+$this->create('calendar_get_calendar', '/calendar/{uri}')->action(
+	function($params){
+		App::main('ViewController', 'setView', $params, new DIContainer());
+	}
+);
+
+$this->create('calendar_get_calendars_property', '/calendar/{uri}/get/{property}')->action(
 	function($params){
 		App::main('ViewController', 'setView', $params, new DIContainer());
 	}

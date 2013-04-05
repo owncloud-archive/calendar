@@ -173,4 +173,15 @@ class Backend extends \OCA\AppFramework\Controller {
 	public function uninstallBackend($backend){
 		$this->itemMapper->delete($backend);
 	}
+
+
+	/**
+	 * @brief returns the number initialized backends
+	 * @returns integer
+	 * 
+	 * number of backends
+	 */
+	public function getNumOfBackends(){
+		return (int) count($this->backends);
+	}
 }

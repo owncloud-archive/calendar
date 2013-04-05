@@ -16,9 +16,10 @@ class View extends \OCA\AppFramework\Controller\Controller {
 	 * @param API $api: an api wrapper instance
 	 * @param ItemMapper $itemMapper: an itemwrapper instance
 	 */
-	public function __construct($api, $request, $itemMapper){
+	public function __construct($api, $request, $itemMapper, $backend){
 		parent::__construct($api, $request);
 		$this->itemMapper = $itemMapper;
+		$this->backend = $backend;
 	}
 
 

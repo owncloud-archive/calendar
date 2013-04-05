@@ -35,12 +35,12 @@ class DIContainer extends \OCA\AppFramework\DependencyInjection\DIContainer {
 		
 		//controller for settings
 		$this['SettingsController'] = $this->share(function($c){
-			return new Controller\Settings($c['API'], $c['Request'], $c['SettingsMapper']);
+			return new Controller\Settings($c['API'], $c['Request']);
 		});
 		
 		//controller for view
 		$this['ViewController'] = $this->share(function($c){
-			return new Controller\View($c['API'], $c['Request'], $c['ViewMapper']);
+			return new Controller\View($c['API'], $c['Request']);
 		});
 
 		/**
@@ -58,16 +58,6 @@ class DIContainer extends \OCA\AppFramework\DependencyInjection\DIContainer {
 		
 		//mapper for objects like events, journals, todos
 		$this['ObjectMapper'] = $this->share(function($c){
-			return new Mapper\Object($c['API']);
-		});
-		
-		//mapper for calendars
-		$this['SettingsMapper'] = $this->share(function($c){
-			return new Mapper\Calendar($c['API']);
-		});
-		
-		//mapper for objects like events, journals, todos
-		$this['ViewMapper'] = $this->share(function($c){
 			return new Mapper\Object($c['API']);
 		});
 
