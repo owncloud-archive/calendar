@@ -11,15 +11,14 @@ use OCA\AppFramework\DoesNotExistException as DoesNotExistException;
 use OCA\AppFramework\RedirectResponse as RedirectResponse;
 
 class View extends \OCA\AppFramework\Controller\Controller {
-	
-
 	/**
 	 * @param Request $request: an instance of the request
 	 * @param API $api: an api wrapper instance
 	 * @param ItemMapper $itemMapper: an itemwrapper instance
 	 */
-	public function __construct($api, $request){
+	public function __construct($api, $request, $itemMapper){
 		parent::__construct($api, $request);
+		$this->itemMapper = $itemMapper;
 	}
 
 
@@ -45,8 +44,6 @@ class View extends \OCA\AppFramework\Controller\Controller {
 	 * @return an instance of a Response implementation
 	 */
 	public function index(){
-		print_r($this);
-		exit;
 		// thirdparty javscripts
 		$this->api->add3rdPartyScript('backbone-min');
 		$this->api->add3rdPartyScript('fullcalendar-min');
@@ -58,9 +55,7 @@ class View extends \OCA\AppFramework\Controller\Controller {
 		$this->api->add3rdPartyStyle('timepicker');
 		$this->api->add3rdPartyStyle('tipsy.mod');
 		
-		// your own stuff
-		$this->api->addStyle('style');
-
+		// calendar javascripts
 		$this->api->addScript('app');
 		$this->api->addScript('calendar');
 		$this->api->addScript('calendarlist');
@@ -68,12 +63,39 @@ class View extends \OCA\AppFramework\Controller\Controller {
 		$this->api->addScript('custom views/basic2Weeks');
 		$this->api->addScript('custom views/basic4Weeks');
 		$this->api->addScript('custom views/listview');
-
-		// example database access
-		// check if an entry with the current user is in the database, if not
-		// create a new entry
+		
+		// calendar stylesheets
+		$this->api->addStyle('animations');
+		$this->api->addStyle('style');
 
 		$templateName = 'app';
 		return $this->render($templateName, array());
+	}
+
+
+	/**
+	 * @CSRFExemption
+	 * @IsAdminExemption
+	 * @IsSubAdminExemption
+	 *
+	 * @brief saves the current view
+	 * @return void
+	 */
+	public function printable(){
+		$templateName = 'printable';
+		return $this->render($templateName, array(), 'blank');
+	}
+
+
+	/**
+	 * @CSRFExemption
+	 * @IsAdminExemption
+	 * @IsSubAdminExemption
+	 *
+	 * @brief saves the current view
+	 * @return void
+	 */
+	public function setView(){
+
 	}
 }
