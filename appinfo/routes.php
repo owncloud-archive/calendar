@@ -21,7 +21,7 @@ $this->create('calendar_index', '/')->action(
 
 $this->create('calendar_index_readonly', '/readonly')->action(
 	function($params){
-		App::main('ViewController', 'index_readonly', $params, new DIContainer());
+		App::main('ViewController', 'index', $params, new DIContainer());
 	}
 );
 
@@ -43,19 +43,19 @@ $this->create('calendar_index_goto_event', '/event/{event}')->action(
 //!Print date / event
 $this->create('calendar_print_date_all', '/print/date/{date}')->action(
 	function($params){
-		App::main('ViewController', 'index', $params, new DIContainer());
+		App::main('ViewController', 'printable', $params, new DIContainer());
 	}
 );
 
 $this->create('calendar_print_date', '/print/date/{calendar}/{date}')->action(
 	function($params){
-		App::main('ViewController', 'index', $params, new DIContainer());
+		App::main('ViewController', 'printable', $params, new DIContainer());
 	}
 );
 
 $this->create('calendar_print_event', '/print/event/{event}')->action(
 	function($params){
-		App::main('ViewController', 'index', $params, new DIContainer());
+		App::main('ViewController', 'printable', $params, new DIContainer());
 	}
 );
 
