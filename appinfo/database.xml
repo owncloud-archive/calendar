@@ -261,7 +261,8 @@
 		</declaration>
 	</table>
 	<table>
-		<name>*dbprefix*calendar_db_cal</name>
+		<!-- TODO: rename to calendar_db_cal ?! -->
+		<name>*dbprefix*calendar_calendars</name>
 		<declaration>
 			<field>
 				<name>id</name>
@@ -338,7 +339,8 @@
 		</declaration>
 	</table>
 	<table>
-		<name>*dbprefix*calendar_db_obj</name>
+		<!-- TODO: rename to calendar_db_obj ?! -->
+		<name>*dbprefix*calendar_objects</name>
 		<declaration>
 			<field>
 				<name>id</name>
