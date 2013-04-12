@@ -22,7 +22,7 @@ Enable the appframework in the app settings of ownCloud.
 
 Get the lastest version of the rework:
 ```bash
-git://github.com/owncloud/calendar.git
+git clone git://github.com/owncloud/calendar.git
 cd calendar
 git checkout rework
 ```
