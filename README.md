@@ -18,7 +18,7 @@ Get the latest version of the appframework:
 ```bash
 git clone git://github.com/owncloud/appframework.git
 ```
-Active the appframework in the app settings of ownCloud.
+Enable the appframework in the app settings of ownCloud.
 
 Get the lastest version of the rework:
 ```bash
