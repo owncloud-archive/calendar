@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2011 Bart Visscher <bartv@thisnet.nl>
+ * Copyright (c) 2013 Visitha Baddegama <visithauom@gmail.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -19,7 +19,6 @@ $dtstart = $_POST['dtstart'];
 $dtend = $_POST['dtend'];
 
 try {
-	//OC_Calendar_Object::sendMail();
 	OC_Calendar_App::sendEmails($eventId, $location, $description, $dtstart, $dtend);
 } catch(Exception $e) {
 	OCP\JSON::error(array('data' => array('message'=>$e->getMessage())));
