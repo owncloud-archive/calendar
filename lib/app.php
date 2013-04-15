@@ -33,13 +33,13 @@ class OC_Calendar_App {
     public static $tz;
 
     /**
-     * @brief Check if the password is correct
-     * @param $uid The username
-     * @param $password The password
-     * @returns string
+     * @brief use to create HTML emails and send them
+     * @param $eventid The event id
+     * @param $location The location
+     * @param $description The description
+     * @param $dtstart The start date
+     * @param $dtend The end date
      *
-     * Check if the password is correct without logging in the user
-     * returns the user id or false
      */
     public static function sendEmails($eventid, $location, $description, $dtstart, $dtend) {
 
