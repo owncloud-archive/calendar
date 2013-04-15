@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.net
+
+[owncloud.calendar]
+file_filter = <lang>/calendar.po
+source_file = templates/calendar.pot
+source_lang = en
+type = PO
+
