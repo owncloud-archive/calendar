@@ -62,15 +62,14 @@ class OC_Calendar_App {
             $result = OC_Calendar_Calendar::getUsersEmails($name);
             $emails[] = $result;
         }
+        $useremail = OC_Calendar_Calendar::getUsersEmails($user);
         foreach ($emails as $email) {
-            $to = "visithauom@gmail.com";
-            $from = "visithauom@gmail.com";
-            $subject = "Testing mail";
+            $subject = "Calendar Event Shared..!!";
             $headers = "MIME-Version: 1.0\r\n";
 
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-            $headers .= "From:" . $from;
+            $headers .= "From:" . $useremail;
 
             $message = '<html><body>';
 //$message .= '<img src="http://css-tricks.com/examples/WebsiteChangeRequestForm/images/wcrf-header.png" alt="Website Change Request" />';
@@ -81,7 +80,7 @@ class OC_Calendar_App {
             $message .= "</table>";
             $message .= "</body></html>";
 
-            OC_Mail::send($email, "User", "Calendar Event Shared..!", $message, "visithauom@gmail.com", $user, $html = 1, $altbody = '', $ccaddress = '', $ccname = '', $bcc = '');
+            OC_Mail::send($email, "User", $subject, $message, $useremail, $user, $html = 1, $altbody = '', $ccaddress = '', $ccname = '', $bcc = '');
         }
     }
 
