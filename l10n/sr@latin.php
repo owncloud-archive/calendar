@@ -59,6 +59,7 @@
 "Projects" => "Projekti",
 "Questions" => "Pitanja",
 "Work" => "Posao",
+"by" => "od",
 "Does not repeat" => "Ne ponavlja se",
 "Daily" => "dnevno",
 "Weekly" => "nedeljno",

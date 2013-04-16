@@ -71,6 +71,7 @@
 "Projects" => "Projektai",
 "Questions" => "Klausimai",
 "Work" => "Darbas",
+"by" => " ",
 "unnamed" => "be pavadinimo",
 "Does not repeat" => "Nekartoti",
 "Daily" => "Kasdien",

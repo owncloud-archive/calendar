@@ -51,6 +51,7 @@
 "Projects" => "Projekti",
 "Questions" => "Pitanja",
 "Work" => "Posao",
+"by" => "preko",
 "unnamed" => "bezimeno",
 "Does not repeat" => "Ne ponavlja se",
 "Daily" => "Dnevno",

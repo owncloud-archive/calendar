@@ -76,6 +76,7 @@
 "Projects" => "Projek",
 "Questions" => "Soalan",
 "Work" => "Kerja",
+"by" => "oleh",
 "unnamed" => "tiada nama",
 "Does not repeat" => "Tidak berulang",
 "Daily" => "Harian",

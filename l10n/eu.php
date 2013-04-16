@@ -90,6 +90,7 @@
 "Projects" => "Proiektuak",
 "Questions" => "Galderak",
 "Work" => "Lana",
+"by" => " Egilea:",
 "unnamed" => "izengabea",
 "You do not have the permissions to update this calendar." => "Egutegi hau eguneratzeko baimenik ez daukazu.",
 "You do not have the permissions to delete this calendar." => "Egutegi hau ezabatzeko baimenik ez daukazu.",

@@ -66,6 +66,7 @@
 "Projects" => "Prosjekt",
 "Questions" => "Spørsmål",
 "Work" => "Arbeid",
+"by" => "av",
 "Does not repeat" => "Ikkje gjenta",
 "Daily" => "Kvar dag",
 "Weekly" => "Kvar veke",

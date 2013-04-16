@@ -57,6 +57,7 @@
 "Projects" => "Projectos",
 "Questions" => "Demandas",
 "Work" => "Travalio",
+"by" => "per",
 "unnamed" => "sin nomine",
 "Does not repeat" => "Non repite",
 "Daily" => "Quotidian",

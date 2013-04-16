@@ -88,6 +88,7 @@
 "Projects" => "Пројекти",
 "Questions" => "Питања",
 "Work" => "Посао",
+"by" => "од",
 "unnamed" => "безимени",
 "You do not have the permissions to update this calendar." => "Немате дозволу да освежите овај календар",
 "You do not have the permissions to delete this calendar." => "Немате дозволу да избришете овај календар",
