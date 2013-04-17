@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# ubuntucymraeg <owen.llywelyn@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-04-18 01:47+0200\n"
+"PO-Revision-Date: 2013-04-17 21:00+0000\n"
+"Last-Translator: ubuntucymraeg <owen.llywelyn@gmail.com>\n"
 "Language-Team: Welsh (United Kingdom) (http://www.transifex.com/projects/p/owncloud/language/cy_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +36,7 @@ msgstr ""
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
-msgstr ""
+msgstr "Calendr anghywir"
 
 #: ajax/event/edit.form.php:221 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
@@ -61,20 +62,20 @@ msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr ""
+msgstr "Cylchfa amser newydd:"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
-msgstr ""
+msgstr "Newidiwyd cylchfa amser"
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
-msgstr ""
+msgstr "Cais annilys"
 
 #: appinfo/app.php:38 js/l10n.php:55 templates/part.eventform.php:30
 #: templates/part.showevent.php:37
 msgid "Calendar"
-msgstr ""
+msgstr "Calendr"
 
 #: js/calendar.js:154
 msgid "Deletion failed"
@@ -286,11 +287,11 @@ msgstr ""
 
 #: js/l10n.php:51
 msgid "All day"
-msgstr ""
+msgstr "Drwy'r dydd"
 
 #: js/l10n.php:52 lib/import.php:216 templates/part.choosecalendar.php:23
 msgid "New Calendar"
-msgstr ""
+msgstr "Calendr Newydd"
 
 #: js/l10n.php:53
 msgid "Missing or invalid fields"
@@ -299,75 +300,75 @@ msgstr ""
 #: js/l10n.php:54 templates/part.eventform.php:16
 #: templates/part.showevent.php:11
 msgid "Title"
-msgstr ""
+msgstr "Teitl"
 
 #: js/l10n.php:56
 msgid "From Date"
-msgstr ""
+msgstr "Dyddiad cychwyn"
 
 #: js/l10n.php:57
 msgid "From Time"
-msgstr ""
+msgstr "Amser cychwyn"
 
 #: js/l10n.php:58
 msgid "To Date"
-msgstr ""
+msgstr "Dyddiad gorffen"
 
 #: js/l10n.php:59
 msgid "To Time"
-msgstr ""
+msgstr "Amser gorffen"
 
 #: js/l10n.php:60
 msgid "The event ends before it starts"
-msgstr ""
+msgstr "Mae'r digwyddiad yn gorffen cyn iddo gychwyn"
 
 #: js/l10n.php:61
 msgid "There was a database fail"
-msgstr ""
+msgstr "Methiant gyda'r gronfa ddata"
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr ""
+msgstr "Penblwydd"
 
 #: lib/app.php:122
 msgid "Business"
-msgstr ""
+msgstr "Busnes"
 
 #: lib/app.php:123
 msgid "Call"
-msgstr ""
+msgstr "Galwad"
 
 #: lib/app.php:124
 msgid "Clients"
-msgstr ""
+msgstr "Cleientiaid"
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr ""
+msgstr "Nwyddau"
 
 #: lib/app.php:126
 msgid "Holidays"
-msgstr ""
+msgstr "Gwyliau"
 
 #: lib/app.php:127
 msgid "Ideas"
-msgstr ""
+msgstr "Syniadau"
 
 #: lib/app.php:128
 msgid "Journey"
-msgstr ""
+msgstr "Siwrnau"
 
 #: lib/app.php:129
 msgid "Jubilee"
-msgstr ""
+msgstr "Jwbilî"
 
 #: lib/app.php:130
 msgid "Meeting"
-msgstr ""
+msgstr "Cyfarfod"
 
 #: lib/app.php:131
 msgid "Other"
-msgstr ""
+msgstr "Arall"
 
 #: lib/app.php:132
 msgid "Personal"
@@ -375,15 +376,15 @@ msgstr "Personol"
 
 #: lib/app.php:133
 msgid "Projects"
-msgstr ""
+msgstr "Prosiectau"
 
 #: lib/app.php:134
 msgid "Questions"
-msgstr ""
+msgstr "Cwestiynau"
 
 #: lib/app.php:135
 msgid "Work"
-msgstr ""
+msgstr "Gwaith"
 
 #: lib/app.php:403
 msgid "by"
@@ -431,51 +432,51 @@ msgstr ""
 
 #: lib/object.php:513
 msgid "Does not repeat"
-msgstr ""
+msgstr "Ddim yn ailadrodd"
 
 #: lib/object.php:514
 msgid "Daily"
-msgstr ""
+msgstr "Dyddiol"
 
 #: lib/object.php:515
 msgid "Weekly"
-msgstr ""
+msgstr "Wythnosol"
 
 #: lib/object.php:516
 msgid "Every Weekday"
-msgstr ""
+msgstr "Bod dydd o'r wythnos"
 
 #: lib/object.php:517
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "Eil-wythnosol"
 
 #: lib/object.php:518
 msgid "Monthly"
-msgstr ""
+msgstr "Misol"
 
 #: lib/object.php:519
 msgid "Yearly"
-msgstr ""
+msgstr "Blynyddol"
 
 #: lib/object.php:529
 msgid "never"
-msgstr ""
+msgstr "byth"
 
 #: lib/object.php:530
 msgid "by occurrences"
-msgstr ""
+msgstr "yn ôl digwyddiadau"
 
 #: lib/object.php:531
 msgid "by date"
-msgstr ""
+msgstr "yn ôl dyddiad"
 
 #: lib/object.php:541
 msgid "by monthday"
-msgstr ""
+msgstr "yn ôl diwrnod o'r mis"
 
 #: lib/object.php:542
 msgid "by weekday"
-msgstr ""
+msgstr "yn ôl diwrnod o'r wythnos"
 
 #: lib/object.php:568
 msgid "events week of month"
@@ -483,67 +484,67 @@ msgstr ""
 
 #: lib/object.php:569
 msgid "first"
-msgstr ""
+msgstr "cyntaf"
 
 #: lib/object.php:570
 msgid "second"
-msgstr ""
+msgstr "ail"
 
 #: lib/object.php:571
 msgid "third"
-msgstr ""
+msgstr "trydydd"
 
 #: lib/object.php:572
 msgid "fourth"
-msgstr ""
+msgstr "pedwerydd"
 
 #: lib/object.php:573
 msgid "fifth"
-msgstr ""
+msgstr "pumed"
 
 #: lib/object.php:574
 msgid "last"
-msgstr ""
+msgstr "olaf"
 
 #: lib/object.php:629
 msgid "by events date"
-msgstr ""
+msgstr "yn ôl dyddiad digwyddiadau"
 
 #: lib/object.php:630
 msgid "by yearday(s)"
-msgstr ""
+msgstr "yn ôl diwrnodau'r flwyddyn"
 
 #: lib/object.php:631
 msgid "by weeknumber(s)"
-msgstr ""
+msgstr "yn ôl rhif yr wythnos"
 
 #: lib/object.php:632
 msgid "by day and month"
-msgstr ""
+msgstr "yn ôl dydd a mis"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
-msgstr ""
+msgstr "Dyddiad"
 
 #: lib/search.php:43
 msgid "Cal."
-msgstr ""
+msgstr "Cal."
 
 #: templates/calendar.php:6
 msgid "Week"
-msgstr ""
+msgstr "Wythnos"
 
 #: templates/calendar.php:7
 msgid "Month"
-msgstr ""
+msgstr "Mis"
 
 #: templates/calendar.php:8
 msgid "List"
-msgstr ""
+msgstr "Rhestr"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
-msgstr ""
+msgstr "Heddiw"
 
 #: templates/calendar.php:13
 msgid "Settings"
@@ -556,7 +557,7 @@ msgstr ""
 #: templates/part.choosecalendar.php:28
 #: templates/part.choosecalendar.rowfields.php:24
 msgid "CalDav Link"
-msgstr ""
+msgstr "Dolen CalDav"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
@@ -564,45 +565,45 @@ msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
-msgstr ""
+msgstr "Llwytho i lawr"
 
 #: templates/part.choosecalendar.rowfields.php:31
 msgid "Edit"
-msgstr ""
+msgstr "Golygu"
 
 #: templates/part.choosecalendar.rowfields.php:36
 #: templates/part.editevent.php:9
 msgid "Delete"
-msgstr ""
+msgstr "Dileu"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
-msgstr ""
+msgstr "Calendr newydd"
 
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
-msgstr ""
+msgstr "Golygu calendr"
 
 #: templates/part.editcalendar.php:12
 msgid "Displayname"
-msgstr ""
+msgstr "Enw i'w ddangos"
 
 #: templates/part.editcalendar.php:23
 msgid "Active"
-msgstr ""
+msgstr "Gweithredol"
 
 #: templates/part.editcalendar.php:29
 msgid "Calendar color"
-msgstr ""
+msgstr "Lliw'r calendr"
 
 #: templates/part.editcalendar.php:42
 msgid "Save"
-msgstr ""
+msgstr "Cadw"
 
 #: templates/part.editcalendar.php:42 templates/part.editevent.php:8
 #: templates/part.newevent.php:6
 msgid "Submit"
-msgstr ""
+msgstr "Cyflwyno"
 
 #: templates/part.editcalendar.php:43
 msgid "Cancel"
@@ -610,11 +611,11 @@ msgstr "Diddymu"
 
 #: templates/part.editevent.php:1
 msgid "Edit an event"
-msgstr ""
+msgstr "Golygu digwyddiad"
 
 #: templates/part.editevent.php:10
 msgid "Export"
-msgstr ""
+msgstr "Allforio"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -634,15 +635,15 @@ msgstr ""
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr ""
+msgstr "Rhannu"
 
 #: templates/part.eventform.php:18
 msgid "Title of the Event"
-msgstr ""
+msgstr "Teitl y digwyddiad"
 
 #: templates/part.eventform.php:24 templates/part.showevent.php:19
 msgid "Category"
-msgstr ""
+msgstr "Categori"
 
 #: templates/part.eventform.php:26
 msgid "Separate categories with commas"
@@ -658,39 +659,39 @@ msgstr ""
 
 #: templates/part.eventform.php:64 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr ""
+msgstr "Digwyddiad Diwrnod Cyfan"
 
 #: templates/part.eventform.php:68 templates/part.showevent.php:70
 msgid "From"
-msgstr ""
+msgstr "O"
 
 #: templates/part.eventform.php:76 templates/part.showevent.php:78
 msgid "To"
-msgstr ""
+msgstr "I"
 
 #: templates/part.eventform.php:84 templates/part.showevent.php:86
 msgid "Advanced options"
-msgstr ""
+msgstr "Gosodiadau uwch"
 
 #: templates/part.eventform.php:89 templates/part.showevent.php:91
 msgid "Location"
-msgstr ""
+msgstr "Lleoliad"
 
 #: templates/part.eventform.php:91
 msgid "Location of the Event"
-msgstr ""
+msgstr "Lleoliad y digwyddiad"
 
 #: templates/part.eventform.php:97 templates/part.showevent.php:99
 msgid "Description"
-msgstr ""
+msgstr "Disgrifiad"
 
 #: templates/part.eventform.php:99
 msgid "Description of the Event"
-msgstr ""
+msgstr "Disgrifiad o'r digwyddiad"
 
 #: templates/part.eventform.php:108 templates/part.showevent.php:109
 msgid "Repeat"
-msgstr ""
+msgstr "Ailadrodd"
 
 #: templates/part.eventform.php:115 templates/part.showevent.php:116
 msgid "Advanced"
@@ -769,7 +770,7 @@ msgstr ""
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr ""
+msgstr "Mewnforio"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
@@ -777,7 +778,7 @@ msgstr ""
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
-msgstr ""
+msgstr "Creu digwyddiad newydd"
 
 #: templates/part.share.php:27
 msgid "Share with:"
@@ -827,7 +828,7 @@ msgstr ""
 
 #: templates/settings.php:15
 msgid "Timezone"
-msgstr ""
+msgstr "Cylchfa Amser"
 
 #: templates/settings.php:47
 msgid "Update timezone automatically"
@@ -839,11 +840,11 @@ msgstr ""
 
 #: templates/settings.php:57
 msgid "24h"
-msgstr ""
+msgstr "24a"
 
 #: templates/settings.php:58
 msgid "12h"
-msgstr ""
+msgstr "12a"
 
 #: templates/settings.php:64
 msgid "Start week on"
