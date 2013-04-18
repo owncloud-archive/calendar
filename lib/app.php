@@ -11,7 +11,6 @@
  */
 OC_Calendar_App::$l10n = new OC_L10N('calendar');
 OC_Calendar_App::$tz = OC_Calendar_App::getTimezone();
-
 class OC_Calendar_App {
 
     const CALENDAR = 'calendar';
