@@ -312,7 +312,7 @@ class OC_Calendar_Object{
 	public static function moveToCalendar($id, $calendarid) {
 		$calendar = OC_Calendar_Calendar::find($calendarid);
 		if ($calendar['userid'] != OCP\User::getUser()) {
-			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
+			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $calendarid);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_DELETE)) {
 				throw new Exception(
 					OC_Calendar_App::$l10n->t(
