@@ -3,23 +3,23 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Agustin Ferrario <>, 2012.
-#   <davidlopez.david@gmail.com>, 2012.
-# Javier Llorente <javier@opensuse.org>, 2012.
-#   <juanma@kde.org.ar>, 2011-2012.
-# oSiNaReF  <>, 2012.
-#   <pggx999@gmail.com>, 2012.
-#   <rafabayona@gmail.com>, 2012.
-# Raul Fernandez Garcia <raulfg3@gmail.com>, 2012.
-# Rubén Trujillo <rubentrf@gmail.com>, 2012.
-#   <sergioballesterossolanas@gmail.com>, 2011, 2012.
-#   <sergio@entrecables.com>, 2012.
+# Agustin Ferrario <agustin.ferrario@hotmail.com.ar>, 2012
+# telco2011 <davidlopez.david@gmail.com>, 2012
+# Javier Llorente <javier@opensuse.org>, 2012
+# juanman <juanma@kde.org.ar>, 2011-2012
+# oSiNaReF <>, 2012
+# pggx999 <pggx999@gmail.com>, 2012
+# rafabayona <rafabayona@gmail.com>, 2012
+# Raul Fernandez Garcia <raulfg3@gmail.com>, 2012
+# Rubén Trujillo <rubentrf@gmail.com>, 2012
+# xsergiolpx <sergioballesterossolanas@gmail.com>, 2011, 2012
+# scambra <sergio@entrecables.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
+"POT-Creation-Date: 2013-04-23 01:47+0200\n"
+"PO-Revision-Date: 2013-04-22 18:40+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/owncloud/language/es/)\n"
 "MIME-Version: 1.0\n"
