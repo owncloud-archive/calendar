@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Stefan Ilivanov <ilivanov@gmail.com>, 2011.
-# Yasen Pramatarov <yasen@lindeas.com>, 2012.
+# Stefan Ilivanov <ilivanov@gmail.com>, 2011
+# Yasen Pramatarov <yasen@lindeas.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
+"POT-Creation-Date: 2013-04-24 01:47+0200\n"
+"PO-Revision-Date: 2013-04-23 09:20+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Bulgarian (Bulgaria) (http://www.transifex.com/projects/p/owncloud/language/bg_BG/)\n"
 "MIME-Version: 1.0\n"
@@ -329,7 +329,7 @@ msgstr ""
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr ""
+msgstr "Дата на раждане"
 
 #: lib/app.php:122
 msgid "Business"
@@ -385,11 +385,11 @@ msgstr ""
 
 #: lib/app.php:135
 msgid "Work"
-msgstr ""
+msgstr "Работен"
 
 #: lib/app.php:403
 msgid "by"
-msgstr ""
+msgstr "от"
 
 #: lib/app.php:467
 msgid "unnamed"
@@ -541,7 +541,7 @@ msgstr ""
 
 #: templates/calendar.php:8
 msgid "List"
-msgstr ""
+msgstr "Списък"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
