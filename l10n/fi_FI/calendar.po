@@ -3,17 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Jiri Grönroos <jiri.gronroos@iki.fi>, 2012-2013.
-# Johannes Korpela <>, 2012.
-#   <tehoratopato@gmail.com>, 2012.
-#   <tscooter@hotmail.com>, 2012.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2012-2013
+# Johannes Korpela <>, 2012
+# Larso <larso@gmx.com>, 2013
+# teho <tehoratopato@gmail.com>, 2012
+# tscooter <tscooter@hotmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-04-25 01:47+0200\n"
+"PO-Revision-Date: 2013-04-24 16:00+0000\n"
+"Last-Translator: Larso <larso@gmx.com>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/owncloud/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,11 +87,11 @@ msgstr "Poisto epäonnistui"
 
 #: js/calendar.js:243
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
-msgstr ""
+msgstr "ddd d. MMMMta[ yyyy]{ – [ddd d.] MMMMta yyyy}"
 
 #: js/calendar.js:245
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr ""
+msgstr "ddd d. MMMMta[ yyyy] klo HH:mm{ – [ ddd d. MMMMta yyyy] klo HH:mm}"
 
 #: js/calendar.js:597
 msgid "user"
@@ -118,11 +119,11 @@ msgstr "ddd"
 
 #: js/calendar.js:870
 msgid "ddd M/d"
-msgstr "ddd M/d"
+msgstr "ddd d.M."
 
 #: js/calendar.js:871
 msgid "dddd M/d"
-msgstr "dddd M/d"
+msgstr "dddd d.M."
 
 #: js/calendar.js:874
 msgid "MMMM yyyy"
@@ -130,163 +131,163 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:876
 msgid "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
-msgstr "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
+msgstr "d. MMMMta[ yyyy]{ – d. [MMMMta ]yyyy}"
 
 #: js/calendar.js:878
 msgid "dddd, MMM d, yyyy"
-msgstr "dddd, MMM d, yyyy"
+msgstr "dddd, d. MMMMta yyyy"
 
 #: js/l10n.php:45 lib/object.php:558 templates/settings.php:70
 msgid "Sunday"
-msgstr "Sunnuntai"
+msgstr "sunnuntai"
 
 #: js/l10n.php:45 lib/object.php:552 templates/settings.php:69
 msgid "Monday"
-msgstr "Maanantai"
+msgstr "maanantai"
 
 #: js/l10n.php:45 lib/object.php:553
 msgid "Tuesday"
-msgstr "Tiistai"
+msgstr "tiistai"
 
 #: js/l10n.php:45 lib/object.php:554
 msgid "Wednesday"
-msgstr "Keskiviikko"
+msgstr "keskiviikko"
 
 #: js/l10n.php:45 lib/object.php:555
 msgid "Thursday"
-msgstr "Torstai"
+msgstr "torstai"
 
 #: js/l10n.php:45 lib/object.php:556
 msgid "Friday"
-msgstr "Perjantai"
+msgstr "perjantai"
 
 #: js/l10n.php:45 lib/object.php:557
 msgid "Saturday"
-msgstr "Lauantai"
+msgstr "lauantai"
 
 #: js/l10n.php:46
 msgid "Sun."
-msgstr "Su"
+msgstr "su"
 
 #: js/l10n.php:46
 msgid "Mon."
-msgstr "Ma"
+msgstr "ma"
 
 #: js/l10n.php:46
 msgid "Tue."
-msgstr "Ti"
+msgstr "ti"
 
 #: js/l10n.php:46
 msgid "Wed."
-msgstr "Ke"
+msgstr "ke"
 
 #: js/l10n.php:46
 msgid "Thu."
-msgstr "To"
+msgstr "to"
 
 #: js/l10n.php:46
 msgid "Fri."
-msgstr "Pe"
+msgstr "pe"
 
 #: js/l10n.php:46
 msgid "Sat."
-msgstr "La"
+msgstr "la"
 
 #: js/l10n.php:47 lib/object.php:608
 msgid "January"
-msgstr "Tammikuu"
+msgstr "tammikuu"
 
 #: js/l10n.php:47 lib/object.php:609
 msgid "February"
-msgstr "Helmikuu"
+msgstr "helmikuu"
 
 #: js/l10n.php:47 lib/object.php:610
 msgid "March"
-msgstr "Maaliskuu"
+msgstr "maaliskuu"
 
 #: js/l10n.php:47 lib/object.php:611
 msgid "April"
-msgstr "Huhtikuu"
+msgstr "huhtikuu"
 
 #: js/l10n.php:47 lib/object.php:612
 msgid "May"
-msgstr "Toukokuu"
+msgstr "toukokuu"
 
 #: js/l10n.php:47 lib/object.php:613
 msgid "June"
-msgstr "Kesäkuu"
+msgstr "kesäkuu"
 
 #: js/l10n.php:47 lib/object.php:614
 msgid "July"
-msgstr "Heinäkuu"
+msgstr "heinäkuu"
 
 #: js/l10n.php:47 lib/object.php:615
 msgid "August"
-msgstr "Elokuu"
+msgstr "elokuu"
 
 #: js/l10n.php:47 lib/object.php:616
 msgid "September"
-msgstr "Syyskuu"
+msgstr "syyskuu"
 
 #: js/l10n.php:47 lib/object.php:617
 msgid "October"
-msgstr "Lokakuu"
+msgstr "lokakuu"
 
 #: js/l10n.php:47 lib/object.php:618
 msgid "November"
-msgstr "Marraskuu"
+msgstr "marraskuu"
 
 #: js/l10n.php:47 lib/object.php:619
 msgid "December"
-msgstr "Joulukuu"
+msgstr "joulukuu"
 
 #: js/l10n.php:48
 msgid "Jan."
-msgstr "Tammi"
+msgstr "tammi"
 
 #: js/l10n.php:48
 msgid "Feb."
-msgstr "Helmi"
+msgstr "helmi"
 
 #: js/l10n.php:48
 msgid "Mar."
-msgstr "Maalis"
+msgstr "maalis"
 
 #: js/l10n.php:48
 msgid "Apr."
-msgstr "Huhti"
+msgstr "huhti"
 
 #: js/l10n.php:48
 msgid "May."
-msgstr "Touko"
+msgstr "touko"
 
 #: js/l10n.php:48
 msgid "Jun."
-msgstr "Kesä"
+msgstr "kesä"
 
 #: js/l10n.php:48
 msgid "Jul."
-msgstr "Heinä"
+msgstr "heinä"
 
 #: js/l10n.php:48
 msgid "Aug."
-msgstr "Elo"
+msgstr "elo"
 
 #: js/l10n.php:48
 msgid "Sep."
-msgstr "Syys"
+msgstr "syys"
 
 #: js/l10n.php:48
 msgid "Oct."
-msgstr "Loka"
+msgstr "loka"
 
 #: js/l10n.php:48
 msgid "Nov."
-msgstr "Marras"
+msgstr "marras"
 
 #: js/l10n.php:48
 msgid "Dec."
-msgstr "Joulu"
+msgstr "joulu"
 
 #: js/l10n.php:51
 msgid "All day"
@@ -698,7 +699,7 @@ msgstr "Toisto"
 
 #: templates/part.eventform.php:115 templates/part.showevent.php:116
 msgid "Advanced"
-msgstr "Edistynyt"
+msgstr "Lisäasetukset"
 
 #: templates/part.eventform.php:159 templates/part.showevent.php:160
 msgid "Select weekdays"
@@ -731,7 +732,7 @@ msgstr "ja tapahtumien viikko vuodessa."
 
 #: templates/part.eventform.php:222 templates/part.showevent.php:223
 msgid "Interval"
-msgstr "Intervalli"
+msgstr "Aikaväli"
 
 #: templates/part.eventform.php:228 templates/part.showevent.php:229
 msgid "End"
@@ -843,11 +844,11 @@ msgstr "Ajan näyttömuoto"
 
 #: templates/settings.php:57
 msgid "24h"
-msgstr "24 tuntia"
+msgstr "24-tuntinen"
 
 #: templates/settings.php:58
 msgid "12h"
-msgstr "12 tuntia"
+msgstr "12-tuntinen"
 
 #: templates/settings.php:64
 msgid "Start week on"

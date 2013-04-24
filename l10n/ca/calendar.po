@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Gos Groc <gosgroc@gmail.com>, 2013.
-#   <joan@montane.cat>, 2012.
-# Josep Tomàs <jtomas.binsoft@gmail.com>, 2012.
-#   <rcalvoi@yahoo.com>, 2011-2012.
+# gosgroc <gosgroc@gmail.com>, 2013
+# jmontane <joan@montane.cat>, 2012
+# Josep Tomàs <jtomas.binsoft@gmail.com>, 2012
+# rogerc <rcalvoi@yahoo.com>, 2011-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
+"POT-Creation-Date: 2013-04-25 01:47+0200\n"
+"PO-Revision-Date: 2013-04-24 16:00+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/owncloud/language/ca/)\n"
 "MIME-Version: 1.0\n"

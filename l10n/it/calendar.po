@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Andrea Scarpino <andrea@archlinux.org>, 2011.
-#   <cosenal@gmail.com>, 2011.
-#   <formalist@email.it>, 2012.
-# Francesco Apruzzese <cescoap@gmail.com>, 2011.
-# Lorenzo Beltrami <lorenzo.beba@gmail.com>, 2011.
-#   <marco@carnazzo.it>, 2011, 2012.
-#   <paolo.velati@gmail.com>, 2012.
-#   <rb.colombo@gmail.com>, 2011.
-# Vincenzo Reale <vinx.reale@gmail.com>, 2012.
+# Andrea Scarpino <bash.lnx@gmail.com>, 2011
+# zimba12 <cosenal@gmail.com>, 2011
+# formalist <formalist@email.it>, 2012
+# Francesco Apruzzese <cescoap@gmail.com>, 2011
+# Lorenzo Beltrami <lorenzo.beba@gmail.com>, 2011
+# ufic <marco@carnazzo.it>, 2011, 2012
+# polxmod <paolo.velati@gmail.com>, 2012
+# RColombo <rb.colombo@gmail.com>, 2011
+# Vincenzo Reale <vinx.reale@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
+"POT-Creation-Date: 2013-04-25 01:47+0200\n"
+"PO-Revision-Date: 2013-04-24 16:00+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/owncloud/language/it/)\n"
 "MIME-Version: 1.0\n"

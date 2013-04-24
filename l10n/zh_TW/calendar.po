@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Donahue Chuang <soshinwu@gmail.com>, 2012.
-# Eddy Chang <taiwanmambo@gmail.com>, 2012.
-# Ming Yi Wu <mingi.wu@gmail.com>, 2012.
-#   <nfsmwlin@gmail.com>, 2013.
-#   <sofia168@livemail.tw>, 2012.
-#   <sy6614@yahoo.com.hk>, 2012.
-# ywang  <ywang1007@gmail.com>, 2012.
+# Donahue Chuang <soshinwu@gmail.com>, 2012
+# Eddy Chang <taiwanmambo@gmail.com>, 2012
+# Ming Yi Wu <mingi.wu@gmail.com>, 2012
+# pellaeon <nfsmwlin@gmail.com>, 2013
+# sofiasu <sofia168@livemail.tw>, 2012
+# sy6614 <sy6614@yahoo.com.hk>, 2012
+# ywang <ywang1007@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
+"POT-Creation-Date: 2013-04-25 01:47+0200\n"
+"PO-Revision-Date: 2013-04-24 16:00+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/owncloud/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"

@@ -3,23 +3,23 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <cronner@gmail.com>, 2012.
-# Frederik Lassen <frederiklassen@gmail.com>, 2012.
-#   <mikkelbjerglarsen@gmail.com>, 2011.
-# Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2011-2013.
-# Ole Holm Frandsen <froksen@gmail.com>, 2012.
-#   <osos@openeyes.dk>, 2012.
-# Pascal d'Hermilly <pascal@dhermilly.dk>, 2011.
-#   <simon@rosmi.dk>, 2012.
-#   <sr@ybnet.dk>, 2012.
-# Thomas Tanghus <>, 2012.
-# Thomas Tanghus <thomas@tanghus.net>, 2012.
+# cronner <cronner@gmail.com>, 2012
+# Frederik Lassen <frederiklassen@gmail.com>, 2012
+# mikkel_ilu <mikkelbjerglarsen@gmail.com>, 2011
+# Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2011-2013
+# Ole Holm Frandsen <froksen@gmail.com>, 2012
+# osos <osos@openeyes.dk>, 2012
+# Pascal d'Hermilly <pascal@dhermilly.dk>, 2011
+# muunsim <simon@rosmi.dk>, 2012
+# ressel <sr@ybnet.dk>, 2012
+# Thomas Tanghus <thomas@tanghus.net>, 2012
+# Thomas Tanghus <thomas@tanghus.net>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
+"POT-Creation-Date: 2013-04-25 01:47+0200\n"
+"PO-Revision-Date: 2013-04-24 16:00+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/owncloud/language/da/)\n"
 "MIME-Version: 1.0\n"

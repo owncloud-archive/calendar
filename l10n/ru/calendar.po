@@ -3,23 +3,23 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Denis  <reg.transifex.net@demitel.ru>, 2012.
-#   <jekader@gmail.com>, 2011-2012.
-# Mihail Vasiliev <mickvav@gmail.com>, 2012.
-# Nick Remeslennikov <homolibere@gmail.com>, 2012.
-#   <rasperepodvipodvert@gmail.com>, 2012.
-#   <sharov3@gmail.com>, 2013.
-#   <skoptev@ukr.net>, 2012.
-#   <tony.mccourin@gmail.com>, 2011.
-# Victor Bravo <>, 2012.
-#   <victor.dubiniuk@gmail.com>, 2012.
-#   <zaera.alex@gmail.com>, 2012.
+# Denis <reg.transifex.net@demitel.ru>, 2012
+# jekader <jekader@gmail.com>, 2011-2012
+# Mihail Vasiliev <mickvav@gmail.com>, 2012
+# Nick Remeslennikov <homolibere@gmail.com>, 2012
+# rasperepodvipodvert <rasperepodvipodvert@gmail.com>, 2012
+# adol <sharov3@gmail.com>, 2013
+# skoptev <skoptev@ukr.net>, 2012
+# tonymc <tony.mccourin@gmail.com>, 2011
+# Victor Bravo <>, 2012
+# VicDeo <victor.dubiniuk@gmail.com>, 2012
+# zaera <zaera.alex@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
+"POT-Creation-Date: 2013-04-25 01:47+0200\n"
+"PO-Revision-Date: 2013-04-24 16:00+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/owncloud/language/ru/)\n"
 "MIME-Version: 1.0\n"
