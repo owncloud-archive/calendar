@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-25 01:47+0200\n"
-"PO-Revision-Date: 2013-04-24 16:00+0000\n"
+"POT-Creation-Date: 2013-04-26 01:53+0200\n"
+"PO-Revision-Date: 2013-04-25 02:00+0000\n"
 "Last-Translator: Larso <larso@gmx.com>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/owncloud/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
@@ -87,11 +87,11 @@ msgstr "Poisto epäonnistui"
 
 #: js/calendar.js:243
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
-msgstr "ddd d. MMMMta[ yyyy]{ – [ddd d.] MMMMta yyyy}"
+msgstr "ddd d. MMMM'ta'[ yyyy]{ – [ddd d.] MMMM'ta' yyyy}"
 
 #: js/calendar.js:245
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr "ddd d. MMMMta[ yyyy] klo HH:mm{ – [ ddd d. MMMMta yyyy] klo HH:mm}"
+msgstr "ddd d. MMMM'ta'[ yyyy] klo HH:mm{ – [ ddd d. MMMM'ta' yyyy] klo HH:mm}"
 
 #: js/calendar.js:597
 msgid "user"
@@ -131,11 +131,11 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:876
 msgid "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
-msgstr "d. MMMMta[ yyyy]{ – d. [MMMMta ]yyyy}"
+msgstr "d. MMMM'ta'[ yyyy]{ – d. [MMMM'ta' ]yyyy}"
 
 #: js/calendar.js:878
 msgid "dddd, MMM d, yyyy"
-msgstr "dddd, d. MMMMta yyyy"
+msgstr "dddd, d. MMMM'ta' yyyy"
 
 #: js/l10n.php:45 lib/object.php:558 templates/settings.php:70
 msgid "Sunday"
@@ -651,7 +651,7 @@ msgstr "Luokka"
 
 #: templates/part.eventform.php:26
 msgid "Separate categories with commas"
-msgstr "Erota luokat pilkuilla"
+msgstr "Erota luokat pilkuin"
 
 #: templates/part.eventform.php:27
 msgid "Edit categories"
