@@ -1,4 +1,5 @@
 <?php $TRANSLATIONS = array(
 "Personal" => "यक्तिगत",
-"Settings" => "सेटिंग्स"
+"Settings" => "सेटिंग्स",
+"Advanced" => "उन्नत"
 );

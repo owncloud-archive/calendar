@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-17 02:15+0200\n"
-"PO-Revision-Date: 2013-04-17 00:15+0000\n"
+"POT-Creation-Date: 2013-04-27 01:47+0200\n"
+"PO-Revision-Date: 2013-04-26 16:21+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Urdu (Pakistan) (http://www.transifex.com/projects/p/owncloud/language/ur_PK/)\n"
 "MIME-Version: 1.0\n"
@@ -190,51 +190,51 @@ msgstr ""
 
 #: js/l10n.php:47 lib/object.php:608
 msgid "January"
-msgstr ""
+msgstr "جنوری"
 
 #: js/l10n.php:47 lib/object.php:609
 msgid "February"
-msgstr ""
+msgstr "فرورئ"
 
 #: js/l10n.php:47 lib/object.php:610
 msgid "March"
-msgstr ""
+msgstr "مارچ"
 
 #: js/l10n.php:47 lib/object.php:611
 msgid "April"
-msgstr ""
+msgstr "اپریل"
 
 #: js/l10n.php:47 lib/object.php:612
 msgid "May"
-msgstr ""
+msgstr "مئی"
 
 #: js/l10n.php:47 lib/object.php:613
 msgid "June"
-msgstr ""
+msgstr "جون"
 
 #: js/l10n.php:47 lib/object.php:614
 msgid "July"
-msgstr ""
+msgstr "جولائی"
 
 #: js/l10n.php:47 lib/object.php:615
 msgid "August"
-msgstr ""
+msgstr "اگست"
 
 #: js/l10n.php:47 lib/object.php:616
 msgid "September"
-msgstr ""
+msgstr "ستمبر"
 
 #: js/l10n.php:47 lib/object.php:617
 msgid "October"
-msgstr ""
+msgstr "اکتوبر"
 
 #: js/l10n.php:47 lib/object.php:618
 msgid "November"
-msgstr ""
+msgstr "نومبر"
 
 #: js/l10n.php:47 lib/object.php:619
 msgid "December"
-msgstr ""
+msgstr "دسمبر"
 
 #: js/l10n.php:48
 msgid "Jan."
@@ -789,7 +789,7 @@ msgstr ""
 
 #: templates/part.share.php:47 templates/part.share.php:73
 msgid "Unshare"
-msgstr ""
+msgstr "شئیرنگ ختم کریں"
 
 #: templates/part.share.php:53
 msgid "Nobody"

@@ -95,6 +95,7 @@
 "Description" => "Opis",
 "Description of the Event" => "Opis događaja",
 "Repeat" => "Ponavljaj",
+"Advanced" => "Napredno",
 "Create a new event" => "Napravi novi događaj",
 "Timezone" => "Vremenska zona"
 );

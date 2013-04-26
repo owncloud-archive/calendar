@@ -1,7 +1,20 @@
 <?php $TRANSLATIONS = array(
+"January" => "جنوری",
+"February" => "فرورئ",
+"March" => "مارچ",
+"April" => "اپریل",
+"May" => "مئی",
+"June" => "جون",
+"July" => "جولائی",
+"August" => "اگست",
+"September" => "ستمبر",
+"October" => "اکتوبر",
+"November" => "نومبر",
+"December" => "دسمبر",
 "Personal" => "ذاتی",
 "Settings" => "سیٹینگز",
 "Cancel" => "منسوخ کریں",
 "Edit categories" => "زمرہ جات کی تدوین کریں",
-"Advanced" => "ایڈوانسڈ"
+"Advanced" => "ایڈوانسڈ",
+"Unshare" => "شئیرنگ ختم کریں"
 );

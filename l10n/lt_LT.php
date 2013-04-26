@@ -125,6 +125,7 @@
 "Description" => "Aprašymas",
 "Description of the Event" => "Įvykio aprašymas",
 "Repeat" => "Kartoti",
+"Advanced" => "Išplėstiniai",
 "Select weekdays" => "Pasirinkite savaitės dienas",
 "Select days" => "Pasirinkite dienas",
 "Select months" => "Pasirinkite mėnesius",
