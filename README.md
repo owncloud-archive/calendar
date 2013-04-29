@@ -13,6 +13,10 @@ Developer setup info:
 Just clone this repo into your apps directory.
 
 ### Rework branch:
+
+##### The rework branch is still in development. Do not use it in a productive environment.
+
+
 The calendar rework depends on the appframework.
 Get the latest version of the appframework:
 ```bash
