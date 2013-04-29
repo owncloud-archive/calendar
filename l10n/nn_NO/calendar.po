@@ -5,13 +5,14 @@
 # Translators:
 # unhammer <unhammer+dill@mm.st>, 2011
 # olealX <post@olealx.net>, 2012
+# unhammer <unhammer+dill@mm.st>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-27 01:47+0200\n"
-"PO-Revision-Date: 2013-04-26 16:21+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-04-30 01:47+0200\n"
+"PO-Revision-Date: 2013-04-29 18:00+0000\n"
+"Last-Translator: unhammer <unhammer+dill@mm.st>\n"
 "Language-Team: Norwegian Nynorsk (Norway) (http://www.transifex.com/projects/p/owncloud/language/nn_NO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,19 +22,19 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr ""
+msgstr "Ikkje alle kalendrar er fullstendig mellomlagra"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr ""
+msgstr "Alt ser ut til å vera fullstendig mellomlagra"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr ""
+msgstr "Fann ingen kalendrar."
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr ""
+msgstr "Fann inga hendingar."
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
@@ -47,11 +48,11 @@ msgstr ""
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr ""
+msgstr "Anten hadde fila inga hendingar, eller så var alle hendingane allereie i kalenderen din."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:68
 msgid "events has been saved in the new calendar"
-msgstr ""
+msgstr "hendingane er lagra i den nye kalenderen"
 
 #: ajax/import/import.php:57
 msgid "Import failed"
@@ -100,7 +101,7 @@ msgstr ""
 
 #: js/calendar.js:598 templates/part.share.php:41 templates/part.share.php:67
 msgid "Editable"
-msgstr ""
+msgstr "Redigerbar"
 
 #: js/calendar.js:599 templates/part.share.php:43 templates/part.share.php:69
 msgid "Shareable"
@@ -393,7 +394,7 @@ msgstr "av"
 
 #: lib/app.php:467
 msgid "unnamed"
-msgstr ""
+msgstr "utan namn"
 
 #: lib/calendar.php:178 lib/calendar.php:211
 msgid "You do not have the permissions to update this calendar."
@@ -553,7 +554,7 @@ msgstr "Innstillingar"
 
 #: templates/part.choosecalendar.php:2
 msgid "Your calendars"
-msgstr ""
+msgstr "Dine kalendrar"
 
 #: templates/part.choosecalendar.php:28
 #: templates/part.choosecalendar.rowfields.php:24
@@ -562,7 +563,7 @@ msgstr "CalDav-lenkje"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
-msgstr ""
+msgstr "Del kalender"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
@@ -620,23 +621,23 @@ msgstr "Eksporter"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
-msgstr ""
+msgstr "Hendingsinfo"
 
 #: templates/part.eventform.php:6 templates/part.showevent.php:4
 msgid "Repeating"
-msgstr ""
+msgstr "Gjentek"
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
-msgstr ""
+msgstr "Alarm"
 
 #: templates/part.eventform.php:8 templates/part.showevent.php:6
 msgid "Attendees"
-msgstr ""
+msgstr "Deltakarar"
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr ""
+msgstr "Del"
 
 #: templates/part.eventform.php:18
 msgid "Title of the Event"
@@ -648,11 +649,11 @@ msgstr "Kategori"
 
 #: templates/part.eventform.php:26
 msgid "Separate categories with commas"
-msgstr ""
+msgstr "Skil kategoriar med komma"
 
 #: templates/part.eventform.php:27
 msgid "Edit categories"
-msgstr ""
+msgstr "Endra kategoriar"
 
 #: templates/part.eventform.php:47 templates/part.showevent.php:50
 msgid "Access Class"
@@ -791,7 +792,7 @@ msgstr ""
 
 #: templates/part.share.php:47 templates/part.share.php:73
 msgid "Unshare"
-msgstr ""
+msgstr "Udel"
 
 #: templates/part.share.php:53
 msgid "Nobody"
@@ -809,19 +810,19 @@ msgstr ""
 
 #: templates/part.showevent.php:1
 msgid "View an event"
-msgstr ""
+msgstr "Syn ei hending"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
-msgstr ""
+msgstr "Ingen kategoriar valt"
 
 #: templates/part.showevent.php:41
 msgid "of"
-msgstr ""
+msgstr "av"
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
-msgstr ""
+msgstr "på"
 
 #: templates/settings.php:10
 msgid "General"
