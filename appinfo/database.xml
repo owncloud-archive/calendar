@@ -14,7 +14,7 @@
 				<notnull>true</notnull>
 				<autoincrement>1</autoincrement>
 				<unsigned>true</unsigned>
-				<length>11</length>
+				<length>4</length>
 			</field>
 			<field>
 				<name>backend</name>
@@ -54,7 +54,7 @@
 				<notnull>true</notnull>
 				<autoincrement>1</autoincrement>
 				<unsigned>true</unsigned>
-				<length>11</length>
+				<length>4</length>
 			</field>
 			<field>
 				<name>userid</name>
@@ -143,7 +143,7 @@
 				<notnull>true</notnull>
 				<autoincrement>1</autoincrement>
 				<unsigned>true</unsigned>
-				<length>11</length>
+				<length>4</length>
 			</field>
 			<field>
 				<name>userid</name>
