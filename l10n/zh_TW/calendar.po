@@ -7,6 +7,7 @@
 # Eddy Chang <taiwanmambo@gmail.com>, 2012
 # Ming Yi Wu <mingi.wu@gmail.com>, 2012
 # pellaeon <nfsmwlin@gmail.com>, 2013
+# pellaeon <nfsmwlin@gmail.com>, 2013
 # sofiasu <sofia168@livemail.tw>, 2012
 # sy6614 <sy6614@yahoo.com.hk>, 2012
 # ywang <ywang1007@gmail.com>, 2012
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-27 01:47+0200\n"
-"PO-Revision-Date: 2013-04-26 16:21+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-05-01 01:47+0200\n"
+"PO-Revision-Date: 2013-04-30 03:00+0000\n"
+"Last-Translator: pellaeon <nfsmwlin@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/owncloud/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,37 +27,37 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "並非所有的日曆都完整 cached"
+msgstr "並非所有的日曆都有完整的快取"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr "似乎所有事都已完整 cached"
+msgstr "所有東西應該都有快取了"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr "沒有找到行事曆"
+msgstr "沒有日曆"
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr "沒有找到活動"
+msgstr "沒有活動"
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
-msgstr "錯誤日曆"
+msgstr "錯誤的日曆"
 
 #: ajax/event/edit.form.php:221 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
-msgstr "您沒有權限來編輯此事件."
+msgstr "您沒有權限編輯這個活動。"
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:65
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr "檔案中包含的所有事件或無事件都已存到您的日曆"
+msgstr "檔案中沒有包含任何活動，或是所有的活動都已經儲存至您的日曆中了。"
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:68
 msgid "events has been saved in the new calendar"
-msgstr "事件已存到新日曆"
+msgstr "活動已存到新日曆"
 
 #: ajax/import/import.php:57
 msgid "Import failed"
@@ -64,7 +65,7 @@ msgstr "匯入失敗"
 
 #: ajax/import/import.php:70
 msgid "events has been saved in your calendar"
-msgstr "事件已存到您的日曆"
+msgstr "活動已存到您的日曆"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -301,7 +302,7 @@ msgstr "新日曆"
 
 #: js/l10n.php:53
 msgid "Missing or invalid fields"
-msgstr "欄位忘了填寫或無效的資料"
+msgstr "欄位沒有填寫或無效的資料"
 
 #: js/l10n.php:54 templates/part.eventform.php:16
 #: templates/part.showevent.php:11
@@ -314,7 +315,7 @@ msgstr "自日期"
 
 #: js/l10n.php:57
 msgid "From Time"
-msgstr "至時間"
+msgstr "自時間"
 
 #: js/l10n.php:58
 msgid "To Date"
@@ -326,7 +327,7 @@ msgstr "至時間"
 
 #: js/l10n.php:60
 msgid "The event ends before it starts"
-msgstr "事件的結束在開始之前"
+msgstr "活動的結束在開始之前"
 
 #: js/l10n.php:61
 msgid "There was a database fail"
@@ -398,27 +399,27 @@ msgstr "由"
 
 #: lib/app.php:467
 msgid "unnamed"
-msgstr "無名稱的"
+msgstr "未命名"
 
 #: lib/calendar.php:178 lib/calendar.php:211
 msgid "You do not have the permissions to update this calendar."
-msgstr "您沒有權限來更新此日曆."
+msgstr "您沒有權限更新這個日曆。"
 
 #: lib/calendar.php:246
 msgid "You do not have the permissions to delete this calendar."
-msgstr "您沒有權限來刪除此日曆."
+msgstr "您沒有權限刪除這個日曆。"
 
 #: lib/calendar.php:280
 msgid "You do not have the permissions to add to this calendar."
-msgstr "您沒有權限來新增此日曆."
+msgstr "您沒有權限在這個日曆建立活動。"
 
 #: lib/object.php:122 lib/object.php:162 lib/object.php:319
 msgid "You do not have the permissions to add events to this calendar."
-msgstr "您沒有權限新增事件至此日曆."
+msgstr "您沒有權限在這個日曆建立活動。"
 
 #: lib/object.php:267 lib/object.php:299
 msgid "You do not have the permissions to delete this event."
-msgstr "您沒有權限來刪除此事件."
+msgstr "您沒有權限刪除這個活動。"
 
 #: lib/object.php:484
 msgid "Busy"
@@ -450,11 +451,11 @@ msgstr "每週"
 
 #: lib/object.php:516
 msgid "Every Weekday"
-msgstr "每週末"
+msgstr "每週一至週五"
 
 #: lib/object.php:517
 msgid "Bi-Weekly"
-msgstr "每雙週"
+msgstr "每隔一週"
 
 #: lib/object.php:518
 msgid "Monthly"
@@ -466,7 +467,7 @@ msgstr "每年"
 
 #: lib/object.php:529
 msgid "never"
-msgstr "絕不"
+msgstr "永不"
 
 #: lib/object.php:530
 msgid "by occurrences"
@@ -514,7 +515,7 @@ msgstr "最後"
 
 #: lib/object.php:629
 msgid "by events date"
-msgstr "由事件日期"
+msgstr "由活動日期"
 
 #: lib/object.php:630
 msgid "by yearday(s)"
@@ -550,7 +551,7 @@ msgstr "清單"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
-msgstr "今日"
+msgstr "今天"
 
 #: templates/calendar.php:13
 msgid "Settings"
@@ -558,16 +559,16 @@ msgstr "設定"
 
 #: templates/part.choosecalendar.php:2
 msgid "Your calendars"
-msgstr "你的行事曆"
+msgstr "您的日曆"
 
 #: templates/part.choosecalendar.php:28
 #: templates/part.choosecalendar.rowfields.php:24
 msgid "CalDav Link"
-msgstr "CalDav 聯結"
+msgstr "CalDav 連結"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
-msgstr "分享行事曆"
+msgstr "分享日曆"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
@@ -609,7 +610,7 @@ msgstr "儲存"
 #: templates/part.editcalendar.php:42 templates/part.editevent.php:8
 #: templates/part.newevent.php:6
 msgid "Submit"
-msgstr "提出"
+msgstr "送出"
 
 #: templates/part.editcalendar.php:43
 msgid "Cancel"
@@ -617,7 +618,7 @@ msgstr "取消"
 
 #: templates/part.editevent.php:1
 msgid "Edit an event"
-msgstr "編輯事件"
+msgstr "編輯活動"
 
 #: templates/part.editevent.php:10
 msgid "Export"
@@ -645,7 +646,7 @@ msgstr "分享"
 
 #: templates/part.eventform.php:18
 msgid "Title of the Event"
-msgstr "事件標題"
+msgstr "活動標題"
 
 #: templates/part.eventform.php:24 templates/part.showevent.php:19
 msgid "Category"
@@ -665,7 +666,7 @@ msgstr "存取群組"
 
 #: templates/part.eventform.php:64 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr "全天事件"
+msgstr "全天活動"
 
 #: templates/part.eventform.php:68 templates/part.showevent.php:70
 msgid "From"
@@ -685,7 +686,7 @@ msgstr "位置"
 
 #: templates/part.eventform.php:91
 msgid "Location of the Event"
-msgstr "事件位置"
+msgstr "活動地點"
 
 #: templates/part.eventform.php:97 templates/part.showevent.php:99
 msgid "Description"
@@ -693,7 +694,7 @@ msgstr "描述"
 
 #: templates/part.eventform.php:99
 msgid "Description of the Event"
-msgstr "事件描述"
+msgstr "活動描述"
 
 #: templates/part.eventform.php:108 templates/part.showevent.php:109
 msgid "Repeat"
@@ -762,17 +763,17 @@ msgstr "新日曆名稱"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr "請取個可行的名稱!"
+msgstr "請取一個尚未被使用的名稱！"
 
 #: templates/part.import.php:45
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr "已存在一個具有相同名稱的日曆。如果您依然要繼續，這些日曆將會合併成一個."
+msgstr "已存在一個具有相同名稱的日曆。如果您依然要繼續，這些日曆將會合併成一個。"
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr "把選擇中的日曆所有的活動移除"
+msgstr "刪除選取的日曆中所有的活動"
 
 #: templates/part.import.php:50
 msgid "Import"
@@ -780,15 +781,15 @@ msgstr "匯入"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
-msgstr "關閉對話"
+msgstr "關閉對話框"
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
-msgstr "建立一個新事件"
+msgstr "建立新活動"
 
 #: templates/part.share.php:27
 msgid "Share with:"
-msgstr "分享給:"
+msgstr "分享給："
 
 #: templates/part.share.php:30
 msgid "Shared with"
@@ -800,7 +801,7 @@ msgstr "取消共享"
 
 #: templates/part.share.php:53
 msgid "Nobody"
-msgstr "無"
+msgstr "沒有人"
 
 #: templates/part.share.php:56
 msgid "Shared via calendar"
@@ -810,11 +811,11 @@ msgstr "透過日曆分享"
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."
-msgstr "注意: 透過日曆分享事件的動作將會影響整個分享日曆"
+msgstr "注意：對已分享的活動的動作將會影響整個日曆的分享狀態。"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
-msgstr "觀看一個活動"
+msgstr "檢視活動"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
@@ -822,7 +823,7 @@ msgstr "沒有選擇分類"
 
 #: templates/part.showevent.php:41
 msgid "of"
-msgstr "於"
+msgstr "的"
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
@@ -858,11 +859,11 @@ msgstr "一週起始於"
 
 #: templates/settings.php:76
 msgid "Cache"
-msgstr "Cache"
+msgstr "快取"
 
 #: templates/settings.php:80
 msgid "Clear cache for repeating events"
-msgstr "清除重複事件的 cache"
+msgstr "清除重覆事件的快取"
 
 #: templates/settings.php:85
 msgid "URLs"
@@ -870,7 +871,7 @@ msgstr "URLs"
 
 #: templates/settings.php:87
 msgid "Calendar CalDAV syncing addresses"
-msgstr "CalDAV 的日曆同步地址"
+msgstr "日曆的 CalDAV 同步地址"
 
 #: templates/settings.php:87
 msgid "more info"
@@ -886,4 +887,4 @@ msgstr "iOS/OS X"
 
 #: templates/settings.php:93
 msgid "Read only iCalendar link(s)"
-msgstr "唯讀的 iCalendar 連結(們)"
+msgstr "唯讀的 iCalendar 連結"
