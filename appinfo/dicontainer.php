@@ -25,12 +25,12 @@ class DIContainer extends \OCA\AppFramework\DependencyInjection\DIContainer {
 		
 		//controller for calendars
 		$this['CalendarController'] = $this->share(function($c){
-			return new Controller\Calendar($c['API'], $c['Request'], $c['CalendarMapper'], $c['BackendController'], $c['ObjectController']);
+			return new Controller\Calendar($c['API'], $c['Request'], $c['CachedCalendarMapper'], $c['BackendController'], $c['ObjectController']);
 		});
 		
 		//controller for objects like events, journals, todos
 		$this['ObjectController'] = $this->share(function($c){
-			return new Controller\Object($c['API'], $c['Request'], $c['ObjectMapper'], $c['BackendController'], $c['CalendarController']);
+			return new Controller\Object($c['API'], $c['Request'], $c['CachedObjectMapper'], $c['BackendController'], $c['CalendarController']);
 		});
 		
 		//controller for settings
@@ -40,26 +40,25 @@ class DIContainer extends \OCA\AppFramework\DependencyInjection\DIContainer {
 		
 		//controller for view
 		$this['ViewController'] = $this->share(function($c){
-			return new Controller\View($c['API'], $c['Request']);
+			return new Controller\View($c['API'], $c['Request'], $c['BackendController']);
 		});
 
 		/**
 		 * MAPPERS
 		 */
-		//mapper for calendars
+		//mapper for backends
 		$this['BackendMapper'] = $this->share(function($c){
 			return new Mapper\Backend($c['API']);
 		});
 				
-		//mapper for calendars
-		$this['CalendarMapper'] = $this->share(function($c){
-			return new Mapper\Calendar($c['API']);
+		//mapper for cached calendars
+		$this['CachedCalendarMapper'] = $this->share(function($c){
+			return new Mapper\CachedCalendar($c['API']);
 		});
 		
-		//mapper for objects like events, journals, todos
-		$this['ObjectMapper'] = $this->share(function($c){
-			return new Mapper\Object($c['API']);
+		//mapper for cached objects like events, journals, todos
+		$this['CachedObjectMapper'] = $this->share(function($c){
+			return new Mapper\CachedObject($c['API']);
 		});
-
 	}
 }
