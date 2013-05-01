@@ -22,9 +22,9 @@ class Backend extends Mapper {
 	/**
 	 * @param API $api: Instance of the API abstraction layer
 	 */
-	public function __construct($api){
-		parent::__construct($api);
-		$this->tableName = '*PREFIX*calendar_backends';
+	public function __construct($api, $tablename = 'calendar_backends'){
+		parent::__construct($api, $tablename);
+		$this->tableName = '*PREFIX*' . $tablename;
 	}
 
 
@@ -44,7 +44,8 @@ class Backend extends Mapper {
 	 * @return array containing all items
 	 */
 	public function findAll(){
-		$result = $this->findAllQuery($this->tableName);
+		$sql = 'SELECT * FROM `'. $this->tableName . '`';
+		$result = $this->execute($sql, array());
 
 		$entityList = array();
 		while($row = $result->fetchRow()){
@@ -61,7 +62,7 @@ class Backend extends Mapper {
 	 * @return array containing all items where enabled is ?
 	 */
 	public function findWhereEnabledIs($isenabled){
-		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `visibility` = ?';
+		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `enabled` = ?';
 		$result = $this->execute($sql, array($isenabled));
 
 		$entityList = array();
@@ -69,7 +70,6 @@ class Backend extends Mapper {
 			$entity = new Item($row);
 			array_push($entityList, $entity);
 		}
-
 		return $entityList;
 	}
 
@@ -99,7 +99,7 @@ class Backend extends Mapper {
 	 * Updates an item
 	 * @param Item $item: the item to be updated
 	 */
-	public function update($item){
+	/*public function update($item){
 		$sql = 'UPDATE `'. $this->tableName . '` SET
 				`backend` = ?,
 				`classname` = ?,
@@ -116,16 +116,16 @@ class Backend extends Mapper {
 		);
 
 		$this->execute($sql, $params);
-	}
+	}*/
 
 
 	/**
 	 * Deletes an item
 	 * @param int $id: the id of the item
 	 */
-	public function delete($id){
+	/*public function delete($id){
 		$this->deleteQuery($this->tableName, $id);
-	}
+	}*/
 
 
 }
