@@ -514,7 +514,7 @@ class OC_Calendar_App{
         */
        public static function sendEmails($eventid, $location, $description, $dtstart, $dtend) {
 
-           $user = OC_User::getUser();
+           $user =  \OCP\User::getUser();
            $eventsharees = array();
            $eventShareesNames = array();
            $emails = array();
@@ -535,21 +535,19 @@ class OC_Calendar_App{
            }
            $useremail = OC_Calendar_Calendar::getUsersEmails($user);
            foreach ($emails as $email) {
-               $subject = "Calendar Event Shared..!!";
-               $headers = "MIME-Version: 1.0\r\n";
+               $subject = 'Calendar Event Shared';
+               
+               $headers = 'MIME-Version: 1.0\r\n';
+               $headers .= 'Content-Type: text/html; charset=utf-8\r\n';
+               $headers .= 'From:' . $useremail;
 
-               $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-               $headers .= "From:" . $useremail;
-
-               $message = '<html><body>';
-   //$message .= '<img src="http://css-tricks.com/examples/WebsiteChangeRequestForm/images/wcrf-header.png" alt="Website Change Request" />';
+               $message  = '<html><body>';
                $message .= '<table style="border:1px solid black;" cellpadding="10">';
-               $message .= "<tr style='background: #eee;'><td colspan='2'><strong>" . $user . "</strong><strong> has shared with you an event</strong></td></tr>";
-               $message .= "<tr><td><strong>Location:</strong> </td><td>" . $location . "</td></tr>";
-               $message .= "<tr><td><strong>Description:</strong> </td><td>" . $description . "</td></tr>";
-               $message .= "</table>";
-               $message .= "</body></html>";
+               $message .= "<tr style='background: #eee;'><td colspan='2'><strong>" . $user . '</strong><strong> has shared with you an event</strong></td></tr>';
+               $message .= '<tr><td><strong>Location:</strong> </td><td>' . $location . '</td></tr>';
+               $message .= '<tr><td><strong>Description:</strong> </td><td>' . $description . '</td></tr>';
+               $message .= '</table>';
+               $message .= '</body></html>';
 
                OC_Mail::send($email, "User", $subject, $message, $useremail, $user, $html = 1, $altbody = '', $ccaddress = '', $ccname = '', $bcc = '');
            }
