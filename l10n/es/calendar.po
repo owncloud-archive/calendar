@@ -5,6 +5,7 @@
 # Translators:
 # Agustin Ferrario <agustin.ferrario@hotmail.com.ar>, 2012
 # telco2011 <davidlopez.david@gmail.com>, 2012
+# ggam <ggam@brainleakage.com>, 2013
 # Javier Llorente <javier@opensuse.org>, 2012
 # juanman <juanma@kde.org.ar>, 2011-2012
 # oSiNaReF <>, 2012
@@ -13,14 +14,14 @@
 # Raul Fernandez Garcia <raulfg3@gmail.com>, 2012
 # Rubén Trujillo <rubentrf@gmail.com>, 2012
 # xsergiolpx <sergioballesterossolanas@gmail.com>, 2011, 2012
-# scambra <sergio@entrecables.com>, 2012
+# scambra <sergio@programatica.es>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-04-27 01:47+0200\n"
-"PO-Revision-Date: 2013-04-26 16:21+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-05-03 01:48+0200\n"
+"PO-Revision-Date: 2013-05-02 11:20+0000\n"
+"Last-Translator: ggam <ggam@brainleakage.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/owncloud/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +69,7 @@ msgstr "Fallo en la importación"
 
 #: ajax/import/import.php:70
 msgid "events has been saved in your calendar"
-msgstr "eventos se han guardado en tu calendario"
+msgstr "los eventos se han guardado en tu calendario"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -330,7 +331,7 @@ msgstr "Hasta la hora"
 
 #: js/l10n.php:60
 msgid "The event ends before it starts"
-msgstr "El evento termina antes de que comience"
+msgstr "El evento termina antes de comenzar"
 
 #: js/l10n.php:61
 msgid "There was a database fail"
@@ -454,7 +455,7 @@ msgstr "Semanalmente"
 
 #: lib/object.php:516
 msgid "Every Weekday"
-msgstr "Días de semana laboral"
+msgstr "Todos los días laborables"
 
 #: lib/object.php:517
 msgid "Bi-Weekly"
@@ -669,7 +670,7 @@ msgstr "Clase de acceso"
 
 #: templates/part.eventform.php:64 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr "Todo el día"
+msgstr "Evento de día completo"
 
 #: templates/part.eventform.php:68 templates/part.showevent.php:70
 msgid "From"
@@ -758,7 +759,7 @@ msgstr "Importar un archivo de calendario"
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr "Por favor, escoge un calendario"
+msgstr "Por favor, seleccione un calendario"
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
@@ -766,13 +767,13 @@ msgstr "Nombre del nuevo calendario"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr "¡Elige un nombre disponible!"
+msgstr "¡Elija un nombre disponible!"
 
 #: templates/part.import.php:45
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr "Ya existe un calendario con este nombre. Si continúas, se combinarán los calendarios."
+msgstr "Ya existe un calendario con este nombre. Si continúa, se combinarán los calendarios."
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
@@ -796,7 +797,7 @@ msgstr "Compartir con:"
 
 #: templates/part.share.php:30
 msgid "Shared with"
-msgstr "Compartir con"
+msgstr "Compartido con"
 
 #: templates/part.share.php:47 templates/part.share.php:73
 msgid "Unshare"
@@ -808,7 +809,7 @@ msgstr "Nadie"
 
 #: templates/part.share.php:56
 msgid "Shared via calendar"
-msgstr "Compartir via calendario"
+msgstr "Compartido vía calendario"
 
 #: templates/part.share.php:79
 msgid ""
