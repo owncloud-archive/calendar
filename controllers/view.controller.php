@@ -16,9 +16,8 @@ class View extends \OCA\AppFramework\Controller\Controller {
 	 * @param API $api: an api wrapper instance
 	 * @param ItemMapper $itemMapper: an itemwrapper instance
 	 */
-	public function __construct($api, $request, $itemMapper, $backend){
+	public function __construct($api, $request, $backend){
 		parent::__construct($api, $request);
-		$this->itemMapper = $itemMapper;
 		$this->backend = $backend;
 	}
 
@@ -46,10 +45,11 @@ class View extends \OCA\AppFramework\Controller\Controller {
 	 */
 	public function index(){
 		// thirdparty javscripts
-		$this->api->add3rdPartyScript('backbone-min');
-		$this->api->add3rdPartyScript('fullcalendar-min');
-		$this->api->add3rdPartyScript('timepicker-min');
-		$this->api->add3rdPartyScript('tipsy-min');
+		$this->api->add3rdPartyScript('underscore/underscore');
+		$this->api->add3rdPartyScript('backbone/backbone');
+		//$this->api->add3rdPartyScript('fullCalendarPro/fcp');
+		//$this->api->add3rdPartyScript('timepicker-min');
+		//$this->api->add3rdPartyScript('tipsy-min');
 		
 		// thirdpary stylesheets
 		$this->api->add3rdPartyStyle('fullcalendar');
@@ -57,13 +57,10 @@ class View extends \OCA\AppFramework\Controller\Controller {
 		$this->api->add3rdPartyStyle('tipsy.mod');
 		
 		// calendar javascripts
-		$this->api->addScript('app');
-		$this->api->addScript('calendar');
 		$this->api->addScript('calendarlist');
-		
-		$this->api->addScript('custom views/basic2Weeks');
-		$this->api->addScript('custom views/basic4Weeks');
-		$this->api->addScript('custom views/listview');
+		$this->api->addScript('calendar');
+		$this->api->addScript('event');
+		$this->api->addScript('settings');
 		
 		// calendar stylesheets
 		$this->api->addStyle('animations');

@@ -7,7 +7,9 @@
  */
 namespace OCA\Calendar\Calendar;
 
-class Item {
+use \OCA\AppFramework\Db\Entity;
+
+class Item extends Entity{
 
 	private $id;
 	private $userid;
@@ -24,22 +26,8 @@ class Item {
 
 	public function __construct($fromRow=null){
 		if($fromRow){
-			$this->fromRow($fromRow);		}
-	}
-
-	public function fromRow($row){
-		$this->id = $row['id'];
-		$this->userid = $row['userid'];
-		$this->backend = $row['backend'];
-		$this->uri = $row['uri'];
-		$this->displayname = $row['displayname'];
-		$this->components = $row['components'];
-		$this->ctag = $row['ctag'];
-		$this->timezone = $row['timezone'];
-		$this->color = $row['color'];
-		$this->order = $row['order'];
-		$this->enabled = $row['enabled'];
-		$this->writeable = $row['writeable'];
+			$this->fromRow($fromRow);
+		}
 	}
 
 

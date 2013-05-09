@@ -5,14 +5,21 @@
  * See the COPYING-README file.
  */
 /* controls Bar */
-#views{
+#views, #datecontrol{
 	font-size: 12px;
 }
 
-<<<<<<< HEAD
 .view{
-	width: 7.75em;
-	margin: 0.25em;
+	width: 115px;
+	margin: 4px;
+	text-overflow: ellipsis;
+}
+
+.datecontrol{
+	width: 75px;
+	margin: 4px;
+	margin-right: 0;
+	text-overflow: ellipsis;
 }
 
 .view-select{
@@ -28,18 +35,6 @@
 }
 
 #view { float: left; font-size: 12px; height: 100%;}
-#datecontrol {text-align: center;}
-#datecontrol_left{font-size: 12px;}
-#datecontrol_right{font-size: 12px;}
-#datecontrol_date_label {margin: 0; padding: 0; font-size: 12px;}
-
-#datecontrols{
-	text-align: center;
-}
-
-#backward{
-	
-}
 
 #current_date{
 	border: 0;
@@ -48,16 +43,12 @@
 	width: auto;
 }
 
-#forward{
-	margin-right: 32em;
-}
-
 /* right calendar bar */
 #calendarsidebar{
-	padding-top: 0.5em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
+	margin: 0;
+	padding: 0;
 	width: 16em;
+	height: 100%;
 	background: #EEE;
 	float: left;
 	border-left: 1px #CCC solid;
@@ -85,7 +76,7 @@ div.ui-datepicker{
 }
 
 #selecteddate{
-	width: 11.1em;
+	width: 255px;
 	height: 1.5em;
 	-webkit-box-align: center;
 	font-size: 1.5em;
@@ -154,50 +145,6 @@ button.category{margin:0 3px;}
 .sharedby li .shareactions { float: right; }
 .sharedby li > .shareactions > * { display: none; }
 .sharedby li:hover > .shareactions > * { display: inline-block; }
-
-.fc-list-table
-{
-    margin: 10px;
-    border-style: hidden;
-    border-width: 10px;
-    padding: 10px;
-    vertical-align: top;
-    width: 100%;
-}
-.fc-list-table tr:hover
-{
-    color: #0000FF;
-    background-color: #CCFFCC;
-}
-
-
-.fc-list-date
-{
-    margin: 16px;
-    white-space: nowrap;
-    text-align: left;
-    width: 100%;
-    background-color: #808080;
-    color: #FFFFFF;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.fc-list-time
-{
-    text-align: center;
-    white-space: nowrap;
-    width: 1%;
-}
-
-.fc-list-event
-{
-     text-align: left;
-}
-
-.fc-list-event .fc-event-title
-{
-     cursor: pointer;
-}
 .tipsy-event .tipsy-inner{
 background-color:#0098E4;
 border:2px solid #1d2d44;
@@ -227,7 +174,6 @@ line-height:1.2;
 margin-bottom:4px;
 }
 
-<<<<<<< HEAD
 #addEvent{
 	font-weight: bold;
 }
@@ -244,9 +190,6 @@ margin-bottom:4px;
 	color: #ffffff;
 }
 
-#datecontrol{
-	margin-right: 12em;
-}
 
 .addCalendarButton{
 	font-weight: normal;
@@ -285,6 +228,8 @@ margin-bottom:4px;
 }
 
 #calendarsidebar{
+	
+}
 	
 #fullcalendar{
 	overflow: auto;

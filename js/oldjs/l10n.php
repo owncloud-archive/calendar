@@ -16,7 +16,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 // Enable l10n support
 $l = OC_L10N::get('calendar');
 
-
+/*
 // Get the event sources
 $eventSources = array();
 $calendars = OC_Calendar_Calendar::allCalendars(OCP\User::getUser());
@@ -66,4 +66,4 @@ $array = array(
 // Echo it
 foreach ($array as  $setting => $value) {
 	echo("var ". $setting ."=".$value.";\n");
-}
+}*/

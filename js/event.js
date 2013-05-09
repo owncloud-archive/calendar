@@ -1,12 +1,12 @@
 $(function(){
-    var Calendar = Backbone.Model.extend();
+    var Event = Backbone.Model.extend();
 
-    var Calendars = Backbone.Collection.extend({
-        model: Calendar,
-        url: 'Calendars'
+    var Events = Backbone.Collection.extend({
+        model: Event,
+        url: 'events'
     }); 
  
-    var CalendarsView = Backbone.View.extend({
+    var EventsView = Backbone.View.extend({
         initialize: function(){
             _.bindAll(this); 
 
@@ -15,7 +15,7 @@ $(function(){
             this.collection.bind('change', this.change);            
             this.collection.bind('destroy', this.destroy);
             
-            this.CalendarView = new CalendarView();            
+            this.eventView = new EventView();            
         },
         render: function() {
             this.el.fullCalendar({
@@ -37,44 +37,44 @@ $(function(){
                 editable: true,
                 ignoreTimezone: false,
                 select: this.select,
-                CalendarClick: this.CalendarClick,
-                CalendarDrop: this.CalendarDropOrResize,
-                CalendarResize: this.CalendarDropOrResize
+                eventClick: this.eventClick,
+                eventDrop: this.eventDropOrResize,
+                eventResize: this.eventDropOrResize
             });
         },
         addAll: function() {
-            this.el.fullCalendar('addCalendarSource', this.collection.toJSON());
+            this.el.fullCalendar('addEventSource', this.collection.toJSON());
         },
-        addOne: function(Calendar) {
-            this.el.fullCalendar('renderCalendar', Calendar.toJSON());
+        addOne: function(event) {
+            this.el.fullCalendar('renderEvent', event.toJSON());
         },        
         select: function(startDate, endDate) {
-            this.CalendarView.collection = this.collection;
-            this.CalendarView.model = new Calendar({start: startDate, end: endDate});
-            this.CalendarView.render();            
+            this.eventView.collection = this.collection;
+            this.eventView.model = new Event({start: startDate, end: endDate});
+            this.eventView.render();            
         },
-        CalendarClick: function(fcCalendar) {
-            this.CalendarView.model = this.collection.get(fcCalendar.id);
-            this.CalendarView.render();
+        eventClick: function(fcEvent) {
+            this.eventView.model = this.collection.get(fcEvent.id);
+            this.eventView.render();
         },
-        change: function(Calendar) {
-            // Look up the underlying Calendar in the calendar and update its details from the model
-            var fcCalendar = this.el.fullCalendar('clientCalendars', Calendar.get('id'))[0];
-            fcCalendar.title = Calendar.get('title');
-            fcCalendar.color = Calendar.get('color');
-            this.el.fullCalendar('updateCalendar', fcCalendar);           
+        change: function(event) {
+            // Look up the underlying event in the calendar and update its details from the model
+            var fcEvent = this.el.fullCalendar('clientEvents', event.get('id'))[0];
+            fcEvent.title = event.get('title');
+            fcEvent.color = event.get('color');
+            this.el.fullCalendar('updateEvent', fcEvent);           
         },
-        CalendarDropOrResize: function(fcCalendar) {
-            // Lookup the model that has the ID of the Calendar and update its attributes
-            this.collection.get(fcCalendar.id).save({start: fcCalendar.start, end: fcCalendar.end});            
+        eventDropOrResize: function(fcEvent) {
+            // Lookup the model that has the ID of the event and update its attributes
+            this.collection.get(fcEvent.id).save({start: fcEvent.start, end: fcEvent.end});            
         },
-        destroy: function(Calendar) {
-            this.el.fullCalendar('removeCalendars', Calendar.id);         
+        destroy: function(event) {
+            this.el.fullCalendar('removeEvents', event.id);         
         }        
     });
 
-    var CalendarView = Backbone.View.extend({
-        el: $('#CalendarDialog'),
+    var EventView = Backbone.View.extend({
+        el: $('#eventDialog'),
         initialize: function() {
             _.bindAll(this);           
         },
@@ -87,7 +87,7 @@ $(function(){
             
             this.el.dialog({
                 modal: true,
-                title: (this.model.isNew() ? 'New' : 'Edit') + ' Calendar',
+                title: (this.model.isNew() ? 'New' : 'Edit') + ' Event',
                 buttons: buttons,
                 open: this.open
             });
@@ -115,7 +115,7 @@ $(function(){
         }        
     });
     
-    var Calendars = new Calendars();
-    new CalendarsView({el: $("#fullcalendar"), collection: Calendars}).render();
-    Calendars.fetch();
+    var events = new Events();
+    new EventsView({el: $("#fullcalendar"), collection: events}).render();
+    events.fetch();
 });

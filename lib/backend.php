@@ -7,13 +7,15 @@
  */
 namespace OCA\Calendar\Backend;
 
-class Item {
+use \OCA\AppFramework\Db\Entity;
 
-	private $id;
-	private $backend;
-	private $classname;
-	private $arguments;
-	private $enabled;
+class Item extends Entity{
+
+	public $id;
+	public $backend;
+	public $classname;
+	public $arguments;
+	public $enabled;
 	
 	public $api;
 
@@ -22,15 +24,6 @@ class Item {
 			$this->fromRow($fromRow);
 		}
 	}
-
-	public function fromRow($row){
-		$this->id = $row['id'];
-		$this->backend = $row['backend'];
-		$this->classname = $row['classname'];
-		$this->arguments = $row['arguments'];
-		$this->enabled = $row['enabled'];
-	}
-
 
 	public function getId(){
 		return $this->id;

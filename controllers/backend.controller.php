@@ -12,7 +12,7 @@ use OCA\AppFramework\RedirectResponse as RedirectResponse;
 
 use OCA\Calendar\Exception\NoBackendSetup as NoBackendSetup;
 
-class Backend extends \OCA\AppFramework\Controller {
+class Backend extends \OCA\AppFramework\Controller\Controller {
 	//! vars
 	//associative array with $backendname => $backendobject
 	private $backends;
@@ -25,22 +25,29 @@ class Backend extends \OCA\AppFramework\Controller {
 	 * @param ItemMapper $itemMapper: an itemwrapper instance
 	 */
 	public function __construct($api, $request, $itemMapper){
-		//Last call for all Backends
-		OCP\Util::emitHook('OC_Calendar', 'preInitBackends');
-		//setup all registered and enabled backends
-		$this->setupBackends();
 		//call parent's constructor
 		parent::__construct($api, $request);
+		//define itemMapper
 		$this->itemMapper = $itemMapper;
+		//Last call for all Backends
+		\OCP\Util::emitHook('OC_Calendar', 'preInitBackends');
+		//setup all registered and enabled backends
+		$this->setupBackends();
 	}
 
 
 	//!initialization
 	private function setupBackends() {
+		if(is_array($this->backends) === false){
+			$this->backends = array();
+		}
 		$enabledbackends = $this->getEnabledBackends();
 		foreach($enabledbackends as $backend) {
-			$class = $backend['class'];
-			$arguments = $backend['arguments'];
+			$class = $backend->getClassname();
+			$arguments = $backend->getArguments();
+			if(is_array($arguments) === false){
+				$arguments = array();
+			}
 			if(class_exists( $class ) && !in_array( $class , $this->backends )) {
 				// create a reflection object
 				$reflectionObj = new \ReflectionClass($class);
@@ -53,7 +60,7 @@ class Backend extends \OCA\AppFramework\Controller {
 					\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' was not found', \OCP\Util::DEBUG);
 					//disable backend if it does not exist anymore
 					$this->disableBackend($backend);
-				}elseif(in_array( $class , $this->backends ){
+				}elseif(in_array( $class , $this->backends )){
 					\OCP\Util::writeLog('calendar', 'Backend '.$class.' already initialized. Please check if there are any multiple db entries for this backend.', \OCP\Util::DEBUG);
 					//remove all db entries for this backend and make a clean install
 					$this->uninstallBackend($backend);
@@ -66,6 +73,10 @@ class Backend extends \OCA\AppFramework\Controller {
 		if(count($this->backends) === 0){
 			throw new \NoBackendSetup('No Backend was setup');
 		}
+	}
+	
+	public function getBackends(){
+		return $this->backends;
 	}
 
 

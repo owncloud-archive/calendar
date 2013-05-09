@@ -63,28 +63,28 @@ $this->create('calendar_set_view', '/set/view/{view}')->action(
 
 
 //!Calendar
-$this->create('calendar_get_all_calendars', '/calendar')->action(
+$this->create('calendar_get_all_calendars', '/calendars')->action(
 	function($params){
-		App::main('ViewController', 'setView', $params, new DIContainer());
+		App::main('CalendarController', 'getAllCalendars', $params, new DIContainer());
 	}
 );
 
 
 $this->create('calendar_get_calendar', '/calendar/{uri}')->action(
 	function($params){
-		App::main('ViewController', 'setView', $params, new DIContainer());
+		App::main('CalendarController', 'getCalendarByURI', $params, new DIContainer());
 	}
 );
 
 $this->create('calendar_get_calendars_property', '/calendar/{uri}/get/{property}')->action(
 	function($params){
-		App::main('ViewController', 'setView', $params, new DIContainer());
+		App::main('CalendarController', 'getCalendarProperty', $params, new DIContainer());
 	}
 );
 
 $this->create('calendar_set_property', '/set/calendar/{uri}/{property}')->action(
 	function($params){
-		App::main('ViewController', 'setView', $params, new DIContainer());
+		App::main('CalendarController', 'setView', $params, new DIContainer());
 	}
 );
 

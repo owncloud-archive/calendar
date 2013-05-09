@@ -51,6 +51,10 @@ abstract class Backend implements CalendarInterface {
 		OC_CALENDAR_BACKEND_GET_OBJECT_BY_TYPE		=> 'getByType',
 		OC_CALENDAR_BACKEND_GET_IN_PERIOD_BY_TYPE	=> 'getInPeriodByType'
 	);
+	
+	public function __construct(){
+		
+	}
 
 	/**
 	* @brief Get all supported actions
