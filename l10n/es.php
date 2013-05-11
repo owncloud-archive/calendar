@@ -139,7 +139,7 @@
 "Delete" => "Eliminar",
 "New calendar" => "Nuevo calendario",
 "Edit calendar" => "Editar calendario",
-"Displayname" => "Nombre",
+"Displayname" => "Nombre a mostrar",
 "Active" => "Activo",
 "Calendar color" => "Color del calendario",
 "Save" => "Guardar",
