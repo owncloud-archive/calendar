@@ -8,6 +8,25 @@
 
 Calendar={
 	Util:{
+		sendmail: function(eventId, location, description, dtstart, dtend){
+                        $.post(
+			OC.filePath('calendar','ajax/event','sendmail.php'),
+			{
+				eventId:eventId,
+                                location:location,
+                                description:description,
+                                dtstart:dtstart,
+                                dtend:dtend
+			},
+			function(result){
+				if(result.status!='success'){
+					OC.dialogs.alert(result.data.message, 'Error sending mail');
+				} else {
+					UserList.add(username, result.data.groups, null, 'default', true);
+				}
+			}
+		);
+		},
 		dateTimeToTimestamp:function(dateString, timeString){
 			dateTuple = dateString.split('-');
 			timeTuple = timeString.split(':');
