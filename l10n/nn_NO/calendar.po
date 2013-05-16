@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# unhammer <unhammer+dill@mm.st>, 2013
 # unhammer <unhammer+dill@mm.st>, 2011
 # olealX <post@olealx.net>, 2012
 # unhammer <unhammer+dill@mm.st>, 2013
@@ -10,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-05-12 01:48+0200\n"
-"PO-Revision-Date: 2013-05-08 11:20+0000\n"
+"POT-Creation-Date: 2013-05-17 01:47+0200\n"
+"PO-Revision-Date: 2013-05-16 09:40+0000\n"
 "Last-Translator: unhammer <unhammer+dill@mm.st>\n"
 "Language-Team: Norwegian Nynorsk (Norway) (http://www.transifex.com/projects/p/owncloud/language/nn_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -588,7 +589,7 @@ msgstr "Endra kalender"
 
 #: templates/part.editcalendar.php:12
 msgid "Displayname"
-msgstr "Visningsnamn"
+msgstr "Visingsnamn"
 
 #: templates/part.editcalendar.php:23
 msgid "Active"
@@ -764,7 +765,7 @@ msgstr "Vel eit tilgjengeleg namn!"
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr "Det finst alt ein kalender med dette namnet. Viss du går vidare uansett vil desse kalendrane bli føydde saman."
+msgstr "Det finst alt ein kalender med dette namnet. Viss du går vidare uansett, vil desse kalendrane verta føydde saman."
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
@@ -862,7 +863,7 @@ msgstr "Tøm mellomlager for gjentakande hendingar"
 
 #: templates/settings.php:85
 msgid "URLs"
-msgstr "URL-ar"
+msgstr "Nettadresser"
 
 #: templates/settings.php:87
 msgid "Calendar CalDAV syncing addresses"
