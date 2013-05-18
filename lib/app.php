@@ -452,7 +452,8 @@ class OC_Calendar_App{
 		if(OC_Calendar_Object::getowner($id) !== OCP\USER::getUser()) {
 			// do not show events with private or unknown access class
 			if (isset($vevent->CLASS)
-				&& ($vevent->CLASS->value === 'PRIVATE'
+				&& ($vevent->CLASS->value === 'CONFIDENTIAL'
+				|| $vevent->CLASS->value === 'PRIVATE'
 				|| $vevent->CLASS->value === ''))
 			{
 				return $output;
