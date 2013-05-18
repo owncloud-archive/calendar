@@ -76,7 +76,7 @@ class OC_Calendar_Export{
 				return '';
 			}
 		}
-		$object = OC_Calendar_Object::cleanByAccessClass($event['calendarid'], $object);
+		$object = OC_Calendar_Object::cleanByAccessClass($event['id'], $object);
 
 		if($object->VEVENT){
 			$dtstart = $object->VEVENT->DTSTART;
