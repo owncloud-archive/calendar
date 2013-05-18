@@ -457,14 +457,14 @@ class OC_Calendar_Object{
 
 	/**
 	 * @brief Remove all properties which should not be exported for the AccessClass Confidential
-	 * @param string $calendarId Calendar ID
+	 * @param string $id Event ID
 	 * @param Sabre_VObject $vobject Sabre VObject
 	 * @return object
 	 */
-	public static function cleanByAccessClass($calendarId, $vobject) {
+	public static function cleanByAccessClass($id, $vobject) {
 
 		// Do not clean your own calendar
-		if(OC_Calendar_Object::getowner($calendarId) === OCP\USER::getUser()) {
+		if(OC_Calendar_Object::getowner($id) === OCP\USER::getUser()) {
 			return $vobject;
 		}
 
