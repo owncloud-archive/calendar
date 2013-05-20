@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-05-17 01:47+0200\n"
-"PO-Revision-Date: 2013-05-16 09:40+0000\n"
+"POT-Creation-Date: 2013-05-21 01:46+0200\n"
+"PO-Revision-Date: 2013-05-20 13:00+0000\n"
 "Last-Translator: unhammer <unhammer+dill@mm.st>\n"
 "Language-Team: Norwegian Nynorsk (Norway) (http://www.transifex.com/projects/p/owncloud/language/nn_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Feil kalender"
 
 #: ajax/event/edit.form.php:221 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
-msgstr "Du har ikkje tillating til å endra denne kalenderen."
+msgstr "Du har ikkje tilgang til å endra denne kalenderen."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:65
 msgid ""
@@ -399,23 +399,23 @@ msgstr "utan namn"
 
 #: lib/calendar.php:178 lib/calendar.php:211
 msgid "You do not have the permissions to update this calendar."
-msgstr "Du har ikkje "
+msgstr "Du har ikkje tilgang til å oppdatera denne kalenderen."
 
 #: lib/calendar.php:246
 msgid "You do not have the permissions to delete this calendar."
-msgstr "Du har ikkje tillating til å sletta denne kalenderen."
+msgstr "Du har ikkje tilgang til å sletta denne kalenderen."
 
 #: lib/calendar.php:280
 msgid "You do not have the permissions to add to this calendar."
-msgstr "Du har ikkje tillating til å leggja til i denne kalenderen."
+msgstr "Du har ikkje tilgang til å leggja til i denne kalenderen."
 
 #: lib/object.php:122 lib/object.php:162 lib/object.php:319
 msgid "You do not have the permissions to add events to this calendar."
-msgstr "Du har ikkje tillating til å leggja til hendingar i denne kalenderen."
+msgstr "Du har ikkje tilgang til å leggja til hendingar i denne kalenderen."
 
 #: lib/object.php:267 lib/object.php:299
 msgid "You do not have the permissions to delete this event."
-msgstr "Du har ikkje tillating til å sletta denne hendinga."
+msgstr "Du har ikkje tilgang til å sletta denne hendinga."
 
 #: lib/object.php:484
 msgid "Busy"
