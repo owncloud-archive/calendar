@@ -41,6 +41,7 @@
 "Category" => "Категория",
 "Edit categories" => "Редактиране на категориите",
 "To" => "До",
+"Description" => "Описание",
 "Advanced" => "Разширено",
 "Import" => "Внасяне",
 "General" => "Общи",
