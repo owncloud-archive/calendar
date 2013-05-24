@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-05-24 01:46+0200\n"
-"PO-Revision-Date: 2013-05-23 23:11+0000\n"
+"POT-Creation-Date: 2013-05-25 01:47+0200\n"
+"PO-Revision-Date: 2013-05-24 23:21+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Bengali (Bangladesh) (http://www.transifex.com/projects/p/owncloud/language/bn_BD/)\n"
 "MIME-Version: 1.0\n"
@@ -132,31 +132,31 @@ msgstr "মামামা দি[বববব]{ '&#8212;'[মামামা] �
 msgid "dddd, MMM d, yyyy"
 msgstr "দিদিদিদি, মামামা দি, বববব"
 
-#: js/l10n.php:45 lib/object.php:558 templates/settings.php:70
+#: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
 msgid "Sunday"
 msgstr "রবিবার"
 
-#: js/l10n.php:45 lib/object.php:552 templates/settings.php:69
+#: js/l10n.php:45 lib/object.php:584 templates/settings.php:68
 msgid "Monday"
 msgstr "সোমবার"
 
-#: js/l10n.php:45 lib/object.php:553
+#: js/l10n.php:45 lib/object.php:585
 msgid "Tuesday"
 msgstr "মঙ্গলবার"
 
-#: js/l10n.php:45 lib/object.php:554
+#: js/l10n.php:45 lib/object.php:586
 msgid "Wednesday"
 msgstr "বুধবার"
 
-#: js/l10n.php:45 lib/object.php:555
+#: js/l10n.php:45 lib/object.php:587
 msgid "Thursday"
 msgstr "বৃহস্পতিবার"
 
-#: js/l10n.php:45 lib/object.php:556
+#: js/l10n.php:45 lib/object.php:588
 msgid "Friday"
 msgstr "শুক্রবার"
 
-#: js/l10n.php:45 lib/object.php:557
+#: js/l10n.php:45 lib/object.php:589
 msgid "Saturday"
 msgstr "শনিবার"
 
@@ -188,51 +188,51 @@ msgstr "শুক্র."
 msgid "Sat."
 msgstr "শনি."
 
-#: js/l10n.php:47 lib/object.php:608
+#: js/l10n.php:47 lib/object.php:640
 msgid "January"
 msgstr "জানুয়ারি"
 
-#: js/l10n.php:47 lib/object.php:609
+#: js/l10n.php:47 lib/object.php:641
 msgid "February"
 msgstr "ফেব্রুয়ারি"
 
-#: js/l10n.php:47 lib/object.php:610
+#: js/l10n.php:47 lib/object.php:642
 msgid "March"
 msgstr "মার্চ"
 
-#: js/l10n.php:47 lib/object.php:611
+#: js/l10n.php:47 lib/object.php:643
 msgid "April"
 msgstr "এপ্রিল"
 
-#: js/l10n.php:47 lib/object.php:612
+#: js/l10n.php:47 lib/object.php:644
 msgid "May"
 msgstr "মে"
 
-#: js/l10n.php:47 lib/object.php:613
+#: js/l10n.php:47 lib/object.php:645
 msgid "June"
 msgstr "জুন"
 
-#: js/l10n.php:47 lib/object.php:614
+#: js/l10n.php:47 lib/object.php:646
 msgid "July"
 msgstr "জুলাই"
 
-#: js/l10n.php:47 lib/object.php:615
+#: js/l10n.php:47 lib/object.php:647
 msgid "August"
 msgstr "অগাষ্ট"
 
-#: js/l10n.php:47 lib/object.php:616
+#: js/l10n.php:47 lib/object.php:648
 msgid "September"
 msgstr "সেপ্টেম্বর"
 
-#: js/l10n.php:47 lib/object.php:617
+#: js/l10n.php:47 lib/object.php:649
 msgid "October"
 msgstr "অক্টোবর"
 
-#: js/l10n.php:47 lib/object.php:618
+#: js/l10n.php:47 lib/object.php:650
 msgid "November"
 msgstr "নভেম্বর"
 
-#: js/l10n.php:47 lib/object.php:619
+#: js/l10n.php:47 lib/object.php:651
 msgid "December"
 msgstr "ডিসেম্বর"
 
@@ -389,7 +389,7 @@ msgstr "কর্মস্থল"
 msgid "by"
 msgstr "কর্তৃক"
 
-#: lib/app.php:467
+#: lib/app.php:466
 msgid "unnamed"
 msgstr "অজ্ঞাতনামা"
 
@@ -413,111 +413,111 @@ msgstr ""
 msgid "You do not have the permissions to delete this event."
 msgstr ""
 
-#: lib/object.php:484
+#: lib/object.php:493
 msgid "Busy"
 msgstr ""
 
-#: lib/object.php:501
+#: lib/object.php:533
 msgid "Public"
 msgstr ""
 
-#: lib/object.php:502
+#: lib/object.php:534
 msgid "Private"
 msgstr ""
 
-#: lib/object.php:503
+#: lib/object.php:535
 msgid "Confidential"
 msgstr ""
 
-#: lib/object.php:513
+#: lib/object.php:545
 msgid "Does not repeat"
 msgstr "পূনঃপূন সংঘটিত নয়"
 
-#: lib/object.php:514
+#: lib/object.php:546
 msgid "Daily"
 msgstr "দৈনিক"
 
-#: lib/object.php:515
+#: lib/object.php:547
 msgid "Weekly"
 msgstr "সাপ্তাহিক"
 
-#: lib/object.php:516
+#: lib/object.php:548
 msgid "Every Weekday"
 msgstr "প্রতি কর্মদিবসে"
 
-#: lib/object.php:517
+#: lib/object.php:549
 msgid "Bi-Weekly"
 msgstr "পাক্ষিক"
 
-#: lib/object.php:518
+#: lib/object.php:550
 msgid "Monthly"
 msgstr "মমাসিক"
 
-#: lib/object.php:519
+#: lib/object.php:551
 msgid "Yearly"
 msgstr "বাৎসরিক"
 
-#: lib/object.php:529
+#: lib/object.php:561
 msgid "never"
 msgstr "কখনোই নয়"
 
-#: lib/object.php:530
+#: lib/object.php:562
 msgid "by occurrences"
 msgstr "সংঘটন অনুসারে"
 
-#: lib/object.php:531
+#: lib/object.php:563
 msgid "by date"
 msgstr "তারিখ অনুসারে"
 
-#: lib/object.php:541
+#: lib/object.php:573
 msgid "by monthday"
 msgstr "মাসিক দিন অনুসারে"
 
-#: lib/object.php:542
+#: lib/object.php:574
 msgid "by weekday"
 msgstr "সপ্তাহ দিন অনুসারে"
 
-#: lib/object.php:568
+#: lib/object.php:600
 msgid "events week of month"
 msgstr "মাসের মধ্যে ইভেন্ট সপ্তাহ"
 
-#: lib/object.php:569
+#: lib/object.php:601
 msgid "first"
 msgstr "প্রখম"
 
-#: lib/object.php:570
+#: lib/object.php:602
 msgid "second"
 msgstr "দ্বিতীয়"
 
-#: lib/object.php:571
+#: lib/object.php:603
 msgid "third"
 msgstr "তৃতীয়"
 
-#: lib/object.php:572
+#: lib/object.php:604
 msgid "fourth"
 msgstr "চতুর্থ"
 
-#: lib/object.php:573
+#: lib/object.php:605
 msgid "fifth"
 msgstr "পঞ্চম"
 
-#: lib/object.php:574
+#: lib/object.php:606
 msgid "last"
 msgstr "সর্বশেষ"
 
-#: lib/object.php:629
+#: lib/object.php:661
 msgid "by events date"
 msgstr "ইভেন্টের দিন অনুসারে"
 
-#: lib/object.php:630
+#: lib/object.php:662
 msgid "by yearday(s)"
 msgstr "বাৎসরিক দিন অনুযায়ী"
 
-#: lib/object.php:631
+#: lib/object.php:663
 msgid "by weeknumber(s)"
 msgstr "সপ্তাহসংখ্যা অনুযায়ী"
 
-#: lib/object.php:632
+#: lib/object.php:664
 msgid "by day and month"
 msgstr "দিন এবং মাস অনুসারে"
 
@@ -829,54 +829,54 @@ msgstr "সাধারণ"
 msgid "Timezone"
 msgstr "সময় এলাকা"
 
-#: templates/settings.php:47
+#: templates/settings.php:46
 msgid "Update timezone automatically"
 msgstr "সময়এলাকা স্বয়ংক্রিয়ভাবে পরিবর্ধন কর"
 
-#: templates/settings.php:52
+#: templates/settings.php:51
 msgid "Time format"
 msgstr "সময় ফর্ম্যাট"
 
-#: templates/settings.php:57
+#: templates/settings.php:56
 msgid "24h"
 msgstr "২৪ ঘ."
 
-#: templates/settings.php:58
+#: templates/settings.php:57
 msgid "12h"
 msgstr "১২ ঘ."
 
-#: templates/settings.php:64
+#: templates/settings.php:63
 msgid "Start week on"
 msgstr "সপ্তাহ শুরু হয়"
 
-#: templates/settings.php:76
+#: templates/settings.php:75
 msgid "Cache"
 msgstr "ক্যাসে"
 
-#: templates/settings.php:80
+#: templates/settings.php:79
 msgid "Clear cache for repeating events"
 msgstr "পূনঃপূন সংঘটিত ইভেন্টের জন্য ক্যাসে পরিষ্কার কর"
 
-#: templates/settings.php:85
+#: templates/settings.php:84
 msgid "URLs"
 msgstr "URL গুলো"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "Calendar CalDAV syncing addresses"
 msgstr "দিনপঞ্জী CalDAV  সমলয় ঠিকানাসমূহ"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "more info"
 msgstr "আরও তথ্য"
 
-#: templates/settings.php:89
+#: templates/settings.php:88
 msgid "Primary address (Kontact et al)"
 msgstr "প্রাথমিক ঠিকানা (Kontact et al)"
 
-#: templates/settings.php:91
+#: templates/settings.php:90
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:93
+#: templates/settings.php:92
 msgid "Read only iCalendar link(s)"
 msgstr "শুধুমাত্র পঠনযোগ্য iCalendar লিংক"

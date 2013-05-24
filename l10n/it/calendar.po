@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-05-24 01:46+0200\n"
-"PO-Revision-Date: 2013-05-23 23:11+0000\n"
+"POT-Creation-Date: 2013-05-25 01:47+0200\n"
+"PO-Revision-Date: 2013-05-24 23:21+0000\n"
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/owncloud/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -141,31 +141,31 @@ msgstr "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, d MMM yyyy"
 
-#: js/l10n.php:45 lib/object.php:558 templates/settings.php:70
+#: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
 msgid "Sunday"
 msgstr "Domenica"
 
-#: js/l10n.php:45 lib/object.php:552 templates/settings.php:69
+#: js/l10n.php:45 lib/object.php:584 templates/settings.php:68
 msgid "Monday"
 msgstr "Lunedì"
 
-#: js/l10n.php:45 lib/object.php:553
+#: js/l10n.php:45 lib/object.php:585
 msgid "Tuesday"
 msgstr "Martedì"
 
-#: js/l10n.php:45 lib/object.php:554
+#: js/l10n.php:45 lib/object.php:586
 msgid "Wednesday"
 msgstr "Mercoledì"
 
-#: js/l10n.php:45 lib/object.php:555
+#: js/l10n.php:45 lib/object.php:587
 msgid "Thursday"
 msgstr "Giovedì"
 
-#: js/l10n.php:45 lib/object.php:556
+#: js/l10n.php:45 lib/object.php:588
 msgid "Friday"
 msgstr "Venerdì"
 
-#: js/l10n.php:45 lib/object.php:557
+#: js/l10n.php:45 lib/object.php:589
 msgid "Saturday"
 msgstr "Sabato"
 
@@ -197,51 +197,51 @@ msgstr "Ven."
 msgid "Sat."
 msgstr "Sab."
 
-#: js/l10n.php:47 lib/object.php:608
+#: js/l10n.php:47 lib/object.php:640
 msgid "January"
 msgstr "Gennaio"
 
-#: js/l10n.php:47 lib/object.php:609
+#: js/l10n.php:47 lib/object.php:641
 msgid "February"
 msgstr "Febbraio"
 
-#: js/l10n.php:47 lib/object.php:610
+#: js/l10n.php:47 lib/object.php:642
 msgid "March"
 msgstr "Marzo"
 
-#: js/l10n.php:47 lib/object.php:611
+#: js/l10n.php:47 lib/object.php:643
 msgid "April"
 msgstr "Aprile"
 
-#: js/l10n.php:47 lib/object.php:612
+#: js/l10n.php:47 lib/object.php:644
 msgid "May"
 msgstr "Maggio"
 
-#: js/l10n.php:47 lib/object.php:613
+#: js/l10n.php:47 lib/object.php:645
 msgid "June"
 msgstr "Giugno"
 
-#: js/l10n.php:47 lib/object.php:614
+#: js/l10n.php:47 lib/object.php:646
 msgid "July"
 msgstr "Luglio"
 
-#: js/l10n.php:47 lib/object.php:615
+#: js/l10n.php:47 lib/object.php:647
 msgid "August"
 msgstr "Agosto"
 
-#: js/l10n.php:47 lib/object.php:616
+#: js/l10n.php:47 lib/object.php:648
 msgid "September"
 msgstr "Settembre"
 
-#: js/l10n.php:47 lib/object.php:617
+#: js/l10n.php:47 lib/object.php:649
 msgid "October"
 msgstr "Ottobre"
 
-#: js/l10n.php:47 lib/object.php:618
+#: js/l10n.php:47 lib/object.php:650
 msgid "November"
 msgstr "Novembre"
 
-#: js/l10n.php:47 lib/object.php:619
+#: js/l10n.php:47 lib/object.php:651
 msgid "December"
 msgstr "Dicembre"
 
@@ -398,7 +398,7 @@ msgstr "Lavoro"
 msgid "by"
 msgstr "da"
 
-#: lib/app.php:467
+#: lib/app.php:466
 msgid "unnamed"
 msgstr "senza nome"
 
@@ -422,111 +422,111 @@ msgstr "Non hai i permessi per aggiungere eventi a questo calendario."
 msgid "You do not have the permissions to delete this event."
 msgstr "Non hai i permessi per eliminare questo evento."
 
-#: lib/object.php:484
+#: lib/object.php:493
 msgid "Busy"
 msgstr "Occupato"
 
-#: lib/object.php:501
+#: lib/object.php:533
 msgid "Public"
 msgstr "Pubblico"
 
-#: lib/object.php:502
+#: lib/object.php:534
 msgid "Private"
 msgstr "Privato"
 
-#: lib/object.php:503
+#: lib/object.php:535
 msgid "Confidential"
 msgstr "Confidenziale"
 
-#: lib/object.php:513
+#: lib/object.php:545
 msgid "Does not repeat"
 msgstr "Non ripetere"
 
-#: lib/object.php:514
+#: lib/object.php:546
 msgid "Daily"
 msgstr "Giornaliero"
 
-#: lib/object.php:515
+#: lib/object.php:547
 msgid "Weekly"
 msgstr "Settimanale"
 
-#: lib/object.php:516
+#: lib/object.php:548
 msgid "Every Weekday"
 msgstr "Ogni giorno della settimana"
 
-#: lib/object.php:517
+#: lib/object.php:549
 msgid "Bi-Weekly"
 msgstr "Ogni due settimane"
 
-#: lib/object.php:518
+#: lib/object.php:550
 msgid "Monthly"
 msgstr "Mensile"
 
-#: lib/object.php:519
+#: lib/object.php:551
 msgid "Yearly"
 msgstr "Annuale"
 
-#: lib/object.php:529
+#: lib/object.php:561
 msgid "never"
 msgstr "mai"
 
-#: lib/object.php:530
+#: lib/object.php:562
 msgid "by occurrences"
 msgstr "per occorrenze"
 
-#: lib/object.php:531
+#: lib/object.php:563
 msgid "by date"
 msgstr "per data"
 
-#: lib/object.php:541
+#: lib/object.php:573
 msgid "by monthday"
 msgstr "per giorno del mese"
 
-#: lib/object.php:542
+#: lib/object.php:574
 msgid "by weekday"
 msgstr "per giorno della settimana"
 
-#: lib/object.php:568
+#: lib/object.php:600
 msgid "events week of month"
 msgstr "settimana del mese degli eventi"
 
-#: lib/object.php:569
+#: lib/object.php:601
 msgid "first"
 msgstr "primo"
 
-#: lib/object.php:570
+#: lib/object.php:602
 msgid "second"
 msgstr "secondo"
 
-#: lib/object.php:571
+#: lib/object.php:603
 msgid "third"
 msgstr "terzo"
 
-#: lib/object.php:572
+#: lib/object.php:604
 msgid "fourth"
 msgstr "quarto"
 
-#: lib/object.php:573
+#: lib/object.php:605
 msgid "fifth"
 msgstr "quinto"
 
-#: lib/object.php:574
+#: lib/object.php:606
 msgid "last"
 msgstr "ultimo"
 
-#: lib/object.php:629
+#: lib/object.php:661
 msgid "by events date"
 msgstr "per data evento"
 
-#: lib/object.php:630
+#: lib/object.php:662
 msgid "by yearday(s)"
 msgstr "per giorno/i dell'anno"
 
-#: lib/object.php:631
+#: lib/object.php:663
 msgid "by weeknumber(s)"
 msgstr "per numero/i settimana"
 
-#: lib/object.php:632
+#: lib/object.php:664
 msgid "by day and month"
 msgstr "per giorno e mese"
 
@@ -838,54 +838,54 @@ msgstr "Generale"
 msgid "Timezone"
 msgstr "Fuso orario"
 
-#: templates/settings.php:47
+#: templates/settings.php:46
 msgid "Update timezone automatically"
 msgstr "Aggiorna automaticamente il fuso orario"
 
-#: templates/settings.php:52
+#: templates/settings.php:51
 msgid "Time format"
 msgstr "Formato orario"
 
-#: templates/settings.php:57
+#: templates/settings.php:56
 msgid "24h"
 msgstr "24h"
 
-#: templates/settings.php:58
+#: templates/settings.php:57
 msgid "12h"
 msgstr "12h"
 
-#: templates/settings.php:64
+#: templates/settings.php:63
 msgid "Start week on"
 msgstr "La settimana inizia il"
 
-#: templates/settings.php:76
+#: templates/settings.php:75
 msgid "Cache"
 msgstr "Cache"
 
-#: templates/settings.php:80
+#: templates/settings.php:79
 msgid "Clear cache for repeating events"
 msgstr "Cancella gli eventi che si ripetono dalla cache"
 
-#: templates/settings.php:85
+#: templates/settings.php:84
 msgid "URLs"
 msgstr "URL"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "Calendar CalDAV syncing addresses"
 msgstr "Indirizzi di sincronizzazione calendari CalDAV"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "more info"
 msgstr "ulteriori informazioni"
 
-#: templates/settings.php:89
+#: templates/settings.php:88
 msgid "Primary address (Kontact et al)"
 msgstr "Indirizzo principale (Kontact e altri)"
 
-#: templates/settings.php:91
+#: templates/settings.php:90
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:93
+#: templates/settings.php:92
 msgid "Read only iCalendar link(s)"
 msgstr "Collegamento(i) iCalendar sola lettura"

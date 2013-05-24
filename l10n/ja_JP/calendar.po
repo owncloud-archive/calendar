@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-05-24 01:46+0200\n"
-"PO-Revision-Date: 2013-05-23 23:11+0000\n"
+"POT-Creation-Date: 2013-05-25 01:47+0200\n"
+"PO-Revision-Date: 2013-05-24 23:21+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/owncloud/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
@@ -135,31 +135,31 @@ msgstr "yyyy年M月d日{ '～' [yyyy年][M月]d日}"
 msgid "dddd, MMM d, yyyy"
 msgstr "yyyy年M月d日 （dddd）"
 
-#: js/l10n.php:45 lib/object.php:558 templates/settings.php:70
+#: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
 msgid "Sunday"
 msgstr "日"
 
-#: js/l10n.php:45 lib/object.php:552 templates/settings.php:69
+#: js/l10n.php:45 lib/object.php:584 templates/settings.php:68
 msgid "Monday"
 msgstr "月"
 
-#: js/l10n.php:45 lib/object.php:553
+#: js/l10n.php:45 lib/object.php:585
 msgid "Tuesday"
 msgstr "火"
 
-#: js/l10n.php:45 lib/object.php:554
+#: js/l10n.php:45 lib/object.php:586
 msgid "Wednesday"
 msgstr "水"
 
-#: js/l10n.php:45 lib/object.php:555
+#: js/l10n.php:45 lib/object.php:587
 msgid "Thursday"
 msgstr "木"
 
-#: js/l10n.php:45 lib/object.php:556
+#: js/l10n.php:45 lib/object.php:588
 msgid "Friday"
 msgstr "金"
 
-#: js/l10n.php:45 lib/object.php:557
+#: js/l10n.php:45 lib/object.php:589
 msgid "Saturday"
 msgstr "土"
 
@@ -191,51 +191,51 @@ msgstr "金"
 msgid "Sat."
 msgstr "土"
 
-#: js/l10n.php:47 lib/object.php:608
+#: js/l10n.php:47 lib/object.php:640
 msgid "January"
 msgstr "1月"
 
-#: js/l10n.php:47 lib/object.php:609
+#: js/l10n.php:47 lib/object.php:641
 msgid "February"
 msgstr "2月"
 
-#: js/l10n.php:47 lib/object.php:610
+#: js/l10n.php:47 lib/object.php:642
 msgid "March"
 msgstr "3月"
 
-#: js/l10n.php:47 lib/object.php:611
+#: js/l10n.php:47 lib/object.php:643
 msgid "April"
 msgstr "4月"
 
-#: js/l10n.php:47 lib/object.php:612
+#: js/l10n.php:47 lib/object.php:644
 msgid "May"
 msgstr "5月"
 
-#: js/l10n.php:47 lib/object.php:613
+#: js/l10n.php:47 lib/object.php:645
 msgid "June"
 msgstr "6月"
 
-#: js/l10n.php:47 lib/object.php:614
+#: js/l10n.php:47 lib/object.php:646
 msgid "July"
 msgstr "7月"
 
-#: js/l10n.php:47 lib/object.php:615
+#: js/l10n.php:47 lib/object.php:647
 msgid "August"
 msgstr "8月"
 
-#: js/l10n.php:47 lib/object.php:616
+#: js/l10n.php:47 lib/object.php:648
 msgid "September"
 msgstr "9月"
 
-#: js/l10n.php:47 lib/object.php:617
+#: js/l10n.php:47 lib/object.php:649
 msgid "October"
 msgstr "10月"
 
-#: js/l10n.php:47 lib/object.php:618
+#: js/l10n.php:47 lib/object.php:650
 msgid "November"
 msgstr "11月"
 
-#: js/l10n.php:47 lib/object.php:619
+#: js/l10n.php:47 lib/object.php:651
 msgid "December"
 msgstr "12月"
 
@@ -392,7 +392,7 @@ msgstr "週の始まり"
 msgid "by"
 msgstr "による"
 
-#: lib/app.php:467
+#: lib/app.php:466
 msgid "unnamed"
 msgstr "無名"
 
@@ -416,111 +416,111 @@ msgstr "このカレンダーにイベントを追加する権限がありませ
 msgid "You do not have the permissions to delete this event."
 msgstr "このイベントを削除する権限がありません。"
 
-#: lib/object.php:484
+#: lib/object.php:493
 msgid "Busy"
 msgstr "多忙"
 
-#: lib/object.php:501
+#: lib/object.php:533
 msgid "Public"
 msgstr "公開"
 
-#: lib/object.php:502
+#: lib/object.php:534
 msgid "Private"
 msgstr "プライベート"
 
-#: lib/object.php:503
+#: lib/object.php:535
 msgid "Confidential"
 msgstr "秘密"
 
-#: lib/object.php:513
+#: lib/object.php:545
 msgid "Does not repeat"
 msgstr "繰り返さない"
 
-#: lib/object.php:514
+#: lib/object.php:546
 msgid "Daily"
 msgstr "毎日"
 
-#: lib/object.php:515
+#: lib/object.php:547
 msgid "Weekly"
 msgstr "毎週"
 
-#: lib/object.php:516
+#: lib/object.php:548
 msgid "Every Weekday"
 msgstr "毎平日"
 
-#: lib/object.php:517
+#: lib/object.php:549
 msgid "Bi-Weekly"
 msgstr "2週間ごと"
 
-#: lib/object.php:518
+#: lib/object.php:550
 msgid "Monthly"
 msgstr "毎月"
 
-#: lib/object.php:519
+#: lib/object.php:551
 msgid "Yearly"
 msgstr "毎年"
 
-#: lib/object.php:529
+#: lib/object.php:561
 msgid "never"
 msgstr "無し"
 
-#: lib/object.php:530
+#: lib/object.php:562
 msgid "by occurrences"
 msgstr "回数で指定"
 
-#: lib/object.php:531
+#: lib/object.php:563
 msgid "by date"
 msgstr "日付で指定"
 
-#: lib/object.php:541
+#: lib/object.php:573
 msgid "by monthday"
 msgstr "日にちで指定"
 
-#: lib/object.php:542
+#: lib/object.php:574
 msgid "by weekday"
 msgstr "曜日で指定"
 
-#: lib/object.php:568
+#: lib/object.php:600
 msgid "events week of month"
 msgstr "予定のある週を指定"
 
-#: lib/object.php:569
+#: lib/object.php:601
 msgid "first"
 msgstr "１週目"
 
-#: lib/object.php:570
+#: lib/object.php:602
 msgid "second"
 msgstr "２週目"
 
-#: lib/object.php:571
+#: lib/object.php:603
 msgid "third"
 msgstr "３週目"
 
-#: lib/object.php:572
+#: lib/object.php:604
 msgid "fourth"
 msgstr "４週目"
 
-#: lib/object.php:573
+#: lib/object.php:605
 msgid "fifth"
 msgstr "５週目"
 
-#: lib/object.php:574
+#: lib/object.php:606
 msgid "last"
 msgstr "最終週"
 
-#: lib/object.php:629
+#: lib/object.php:661
 msgid "by events date"
 msgstr "日付で指定"
 
-#: lib/object.php:630
+#: lib/object.php:662
 msgid "by yearday(s)"
 msgstr "日番号で指定"
 
-#: lib/object.php:631
+#: lib/object.php:663
 msgid "by weeknumber(s)"
 msgstr "週番号で指定"
 
-#: lib/object.php:632
+#: lib/object.php:664
 msgid "by day and month"
 msgstr "月と日で指定"
 
@@ -832,54 +832,54 @@ msgstr "一般"
 msgid "Timezone"
 msgstr "タイムゾーン"
 
-#: templates/settings.php:47
+#: templates/settings.php:46
 msgid "Update timezone automatically"
 msgstr "自動的にタイムゾーンを更新"
 
-#: templates/settings.php:52
+#: templates/settings.php:51
 msgid "Time format"
 msgstr "時刻の表示形式"
 
-#: templates/settings.php:57
+#: templates/settings.php:56
 msgid "24h"
 msgstr "24h"
 
-#: templates/settings.php:58
+#: templates/settings.php:57
 msgid "12h"
 msgstr "12h"
 
-#: templates/settings.php:64
+#: templates/settings.php:63
 msgid "Start week on"
 msgstr "1週間の初めの曜日"
 
-#: templates/settings.php:76
+#: templates/settings.php:75
 msgid "Cache"
 msgstr "キャッシュ"
 
-#: templates/settings.php:80
+#: templates/settings.php:79
 msgid "Clear cache for repeating events"
 msgstr "繰り返しイベントのキャッシュをクリア"
 
-#: templates/settings.php:85
+#: templates/settings.php:84
 msgid "URLs"
 msgstr "URL"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "Calendar CalDAV syncing addresses"
 msgstr "CalDAVカレンダーの同期用アドレス"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "more info"
 msgstr "さらに"
 
-#: templates/settings.php:89
+#: templates/settings.php:88
 msgid "Primary address (Kontact et al)"
 msgstr "プライマリアドレス（コンタクト等）"
 
-#: templates/settings.php:91
+#: templates/settings.php:90
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:93
+#: templates/settings.php:92
 msgid "Read only iCalendar link(s)"
 msgstr "読み取り専用のiCalendarリンク"

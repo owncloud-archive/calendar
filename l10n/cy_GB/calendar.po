@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-05-24 01:46+0200\n"
-"PO-Revision-Date: 2013-05-23 23:11+0000\n"
+"POT-Creation-Date: 2013-05-25 01:47+0200\n"
+"PO-Revision-Date: 2013-05-24 23:21+0000\n"
 "Last-Translator: ubuntucymraeg <owen.llywelyn@gmail.com>\n"
 "Language-Team: Welsh (United Kingdom) (http://www.transifex.com/projects/p/owncloud/language/cy_GB/)\n"
 "MIME-Version: 1.0\n"
@@ -133,31 +133,31 @@ msgstr "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:45 lib/object.php:558 templates/settings.php:70
+#: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
 msgid "Sunday"
 msgstr "Sul"
 
-#: js/l10n.php:45 lib/object.php:552 templates/settings.php:69
+#: js/l10n.php:45 lib/object.php:584 templates/settings.php:68
 msgid "Monday"
 msgstr "Llun"
 
-#: js/l10n.php:45 lib/object.php:553
+#: js/l10n.php:45 lib/object.php:585
 msgid "Tuesday"
 msgstr "Mawrth"
 
-#: js/l10n.php:45 lib/object.php:554
+#: js/l10n.php:45 lib/object.php:586
 msgid "Wednesday"
 msgstr "Mercher"
 
-#: js/l10n.php:45 lib/object.php:555
+#: js/l10n.php:45 lib/object.php:587
 msgid "Thursday"
 msgstr "Iau"
 
-#: js/l10n.php:45 lib/object.php:556
+#: js/l10n.php:45 lib/object.php:588
 msgid "Friday"
 msgstr "Gwener"
 
-#: js/l10n.php:45 lib/object.php:557
+#: js/l10n.php:45 lib/object.php:589
 msgid "Saturday"
 msgstr "Sadwrn"
 
@@ -189,51 +189,51 @@ msgstr "Gwe."
 msgid "Sat."
 msgstr "Sad."
 
-#: js/l10n.php:47 lib/object.php:608
+#: js/l10n.php:47 lib/object.php:640
 msgid "January"
 msgstr "Ionawr"
 
-#: js/l10n.php:47 lib/object.php:609
+#: js/l10n.php:47 lib/object.php:641
 msgid "February"
 msgstr "Chwefror"
 
-#: js/l10n.php:47 lib/object.php:610
+#: js/l10n.php:47 lib/object.php:642
 msgid "March"
 msgstr "Mawrth"
 
-#: js/l10n.php:47 lib/object.php:611
+#: js/l10n.php:47 lib/object.php:643
 msgid "April"
 msgstr "Ebrill"
 
-#: js/l10n.php:47 lib/object.php:612
+#: js/l10n.php:47 lib/object.php:644
 msgid "May"
 msgstr "Mai"
 
-#: js/l10n.php:47 lib/object.php:613
+#: js/l10n.php:47 lib/object.php:645
 msgid "June"
 msgstr "Mehefin"
 
-#: js/l10n.php:47 lib/object.php:614
+#: js/l10n.php:47 lib/object.php:646
 msgid "July"
 msgstr "Gorffennaf"
 
-#: js/l10n.php:47 lib/object.php:615
+#: js/l10n.php:47 lib/object.php:647
 msgid "August"
 msgstr "Awst"
 
-#: js/l10n.php:47 lib/object.php:616
+#: js/l10n.php:47 lib/object.php:648
 msgid "September"
 msgstr "Medi"
 
-#: js/l10n.php:47 lib/object.php:617
+#: js/l10n.php:47 lib/object.php:649
 msgid "October"
 msgstr "Hydref"
 
-#: js/l10n.php:47 lib/object.php:618
+#: js/l10n.php:47 lib/object.php:650
 msgid "November"
 msgstr "Tachwedd"
 
-#: js/l10n.php:47 lib/object.php:619
+#: js/l10n.php:47 lib/object.php:651
 msgid "December"
 msgstr "Rhagfyr"
 
@@ -390,7 +390,7 @@ msgstr "Gwaith"
 msgid "by"
 msgstr "gan"
 
-#: lib/app.php:467
+#: lib/app.php:466
 msgid "unnamed"
 msgstr "heb enw"
 
@@ -414,111 +414,111 @@ msgstr "Nid oes gennych ganiatâd i ychwanegu digwyddiadau i'r calendr hwn."
 msgid "You do not have the permissions to delete this event."
 msgstr "Nid oes gennych ganiatâd i ddileu'r digwyddiad hwn."
 
-#: lib/object.php:484
+#: lib/object.php:493
 msgid "Busy"
 msgstr "Prysur"
 
-#: lib/object.php:501
+#: lib/object.php:533
 msgid "Public"
 msgstr "Cyhoeddus"
 
-#: lib/object.php:502
+#: lib/object.php:534
 msgid "Private"
 msgstr "Preifat"
 
-#: lib/object.php:503
+#: lib/object.php:535
 msgid "Confidential"
 msgstr "Cyfrinachol"
 
-#: lib/object.php:513
+#: lib/object.php:545
 msgid "Does not repeat"
 msgstr "Ddim yn ailadrodd"
 
-#: lib/object.php:514
+#: lib/object.php:546
 msgid "Daily"
 msgstr "Dyddiol"
 
-#: lib/object.php:515
+#: lib/object.php:547
 msgid "Weekly"
 msgstr "Wythnosol"
 
-#: lib/object.php:516
+#: lib/object.php:548
 msgid "Every Weekday"
 msgstr "Bod dydd o'r wythnos"
 
-#: lib/object.php:517
+#: lib/object.php:549
 msgid "Bi-Weekly"
 msgstr "Eil-wythnosol"
 
-#: lib/object.php:518
+#: lib/object.php:550
 msgid "Monthly"
 msgstr "Misol"
 
-#: lib/object.php:519
+#: lib/object.php:551
 msgid "Yearly"
 msgstr "Blynyddol"
 
-#: lib/object.php:529
+#: lib/object.php:561
 msgid "never"
 msgstr "byth"
 
-#: lib/object.php:530
+#: lib/object.php:562
 msgid "by occurrences"
 msgstr "yn ôl digwyddiadau"
 
-#: lib/object.php:531
+#: lib/object.php:563
 msgid "by date"
 msgstr "yn ôl dyddiad"
 
-#: lib/object.php:541
+#: lib/object.php:573
 msgid "by monthday"
 msgstr "yn ôl diwrnod o'r mis"
 
-#: lib/object.php:542
+#: lib/object.php:574
 msgid "by weekday"
 msgstr "yn ôl diwrnod o'r wythnos"
 
-#: lib/object.php:568
+#: lib/object.php:600
 msgid "events week of month"
 msgstr "digwyddiadau wythnos o'r mis"
 
-#: lib/object.php:569
+#: lib/object.php:601
 msgid "first"
 msgstr "cyntaf"
 
-#: lib/object.php:570
+#: lib/object.php:602
 msgid "second"
 msgstr "ail"
 
-#: lib/object.php:571
+#: lib/object.php:603
 msgid "third"
 msgstr "trydydd"
 
-#: lib/object.php:572
+#: lib/object.php:604
 msgid "fourth"
 msgstr "pedwerydd"
 
-#: lib/object.php:573
+#: lib/object.php:605
 msgid "fifth"
 msgstr "pumed"
 
-#: lib/object.php:574
+#: lib/object.php:606
 msgid "last"
 msgstr "olaf"
 
-#: lib/object.php:629
+#: lib/object.php:661
 msgid "by events date"
 msgstr "yn ôl dyddiad digwyddiadau"
 
-#: lib/object.php:630
+#: lib/object.php:662
 msgid "by yearday(s)"
 msgstr "yn ôl diwrnodau'r flwyddyn"
 
-#: lib/object.php:631
+#: lib/object.php:663
 msgid "by weeknumber(s)"
 msgstr "yn ôl rhif yr wythnos"
 
-#: lib/object.php:632
+#: lib/object.php:664
 msgid "by day and month"
 msgstr "yn ôl dydd a mis"
 
@@ -830,54 +830,54 @@ msgstr "Cyffredinol"
 msgid "Timezone"
 msgstr "Cylchfa Amser"
 
-#: templates/settings.php:47
+#: templates/settings.php:46
 msgid "Update timezone automatically"
 msgstr "Diweddaru cylchfa amser yn awtomatig"
 
-#: templates/settings.php:52
+#: templates/settings.php:51
 msgid "Time format"
 msgstr "Fformat amser"
 
-#: templates/settings.php:57
+#: templates/settings.php:56
 msgid "24h"
 msgstr "24a"
 
-#: templates/settings.php:58
+#: templates/settings.php:57
 msgid "12h"
 msgstr "12a"
 
-#: templates/settings.php:64
+#: templates/settings.php:63
 msgid "Start week on"
 msgstr "Wythnos yn dechrau ar"
 
-#: templates/settings.php:76
+#: templates/settings.php:75
 msgid "Cache"
 msgstr "Storfa"
 
-#: templates/settings.php:80
+#: templates/settings.php:79
 msgid "Clear cache for repeating events"
 msgstr "Clirio'r storfa ar gyfer digwyddiadau sy'n ailadrodd"
 
-#: templates/settings.php:85
+#: templates/settings.php:84
 msgid "URLs"
 msgstr "URLs"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "Calendar CalDAV syncing addresses"
 msgstr "Cyfeiriadau cydweddu CalDAV calendr"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "more info"
 msgstr "mwy o wybodaeth"
 
-#: templates/settings.php:89
+#: templates/settings.php:88
 msgid "Primary address (Kontact et al)"
 msgstr "Prif gyfeiriad (Kontact et al)"
 
-#: templates/settings.php:91
+#: templates/settings.php:90
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:93
+#: templates/settings.php:92
 msgid "Read only iCalendar link(s)"
 msgstr "Dolen(ni) darllen yn unig iCalendar"

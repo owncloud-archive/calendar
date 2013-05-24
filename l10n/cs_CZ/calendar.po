@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-05-24 01:46+0200\n"
-"PO-Revision-Date: 2013-05-23 23:11+0000\n"
+"POT-Creation-Date: 2013-05-25 01:47+0200\n"
+"PO-Revision-Date: 2013-05-24 23:21+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -136,31 +136,31 @@ msgstr "d. MMM[ yyyy]{ '&#8212;' d.[ MMM] yyyy}"
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:45 lib/object.php:558 templates/settings.php:70
+#: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
 msgid "Sunday"
 msgstr "Neděle"
 
-#: js/l10n.php:45 lib/object.php:552 templates/settings.php:69
+#: js/l10n.php:45 lib/object.php:584 templates/settings.php:68
 msgid "Monday"
 msgstr "Pondělí"
 
-#: js/l10n.php:45 lib/object.php:553
+#: js/l10n.php:45 lib/object.php:585
 msgid "Tuesday"
 msgstr "Úterý"
 
-#: js/l10n.php:45 lib/object.php:554
+#: js/l10n.php:45 lib/object.php:586
 msgid "Wednesday"
 msgstr "Středa"
 
-#: js/l10n.php:45 lib/object.php:555
+#: js/l10n.php:45 lib/object.php:587
 msgid "Thursday"
 msgstr "Čtvrtek"
 
-#: js/l10n.php:45 lib/object.php:556
+#: js/l10n.php:45 lib/object.php:588
 msgid "Friday"
 msgstr "Pátek"
 
-#: js/l10n.php:45 lib/object.php:557
+#: js/l10n.php:45 lib/object.php:589
 msgid "Saturday"
 msgstr "Sobota"
 
@@ -192,51 +192,51 @@ msgstr "Pá"
 msgid "Sat."
 msgstr "So"
 
-#: js/l10n.php:47 lib/object.php:608
+#: js/l10n.php:47 lib/object.php:640
 msgid "January"
 msgstr "Leden"
 
-#: js/l10n.php:47 lib/object.php:609
+#: js/l10n.php:47 lib/object.php:641
 msgid "February"
 msgstr "Únor"
 
-#: js/l10n.php:47 lib/object.php:610
+#: js/l10n.php:47 lib/object.php:642
 msgid "March"
 msgstr "Březen"
 
-#: js/l10n.php:47 lib/object.php:611
+#: js/l10n.php:47 lib/object.php:643
 msgid "April"
 msgstr "Duben"
 
-#: js/l10n.php:47 lib/object.php:612
+#: js/l10n.php:47 lib/object.php:644
 msgid "May"
 msgstr "Květen"
 
-#: js/l10n.php:47 lib/object.php:613
+#: js/l10n.php:47 lib/object.php:645
 msgid "June"
 msgstr "Červen"
 
-#: js/l10n.php:47 lib/object.php:614
+#: js/l10n.php:47 lib/object.php:646
 msgid "July"
 msgstr "Červenec"
 
-#: js/l10n.php:47 lib/object.php:615
+#: js/l10n.php:47 lib/object.php:647
 msgid "August"
 msgstr "Srpen"
 
-#: js/l10n.php:47 lib/object.php:616
+#: js/l10n.php:47 lib/object.php:648
 msgid "September"
 msgstr "Září"
 
-#: js/l10n.php:47 lib/object.php:617
+#: js/l10n.php:47 lib/object.php:649
 msgid "October"
 msgstr "Říjen"
 
-#: js/l10n.php:47 lib/object.php:618
+#: js/l10n.php:47 lib/object.php:650
 msgid "November"
 msgstr "Listopad"
 
-#: js/l10n.php:47 lib/object.php:619
+#: js/l10n.php:47 lib/object.php:651
 msgid "December"
 msgstr "Prosinec"
 
@@ -393,7 +393,7 @@ msgstr "Práce"
 msgid "by"
 msgstr "od"
 
-#: lib/app.php:467
+#: lib/app.php:466
 msgid "unnamed"
 msgstr "nepojmenováno"
 
@@ -417,111 +417,111 @@ msgstr "Nemáte práva pro přidání událostí do tohoto kalendáře."
 msgid "You do not have the permissions to delete this event."
 msgstr "Nemáte práva smazat tuto událost."
 
-#: lib/object.php:484
+#: lib/object.php:493
 msgid "Busy"
 msgstr "Zaneprázdněná"
 
-#: lib/object.php:501
+#: lib/object.php:533
 msgid "Public"
 msgstr "Veřejná"
 
-#: lib/object.php:502
+#: lib/object.php:534
 msgid "Private"
 msgstr "Soukromá"
 
-#: lib/object.php:503
+#: lib/object.php:535
 msgid "Confidential"
 msgstr "Důvěrná"
 
-#: lib/object.php:513
+#: lib/object.php:545
 msgid "Does not repeat"
 msgstr "Neopakuje se"
 
-#: lib/object.php:514
+#: lib/object.php:546
 msgid "Daily"
 msgstr "Denně"
 
-#: lib/object.php:515
+#: lib/object.php:547
 msgid "Weekly"
 msgstr "Týdně"
 
-#: lib/object.php:516
+#: lib/object.php:548
 msgid "Every Weekday"
 msgstr "Každý všední den"
 
-#: lib/object.php:517
+#: lib/object.php:549
 msgid "Bi-Weekly"
 msgstr "Jednou za dva týdny"
 
-#: lib/object.php:518
+#: lib/object.php:550
 msgid "Monthly"
 msgstr "Měsíčně"
 
-#: lib/object.php:519
+#: lib/object.php:551
 msgid "Yearly"
 msgstr "Ročně"
 
-#: lib/object.php:529
+#: lib/object.php:561
 msgid "never"
 msgstr "nikdy"
 
-#: lib/object.php:530
+#: lib/object.php:562
 msgid "by occurrences"
 msgstr "podle výskytu"
 
-#: lib/object.php:531
+#: lib/object.php:563
 msgid "by date"
 msgstr "podle data"
 
-#: lib/object.php:541
+#: lib/object.php:573
 msgid "by monthday"
 msgstr "podle dne v měsíci"
 
-#: lib/object.php:542
+#: lib/object.php:574
 msgid "by weekday"
 msgstr "podle dne v týdnu"
 
-#: lib/object.php:568
+#: lib/object.php:600
 msgid "events week of month"
 msgstr "týdenní události v měsíci"
 
-#: lib/object.php:569
+#: lib/object.php:601
 msgid "first"
 msgstr "první"
 
-#: lib/object.php:570
+#: lib/object.php:602
 msgid "second"
 msgstr "druhý"
 
-#: lib/object.php:571
+#: lib/object.php:603
 msgid "third"
 msgstr "třetí"
 
-#: lib/object.php:572
+#: lib/object.php:604
 msgid "fourth"
 msgstr "čtvrtý"
 
-#: lib/object.php:573
+#: lib/object.php:605
 msgid "fifth"
 msgstr "pátý"
 
-#: lib/object.php:574
+#: lib/object.php:606
 msgid "last"
 msgstr "poslední"
 
-#: lib/object.php:629
+#: lib/object.php:661
 msgid "by events date"
 msgstr "podle data události"
 
-#: lib/object.php:630
+#: lib/object.php:662
 msgid "by yearday(s)"
 msgstr "po dni (dnech)"
 
-#: lib/object.php:631
+#: lib/object.php:663
 msgid "by weeknumber(s)"
 msgstr "podle čísel týdnů"
 
-#: lib/object.php:632
+#: lib/object.php:664
 msgid "by day and month"
 msgstr "podle dne a měsíce"
 
@@ -833,54 +833,54 @@ msgstr "Hlavní"
 msgid "Timezone"
 msgstr "Časové pásmo"
 
-#: templates/settings.php:47
+#: templates/settings.php:46
 msgid "Update timezone automatically"
 msgstr "Aktualizovat automaticky časové pásmo"
 
-#: templates/settings.php:52
+#: templates/settings.php:51
 msgid "Time format"
 msgstr "Formát času"
 
-#: templates/settings.php:57
+#: templates/settings.php:56
 msgid "24h"
 msgstr "24h"
 
-#: templates/settings.php:58
+#: templates/settings.php:57
 msgid "12h"
 msgstr "12h"
 
-#: templates/settings.php:64
+#: templates/settings.php:63
 msgid "Start week on"
 msgstr "Týden začíná v"
 
-#: templates/settings.php:76
+#: templates/settings.php:75
 msgid "Cache"
 msgstr "Vyrovnávací paměť"
 
-#: templates/settings.php:80
+#: templates/settings.php:79
 msgid "Clear cache for repeating events"
 msgstr "Vymazat paměť pro opakující se události"
 
-#: templates/settings.php:85
+#: templates/settings.php:84
 msgid "URLs"
 msgstr "URL"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "Calendar CalDAV syncing addresses"
 msgstr "Kalendář CalDAV synchronizuje adresy"
 
-#: templates/settings.php:87
+#: templates/settings.php:86
 msgid "more info"
 msgstr "podrobnosti"
 
-#: templates/settings.php:89
+#: templates/settings.php:88
 msgid "Primary address (Kontact et al)"
 msgstr "Primární adresa (veřejná)"
 
-#: templates/settings.php:91
+#: templates/settings.php:90
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:93
+#: templates/settings.php:92
 msgid "Read only iCalendar link(s)"
 msgstr "Odkaz(y) kalendáře pouze pro čtení"
