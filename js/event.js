@@ -18,7 +18,7 @@ $(function(){
             this.eventView = new EventView();            
         },
         render: function() {
-            this.el.fullCalendar({
+            this.$el.fullCalendar({
             	header: false,
             	calendars: {},
             	scrollNavigation: true,
@@ -31,7 +31,7 @@ $(function(){
 						'': 'HH:mm'
 					},
 				},
-				firstDay: 0,
+				firstDay: 1,
                 selectable: true,
                 selectHelper: true,
                 editable: true,
@@ -39,19 +39,26 @@ $(function(){
                 select: this.select,
                 eventClick: this.eventClick,
                 eventDrop: this.eventDropOrResize,
-                eventResize: this.eventDropOrResize
+                eventResize: this.eventDropOrResize,
+                defaultView: 'basic4Weeks',
+                contentHeight: $('#app-content').height(),
+                viewDisplay: function(view) {
+					$('#selecteddate').html($('<p>').html(view.title).text());
+					var date = $(this).fullCalendar('getDate');
+					$('#globaldatepicker').datepicker( 'setDate', date);
+				},
             });
         },
         addAll: function() {
-            this.el.fullCalendar('addEventSource', this.collection.toJSON());
+            this.$el.fullCalendar('addEventSource', this.collection.toJSON());
         },
         addOne: function(event) {
-            this.el.fullCalendar('renderEvent', event.toJSON());
+            this.$el.fullCalendar('renderEvent', event.toJSON());
         },        
         select: function(startDate, endDate) {
             this.eventView.collection = this.collection;
             this.eventView.model = new Event({start: startDate, end: endDate});
-            this.eventView.render();            
+            this.eventView.render();
         },
         eventClick: function(fcEvent) {
             this.eventView.model = this.collection.get(fcEvent.id);
@@ -59,17 +66,17 @@ $(function(){
         },
         change: function(event) {
             // Look up the underlying event in the calendar and update its details from the model
-            var fcEvent = this.el.fullCalendar('clientEvents', event.get('id'))[0];
+            var fcEvent = this.$el.fullCalendar('clientEvents', event.get('id'))[0];
             fcEvent.title = event.get('title');
             fcEvent.color = event.get('color');
-            this.el.fullCalendar('updateEvent', fcEvent);           
+            this.$el.fullCalendar('updateEvent', fcEvent);           
         },
         eventDropOrResize: function(fcEvent) {
             // Lookup the model that has the ID of the event and update its attributes
             this.collection.get(fcEvent.id).save({start: fcEvent.start, end: fcEvent.end});            
         },
         destroy: function(event) {
-            this.el.fullCalendar('removeEvents', event.id);         
+            this.$el.fullCalendar('removeEvents', event.id);         
         }        
     });
 
@@ -85,7 +92,7 @@ $(function(){
             }
             _.extend(buttons, {'Cancel': this.close});            
             
-            this.el.dialog({
+            this.$el.dialog({
                 modal: true,
                 title: (this.model.isNew() ? 'New' : 'Edit') + ' Event',
                 buttons: buttons,
@@ -97,7 +104,7 @@ $(function(){
         open: function() {
             this.$('#title').val(this.model.get('title'));
             this.$('#color').val(this.model.get('color'));            
-        },        
+        },
         save: function() {
             this.model.set({'title': this.$('#title').val(), 'color': this.$('#color').val()});
             
@@ -108,7 +115,7 @@ $(function(){
             }
         },
         close: function() {
-            this.el.dialog('close');
+            this.$el.dialog('close');
         },
         destroy: function() {
             this.model.destroy({success: this.close});
@@ -116,6 +123,6 @@ $(function(){
     });
     
     var events = new Events();
-    new EventsView({el: $("#fullcalendar"), collection: events}).render();
+    new EventsView({el: $('#fullcalendar'), collection: events}).render();
     events.fetch();
 });

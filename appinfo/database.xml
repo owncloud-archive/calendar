@@ -2,10 +2,11 @@
 <database>
 	<name>*dbname*</name>
 	<create>true</create>
-	<overwrite>true</overwrite>
+	<overwrite>false</overwrite>
 	<charset>utf8</charset>
+	<!-- table for calendar backends -->
 	<table>
-		<name>*dbprefix*calendar_backends</name>
+		<name>*dbprefix*clndr_backends</name>
 		<declaration>
 			<field>
 				<name>id</name>
@@ -44,8 +45,9 @@
 			</field>
 		</declaration>
 	</table>
+	<!-- table for cached calendars -->
 	<table>
-		<name>*dbprefix*calendar_calcache</name>
+		<name>*dbprefix*clndr_calcache</name>
 		<declaration>
 			<field>
 				<name>id</name>
@@ -87,7 +89,7 @@
 			<field>
 				<name>components</name>
 				<type>text</type>
-				<default>VEVENT,VTODO,VJOURNAL</default>
+				<default>VEVENT</default>
 				<notnull>false</notnull>
 				<length>100</length>
 			</field>
@@ -133,8 +135,9 @@
 			</field>
 		</declaration>
 	</table>
+	<!-- table for cached objects -->
 	<table>
-		<name>*dbprefix*calendar_objcache</name>
+		<name>*dbprefix*clndr_objcache</name>
 		<declaration>
 			<field>
 				<name>id</name>
@@ -183,13 +186,18 @@
 			<field>
 				<name>startdate</name>
 				<type>timestamp</type>
-				<default>1970-01-01 00:00:01</default>
+				<default>1970-01-01 00:00:00</default>
 				<notnull>false</notnull>
 			</field>
 			<field>
 				<name>enddate</name>
 				<type>timestamp</type>
-				<default>1970-01-01 00:00:01</default>
+				<default>1970-01-01 00:00:00</default>
+				<notnull>false</notnull>
+			</field>
+			<field>
+				<name>timezone</name>
+				<type>text</type>
 				<notnull>false</notnull>
 			</field>
 			<field>
@@ -204,10 +212,23 @@
 				<default></default>
 				<notnull>false</notnull>
 			</field>
+			<field>
+				<name>calendardata</name>
+				<type>clob</type>
+				<notnull>false</notnull>
+			</field>
+			<field>
+				<name>lastmodified</name>
+				<type>integer</type>
+				<default></default>
+				<notnull>false</notnull>
+				<length>4</length>
+			</field>
 		</declaration>
 	</table>
+	<!-- table for cached repeating events -->
 	<table>
-		<name>*dbprefix*calendar_repeatobjcache</name>
+		<name>*dbprefix*clndr_repeatcache</name>
 		<declaration>
 			<field>
 				<name>id</name>
@@ -249,20 +270,21 @@
 			<field>
 				<name>startdate</name>
 				<type>timestamp</type>
-				<default>1970-01-01 00:00:01</default>
+				<default>1970-01-01 00:00:00</default>
 				<notnull>false</notnull>
 			</field>
 			<field>
 				<name>enddate</name>
 				<type>timestamp</type>
-				<default>1970-01-01 00:00:01</default>
+				<default>1970-01-01 00:00:00</default>
 				<notnull>false</notnull>
 			</field>
 		</declaration>
 	</table>
+	<!-- table for calendars in the database backend -->
 	<table>
-		<!-- TODO: rename to calendar_db_cal ?! -->
-		<name>*dbprefix*calendar_calendars</name>
+		<name>*dbprefix*clndr_calendars</name>
+		<!--<was>*dbprefix*calendar_calendars</was>-->
 		<declaration>
 			<field>
 				<name>id</name>
@@ -338,9 +360,10 @@
 			</field>
 		</declaration>
 	</table>
+	<!-- table for objects in the database backend -->
 	<table>
-		<!-- TODO: rename to calendar_db_obj ?! -->
-		<name>*dbprefix*calendar_objects</name>
+		<name>*dbprefix*clndr_objects</name>
+		<!--<was>*dbprefix*calendar_objects</was>-->
 		<declaration>
 			<field>
 				<name>id</name>
@@ -369,13 +392,13 @@
 			<field>
 				<name>startdate</name>
 				<type>timestamp</type>
-				<default>1970-01-01 00:00:01</default>
+				<default>1970-01-01 00:00:00</default>
 				<notnull>false</notnull>
 			</field>
 			<field>
 				<name>enddate</name>
 				<type>timestamp</type>
-				<default>1970-01-01 00:00:01</default>
+				<default>1970-01-01 00:00:00</default>
 				<notnull>false</notnull>
 			</field>
 			<field>

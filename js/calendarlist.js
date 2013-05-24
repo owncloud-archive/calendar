@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2013 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
  */
-(function($){
+(function(jQuery){
 	
 	var methods = {
 		init : function( options ) {
@@ -206,14 +206,14 @@
 			});
 		}
 	}
-	
-	$.fn.oCCalendarList = function ( method ) {
+
+	$.fn.calendarList = function ( method ) {
 		if ( methods[method] ) {
 			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
 		} else if ( typeof method === 'object' || ! method ) {
 			return methods.init.apply( this, arguments );
 		} else {
-			$.error( 'Method ' +  method + ' does not exist on jQuery.calendarList' );
+			$.error( 'Method ' +  method + ' does not exist on jQuery.oCCalendarList' );
 		}
 	};
-})( jQuery );
+})(jQuery);

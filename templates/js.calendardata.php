@@ -1,0 +1,1 @@
+var calendarData = <?php echo json_encode($_['data']); ?>;

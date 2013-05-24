@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -18,6 +18,7 @@
 .datecontrol{
 	width: 75px;
 	margin: 4px;
+	margin-top: 6px;
 	margin-right: 0;
 	text-overflow: ellipsis;
 }
@@ -76,27 +77,21 @@ div.ui-datepicker{
 }
 
 #selecteddate{
-	width: 255px;
+	width: 250px;
 	height: 1.5em;
 	-webkit-box-align: center;
 	font-size: 1.5em;
-	font-family: Arial, Verdana, sans-serif;
-	color: #F0F0F0;
-	background: #30343a;
-	margin-top: -0.5em;
-	margin-left: -0.5em;
-	padding: 0.2em;
-	padding-top: 0.5em;
+	text-transform:uppercase;
+	background: #eee;
+	color: #333;
+	margin-top: -10px;
+	padding-top: 20px;
 	text-align: center;
-	box-shadow: 0px 1px 5px 0px black;
+	box-shadow: 0px -1px 10px 0px black;
 }
 
 .arrowbutton{
 	width: 2em;
-}
-
-#fullcalendar{
-	overflow: scroll;
 }
 
 .today{
@@ -227,11 +222,16 @@ margin-bottom:4px;
 	opacity: 0.65;
 }
 
-#calendarsidebar{
-	
+#calendarlist span{
+	text-align: center;
+	font-size: 14px;
+	color: #555;
+	font-weight: bold;
+	margin-left: 5px;
 }
-	
-#fullcalendar{
-	overflow: auto;
 
+#calendarlist img.loading{
+	text-align: center;
+	margin-top: 50px;
+	margin-left: 120px;
 }

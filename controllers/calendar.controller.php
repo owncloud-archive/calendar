@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -15,51 +15,43 @@ use OCA\Calendar\Exception\NoBackendSetup as NoBackendSetup;
 use OCA\Calendar\Calendar\Item as CalendarItem;
 
 class Calendar extends \OCA\AppFramework\Controller\Controller {
-	//! vars
-	//backend controller
-	private $backend;
-	//object controller
-	private $object;
+	private $businessLayer;
 
-
-	//!constructor
 	/**
 	 * @param Request $request: an instance of the request
 	 * @param API $api: an api wrapper instance
 	 * @param ItemMapper $itemMapper: an itemwrapper instance
 	 */
-	public function __construct($api, $request, $itemMapper, $backend, $object){
+	public function __construct($api, $request, $businessLayer){
 		//call parent's constructor
 		parent::__construct($api, $request);
-		$this->itemMapper = $itemMapper;
-		$this->backend = $backend;
-		$this->object = $object;
+		$this->businessLayer = $businessLayer;
 	}
 
-	 public function getAllCalendars($userid = $this->api->getUserId()){
-		$allCalendars = $this->itemMapper->getAllCalendars($userid);
-
-		if(count($allCalendars) === 0){
-			return false;
-		}
-
-		return $allCalendars;
+	/**
+	 * @CSRFExemption
+	 * @IsAdminExemption
+	 * @IsSubAdminExemption
+	 *
+	 * returns all calendars of the current user
+	 */
+	 public function getAllCalendars(){
+	 	$userid = $this->api->getUserId();
+	 	return $this->renderJSON($this->businessLayer->findAll($userid));
 	}
 
-	public function getCalendar($userid = $this->api->getUserId(), $uri = null){
-		if($uri === null){
-			return false;
-		}
+	public function getCalendar($userid = null, $uri = null){
+		$userid = $this->api->getUserId();
+		$uri = $this->param('uri');
 		
-		if($this->itemMapper->doesCalendarExist($userid, $uri) === false){
-			throw new DoesNotExistException('Calendar does not exist.');
-			exit;
-		}
-		
-		return $this->itemMapper->getCalendar($userid, $uri);
+		return $this->renderJSON($this->businessLayer->find($uri, $userid));
 	}
 
-	public function getPropertyOfCalendar($userid = $this->api->getUserId(), $uri = null, $property = null){
+	public function getPropertyOfCalendar($userid = null, $uri = null, $property = null){
+	 	if($userid === null){
+			$userid = $this->api->getUserId();
+	 	}
+	 	
 		if($uri === null || $property === null){
 			return false;
 		}
@@ -72,12 +64,20 @@ class Calendar extends \OCA\AppFramework\Controller\Controller {
 		return $this->itemMapper->getPropertyOfCalendar($userid, $uri, $property);
 	}
 
-	public function setPropertyOfCalendar($userid = $this->api->getUserId(), $uri = null, $property = null, $value = null){
+	public function setPropertyOfCalendar($userid = null, $uri = null, $property = null, $value = null){
+	 	if($userid === null){
+			$userid = $this->api->getUserId();
+	 	}
+	 	
 		//$backend->updateCalendar
 		$this->itemMaappter->setPropertyOfCalendar($userid, $uri, $property, $value);
 	}
 
-	public function updateCalendar($userid = $this->api->getUserId(), $uri = null, $calendar = null){
+	public function updateCalendar($userid = null, $uri = null, $calendar = null){
+	 	if($userid === null){
+			$userid = $this->api->getUserId();
+	 	}
+	 	
 		if($uri === null || $calendar === null){
 			return false;
 		}
@@ -98,7 +98,11 @@ class Calendar extends \OCA\AppFramework\Controller\Controller {
 		}
 	}
 
-	public function removeCalendar($userid = $this->api->getUserId(), $uri = null){
+	public function removeCalendar($userid = null, $uri = null){
+	 	if($userid === null){
+			$userid = $this->api->getUserId();
+	 	}
+	 	
 		if($uri === null){
 			return false;
 		}
@@ -111,7 +115,7 @@ class Calendar extends \OCA\AppFramework\Controller\Controller {
 		$backend = $this->backend->getCorrespondingBackend($uri);
 		$result = $backend->api->removeCalendar($uri);
 		
-		if($result === false)
+		if($result === false){
 			//Todo - write log
 			$this->itemMapper->hideCalendar($uri);
 		}else{
@@ -146,7 +150,7 @@ class Calendar extends \OCA\AppFramework\Controller\Controller {
 	 * @return an instance of a Response implementation
 	 */
 	public function getCalendarJSON(){
-		$userid = $this->api->getUserId();
+		$userid = null;
 		$uri = $this->param('uri');
 		
 		$calendar = $this->getCalendar($userid, $uri);
@@ -163,7 +167,7 @@ class Calendar extends \OCA\AppFramework\Controller\Controller {
 	 * @return an instance of a Response implementation
 	 */
 	public function getPropertyOfCalendarJSON(){
-		$userid = $this->api->getUserId();
+		$userid = null;
 		$uri = $this->param('uri');
 		$property = $this->param('property');
 		
@@ -181,7 +185,7 @@ class Calendar extends \OCA\AppFramework\Controller\Controller {
 	 * @return an instance of a Response implementation
 	 */
 	public function setPropertyOfCalendarJSON(){
-		$userid = $this->api->getUserId();
+		$userid = null;
 		$uri = $this->param('uri');
 		$property = $this->param('property');
 		$value = $this->param('value');
@@ -200,11 +204,28 @@ class Calendar extends \OCA\AppFramework\Controller\Controller {
 	 * @return an instance of a Response implementation
 	 */
 	public function removeCalendarJSON(){
-		$userid = $this->api->getUserId();
+		$userid = null;
 		$uri = $this->param('uri');
 		
 		$result = $this->removeCalendar($userid, $uri);
 		
-		$this->renderJSON($result);
+		return $this->renderJSON($result);
+	}
+	
+	/**
+	 * @CSRFExemption
+	 * @IsAdminExemption
+	 * @IsSubAdminExemption
+	 *
+	 * @brief renders the index page
+	 * @return an instance of a Response implementation
+	 */
+	public function calendarDataJs(){
+		$template = 'js.calendardata';
+		$data = array('data' => $this->getAllCalendars($this->api->getUserId()));
+		$oCtemplate = 'blank';
+		$header = array('Content-Type'=>'application/javascript');
+		
+		return $this->render($template, $data, $oCtemplate, $header);
 	}
 }

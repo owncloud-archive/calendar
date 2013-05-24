@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -13,95 +13,30 @@ use OCA\AppFramework\RedirectResponse as RedirectResponse;
 use OCA\Calendar\Exception\NoBackendSetup as NoBackendSetup;
 
 class Backend extends \OCA\AppFramework\Controller\Controller {
-	//! vars
-	//associative array with $backendname => $backendobject
-	private $backends;
-
-
-	//!constructor
+	
+	private $businessLayer;
+	
 	/**
 	 * @param Request $request: an instance of the request
 	 * @param API $api: an api wrapper instance
 	 * @param ItemMapper $itemMapper: an itemwrapper instance
 	 */
-	public function __construct($api, $request, $itemMapper){
+	public function __construct($api, $request, $businessLayer){
 		//call parent's constructor
 		parent::__construct($api, $request);
 		//define itemMapper
-		$this->itemMapper = $itemMapper;
-		//Last call for all Backends
-		\OCP\Util::emitHook('OC_Calendar', 'preInitBackends');
-		//setup all registered and enabled backends
-		$this->setupBackends();
+		$this->businessLayer = $businessLayer;
 	}
 
-
-	//!initialization
-	private function setupBackends() {
-		if(is_array($this->backends) === false){
-			$this->backends = array();
-		}
-		$enabledbackends = $this->getEnabledBackends();
-		foreach($enabledbackends as $backend) {
-			$class = $backend->getClassname();
-			$arguments = $backend->getArguments();
-			if(is_array($arguments) === false){
-				$arguments = array();
-			}
-			if(class_exists( $class ) && !in_array( $class , $this->backends )) {
-				// create a reflection object
-				$reflectionObj = new \ReflectionClass($class);
-				// use Reflection to create a new instance, using the $args
-				$api = $reflectionObj->newInstanceArgs($arguments);
-				$backend->registerAPI($api);
-				array_push($this->backends, array($class => $backend));
-			}else{
-				if(!class_exists($class)){
-					\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' was not found', \OCP\Util::DEBUG);
-					//disable backend if it does not exist anymore
-					$this->disableBackend($backend);
-				}elseif(in_array( $class , $this->backends )){
-					\OCP\Util::writeLog('calendar', 'Backend '.$class.' already initialized. Please check if there are any multiple db entries for this backend.', \OCP\Util::DEBUG);
-					//remove all db entries for this backend and make a clean install
-					$this->uninstallBackend($backend);
-					$this->installBackend($backend);
-				}else{
-					\OCP\Util::writeLog('calendar', 'Calendar backend '.$class.' was not setup due to an unknown error', \OCP\Util::DEBUG);
-				}
-			}
-		}
-		if(count($this->backends) === 0){
-			throw new \NoBackendSetup('No Backend was setup');
-		}
-	}
-	
-	public function getBackends(){
-		return $this->backends;
-	}
-
-
-	/**
-	 * @brief removes all used backends
-	 * @returns void
-	 * 
-	 * removes all initialized backends
-	 */
-	private function clearBackends() {
-		$this->backends = array();
-	}
-
-
-	//!backend management
 	/**
 	 * @brief gets all backends
 	 * @returns array of backend objects
 	 * 
 	 * gets all backends
 	 */
-	public function getAllBackends(){
-		return $this->itemMapper->findAll();
+	public function getBackends(){
+		return $this->businessLayer->findAll();
 	}
-
 
 	/**
 	 * @brief gets all enabled backends
@@ -110,7 +45,7 @@ class Backend extends \OCA\AppFramework\Controller\Controller {
 	 * gets all enabled backends
 	 */
 	public function getEnabledBackends(){
-		return $this->itemMapper->findWhereEnabledIs(1);
+		return $this->renderJSON($this->businessLayer->findAllEnabled());
 	}
 
 
@@ -121,9 +56,7 @@ class Backend extends \OCA\AppFramework\Controller\Controller {
 	 * gets all enabled backends
 	 */
 	public function getDefaultBackend(){
-		$backend = \OCP\Config::getAppValue('calendar', 'defaultBackend', 'database');
-		return $this->itemMapper->findByName($backend);
-		
+		return $this->renderJSON($this->businessLayer->getDefault());
 	}
 
 
@@ -133,8 +66,10 @@ class Backend extends \OCA\AppFramework\Controller\Controller {
 	 * 
 	 * sets default backend
 	 */
-	public function setDefaultBackend($backend){
-		\OCP\Config::setAppValue('calendar', 'defaultBackend', $backend->getBackend());
+	public function setDefaultBackend(){
+		//TODO render backend var
+		$backend = $this->param($backend);
+		return $this->renderJSON($this->businessLayer->setDefaultBackend($backend));
 	}
 
 
@@ -144,9 +79,9 @@ class Backend extends \OCA\AppFramework\Controller\Controller {
 	 * 
 	 * disables a backend
 	 */
-	public function disableBackend($backend){
-		$backend->setEnabled(0);
-		$this->itemMapper->update($backend);
+	public function disableBackend(){
+		$backend = $this->param($backend);
+		return $this->renderJSON($this->businessLayer->disable($backend));
 	}
 
 
@@ -157,42 +92,7 @@ class Backend extends \OCA\AppFramework\Controller\Controller {
 	 * enables
 	 */
 	public function enableBackend($backend){
-		$backend->setEnabled(1);
-		$this->itemMapper->update($backend);
-	}
-
-
-	/**
-	 * @brief installs a backend
-	 * @returns array of backend objects
-	 * 
-	 * installs a backend
-	 */
-	public function installBackend($backend){
-		//just to be sure it's enabled ;)
-		$backend->setEnabled(1);
-		$this->itemMapper->create($backend);
-	}
-
-
-	/**
-	 * @brief uninstalls a backend
-	 * @returns array of backend objects
-	 * 
-	 * uninstalls a backend
-	 */
-	public function uninstallBackend($backend){
-		$this->itemMapper->delete($backend);
-	}
-
-
-	/**
-	 * @brief returns the number initialized backends
-	 * @returns integer
-	 * 
-	 * number of backends
-	 */
-	public function getNumOfBackends(){
-		return (int) count($this->backends);
+		$backend = $this->param($backend);
+		return $this->renderJSON($this->businessLayer->enable($backend));
 	}
 }

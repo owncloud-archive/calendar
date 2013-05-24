@@ -1,7 +1,7 @@
-<!-- !Load some translations -->
-<script type="text/javascript" src="<?php echo OC_Helper::linkTo('calendar/js', 'l10n.php');?>"></script>
-<!-- !load some settings -->
-<script type="text/javascript" src="<?php echo OC_Helper::linkTo('calendar/js', 'cfg.php');?>"></script>
+<!-- !load calendar data -->
+<script type="text/javascript" src="<?php echo OCP\Util::linkToRoute('calendar_data');?>"></script>
+<!-- !load view settings -->
+<script type="text/javascript" src="<?php echo OCP\Util::linkToRoute('view_data');?>"></script>
 <!-- !main calendar html stuff -->
 <div id="app-navigation">
 	<!-- selected date and available views -->
@@ -10,11 +10,11 @@
 	<div id="globaldatepicker"></div>
 	<!-- buttons to navigate thru calendar -->
 	<div id="datecontrol">
-		<button class="button datecontrol" id="backward"><?php p($l->t('Backward'));?></button>
+		<button class="button datecontrol" id="backward"><?php p($l->t('Previous'));?></button>
 		<button class="button datecontrol" id="today"><?php p($l->t('Today'));?></button>
-		<button class="button datecontrol" id="forward"><?php p($l->t('Forward'));?></button>
+		<button class="button datecontrol" id="forward"><?php p($l->t('Next'));?></button>
 	</div>
-	<br>
+	<!-- <br> I am not yet 100% sure if this br fits in here -->
 	<!-- available views -->
 	<div id="views">
 		<button class="button view" id="agendaWeek"><?php p($l->t('Week'));?></button>
@@ -25,13 +25,7 @@
 	<br>
 	<!-- list of calendars and subscriptions -->
 	<div id="calendarlist">
-		<!-- Calendars - calendar with read & write support -->
-		<span><?php p($l->t('Calendars'));?>:</span>
-		<ul id="calendars" droppable></ul>
-		<br>
-		<!-- Subscriptions - calendar with read support only -->
-		<span><?php p($l->t('Subscriptions'));?>:</span>
-		<ul id="subscriptions" droppable></ul>
+		<img src="<?php echo OCP\Util::imagePath('core', 'loading.gif'); ?>" alt="Loading" class="loading">
 	</div>
 	<!-- app settings -->
 	<div id="app-settings">

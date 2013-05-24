@@ -1,29 +1,31 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
  */
 //!DI Container
-\OC::$CLASSPATH['OCA\Calendar\DIContainer'] = 'calendar/appinfo/dicontainer.php';
+\OC::$CLASSPATH['OCA\Calendar\DIContainer'] = 'calendar/dependencyinjection/dicontainer.php';
 
 //!Controllers
 \OC::$CLASSPATH['OCA\Calendar\Controller\Backend']	= 'calendar/controllers/backend.controller.php';
 \OC::$CLASSPATH['OCA\Calendar\Controller\Calendar']	= 'calendar/controllers/calendar.controller.php';
-\OC::$CLASSPATH['OCA\Calendar\Controller\Objects']	= 'calendar/controllers/object.controller.php';
+\OC::$CLASSPATH['OCA\Calendar\Controller\Object']	= 'calendar/controllers/object.controller.php';
 \OC::$CLASSPATH['OCA\Calendar\Controller\Settings']	= 'calendar/controllers/settings.controller.php';
 \OC::$CLASSPATH['OCA\Calendar\Controller\View']		= 'calendar/controllers/view.controller.php';
 
 //!Mappers
-\OC::$CLASSPATH['OCA\Calendar\Mapper\Backend']			= 'calendar/lib/mapper/backend.php';
-\OC::$CLASSPATH['OCA\Calendar\Mapper\CachedCalendar']	= 'calendar/lib/mapper/cachedcalendar.php';
-\OC::$CLASSPATH['OCA\Calendar\Mapper\CachedObject']		= 'calendar/lib/mapper/cachedobject.php';
+\OC::$CLASSPATH['OCA\Calendar\Db\BackendMapper']			= 'calendar/db/backendmapper.php';
+\OC::$CLASSPATH['OCA\Calendar\Db\CalendarCacheMapper']	= 'calendar/db/calendarcachemapper.php';
+\OC::$CLASSPATH['OCA\Calendar\Db\ObjectCacheMapper']		= 'calendar/db/objectcachemapper.php';
 
 //!Item classes
-\OC::$CLASSPATH['OCA\Calendar\Backend\Item']	= 'calendar/lib/backend.php';
+/*\OC::$CLASSPATH['OCA\Calendar\Backend\Item']	= 'calendar/lib/backend.php';
 \OC::$CLASSPATH['OCA\Calendar\Calendar\Item']	= 'calendar/lib/calendar.php';
-\OC::$CLASSPATH['OCA\Calendar\Object\Item']		= 'calendar/lib/object.php';
+\OC::$CLASSPATH['OCA\Calendar\Object\Item']		= 'calendar/lib/object.php';*/
+
+\OC::$CLASSPATH['OCA\Calendar\Db\ObjectType'] 	= 'calendar/db/objecttype.php';
 
 //!Backends
 \OC::$CLASSPATH['OCA\Calendar\Backend\Backend']				= 'calendar/lib/backends/backend.php';
