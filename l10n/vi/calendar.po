@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-05-25 01:47+0200\n"
-"PO-Revision-Date: 2013-05-24 23:21+0000\n"
+"POT-Creation-Date: 2013-05-26 01:47+0200\n"
+"PO-Revision-Date: 2013-05-25 23:12+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/owncloud/language/vi/)\n"
 "MIME-Version: 1.0\n"
@@ -293,7 +293,7 @@ msgstr "Tháng 12"
 msgid "All day"
 msgstr "Tất cả các ngày"
 
-#: js/l10n.php:52 lib/import.php:216 templates/part.choosecalendar.php:23
+#: js/l10n.php:52 lib/import.php:214 templates/part.choosecalendar.php:23
 msgid "New Calendar"
 msgstr "Lịch mới"
 
