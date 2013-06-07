@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Magnus Magnusson <maggiymir@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-06-04 02:11+0200\n"
-"PO-Revision-Date: 2013-06-03 00:30+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-06-07 02:08+0200\n"
+"PO-Revision-Date: 2013-06-06 09:13+0000\n"
+"Last-Translator: Magnus Magnusson <maggiymir@gmail.com>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/owncloud/language/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,7 +62,7 @@ msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr ""
+msgstr "Nýtt tímabelti:"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
@@ -74,7 +75,7 @@ msgstr "Ógild fyrirspurn"
 #: appinfo/app.php:38 js/l10n.php:55 templates/part.eventform.php:30
 #: templates/part.showevent.php:37
 msgid "Calendar"
-msgstr ""
+msgstr "Dagatal"
 
 #: js/calendar.js:154
 msgid "Deletion failed"
@@ -110,19 +111,19 @@ msgstr ""
 
 #: js/calendar.js:871
 msgid "ddd"
-msgstr ""
+msgstr "ddd"
 
 #: js/calendar.js:872
 msgid "ddd M/d"
-msgstr ""
+msgstr "ddd M/d"
 
 #: js/calendar.js:873
 msgid "dddd M/d"
-msgstr ""
+msgstr "dddd M/d"
 
 #: js/calendar.js:876
 msgid "MMMM yyyy"
-msgstr ""
+msgstr "MMMM áááá"
 
 #: js/calendar.js:878
 msgid "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
@@ -130,7 +131,7 @@ msgstr ""
 
 #: js/calendar.js:880
 msgid "dddd, MMM d, yyyy"
-msgstr ""
+msgstr "dddd, MMM d, áááá"
 
 #: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
 msgid "Sunday"
@@ -162,31 +163,31 @@ msgstr "Laugardagur"
 
 #: js/l10n.php:46
 msgid "Sun."
-msgstr ""
+msgstr "Sun."
 
 #: js/l10n.php:46
 msgid "Mon."
-msgstr ""
+msgstr "Mán."
 
 #: js/l10n.php:46
 msgid "Tue."
-msgstr ""
+msgstr "Þri."
 
 #: js/l10n.php:46
 msgid "Wed."
-msgstr ""
+msgstr "Mið."
 
 #: js/l10n.php:46
 msgid "Thu."
-msgstr ""
+msgstr "Fim."
 
 #: js/l10n.php:46
 msgid "Fri."
-msgstr ""
+msgstr "Fös."
 
 #: js/l10n.php:46
 msgid "Sat."
-msgstr ""
+msgstr "Lau."
 
 #: js/l10n.php:47 lib/object.php:640
 msgid "January"
@@ -238,59 +239,59 @@ msgstr "Desember"
 
 #: js/l10n.php:48
 msgid "Jan."
-msgstr ""
+msgstr "Jan."
 
 #: js/l10n.php:48
 msgid "Feb."
-msgstr ""
+msgstr "Feb."
 
 #: js/l10n.php:48
 msgid "Mar."
-msgstr ""
+msgstr "Mar."
 
 #: js/l10n.php:48
 msgid "Apr."
-msgstr ""
+msgstr "Apr."
 
 #: js/l10n.php:48
 msgid "May."
-msgstr ""
+msgstr "Maí."
 
 #: js/l10n.php:48
 msgid "Jun."
-msgstr ""
+msgstr "Jún."
 
 #: js/l10n.php:48
 msgid "Jul."
-msgstr ""
+msgstr "Júl."
 
 #: js/l10n.php:48
 msgid "Aug."
-msgstr ""
+msgstr "Ágú."
 
 #: js/l10n.php:48
 msgid "Sep."
-msgstr ""
+msgstr "Sep."
 
 #: js/l10n.php:48
 msgid "Oct."
-msgstr ""
+msgstr "Okt."
 
 #: js/l10n.php:48
 msgid "Nov."
-msgstr ""
+msgstr "Nóv."
 
 #: js/l10n.php:48
 msgid "Dec."
-msgstr ""
+msgstr "Des."
 
 #: js/l10n.php:51
 msgid "All day"
-msgstr ""
+msgstr "Allan daginn"
 
 #: js/l10n.php:52 lib/import.php:214 templates/part.choosecalendar.php:23
 msgid "New Calendar"
-msgstr ""
+msgstr "Nýtt dagatal"
 
 #: js/l10n.php:53
 msgid "Missing or invalid fields"
@@ -303,19 +304,19 @@ msgstr "Titill"
 
 #: js/l10n.php:56
 msgid "From Date"
-msgstr ""
+msgstr "Frá dags"
 
 #: js/l10n.php:57
 msgid "From Time"
-msgstr ""
+msgstr "Frá klukkan"
 
 #: js/l10n.php:58
 msgid "To Date"
-msgstr ""
+msgstr "Til dags"
 
 #: js/l10n.php:59
 msgid "To Time"
-msgstr ""
+msgstr "Til klukkan"
 
 #: js/l10n.php:60
 msgid "The event ends before it starts"
@@ -327,7 +328,7 @@ msgstr ""
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr ""
+msgstr "Afmælisdagur"
 
 #: lib/app.php:122
 msgid "Business"
@@ -415,7 +416,7 @@ msgstr ""
 
 #: lib/object.php:493
 msgid "Busy"
-msgstr ""
+msgstr "Upptekin"
 
 #: lib/object.php:533
 msgid "Public"
@@ -435,11 +436,11 @@ msgstr ""
 
 #: lib/object.php:546
 msgid "Daily"
-msgstr ""
+msgstr "Daglega"
 
 #: lib/object.php:547
 msgid "Weekly"
-msgstr ""
+msgstr "Vikulega"
 
 #: lib/object.php:548
 msgid "Every Weekday"
@@ -451,15 +452,15 @@ msgstr ""
 
 #: lib/object.php:550
 msgid "Monthly"
-msgstr ""
+msgstr "Mánaðarlega"
 
 #: lib/object.php:551
 msgid "Yearly"
-msgstr ""
+msgstr "Árlega"
 
 #: lib/object.php:561
 msgid "never"
-msgstr ""
+msgstr "aldrei"
 
 #: lib/object.php:562
 msgid "by occurrences"
@@ -483,27 +484,27 @@ msgstr ""
 
 #: lib/object.php:601
 msgid "first"
-msgstr ""
+msgstr "fyrsta"
 
 #: lib/object.php:602
 msgid "second"
-msgstr ""
+msgstr "annan"
 
 #: lib/object.php:603
 msgid "third"
-msgstr ""
+msgstr "þriðja"
 
 #: lib/object.php:604
 msgid "fourth"
-msgstr ""
+msgstr "fjórða"
 
 #: lib/object.php:605
 msgid "fifth"
-msgstr ""
+msgstr "fimmta"
 
 #: lib/object.php:606
 msgid "last"
-msgstr ""
+msgstr "síðasta"
 
 #: lib/object.php:661
 msgid "by events date"
@@ -531,11 +532,11 @@ msgstr ""
 
 #: templates/calendar.php:6
 msgid "Week"
-msgstr ""
+msgstr "Vika"
 
 #: templates/calendar.php:7
 msgid "Month"
-msgstr ""
+msgstr "Mánuður"
 
 #: templates/calendar.php:8
 msgid "List"
@@ -543,7 +544,7 @@ msgstr "Listi"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
-msgstr ""
+msgstr "Í dag"
 
 #: templates/calendar.php:13
 msgid "Settings"
@@ -556,11 +557,11 @@ msgstr ""
 #: templates/part.choosecalendar.php:28
 #: templates/part.choosecalendar.rowfields.php:24
 msgid "CalDav Link"
-msgstr ""
+msgstr "CalDav hlekkur"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
-msgstr ""
+msgstr "Deila dagatali"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
@@ -577,7 +578,7 @@ msgstr "Eyða"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
-msgstr ""
+msgstr "Nýtt dagatal"
 
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
@@ -626,7 +627,7 @@ msgstr ""
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
-msgstr ""
+msgstr "Aðvörun"
 
 #: templates/part.eventform.php:8 templates/part.showevent.php:6
 msgid "Attendees"
@@ -662,11 +663,11 @@ msgstr ""
 
 #: templates/part.eventform.php:68 templates/part.showevent.php:70
 msgid "From"
-msgstr ""
+msgstr "Frá"
 
 #: templates/part.eventform.php:76 templates/part.showevent.php:78
 msgid "To"
-msgstr ""
+msgstr "Til"
 
 #: templates/part.eventform.php:84 templates/part.showevent.php:86
 msgid "Advanced options"
@@ -703,7 +704,7 @@ msgstr ""
 #: templates/part.eventform.php:172 templates/part.eventform.php:185
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
-msgstr ""
+msgstr "Veldu daga"
 
 #: templates/part.eventform.php:177 templates/part.showevent.php:178
 msgid "and the events day of year."
@@ -715,11 +716,11 @@ msgstr ""
 
 #: templates/part.eventform.php:198 templates/part.showevent.php:199
 msgid "Select months"
-msgstr ""
+msgstr "Veldu mánuði"
 
 #: templates/part.eventform.php:211 templates/part.showevent.php:212
 msgid "Select weeks"
-msgstr ""
+msgstr "Veldu vikur"
 
 #: templates/part.eventform.php:216 templates/part.showevent.php:217
 msgid "and the events week of year."
@@ -793,7 +794,7 @@ msgstr "Hætta deilingu"
 
 #: templates/part.share.php:53
 msgid "Nobody"
-msgstr ""
+msgstr "Engin"
 
 #: templates/part.share.php:56
 msgid "Shared via calendar"
@@ -815,11 +816,11 @@ msgstr ""
 
 #: templates/part.showevent.php:41
 msgid "of"
-msgstr ""
+msgstr "af"
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
-msgstr ""
+msgstr "hjá"
 
 #: templates/settings.php:10
 msgid "General"
@@ -835,19 +836,19 @@ msgstr ""
 
 #: templates/settings.php:51
 msgid "Time format"
-msgstr ""
+msgstr "Klukkuform"
 
 #: templates/settings.php:56
 msgid "24h"
-msgstr ""
+msgstr "24 tíma"
 
 #: templates/settings.php:57
 msgid "12h"
-msgstr ""
+msgstr "12 tíma"
 
 #: templates/settings.php:63
 msgid "Start week on"
-msgstr ""
+msgstr "Vikan byrjar á"
 
 #: templates/settings.php:75
 msgid "Cache"
@@ -867,7 +868,7 @@ msgstr ""
 
 #: templates/settings.php:86
 msgid "more info"
-msgstr ""
+msgstr "fleiri upplýsingar"
 
 #: templates/settings.php:88
 msgid "Primary address (Kontact et al)"
@@ -875,7 +876,7 @@ msgstr ""
 
 #: templates/settings.php:90
 msgid "iOS/OS X"
-msgstr ""
+msgstr "iOS/OS X"
 
 #: templates/settings.php:92
 msgid "Read only iCalendar link(s)"

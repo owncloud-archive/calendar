@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Baptiste <baptiste+transifex@darthenay.fr>, 2013
 # Mariano <mstreet@kde.org.ar>, 2012
 # Mariano <mstreet@kde.org.ar>, 2011, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-06-04 02:11+0200\n"
-"PO-Revision-Date: 2013-06-03 00:31+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-06-07 02:08+0200\n"
+"PO-Revision-Date: 2013-06-06 03:17+0000\n"
+"Last-Translator: Baptiste <baptiste+transifex@darthenay.fr>\n"
 "Language-Team: Esperanto (http://www.transifex.com/projects/p/owncloud/language/eo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -417,19 +418,19 @@ msgstr "Vi ne havas la permeson forigi ĉi tiun okazaĵon."
 
 #: lib/object.php:493
 msgid "Busy"
-msgstr ""
+msgstr "Okupita"
 
 #: lib/object.php:533
 msgid "Public"
-msgstr ""
+msgstr "Publika"
 
 #: lib/object.php:534
 msgid "Private"
-msgstr ""
+msgstr "Privata"
 
 #: lib/object.php:535
 msgid "Confidential"
-msgstr ""
+msgstr "Konfidenca"
 
 #: lib/object.php:545
 msgid "Does not repeat"
@@ -656,7 +657,7 @@ msgstr "Redakti kategoriojn"
 
 #: templates/part.eventform.php:47 templates/part.showevent.php:50
 msgid "Access Class"
-msgstr ""
+msgstr "Alirpermesa klaso"
 
 #: templates/part.eventform.php:64 templates/part.showevent.php:66
 msgid "All Day Event"
