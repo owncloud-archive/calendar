@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-06-11 01:46+0200\n"
-"PO-Revision-Date: 2013-06-10 23:14+0000\n"
+"POT-Creation-Date: 2013-06-12 02:48+0200\n"
+"PO-Revision-Date: 2013-06-11 23:23+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/projects/p/owncloud/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -103,15 +103,15 @@ msgstr "משתמש"
 msgid "group"
 msgstr "קבוצה"
 
-#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:67
+#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:68
 msgid "Editable"
 msgstr "ניתן לעריכה"
 
-#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:69
+#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:70
 msgid "Shareable"
 msgstr "ניתן לשיתוף"
 
-#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:71
+#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:72
 msgid "Deletable"
 msgstr "ניתן למחיקה"
 
@@ -794,7 +794,7 @@ msgstr "שתף עם:"
 msgid "Shared with"
 msgstr "משותף עם:"
 
-#: templates/part.share.php:47 templates/part.share.php:73
+#: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
 msgstr "הסר שיתוף"
 
@@ -802,11 +802,11 @@ msgstr "הסר שיתוף"
 msgid "Nobody"
 msgstr "אף אחד"
 
-#: templates/part.share.php:56
+#: templates/part.share.php:57
 msgid "Shared via calendar"
 msgstr "משותף דרך לוח שנה"
 
-#: templates/part.share.php:79
+#: templates/part.share.php:80
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."

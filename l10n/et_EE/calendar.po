@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-06-11 01:46+0200\n"
-"PO-Revision-Date: 2013-06-10 23:14+0000\n"
+"POT-Creation-Date: 2013-06-12 02:48+0200\n"
+"PO-Revision-Date: 2013-06-11 23:23+0000\n"
 "Last-Translator: Rivo Zängov <eraser@eraser.ee>\n"
 "Language-Team: Estonian (Estonia) (http://www.transifex.com/projects/p/owncloud/language/et_EE/)\n"
 "MIME-Version: 1.0\n"
@@ -97,15 +97,15 @@ msgstr "kasutaja"
 msgid "group"
 msgstr "grupp"
 
-#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:67
+#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:68
 msgid "Editable"
 msgstr "Muudetav"
 
-#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:69
+#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:70
 msgid "Shareable"
 msgstr "Jagatav"
 
-#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:71
+#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:72
 msgid "Deletable"
 msgstr "Kustutatav"
 
@@ -788,7 +788,7 @@ msgstr "Jaga kasutajaga:"
 msgid "Shared with"
 msgstr "Jagatud kasutajaga"
 
-#: templates/part.share.php:47 templates/part.share.php:73
+#: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
 msgstr "Lõpeta jagamine"
 
@@ -796,11 +796,11 @@ msgstr "Lõpeta jagamine"
 msgid "Nobody"
 msgstr "Mitte keegi"
 
-#: templates/part.share.php:56
+#: templates/part.share.php:57
 msgid "Shared via calendar"
 msgstr "Jaga läbi kalendri"
 
-#: templates/part.share.php:79
+#: templates/part.share.php:80
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."

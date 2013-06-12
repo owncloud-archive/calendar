@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-06-11 01:46+0200\n"
-"PO-Revision-Date: 2013-06-10 23:14+0000\n"
+"POT-Creation-Date: 2013-06-12 02:48+0200\n"
+"PO-Revision-Date: 2013-06-11 23:23+0000\n"
 "Last-Translator: pellaeon <nfsmwlin@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/owncloud/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -104,15 +104,15 @@ msgstr "使用者"
 msgid "group"
 msgstr "群組"
 
-#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:67
+#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:68
 msgid "Editable"
 msgstr "可編輯"
 
-#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:69
+#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:70
 msgid "Shareable"
 msgstr "可共享"
 
-#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:71
+#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:72
 msgid "Deletable"
 msgstr "可刪除"
 
@@ -795,7 +795,7 @@ msgstr "分享給："
 msgid "Shared with"
 msgstr "共享者"
 
-#: templates/part.share.php:47 templates/part.share.php:73
+#: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
 msgstr "取消共享"
 
@@ -803,11 +803,11 @@ msgstr "取消共享"
 msgid "Nobody"
 msgstr "沒有人"
 
-#: templates/part.share.php:56
+#: templates/part.share.php:57
 msgid "Shared via calendar"
 msgstr "透過日曆分享"
 
-#: templates/part.share.php:79
+#: templates/part.share.php:80
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."

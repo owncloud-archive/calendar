@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-06-11 01:46+0200\n"
-"PO-Revision-Date: 2013-06-10 23:14+0000\n"
+"POT-Creation-Date: 2013-06-12 02:48+0200\n"
+"PO-Revision-Date: 2013-06-11 23:23+0000\n"
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/owncloud/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -105,15 +105,15 @@ msgstr "utente"
 msgid "group"
 msgstr "gruppo"
 
-#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:67
+#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:68
 msgid "Editable"
 msgstr "Modificabile"
 
-#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:69
+#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:70
 msgid "Shareable"
 msgstr "Condivisibile"
 
-#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:71
+#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:72
 msgid "Deletable"
 msgstr "Eliminabile"
 
@@ -796,7 +796,7 @@ msgstr "Condividi con:"
 msgid "Shared with"
 msgstr "Condiviso con"
 
-#: templates/part.share.php:47 templates/part.share.php:73
+#: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
 msgstr "Rimuovi condivisione"
 
@@ -804,11 +804,11 @@ msgstr "Rimuovi condivisione"
 msgid "Nobody"
 msgstr "Nessuno"
 
-#: templates/part.share.php:56
+#: templates/part.share.php:57
 msgid "Shared via calendar"
 msgstr "Condiviso tramite calendario"
 
-#: templates/part.share.php:79
+#: templates/part.share.php:80
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."

@@ -13,15 +13,16 @@
 # rafabayona <rafabayona@gmail.com>, 2012
 # Raul Fernandez Garcia <raulfg3@gmail.com>, 2012
 # Rubén Trujillo <rubentrf@gmail.com>, 2012
+# saskarip, 2013
 # xsergiolpx <sergioballesterossolanas@gmail.com>, 2011, 2012
 # scambra <sergio@programatica.es>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-06-11 01:46+0200\n"
-"PO-Revision-Date: 2013-06-10 23:14+0000\n"
-"Last-Translator: ggam <ggam@brainleakage.com>\n"
+"POT-Creation-Date: 2013-06-12 02:48+0200\n"
+"PO-Revision-Date: 2013-06-11 23:23+0000\n"
+"Last-Translator: saskarip\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/owncloud/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,27 +32,27 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "Aún no se han guardado en caché todos los calendarios"
+msgstr "No todos los calendarios se han almacenado completamente"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr "Parece que se ha guardado todo en caché"
+msgstr "Todo parece estar completamente almacenado"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr "No se encontraron calendarios."
+msgstr "No se encuentra calendarios."
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr "No se encontraron eventos."
+msgstr "No se encuentran eventos."
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
-msgstr "Calendario incorrecto"
+msgstr "Calendario erróneo"
 
 #: ajax/event/edit.form.php:221 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
-msgstr "No tiene permisos para editar este evento."
+msgstr "No tiene los permisos para editar este evento."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:65
 msgid ""
@@ -65,11 +66,11 @@ msgstr "Los eventos han sido guardados en el nuevo calendario"
 
 #: ajax/import/import.php:57
 msgid "Import failed"
-msgstr "Fallo en la importación"
+msgstr "Importación falló"
 
 #: ajax/import/import.php:70
 msgid "events has been saved in your calendar"
-msgstr "los eventos se han guardado en tu calendario"
+msgstr "los eventos se guardaron en tu calendario"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -108,15 +109,15 @@ msgstr "usuario"
 msgid "group"
 msgstr "grupo"
 
-#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:67
+#: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:68
 msgid "Editable"
 msgstr "Editable"
 
-#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:69
+#: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:70
 msgid "Shareable"
 msgstr "Compartible"
 
-#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:71
+#: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:72
 msgid "Deletable"
 msgstr "Borrable"
 
@@ -335,11 +336,11 @@ msgstr "El evento termina antes de comenzar"
 
 #: js/l10n.php:61
 msgid "There was a database fail"
-msgstr "Se ha producido un error en la base de datos"
+msgstr "Se produjo un error en la base de datos"
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr "Cumpleaños"
+msgstr "Fecha de nacimiento"
 
 #: lib/app.php:122
 msgid "Business"
@@ -355,11 +356,11 @@ msgstr "Clientes"
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr "Entrega"
+msgstr "Repartidor"
 
 #: lib/app.php:126
 msgid "Holidays"
-msgstr "Festivos"
+msgstr "Vacaciones"
 
 #: lib/app.php:127
 msgid "Ideas"
@@ -407,23 +408,23 @@ msgstr "Sin nombre"
 
 #: lib/calendar.php:178 lib/calendar.php:211
 msgid "You do not have the permissions to update this calendar."
-msgstr "No tiene permisos para actualizar este calendario."
+msgstr "No tiene los permisos para actualizar este calendario."
 
 #: lib/calendar.php:246
 msgid "You do not have the permissions to delete this calendar."
-msgstr "No tiene permisos para eliminar este calendario."
+msgstr "No tiene los permisos para eliminar este calendario."
 
 #: lib/calendar.php:280
 msgid "You do not have the permissions to add to this calendar."
-msgstr "No tiene permisos para añadir a este calendario."
+msgstr "No tiene los permisos para añadir a este calendario."
 
 #: lib/object.php:122 lib/object.php:162 lib/object.php:319
 msgid "You do not have the permissions to add events to this calendar."
-msgstr "No tiene permisos para añadir eventos a este calendario."
+msgstr "No tiene los permisos para añadir eventos a este calendario."
 
 #: lib/object.php:267 lib/object.php:299
 msgid "You do not have the permissions to delete this event."
-msgstr "No tiene permisos para eliminar este evento."
+msgstr "No tiene los permisos para eliminar este evento."
 
 #: lib/object.php:493
 msgid "Busy"
@@ -495,7 +496,7 @@ msgstr "eventos de la semana del mes"
 
 #: lib/object.php:601
 msgid "first"
-msgstr "primer"
+msgstr "primero"
 
 #: lib/object.php:602
 msgid "second"
@@ -519,7 +520,7 @@ msgstr "último"
 
 #: lib/object.php:661
 msgid "by events date"
-msgstr "por fecha de los eventos"
+msgstr "por fecha de eventos"
 
 #: lib/object.php:662
 msgid "by yearday(s)"
@@ -568,7 +569,7 @@ msgstr "Tus calendarios"
 #: templates/part.choosecalendar.php:28
 #: templates/part.choosecalendar.rowfields.php:24
 msgid "CalDav Link"
-msgstr "Enlace a CalDav"
+msgstr "Enlace CalDav"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
@@ -597,7 +598,7 @@ msgstr "Editar calendario"
 
 #: templates/part.editcalendar.php:12
 msgid "Displayname"
-msgstr "Nombre a mostrar"
+msgstr "Nombreamostrar"
 
 #: templates/part.editcalendar.php:23
 msgid "Active"
@@ -630,11 +631,11 @@ msgstr "Exportar"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
-msgstr "Información del evento"
+msgstr "Informaciónevento"
 
 #: templates/part.eventform.php:6 templates/part.showevent.php:4
 msgid "Repeating"
-msgstr "Repetición"
+msgstr "Repitiendo"
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
@@ -686,11 +687,11 @@ msgstr "Opciones avanzadas"
 
 #: templates/part.eventform.php:89 templates/part.showevent.php:91
 msgid "Location"
-msgstr "Lugar"
+msgstr "Ubicación"
 
 #: templates/part.eventform.php:91
 msgid "Location of the Event"
-msgstr "Lugar del evento"
+msgstr "Ubicación del evento"
 
 #: templates/part.eventform.php:97 templates/part.showevent.php:99
 msgid "Description"
@@ -773,7 +774,7 @@ msgstr "¡Elija un nombre disponible!"
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr "Ya existe un calendario con este nombre. Si continúa, se combinarán los calendarios."
+msgstr "Un calendario con este nombre ya existe. Si aun así continua, estos calendarios se combinarán."
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
@@ -799,7 +800,7 @@ msgstr "Compartir con:"
 msgid "Shared with"
 msgstr "Compartido con"
 
-#: templates/part.share.php:47 templates/part.share.php:73
+#: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
 msgstr "Dejar de compartir"
 
@@ -807,11 +808,11 @@ msgstr "Dejar de compartir"
 msgid "Nobody"
 msgstr "Nadie"
 
-#: templates/part.share.php:56
+#: templates/part.share.php:57
 msgid "Shared via calendar"
 msgstr "Compartido vía calendario"
 
-#: templates/part.share.php:79
+#: templates/part.share.php:80
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."
