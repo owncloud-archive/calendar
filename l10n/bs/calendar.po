@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
 "POT-Creation-Date: 2013-06-13 02:10+0200\n"
-"PO-Revision-Date: 2013-06-12 01:01+0000\n"
+"PO-Revision-Date: 2013-06-12 21:41+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
-"Language-Team: Chinese (Hong Kong) (http://www.transifex.com/projects/p/owncloud/language/zh_HK/)\n"
+"Language-Team: Bosnian (http://www.transifex.com/projects/p/owncloud/language/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_HK\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
@@ -74,7 +74,7 @@ msgstr ""
 #: appinfo/app.php:38 js/l10n.php:55 templates/part.eventform.php:30
 #: templates/part.showevent.php:37
 msgid "Calendar"
-msgstr "日曆"
+msgstr ""
 
 #: js/calendar.js:154
 msgid "Deletion failed"
@@ -134,31 +134,31 @@ msgstr ""
 
 #: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
 msgid "Sunday"
-msgstr "星期日"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:584 templates/settings.php:68
 msgid "Monday"
-msgstr "星期一"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:585
 msgid "Tuesday"
-msgstr "星期二"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:586
 msgid "Wednesday"
-msgstr "星期三"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:587
 msgid "Thursday"
-msgstr "星期四"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:588
 msgid "Friday"
-msgstr "星期五"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:589
 msgid "Saturday"
-msgstr "星期六"
+msgstr ""
 
 #: js/l10n.php:46
 msgid "Sun."
@@ -190,51 +190,51 @@ msgstr ""
 
 #: js/l10n.php:47 lib/object.php:640
 msgid "January"
-msgstr "一月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:641
 msgid "February"
-msgstr "二月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:642
 msgid "March"
-msgstr "三月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:643
 msgid "April"
-msgstr "四月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:644
 msgid "May"
-msgstr "五月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:645
 msgid "June"
-msgstr "六月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:646
 msgid "July"
-msgstr "七月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:647
 msgid "August"
-msgstr "八月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:648
 msgid "September"
-msgstr "九月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:649
 msgid "October"
-msgstr "十月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:650
 msgid "November"
-msgstr "十一月"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:651
 msgid "December"
-msgstr "十二月"
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Jan."
@@ -299,7 +299,7 @@ msgstr ""
 #: js/l10n.php:54 templates/part.eventform.php:16
 #: templates/part.showevent.php:11
 msgid "Title"
-msgstr "標題"
+msgstr ""
 
 #: js/l10n.php:56
 msgid "From Date"
@@ -327,7 +327,7 @@ msgstr ""
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr "生日"
+msgstr ""
 
 #: lib/app.php:122
 msgid "Business"
@@ -371,7 +371,7 @@ msgstr ""
 
 #: lib/app.php:132
 msgid "Personal"
-msgstr "個人"
+msgstr ""
 
 #: lib/app.php:133
 msgid "Projects"
@@ -383,7 +383,7 @@ msgstr ""
 
 #: lib/app.php:135
 msgid "Work"
-msgstr "工作"
+msgstr ""
 
 #: lib/app.php:403
 msgid "by"
@@ -547,7 +547,7 @@ msgstr ""
 
 #: templates/calendar.php:13
 msgid "Settings"
-msgstr "設定"
+msgstr ""
 
 #: templates/part.choosecalendar.php:2
 msgid "Your calendars"
@@ -564,16 +564,16 @@ msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
-msgstr "下載"
+msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:31
 msgid "Edit"
-msgstr "編輯"
+msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:36
 #: templates/part.editevent.php:9
 msgid "Delete"
-msgstr "刪除"
+msgstr ""
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
@@ -597,7 +597,7 @@ msgstr ""
 
 #: templates/part.editcalendar.php:42
 msgid "Save"
-msgstr "儲存"
+msgstr ""
 
 #: templates/part.editcalendar.php:42 templates/part.editevent.php:8
 #: templates/part.newevent.php:6
@@ -606,7 +606,7 @@ msgstr ""
 
 #: templates/part.editcalendar.php:43
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
 #: templates/part.editevent.php:1
 msgid "Edit an event"
@@ -634,7 +634,7 @@ msgstr ""
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr "分享"
+msgstr ""
 
 #: templates/part.eventform.php:18
 msgid "Title of the Event"
@@ -694,7 +694,7 @@ msgstr ""
 
 #: templates/part.eventform.php:115 templates/part.showevent.php:116
 msgid "Advanced"
-msgstr "進階"
+msgstr ""
 
 #: templates/part.eventform.php:159 templates/part.showevent.php:160
 msgid "Select weekdays"
@@ -769,7 +769,7 @@ msgstr ""
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr "導入"
+msgstr ""
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
@@ -789,7 +789,7 @@ msgstr ""
 
 #: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
-msgstr "取消分享"
+msgstr ""
 
 #: templates/part.share.php:53
 msgid "Nobody"
@@ -823,7 +823,7 @@ msgstr ""
 
 #: templates/settings.php:10
 msgid "General"
-msgstr "一般"
+msgstr ""
 
 #: templates/settings.php:15
 msgid "Timezone"
@@ -867,15 +867,15 @@ msgstr ""
 
 #: templates/settings.php:86
 msgid "more info"
-msgstr "更多"
+msgstr ""
 
 #: templates/settings.php:88
 msgid "Primary address (Kontact et al)"
-msgstr "主要地址"
+msgstr ""
 
 #: templates/settings.php:90
 msgid "iOS/OS X"
-msgstr "iOS/OSX"
+msgstr ""
 
 #: templates/settings.php:92
 msgid "Read only iCalendar link(s)"
