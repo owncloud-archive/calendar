@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Borjan Tchakaloff <borjan@tchaka.fr>, 2013
 # Christophe Lherieau <skimpax@gmail.com>, 2012-2013
 # Francois_Boulogne <fboulogne@sciunto.org>, 2011
 # gp4004 <gp4004@arghh.org>, 2011, 2012
@@ -18,9 +19,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-06-13 02:10+0200\n"
-"PO-Revision-Date: 2013-06-12 01:01+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-06-15 01:55+0200\n"
+"PO-Revision-Date: 2013-06-14 23:23+0000\n"
+"Last-Translator: Borjan Tchakaloff <borjan@tchaka.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/owncloud/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -189,7 +190,7 @@ msgstr "Mer."
 
 #: js/l10n.php:46
 msgid "Thu."
-msgstr "Jeu"
+msgstr "Jeu."
 
 #: js/l10n.php:46
 msgid "Fri."
@@ -322,11 +323,11 @@ msgstr "De l'heure"
 
 #: js/l10n.php:58
 msgid "To Date"
-msgstr "A la date"
+msgstr "À la date"
 
 #: js/l10n.php:59
 msgid "To Time"
-msgstr "A l'heure"
+msgstr "À l'heure"
 
 #: js/l10n.php:60
 msgid "The event ends before it starts"
@@ -334,7 +335,7 @@ msgstr "L'événement s'est terminé avant qu'il ne commence"
 
 #: js/l10n.php:61
 msgid "There was a database fail"
-msgstr "Il y a eu un échec dans la base de donnée"
+msgstr "Il y a eu un échec dans la base de données"
 
 #: lib/app.php:121
 msgid "Birthday"
@@ -526,7 +527,7 @@ msgstr "par jour(s) de l'année"
 
 #: lib/object.php:663
 msgid "by weeknumber(s)"
-msgstr "par numéro de semaine(s)"
+msgstr "par numéro(s) de semaine(s)"
 
 #: lib/object.php:664
 msgid "by day and month"
@@ -633,11 +634,11 @@ msgstr "Événement"
 
 #: templates/part.eventform.php:6 templates/part.showevent.php:4
 msgid "Repeating"
-msgstr "Occurences"
+msgstr "Occurrences"
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
-msgstr "Alarmes"
+msgstr "Alarme"
 
 #: templates/part.eventform.php:8 templates/part.showevent.php:6
 msgid "Attendees"
