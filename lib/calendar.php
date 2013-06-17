@@ -251,7 +251,7 @@ class OC_Calendar_Calendar{
 		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_calendars` WHERE `id` = ?' );
 		$stmt->execute(array($id));
 
-		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*calendar_objects` WHERE `calendarid` = ?' );
+		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ?' );
 		$stmt->execute(array($id));
 
 		OCP\Share::unshareAll('calendar', $id);
@@ -282,7 +282,7 @@ class OC_Calendar_Calendar{
 				);
 			}
 		}
-		$stmt = OCP\DB::prepare('UPDATE `*PREFIX*calendar_objects` SET `calendarid` = ? WHERE `calendarid` = ?');
+		$stmt = OCP\DB::prepare('UPDATE `*PREFIX*clndr_objects` SET `calendarid` = ? WHERE `calendarid` = ?');
 		$stmt->execute(array($id1, $id2));
 		self::touchCalendar($id1);
 		self::deleteCalendar($id2);
