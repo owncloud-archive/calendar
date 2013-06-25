@@ -1,4 +1,6 @@
 <?php $TRANSLATIONS = array(
+"Not all calendars are completely cached" => "Bukan semua kalendar di-cache sepenuhnya",
+"Everything seems to be completely cached" => "Semua kelihatan akan di-cache sepenuhnya",
 "No calendars found." => "Tiada kalendar dijumpai.",
 "No events found." => "Tiada agenda dijumpai.",
 "Wrong calendar" => "Silap kalendar",
