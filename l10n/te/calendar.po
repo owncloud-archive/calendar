@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-07-01 03:03+0200\n"
-"PO-Revision-Date: 2013-06-30 23:11+0000\n"
+"POT-Creation-Date: 2013-07-02 15:36+0200\n"
+"PO-Revision-Date: 2013-07-02 08:10+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Telugu (http://www.transifex.com/projects/p/owncloud/language/te/)\n"
 "MIME-Version: 1.0\n"
@@ -614,7 +614,7 @@ msgstr ""
 
 #: templates/part.editevent.php:10
 msgid "Export"
-msgstr ""
+msgstr "ఎగుమతించు"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -769,7 +769,7 @@ msgstr ""
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr ""
+msgstr "దిగుమతించు"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
