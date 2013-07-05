@@ -3,819 +3,815 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# asieriko <asieriko@gmail.com>, 2013
-# asieriko <asieriko@gmail.com>, 2012
-# asieriko <asieriko@gmail.com>, 2011
-# Piarres Beobide <pi@beobide.net>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
 "POT-Creation-Date: 2013-07-06 01:50+0200\n"
-"PO-Revision-Date: 2013-07-05 23:20+0000\n"
+"PO-Revision-Date: 2013-07-05 08:25+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
-"Language-Team: Basque (http://www.transifex.com/projects/p/owncloud/language/eu/)\n"
+"Language-Team: Malayalam (India) (http://www.transifex.com/projects/p/owncloud/language/ml_IN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: eu\n"
+"Language: ml_IN\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "Egutegi guztiak ez daude guztiz cacheatuta"
+msgstr ""
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr "Dena guztiz cacheatuta dagoela dirudi"
+msgstr ""
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr "Ez da egutegirik aurkitu."
+msgstr ""
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr "Ez da gertaerarik aurkitu."
+msgstr ""
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
-msgstr "Egutegi okerra"
+msgstr ""
 
 #: ajax/event/edit.form.php:221 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
-msgstr "Gertaera hau editatzeko baimenik ez daukazu."
+msgstr ""
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:65
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr "Fitxategiak ez zuen gertaerarik edo gertaera guztiak dagoeneko egutegian gordeta zeuden."
+msgstr ""
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:68
 msgid "events has been saved in the new calendar"
-msgstr "gertaerak egutegi berrian gorde dira"
+msgstr ""
 
 #: ajax/import/import.php:57
 msgid "Import failed"
-msgstr "Inportazioak huts egin du"
+msgstr ""
 
 #: ajax/import/import.php:70
 msgid "events has been saved in your calendar"
-msgstr "gertaerak zure egutegian gorde dira"
+msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr "Ordu-zonalde berria"
+msgstr ""
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
-msgstr "Ordu-zonaldea aldatuta"
+msgstr ""
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
-msgstr "Baliogabeko eskaera"
+msgstr ""
 
 #: appinfo/app.php:38 js/l10n.php:55 templates/part.eventform.php:30
 #: templates/part.showevent.php:37
 msgid "Calendar"
-msgstr "Egutegia"
+msgstr ""
 
 #: js/calendar.js:154
 msgid "Deletion failed"
-msgstr "Ezabaketak huts egin du"
+msgstr ""
 
 #: js/calendar.js:243
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
-msgstr "[ yyyy]  MMMM ddd d{ - yyyy MMMM [ddd d] }"
+msgstr ""
 
 #: js/calendar.js:245
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr "[ yyyy]  MMMM ddd d HH:mm{ - yyyy MMMM [ddd d] HH:mm}"
+msgstr ""
 
 #: js/calendar.js:598
 msgid "user"
-msgstr "erabiltzailea"
+msgstr ""
 
 #: js/calendar.js:598
 msgid "group"
-msgstr "taldea"
+msgstr ""
 
 #: js/calendar.js:599 templates/part.share.php:41 templates/part.share.php:68
 msgid "Editable"
-msgstr "Editagarria"
+msgstr ""
 
 #: js/calendar.js:600 templates/part.share.php:43 templates/part.share.php:70
 msgid "Shareable"
-msgstr "Partekagarria"
+msgstr ""
 
 #: js/calendar.js:601 templates/part.share.php:45 templates/part.share.php:72
 msgid "Deletable"
-msgstr "Ezabagarria"
+msgstr ""
 
 #: js/calendar.js:871
 msgid "ddd"
-msgstr "ddd"
+msgstr ""
 
 #: js/calendar.js:872
 msgid "ddd M/d"
-msgstr "ddd M/d"
+msgstr ""
 
 #: js/calendar.js:873
 msgid "dddd M/d"
-msgstr "dddd M/d"
+msgstr ""
 
 #: js/calendar.js:876
 msgid "MMMM yyyy"
-msgstr "yyyy MMMM"
+msgstr ""
 
 #: js/calendar.js:878
 msgid "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
-msgstr "[ yyyy] MMM d{ '&#8212;'yyyy [ MMM] d}"
+msgstr ""
 
 #: js/calendar.js:880
 msgid "dddd, MMM d, yyyy"
-msgstr "yyyy, MMM d, dddd"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
 msgid "Sunday"
-msgstr "Igandea"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:584 templates/settings.php:68
 msgid "Monday"
-msgstr "Astelehena"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:585
 msgid "Tuesday"
-msgstr "Asteartea"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:586
 msgid "Wednesday"
-msgstr "Asteazkena"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:587
 msgid "Thursday"
-msgstr "Osteguna"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:588
 msgid "Friday"
-msgstr "Ostirala"
+msgstr ""
 
 #: js/l10n.php:45 lib/object.php:589
 msgid "Saturday"
-msgstr "Larunbata"
+msgstr ""
 
 #: js/l10n.php:46
 msgid "Sun."
-msgstr "ig."
+msgstr ""
 
 #: js/l10n.php:46
 msgid "Mon."
-msgstr "al."
+msgstr ""
 
 #: js/l10n.php:46
 msgid "Tue."
-msgstr "ar."
+msgstr ""
 
 #: js/l10n.php:46
 msgid "Wed."
-msgstr "az."
+msgstr ""
 
 #: js/l10n.php:46
 msgid "Thu."
-msgstr "og."
+msgstr ""
 
 #: js/l10n.php:46
 msgid "Fri."
-msgstr "ol."
+msgstr ""
 
 #: js/l10n.php:46
 msgid "Sat."
-msgstr "lr."
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:640
 msgid "January"
-msgstr "Urtarrila"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:641
 msgid "February"
-msgstr "Otsaila"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:642
 msgid "March"
-msgstr "Martxoa"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:643
 msgid "April"
-msgstr "Apirila"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:644
 msgid "May"
-msgstr "Maiatza"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:645
 msgid "June"
-msgstr "Ekaina"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:646
 msgid "July"
-msgstr "Uztaila"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:647
 msgid "August"
-msgstr "Abuztua"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:648
 msgid "September"
-msgstr "Iraila"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:649
 msgid "October"
-msgstr "Urria"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:650
 msgid "November"
-msgstr "Azaroa"
+msgstr ""
 
 #: js/l10n.php:47 lib/object.php:651
 msgid "December"
-msgstr "Abendua"
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Jan."
-msgstr "urt."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Feb."
-msgstr "ots."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Mar."
-msgstr "mar."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Apr."
-msgstr "api."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "May."
-msgstr "mai."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Jun."
-msgstr "eka."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Jul."
-msgstr "uzt."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Aug."
-msgstr "abu."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Sep."
-msgstr "ira."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Oct."
-msgstr "urr."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Nov."
-msgstr "aza."
+msgstr ""
 
 #: js/l10n.php:48
 msgid "Dec."
-msgstr "abe."
+msgstr ""
 
 #: js/l10n.php:51
 msgid "All day"
-msgstr "Egun guztia"
+msgstr ""
 
 #: js/l10n.php:52 lib/import.php:214 templates/part.choosecalendar.php:23
 msgid "New Calendar"
-msgstr "Egutegi berria"
+msgstr ""
 
 #: js/l10n.php:53
 msgid "Missing or invalid fields"
-msgstr "Eremuak falta dira edo gaizki daude"
+msgstr ""
 
 #: js/l10n.php:54 templates/part.eventform.php:16
 #: templates/part.showevent.php:11
 msgid "Title"
-msgstr "Izenburua"
+msgstr ""
 
 #: js/l10n.php:56
 msgid "From Date"
-msgstr "Hasierako Data"
+msgstr ""
 
 #: js/l10n.php:57
 msgid "From Time"
-msgstr "Hasierako Ordua"
+msgstr ""
 
 #: js/l10n.php:58
 msgid "To Date"
-msgstr "Bukaerako Data"
+msgstr ""
 
 #: js/l10n.php:59
 msgid "To Time"
-msgstr "Bukaerako Ordua"
+msgstr ""
 
 #: js/l10n.php:60
 msgid "The event ends before it starts"
-msgstr "Gertaera hasi baino lehen bukatzen da"
+msgstr ""
 
 #: js/l10n.php:61
 msgid "There was a database fail"
-msgstr "Datu-baseak huts egin du"
+msgstr ""
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr "Jaioteguna"
+msgstr ""
 
 #: lib/app.php:122
 msgid "Business"
-msgstr "Negozioa"
+msgstr ""
 
 #: lib/app.php:123
 msgid "Call"
-msgstr "Deia"
+msgstr ""
 
 #: lib/app.php:124
 msgid "Clients"
-msgstr "Bezeroak"
+msgstr ""
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr "Banatzailea"
+msgstr ""
 
 #: lib/app.php:126
 msgid "Holidays"
-msgstr "Oporrak"
+msgstr ""
 
 #: lib/app.php:127
 msgid "Ideas"
-msgstr "Ideiak"
+msgstr ""
 
 #: lib/app.php:128
 msgid "Journey"
-msgstr "Bidaia"
+msgstr ""
 
 #: lib/app.php:129
 msgid "Jubilee"
-msgstr "Urteurrena"
+msgstr ""
 
 #: lib/app.php:130
 msgid "Meeting"
-msgstr "Bilera"
+msgstr ""
 
 #: lib/app.php:131
 msgid "Other"
-msgstr "Bestelakoa"
+msgstr ""
 
 #: lib/app.php:132
 msgid "Personal"
-msgstr "Pertsonala"
+msgstr ""
 
 #: lib/app.php:133
 msgid "Projects"
-msgstr "Proiektuak"
+msgstr ""
 
 #: lib/app.php:134
 msgid "Questions"
-msgstr "Galderak"
+msgstr ""
 
 #: lib/app.php:135
 msgid "Work"
-msgstr "Lana"
+msgstr ""
 
 #: lib/app.php:403
 msgid "by"
-msgstr " Egilea:"
+msgstr ""
 
 #: lib/app.php:466
 msgid "unnamed"
-msgstr "izengabea"
+msgstr ""
 
 #: lib/calendar.php:178 lib/calendar.php:211
 msgid "You do not have the permissions to update this calendar."
-msgstr "Egutegi hau eguneratzeko baimenik ez daukazu."
+msgstr ""
 
 #: lib/calendar.php:246
 msgid "You do not have the permissions to delete this calendar."
-msgstr "Egutegi hau ezabatzeko baimenik ez daukazu."
+msgstr ""
 
 #: lib/calendar.php:280
 msgid "You do not have the permissions to add to this calendar."
-msgstr "Egutegi honetan gehitzeko baimenik ez daukazu."
+msgstr ""
 
 #: lib/object.php:122 lib/object.php:162 lib/object.php:319
 msgid "You do not have the permissions to add events to this calendar."
-msgstr "Egutegi honetan gertaerak gehitzeko baimenik ez daukazu."
+msgstr ""
 
 #: lib/object.php:267 lib/object.php:299
 msgid "You do not have the permissions to delete this event."
-msgstr "Gertaera hau ezabatzeko baimenik ez daukazu."
+msgstr ""
 
 #: lib/object.php:493
 msgid "Busy"
-msgstr "Lanpetuta"
+msgstr ""
 
 #: lib/object.php:533
 msgid "Public"
-msgstr "Publikoa"
+msgstr ""
 
 #: lib/object.php:534
 msgid "Private"
-msgstr "Pribatua"
+msgstr ""
 
 #: lib/object.php:535
 msgid "Confidential"
-msgstr "Konfidentziala"
+msgstr ""
 
 #: lib/object.php:545
 msgid "Does not repeat"
-msgstr "Ez da errepikatzen"
+msgstr ""
 
 #: lib/object.php:546
 msgid "Daily"
-msgstr "Egunero"
+msgstr ""
 
 #: lib/object.php:547
 msgid "Weekly"
-msgstr "Astero"
+msgstr ""
 
 #: lib/object.php:548
 msgid "Every Weekday"
-msgstr "Asteko egun guztietan"
+msgstr ""
 
 #: lib/object.php:549
 msgid "Bi-Weekly"
-msgstr "Bi-Astero"
+msgstr ""
 
 #: lib/object.php:550
 msgid "Monthly"
-msgstr "Hilabetero"
+msgstr ""
 
 #: lib/object.php:551
 msgid "Yearly"
-msgstr "Urtero"
+msgstr ""
 
 #: lib/object.php:561
 msgid "never"
-msgstr "inoiz"
+msgstr ""
 
 #: lib/object.php:562
 msgid "by occurrences"
-msgstr "errepikapen kopuruagatik"
+msgstr ""
 
 #: lib/object.php:563
 msgid "by date"
-msgstr "dataren arabera"
+msgstr ""
 
 #: lib/object.php:573
 msgid "by monthday"
-msgstr "hileko egunaren arabera"
+msgstr ""
 
 #: lib/object.php:574
 msgid "by weekday"
-msgstr "asteko egunaren arabera"
+msgstr ""
 
 #: lib/object.php:600
 msgid "events week of month"
-msgstr "gertaeraren hilabeteko astea"
+msgstr ""
 
 #: lib/object.php:601
 msgid "first"
-msgstr "lehenengoa"
+msgstr ""
 
 #: lib/object.php:602
 msgid "second"
-msgstr "bigarrean"
+msgstr ""
 
 #: lib/object.php:603
 msgid "third"
-msgstr "hirugarrena"
+msgstr ""
 
 #: lib/object.php:604
 msgid "fourth"
-msgstr "laugarrena"
+msgstr ""
 
 #: lib/object.php:605
 msgid "fifth"
-msgstr "bostgarrena"
+msgstr ""
 
 #: lib/object.php:606
 msgid "last"
-msgstr "azkena"
+msgstr ""
 
 #: lib/object.php:661
 msgid "by events date"
-msgstr "gertaeren dataren arabera"
+msgstr ""
 
 #: lib/object.php:662
 msgid "by yearday(s)"
-msgstr "urteko egunaren arabera"
+msgstr ""
 
 #: lib/object.php:663
 msgid "by weeknumber(s)"
-msgstr "aste zenbaki(ar)en arabera"
+msgstr ""
 
 #: lib/object.php:664
 msgid "by day and month"
-msgstr "eguna eta hilabetearen arabera"
+msgstr ""
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
-msgstr "Data"
+msgstr ""
 
 #: lib/search.php:43
 msgid "Cal."
-msgstr "Eg."
+msgstr ""
 
 #: templates/calendar.php:6
 msgid "Week"
-msgstr "Astea"
+msgstr ""
 
 #: templates/calendar.php:7
 msgid "Month"
-msgstr "Hilabetea"
+msgstr ""
 
 #: templates/calendar.php:8
 msgid "List"
-msgstr "Zerrenda"
+msgstr ""
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
-msgstr "Gaur"
+msgstr ""
 
 #: templates/calendar.php:13
 msgid "Settings"
-msgstr "Ezarpenak"
+msgstr ""
 
 #: templates/part.choosecalendar.php:2
 msgid "Your calendars"
-msgstr "Zure egutegiak"
+msgstr ""
 
 #: templates/part.choosecalendar.php:28
 #: templates/part.choosecalendar.rowfields.php:24
 msgid "CalDav Link"
-msgstr "CalDav lotura"
+msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
-msgstr "Elkarbanatu egutegia"
+msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
-msgstr "Deskargatu"
+msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:31
 msgid "Edit"
-msgstr "Editatu"
+msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:36
 #: templates/part.editevent.php:9
 msgid "Delete"
-msgstr "Ezabatu"
+msgstr ""
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
-msgstr "Egutegi berria"
+msgstr ""
 
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
-msgstr "Editatu egutegia"
+msgstr ""
 
 #: templates/part.editcalendar.php:12
 msgid "Displayname"
-msgstr "Bistaratzeko izena"
+msgstr ""
 
 #: templates/part.editcalendar.php:23
 msgid "Active"
-msgstr "Aktiboa"
+msgstr ""
 
 #: templates/part.editcalendar.php:29
 msgid "Calendar color"
-msgstr "Egutegiaren kolorea"
+msgstr ""
 
 #: templates/part.editcalendar.php:42
 msgid "Save"
-msgstr "Gorde"
+msgstr ""
 
 #: templates/part.editcalendar.php:42 templates/part.editevent.php:8
 #: templates/part.newevent.php:6
 msgid "Submit"
-msgstr "Bidali"
+msgstr ""
 
 #: templates/part.editcalendar.php:43
 msgid "Cancel"
-msgstr "Ezeztatu"
+msgstr ""
 
 #: templates/part.editevent.php:1
 msgid "Edit an event"
-msgstr "Editatu gertaera"
+msgstr ""
 
 #: templates/part.editevent.php:10
 msgid "Export"
-msgstr "Exportatu"
+msgstr ""
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
-msgstr "Gertaeraren informazioa"
+msgstr ""
 
 #: templates/part.eventform.php:6 templates/part.showevent.php:4
 msgid "Repeating"
-msgstr "Errepikapena"
+msgstr ""
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
-msgstr "Alarma"
+msgstr ""
 
 #: templates/part.eventform.php:8 templates/part.showevent.php:6
 msgid "Attendees"
-msgstr "Partaideak"
+msgstr ""
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr "Elkarbanatu"
+msgstr ""
 
 #: templates/part.eventform.php:18
 msgid "Title of the Event"
-msgstr "Gertaeraren izenburua"
+msgstr ""
 
 #: templates/part.eventform.php:24 templates/part.showevent.php:19
 msgid "Category"
-msgstr "Kategoria"
+msgstr ""
 
 #: templates/part.eventform.php:26
 msgid "Separate categories with commas"
-msgstr "Banatu kategoriak komekin"
+msgstr ""
 
 #: templates/part.eventform.php:27
 msgid "Edit categories"
-msgstr "Editatu kategoriak"
+msgstr ""
 
 #: templates/part.eventform.php:47 templates/part.showevent.php:50
 msgid "Access Class"
-msgstr "Sarrera mota"
+msgstr ""
 
 #: templates/part.eventform.php:64 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr "Egun osoko gertaera"
+msgstr ""
 
 #: templates/part.eventform.php:68 templates/part.showevent.php:70
 msgid "From"
-msgstr "Hasiera"
+msgstr ""
 
 #: templates/part.eventform.php:76 templates/part.showevent.php:78
 msgid "To"
-msgstr "Bukaera"
+msgstr ""
 
 #: templates/part.eventform.php:84 templates/part.showevent.php:86
 msgid "Advanced options"
-msgstr "Aukera aurreratuak"
+msgstr ""
 
 #: templates/part.eventform.php:89 templates/part.showevent.php:91
 msgid "Location"
-msgstr "Kokalekua"
+msgstr ""
 
 #: templates/part.eventform.php:91
 msgid "Location of the Event"
-msgstr "Gertaeraren kokalekua"
+msgstr ""
 
 #: templates/part.eventform.php:97 templates/part.showevent.php:99
 msgid "Description"
-msgstr "Deskribapena"
+msgstr ""
 
 #: templates/part.eventform.php:99
 msgid "Description of the Event"
-msgstr "Gertaeraren deskribapena"
+msgstr ""
 
 #: templates/part.eventform.php:108 templates/part.showevent.php:109
 msgid "Repeat"
-msgstr "Errepikatu"
+msgstr ""
 
 #: templates/part.eventform.php:115 templates/part.showevent.php:116
 msgid "Advanced"
-msgstr "Aurreratua"
+msgstr ""
 
 #: templates/part.eventform.php:159 templates/part.showevent.php:160
 msgid "Select weekdays"
-msgstr "Hautatu asteko egunak"
+msgstr ""
 
 #: templates/part.eventform.php:172 templates/part.eventform.php:185
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
-msgstr "Hautatu egunak"
+msgstr ""
 
 #: templates/part.eventform.php:177 templates/part.showevent.php:178
 msgid "and the events day of year."
-msgstr "eta gertaeraren urteko eguna."
+msgstr ""
 
 #: templates/part.eventform.php:190 templates/part.showevent.php:191
 msgid "and the events day of month."
-msgstr "eta gertaeraren hilabeteko eguna."
+msgstr ""
 
 #: templates/part.eventform.php:198 templates/part.showevent.php:199
 msgid "Select months"
-msgstr "Hautatu hilabeteak"
+msgstr ""
 
 #: templates/part.eventform.php:211 templates/part.showevent.php:212
 msgid "Select weeks"
-msgstr "Hautatu asteak"
+msgstr ""
 
 #: templates/part.eventform.php:216 templates/part.showevent.php:217
 msgid "and the events week of year."
-msgstr "eta gertaeraren urteko astea."
+msgstr ""
 
 #: templates/part.eventform.php:222 templates/part.showevent.php:223
 msgid "Interval"
-msgstr "Tartea"
+msgstr ""
 
 #: templates/part.eventform.php:228 templates/part.showevent.php:229
 msgid "End"
-msgstr "Amaiera"
+msgstr ""
 
 #: templates/part.eventform.php:241 templates/part.showevent.php:242
 msgid "occurrences"
-msgstr "errepikapenak"
+msgstr ""
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
-msgstr "sortu egutegi berria"
+msgstr ""
 
 #: templates/part.import.php:17
 msgid "Import a calendar file"
-msgstr "Inportatu egutegi fitxategi bat"
+msgstr ""
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr "Mesedez aukeratu egutegi bat."
+msgstr ""
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
-msgstr "Egutegi berriaren izena"
+msgstr ""
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr "Hartu eskuragarri dagoen izen bat!"
+msgstr ""
 
 #: templates/part.import.php:45
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr "Izen hau duen egutegi bat dagoeneko existitzen da. Hala ere jarraitzen baduzu, egutegi hauek elkartuko dira."
+msgstr ""
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr "Ezabatu hautatutako egutegiko gertaera guztiak"
+msgstr ""
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr "Importatu"
+msgstr ""
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
-msgstr "Itxi lehioa"
+msgstr ""
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
-msgstr "Sortu gertaera berria"
+msgstr ""
 
 #: templates/part.share.php:27
 msgid "Share with:"
-msgstr "elkarbanatu honekin:"
+msgstr ""
 
 #: templates/part.share.php:30
 msgid "Shared with"
-msgstr "Hauekin elkarbanatuta:"
+msgstr ""
 
 #: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
-msgstr "Ez elkarbanatu"
+msgstr ""
 
 #: templates/part.share.php:53
 msgid "Nobody"
-msgstr "Inor"
+msgstr ""
 
 #: templates/part.share.php:57
 msgid "Shared via calendar"
-msgstr "Egutegiaren bidez elkarbanatuta"
+msgstr ""
 
 #: templates/part.share.php:80
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."
-msgstr "OHARRA: Egutegiaren bidez elkarbanatutako gertaeren gaineko ekintzak egutegi osoaren elkarbanatzean izango dute eragina."
+msgstr ""
 
 #: templates/part.showevent.php:1
 msgid "View an event"
-msgstr "Ikusi gertaera bat"
+msgstr ""
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
-msgstr "Ez da kategoriarik hautatu"
+msgstr ""
 
 #: templates/part.showevent.php:41
 msgid "of"
@@ -823,64 +819,64 @@ msgstr ""
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
-msgstr "ordua"
+msgstr ""
 
 #: templates/settings.php:10
 msgid "General"
-msgstr "Orokorra"
+msgstr ""
 
 #: templates/settings.php:15
 msgid "Timezone"
-msgstr "Ordu-zonaldea"
+msgstr ""
 
 #: templates/settings.php:46
 msgid "Update timezone automatically"
-msgstr "Eguneratu ordu-zonaldea automatikoki"
+msgstr ""
 
 #: templates/settings.php:51
 msgid "Time format"
-msgstr "Ordu formatua"
+msgstr ""
 
 #: templates/settings.php:56
 msgid "24h"
-msgstr "24h"
+msgstr ""
 
 #: templates/settings.php:57
 msgid "12h"
-msgstr "12h"
+msgstr ""
 
 #: templates/settings.php:63
 msgid "Start week on"
-msgstr "Astea hasteko eguna"
+msgstr ""
 
 #: templates/settings.php:75
 msgid "Cache"
-msgstr "Cache"
+msgstr ""
 
 #: templates/settings.php:79
 msgid "Clear cache for repeating events"
-msgstr "Ezabatu gertaera errepikakorren cachea"
+msgstr ""
 
 #: templates/settings.php:84
 msgid "URLs"
-msgstr "URLak"
+msgstr ""
 
 #: templates/settings.php:86
 msgid "Calendar CalDAV syncing addresses"
-msgstr "Egutegiaren CalDAV sinkronizazio helbideak"
+msgstr ""
 
 #: templates/settings.php:86
 msgid "more info"
-msgstr "informazio gehiago"
+msgstr ""
 
 #: templates/settings.php:88
 msgid "Primary address (Kontact et al)"
-msgstr "Helbide nagusia"
+msgstr ""
 
 #: templates/settings.php:90
 msgid "iOS/OS X"
-msgstr "iOS/OS X"
+msgstr ""
 
 #: templates/settings.php:92
 msgid "Read only iCalendar link(s)"
-msgstr "Bakarrik irakurtzeko iCalendar lotura(k)"
+msgstr ""
