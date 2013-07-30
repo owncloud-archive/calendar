@@ -6,14 +6,15 @@
 # Jan Krejci <krejca85@gmail.com>, 2011-2012
 # Martin <fireball@atlas.cz>, 2011-2012
 # Michal Hrušecký <Michal@hrusecky.net>, 2012
+# pstast <petr@stastny.eu>, 2013
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-07-23 01:46-0400\n"
-"PO-Revision-Date: 2013-07-23 05:00+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-07-30 01:47-0400\n"
+"PO-Revision-Date: 2013-07-29 13:20+0000\n"
+"Last-Translator: pstast <petr@stastny.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "V paměti nejsou uloženy úplně všechny kalendáře"
+msgstr "V paměti nejsou úplně uloženy všechny kalendáře"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
@@ -82,7 +83,7 @@ msgstr "Kalendář"
 
 #: js/calendar.js:154
 msgid "Deletion failed"
-msgstr "Mazání selhalo."
+msgstr "Mazání selhalo"
 
 #: js/calendar.js:243
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
@@ -298,7 +299,7 @@ msgstr "Nový kalendář"
 
 #: js/l10n.php:53
 msgid "Missing or invalid fields"
-msgstr "Chybějící, nebo neplatná pole"
+msgstr "Chybějící nebo neplatná pole"
 
 #: js/l10n.php:54 templates/part.eventform.php:16
 #: templates/part.showevent.php:11
@@ -407,7 +408,7 @@ msgstr "Nemáte práva pro smazání tohoto kalendáře."
 
 #: lib/calendar.php:280
 msgid "You do not have the permissions to add to this calendar."
-msgstr "Nemáte práva pro přidání tohoto kalendáře."
+msgstr "Nemáte práva pro přidání do tohoto kalendáře."
 
 #: lib/object.php:122 lib/object.php:162 lib/object.php:319
 msgid "You do not have the permissions to add events to this calendar."
@@ -759,7 +760,7 @@ msgstr "Název nového kalendáře"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr "Použijte dostupný název."
+msgstr "Použijte dostupný název!"
 
 #: templates/part.import.php:45
 msgid ""
@@ -793,7 +794,7 @@ msgstr "Sdíleno s"
 
 #: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
-msgstr "Od-sdílet"
+msgstr "Zrušit sdílení"
 
 #: templates/part.share.php:53
 msgid "Nobody"
