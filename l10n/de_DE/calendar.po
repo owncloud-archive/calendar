@@ -14,7 +14,7 @@
 # Jan-Christoph Borchardt <jan@unhosted.org>, 2011
 # Marcel Kühlhorn <susefan93@gmx.de>, 2012-2013
 # JamFX <niko@nik-o-mat.de>, 2012
-# peddn <peddn@web.de>, 2012
+# peddn <public@peddn.net>, 2012
 # Phi Lieb <>, 2012
 # I Robot <owncloud-bot@tmit.eu>, 2012
 # traductor <transifex-2.7.mensaje@spamgourmet.com>, 2012
@@ -23,8 +23,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-07-23 01:46-0400\n"
-"PO-Revision-Date: 2013-07-23 05:00+0000\n"
+"POT-Creation-Date: 2013-07-31 01:47-0400\n"
+"PO-Revision-Date: 2013-07-31 05:40+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: German (Germany) <translations@owncloud.org>\n"
 "MIME-Version: 1.0\n"
