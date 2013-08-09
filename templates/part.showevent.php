@@ -253,5 +253,7 @@
 </div>
 <!--<div id="tabs-3">//Alarm</div>
 <div id="tabs-4">//Attendees</div>-->
-
+	<div id="actions">
+		<input type="button" id="importEvent" data-id="<?php p($_['eventid']) ?>" class="submit actionsfloatleft"  value="<?php p($l->t("Import"));?>">
+	</div>
 </div>

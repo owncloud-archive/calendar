@@ -484,6 +484,14 @@ Calendar={
 						function(){Calendar.UI.Calendar.colorPicker(this)});
 				$(object).closest('tr').after(tr).hide();
 			},
+			import:function(object, calendarid){
+				if($('#event').dialog('isOpen') == true){
+					// TODO: save event
+					$('#event').dialog('destroy').remove();
+				}
+				Calendar.UI.loading(true);
+				$('#dialog_holder').load(OC.filePath('calendar', 'ajax/event', 'import.form.php'), {id: calendarid}, Calendar.UI.startEventDialog);
+			},
 			deleteCalendar:function(calid){
 				var check = confirm("Do you really want to delete this calendar?");
 				if(check == false){
