@@ -301,7 +301,7 @@ Calendar={
 				}
 			}
 			Calendar.UI.scrollcount++;
-			if(Calendar.UI.scrollcount < 5){
+			if(Calendar.UI.scrollcount < 20){
 				return;
 			}
 
