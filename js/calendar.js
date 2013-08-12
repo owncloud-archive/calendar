@@ -279,6 +279,10 @@ Calendar={
 			//}
 		},
 		scrollCalendar:function(event){
+			var currentView = $('#fullcalendar').fullCalendar('getView');
+			if(currentView.name == 'agendaWeek') {
+				return;
+			}
 			$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
 			$('.tipsy').remove();
 			var direction;
