@@ -63,6 +63,8 @@ button.category{margin:0 3px;}
 .sharedby li > .shareactions > * { display: none; }
 .sharedby li:hover > .shareactions > * { display: inline-block; }
 
+.fc-state-highlight { background: #ffa; }
+
 .fc-list-table
 {
     margin: 10px;
