@@ -1,7 +1,7 @@
 <!-- !load calendar data -->
-<script type="text/javascript" src="<?php echo OCP\Util::linkToRoute('calendar_data');?>"></script>
+<script type="text/javascript" src="<?php echo null;//OCP\Util::linkToRoute('calendar_data');?>"></script>
 <!-- !load view settings -->
-<script type="text/javascript" src="<?php echo OCP\Util::linkToRoute('view_data');?>"></script>
+<script type="text/javascript" src="<?php echo null;//OCP\Util::linkToRoute('view_data');?>"></script>
 <!-- !main calendar html stuff -->
 <div id="app-navigation">
 	<!-- selected date and available views -->

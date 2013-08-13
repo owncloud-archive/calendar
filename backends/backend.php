@@ -1,68 +1,50 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <developer at georgehrke dot com>
+ * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
  */
 namespace OCA\Calendar\Backend;
-/**
- * error code for functions not provided by the user backend
- */
-define('OC_CALENDAR_BACKEND_NOT_IMPLEMENTED',   -501);
 
-/**
- * actions that user backends can define
- */
-//for calendars
-define('OC_CALENDAR_BACKEND_CREATE_CALENDAR', 		0x0000000000001);
-define('OC_CALENDAR_BACKEND_EDIT_CALENDAR',			0x0000000000010);
-define('OC_CALENDAR_BACKEND_DELETE_CALENDAR',		0x0000000000100);
-define('OC_CALENDAR_BACKEND_TOUCH_CALENDAR',		0x0000000001000);
-define('OC_CALENDAR_BACKEND_MERGE_CALENDAR',		0x0000000010000);
-//for objects
-define('OC_CALENDAR_BACKEND_CREATE_OBJECT',			0x0000000100000);
-define('OC_CALENDAR_BACKEND_EDIT_OBJECT',			0x0000001000000);
-define('OC_CALENDAR_BACKEND_DELETE_OBJECT',			0x0000010000000);
-define('OC_CALENDAR_BACKEND_GET_IN_PERIOD',			0x0000100000000);
-define('OC_CALENDAR_BACKEND_MOVE_OBJECT',			0x0001000000000);
-define('OC_CALENDAR_BACKEND_GET_OBJECT_BY_TYPE',	0x0010000000000);
-define('OC_CALENDAR_BACKEND_GET_IN_PERIOD_BY_TYPE',	0x0100000000000);
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
 
-/**
- * Abstract base class for calendar. Provides methods for querying backend
- * capabilities.
- *
- * Subclass this for your own backends, and see OCA\Calendar\Backend\Example for descriptions
- */
+//constants
+define('OCA\Calendar\Backend\NOT_IMPLEMENTED',  	 	-501);
+define('OCA\Calendar\Backend\CREATE_CALENDAR', 			0x0000000001);
+define('OCA\Calendar\Backend\UPDATE_CALENDAR',			0x0000000010);
+define('OCA\Calendar\Backend\DELETE_CALENDAR',			0x0000000100);
+define('OCA\Calendar\Backend\MERGE_CALENDAR',			0x0000001000);
+define('OCA\Calendar\Backend\CREATE_OBJECT',			0x0000010000);
+define('OCA\Calendar\Backend\UPDATE_OBJECT',			0x0000100000);
+define('OCA\Calendar\Backend\DELETE_OBJECT',			0x0001000000);
+define('OCA\Calendar\Backend\FIND_IN_PERIOD',			0x0010000000);
+define('OCA\Calendar\Backend\FIND_OBJECTS_BY_TYPE',		0x0100000000);
+define('OCA\Calendar\Backend\FIND_IN_PERIOD_BY_TYPE',	0x1000000000);
+
 abstract class Backend implements CalendarInterface {
 
+	protected $api;
+	protected $backend;
+
 	protected $possibleActions = array(
-		OC_CALENDAR_BACKEND_CREATE_CALENDAR 		=> 'createCalendar',
-		OC_CALENDAR_BACKEND_EDIT_CALENDAR			=> 'editCalendar',
-		OC_CALENDAR_BACKEND_DELETE_CALENDAR 		=> 'deleteCalendar',
-		OC_CALENDAR_BACKEND_TOUCH_CALENDAR 			=> 'touchCalendar',
-		OC_CALENDAR_BACKEND_MERGE_CALENDAR 			=> 'mergeCalendar',
-		OC_CALENDAR_BACKEND_CREATE_OBJECT 			=> 'createObject',
-		OC_CALENDAR_BACKEND_EDIT_OBJECT 			=> 'editObject',
-		OC_CALENDAR_BACKEND_DELETE_OBJECT 			=> 'deleteObject',
-		OC_CALENDAR_BACKEND_GET_IN_PERIOD 			=> 'getInPeriod',
-		OC_CALENDAR_BACKEND_MOVE_OBJECT 			=> 'moveObject',
-		OC_CALENDAR_BACKEND_GET_OBJECT_BY_TYPE		=> 'getByType',
-		OC_CALENDAR_BACKEND_GET_IN_PERIOD_BY_TYPE	=> 'getInPeriodByType'
+		CREATE_CALENDAR 		=> 'createCalendar',
+		UPDATE_CALENDAR			=> 'updateCalendar',
+		DELETE_CALENDAR 		=> 'deleteCalendar',
+		MERGE_CALENDAR 			=> 'mergeCalendar',
+		CREATE_OBJECT 			=> 'createObject',
+		UPDATE_OBJECT 			=> 'updateObject',
+		DELETE_OBJECT 			=> 'deleteObject',
+		FIND_IN_PERIOD 			=> 'findObjectsInPeriod',
+		FIND_OBJECTS_BY_TYPE	=> 'findObjectsByType',
+		FIND_IN_PERIOD_BY_TYPE	=> 'findObjectsByTypeInPeriod'
 	);
-	
-	public function __construct(){
-		
+
+	public function __construct($api, $backend){
+		$this->api = $api;
+		$this->backend = strtolower($backend);
 	}
 
-	/**
-	* @brief Get all supported actions
-	* @returns bitwise-or'ed actions
-	*
-	* Returns the supported actions as int to be
-	* compared with OC_CALENDAR_BACKEND_CREATE_CALENDAR etc.
-	*/
 	public function getSupportedActions() {
 		$actions = 0;
 		foreach($this->possibleActions AS $action => $methodName) {
@@ -75,79 +57,88 @@ abstract class Backend implements CalendarInterface {
 	}
 
 	/**
-	* @brief Check if backend implements actions
-	* @param $actions bitwise-or'ed actions
-	* @returns boolean
-	*
-	* Returns the supported actions as int to be
-	* compared with OC_CALENDAR_BACKEND_CREATE_CALENDAR etc.
-	*/
+	 * @brief Check if backend implements actions
+	 * @param string $actions
+	 * @returns integer
+	 * 
+	 * This method returns an integer.
+	 * If the action is supported, it returns an integer that can be compared with \OC\Calendar\Backend\CREATE_CALENDAR, etc...
+	 * If the action is not supported, it returns -501
+	 * This method is mandatory!
+	 */
 	public function implementsActions($actions) {
 		return (bool)($this->getSupportedActions() & $actions);
 	}
 
 	/**
-	* @brief should the calendar be cached?
-	* @returns array with all calendar informations
-	*
-	* Get information if the calendar should be cached
-	*/
-	public function cacheIt(){
+	 * @brief returns whether or not a calendar should be cached
+	 * @param string $calendarURI
+	 * @param string $userId
+	 * @returns boolean
+	 * @throws DoesNotExistException if uri does not exist
+	 * 
+	 * This method returns a boolen. true if the calendar should be cached, false if the calendar shouldn't be cached
+	 * This method is mandatory!
+	 */
+	public function cacheCalendar($calendarURI, $userId) {
+		$this->findCalendar($calendarURI, $userId);
 		return true;
 	}
 
 	/**
-	* @brief is the calendar $uri writable
-	* @param $uri - uri of the calendar
-	* @returns boolean true/false
-	*
-	* Get information if the calendar is writable
-	*/
-	public function isCalendarWritableByUser($uri, $userid){
-		return false;
+	 * @brief returns information about calendar $calendarURI of the user $userId
+	 * @param string $calendarURI
+	 * @param string $userId
+	 * @returns array with \OCA\Calendar\Db\Calendar object
+	 * @throws DoesNotExistException if uri does not exist
+	 * 
+	 * This method returns an array of \OCA\Calendar\Db\Calendar object.
+	 * This method is mandatory!
+	 */
+	public function findCalendar($calendarURI, $userId) {
+		throw new DoesNotExistException();
 	}
 
 	/**
-	* @brief Get information about a calendars
-	* @param $calid calendarid
-	* @returns array with all calendar informations
-	*
-	* Get all calendar informations the backend provides.
-	*/
-	public function findCalendar($calid = ''){
-		return false;
-	}
-
-	/**
-	* @brief Get a list of all calendars
-	* @param $rw boolean about read&write support
-	* @returns array with all calendars
-	*
-	* Get a list of all calendars.
-	*/
-	public function getCalendars($userid, $rw){
+	 * @brief returns all calendars of the user $userId
+	 * @param string $userId
+	 * @returns array with \OCA\Calendar\Db\Calendar objects
+	 * @throws DoesNotExistException if uri does not exist
+	 * 
+	 * This method returns an array of \OCA\Calendar\Db\Object objects.
+	 * This method is mandatory!
+	 */
+	public function findCalendars($userId) {
 		return array();
 	}
 
 	/**
-	* @brief Get information about an event
-	* @param $uid - unique id 
-	* @returns array with all event informations
-	*
-	* Get icalendar of an event
-	*/
-	public function findObject($uri, $uid){
-		return false;
+	 * @brief returns information about the object (event/journal/todo) with the uid $objectURI in the calendar $calendarURI of the user $userId 
+	 * @param string $calendarURI
+	 * @param string $objectURI
+	 * @param string $userid
+	 * @returns \OCA\Calendar\Db\Object object
+	 * @throws DoesNotExistException if uri does not exist
+	 * @throws DoesNotExistException if uid does not exist
+	 *
+	 * This method returns an \OCA\Calendar\Db\Object object.
+	 * This method is mandatory!
+	 */
+	public function findObject($calendarURI, $objectURI, $userId) {
+		throw new DoesNotExistException();
 	}
 
 	/**
-	* @brief Get a list of all objects
-	* @param $calid calendarid
-	* @returns array with all object
-	*
-	* Get a list of all object.
-	*/
-	public function getObjects($calid){
-		return array();
+	 * @brief returns all objects in the calendar $calendarURI of the user $userId
+	 * @param string $calendarURI
+	 * @param string $userId
+	 * @returns array with \OCA\Calendar\Db\Object objects
+	 * @throws DoesNotExistException if uri does not exist
+	 * 
+	 * This method returns an array of \OCA\Calendar\Db\Object objects.
+	 * This method is mandatory!
+	 */
+	public function findObjects($calendarURI, $userId) {
+		throw new DoesNotExistException();
 	}
 }

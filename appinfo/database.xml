@@ -4,47 +4,6 @@
 	<create>true</create>
 	<overwrite>false</overwrite>
 	<charset>utf8</charset>
-	<!-- table for calendar backends -->
-	<table>
-		<name>*dbprefix*clndr_backends</name>
-		<declaration>
-			<field>
-				<name>id</name>
-				<type>integer</type>
-				<default>0</default>
-				<notnull>true</notnull>
-				<autoincrement>1</autoincrement>
-				<unsigned>true</unsigned>
-				<length>4</length>
-			</field>
-			<field>
-				<name>backend</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>classname</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>arguments</name>
-				<type>text</type>
-				<default></default>
-				<notnull>false</notnull>
-			</field>
-			<field>
-				<name>enabled</name>
-				<type>boolean</type>
-				<default>1</default>
-				<notnull>false</notnull>
-			</field>
-		</declaration>
-	</table>
 	<!-- table for cached calendars -->
 	<table>
 		<name>*dbprefix*clndr_calcache</name>
@@ -60,6 +19,13 @@
 			</field>
 			<field>
 				<name>userid</name>
+				<type>text</type>
+				<default></default>
+				<notnull>true</notnull>
+				<length>255</length>
+			</field>
+			<field>
+				<name>ownerid</name>
 				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>
@@ -128,10 +94,17 @@
 				<notnull>true</notnull>
 			</field>
 			<field>
-				<name>writable</name>
-				<type>boolean</type>
-				<default>0</default>
+				<name>cruds</name>
+				<type>integer</type>
+				<default>31</default>
 				<notnull>true</notnull>
+			</field>
+			<field>
+				<name>deletedat</name>
+				<type>integer</type>
+				<default>0</default>
+				<notnull>false</notnull>
+				<unsigned>true</unsigned>
 			</field>
 		</declaration>
 	</table>
@@ -149,28 +122,15 @@
 				<length>4</length>
 			</field>
 			<field>
-				<name>userid</name>
-				<type>text</type>
+				<name>calendarid</name>
+				<type>integer</type>
 				<default></default>
 				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>backend</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
+				<unsigned>true</unsigned>
+				<length>4</length>
 			</field>
 			<field>
 				<name>uri</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>uid</name>
 				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>
@@ -207,6 +167,12 @@
 				<notnull>false</notnull>
 			</field>
 			<field>
+				<name>lastoccurence</name>
+				<type>timestamp</type>
+				<default>1970-01-01 00:00:00</default>
+				<notnull>false</notnull>
+			</field>
+			<field>
 				<name>summary</name>
 				<type>text</type>
 				<default></default>
@@ -224,6 +190,13 @@
 				<notnull>false</notnull>
 				<length>4</length>
 			</field>
+			<field>
+				<name>deleteat</name>
+				<type>integer</type>
+				<default>0</default>
+				<notnull>false</notnull>
+				<unsigned>true</unsigned>
+			</field>
 		</declaration>
 	</table>
 	<!-- table for cached repeating events -->
@@ -240,32 +213,12 @@
 				<length>4</length>
 			</field>
 			<field>
-				<name>userid</name>
-				<type>text</type>
+				<name>objectid</name>
+				<type>integer</type>
 				<default></default>
 				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>backend</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>uri</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>uid</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
+				<unsigned>true</unsigned>
+				<length>4</length>
 			</field>
 			<field>
 				<name>startdate</name>

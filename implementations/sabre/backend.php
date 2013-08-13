@@ -1,6 +1,7 @@
 <?php
+namespace OCA\Calendar\Implementations\Sabre;
 
-class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
+class CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	/**
 	 * List of CalDAV properties, and how they map to database fieldnames
 	 *
