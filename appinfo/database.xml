@@ -11,8 +11,6 @@
 
   <name>*dbprefix*clndr_objects</name>
 
-  <was>*dbprefix*calendar_objects</was>
-
   <declaration>
 
    <field>
@@ -101,8 +99,6 @@
  <table>
 
   <name>*dbprefix*clndr_calendars</name>
-
-  <was>*dbprefix*calendar_calendars</was>
 
   <declaration>
 
@@ -196,8 +192,6 @@
 
   <name>*dbprefix*clndr_share_event</name>
 
-  <was>*dbprefix*calendar_share_event</was>
-
   <declaration>
   
    <field>
@@ -244,8 +238,6 @@
  <table>
 
   <name>*dbprefix*clndr_share_calendar</name>
-
-  <was>*dbprefix*calendar_share_calendar</was>
 
   <declaration>
   
@@ -301,8 +293,6 @@
  <table>
 
   <name>*dbprefix*clndr_repeat</name>
-
-  <was>*dbprefix*calendar_repeat</was>
 
   <declaration>
 
