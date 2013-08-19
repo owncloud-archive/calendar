@@ -79,7 +79,7 @@
 "Business" => "Professionnel",
 "Call" => "Appel",
 "Clients" => "Clientèle",
-"Deliverer" => "Livraison",
+"Deliverer" => "Livreur",
 "Holidays" => "Vacances",
 "Ideas" => "Idées",
 "Journey" => "Déplacement",
