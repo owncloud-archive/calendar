@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-08-19 15:03-0400\n"
-"PO-Revision-Date: 2013-08-19 18:21+0000\n"
+"POT-Creation-Date: 2013-08-27 10:31-0400\n"
+"PO-Revision-Date: 2013-08-26 04:30+0000\n"
 "Last-Translator: pellaeon <nfsmwlin@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/owncloud/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -343,7 +343,7 @@ msgstr "商業"
 
 #: lib/app.php:123
 msgid "Call"
-msgstr "呼叫"
+msgstr "聯絡"
 
 #: lib/app.php:124
 msgid "Clients"
@@ -471,7 +471,7 @@ msgstr "永不"
 
 #: lib/object.php:562
 msgid "by occurrences"
-msgstr "由事件"
+msgstr "由次數"
 
 #: lib/object.php:563
 msgid "by date"
@@ -743,7 +743,7 @@ msgstr "結束"
 
 #: templates/part.eventform.php:241 templates/part.showevent.php:242
 msgid "occurrences"
-msgstr "事件"
+msgstr "次數"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -863,7 +863,7 @@ msgstr "快取"
 
 #: templates/settings.php:79
 msgid "Clear cache for repeating events"
-msgstr "清除重覆事件的快取"
+msgstr "清除重覆發生活動的快取"
 
 #: templates/settings.php:84
 msgid "URLs"
