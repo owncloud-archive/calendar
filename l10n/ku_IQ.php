@@ -1,4 +1,5 @@
 <?php $TRANSLATIONS = array(
+"Invalid request" => "داواکارى نادروستە",
 "Title" => "ناونیشان",
 "unnamed" => "بێ ناو",
 "Settings" => "ده‌ستكاری",
