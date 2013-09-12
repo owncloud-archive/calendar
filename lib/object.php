@@ -1111,8 +1111,10 @@ class OC_Calendar_Object{
 			}
 			$return['end'] = $end_dt->format('Y-m-d');
 		}else{
-			$start_dt->setTimezone(new DateTimeZone($tz));
-			$end_dt->setTimezone(new DateTimeZone($tz));
+			if($dtstart->getDateType() !== Sabre\VObject\Property\DateTime::LOCAL) {
+				$start_dt->setTimezone(new DateTimeZone($tz));
+				$end_dt->setTimezone(new DateTimeZone($tz));
+			}
 			$return['start'] = $start_dt->format('Y-m-d H:i:s');
 			$return['end'] = $end_dt->format('Y-m-d H:i:s');
 		}
