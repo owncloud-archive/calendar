@@ -1036,11 +1036,9 @@ class OC_Calendar_Object{
 			$timezone = OC_Calendar_App::getTimezone();
 			$timezone = new DateTimeZone($timezone);
 			$start = new DateTime($from.' '.$fromtime, $timezone);
-			$start->setTimezone(new DateTimeZone('UTC'));
 			$end = new DateTime($to.' '.$totime, $timezone);
-			$end->setTimezone(new DateTimeZone('UTC'));
-			$vevent->setDateTime('DTSTART', $start, Sabre\VObject\Property\DateTime::UTC);
-			$vevent->setDateTime('DTEND', $end, Sabre\VObject\Property\DateTime::UTC);
+			$vevent->setDateTime('DTSTART', $start, Sabre\VObject\Property\DateTime::LOCALTZ);
+			$vevent->setDateTime('DTEND', $end, Sabre\VObject\Property\DateTime::LOCALTZ);
 		}
 		unset($vevent->DURATION);
 
