@@ -67,6 +67,7 @@
 				<select style="display: none;" id="firstday" title="<?php p("First day"); ?>" name="firstday">
 					<option value="mo" id="mo"><?php p($l->t("Monday")); ?></option>
 					<option value="su" id="su"><?php p($l->t("Sunday")); ?></option>
+					<option value="sa" id="sa"><?php p($l->t("Saturday")); ?></option>
 				</select>
 			</td>
 		</tr>
