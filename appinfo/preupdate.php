@@ -19,6 +19,6 @@ if (version_compare($installedVersion, '0.6.3', '<')) {
 		$sm->renameTable($prefix.'calendar_share_calendar', $prefix.'clndr_share_calendar');
 		$sm->renameTable($prefix.'calendar_repeat', $prefix.'clndr_repeat');
 	} catch (Exception $e) {
-		OC_Log::write('calendar', 'preupdate: '.$e->getMessage(), OC_Log::ERROR);
+		\OCP\Util::writeLog('calendar', 'preupdate: '.$e->getMessage(), \OCP\Util::ERROR);
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-$l=OC_L10N::get('calendar');
+$l = OCP\Util::getL10N('calendar');
 OC::$CLASSPATH['OC_Calendar_App'] = 'calendar/lib/app.php';
 OC::$CLASSPATH['OC_Calendar_Calendar'] = 'calendar/lib/calendar.php';
 OC::$CLASSPATH['OC_Calendar_Object'] = 'calendar/lib/object.php';
