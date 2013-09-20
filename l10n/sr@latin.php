@@ -85,8 +85,10 @@
 "Submit" => "Pošalji",
 "Cancel" => "Otkaži",
 "Edit an event" => "Uredi događaj",
+"Share" => "Podeli",
 "Title of the Event" => "Naslov događaja",
 "Category" => "Kategorija",
+"Edit categories" => "Izmena kategorija",
 "All Day Event" => "Celodnevni događaj",
 "From" => "Od",
 "To" => "Do",
@@ -97,5 +99,6 @@
 "Repeat" => "Ponavljaj",
 "Advanced" => "Napredno",
 "Create a new event" => "Napravi novi događaj",
+"Unshare" => "Ukljoni deljenje",
 "Timezone" => "Vremenska zona"
 );

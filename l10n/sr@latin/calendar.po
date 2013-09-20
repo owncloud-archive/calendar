@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-09-18 11:43-0400\n"
-"PO-Revision-Date: 2013-09-18 14:00+0000\n"
+"POT-Creation-Date: 2013-09-20 09:50-0400\n"
+"PO-Revision-Date: 2013-09-20 12:00+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Serbian (Latin) (http://www.transifex.com/projects/p/owncloud/language/sr@latin/)\n"
 "MIME-Version: 1.0\n"
@@ -635,7 +635,7 @@ msgstr ""
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr ""
+msgstr "Podeli"
 
 #: templates/part.eventform.php:18
 msgid "Title of the Event"
@@ -651,7 +651,7 @@ msgstr ""
 
 #: templates/part.eventform.php:27
 msgid "Edit categories"
-msgstr ""
+msgstr "Izmena kategorija"
 
 #: templates/part.eventform.php:47 templates/part.showevent.php:50
 msgid "Access Class"
@@ -790,7 +790,7 @@ msgstr ""
 
 #: templates/part.share.php:47 templates/part.share.php:74
 msgid "Unshare"
-msgstr ""
+msgstr "Ukljoni deljenje"
 
 #: templates/part.share.php:53
 msgid "Nobody"
