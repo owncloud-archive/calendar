@@ -879,7 +879,7 @@ $(document).ready(function(){
 		titleFormat: {
 			month: t('calendar', 'MMMM yyyy'),
 					// September 2009
-			week: t('calendar', "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"),
+			week: t('calendar', "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"),
 					// Sep 7 - 13 2009
 			day: t('calendar', 'dddd, MMM d, yyyy'),
 					// Tuesday, Sep 8, 2009
