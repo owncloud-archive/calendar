@@ -194,8 +194,8 @@ class OC_Calendar_App{
 					if (isset($calendar->VJOURNAL)) {
 						$object = $calendar->VJOURNAL;
 					}
-					if ($object) {
-						$vcategories->loadFromVObject($event['id'], $vobject, true);
+					if ($object && isset($object->CATEGORIES)) {
+						$vcategories->addMulti($object->CATEGORIES->getParts(), true, $event['id']);
 					}
 				}
 			}
@@ -204,7 +204,7 @@ class OC_Calendar_App{
 
 	/**
 	 * check VEvent for new categories.
-	 * @see OC_VCategories::loadFromVObject
+	 * @see OC_VCategories::addMulti
 	 */
 	public static function loadCategoriesFromVCalendar($id, OC_VObject $calendar) {
 		$object = null;
@@ -217,8 +217,8 @@ class OC_Calendar_App{
 		if (isset($calendar->VJOURNAL)) {
 			$object = $calendar->VJOURNAL;
 		}
-		if ($object) {
-			self::getVCategories()->loadFromVObject($id, $object, true);
+		if ($object && isset($object->CATEGORIES)) {
+			self::getVCategories()->addMulti($object->CATEGORIES->getParts(), true, $event['id']);
 		}
 	}
 
