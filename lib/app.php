@@ -222,7 +222,7 @@ class OC_Calendar_App{
 			$object = $calendar->VJOURNAL;
 		}
 		if ($object && isset($object->CATEGORIES)) {
-			self::getVCategories()->addMultiple($object->CATEGORIES->getParts(), true, $event['id']);
+			self::getVCategories()->addMultiple($object->CATEGORIES->getParts(), true, $id);
 		}
 	}
 
