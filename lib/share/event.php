@@ -32,9 +32,15 @@ class OC_Share_Backend_Event implements OCP\Share_Backend {
 		if ($format == self::FORMAT_EVENT) {
 			foreach ($items as $item) {
 				$event = OC_Calendar_Object::find($item['item_source']);
-				$event['summary'] = $item['item_target'];
-				$event['permissions'] = $item['permissions'];
-				$events[] = $event;
+                if ($event == False) {
+                    error_log(var_export($item['item_target'], true));
+                      \OCP\Util::writeLog('calendar', __METHOD__.', Missing event: ' . $item['item_target'], \OCP\Util::DEBUG);
+                }
+                else {
+                    $event['summary'] = $item['item_target'];
+                    $event['permissions'] = $item['permissions'];
+                    $events[] = $event;
+                }
 			}
 		}
 		return $events;
