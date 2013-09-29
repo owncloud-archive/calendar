@@ -25,7 +25,6 @@
 "ddd M/d" => "ddd M/d",
 "dddd M/d" => "dddd M/d",
 "MMMM yyyy" => "MMMM yyyy",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "LLL z[aaaa]{'&#8212;'[LLL] z aaaa}",
 "dddd, MMM d, yyyy" => "dddd, MMM d, yyyy",
 "Sunday" => "Duminică",
 "Monday" => "Luni",

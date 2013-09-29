@@ -25,7 +25,6 @@
 "ddd M/d" => "M/d ddd",
 "dddd M/d" => "M/d dddd",
 "MMMM yyyy" => "yyyy MMMM",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
 "dddd, MMM d, yyyy" => "MMM d, dddd, yyyy",
 "Sunday" => "週日",
 "Monday" => "週一",

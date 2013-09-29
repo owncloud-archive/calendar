@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-09-22 12:47-0400\n"
-"PO-Revision-Date: 2013-09-20 15:00+0000\n"
+"POT-Creation-Date: 2013-09-28 23:59-0400\n"
+"PO-Revision-Date: 2013-09-29 03:59+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/owncloud/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Подій не знайдено."
 msgid "Wrong calendar"
 msgstr "Невірний календар"
 
-#: ajax/event/edit.form.php:221 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:224 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
 msgstr "У вас немає прав редагувати цю подію."
 
@@ -73,7 +73,7 @@ msgstr "Часовий пояс змінено"
 msgid "Invalid request"
 msgstr "Некоректний запит"
 
-#: appinfo/app.php:38 js/l10n.php:55 templates/part.eventform.php:30
+#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:30
 #: templates/part.showevent.php:37
 msgid "Calendar"
 msgstr "Календар"
@@ -127,203 +127,203 @@ msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
 #: js/calendar.js:882
-msgid "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
-msgstr "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}"
+msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
+msgstr ""
 
 #: js/calendar.js:884
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:45 lib/object.php:590 templates/settings.php:69
+#: js/l10n.php:77 lib/object.php:588 templates/settings.php:69
 msgid "Sunday"
 msgstr "Неділя"
 
-#: js/l10n.php:45 lib/object.php:584 templates/settings.php:68
+#: js/l10n.php:77 lib/object.php:582 templates/settings.php:68
 msgid "Monday"
 msgstr "Понеділок"
 
-#: js/l10n.php:45 lib/object.php:585
+#: js/l10n.php:77 lib/object.php:583
 msgid "Tuesday"
 msgstr "Вівторок"
 
-#: js/l10n.php:45 lib/object.php:586
+#: js/l10n.php:77 lib/object.php:584
 msgid "Wednesday"
 msgstr "Середа"
 
-#: js/l10n.php:45 lib/object.php:587
+#: js/l10n.php:77 lib/object.php:585
 msgid "Thursday"
 msgstr "Четвер"
 
-#: js/l10n.php:45 lib/object.php:588
+#: js/l10n.php:77 lib/object.php:586
 msgid "Friday"
 msgstr "П'ятниця"
 
-#: js/l10n.php:45 lib/object.php:589
+#: js/l10n.php:77 lib/object.php:587 templates/settings.php:70
 msgid "Saturday"
 msgstr "Субота"
 
-#: js/l10n.php:46
+#: js/l10n.php:78
 msgid "Sun."
 msgstr "Нед."
 
-#: js/l10n.php:46
+#: js/l10n.php:78
 msgid "Mon."
 msgstr "Пн."
 
-#: js/l10n.php:46
+#: js/l10n.php:78
 msgid "Tue."
 msgstr "Вт."
 
-#: js/l10n.php:46
+#: js/l10n.php:78
 msgid "Wed."
 msgstr "Ср."
 
-#: js/l10n.php:46
+#: js/l10n.php:78
 msgid "Thu."
 msgstr "Чт."
 
-#: js/l10n.php:46
+#: js/l10n.php:78
 msgid "Fri."
 msgstr "Пт."
 
-#: js/l10n.php:46
+#: js/l10n.php:78
 msgid "Sat."
 msgstr "Сб."
 
-#: js/l10n.php:47 lib/object.php:640
+#: js/l10n.php:79 lib/object.php:638
 msgid "January"
 msgstr "Січень"
 
-#: js/l10n.php:47 lib/object.php:641
+#: js/l10n.php:79 lib/object.php:639
 msgid "February"
 msgstr "Лютий"
 
-#: js/l10n.php:47 lib/object.php:642
+#: js/l10n.php:79 lib/object.php:640
 msgid "March"
 msgstr "Березень"
 
-#: js/l10n.php:47 lib/object.php:643
+#: js/l10n.php:79 lib/object.php:641
 msgid "April"
 msgstr "Квітень"
 
-#: js/l10n.php:47 lib/object.php:644
+#: js/l10n.php:79 lib/object.php:642
 msgid "May"
 msgstr "Травень"
 
-#: js/l10n.php:47 lib/object.php:645
+#: js/l10n.php:79 lib/object.php:643
 msgid "June"
 msgstr "Червень"
 
-#: js/l10n.php:47 lib/object.php:646
+#: js/l10n.php:79 lib/object.php:644
 msgid "July"
 msgstr "Липень"
 
-#: js/l10n.php:47 lib/object.php:647
+#: js/l10n.php:79 lib/object.php:645
 msgid "August"
 msgstr "Серпень"
 
-#: js/l10n.php:47 lib/object.php:648
+#: js/l10n.php:79 lib/object.php:646
 msgid "September"
 msgstr "Вересень"
 
-#: js/l10n.php:47 lib/object.php:649
+#: js/l10n.php:79 lib/object.php:647
 msgid "October"
 msgstr "Жовтень"
 
-#: js/l10n.php:47 lib/object.php:650
+#: js/l10n.php:79 lib/object.php:648
 msgid "November"
 msgstr "Листопад"
 
-#: js/l10n.php:47 lib/object.php:651
+#: js/l10n.php:79 lib/object.php:649
 msgid "December"
 msgstr "Грудень"
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Jan."
 msgstr "Січ."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Feb."
 msgstr "Лют."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Mar."
 msgstr "Бер."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Apr."
 msgstr "Кві."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "May."
 msgstr "Тра."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Jun."
 msgstr "Чер."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Jul."
 msgstr "Лип."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Aug."
 msgstr "Сер."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Sep."
 msgstr "Вер."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Oct."
 msgstr "Жов."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Nov."
 msgstr "Лис."
 
-#: js/l10n.php:48
+#: js/l10n.php:80
 msgid "Dec."
 msgstr "Гру."
 
-#: js/l10n.php:51
+#: js/l10n.php:83
 msgid "All day"
 msgstr "Увесь день"
 
-#: js/l10n.php:52 lib/import.php:214 templates/part.choosecalendar.php:23
+#: js/l10n.php:84 lib/import.php:214 templates/part.choosecalendar.php:23
 msgid "New Calendar"
 msgstr "Новий Календар"
 
-#: js/l10n.php:53
+#: js/l10n.php:85
 msgid "Missing or invalid fields"
 msgstr "Відсутні або невірні поля"
 
-#: js/l10n.php:54 templates/part.eventform.php:16
+#: js/l10n.php:86 templates/part.eventform.php:16
 #: templates/part.showevent.php:11
 msgid "Title"
 msgstr "Назва"
 
-#: js/l10n.php:56
+#: js/l10n.php:88
 msgid "From Date"
 msgstr "Від Дати"
 
-#: js/l10n.php:57
+#: js/l10n.php:89
 msgid "From Time"
 msgstr "З Часу"
 
-#: js/l10n.php:58
+#: js/l10n.php:90
 msgid "To Date"
 msgstr "До Часу"
 
-#: js/l10n.php:59
+#: js/l10n.php:91
 msgid "To Time"
 msgstr "По Дату"
 
-#: js/l10n.php:60
+#: js/l10n.php:92
 msgid "The event ends before it starts"
 msgstr "Подія завершається до її початку"
 
-#: js/l10n.php:61
+#: js/l10n.php:93
 msgid "There was a database fail"
 msgstr "Сталася помилка бази даних"
 
@@ -407,119 +407,119 @@ msgstr "У вас немає прав видаляти цей календар."
 msgid "You do not have the permissions to add to this calendar."
 msgstr "У вас немає прав додавати у цей календар."
 
-#: lib/object.php:122 lib/object.php:162 lib/object.php:319
+#: lib/object.php:122 lib/object.php:162 lib/object.php:317
 msgid "You do not have the permissions to add events to this calendar."
 msgstr "У вас немає прав додавати події у цей календар."
 
-#: lib/object.php:267 lib/object.php:299
+#: lib/object.php:267 lib/object.php:297
 msgid "You do not have the permissions to delete this event."
 msgstr "У вас немає прав видалити цю подію."
 
-#: lib/object.php:493
+#: lib/object.php:491
 msgid "Busy"
 msgstr "Зайнято"
 
-#: lib/object.php:533
+#: lib/object.php:531
 msgid "Public"
 msgstr "Загально"
 
-#: lib/object.php:534
+#: lib/object.php:532
 msgid "Private"
 msgstr "Приватно"
 
-#: lib/object.php:535
+#: lib/object.php:533
 msgid "Confidential"
 msgstr "Конфіденційно"
 
-#: lib/object.php:545
+#: lib/object.php:543
 msgid "Does not repeat"
 msgstr "Не повторювати"
 
-#: lib/object.php:546
+#: lib/object.php:544
 msgid "Daily"
 msgstr "Щоденно"
 
-#: lib/object.php:547
+#: lib/object.php:545
 msgid "Weekly"
 msgstr "Щотижня"
 
-#: lib/object.php:548
+#: lib/object.php:546
 msgid "Every Weekday"
 msgstr "По будням"
 
-#: lib/object.php:549
+#: lib/object.php:547
 msgid "Bi-Weekly"
 msgstr "Кожні дві неділі"
 
-#: lib/object.php:550
+#: lib/object.php:548
 msgid "Monthly"
 msgstr "Щомісяця"
 
-#: lib/object.php:551
+#: lib/object.php:549
 msgid "Yearly"
 msgstr "Щорічно"
 
-#: lib/object.php:561
+#: lib/object.php:559
 msgid "never"
 msgstr "ніколи"
 
-#: lib/object.php:562
+#: lib/object.php:560
 msgid "by occurrences"
 msgstr "по нагодах"
 
-#: lib/object.php:563
+#: lib/object.php:561
 msgid "by date"
 msgstr "по датах"
 
-#: lib/object.php:573
+#: lib/object.php:571
 msgid "by monthday"
 msgstr "по днях місяця"
 
-#: lib/object.php:574
+#: lib/object.php:572
 msgid "by weekday"
 msgstr "по днях тижня"
 
-#: lib/object.php:600
+#: lib/object.php:598
 msgid "events week of month"
 msgstr "подій тижня місяця"
 
-#: lib/object.php:601
+#: lib/object.php:599
 msgid "first"
 msgstr "перший"
 
-#: lib/object.php:602
+#: lib/object.php:600
 msgid "second"
 msgstr "другий"
 
-#: lib/object.php:603
+#: lib/object.php:601
 msgid "third"
 msgstr "третій"
 
-#: lib/object.php:604
+#: lib/object.php:602
 msgid "fourth"
 msgstr "четвертий"
 
-#: lib/object.php:605
+#: lib/object.php:603
 msgid "fifth"
 msgstr "п'ятий"
 
-#: lib/object.php:606
+#: lib/object.php:604
 msgid "last"
 msgstr "останній"
 
-#: lib/object.php:661
+#: lib/object.php:659
 msgid "by events date"
 msgstr "по датах подій"
 
-#: lib/object.php:662
+#: lib/object.php:660
 msgid "by yearday(s)"
 msgstr "по днях року"
 
-#: lib/object.php:663
+#: lib/object.php:661
 msgid "by weeknumber(s)"
 msgstr "по номеру тижня"
 
-#: lib/object.php:664
+#: lib/object.php:662
 msgid "by day and month"
 msgstr "по дню та місяцю"
 
@@ -851,34 +851,34 @@ msgstr "12Рі"
 msgid "Start week on"
 msgstr "Тиждень починається з"
 
-#: templates/settings.php:75
+#: templates/settings.php:76
 msgid "Cache"
 msgstr "Кеш"
 
-#: templates/settings.php:79
+#: templates/settings.php:80
 msgid "Clear cache for repeating events"
 msgstr "Чистити кеш для подій, що повторюються"
 
-#: templates/settings.php:84
+#: templates/settings.php:85
 msgid "URLs"
 msgstr "URL-ів"
 
-#: templates/settings.php:86
+#: templates/settings.php:87
 msgid "Calendar CalDAV syncing addresses"
 msgstr "Адреси синхронізації CalDAV Календаря"
 
-#: templates/settings.php:86
+#: templates/settings.php:87
 msgid "more info"
 msgstr "більше інформації"
 
-#: templates/settings.php:88
+#: templates/settings.php:89
 msgid "Primary address (Kontact et al)"
 msgstr "Початкова адреса"
 
-#: templates/settings.php:90
+#: templates/settings.php:91
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:92
+#: templates/settings.php:93
 msgid "Read only iCalendar link(s)"
 msgstr "Читати лише iCalendar з'єднання"

@@ -25,7 +25,6 @@
 "ddd M/d" => "ddd M/d",
 "dddd M/d" => "dddd M/d",
 "MMMM yyyy" => "yyyy MMMM",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "[ yyyy] MMM d{ '&#8212;'yyyy [ MMM] d}",
 "dddd, MMM d, yyyy" => "yyyy, MMM d, dddd",
 "Sunday" => "Igandea",
 "Monday" => "Astelehena",

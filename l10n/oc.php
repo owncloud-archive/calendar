@@ -23,7 +23,6 @@
 "ddd M/d" => "jjj M/j",
 "dddd M/d" => "jjjj M/j",
 "MMMM yyyy" => "MMMM aaaa",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "MMM j[ aaaa]{ '&#8212;'[ MMM] j aaaa}",
 "dddd, MMM d, yyyy" => "dddd, MMM d, yyyy",
 "Sunday" => "Dimenge",
 "Monday" => "Diluns",

@@ -7,7 +7,6 @@
 "Invalid request" => "Neispravan zahtjev",
 "Calendar" => "Kalendar",
 "Editable" => "Može se uređivati",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
 "Sunday" => "nedelja",
 "Monday" => "ponedeljak",
 "Tuesday" => "utorak",
