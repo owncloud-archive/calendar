@@ -142,12 +142,12 @@ class OC_Calendar_App{
 	 */
 	public static function getVCategories() {
 		if (is_null(self::$categories)) {
-			if(OC_VCategories::isEmpty('event')) {
+			$categories = \OC::$server->getTagManager()->load('event');
+			if($categories->isEmpty('event')) {
 				self::scanCategories();
 			}
-			self::$categories = new OC_VCategories('event',
-				null,
-				self::getDefaultCategories());
+			self::$categories = \OC::$server->getTagManager()
+				->load('event', self::getDefaultCategories());
 		}
 		return self::$categories;
 	}
@@ -157,7 +157,7 @@ class OC_Calendar_App{
 	 * @return (array) $categories
 	 */
 	public static function getCategoryOptions() {
-		$categories = self::getVCategories()->categories();
+		$categories = self::getVCategories()->getTags();
 		return $categories;
 	}
 
@@ -179,8 +179,12 @@ class OC_Calendar_App{
 			}
 		}
 		if(is_array($events) && count($events) > 0) {
-			$vcategories = new OC_VCategories('event');
-			$vcategories->delete($vcategories->categories());
+			$vcategories = \OC::$server->getTagManager()->load('event');
+			$getName = function($tag) {
+				return $tag['name'];
+			};
+			$tags = array_map($getName, $vcategories->getTags());
+			$vcategories->delete($tags);
 			foreach($events as $event) {
 				$vobject = OC_VObject::parse($event['calendardata']);
 				if(!is_null($vobject)) {
@@ -194,8 +198,8 @@ class OC_Calendar_App{
 					if (isset($calendar->VJOURNAL)) {
 						$object = $calendar->VJOURNAL;
 					}
-					if ($object) {
-						$vcategories->loadFromVObject($event['id'], $vobject, true);
+					if ($object && isset($object->CATEGORIES)) {
+						$vcategories->addMultiple($object->CATEGORIES->getParts(), true, $event['id']);
 					}
 				}
 			}
@@ -204,7 +208,7 @@ class OC_Calendar_App{
 
 	/**
 	 * check VEvent for new categories.
-	 * @see OC_VCategories::loadFromVObject
+	 * @see \OCP\ITags::addMultiple()
 	 */
 	public static function loadCategoriesFromVCalendar($id, OC_VObject $calendar) {
 		$object = null;
@@ -217,8 +221,8 @@ class OC_Calendar_App{
 		if (isset($calendar->VJOURNAL)) {
 			$object = $calendar->VJOURNAL;
 		}
-		if ($object) {
-			self::getVCategories()->loadFromVObject($id, $object, true);
+		if ($object && isset($object->CATEGORIES)) {
+			self::getVCategories()->addMultiple($object->CATEGORIES->getParts(), true, $id);
 		}
 	}
 
@@ -424,7 +428,6 @@ class OC_Calendar_App{
 	 * @return (array) $output - readable output
 	 */
 	public static function generateEventOutput(array $event, $start, $end) {
-		\OCP\Util::writeLog('calendar', __METHOD__.' event: '.print_r($event['summary'], true), \OCP\Util::DEBUG);
 		if(!isset($event['calendardata']) && !isset($event['vevent'])) {
 			return false;
 		}
@@ -499,7 +502,6 @@ class OC_Calendar_App{
 					$output[] = array_merge($staticoutput, $dynamicoutput);
 				}
 			}
-			\OCP\Util::writeLog('calendar', __METHOD__.' event: '.print_r($event['summary'], true) . ' done', \OCP\Util::DEBUG);
 			return $output;
 		}catch(Exception $e) {
 			$uid = 'unknown';
