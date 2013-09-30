@@ -5,6 +5,7 @@
 # Translators:
 # Adam Toth <adazlord@gmail.com>, 2012
 # Csaba Orban <vicsabi@gmail.com>, 2012
+# ebela <bela@dandre.hu>, 2013
 # gyeben <gyonkibendeguz@gmail.com>, 2013
 # gyeben <gyonkibendeguz@gmail.com>, 2013
 # Laszlo Tornoci <torlasz@gmail.com>, 2013
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-09-28 23:59-0400\n"
-"PO-Revision-Date: 2013-09-29 03:59+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-09-30 10:01-0400\n"
+"PO-Revision-Date: 2013-09-30 00:23+0000\n"
+"Last-Translator: ebela <bela@dandre.hu>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/owncloud/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,7 +134,7 @@ msgstr "yyyy MMMM"
 
 #: js/calendar.js:882
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:884
 msgid "dddd, MMM d, yyyy"

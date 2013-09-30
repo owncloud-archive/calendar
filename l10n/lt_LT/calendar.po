@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Dr. ROX <to.dr.rox@gmail.com>, 2011, 2012
+# Liudas Ališauskas <liudas.alisauskas@gmail.com>, 2013
 # mambuta <vspyshkin@gmail.com>, 2013
 # Min2liz <min2lizz@gmail.com>, 2013
 # fizikiukas <fizikiukas@gmail.com>, 2013
@@ -11,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-09-28 23:59-0400\n"
-"PO-Revision-Date: 2013-09-29 03:59+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-09-30 10:01-0400\n"
+"PO-Revision-Date: 2013-09-29 08:40+0000\n"
+"Last-Translator: Liudas Ališauskas <liudas.alisauskas@gmail.com>\n"
 "Language-Team: Lithuanian (Lithuania) (http://www.transifex.com/projects/p/owncloud/language/lt_LT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -166,7 +167,7 @@ msgstr "Šeštadienis"
 
 #: js/l10n.php:78
 msgid "Sun."
-msgstr "Sek."
+msgstr "Sk."
 
 #: js/l10n.php:78
 msgid "Mon."
@@ -182,15 +183,15 @@ msgstr "Tr."
 
 #: js/l10n.php:78
 msgid "Thu."
-msgstr "Ket."
+msgstr "Kt."
 
 #: js/l10n.php:78
 msgid "Fri."
-msgstr "Pen."
+msgstr "Pn."
 
 #: js/l10n.php:78
 msgid "Sat."
-msgstr "Šešt."
+msgstr "Št."
 
 #: js/l10n.php:79 lib/object.php:638
 msgid "January"
