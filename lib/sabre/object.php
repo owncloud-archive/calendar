@@ -45,14 +45,18 @@ class OC_Connector_Sabre_CalDAV_CalendarObject extends Sabre_CalDAV_CalendarObje
 		$uid = OC_Calendar_Calendar::extractUserID($this->getOwner());
 
 		if($uid != OCP\USER::getUser()) {
-			$object = OC_VObject::parse($this->objectData['calendardata']);
-			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
-			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($object);
-			if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ) && ($sharedAccessClassPermissions & OCP\PERMISSION_READ)) {
-				$readprincipal = 'principals/' . OCP\USER::getUser();
-			}
-			if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE) && ($sharedAccessClassPermissions & OCP\PERMISSION_UPDATE)) {
-				$writeprincipal = 'principals/' . OCP\USER::getUser();
+			if($uid === 'contact_birthdays') {
+				$readprincipal = 'principals/' . OCP\User::getUser();
+			} else {
+				$object = OC_VObject::parse($this->objectData['calendardata']);
+				$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
+				$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($object);
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ) && ($sharedAccessClassPermissions & OCP\PERMISSION_READ)) {
+					$readprincipal = 'principals/' . OCP\USER::getUser();
+				}
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE) && ($sharedAccessClassPermissions & OCP\PERMISSION_UPDATE)) {
+					$writeprincipal = 'principals/' . OCP\USER::getUser();
+				}
 			}
 		}
 
