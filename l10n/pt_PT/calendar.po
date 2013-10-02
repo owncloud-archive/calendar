@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-09-28 23:59-0400\n"
-"PO-Revision-Date: 2013-09-29 03:59+0000\n"
+"POT-Creation-Date: 2013-10-02 10:04-0400\n"
+"PO-Revision-Date: 2013-10-02 14:04+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/owncloud/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
@@ -391,11 +391,11 @@ msgstr "Perguntas"
 msgid "Work"
 msgstr "Trabalho"
 
-#: lib/app.php:403
+#: lib/app.php:407
 msgid "by"
 msgstr "por"
 
-#: lib/app.php:467
+#: lib/app.php:470
 msgid "unnamed"
 msgstr "não definido"
 
@@ -526,6 +526,10 @@ msgstr "por número(s) da semana"
 #: lib/object.php:662
 msgid "by day and month"
 msgstr "por dia e mês"
+
+#: lib/sabre/backend.php:66
+msgid "Contact birthdays"
+msgstr ""
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"

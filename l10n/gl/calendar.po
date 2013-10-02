@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-09-30 10:01-0400\n"
-"PO-Revision-Date: 2013-09-29 12:12+0000\n"
-"Last-Translator: mbouzada <mbouzada@gmail.com>\n"
+"POT-Creation-Date: 2013-10-02 10:04-0400\n"
+"PO-Revision-Date: 2013-10-02 14:04+0000\n"
+"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Galician (http://www.transifex.com/projects/p/owncloud/language/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -388,11 +388,11 @@ msgstr "Preguntas"
 msgid "Work"
 msgstr "Traballo"
 
-#: lib/app.php:403
+#: lib/app.php:407
 msgid "by"
 msgstr "por"
 
-#: lib/app.php:467
+#: lib/app.php:470
 msgid "unnamed"
 msgstr "sen nome"
 
@@ -523,6 +523,10 @@ msgstr "por número(s) de semana"
 #: lib/object.php:662
 msgid "by day and month"
 msgstr "por día e mes"
+
+#: lib/sabre/backend.php:66
+msgid "Contact birthdays"
+msgstr ""
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"

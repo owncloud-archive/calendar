@@ -5,13 +5,13 @@
 # Translators:
 # Georgi Stanojevski <glisha@gmail.com>, 2012
 # Miroslav Jovanovic <j.miroslav@gmail.com>, 2012
-# Miroslav Jovanovic <jmiroslav@softhome.net>, 2012
+# miroj <jmiroslav@softhome.net>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-09-28 23:59-0400\n"
-"PO-Revision-Date: 2013-09-29 03:59+0000\n"
+"POT-Creation-Date: 2013-10-02 10:04-0400\n"
+"PO-Revision-Date: 2013-10-02 14:04+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Macedonian (http://www.transifex.com/projects/p/owncloud/language/mk/)\n"
 "MIME-Version: 1.0\n"
@@ -129,7 +129,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:882
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:884
 msgid "dddd, MMM d, yyyy"
@@ -388,11 +388,11 @@ msgstr "Прашања"
 msgid "Work"
 msgstr "Работа"
 
-#: lib/app.php:403
+#: lib/app.php:407
 msgid "by"
 msgstr "од"
 
-#: lib/app.php:467
+#: lib/app.php:470
 msgid "unnamed"
 msgstr "неименувано"
 
@@ -418,19 +418,19 @@ msgstr "Немате привилегија да го избришете нас�
 
 #: lib/object.php:491
 msgid "Busy"
-msgstr ""
+msgstr "Зафатено"
 
 #: lib/object.php:531
 msgid "Public"
-msgstr ""
+msgstr "Јавен"
 
 #: lib/object.php:532
 msgid "Private"
-msgstr ""
+msgstr "Приватен"
 
 #: lib/object.php:533
 msgid "Confidential"
-msgstr ""
+msgstr "Доверливо"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -523,6 +523,10 @@ msgstr "по број на седмицата"
 #: lib/object.php:662
 msgid "by day and month"
 msgstr "по ден и месец"
+
+#: lib/sabre/backend.php:66
+msgid "Contact birthdays"
+msgstr ""
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -657,7 +661,7 @@ msgstr "Уреди категории"
 
 #: templates/part.eventform.php:47 templates/part.showevent.php:50
 msgid "Access Class"
-msgstr ""
+msgstr "Пристапна класа"
 
 #: templates/part.eventform.php:64 templates/part.showevent.php:66
 msgid "All Day Event"
