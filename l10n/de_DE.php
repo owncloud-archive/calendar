@@ -124,6 +124,7 @@
 "by yearday(s)" => "nach Tag des Jahres",
 "by weeknumber(s)" => "nach Wochennummer",
 "by day and month" => "nach Tag und Monat",
+"Contact birthdays" => "Geburtstage in den Kontakten",
 "Date" => "Datum",
 "Cal." => "Kal.",
 "Week" => "Woche",
