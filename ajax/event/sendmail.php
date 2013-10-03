@@ -20,9 +20,8 @@ $dtend = $_POST['dtend'];
 
 try {
 	OC_Calendar_App::sendEmails($eventId, $location, $description, $dtstart, $dtend);
+	\OCP\JSON::success();
 } catch(Exception $e) {
-	OCP\JSON::error(array('data' => array('message'=>$e->getMessage())));
-	exit;
+	\OCP\Util::writeLog('calendar', 'sending mail failed (' . $e->getMessage() . ')', \OCP\Util::WARN);
+	\OCP\JSON::error();
 }
-
-OCP\JSON::success();

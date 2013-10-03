@@ -523,14 +523,14 @@ class OC_Calendar_App{
         */
        public static function sendEmails($eventid, $location, $description, $dtstart, $dtend) {
 
-           $user =  \OCP\User::getUser();
+           $user = \OCP\User::getUser();
            $eventsharees = array();
            $eventShareesNames = array();
            $emails = array();
-           $sharedwithByEvent = OCP\Share::getItemShared('event', $eventid);
+           $sharedwithByEvent = \OCP\Share::getItemShared('event', $eventid);
            if (is_array($sharedwithByEvent)) {
                foreach ($sharedwithByEvent as $share) {
-                   if ($share['share_type'] == OCP\Share::SHARE_TYPE_USER || $share['share_type'] == OCP\Share::SHARE_TYPE_GROUP) {
+                   if ($share['share_type'] === \OCP\Share::SHARE_TYPE_USER || $share['share_type'] === \OCP\Share::SHARE_TYPE_GROUP) {
                        $eventsharees[] = $share;
                    }
                }

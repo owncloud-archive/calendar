@@ -9,17 +9,17 @@
 Calendar={
 	Util:{
 		sendmail: function(eventId, location, description, dtstart, dtend){
-                        $.post(
+			$.post(
 			OC.filePath('calendar','ajax/event','sendmail.php'),
 			{
 				eventId:eventId,
-                                location:location,
-                                description:description,
-                                dtstart:dtstart,
-                                dtend:dtend
+				location:location,
+				description:description,
+				dtstart:dtstart,
+				dtend:dtend
 			},
 			function(result){
-				if(result.status!='success'){
+				if(result.status !== 'success'){
 					OC.dialogs.alert(result.data.message, 'Error sending mail');
 				} else {
 					UserList.add(username, result.data.groups, null, 'default', true);
