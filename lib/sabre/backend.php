@@ -63,7 +63,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 			$calendars[] = array(
 				'id' => 'contact_birthdays',
 				'uri' => 'contact_birthdays',
-				'{DAV:}displayname' => OC_Calendar_App::$l10n->t('Contact birthdays'),
+				'{DAV:}displayname' => (string)OC_Calendar_App::$l10n->t('Contact birthdays'),
 				'principaluri' => 'principals/contact_birthdays',
 				'{' . Sabre_CalDAV_Plugin::NS_CALENDARSERVER . '}getctag' => '0',
 				'{' . Sabre_CalDAV_Plugin::NS_CALDAV . '}supported-calendar-component-set'
