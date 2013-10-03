@@ -558,7 +558,7 @@ class OC_Calendar_App{
                $message .= '</table>';
                $message .= '</body></html>';
 
-               OC_Mail::send($email, "User", $subject, $message, $useremail, $user, $html = 1, $altbody = '', $ccaddress = '', $ccname = '', $bcc = '');
+               OCP\Util::sendMail($email, "User", $subject, $message, $useremail, $user, $html = 1, $altbody = '', $ccaddress = '', $ccname = '', $bcc = '');
            }
        }
 }

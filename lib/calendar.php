@@ -391,7 +391,7 @@ class OC_Calendar_Calendar{
         */
        public function getUsersEmails($names) {
            $emails = array();
-           $query = OC_DB::prepare('SELECT `email` FROM `*PREFIX*users` WHERE LOWER(`uid`) = LOWER(?)');
+           $query = OCP\DB::prepare('SELECT `email` FROM `*PREFIX*users` WHERE LOWER(`uid`) = LOWER(?)');
            $result = $query->execute(array($names));
            $row = $result->fetchRow();
            $emails[] = $row['email'];
