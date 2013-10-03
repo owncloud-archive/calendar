@@ -511,4 +511,54 @@ class OC_Calendar_App{
 			\OCP\Util::writeLog('calendar', 'Event (' . $uid . ') contains invalid data!',\OCP\Util::WARN);
 		}
 	}
+        
+        /**
+        * @brief use to create HTML emails and send them
+        * @param $eventid The event id
+        * @param $location The location
+        * @param $description The description
+        * @param $dtstart The start date
+        * @param $dtend The end date
+        *
+        */
+       public static function sendEmails($eventid, $location, $description, $dtstart, $dtend) {
+
+           $user =  \OCP\User::getUser();
+           $eventsharees = array();
+           $eventShareesNames = array();
+           $emails = array();
+           $sharedwithByEvent = OCP\Share::getItemShared('event', $eventid);
+           if (is_array($sharedwithByEvent)) {
+               foreach ($sharedwithByEvent as $share) {
+                   if ($share['share_type'] == OCP\Share::SHARE_TYPE_USER || $share['share_type'] == OCP\Share::SHARE_TYPE_GROUP) {
+                       $eventsharees[] = $share;
+                   }
+               }
+               foreach ($eventsharees as $sharee) {
+                   $eventShareesNames[] = $sharee['share_with'];
+               }
+           }
+           foreach ($eventShareesNames as $name) {
+               $result = OC_Calendar_Calendar::getUsersEmails($name);
+               $emails[] = $result;
+           }
+           $useremail = OC_Calendar_Calendar::getUsersEmails($user);
+           foreach ($emails as $email) {
+               $subject = 'Calendar Event Shared';
+               
+               $headers = 'MIME-Version: 1.0\r\n';
+               $headers .= 'Content-Type: text/html; charset=utf-8\r\n';
+               $headers .= 'From:' . $useremail;
+
+               $message  = '<html><body>';
+               $message .= '<table style="border:1px solid black;" cellpadding="10">';
+               $message .= "<tr style='background: #eee;'><td colspan='2'><strong>" . $user . '</strong><strong> has shared with you an event</strong></td></tr>';
+               $message .= '<tr><td><strong>Location:</strong> </td><td>' . $location . '</td></tr>';
+               $message .= '<tr><td><strong>Description:</strong> </td><td>' . $description . '</td></tr>';
+               $message .= '</table>';
+               $message .= '</body></html>';
+
+               OC_Mail::send($email, "User", $subject, $message, $useremail, $user, $html = 1, $altbody = '', $ccaddress = '', $ccname = '', $bcc = '');
+           }
+       }
 }
