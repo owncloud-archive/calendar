@@ -553,8 +553,8 @@ class OC_Calendar_App{
                $message  = '<html><body>';
                $message .= '<table style="border:1px solid black;" cellpadding="10">';
                $message .= "<tr style='background: #eee;'><td colspan='2'><strong>" . $user . '</strong><strong> has shared with you an event</strong></td></tr>';
-               $message .= '<tr><td><strong>Location:</strong> </td><td>' . $location . '</td></tr>';
-               $message .= '<tr><td><strong>Description:</strong> </td><td>' . $description . '</td></tr>';
+               $message .= '<tr><td><strong>Location:</strong> </td><td>' . \OCP\Util::sanitizeHTML($location) . '</td></tr>';
+               $message .= '<tr><td><strong>Description:</strong> </td><td>' . \OCP\Util::sanitizeHTML($description) . '</td></tr>';
                $message .= '</table>';
                $message .= '</body></html>';
 
