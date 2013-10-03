@@ -25,7 +25,7 @@
 "ddd M/d" => "ddd M.d.",
 "dddd M/d" => "dddd M.d.",
 "MMMM yyyy" => "yyyy MMMM",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
+"MMM d[ yyyy]{ '–'[ MMM] d yyyy}" => "MMM d[ yyyy]{ '–'[ MMM] d yyyy}",
 "dddd, MMM d, yyyy" => "dddd, MMM d, yyyy",
 "Sunday" => "vasárnap",
 "Monday" => "hétfő",

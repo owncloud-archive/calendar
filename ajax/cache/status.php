@@ -14,7 +14,7 @@ foreach($calendars as $calendar) {
 		$allcached = false;
 	}
 }
-$l = new OC_L10N('calendar');
+$l = OCP\Util::getL10N('calendar');
 if(!$allcached) {
 	OCP\JSON::error(array('message'=>'Not all calendars are completely cached', 'l10n'=>$l->t('Not all calendars are completely cached')));
 }else{

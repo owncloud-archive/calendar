@@ -23,7 +23,6 @@
 "ddd M/d" => "ддд М/д",
 "dddd M/d" => "дддд M/д",
 "MMMM yyyy" => "MMMM гггг",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "MMM д[ гггг]{ '&#8212;'[ MMM] д гггг}",
 "dddd, MMM d, yyyy" => "дддд, MMM д, гггг",
 "Sunday" => "Недеља",
 "Monday" => "Понедељак",

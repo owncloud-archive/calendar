@@ -1,4 +1,11 @@
 <?php $TRANSLATIONS = array(
+"Sunday" => "रविवार",
+"Monday" => "सोमवार",
+"Tuesday" => "मंगलवार",
+"Wednesday" => "बुधवार",
+"Thursday" => "बृहस्पतिवार",
+"Friday" => "शुक्रवार",
+"Saturday" => "शनिवार",
 "January" => "जनवरी",
 "February" => "फरवरी",
 "March" => "मार्च",
@@ -15,5 +22,6 @@
 "Settings" => "सेटिंग्स",
 "Save" => "सहेजें",
 "Share" => "साझा करें",
-"Advanced" => "उन्नत"
+"Advanced" => "उन्नत",
+"General" => "सामान्य "
 );

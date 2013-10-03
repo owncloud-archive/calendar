@@ -37,7 +37,7 @@ OCP\Util::addscript('calendar', 'calendar');
 OCP\Util::addStyle('calendar', 'style');
 OCP\Util::addscript('', 'jquery.multiselect');
 OCP\Util::addStyle('', 'jquery.multiselect');
-OCP\Util::addscript('contacts','jquery.multi-autocomplete');
+OCP\Util::addscript('calendar','jquery.multi-autocomplete');
 OCP\Util::addscript('','oc-vcategories');
 OCP\Util::addscript('calendar','on-event');
 OCP\App::setActiveNavigationEntry('calendar_index');

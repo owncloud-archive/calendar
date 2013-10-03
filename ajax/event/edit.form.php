@@ -148,6 +148,9 @@ if($data['repeating'] == 1) {
 			$repeat['repeat'] = 'daily';
 			break;
 		case 'WEEKLY':
+			if(array_key_exists('BYDAY', $rrulearr) === false) {
+				$rrulearr['BYDAY'] = '';
+			}
 			if($rrulearr['INTERVAL'] % 2 == 0) {
 				$repeat['repeat'] = 'biweekly';
 				$rrulearr['INTERVAL'] = $rrulearr['INTERVAL'] / 2;
@@ -252,6 +255,9 @@ $tmpl->assign('description', $description);
 
 $tmpl->assign('repeat', $repeat['repeat']);
 if($repeat['repeat'] != 'doesnotrepeat') {
+	if(array_key_exists('weekofmonth', $repeat) === false) {
+		$repeat['weekofmonth'] = 1;
+	}
 	$tmpl->assign('repeat_month', isset($repeat['month']) ? $repeat['month'] : 'monthday');
 	$tmpl->assign('repeat_weekdays', isset($repeat['weekdays']) ? $repeat['weekdays'] : array());
 	$tmpl->assign('repeat_interval', isset($repeat['interval']) ? $repeat['interval'] : '1');

@@ -14,7 +14,7 @@ header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
 
 // Enable l10n support
-$l = OC_L10N::get('calendar');
+$l = OCP\Util::getL10N('calendar');
 
 
 // Get the event sources
@@ -38,6 +38,38 @@ $eventSources[] = array('url' => $events_baseURL.'?calendar_id=shared_events',
 
 OCP\Util::emitHook('OC_Calendar', 'getSources', array('sources' => &$eventSources));
 
+$firstDay = null;
+$firstDayConfig = OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'firstday', 'mo');
+switch($firstDayConfig) {
+	case 'su':
+		$firstDay = 0;
+		break;
+
+	case 'tu':
+		$firstDay = 2;
+		break;
+
+	case 'we':
+		$firstDay = 3;
+		break;
+
+	case 'th':
+		$firstDay = 4;
+		break;
+
+	case 'fr':
+		$firstDay = 5;
+		break;
+
+	case 'sa':
+		$firstDay = 6;
+		break;
+
+	default:
+		$firstDay = 1;
+		break;
+}
+
 $array = array(
 	"defaultView" => "\"".OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'month')."\"",
 	"eventSources" => json_encode($eventSources),
@@ -60,7 +92,7 @@ $array = array(
 	"missing_field_startsbeforeends" => "\"".addslashes($l->t('The event ends before it starts'))."\"",
 	"missing_field_dberror" => "\"".addslashes($l->t('There was a database fail'))."\"",
 	"totalurl" => "\"".OCP\Util::linkToRemote('caldav')."calendars"."\"",
-	"firstDay" => (OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'firstday', 'mo') == 'mo' ? '1' : '0'),
+	"firstDay" => $firstDay,
 	);
 
 // Echo it

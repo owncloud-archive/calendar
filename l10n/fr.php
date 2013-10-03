@@ -25,7 +25,6 @@
 "ddd M/d" => "ddd d/M",
 "dddd M/d" => "dddd d/M",
 "MMMM yyyy" => "MMMM yyyy",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
 "dddd, MMM d, yyyy" => "dddd, d MMM, yyyy",
 "Sunday" => "Dimanche",
 "Monday" => "Lundi",

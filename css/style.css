@@ -144,3 +144,7 @@ margin-bottom:4px;
 .ui-timepicker-hour-cell *, .ui-timepicker-minute-cell *{
 	text-overflow: clip !important;
 }
+
+.link{
+	color:#148cf6;
+}

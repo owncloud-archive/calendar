@@ -277,8 +277,6 @@ class OC_Calendar_Object{
 
 		OCP\Util::emitHook('OC_Calendar', 'deleteEvent', $id);
 
-		OC_Calendar_App::getVCategories()->purgeObject($id);
-
 		return true;
 	}
 
@@ -1036,11 +1034,9 @@ class OC_Calendar_Object{
 			$timezone = OC_Calendar_App::getTimezone();
 			$timezone = new DateTimeZone($timezone);
 			$start = new DateTime($from.' '.$fromtime, $timezone);
-			$start->setTimezone(new DateTimeZone('UTC'));
 			$end = new DateTime($to.' '.$totime, $timezone);
-			$end->setTimezone(new DateTimeZone('UTC'));
-			$vevent->setDateTime('DTSTART', $start, Sabre\VObject\Property\DateTime::UTC);
-			$vevent->setDateTime('DTEND', $end, Sabre\VObject\Property\DateTime::UTC);
+			$vevent->setDateTime('DTSTART', $start, Sabre\VObject\Property\DateTime::LOCALTZ);
+			$vevent->setDateTime('DTEND', $end, Sabre\VObject\Property\DateTime::LOCALTZ);
 		}
 		unset($vevent->DURATION);
 
@@ -1115,8 +1111,10 @@ class OC_Calendar_Object{
 			}
 			$return['end'] = $end_dt->format('Y-m-d');
 		}else{
-			$start_dt->setTimezone(new DateTimeZone($tz));
-			$end_dt->setTimezone(new DateTimeZone($tz));
+			if($dtstart->getDateType() !== Sabre\VObject\Property\DateTime::LOCAL) {
+				$start_dt->setTimezone(new DateTimeZone($tz));
+				$end_dt->setTimezone(new DateTimeZone($tz));
+			}
 			$return['start'] = $start_dt->format('Y-m-d H:i:s');
 			$return['end'] = $end_dt->format('Y-m-d H:i:s');
 		}

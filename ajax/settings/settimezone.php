@@ -9,7 +9,7 @@
 // Init owncloud
 
 
-$l=OC_L10N::get('calendar');
+$l = OCP\Util::getL10N('calendar');
 
 // Check if we are a user
 OCP\JSON::checkLoggedIn();

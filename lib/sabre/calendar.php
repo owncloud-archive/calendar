@@ -47,12 +47,16 @@ class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
 		$uid = OC_Calendar_Calendar::extractUserID($this->getOwner());
 
 		if($uid != OCP\USER::getUser()) {
-			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
-			if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ)) {
-				$readprincipal = 'principals/' . OCP\USER::getUser();
-			}
-			if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
-				$writeprincipal = 'principals/' . OCP\USER::getUser();
+			if($uid === 'contact_birthdays') {
+				$readprincipal = 'principals/' . OCP\User::getUser();
+			} else {
+				$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ)) {
+					$readprincipal = 'principals/' . OCP\User::getUser();
+				}
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
+					$writeprincipal = 'principals/' . OCP\User::getUser();
+				}
 			}
 		}
 
@@ -101,9 +105,10 @@ class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
 	* @return Sabre_DAV_ICalendarObject
 	*/
 	public function getChild($name) {
-
 		$obj = $this->caldavBackend->getCalendarObject($this->calendarInfo['id'],$name);
-		if (!$obj) throw new Sabre_DAV_Exception_NotFound('Calendar object not found');
+		if (!$obj) {
+			throw new Sabre_DAV_Exception_NotFound('Calendar object not found');
+		}
 		return new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
 
 	}

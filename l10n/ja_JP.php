@@ -25,7 +25,7 @@
 "ddd M/d" => "M月d日 （dddd）",
 "dddd M/d" => "M月d日 （dddd）",
 "MMMM yyyy" => "yyyy年M月",
-"MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}" => "yyyy年M月d日{ '～' [yyyy年][M月]d日}",
+"MMM d[ yyyy]{ '–'[ MMM] d yyyy}" => "yyyy年MMMMd日{ '～' yyyy年MMMMd日}",
 "dddd, MMM d, yyyy" => "yyyy年M月d日 （dddd）",
 "Sunday" => "日",
 "Monday" => "月",

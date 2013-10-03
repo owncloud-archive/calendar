@@ -5,7 +5,7 @@
  * later.
  * See the COPYING-README file.
  */
-$l10n = OC_L10N::get('calendar');
+$l10n = OCP\Util::getL10N('calendar');
 OCP\JSON::checkLoggedIn();
 OCP\JSON::checkAppEnabled('calendar');
 $tmpl = new OCP\Template('calendar', 'part.choosecalendar');
