@@ -543,6 +543,10 @@ class OC_Calendar_App{
 		}
 		$useremail = OC_Calendar_Calendar::getUsersEmails($user);
 		foreach ($emails as $email) {
+			if($email === null) {
+				continue;
+			}
+
 			$subject = 'Calendar Event Shared';
 
 			$headers = 'MIME-Version: 1.0\r\n';
