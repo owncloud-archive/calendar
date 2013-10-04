@@ -8,6 +8,25 @@
 
 Calendar={
 	Util:{
+		sendmail: function(eventId, location, description, dtstart, dtend){
+			Calendar.UI.loading(true);
+			$.post(
+			OC.filePath('calendar','ajax/event','sendmail.php'),
+			{
+				eventId:eventId,
+				location:location,
+				description:description,
+				dtstart:dtstart,
+				dtend:dtend
+			},
+			function(result){
+				if(result.status !== 'success'){
+					OC.dialogs.alert(result.data.message, 'Error sending mail');
+				}
+				Calendar.UI.loading(false);
+			}
+		);
+		},
 		dateTimeToTimestamp:function(dateString, timeString){
 			dateTuple = dateString.split('-');
 			timeTuple = timeString.split(':');
@@ -114,6 +133,9 @@ Calendar={
 				}
 			});
 			Calendar.UI.Share.init();
+			$('#sendemailbutton').click(function() {
+				Calendar.Util.sendmail($(this).attr('data-eventid'), $(this).attr('data-location'), $(this).attr('data-description'), $(this).attr('data-dtstart'), $(this).attr('data-dtend'));
+			})
 		},
 		newEvent:function(start, end, allday){
 			start = Math.round(start.getTime()/1000);
