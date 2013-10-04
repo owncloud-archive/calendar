@@ -5,8 +5,6 @@
  * later.
  * See the COPYING-README file.
  */
-
-
 OCP\JSON::checkLoggedIn();
 OCP\JSON::checkAppEnabled('calendar');
 OCP\JSON::callCheck();
@@ -19,13 +17,14 @@ if($event === false || $event === null) {
 	exit;
 }
 
+$summary = $event['summary'];
 $location = $_POST['location'];
 $description = $_POST['description'];
 $dtstart = $_POST['dtstart'];
 $dtend = $_POST['dtend'];
 
 try {
-	OC_Calendar_App::sendEmails($eventId, $location, $description, $dtstart, $dtend);
+	OC_Calendar_App::sendEmails($eventId, $summary, $location, $description, $dtstart, $dtend);
 	\OCP\JSON::success();
 } catch(Exception $e) {
 	\OCP\Util::writeLog('calendar', 'sending mail failed (' . $e->getMessage() . ')', \OCP\Util::WARN);

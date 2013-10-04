@@ -58,7 +58,7 @@ if(is_array($sharedwithByEvent)) {
 	print_unescaped('<div id="sharedWithNobody">' . OC_Util::sanitizeHTML($nobody) . '</div>');
 } ?>
 <br />
-<input type="button" style="float:right;" class="submit" value="<?php p($l->t("Send Email")); ?>" onclick="Calendar.Util.sendmail('<?php p($eventid);?>','<?php p($location);?>','<?php p($description);?>','<?php p($dtstart);?>','<?php p($dtend);?>');">
+<input type="button" id="sendemailbutton" style="float:right;" class="submit" value="<?php p($l->t("Send Email")); ?>" data-eventid="<?php p($eventid);?>" data-location="<?php p($location);?>" data-description="<?php p($description);?>" data-dtstart="<?php p($dtstart);?>" data-dtend="<?php p($dtend);?>">
 <br />
 
 <br />

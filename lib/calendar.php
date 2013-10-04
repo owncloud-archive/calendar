@@ -382,20 +382,14 @@ class OC_Calendar_Calendar{
 		$computation = ((($red * 299) + ($green * 587) + ($blue * 114)) / 1000);
 		return ($computation > 130)?'#000000':'#FAFAFA';
 	}
-        
-        /**
-        * @brief Get the email address of a user
-        * @returns the email address of the user
-        *
-        * This method returns the email address of selected user.
-        */
-       public function getUsersEmails($names) {
-           $emails = array();
-           $query = OCP\DB::prepare('SELECT `email` FROM `*PREFIX*users` WHERE LOWER(`uid`) = LOWER(?)');
-           $result = $query->execute(array($names));
-           $row = $result->fetchRow();
-           $emails[] = $row['email'];
 
-           return $row['email'];
-       }
+	/**
+	 * @brief Get the email address of a user
+	 * @returns the email address of the user
+
+	 * This method returns the email address of selected user.
+	 */
+	public static function getUsersEmails($names) {
+		return \OCP\Config::getUserValue(\OCP\User::getUser(), 'settings', 'email');
+	}
 }
