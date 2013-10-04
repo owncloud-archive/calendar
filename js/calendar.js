@@ -438,7 +438,7 @@ Calendar={
 			$('#'+id).addClass('active');
 		},
 		categoriesChanged:function(newcategories){
-			categories = $.map(newcategories, function(v) {return v;});
+			categories = $.map(newcategories, function(v) {return v.name;});
 			console.log('Calendar categories changed to: ' + categories);
 			$('#category').multiple_autocomplete('option', 'source', categories);
 		},
@@ -947,9 +947,13 @@ $(document).ready(function(){
 		}
 	});
 	fillWindow($('#content'));
-	OCCategories.changed = Calendar.UI.categoriesChanged;
-	OCCategories.app = 'calendar';
-	OCCategories.type = 'event';
+
+	$(OC.Tags).on('change', function(event, data) {
+		if(data.type === 'event') {
+			Calendar.UI.categoriesChanged(data.tags);
+		}
+	});
+
 	$('#oneweekview_radio').click(function(){
 		$('#fullcalendar').fullCalendar('changeView', 'agendaWeek');
 	});
