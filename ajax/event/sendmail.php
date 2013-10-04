@@ -11,8 +11,14 @@ OCP\JSON::checkLoggedIn();
 OCP\JSON::checkAppEnabled('calendar');
 OCP\JSON::callCheck();
 
-$id = $_POST['id'];
 $eventId = $_POST['eventId'];
+//check if user is actually allowed to access event
+$event = OC_Calendar_App::getEventObject($eventId);
+if($event === false || $event === null) {
+	\OCP\JSON::error();
+	exit;
+}
+
 $location = $_POST['location'];
 $description = $_POST['description'];
 $dtstart = $_POST['dtstart'];
