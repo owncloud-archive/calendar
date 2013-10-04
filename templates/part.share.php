@@ -1,6 +1,10 @@
 <?php
 $calid = isset($_['calendar']) ? $_['calendar'] : null;
 $eventid = isset($_['eventid']) ? $_['eventid'] : null;
+$location = isset($_['location']) ? $_['location'] : null;
+$description = isset($_['description']) ? $_['description'] : null;
+$dtstart = isset($_['dtstart']) ? $_['dtstart'] : null;
+$dtend = isset($_['dtend']) ? $_['dtend'] : null;
 
 $calsharees = array();
 $eventsharees = array();
@@ -53,6 +57,10 @@ if(is_array($sharedwithByEvent)) {
 	$nobody = $l->t('Nobody');
 	print_unescaped('<div id="sharedWithNobody">' . OC_Util::sanitizeHTML($nobody) . '</div>');
 } ?>
+<br />
+<input type="button" id="sendemailbutton" style="float:right;" class="submit" value="<?php p($l->t("Send Email")); ?>" data-eventid="<?php p($eventid);?>" data-location="<?php p($location);?>" data-description="<?php p($description);?>" data-dtstart="<?php p($dtstart);?>" data-dtend="<?php p($dtend);?>">
+<br />
+
 <br />
 <strong><?php p($l->t('Shared via calendar')); ?></strong>
 <ul class="sharedby calendarlist">
