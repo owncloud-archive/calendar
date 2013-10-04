@@ -8,14 +8,15 @@
 # Muhammad Fauzan <yosanpro@gmail.com>, 2012
 # Muhammad Radifar <m_radifar05@yahoo.com>, 2011
 # rodin <romihardiyanto@gmail.com>, 2013
+# sugeng tigefa <tigefa@gmail.com>, 2013
 # w41l <walecha99@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-02 10:04-0400\n"
-"PO-Revision-Date: 2013-10-02 14:04+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-10-03 08:14-0400\n"
+"PO-Revision-Date: 2013-10-02 17:20+0000\n"
+"Last-Translator: sugeng tigefa <tigefa@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/owncloud/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,7 +76,7 @@ msgstr "Zona waktu telah diubah"
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
-msgstr "Permintaan tidak valid"
+msgstr "Permintaan tidak sah"
 
 #: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:30
 #: templates/part.showevent.php:37
@@ -574,7 +575,7 @@ msgstr "Bagikan Kalender"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
-msgstr "Unduh"
+msgstr "unduh"
 
 #: templates/part.choosecalendar.rowfields.php:31
 msgid "Edit"
