@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-02 10:04-0400\n"
-"PO-Revision-Date: 2013-10-02 14:04+0000\n"
+"POT-Creation-Date: 2013-10-05 10:16-0400\n"
+"PO-Revision-Date: 2013-10-05 14:16+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Korean (http://www.transifex.com/projects/p/owncloud/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -84,67 +84,67 @@ msgstr "잘못된 요청"
 msgid "Calendar"
 msgstr "달력"
 
-#: js/calendar.js:154
+#: js/calendar.js:176
 msgid "Deletion failed"
 msgstr "삭제 실패"
 
-#: js/calendar.js:243
+#: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "[yyyy ]MMMM d ddd{- yyyy MMMM[ d ddd]}"
 
-#: js/calendar.js:245
+#: js/calendar.js:267
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "[yyyy ]MMMM d ddd HH:mm{ - [yyyy MMMM d ddd] HH:mm}"
 
-#: js/calendar.js:602
+#: js/calendar.js:624
 msgid "user"
 msgstr "사용자"
 
-#: js/calendar.js:602
+#: js/calendar.js:624
 msgid "group"
 msgstr "그룹"
 
-#: js/calendar.js:603 templates/part.share.php:41 templates/part.share.php:68
+#: js/calendar.js:625 templates/part.share.php:45 templates/part.share.php:76
 msgid "Editable"
 msgstr "편집 가능"
 
-#: js/calendar.js:604 templates/part.share.php:43 templates/part.share.php:70
+#: js/calendar.js:626 templates/part.share.php:47 templates/part.share.php:78
 msgid "Shareable"
 msgstr "공유 가능"
 
-#: js/calendar.js:605 templates/part.share.php:45 templates/part.share.php:72
+#: js/calendar.js:627 templates/part.share.php:49 templates/part.share.php:80
 msgid "Deletable"
 msgstr "삭제 가능"
 
-#: js/calendar.js:875
+#: js/calendar.js:897
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:876
+#: js/calendar.js:898
 msgid "ddd M/d"
 msgstr "M/d ddd"
 
-#: js/calendar.js:877
+#: js/calendar.js:899
 msgid "dddd M/d"
 msgstr "M/d dddd"
 
-#: js/calendar.js:880
+#: js/calendar.js:902
 msgid "MMMM yyyy"
 msgstr "yyyy MMMM"
 
-#: js/calendar.js:882
+#: js/calendar.js:904
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:884
+#: js/calendar.js:906
 msgid "dddd, MMM d, yyyy"
 msgstr "yyyy MMM d dddd"
 
-#: js/l10n.php:77 lib/object.php:588 templates/settings.php:69
+#: js/l10n.php:77 lib/object.php:588 templates/settings.php:93
 msgid "Sunday"
 msgstr "일요일"
 
-#: js/l10n.php:77 lib/object.php:582 templates/settings.php:68
+#: js/l10n.php:77 lib/object.php:582 templates/settings.php:92
 msgid "Monday"
 msgstr "월요일"
 
@@ -164,7 +164,7 @@ msgstr "목요일"
 msgid "Friday"
 msgstr "금요일"
 
-#: js/l10n.php:77 lib/object.php:587 templates/settings.php:70
+#: js/l10n.php:77 lib/object.php:587 templates/settings.php:94
 msgid "Saturday"
 msgstr "토요일"
 
@@ -296,7 +296,7 @@ msgstr "12월"
 msgid "All day"
 msgstr "매일"
 
-#: js/l10n.php:84 lib/import.php:214 templates/part.choosecalendar.php:23
+#: js/l10n.php:84 lib/import.php:214 templates/settings.php:23
 msgid "New Calendar"
 msgstr "새 달력"
 
@@ -561,18 +561,13 @@ msgstr "오늘"
 msgid "Settings"
 msgstr "설정"
 
-#: templates/part.choosecalendar.php:2
-msgid "Your calendars"
-msgstr "내 달력"
-
-#: templates/part.choosecalendar.php:28
-#: templates/part.choosecalendar.rowfields.php:24
-msgid "CalDav Link"
-msgstr "CalDAV 링크"
-
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
 msgstr "달력 공유"
+
+#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
+msgid "CalDav Link"
+msgstr "CalDAV 링크"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
@@ -791,27 +786,31 @@ msgstr "대화 상자 닫기"
 msgid "Create a new event"
 msgstr "새 일정 만들기"
 
-#: templates/part.share.php:27
+#: templates/part.share.php:31
 msgid "Share with:"
 msgstr "다음과 공유됨:"
 
-#: templates/part.share.php:30
+#: templates/part.share.php:34
 msgid "Shared with"
 msgstr "다음과 공유됨:"
 
-#: templates/part.share.php:47 templates/part.share.php:74
+#: templates/part.share.php:51 templates/part.share.php:82
 msgid "Unshare"
 msgstr "공유 해제"
 
-#: templates/part.share.php:53
+#: templates/part.share.php:57
 msgid "Nobody"
 msgstr "아무도 없음"
 
-#: templates/part.share.php:57
+#: templates/part.share.php:61
+msgid "Send Email"
+msgstr ""
+
+#: templates/part.share.php:65
 msgid "Shared via calendar"
 msgstr "달력으로 공유됨"
 
-#: templates/part.share.php:80
+#: templates/part.share.php:88
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."
@@ -833,62 +832,66 @@ msgstr "의"
 msgid "at"
 msgstr "에서"
 
-#: templates/settings.php:10
+#: templates/settings.php:2
+msgid "Your calendars"
+msgstr "내 달력"
+
+#: templates/settings.php:34
 msgid "General"
 msgstr "일반"
 
-#: templates/settings.php:15
+#: templates/settings.php:39
 msgid "Timezone"
 msgstr "시간대"
 
-#: templates/settings.php:46
+#: templates/settings.php:70
 msgid "Update timezone automatically"
 msgstr "자동으로 시간대 업데이트"
 
-#: templates/settings.php:51
+#: templates/settings.php:75
 msgid "Time format"
 msgstr "시간 형식"
 
-#: templates/settings.php:56
+#: templates/settings.php:80
 msgid "24h"
 msgstr "24시간"
 
-#: templates/settings.php:57
+#: templates/settings.php:81
 msgid "12h"
 msgstr "12시간"
 
-#: templates/settings.php:63
+#: templates/settings.php:87
 msgid "Start week on"
 msgstr "주 시작 요일"
 
-#: templates/settings.php:76
+#: templates/settings.php:100
 msgid "Cache"
 msgstr "캐시"
 
-#: templates/settings.php:80
+#: templates/settings.php:104
 msgid "Clear cache for repeating events"
 msgstr "일정 반복을 위한 캐시 삭제"
 
-#: templates/settings.php:85
+#: templates/settings.php:109
 msgid "URLs"
 msgstr "URL"
 
-#: templates/settings.php:87
+#: templates/settings.php:111
 msgid "Calendar CalDAV syncing addresses"
 msgstr "CalDAV 달력 동기화 주소"
 
-#: templates/settings.php:87
+#: templates/settings.php:111
 msgid "more info"
 msgstr "더 많은 정보"
 
-#: templates/settings.php:89
+#: templates/settings.php:113
 msgid "Primary address (Kontact et al)"
 msgstr "기본 주소 (Kontact 등)"
 
-#: templates/settings.php:91
+#: templates/settings.php:115
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:93
+#: templates/settings.php:117
 msgid "Read only iCalendar link(s)"
 msgstr "iCalendar 링크만 읽기"

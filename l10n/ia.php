@@ -79,7 +79,6 @@
 "List" => "Lista",
 "Today" => "Hodie",
 "Settings" => "Configurationes",
-"Your calendars" => "Tu calendarios",
 "Download" => "Discarga",
 "Edit" => "Modificar",
 "Delete" => "Deler",
@@ -121,6 +120,7 @@
 "No categories selected" => "Nulle categorias seligite",
 "of" => "de",
 "at" => "in",
+"Your calendars" => "Tu calendarios",
 "Timezone" => "Fuso horari",
 "more info" => "plus info",
 "iOS/OS X" => "iOS/OS X"

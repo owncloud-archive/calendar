@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-02 10:04-0400\n"
-"PO-Revision-Date: 2013-10-02 14:04+0000\n"
+"POT-Creation-Date: 2013-10-05 10:16-0400\n"
+"PO-Revision-Date: 2013-10-05 14:16+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/owncloud/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -81,67 +81,67 @@ msgstr "Ogiltig begäran"
 msgid "Calendar"
 msgstr "Kalender"
 
-#: js/calendar.js:154
+#: js/calendar.js:176
 msgid "Deletion failed"
 msgstr "Raderingen misslyckades"
 
-#: js/calendar.js:243
+#: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:245
+#: js/calendar.js:267
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:602
+#: js/calendar.js:624
 msgid "user"
 msgstr "Användare"
 
-#: js/calendar.js:602
+#: js/calendar.js:624
 msgid "group"
 msgstr "Grupp"
 
-#: js/calendar.js:603 templates/part.share.php:41 templates/part.share.php:68
+#: js/calendar.js:625 templates/part.share.php:45 templates/part.share.php:76
 msgid "Editable"
 msgstr "Redigerbar"
 
-#: js/calendar.js:604 templates/part.share.php:43 templates/part.share.php:70
+#: js/calendar.js:626 templates/part.share.php:47 templates/part.share.php:78
 msgid "Shareable"
 msgstr "Utdelningsbar"
 
-#: js/calendar.js:605 templates/part.share.php:45 templates/part.share.php:72
+#: js/calendar.js:627 templates/part.share.php:49 templates/part.share.php:80
 msgid "Deletable"
 msgstr "Raderbar"
 
-#: js/calendar.js:875
+#: js/calendar.js:897
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:876
+#: js/calendar.js:898
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:877
+#: js/calendar.js:899
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:880
+#: js/calendar.js:902
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:882
+#: js/calendar.js:904
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:884
+#: js/calendar.js:906
 msgid "dddd, MMM d, yyyy"
 msgstr "ddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:588 templates/settings.php:69
+#: js/l10n.php:77 lib/object.php:588 templates/settings.php:93
 msgid "Sunday"
 msgstr "Söndag"
 
-#: js/l10n.php:77 lib/object.php:582 templates/settings.php:68
+#: js/l10n.php:77 lib/object.php:582 templates/settings.php:92
 msgid "Monday"
 msgstr "Måndag"
 
@@ -161,7 +161,7 @@ msgstr "Torsdag"
 msgid "Friday"
 msgstr "Fredag"
 
-#: js/l10n.php:77 lib/object.php:587 templates/settings.php:70
+#: js/l10n.php:77 lib/object.php:587 templates/settings.php:94
 msgid "Saturday"
 msgstr "Lördag"
 
@@ -293,7 +293,7 @@ msgstr "Dec."
 msgid "All day"
 msgstr "Hela dagen"
 
-#: js/l10n.php:84 lib/import.php:214 templates/part.choosecalendar.php:23
+#: js/l10n.php:84 lib/import.php:214 templates/settings.php:23
 msgid "New Calendar"
 msgstr "Ny kalender"
 
@@ -558,18 +558,13 @@ msgstr "Idag"
 msgid "Settings"
 msgstr "Inställningar"
 
-#: templates/part.choosecalendar.php:2
-msgid "Your calendars"
-msgstr "Dina kalendrar"
-
-#: templates/part.choosecalendar.php:28
-#: templates/part.choosecalendar.rowfields.php:24
-msgid "CalDav Link"
-msgstr "CalDAV-länk"
-
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
 msgstr "Dela kalender"
+
+#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
+msgid "CalDav Link"
+msgstr "CalDAV-länk"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
@@ -788,27 +783,31 @@ msgstr "Stäng "
 msgid "Create a new event"
 msgstr "Skapa en ny händelse"
 
-#: templates/part.share.php:27
+#: templates/part.share.php:31
 msgid "Share with:"
 msgstr "Dela med:"
 
-#: templates/part.share.php:30
+#: templates/part.share.php:34
 msgid "Shared with"
 msgstr "Delad med"
 
-#: templates/part.share.php:47 templates/part.share.php:74
+#: templates/part.share.php:51 templates/part.share.php:82
 msgid "Unshare"
 msgstr "Sluta dela"
 
-#: templates/part.share.php:53
+#: templates/part.share.php:57
 msgid "Nobody"
 msgstr "Ingen"
 
-#: templates/part.share.php:57
+#: templates/part.share.php:61
+msgid "Send Email"
+msgstr ""
+
+#: templates/part.share.php:65
 msgid "Shared via calendar"
 msgstr "Delad via kalender"
 
-#: templates/part.share.php:80
+#: templates/part.share.php:88
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."
@@ -830,62 +829,66 @@ msgstr "av"
 msgid "at"
 msgstr "på"
 
-#: templates/settings.php:10
+#: templates/settings.php:2
+msgid "Your calendars"
+msgstr "Dina kalendrar"
+
+#: templates/settings.php:34
 msgid "General"
 msgstr "Allmänt"
 
-#: templates/settings.php:15
+#: templates/settings.php:39
 msgid "Timezone"
 msgstr "Tidszon"
 
-#: templates/settings.php:46
+#: templates/settings.php:70
 msgid "Update timezone automatically"
 msgstr "Uppdatera tidzon automatiskt"
 
-#: templates/settings.php:51
+#: templates/settings.php:75
 msgid "Time format"
 msgstr "Tidformat"
 
-#: templates/settings.php:56
+#: templates/settings.php:80
 msgid "24h"
 msgstr "24h"
 
-#: templates/settings.php:57
+#: templates/settings.php:81
 msgid "12h"
 msgstr "12h"
 
-#: templates/settings.php:63
+#: templates/settings.php:87
 msgid "Start week on"
 msgstr "Starta veckan på"
 
-#: templates/settings.php:76
+#: templates/settings.php:100
 msgid "Cache"
 msgstr "Cache"
 
-#: templates/settings.php:80
+#: templates/settings.php:104
 msgid "Clear cache for repeating events"
 msgstr "Töm cache för upprepade händelser"
 
-#: templates/settings.php:85
+#: templates/settings.php:109
 msgid "URLs"
 msgstr "URL:er"
 
-#: templates/settings.php:87
+#: templates/settings.php:111
 msgid "Calendar CalDAV syncing addresses"
 msgstr "Kalender CalDAV synkroniserar adresser"
 
-#: templates/settings.php:87
+#: templates/settings.php:111
 msgid "more info"
 msgstr "mer info"
 
-#: templates/settings.php:89
+#: templates/settings.php:113
 msgid "Primary address (Kontact et al)"
 msgstr "Primary address (Kontact et al)"
 
-#: templates/settings.php:91
+#: templates/settings.php:115
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:93
+#: templates/settings.php:117
 msgid "Read only iCalendar link(s)"
 msgstr "Read only iCalendar link(s)"

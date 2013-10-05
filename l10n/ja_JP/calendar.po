@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-02 10:04-0400\n"
-"PO-Revision-Date: 2013-10-02 14:04+0000\n"
+"POT-Creation-Date: 2013-10-05 10:16-0400\n"
+"PO-Revision-Date: 2013-10-05 14:16+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/owncloud/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
@@ -79,67 +79,67 @@ msgstr "無効なリクエストです"
 msgid "Calendar"
 msgstr "カレンダー"
 
-#: js/calendar.js:154
+#: js/calendar.js:176
 msgid "Deletion failed"
 msgstr "削除に失敗しました"
 
-#: js/calendar.js:243
+#: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:245
+#: js/calendar.js:267
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:602
+#: js/calendar.js:624
 msgid "user"
 msgstr "ユーザ"
 
-#: js/calendar.js:602
+#: js/calendar.js:624
 msgid "group"
 msgstr "グループ"
 
-#: js/calendar.js:603 templates/part.share.php:41 templates/part.share.php:68
+#: js/calendar.js:625 templates/part.share.php:45 templates/part.share.php:76
 msgid "Editable"
 msgstr "編集可能"
 
-#: js/calendar.js:604 templates/part.share.php:43 templates/part.share.php:70
+#: js/calendar.js:626 templates/part.share.php:47 templates/part.share.php:78
 msgid "Shareable"
 msgstr "共有可能"
 
-#: js/calendar.js:605 templates/part.share.php:45 templates/part.share.php:72
+#: js/calendar.js:627 templates/part.share.php:49 templates/part.share.php:80
 msgid "Deletable"
 msgstr "削除可能"
 
-#: js/calendar.js:875
+#: js/calendar.js:897
 msgid "ddd"
 msgstr "dddd"
 
-#: js/calendar.js:876
+#: js/calendar.js:898
 msgid "ddd M/d"
 msgstr "M月d日 （dddd）"
 
-#: js/calendar.js:877
+#: js/calendar.js:899
 msgid "dddd M/d"
 msgstr "M月d日 （dddd）"
 
-#: js/calendar.js:880
+#: js/calendar.js:902
 msgid "MMMM yyyy"
 msgstr "yyyy年M月"
 
-#: js/calendar.js:882
+#: js/calendar.js:904
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "yyyy年MMMMd日{ '～' yyyy年MMMMd日}"
 
-#: js/calendar.js:884
+#: js/calendar.js:906
 msgid "dddd, MMM d, yyyy"
 msgstr "yyyy年M月d日 （dddd）"
 
-#: js/l10n.php:77 lib/object.php:588 templates/settings.php:69
+#: js/l10n.php:77 lib/object.php:588 templates/settings.php:93
 msgid "Sunday"
 msgstr "日"
 
-#: js/l10n.php:77 lib/object.php:582 templates/settings.php:68
+#: js/l10n.php:77 lib/object.php:582 templates/settings.php:92
 msgid "Monday"
 msgstr "月"
 
@@ -159,7 +159,7 @@ msgstr "木"
 msgid "Friday"
 msgstr "金"
 
-#: js/l10n.php:77 lib/object.php:587 templates/settings.php:70
+#: js/l10n.php:77 lib/object.php:587 templates/settings.php:94
 msgid "Saturday"
 msgstr "土"
 
@@ -291,7 +291,7 @@ msgstr "12月"
 msgid "All day"
 msgstr "終日"
 
-#: js/l10n.php:84 lib/import.php:214 templates/part.choosecalendar.php:23
+#: js/l10n.php:84 lib/import.php:214 templates/settings.php:23
 msgid "New Calendar"
 msgstr "新しくカレンダーを作成"
 
@@ -556,18 +556,13 @@ msgstr "今日"
 msgid "Settings"
 msgstr "設定"
 
-#: templates/part.choosecalendar.php:2
-msgid "Your calendars"
-msgstr "あなたのカレンダー"
-
-#: templates/part.choosecalendar.php:28
-#: templates/part.choosecalendar.rowfields.php:24
-msgid "CalDav Link"
-msgstr "CalDavへのリンク"
-
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
 msgstr "カレンダーを共有する"
+
+#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
+msgid "CalDav Link"
+msgstr "CalDavへのリンク"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
@@ -786,27 +781,31 @@ msgstr "ダイアログを閉じる"
 msgid "Create a new event"
 msgstr "新しいイベントを作成"
 
-#: templates/part.share.php:27
+#: templates/part.share.php:31
 msgid "Share with:"
 msgstr "共有:"
 
-#: templates/part.share.php:30
+#: templates/part.share.php:34
 msgid "Shared with"
 msgstr "共有"
 
-#: templates/part.share.php:47 templates/part.share.php:74
+#: templates/part.share.php:51 templates/part.share.php:82
 msgid "Unshare"
 msgstr "非共有"
 
-#: templates/part.share.php:53
+#: templates/part.share.php:57
 msgid "Nobody"
 msgstr "無記名"
 
-#: templates/part.share.php:57
+#: templates/part.share.php:61
+msgid "Send Email"
+msgstr ""
+
+#: templates/part.share.php:65
 msgid "Shared via calendar"
 msgstr "カレンダー経由で共有中"
 
-#: templates/part.share.php:80
+#: templates/part.share.php:88
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."
@@ -828,62 +827,66 @@ msgstr "of"
 msgid "at"
 msgstr "at"
 
-#: templates/settings.php:10
+#: templates/settings.php:2
+msgid "Your calendars"
+msgstr "あなたのカレンダー"
+
+#: templates/settings.php:34
 msgid "General"
 msgstr "一般"
 
-#: templates/settings.php:15
+#: templates/settings.php:39
 msgid "Timezone"
 msgstr "タイムゾーン"
 
-#: templates/settings.php:46
+#: templates/settings.php:70
 msgid "Update timezone automatically"
 msgstr "自動的にタイムゾーンを更新"
 
-#: templates/settings.php:51
+#: templates/settings.php:75
 msgid "Time format"
 msgstr "時刻の表示形式"
 
-#: templates/settings.php:56
+#: templates/settings.php:80
 msgid "24h"
 msgstr "24h"
 
-#: templates/settings.php:57
+#: templates/settings.php:81
 msgid "12h"
 msgstr "12h"
 
-#: templates/settings.php:63
+#: templates/settings.php:87
 msgid "Start week on"
 msgstr "1週間の初めの曜日"
 
-#: templates/settings.php:76
+#: templates/settings.php:100
 msgid "Cache"
 msgstr "キャッシュ"
 
-#: templates/settings.php:80
+#: templates/settings.php:104
 msgid "Clear cache for repeating events"
 msgstr "繰り返しイベントのキャッシュをクリア"
 
-#: templates/settings.php:85
+#: templates/settings.php:109
 msgid "URLs"
 msgstr "URL"
 
-#: templates/settings.php:87
+#: templates/settings.php:111
 msgid "Calendar CalDAV syncing addresses"
 msgstr "CalDAVカレンダーの同期用アドレス"
 
-#: templates/settings.php:87
+#: templates/settings.php:111
 msgid "more info"
 msgstr "さらに"
 
-#: templates/settings.php:89
+#: templates/settings.php:113
 msgid "Primary address (Kontact et al)"
 msgstr "プライマリアドレス（コンタクト等）"
 
-#: templates/settings.php:91
+#: templates/settings.php:115
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:93
+#: templates/settings.php:117
 msgid "Read only iCalendar link(s)"
 msgstr "読み取り専用のiCalendarリンク"
