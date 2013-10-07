@@ -191,6 +191,7 @@
 "Shared with" => "Jagatud kasutajaga",
 "Unshare" => "Lõpeta jagamine",
 "Nobody" => "Mitte keegi",
+"Send Email" => "Saada e-post",
 "Shared via calendar" => "Jaga läbi kalendri",
 "NOTE: Actions on events shared via calendar will affect the entire calendar sharing." => "MÄRKUS: Läbi selle kalendri jagatud üritused mõjutavad kogu kalendri jagamist.",
 "View an event" => "Vaata üritust",

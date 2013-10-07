@@ -191,6 +191,7 @@
 "Shared with" => "Compartilhado com",
 "Unshare" => "Descompartilhar",
 "Nobody" => "Ninguém",
+"Send Email" => "Enviar Email",
 "Shared via calendar" => "Compartilhado via calendário",
 "NOTE: Actions on events shared via calendar will affect the entire calendar sharing." => "NOTA: Ações em eventos compartilhados via calendário afetarão o compartilhamento do calendário inteiro.",
 "View an event" => "Visualizar evento",

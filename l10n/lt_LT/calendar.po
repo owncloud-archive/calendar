@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-05 10:16-0400\n"
-"PO-Revision-Date: 2013-10-05 14:16+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-10-07 11:39-0400\n"
+"PO-Revision-Date: 2013-10-07 09:20+0000\n"
+"Last-Translator: Liudas Ališauskas <liudas.alisauskas@gmail.com>\n"
 "Language-Team: Lithuanian (Lithuania) (http://www.transifex.com/projects/p/owncloud/language/lt_LT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -131,7 +131,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:904
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:906
 msgid "dddd, MMM d, yyyy"
@@ -528,7 +528,7 @@ msgstr "pagal dieną ir mėnesį"
 
 #: lib/sabre/backend.php:66
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Kontaktų gimtadieniai"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -626,7 +626,7 @@ msgstr "Informacija"
 
 #: templates/part.eventform.php:6 templates/part.showevent.php:4
 msgid "Repeating"
-msgstr "Pasikartojantis"
+msgstr "Pasikartojimas"
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
@@ -801,7 +801,7 @@ msgstr "Nieku"
 
 #: templates/part.share.php:61
 msgid "Send Email"
-msgstr ""
+msgstr "Siųsti el. laišką"
 
 #: templates/part.share.php:65
 msgid "Shared via calendar"

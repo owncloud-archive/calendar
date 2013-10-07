@@ -191,6 +191,7 @@
 "Shared with" => "Delt med",
 "Unshare" => "Fjern deling",
 "Nobody" => "Ingen",
+"Send Email" => "Send Email",
 "Shared via calendar" => "Delt via kalender",
 "NOTE: Actions on events shared via calendar will affect the entire calendar sharing." => "NB! Handlinger på begivenheder delt via kalenderen vil berøre hele kalenderdelingen.",
 "View an event" => "Vis en begivenhed",
