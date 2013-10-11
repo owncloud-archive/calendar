@@ -5,12 +5,14 @@
 # Translators:
 # Borjan Tchakaloff <borjan@tchaka.fr>, 2013
 # Christophe Lherieau <skimpax@gmail.com>, 2012-2013
+# etiess <etiess@gmail.com>, 2013
 # Francois_Boulogne <fboulogne@sciunto.org>, 2011
 # gp4004 <gp4004@arghh.org>, 2011, 2012
 # Jan-Christoph Borchardt <jan@unhosted.org>, 2011
 # Nahir Mohamed <nahirmoha@gmail.com>, 2012
 # Nicolas <booloki@lokizone.net>, 2012
 # ouafnico <nicolas@shivaserv.fr>, 2012
+# ogre_sympathique <ogre.sympathique@speed.1s.fr>, 2013
 # plachance <patlachance@gmail.com>, 2013
 # Pierre-Amiel Giraud <pierreamiel.giraud@gmail.com>, 2012
 # Romain DEP. <rom1dep@gmail.com>, 2011, 2012
@@ -20,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-05 10:16-0400\n"
-"PO-Revision-Date: 2013-10-05 14:16+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-10-10 22:23-0400\n"
+"PO-Revision-Date: 2013-10-09 22:30+0000\n"
+"Last-Translator: etiess <etiess@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/owncloud/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -139,7 +141,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:904
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:906
 msgid "dddd, MMM d, yyyy"
@@ -536,7 +538,7 @@ msgstr "par jour et mois"
 
 #: lib/sabre/backend.php:66
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Anniversaire des contacts"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -809,7 +811,7 @@ msgstr "Personne"
 
 #: templates/part.share.php:61
 msgid "Send Email"
-msgstr ""
+msgstr "Envoyer un couriel"
 
 #: templates/part.share.php:65
 msgid "Shared via calendar"
