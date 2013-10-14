@@ -8,7 +8,7 @@ $('#caldav_url').live('mouseover', function () {
 	$('#caldav_url').select();
 });
 $('#editCategories').live('click', function () {
-	$(this).tipsy('hide');OCCategories.edit();
+	$(this).tipsy('hide');OC.Tags.edit('event');
 });
 $('#allday_checkbox').live('click', function () {
 	Calendar.UI.lockTime();
