@@ -157,7 +157,11 @@ class OC_Calendar_App{
 	 * @return (array) $categories
 	 */
 	public static function getCategoryOptions() {
+		$getNames = function($tag) {
+			return $tag['name'];
+		};
 		$categories = self::getVCategories()->getTags();
+		$categories = array_map($getNames, $categories);
 		return $categories;
 	}
 
