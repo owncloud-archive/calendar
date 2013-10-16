@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-13 20:26-0400\n"
-"PO-Revision-Date: 2013-10-11 07:10+0000\n"
+"POT-Creation-Date: 2013-10-15 23:31-0400\n"
+"PO-Revision-Date: 2013-10-14 00:40+0000\n"
 "Last-Translator: André Koot <meneer@tken.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -394,11 +394,11 @@ msgstr "Vragen"
 msgid "Work"
 msgstr "Werk"
 
-#: lib/app.php:407
+#: lib/app.php:411
 msgid "by"
 msgstr "door"
 
-#: lib/app.php:470
+#: lib/app.php:474
 msgid "unnamed"
 msgstr "onbekend"
 

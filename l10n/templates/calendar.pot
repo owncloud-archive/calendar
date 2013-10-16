@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud calendar 5.0.0\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-10-13 20:26-0400\n"
+"POT-Creation-Date: 2013-10-15 23:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -385,11 +385,11 @@ msgstr ""
 msgid "Work"
 msgstr ""
 
-#: lib/app.php:407
+#: lib/app.php:411
 msgid "by"
 msgstr ""
 
-#: lib/app.php:470
+#: lib/app.php:474
 msgid "unnamed"
 msgstr ""
 

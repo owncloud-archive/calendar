@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-05 10:16-0400\n"
-"PO-Revision-Date: 2013-10-05 14:16+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-10-15 23:31-0400\n"
+"PO-Revision-Date: 2013-10-15 20:00+0000\n"
+"Last-Translator: pstast <petr@stastny.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -131,7 +131,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:904
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:906
 msgid "dddd, MMM d, yyyy"
@@ -390,11 +390,11 @@ msgstr "Dotazy"
 msgid "Work"
 msgstr "Práce"
 
-#: lib/app.php:407
+#: lib/app.php:411
 msgid "by"
 msgstr "od"
 
-#: lib/app.php:470
+#: lib/app.php:474
 msgid "unnamed"
 msgstr "nepojmenováno"
 
@@ -528,7 +528,7 @@ msgstr "podle dne a měsíce"
 
 #: lib/sabre/backend.php:66
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Narozeniny kontaktů"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -801,7 +801,7 @@ msgstr "Nikdo"
 
 #: templates/part.share.php:61
 msgid "Send Email"
-msgstr ""
+msgstr "Odeslat e-mail"
 
 #: templates/part.share.php:65
 msgid "Shared via calendar"

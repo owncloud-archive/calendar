@@ -124,6 +124,7 @@
 "by yearday(s)" => "yıl gün(ler)ine göre",
 "by weeknumber(s)" => "hafta sayı(lar)ına göre",
 "by day and month" => "gün ve aya göre",
+"Contact birthdays" => "Kişi doğum günleri",
 "Date" => "Tarih",
 "Cal." => "Takv.",
 "Week" => "Hafta",
