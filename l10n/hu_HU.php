@@ -190,6 +190,7 @@
 "Shared with" => "Meg van osztva a következőkkel:",
 "Unshare" => "A megosztás visszavonása",
 "Nobody" => "Senki",
+"Send Email" => "E-mail küldése",
 "Shared via calendar" => "Az egész naptár megosztása miatt meg van osztva a következőkkel:",
 "NOTE: Actions on events shared via calendar will affect the entire calendar sharing." => "Figyelem: a naptárokban megosztott események módosítása a megosztott információt is módosítja.",
 "View an event" => "Esemény megtekintése",
