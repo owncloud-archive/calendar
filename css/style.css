@@ -7,8 +7,6 @@
 
 #view { float: left; font-size: 12px; height: 100%;}
 #datecontrol {text-align: center;}
-#datecontrol_left{font-size: 12px;}
-#datecontrol_right{font-size: 12px;}
 #datecontrol_date_label {margin: 0; padding: 0; font-size: 12px;}
 #choosecalendar {margin-right: 10px; float: right; font-size: 12px;}
 
@@ -30,7 +28,6 @@
 .actionsfloatleft {float:left;margin-left: 1.4em;}
 .actionsfloatright {float:right;margin-right: 1.4em;}
 .controls {min-width: 800px;}
-#controls button, #controls input { max-height: 26px; padding: 5px; }
 .center {text-align: center;}
 .dateinfo {height: 20px;width: 100%; overflow: hidden; margin-top: 0; padding: 0; font-size: 12px;background: #F7F7F7;}
 .events {width: 100%; margin: 0; padding: 0;min-height: 100px;}
