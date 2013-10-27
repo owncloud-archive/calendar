@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Agustin Ferrario <agustin.ferrario@hotmail.com.ar>, 2012
+# cjtess <claudio.tessone@gmail.com>, 2013
 # cjtess <claudio.tessone@gmail.com>, 2012
 # Javierkaiser <javierkaiser@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-15 23:31-0400\n"
-"PO-Revision-Date: 2013-10-14 00:40+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-10-27 02:24-0400\n"
+"PO-Revision-Date: 2013-10-22 15:00+0000\n"
+"Last-Translator: cjtess <claudio.tessone@gmail.com>\n"
 "Language-Team: Spanish (Argentina) (http://www.transifex.com/projects/p/owncloud/language/es_AR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -129,7 +130,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:904
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:906
 msgid "dddd, MMM d, yyyy"
@@ -526,7 +527,7 @@ msgstr "por día y mes"
 
 #: lib/sabre/backend.php:66
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Cumpleaños"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -799,7 +800,7 @@ msgstr "Nadie"
 
 #: templates/part.share.php:61
 msgid "Send Email"
-msgstr ""
+msgstr "Mandar correo electrónico"
 
 #: templates/part.share.php:65
 msgid "Shared via calendar"

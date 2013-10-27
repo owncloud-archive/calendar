@@ -189,6 +189,7 @@
 "Shared with" => "Jaettu",
 "Unshare" => "Poista jakaminen",
 "Nobody" => "Ei kukaan",
+"Send Email" => "Lähetä sähköpostia",
 "Shared via calendar" => "Jaettu kalenterin kanssa",
 "NOTE: Actions on events shared via calendar will affect the entire calendar sharing." => "HUOMAA: Kalenterissa jaettujen tapahtumien toimenpiteet vaikuttavat koko kalenterin jakamiseen. ",
 "View an event" => "Avaa tapahtuma",

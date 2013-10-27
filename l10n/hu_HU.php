@@ -124,6 +124,7 @@
 "by yearday(s)" => "az év napja(i) szerint",
 "by weeknumber(s)" => "a hét sorszáma szerint",
 "by day and month" => "nap és hónap szerint",
+"Contact birthdays" => "Az ismerősök születésnapjai",
 "Date" => "Dátum",
 "Cal." => "Naptár",
 "Week" => "Hét",

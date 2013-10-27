@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-15 23:31-0400\n"
-"PO-Revision-Date: 2013-10-14 00:40+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-10-27 02:24-0400\n"
+"PO-Revision-Date: 2013-10-24 10:30+0000\n"
+"Last-Translator: jevgu <jevgu@albnet.net>\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/owncloud/language/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,110 +20,110 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr ""
+msgstr "Jo të gjithë kalendarët janë pararuajtur tërësisht"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr ""
+msgstr "Ç'do gjë duket të jetë pararuajtur tërësisht"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr ""
+msgstr "Nuk u gjend asnjë kalendar."
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr ""
+msgstr "Nuk u gjend asnjë ngjarje."
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
-msgstr "Kalendari i gabuar"
+msgstr "Kalendar i gabuar"
 
 #: ajax/event/edit.form.php:224 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
-msgstr ""
+msgstr "Ju nuk keni të drejtë të modifikoni këtë ngjarje."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:65
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr ""
+msgstr "Skedari ose nuk përmbante asnjë ngjarje,ose të gjithë verpimet janë të ruajtura më parë në kalendar."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:68
 msgid "events has been saved in the new calendar"
-msgstr ""
+msgstr "Ngjarjet u ruajtën në kalendarin e ri"
 
 #: ajax/import/import.php:57
 msgid "Import failed"
-msgstr ""
+msgstr "Importimi dështoi"
 
 #: ajax/import/import.php:70
 msgid "events has been saved in your calendar"
-msgstr ""
+msgstr "ngjarjet u ruajtën në kalendarin tuaj"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr "Zona kohore e re:"
+msgstr "Brez i ri orar:"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
-msgstr "Zona kohore u ndryshua"
+msgstr "Brezi i orarit ndryshoi"
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
-msgstr "Kërkesë e pavlefshme"
+msgstr "Kerkesë e gabuar"
 
 #: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:30
 #: templates/part.showevent.php:37
 msgid "Calendar"
-msgstr "Kalendari"
+msgstr "Kalendar"
 
 #: js/calendar.js:176
 msgid "Deletion failed"
-msgstr ""
+msgstr "Fshirja dështoi"
 
 #: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
-msgstr ""
+msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
 #: js/calendar.js:267
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr ""
+msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
 #: js/calendar.js:624
 msgid "user"
-msgstr ""
+msgstr "përdorues"
 
 #: js/calendar.js:624
 msgid "group"
-msgstr "grupi"
+msgstr "grup"
 
 #: js/calendar.js:625 templates/part.share.php:45 templates/part.share.php:76
 msgid "Editable"
-msgstr ""
+msgstr "E modifikueshme"
 
 #: js/calendar.js:626 templates/part.share.php:47 templates/part.share.php:78
 msgid "Shareable"
-msgstr ""
+msgstr "E ndashme"
 
 #: js/calendar.js:627 templates/part.share.php:49 templates/part.share.php:80
 msgid "Deletable"
-msgstr ""
+msgstr "E detajueshme"
 
 #: js/calendar.js:897
 msgid "ddd"
-msgstr ""
+msgstr "ddd"
 
 #: js/calendar.js:898
 msgid "ddd M/d"
-msgstr ""
+msgstr "ddd M/d"
 
 #: js/calendar.js:899
 msgid "dddd M/d"
-msgstr ""
+msgstr "dddd M/d"
 
 #: js/calendar.js:902
 msgid "MMMM yyyy"
-msgstr ""
+msgstr "MMMM yyyy"
 
 #: js/calendar.js:904
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
@@ -131,63 +131,63 @@ msgstr ""
 
 #: js/calendar.js:906
 msgid "dddd, MMM d, yyyy"
-msgstr ""
+msgstr "dddd, MMM d, yyyy"
 
 #: js/l10n.php:77 lib/object.php:588 templates/settings.php:93
 msgid "Sunday"
-msgstr "E djelë"
+msgstr "Djelë"
 
 #: js/l10n.php:77 lib/object.php:582 templates/settings.php:92
 msgid "Monday"
-msgstr "E hënë"
+msgstr "Hënë"
 
 #: js/l10n.php:77 lib/object.php:583
 msgid "Tuesday"
-msgstr "E martë"
+msgstr "Martë"
 
 #: js/l10n.php:77 lib/object.php:584
 msgid "Wednesday"
-msgstr "E mërkurë"
+msgstr "Mërkurë"
 
 #: js/l10n.php:77 lib/object.php:585
 msgid "Thursday"
-msgstr "E enjte"
+msgstr "Enjte"
 
 #: js/l10n.php:77 lib/object.php:586
 msgid "Friday"
-msgstr "E premte"
+msgstr "Premte"
 
 #: js/l10n.php:77 lib/object.php:587 templates/settings.php:94
 msgid "Saturday"
-msgstr "E shtunë"
+msgstr "Shtune"
 
 #: js/l10n.php:78
 msgid "Sun."
-msgstr ""
+msgstr "Djelë"
 
 #: js/l10n.php:78
 msgid "Mon."
-msgstr ""
+msgstr "Hën"
 
 #: js/l10n.php:78
 msgid "Tue."
-msgstr ""
+msgstr "Mar"
 
 #: js/l10n.php:78
 msgid "Wed."
-msgstr ""
+msgstr "Mër"
 
 #: js/l10n.php:78
 msgid "Thu."
-msgstr ""
+msgstr "Enj"
 
 #: js/l10n.php:78
 msgid "Fri."
-msgstr ""
+msgstr "Pre"
 
 #: js/l10n.php:78
 msgid "Sat."
-msgstr ""
+msgstr "Shtu"
 
 #: js/l10n.php:79 lib/object.php:638
 msgid "January"
@@ -239,63 +239,63 @@ msgstr "Dhjetor"
 
 #: js/l10n.php:80
 msgid "Jan."
-msgstr ""
+msgstr "Jan"
 
 #: js/l10n.php:80
 msgid "Feb."
-msgstr ""
+msgstr "Shk"
 
 #: js/l10n.php:80
 msgid "Mar."
-msgstr ""
+msgstr "Mar"
 
 #: js/l10n.php:80
 msgid "Apr."
-msgstr ""
+msgstr "Pri"
 
 #: js/l10n.php:80
 msgid "May."
-msgstr ""
+msgstr "Maj"
 
 #: js/l10n.php:80
 msgid "Jun."
-msgstr ""
+msgstr "Qer"
 
 #: js/l10n.php:80
 msgid "Jul."
-msgstr ""
+msgstr "Kor"
 
 #: js/l10n.php:80
 msgid "Aug."
-msgstr ""
+msgstr "Gush"
 
 #: js/l10n.php:80
 msgid "Sep."
-msgstr ""
+msgstr "Shta"
 
 #: js/l10n.php:80
 msgid "Oct."
-msgstr ""
+msgstr "Tet"
 
 #: js/l10n.php:80
 msgid "Nov."
-msgstr ""
+msgstr "Nën"
 
 #: js/l10n.php:80
 msgid "Dec."
-msgstr ""
+msgstr "Dhje"
 
 #: js/l10n.php:83
 msgid "All day"
-msgstr "Gjithë ditën"
+msgstr "Gjatë gjithë dites"
 
 #: js/l10n.php:84 lib/import.php:214 templates/settings.php:23
 msgid "New Calendar"
-msgstr "Kalendar i Ri"
+msgstr "Kalendar i ri"
 
 #: js/l10n.php:85
 msgid "Missing or invalid fields"
-msgstr ""
+msgstr "Fushat janë ose gabim ose mungojnë fare"
 
 #: js/l10n.php:86 templates/part.eventform.php:16
 #: templates/part.showevent.php:11
@@ -304,71 +304,71 @@ msgstr "Titulli"
 
 #: js/l10n.php:88
 msgid "From Date"
-msgstr "Nga data"
+msgstr "Nga Data"
 
 #: js/l10n.php:89
 msgid "From Time"
-msgstr "Nga ora"
+msgstr "Nga Ora"
 
 #: js/l10n.php:90
 msgid "To Date"
-msgstr "Deri në datën"
+msgstr "Në Daten"
 
 #: js/l10n.php:91
 msgid "To Time"
-msgstr "Deri në orën"
+msgstr "Në Oren"
 
 #: js/l10n.php:92
 msgid "The event ends before it starts"
-msgstr "Ngjarja përfundon para se të fillojë"
+msgstr "Ngjarja përfundon përpara se te filloje"
 
 #: js/l10n.php:93
 msgid "There was a database fail"
-msgstr "Pati një dështim të database-it"
+msgstr "Pati nje dështim në databazë"
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr "Ditëlindja"
+msgstr "Ditëlindje"
 
 #: lib/app.php:122
 msgid "Business"
-msgstr "Puna"
+msgstr "Biznes"
 
 #: lib/app.php:123
 msgid "Call"
-msgstr "Thirr"
+msgstr "Thirrje"
 
 #: lib/app.php:124
 msgid "Clients"
-msgstr "Klientët"
+msgstr "Klientë"
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr "Dërguesi"
+msgstr "Dorëzuesi"
 
 #: lib/app.php:126
 msgid "Holidays"
-msgstr "Pushimet"
+msgstr "Pushime"
 
 #: lib/app.php:127
 msgid "Ideas"
-msgstr "Idetë"
+msgstr "Ide"
 
 #: lib/app.php:128
 msgid "Journey"
-msgstr "Udhëtimet"
+msgstr "Udhëtim"
 
 #: lib/app.php:129
 msgid "Jubilee"
-msgstr "Pëvjetoret"
+msgstr "Jubile"
 
 #: lib/app.php:130
 msgid "Meeting"
-msgstr "Takime"
+msgstr "Takim"
 
 #: lib/app.php:131
 msgid "Other"
-msgstr "Të tjera"
+msgstr "Tjetër"
 
 #: lib/app.php:132
 msgid "Personal"
@@ -376,11 +376,11 @@ msgstr "Personale"
 
 #: lib/app.php:133
 msgid "Projects"
-msgstr "Projektet"
+msgstr "Projekte"
 
 #: lib/app.php:134
 msgid "Questions"
-msgstr "Pyetjet"
+msgstr "Pyetje"
 
 #: lib/app.php:135
 msgid "Work"
@@ -388,47 +388,47 @@ msgstr "Punë"
 
 #: lib/app.php:411
 msgid "by"
-msgstr ""
+msgstr "nga"
 
 #: lib/app.php:474
 msgid "unnamed"
-msgstr ""
+msgstr "pa emer"
 
 #: lib/calendar.php:178 lib/calendar.php:211
 msgid "You do not have the permissions to update this calendar."
-msgstr ""
+msgstr "Ju nuk keni të drejta të perditësoni këtë kalendar."
 
 #: lib/calendar.php:246
 msgid "You do not have the permissions to delete this calendar."
-msgstr ""
+msgstr "Ju nuk keni të drejta të fshini këtë kalendar."
 
 #: lib/calendar.php:280
 msgid "You do not have the permissions to add to this calendar."
-msgstr ""
+msgstr "Ju nuk keni të drejta të shtoni në këtë kalendar."
 
 #: lib/object.php:122 lib/object.php:162 lib/object.php:317
 msgid "You do not have the permissions to add events to this calendar."
-msgstr ""
+msgstr "Ju nuk keni të drejta të shtoni ngjarje në këtë kalendar."
 
 #: lib/object.php:267 lib/object.php:297
 msgid "You do not have the permissions to delete this event."
-msgstr ""
+msgstr "Ju nuk keni të drejta të fshini këtë ngjarje."
 
 #: lib/object.php:491
 msgid "Busy"
-msgstr ""
+msgstr "I/e Zenë"
 
 #: lib/object.php:531
 msgid "Public"
-msgstr ""
+msgstr "Publik"
 
 #: lib/object.php:532
 msgid "Private"
-msgstr ""
+msgstr "Privat"
 
 #: lib/object.php:533
 msgid "Confidential"
-msgstr ""
+msgstr "Konfidencial"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -436,7 +436,7 @@ msgstr "Nuk përsëritet"
 
 #: lib/object.php:544
 msgid "Daily"
-msgstr "Ditore"
+msgstr "Përditë"
 
 #: lib/object.php:545
 msgid "Weekly"
@@ -444,23 +444,23 @@ msgstr "Javore"
 
 #: lib/object.php:546
 msgid "Every Weekday"
-msgstr "Çdo ditë jave"
+msgstr "Ç'do ditë jave"
 
 #: lib/object.php:547
 msgid "Bi-Weekly"
-msgstr "Dyjavore"
+msgstr "Bi-Javor"
 
 #: lib/object.php:548
 msgid "Monthly"
-msgstr "Mujore"
+msgstr "I përmuajshem"
 
 #: lib/object.php:549
 msgid "Yearly"
-msgstr "Vjetore"
+msgstr "I përvitshem"
 
 #: lib/object.php:559
 msgid "never"
-msgstr "kurrë"
+msgstr "asnjëherë"
 
 #: lib/object.php:560
 msgid "by occurrences"
@@ -468,19 +468,19 @@ msgstr "nga rastisjet"
 
 #: lib/object.php:561
 msgid "by date"
-msgstr "nga data"
+msgstr "sipas datës"
 
 #: lib/object.php:571
 msgid "by monthday"
-msgstr "nga dita e muajit"
+msgstr "sipas dites së muajit"
 
 #: lib/object.php:572
 msgid "by weekday"
-msgstr "nga dita e javës"
+msgstr "sipas dites së javes"
 
 #: lib/object.php:598
 msgid "events week of month"
-msgstr "java e ngjarjeve të muajit"
+msgstr "ngjarje në javën e muajit"
 
 #: lib/object.php:599
 msgid "first"
@@ -496,7 +496,7 @@ msgstr "i treti"
 
 #: lib/object.php:602
 msgid "fourth"
-msgstr "i katërti"
+msgstr "i katerti"
 
 #: lib/object.php:603
 msgid "fifth"
@@ -508,19 +508,19 @@ msgstr "i fundit"
 
 #: lib/object.php:659
 msgid "by events date"
-msgstr "nga data e ngjarjeve"
+msgstr "sipas datës së ngjarjeve"
 
 #: lib/object.php:660
 msgid "by yearday(s)"
-msgstr "nga dita(ët) e vitit"
+msgstr "sipas ditës së viteve"
 
 #: lib/object.php:661
 msgid "by weeknumber(s)"
-msgstr "nga numri i javës(ve)"
+msgstr "sipas nr të javes/ve"
 
 #: lib/object.php:662
 msgid "by day and month"
-msgstr "nga dita dhe muaji"
+msgstr "sipas ditës dhe muajit"
 
 #: lib/sabre/backend.php:66
 msgid "Contact birthdays"
@@ -528,11 +528,11 @@ msgstr ""
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
-msgstr "Data"
+msgstr "Datë"
 
 #: lib/search.php:43
 msgid "Cal."
-msgstr "Kal."
+msgstr "Kal"
 
 #: templates/calendar.php:6
 msgid "Week"
@@ -552,15 +552,15 @@ msgstr "Sot"
 
 #: templates/calendar.php:13
 msgid "Settings"
-msgstr "Parametrat"
+msgstr "Konfigurime"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
-msgstr ""
+msgstr "Ndaj kalendarin"
 
 #: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
 msgid "CalDav Link"
-msgstr "Lidhje CalDav-i"
+msgstr "Lidhja CalDav"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
@@ -568,12 +568,12 @@ msgstr "Shkarko"
 
 #: templates/part.choosecalendar.rowfields.php:31
 msgid "Edit"
-msgstr "Ndrysho"
+msgstr "Modifiko"
 
 #: templates/part.choosecalendar.rowfields.php:36
 #: templates/part.editevent.php:9
 msgid "Delete"
-msgstr "Elimino"
+msgstr "Fshij"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
@@ -581,11 +581,11 @@ msgstr "Kalendar i ri"
 
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
-msgstr "Ndrysho kalendarin"
+msgstr "Modifiko kalendarin"
 
 #: templates/part.editcalendar.php:12
 msgid "Displayname"
-msgstr "Emri i paraqitjes"
+msgstr "Emëri i shfaqur"
 
 #: templates/part.editcalendar.php:23
 msgid "Active"
@@ -602,15 +602,15 @@ msgstr "Ruaj"
 #: templates/part.editcalendar.php:42 templates/part.editevent.php:8
 #: templates/part.newevent.php:6
 msgid "Submit"
-msgstr "Parashtro"
+msgstr "Dërgo"
 
 #: templates/part.editcalendar.php:43
 msgid "Cancel"
-msgstr "Anulo"
+msgstr "Anullo"
 
 #: templates/part.editevent.php:1
 msgid "Edit an event"
-msgstr "Ndrysho një ngjarje"
+msgstr "Modifiko një ngjare"
 
 #: templates/part.editevent.php:10
 msgid "Export"
@@ -618,23 +618,23 @@ msgstr "Eksporto"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
-msgstr ""
+msgstr "Informacioni i ngjarjes"
 
 #: templates/part.eventform.php:6 templates/part.showevent.php:4
 msgid "Repeating"
-msgstr ""
+msgstr "Përsëritje"
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
-msgstr ""
+msgstr "Alarm"
 
 #: templates/part.eventform.php:8 templates/part.showevent.php:6
 msgid "Attendees"
-msgstr ""
+msgstr "Pjesëmarrësit"
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr "Nda"
+msgstr "Ndaj"
 
 #: templates/part.eventform.php:18
 msgid "Title of the Event"
@@ -646,19 +646,19 @@ msgstr "Kategoria"
 
 #: templates/part.eventform.php:26
 msgid "Separate categories with commas"
-msgstr ""
+msgstr "Ndani kategoritë me presje"
 
 #: templates/part.eventform.php:27
 msgid "Edit categories"
-msgstr "Ndrysho kategoritë"
+msgstr "Modifikoni kategoritë"
 
 #: templates/part.eventform.php:47 templates/part.showevent.php:50
 msgid "Access Class"
-msgstr ""
+msgstr "Përdor Klasën"
 
 #: templates/part.eventform.php:64 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr "Ngjarje për gjithë ditën"
+msgstr "Ngjare e gjithë ditës"
 
 #: templates/part.eventform.php:68 templates/part.showevent.php:70
 msgid "From"
@@ -670,15 +670,15 @@ msgstr "Për"
 
 #: templates/part.eventform.php:84 templates/part.showevent.php:86
 msgid "Advanced options"
-msgstr "Mundësitë e përparuara"
+msgstr "Opsjone të përparuara"
 
 #: templates/part.eventform.php:89 templates/part.showevent.php:91
 msgid "Location"
-msgstr "Pozicioni"
+msgstr "Vendndodhja"
 
 #: templates/part.eventform.php:91
 msgid "Location of the Event"
-msgstr "Pozicioni i ngjarjes"
+msgstr "Vendndodhja e Ngjarjes"
 
 #: templates/part.eventform.php:97 templates/part.showevent.php:99
 msgid "Description"
@@ -686,86 +686,86 @@ msgstr "Përshkrimi"
 
 #: templates/part.eventform.php:99
 msgid "Description of the Event"
-msgstr "Përshkrimi i ngarjes"
+msgstr "Përshkrimi i Ngjarjes"
 
 #: templates/part.eventform.php:108 templates/part.showevent.php:109
 msgid "Repeat"
-msgstr "Përsëritet"
+msgstr "Përsërit"
 
 #: templates/part.eventform.php:115 templates/part.showevent.php:116
 msgid "Advanced"
-msgstr "Të përparuara"
+msgstr "E përparuar"
 
 #: templates/part.eventform.php:159 templates/part.showevent.php:160
 msgid "Select weekdays"
-msgstr "Zgjidh ditët e javës"
+msgstr "Zgjidhni ditët e javes"
 
 #: templates/part.eventform.php:172 templates/part.eventform.php:185
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
-msgstr "Zgjidh ditët"
+msgstr "Zgjidhni ditët"
 
 #: templates/part.eventform.php:177 templates/part.showevent.php:178
 msgid "and the events day of year."
-msgstr ""
+msgstr "dhe ngjarjet e ditës së vitit."
 
 #: templates/part.eventform.php:190 templates/part.showevent.php:191
 msgid "and the events day of month."
-msgstr ""
+msgstr "dhe ngjarjet e ditës së muajit."
 
 #: templates/part.eventform.php:198 templates/part.showevent.php:199
 msgid "Select months"
-msgstr ""
+msgstr "Zgjidhni muajt"
 
 #: templates/part.eventform.php:211 templates/part.showevent.php:212
 msgid "Select weeks"
-msgstr ""
+msgstr "Zgjidhni javët"
 
 #: templates/part.eventform.php:216 templates/part.showevent.php:217
 msgid "and the events week of year."
-msgstr ""
+msgstr "dhe ngjarjet e javës së vitit."
 
 #: templates/part.eventform.php:222 templates/part.showevent.php:223
 msgid "Interval"
-msgstr ""
+msgstr "Intervali"
 
 #: templates/part.eventform.php:228 templates/part.showevent.php:229
 msgid "End"
-msgstr ""
+msgstr "Fund"
 
 #: templates/part.eventform.php:241 templates/part.showevent.php:242
 msgid "occurrences"
-msgstr ""
+msgstr "rastisjet"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
-msgstr ""
+msgstr "krijoni një kalendar të ri"
 
 #: templates/part.import.php:17
 msgid "Import a calendar file"
-msgstr ""
+msgstr "Importoni një skedar kalendari"
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr ""
+msgstr "Ju lutem zgjidhni një kalendar"
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
-msgstr ""
+msgstr "Emri i kalendarit të ri"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr ""
+msgstr "Zgjidhni një emër te mundshëm"
 
 #: templates/part.import.php:45
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr ""
+msgstr "Një kalendar më këtë emër ekziston, nëse gjithsesi do të vazhdoni , kalendarët do të bashkohen"
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr ""
+msgstr "Hiqni të gjithë ngjarjet nga kalendari i zgjedhur"
 
 #: templates/part.import.php:50
 msgid "Import"
@@ -773,19 +773,19 @@ msgstr "Importo"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
-msgstr ""
+msgstr "Mbyllni dialogun"
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
-msgstr "Krijo një ngjarje të re"
+msgstr "Krijoni një ngjarje të re"
 
 #: templates/part.share.php:31
 msgid "Share with:"
-msgstr ""
+msgstr "Ndani me:"
 
 #: templates/part.share.php:34
 msgid "Shared with"
-msgstr ""
+msgstr "Ndarë me:"
 
 #: templates/part.share.php:51 templates/part.share.php:82
 msgid "Unshare"
@@ -793,7 +793,7 @@ msgstr "Hiq ndarjen"
 
 #: templates/part.share.php:57
 msgid "Nobody"
-msgstr ""
+msgstr "Asnjë"
 
 #: templates/part.share.php:61
 msgid "Send Email"
@@ -801,90 +801,90 @@ msgstr ""
 
 #: templates/part.share.php:65
 msgid "Shared via calendar"
-msgstr ""
+msgstr "E ndarë nëpërmjet kalendarit"
 
 #: templates/part.share.php:88
 msgid ""
 "NOTE: Actions on events shared via calendar will affect the entire calendar "
 "sharing."
-msgstr ""
+msgstr "NJOFTIM: Veprimet mbi ngjarjet e ndara me të tjerët nëpërmjet kalendarit, do të ndikojnë në gjithë kalendarin"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
-msgstr ""
+msgstr "Shikoni një gjarje"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
-msgstr ""
+msgstr "Asjë kategori nuk është zgjedhur"
 
 #: templates/part.showevent.php:41
 msgid "of"
-msgstr ""
+msgstr "e"
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
-msgstr ""
+msgstr "në"
 
 #: templates/settings.php:2
 msgid "Your calendars"
-msgstr ""
+msgstr "Kalendarët tuaj"
 
 #: templates/settings.php:34
 msgid "General"
-msgstr ""
+msgstr "Përgjithshme"
 
 #: templates/settings.php:39
 msgid "Timezone"
-msgstr "Zona kohore"
+msgstr "Brezi Orar"
 
 #: templates/settings.php:70
 msgid "Update timezone automatically"
-msgstr ""
+msgstr "Përditësoni brezin orar automatikisht"
 
 #: templates/settings.php:75
 msgid "Time format"
-msgstr ""
+msgstr "Formati i ores"
 
 #: templates/settings.php:80
 msgid "24h"
-msgstr "24 orë"
+msgstr "24h"
 
 #: templates/settings.php:81
 msgid "12h"
-msgstr "12 orë"
+msgstr "12h"
 
 #: templates/settings.php:87
 msgid "Start week on"
-msgstr ""
+msgstr "Filloni javën të"
 
 #: templates/settings.php:100
 msgid "Cache"
-msgstr ""
+msgstr "Pararuajtije/Cache"
 
 #: templates/settings.php:104
 msgid "Clear cache for repeating events"
-msgstr ""
+msgstr "Pastroni cache nga ngjarjet e përsëritura"
 
 #: templates/settings.php:109
 msgid "URLs"
-msgstr ""
+msgstr "URL-të"
 
 #: templates/settings.php:111
 msgid "Calendar CalDAV syncing addresses"
-msgstr ""
+msgstr "Adresa e sinkronizimit të kalendarit CalDAV"
 
 #: templates/settings.php:111
 msgid "more info"
-msgstr ""
+msgstr "më shumë info."
 
 #: templates/settings.php:113
 msgid "Primary address (Kontact et al)"
-msgstr ""
+msgstr "Adresa kryesore"
 
 #: templates/settings.php:115
 msgid "iOS/OS X"
-msgstr ""
+msgstr "iOS/OS X"
 
 #: templates/settings.php:117
 msgid "Read only iCalendar link(s)"
-msgstr ""
+msgstr "Lidhje iCalendar vetëm e lexueshme"

@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-15 23:31-0400\n"
-"PO-Revision-Date: 2013-10-14 16:20+0000\n"
+"POT-Creation-Date: 2013-10-27 02:24-0400\n"
+"PO-Revision-Date: 2013-10-21 18:00+0000\n"
 "Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -28,11 +28,11 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "Bütün takvimler tamamen  ön belleğe alınmadı"
+msgstr "Bütün takvimler tamamen önbelleğe alınmadı"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr "Bütün herşey tamamen ön belleğe alınmış görünüyor"
+msgstr "Her şey tamamen önbelleğe alınmış görünüyor"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
@@ -847,7 +847,7 @@ msgstr "Zaman dilimi"
 
 #: templates/settings.php:70
 msgid "Update timezone automatically"
-msgstr "Otomatik saatdilimi güncelle"
+msgstr "Zaman dilimini otomatik güncelle"
 
 #: templates/settings.php:75
 msgid "Time format"
@@ -863,7 +863,7 @@ msgstr "12s"
 
 #: templates/settings.php:87
 msgid "Start week on"
-msgstr "Haftabaşı"
+msgstr "Haftanın ilk günü"
 
 #: templates/settings.php:100
 msgid "Cache"
@@ -871,7 +871,7 @@ msgstr "Önbellek"
 
 #: templates/settings.php:104
 msgid "Clear cache for repeating events"
-msgstr "Tekrar eden etkinlikler için ön belleği temizle."
+msgstr "Tekrar eden etkinlikler için önbelleği temizle"
 
 #: templates/settings.php:109
 msgid "URLs"
@@ -879,7 +879,7 @@ msgstr "URL'ler"
 
 #: templates/settings.php:111
 msgid "Calendar CalDAV syncing addresses"
-msgstr "CalDAV takvimi adresleri senkronize ediyor."
+msgstr "CalDAV takvimi eşitleme adresleri"
 
 #: templates/settings.php:111
 msgid "more info"
