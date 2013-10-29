@@ -62,3 +62,8 @@ $('#editCalendar-cancel').live('click', function () {
 $('.choosecalendar-rowfield-active').live('click', function () {
 	Calendar.UI.Share.activation($(this), $(this).data('id'));
 });
+$('#event-location').live('keyup.autocomplete', function() {
+    $(this).autocomplete({
+        source: 'calendar/search-location.php'
+    });
+});

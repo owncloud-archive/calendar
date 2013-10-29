@@ -40,6 +40,7 @@ OCP\Util::addStyle('', 'jquery.multiselect');
 OCP\Util::addscript('calendar','jquery.multi-autocomplete');
 OCP\Util::addscript('','tags');
 OCP\Util::addscript('calendar','on-event');
+OCP\Util::addscript('calendar','jquery.ui.autocomplete');
 OCP\App::setActiveNavigationEntry('calendar_index');
 $tmpl = new OCP\Template('calendar', 'calendar', 'user');
 
