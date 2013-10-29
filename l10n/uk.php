@@ -189,6 +189,7 @@
 "Shared with" => "Розподілено з",
 "Unshare" => "Закрити доступ",
 "Nobody" => "Ніхто",
+"Send Email" => "Надіслати Email",
 "Shared via calendar" => "Розподілено за допомогою календаря",
 "NOTE: Actions on events shared via calendar will affect the entire calendar sharing." => "ПРИМІТКА: Дії з подіями, які викладені в загальний доступ в календарі, будуть впливати на загальну доступність календаря.",
 "View an event" => "Подивитися подію",
