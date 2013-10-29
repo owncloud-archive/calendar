@@ -13,4 +13,4 @@ foreach ($result as $r) {
   $contacts[] = array('label' => $address);
 }
 
-echo json_encode($contacts);
+\OCP\JSON::EncodedPrint($contacts);
