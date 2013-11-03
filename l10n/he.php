@@ -189,6 +189,7 @@
 "Shared with" => "משותף עם:",
 "Unshare" => "הסר שיתוף",
 "Nobody" => "אף אחד",
+"Send Email" => "שליחת הודעה בדוא״ל",
 "Shared via calendar" => "משותף דרך לוח שנה",
 "NOTE: Actions on events shared via calendar will affect the entire calendar sharing." => "הערה: פעולות על אירועים שמשותפים דרך לוח השנה ישפיעו על שיתוף לוח השנה כולו.",
 "View an event" => "צפייה באירוע",

@@ -123,6 +123,7 @@
 "by yearday(s)" => "依年份日期",
 "by weeknumber(s)" => "由週數",
 "by day and month" => "由日與月",
+"Contact birthdays" => "聯絡人生日",
 "Date" => "日期",
 "Cal." => "行事曆",
 "Week" => "週",

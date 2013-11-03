@@ -191,6 +191,7 @@
 "Shared with" => "Опубликован для",
 "Unshare" => "Отменить публикацию",
 "Nobody" => "Никого",
+"Send Email" => "Отправить email",
 "Shared via calendar" => "Опубликовано с календарем:",
 "NOTE: Actions on events shared via calendar will affect the entire calendar sharing." => "Примечание: Изменив настройки публикации для события опубликованного через календарь, вы измените настройки публикации всего календаря.",
 "View an event" => "Показать событие",
