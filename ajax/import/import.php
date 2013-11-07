@@ -17,6 +17,7 @@ $file = \OC\Files\Filesystem::file_get_contents($_POST['path'] . '/' . $_POST['f
 if(!$file) {
 	OCP\JSON::error(array('error'=>'404'));
 }
+$file = Sabre\VObject\StringUtil::convertToUTF8($file);
 $import = new OC_Calendar_Import($file);
 $import->setUserID(OCP\User::getUser());
 $import->setTimeZone(OC_Calendar_App::$tz);
