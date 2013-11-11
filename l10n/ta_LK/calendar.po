@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
-"Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-29 06:39-0400\n"
-"PO-Revision-Date: 2013-10-28 10:42+0000\n"
+"Report-Msgid-Bugs-To: translations@owncloud.org\n"
+"POT-Creation-Date: 2013-11-11 04:55-0500\n"
+"PO-Revision-Date: 2013-11-09 07:00+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Tamil (Sri-Lanka) (http://www.transifex.com/projects/p/owncloud/language/ta_LK/)\n"
 "MIME-Version: 1.0\n"
@@ -42,21 +42,21 @@ msgstr "பிழையான நாட்காட்டி"
 msgid "You do not have the permissions to edit this event."
 msgstr "இந்த நிகழ்வை தொகுப்பதற்கு உங்களுக்கு அனுமதி இல்லை "
 
-#: ajax/import/dropimport.php:29 ajax/import/import.php:65
+#: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
 msgstr "கோப்பு உங்களுடைய நாட்காட்டியில் ஒரு நிகழ்வும் இல்லாததையோ அல்லது ஏற்கனவே எல்லா நிகழ்வும் சேமித்ததையோ கொண்டுள்ளது. "
 
-#: ajax/import/dropimport.php:31 ajax/import/import.php:68
+#: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
 msgstr "புதிய நாட்காட்டியில் நிகழ்வுகள் சேமிக்கப்பட்டது"
 
-#: ajax/import/import.php:57
+#: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "இறக்குமதி தோல்வியுற்றது"
 
-#: ajax/import/import.php:70
+#: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
 msgstr "உங்களுடைய நாட்காட்டியில் நிகழ்வுகள் சேமிக்கப்பட்டது"
 

@@ -15,9 +15,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
-"Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-29 06:39-0400\n"
-"PO-Revision-Date: 2013-10-28 10:42+0000\n"
+"Report-Msgid-Bugs-To: translations@owncloud.org\n"
+"POT-Creation-Date: 2013-11-11 04:55-0500\n"
+"PO-Revision-Date: 2013-11-09 07:00+0000\n"
 "Last-Translator: André Koot <meneer@tken.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -50,21 +50,21 @@ msgstr "Verkeerde agenda"
 msgid "You do not have the permissions to edit this event."
 msgstr "U heeft geen permissie om deze gebeurtenis te bewerken."
 
-#: ajax/import/dropimport.php:29 ajax/import/import.php:65
+#: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
 msgstr "Het bestand bevat geen gebeurtenissen of alle gebeurtenissen worden al in uw agenda bewaard."
 
-#: ajax/import/dropimport.php:31 ajax/import/import.php:68
+#: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
 msgstr "De gebeurtenissen worden in de nieuwe agenda bewaard"
 
-#: ajax/import/import.php:57
+#: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "import is gefaald"
 
-#: ajax/import/import.php:70
+#: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
 msgstr "de gebeurtenissen zijn in uw agenda opgeslagen "
 

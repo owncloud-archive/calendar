@@ -15,9 +15,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
-"Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-29 06:39-0400\n"
-"PO-Revision-Date: 2013-10-28 10:42+0000\n"
+"Report-Msgid-Bugs-To: translations@owncloud.org\n"
+"POT-Creation-Date: 2013-11-11 04:55-0500\n"
+"PO-Revision-Date: 2013-11-09 07:00+0000\n"
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/owncloud/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -50,21 +50,21 @@ msgstr "Calendario sbagliato"
 msgid "You do not have the permissions to edit this event."
 msgstr "Non hai i permessi per modificare questo evento."
 
-#: ajax/import/dropimport.php:29 ajax/import/import.php:65
+#: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
 msgstr "Il file non conteneva alcun evento o tutti gli eventi erano già salvati nel tuo calendario."
 
-#: ajax/import/dropimport.php:31 ajax/import/import.php:68
+#: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
 msgstr "gli eventi sono stati salvati nel nuovo calendario"
 
-#: ajax/import/import.php:57
+#: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "Importazione non riuscita"
 
-#: ajax/import/import.php:70
+#: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
 msgstr "gli eventi sono stati salvati nel tuo calendario"
 

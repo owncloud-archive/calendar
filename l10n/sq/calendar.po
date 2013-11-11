@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
-"Report-Msgid-Bugs-To: http://bugs.owncloud.org/\n"
-"POT-Creation-Date: 2013-10-29 06:39-0400\n"
-"PO-Revision-Date: 2013-10-28 10:42+0000\n"
+"Report-Msgid-Bugs-To: translations@owncloud.org\n"
+"POT-Creation-Date: 2013-11-11 04:55-0500\n"
+"PO-Revision-Date: 2013-11-09 07:00+0000\n"
 "Last-Translator: jevgu <jevgu@albnet.net>\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/owncloud/language/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -42,21 +42,21 @@ msgstr "Kalendar i gabuar"
 msgid "You do not have the permissions to edit this event."
 msgstr "Ju nuk keni të drejtë të modifikoni këtë ngjarje."
 
-#: ajax/import/dropimport.php:29 ajax/import/import.php:65
+#: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
 msgstr "Skedari ose nuk përmbante asnjë ngjarje,ose të gjithë verpimet janë të ruajtura më parë në kalendar."
 
-#: ajax/import/dropimport.php:31 ajax/import/import.php:68
+#: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
 msgstr "Ngjarjet u ruajtën në kalendarin e ri"
 
-#: ajax/import/import.php:57
+#: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "Importimi dështoi"
 
-#: ajax/import/import.php:70
+#: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
 msgstr "ngjarjet u ruajtën në kalendarin tuaj"
 

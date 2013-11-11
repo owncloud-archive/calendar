@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-03 12:33-0500\n"
-"PO-Revision-Date: 2013-11-02 14:00+0000\n"
+"POT-Creation-Date: 2013-11-11 04:55-0500\n"
+"PO-Revision-Date: 2013-11-09 07:00+0000\n"
 "Last-Translator: oriez\n"
 "Language-Team: Hebrew (http://www.transifex.com/projects/p/owncloud/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -49,21 +49,21 @@ msgstr "לוח שנה לא נכון"
 msgid "You do not have the permissions to edit this event."
 msgstr "אין לך הרשאות לערוך את האירוע הזה."
 
-#: ajax/import/dropimport.php:29 ajax/import/import.php:65
+#: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
 msgstr "או שהקובץ לא מכיל אירועים או שכל האירועים כבר נשמרו בלוח השנה"
 
-#: ajax/import/dropimport.php:31 ajax/import/import.php:68
+#: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
 msgstr "האירועים נשמרו בלוח השנה החדש"
 
-#: ajax/import/import.php:57
+#: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "כשלון ביבוא"
 
-#: ajax/import/import.php:70
+#: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
 msgstr "אירועים נשמרו בלוח השנה שלך"
 

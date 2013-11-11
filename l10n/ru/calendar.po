@@ -8,7 +8,7 @@
 # jekader <jekader@gmail.com>, 2013
 # jekader <jekader@gmail.com>, 2011-2012
 # Mihail Vasiliev <mickvav@gmail.com>, 2012
-# Nick Remeslennikov <homolibere@gmail.com>, 2012
+# Nick Homolibere <homolibere@gmail.com>, 2012
 # rasperepodvipodvert <rasperepodvipodvert@gmail.com>, 2012
 # adol <sharov3@gmail.com>, 2013
 # skoptev <skoptev@ukr.net>, 2012
@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-03 12:33-0500\n"
-"PO-Revision-Date: 2013-11-01 16:20+0000\n"
+"POT-Creation-Date: 2013-11-11 04:55-0500\n"
+"PO-Revision-Date: 2013-11-09 07:00+0000\n"
 "Last-Translator: vsapronov <vladimir.sapronov@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/owncloud/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -55,21 +55,21 @@ msgstr "Неверный календарь"
 msgid "You do not have the permissions to edit this event."
 msgstr "У вас нет права редактировать это событие."
 
-#: ajax/import/dropimport.php:29 ajax/import/import.php:65
+#: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
 msgstr "Файл либо не собержит событий, либо все события уже есть в календаре"
 
-#: ajax/import/dropimport.php:31 ajax/import/import.php:68
+#: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
 msgstr "события были сохранены в новый календарь"
 
-#: ajax/import/import.php:57
+#: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "Ошибка импорта"
 
-#: ajax/import/import.php:70
+#: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
 msgstr "события были сохранены в вашем календаре"
 
