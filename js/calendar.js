@@ -655,6 +655,9 @@ Calendar={
 						} else {
 							permissions -= permission;
 						}
+						
+						container.data('permissions',permissions);
+						
 						OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
 					});
 	
