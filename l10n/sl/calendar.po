@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-11 04:55-0500\n"
-"PO-Revision-Date: 2013-11-09 07:00+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-11-15 22:05-0500\n"
+"PO-Revision-Date: 2013-11-15 20:54+0000\n"
+"Last-Translator: mateju <>\n"
 "Language-Team: Slovenian (http://www.transifex.com/projects/p/owncloud/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,27 +115,27 @@ msgstr "Dovoljena souporaba"
 msgid "Deletable"
 msgstr "Dovoljen izbris"
 
-#: js/calendar.js:897
+#: js/calendar.js:900
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:898
+#: js/calendar.js:901
 msgid "ddd M/d"
 msgstr "ddd, d. M."
 
-#: js/calendar.js:899
+#: js/calendar.js:902
 msgid "dddd M/d"
 msgstr "dddd, d. M."
 
-#: js/calendar.js:902
+#: js/calendar.js:905
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:904
+#: js/calendar.js:907
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:906
+#: js/calendar.js:909
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, d. MMM, yyyy"
 
@@ -530,7 +530,7 @@ msgstr "po dnevu in mesecu"
 
 #: lib/sabre/backend.php:66
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Rojstni dan stika"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -803,7 +803,7 @@ msgstr "Nihče"
 
 #: templates/part.share.php:61
 msgid "Send Email"
-msgstr ""
+msgstr "Pošlji elektronsko sporočilo"
 
 #: templates/part.share.php:65
 msgid "Shared via calendar"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud calendar 5.0.0\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-11 04:55-0500\n"
+"POT-Creation-Date: 2013-11-15 22:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,27 +108,27 @@ msgstr ""
 msgid "Deletable"
 msgstr ""
 
-#: js/calendar.js:897
+#: js/calendar.js:900
 msgid "ddd"
 msgstr ""
 
-#: js/calendar.js:898
+#: js/calendar.js:901
 msgid "ddd M/d"
 msgstr ""
 
-#: js/calendar.js:899
+#: js/calendar.js:902
 msgid "dddd M/d"
 msgstr ""
 
-#: js/calendar.js:902
+#: js/calendar.js:905
 msgid "MMMM yyyy"
 msgstr ""
 
-#: js/calendar.js:904
+#: js/calendar.js:907
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:906
+#: js/calendar.js:909
 msgid "dddd, MMM d, yyyy"
 msgstr ""
 
