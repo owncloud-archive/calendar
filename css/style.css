@@ -135,19 +135,72 @@ button.category{margin:0 3px;}
 	font-weight: bold;
 }
 
-/* bigger event title in detail view */
-#event-title {
+/* input fields take whole width */
+#event-title,
+#event-location,
+#category,
+#event-description {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 100%;
+	margin: 3px 0;
+}
+/* bigger event title in detail view */
+#event-title {
 	font-size: 20px;
+}
+/* group from and to date fields */
+#event-time {
+	display: block;
+	margin: 5px 0;
+}
+#event-time-from {
+	float: left;
+}
+#event-time-to {
+	float: right;
+}
+#from, #to {
+	width: 65px;
 	margin: 0;
 }
+#fromtime, #totime {
+	margin: 0;
+}
+#event-allday {
+	display: inline-block;
+	margin: 7px 0;
+}
+/* category input field leaves room for edit button */
+#category {
+	width: 90%;
+}
+#editCategories {
+	display: inline-block;
+	padding: 6px 12px;
+}
+/* whole line for buttons of 'Advanced' and 'Export' */
+#advanced_options_button,
+#editEvent-export {
+	display: block;
+	margin: 0;
+}
+/* normal font weight for secondary buttons for less obtrusiveness */
+#advanced_options_button,
+#editEvent-export,
+#editEvent-delete {
+	font-weight: normal;
+}
+/* more space for action buttons below */
+#actions {
+	height: 45px;
+}
+
 
 /* make popups scrollable in smaller viewports */
 .ui-dialog {
-	height: 94% !important;
-	top: 4% !important;
+	max-height: 80% !important;
+	top: 10% !important;
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding: 0;
@@ -156,7 +209,7 @@ button.category{margin:0 3px;}
 	overflow: initial;
 }
 #appsettings_popup {
-	height: 70%;
+	max-height: 70%;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
