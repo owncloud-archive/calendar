@@ -126,6 +126,7 @@ Calendar={
 			$('#event').dialog({
 				width : 500,
 				height: 600,
+				resizable: false,
 				close : function(event, ui) {
 					$(this).dialog('destroy').remove();
 				}
