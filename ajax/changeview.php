@@ -12,7 +12,7 @@ $view = $_POST['v'];
 switch($view) {
 	case 'agendaWeek':
 	case 'month';
-	case 'list':
+	case 'agendaDay':
 		break;
 	default:
 		OCP\JSON::error(array('message'=>'unexpected parameter: ' . $view));

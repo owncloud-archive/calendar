@@ -401,8 +401,8 @@ Calendar={
 				case 'month':
 					id = 'onemonthview_radio';
 					break;
-				case 'list':
-					id = 'listview_radio';
+				case 'agendaDay':
+					id = 'onedayview_radio';
 					break;
 			}
 			$('#'+id).addClass('active');
@@ -868,6 +868,11 @@ $(document).ready(function(){
 				$.post(OC.filePath('calendar', 'ajax', 'changeview.php'), {v:view.name});
 				defaultView = view.name;
 			}
+			if(view.name === 'agendaDay') {
+				$('td.fc-state-highlight').css('background-color', '#ffffff');
+			} else{
+				$('td.fc-state-highlight').css('background-color', '#ffc');
+			}
 			Calendar.UI.setViewActive(view.name);
 			if (view.name == 'agendaWeek') {
 				$('#fullcalendar').fullCalendar('option', 'aspectRatio', 0.1);
@@ -921,8 +926,8 @@ $(document).ready(function(){
 	$('#onemonthview_radio').click(function(){
 		$('#fullcalendar').fullCalendar('changeView', 'month');
 	});
-	$('#listview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'list');
+	$('#onedayview_radio').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'agendaDay');
 	});
 	$('#today_input').click(function(){
 		$('#fullcalendar').fullCalendar('today');
