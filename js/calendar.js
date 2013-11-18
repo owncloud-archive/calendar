@@ -93,7 +93,6 @@ Calendar={
 		},
 		startEventDialog:function(){
 			Calendar.UI.loading(false);
-			$('.tipsy').remove();
 			$('#fullcalendar').fullCalendar('unselect');
 			Calendar.UI.lockTime();
 			$( "#from" ).datepicker({
@@ -220,7 +219,6 @@ Calendar={
 				},"json");
 		},
 		moveEvent:function(event, dayDelta, minuteDelta, allDay, revertFunc){
-			$('.tipsy').remove();
 			Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'move.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, allDay: allDay?1:0, lastmodified: event.lastmodified},
 			function(data) {
@@ -235,7 +233,6 @@ Calendar={
 			});
 		},
 		resizeEvent:function(event, dayDelta, minuteDelta, revertFunc){
-			$('.tipsy').remove();
 			Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'resize.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, lastmodified: event.lastmodified},
 			function(data) {
@@ -306,7 +303,6 @@ Calendar={
 				return;
 			}
 			$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
-			$('.tipsy').remove();
 			var direction;
 			if(event.detail){
 				if(event.detail < 0){
@@ -940,17 +936,6 @@ $(document).ready(function(){
 		eventResize: Calendar.UI.resizeEvent,
 		eventRender: function(event, element) {
 			element.find('.fc-event-title').text($("<div/>").html(escapeHTML(event.title)).text())
-			element.tipsy({
-				className: 'tipsy-event',
-				opacity: 0.9,
-				gravity:$.fn.tipsy.autoBounds(150, 's'),
-				fade:true,
-				delayIn: 400,
-				html:true,
-				title:function() {
-					return Calendar.UI.getEventPopupText(event);
-				}
-			});
 		},
 		loading: Calendar.UI.loading,
 		eventSources: eventSources
