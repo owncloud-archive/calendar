@@ -46,7 +46,6 @@
 .event {position:relative;}
 .event.colored {border-bottom: 1px solid white;}
 
-input[type="button"].active {color: #6193CF}
 #fromtime, #totime {
 color:#333;
 }
@@ -125,7 +124,18 @@ button.category{margin:0 3px;}
 
 
 
-
+#controls input[type="button"] {
+	height: 38px;
+	margin: 0;
+	font-weight: normal;
+}
+#controls #view, #controls #datecontrol {
+	margin: 3px;
+}
+#controls #datecontrol_date,
+#controls input[type="button"].active {
+	font-weight: bold;
+}
 
 #event-title {
 	-moz-box-sizing: border-box;
