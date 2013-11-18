@@ -570,9 +570,9 @@ Calendar={
 								+ 'data-share-with="'+shareWith+'" '
 								+ 'data-permissions="'+permissions+'" '
 								+ 'data-share-type="'+shareType+'">'+shareWith+' ('+(shareType == OC.Share.SHARE_TYPE_USER ? t('core', 'user') : t('core', 'group'))+')'
-								+ '<span class="shareactions"><input class="update" type="checkbox" title="'+t('core', 'Editable')+'">'
-								+ '<input class="share" type="checkbox" title="'+t('core', 'Shareable')+'" checked="checked">'
-								+ '<input class="delete" type="checkbox" title="'+t('core', 'Deletable')+'">'
+								+ '<span class="shareactions"><label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
+								+ '<input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
+								+ '<input class="delete" type="checkbox" checked="checked">'+t('core', 'can delete')+'</label>'
 								+ '<img class="svg action delete" title="Unshare"src="'+ OC.imagePath('core', 'actions/delete.svg') +'"></span></li>';
 							$('.sharedby.eventlist').append(newitem);
 							$('#sharedWithNobody').remove();

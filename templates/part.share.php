@@ -41,12 +41,18 @@ if(is_array($sharedwithByEvent)) {
 		data-share-type="<?php p($sharee['share_type']); ?>">
 		<?php p($sharee['share_with'] . ' (' . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_USER ? 'user' : 'group'). ')'); ?>
 		<span class="shareactions">
-			<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>
-				title="<?php p($l->t('Editable')); ?>">
-			<input class="share" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>
-				title="<?php p($l->t('Shareable')); ?>">
-			<input class="delete" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_DELETE?'checked="checked"':''))?>
-				title="<?php p($l->t('Deletable')); ?>">
+			<label>
+				<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
+				<?php p($l->t('can edit')); ?>
+			</label>
+			<label>
+				<input class="share" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
+				<?php p($l->t('can share')); ?>
+			</label>
+			<label>
+				<input class="delete" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_DELETE?'checked="checked"':''))?>>
+				<?php p($l->t('can delete')); ?>
+			</label>
 			<img src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')); ?>" class="svg action delete"
 				title="<?php p($l->t('Unshare')); ?>">
 		</span>
@@ -72,12 +78,18 @@ if(is_array($sharedwithByEvent)) {
 		data-share-type="<?php p($sharee['share_type']); ?>">
 		<?php p($sharee['share_with'] . ' (' . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_USER ? 'user' : 'group'). ')'); ?>
 		<span class="shareactions">
-			<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>
-				title="<?php p($l->t('Editable')); ?>">
-			<input class="share" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>
-				title="<?php p($l->t('Shareable')); ?>">
-			<input class="delete" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_DELETE?'checked="checked"':''))?>
-				title="<?php p($l->t('Deletable')); ?>">
+			<label>
+				<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
+				<?php p($l->t('can edit')); ?>
+			</label>
+			<label>
+				<input class="share" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
+				<?php p($l->t('can share')); ?>
+			</label>
+			<label>
+				<input class="delete" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_DELETE?'checked="checked"':''))?>>
+				<?php p($l->t('can delete')); ?>
+			</label>
 			<img src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')); ?>" class="svg action delete"
 				title="<?php p($l->t('Unshare')); ?>">
 		</span>

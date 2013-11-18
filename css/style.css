@@ -61,8 +61,6 @@ button.category{margin:0 3px;}
 #event {padding: 0;margin: 0;margin-top:-5px}
 
 .sharedby li .shareactions { float: right; }
-.sharedby li > .shareactions > * { display: none; }
-.sharedby li:hover > .shareactions > * { display: inline-block; }
 
 .fc-state-highlight { background: #ffa; }
 
@@ -155,7 +153,7 @@ button.category{margin:0 3px;}
 	padding: 0;
 }
 .ui-dialog .ui-dialog-content {
-	overflow: none;
+	overflow: initial;
 }
 #appsettings_popup {
 	height: 70%;
