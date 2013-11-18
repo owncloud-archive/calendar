@@ -134,3 +134,19 @@ button.category{margin:0 3px;}
 	font-size: 20px;
 	margin: 0;
 }
+
+.ui-dialog {
+	height: 94% !important;
+	top: 4% !important;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0;
+}
+.ui-dialog .ui-dialog-content {
+	overflow: none;
+}
+#appsettings_popup {
+	height: 70%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
