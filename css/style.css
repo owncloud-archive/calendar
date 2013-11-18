@@ -123,7 +123,7 @@ button.category{margin:0 3px;}
 }
 
 
-
+/* fit buttons to control bar */
 #controls input[type="button"] {
 	height: 38px;
 	margin: 0;
@@ -137,6 +137,7 @@ button.category{margin:0 3px;}
 	font-weight: bold;
 }
 
+/* bigger event title in detail view */
 #event-title {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -145,6 +146,7 @@ button.category{margin:0 3px;}
 	margin: 0;
 }
 
+/* make popups scrollable in smaller viewports */
 .ui-dialog {
 	height: 94% !important;
 	top: 4% !important;
@@ -159,4 +161,20 @@ button.category{margin:0 3px;}
 	height: 70%;
 	overflow-y: auto;
 	overflow-x: hidden;
+}
+
+/* color weekends */
+.fc-sat, .fc-sun {
+	background-color: #f8f8f8;
+}
+
+/* don't bold weekday names in header */
+#fullcalendar th {
+	font-weight: normal;
+	color: #aaa;
+}
+
+/* lighter border color */
+.fc-widget-header, .fc-widget-content {
+	border: 1px solid #e8e8e8;
 }
