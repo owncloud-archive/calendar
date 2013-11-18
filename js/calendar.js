@@ -83,7 +83,6 @@ Calendar={
 		}
 	},
 	UI:{
-		scrollcount: 0,
 		loading: function(isLoading){
 			if (isLoading){
 				$('#loading').show();
@@ -289,53 +288,6 @@ Calendar={
 			$('#caldav_url').val(totalurl + '/' + username + '/' + calname);
 			$('#caldav_url').show();
 			$("#caldav_url_close").show();
-		},
-		initScroll:function(){
-			if(window.addEventListener)
-				document.addEventListener('DOMMouseScroll', Calendar.UI.scrollCalendar, false);
-			//}else{
-				document.onmousewheel = Calendar.UI.scrollCalendar;
-			//}
-		},
-		scrollCalendar:function(event){
-			var currentView = $('#fullcalendar').fullCalendar('getView');
-			if(currentView.name == 'agendaWeek') {
-				return;
-			}
-			$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
-			var direction;
-			if(event.detail){
-				if(event.detail < 0){
-					direction = 'top';
-				}else{
-					direction = 'down';
-				}
-			}
-			if (event.wheelDelta){
-				if(event.wheelDelta > 0){
-					direction = 'top';
-				}else{
-					direction = 'down';
-				}
-			}
-			Calendar.UI.scrollcount++;
-			if(Calendar.UI.scrollcount < 20){
-				return;
-			}
-
-			var scroll = $(document).scrollTop(),
-				doc_height = $(document).height(),
-				win_height = $(window).height();
-			if(direction == 'down'/* && win_height == (doc_height - scroll)*/){
-				$('#fullcalendar').fullCalendar('next');
-				$(document).scrollTop(0);
-				event.preventDefault();
-			}else/* if (direction == 'top' && scroll == 0) */{
-				$('#fullcalendar').fullCalendar('prev');
-				$(document).scrollTop(win_height);
-				event.preventDefault();
-			}
-			Calendar.UI.scrollcount = 0;
 		},
 		repeat:function(task){
 			if(task=='init'){
@@ -882,7 +834,6 @@ function ListView(element, calendar) {
 	}
 }
 $(document).ready(function(){
-	Calendar.UI.initScroll();
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
