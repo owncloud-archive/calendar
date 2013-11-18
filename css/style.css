@@ -122,3 +122,15 @@ button.category{margin:0 3px;}
 .link{
 	color:#148cf6;
 }
+
+
+
+
+
+#event-title {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	font-size: 20px;
+	margin: 0;
+}
