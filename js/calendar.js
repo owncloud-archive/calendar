@@ -532,7 +532,12 @@ Calendar={
 			},
 			submit:function(button, calendarid){
 				var displayname = $.trim($("#displayname_"+calendarid).val());
-				var active = $("#edit_active_"+calendarid+":checked").length;
+				//var active = $("#edit_active_"+calendarid+":checked").length;
+				var active =0;
+				if( $("#edit_active_"+calendarid).is(':checked') ){
+					 active =1;
+				}
+				
 				var description = $("#description_"+calendarid).val();
 				var calendarcolor = $("#calendarcolor_"+calendarid).val();
 				if(displayname == ''){
