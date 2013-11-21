@@ -15,15 +15,6 @@
 	</td>
 </tr>
 <?php if (!$_['new']): ?>
-<tr>
-	<td></td>
-	<td>
-		<input id="edit_active_<?php p($_['calendar']['id']) ?>" type="checkbox"<?php p($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
-		<label for="edit_active_<?php p($_['calendar']['id']) ?>">
-			<?php p($l->t('Active')) ?>
-		</label>
-	</td>
-</tr>
 <?php endif; ?>
 <tr>
 	<th><?php p($l->t('Calendar color')) ?></th>

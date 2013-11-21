@@ -83,7 +83,6 @@ Calendar={
 		}
 	},
 	UI:{
-		scrollcount: 0,
 		loading: function(isLoading){
 			if (isLoading){
 				$('#loading').show();
@@ -93,7 +92,6 @@ Calendar={
 		},
 		startEventDialog:function(){
 			Calendar.UI.loading(false);
-			$('.tipsy').remove();
 			$('#fullcalendar').fullCalendar('unselect');
 			Calendar.UI.lockTime();
 			$( "#from" ).datepicker({
@@ -128,6 +126,8 @@ Calendar={
 			$('#event').dialog({
 				width : 500,
 				height: 600,
+				resizable: false,
+				draggable: false,
 				close : function(event, ui) {
 					$(this).dialog('destroy').remove();
 				}
@@ -220,7 +220,6 @@ Calendar={
 				},"json");
 		},
 		moveEvent:function(event, dayDelta, minuteDelta, allDay, revertFunc){
-			$('.tipsy').remove();
 			Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'move.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, allDay: allDay?1:0, lastmodified: event.lastmodified},
 			function(data) {
@@ -235,7 +234,6 @@ Calendar={
 			});
 		},
 		resizeEvent:function(event, dayDelta, minuteDelta, revertFunc){
-			$('.tipsy').remove();
 			Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'resize.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, lastmodified: event.lastmodified},
 			function(data) {
@@ -292,54 +290,6 @@ Calendar={
 			$('#caldav_url').val(totalurl + '/' + username + '/' + calname);
 			$('#caldav_url').show();
 			$("#caldav_url_close").show();
-		},
-		initScroll:function(){
-			if(window.addEventListener)
-				document.addEventListener('DOMMouseScroll', Calendar.UI.scrollCalendar, false);
-			//}else{
-				document.onmousewheel = Calendar.UI.scrollCalendar;
-			//}
-		},
-		scrollCalendar:function(event){
-			var currentView = $('#fullcalendar').fullCalendar('getView');
-			if(currentView.name == 'agendaWeek') {
-				return;
-			}
-			$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
-			$('.tipsy').remove();
-			var direction;
-			if(event.detail){
-				if(event.detail < 0){
-					direction = 'top';
-				}else{
-					direction = 'down';
-				}
-			}
-			if (event.wheelDelta){
-				if(event.wheelDelta > 0){
-					direction = 'top';
-				}else{
-					direction = 'down';
-				}
-			}
-			Calendar.UI.scrollcount++;
-			if(Calendar.UI.scrollcount < 20){
-				return;
-			}
-
-			var scroll = $(document).scrollTop(),
-				doc_height = $(document).height(),
-				win_height = $(window).height();
-			if(direction == 'down'/* && win_height == (doc_height - scroll)*/){
-				$('#fullcalendar').fullCalendar('next');
-				$(document).scrollTop(0);
-				event.preventDefault();
-			}else/* if (direction == 'top' && scroll == 0) */{
-				$('#fullcalendar').fullCalendar('prev');
-				$(document).scrollTop(win_height);
-				event.preventDefault();
-			}
-			Calendar.UI.scrollcount = 0;
 		},
 		repeat:function(task){
 			if(task=='init'){
@@ -453,8 +403,8 @@ Calendar={
 				case 'month':
 					id = 'onemonthview_radio';
 					break;
-				case 'list':
-					id = 'listview_radio';
+				case 'agendaDay':
+					id = 'onedayview_radio';
 					break;
 			}
 			$('#'+id).addClass('active');
@@ -622,9 +572,9 @@ Calendar={
 								+ 'data-share-with="'+shareWith+'" '
 								+ 'data-permissions="'+permissions+'" '
 								+ 'data-share-type="'+shareType+'">'+shareWith+' ('+(shareType == OC.Share.SHARE_TYPE_USER ? t('core', 'user') : t('core', 'group'))+')'
-								+ '<span class="shareactions"><input class="update" type="checkbox" title="'+t('core', 'Editable')+'">'
-								+ '<input class="share" type="checkbox" title="'+t('core', 'Shareable')+'" checked="checked">'
-								+ '<input class="delete" type="checkbox" title="'+t('core', 'Deletable')+'">'
+								+ '<span class="shareactions"><label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
+								+ '<input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
+								+ '<input class="delete" type="checkbox" checked="checked">'+t('core', 'can delete')+'</label>'
 								+ '<img class="svg action delete" title="Unshare"src="'+ OC.imagePath('core', 'actions/delete.svg') +'"></span></li>';
 							$('.sharedby.eventlist').append(newitem);
 							$('#sharedWithNobody').remove();
@@ -886,7 +836,6 @@ function ListView(element, calendar) {
 	}
 }
 $(document).ready(function(){
-	Calendar.UI.initScroll();
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
@@ -921,6 +870,11 @@ $(document).ready(function(){
 				$.post(OC.filePath('calendar', 'ajax', 'changeview.php'), {v:view.name});
 				defaultView = view.name;
 			}
+			if(view.name === 'agendaDay') {
+				$('td.fc-state-highlight').css('background-color', '#ffffff');
+			} else{
+				$('td.fc-state-highlight').css('background-color', '#ffc');
+			}
 			Calendar.UI.setViewActive(view.name);
 			if (view.name == 'agendaWeek') {
 				$('#fullcalendar').fullCalendar('option', 'aspectRatio', 0.1);
@@ -940,17 +894,6 @@ $(document).ready(function(){
 		eventResize: Calendar.UI.resizeEvent,
 		eventRender: function(event, element) {
 			element.find('.fc-event-title').text($("<div/>").html(escapeHTML(event.title)).text())
-			element.tipsy({
-				className: 'tipsy-event',
-				opacity: 0.9,
-				gravity:$.fn.tipsy.autoBounds(150, 's'),
-				fade:true,
-				delayIn: 400,
-				html:true,
-				title:function() {
-					return Calendar.UI.getEventPopupText(event);
-				}
-			});
 		},
 		loading: Calendar.UI.loading,
 		eventSources: eventSources
@@ -985,8 +928,8 @@ $(document).ready(function(){
 	$('#onemonthview_radio').click(function(){
 		$('#fullcalendar').fullCalendar('changeView', 'month');
 	});
-	$('#listview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'list');
+	$('#onedayview_radio').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'agendaDay');
 	});
 	$('#today_input').click(function(){
 		$('#fullcalendar').fullCalendar('today');

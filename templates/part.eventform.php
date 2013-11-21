@@ -11,97 +11,59 @@
 	<?php } ?>
 </ul>
 <div id="tabs-1">
-	<table width="100%">
-		<tr>
-			<th width="75px"><?php p($l->t("Title"));?>:</th>
-			<td>
-				<input type="text" style="width:350px;" size="100" placeholder="<?php p($l->t("Title of the Event"));?>" value="<?php p(isset($_['title']) ? $_['title'] : '') ?>" maxlength="100" name="title" autofocus="autofocus"/>
-			</td>
-		</tr>
-	</table>
-	<table width="100%">
-		<tr>
-			<th width="75px"><?php p($l->t("Category"));?>:</th>
-			<td>
-				<input id="category" name="categories" type="text" placeholder="<?php p($l->t('Separate categories with commas')); ?>" value="<?php p(isset($_['categories']) ? $_['categories'] : '') ?>">
-				<a class="action edit" id="editCategories" title="<?php p($l->t('Edit categories')); ?>"><img alt="<?php p($l->t('Edit categories')); ?>" src="<?php print_unescaped(OCP\image_path('core','actions/rename.svg'))?>" class="svg action" style="width: 16px; height: 16px;"></a>
-			</td>
-			<?php if(count($_['calendar_options']) > 1) { ?>
-			<th width="75px">&nbsp;&nbsp;&nbsp;<?php p($l->t("Calendar"));?>:</th>
-			<td>
-				<select style="width:140px;" name="calendar">
-					<?php
-					if (!isset($_['calendar'])) {$_['calendar'] = false;}
-					print_unescaped(OCP\html_select_options($_['calendar_options'], $_['calendar'], array('value'=>'id', 'label'=>'displayname')));
-					?>
-				</select>
-			</td>
-			<?php } else { ?>
-			<th width="75px">&nbsp;</th>
-			<td>
-				<input type="hidden" name="calendar" value="<?php p($_['calendar_options'][0]['id']); ?>">
-			</td>
-			<?php } ?>
-		</tr>
-		<tr>
-			<th width="75px"><?php p($l->t("Access Class"));?>:</th>
-			<td>
-				<select style="width:140px;" name="accessclass">
-					<?php
-					if (!isset($_['calendar'])) {$_['calendar'] = false;}
-					print_unescaped(OCP\html_select_options($_['access_class_options'], $_['accessclass']));
-					?>
-				</select>
-			</td>
-		</tr>
-	</table>
-	<hr>
-	<table width="100%">
-		<tr>
-			<th width="75px"></th>
-			<td>
-				<input type="checkbox"<?php if($_['allday']) {print_unescaped('checked="checked"');} ?> id="allday_checkbox" name="allday">
-				<label for="allday_checkbox"><?php p($l->t("All Day Event"));?></label>
-			</td>
-		</tr>
-		<tr>
-			<th width="75px"><?php p($l->t("From"));?>:</th>
-			<td>
-				<input type="text" value="<?php p($_['startdate']);?>" name="from" id="from">
-				&nbsp;&nbsp;
-				<input type="time" value="<?php p($_['starttime']);?>" name="fromtime" id="fromtime">
-			</td>
-		</tr>
-		<tr>
-			<th width="75px"><?php p($l->t("To"));?>:</th>
-			<td>
-				<input type="text" value="<?php p($_['enddate']);?>" name="to" id="to">
-				&nbsp;&nbsp;
-				<input type="time" value="<?php p($_['endtime']);?>" name="totime" id="totime">
-			</td>
-		</tr>
-	</table>
-	<input type="button" class="submit" value="<?php p($l->t("Advanced options")); ?>" id="advanced_options_button">
+	<input id="event-title" type="text" size="100"
+		placeholder="<?php p($l->t('Title of the Event'));?>"
+		value="<?php p(isset($_['title']) ? $_['title'] : '') ?>"
+		maxlength="100" name="title" autofocus="autofocus"/>
+
+	<?php if(count($_['calendar_options']) > 1) { ?>
+	<?php p($l->t("Calendar"));?>
+	<select style="width:140px;" name="calendar">
+		<?php if (!isset($_['calendar'])) {$_['calendar'] = false;}
+		print_unescaped(OCP\html_select_options($_['calendar_options'], $_['calendar'], array('value'=>'id', 'label'=>'displayname'))); ?>
+	</select>
+	<?php } else { ?>
+	<input style="display:none;" type="hidden" name="calendar" value="<?php p($_['calendar_options'][0]['id']); ?>">
+	<?php } ?>
+
+	<div id="event-time">
+		<div id="event-time-from">
+			<?php p($l->t('from'));?>
+			<input type="text" value="<?php p($_['startdate']);?>" name="from" id="from">
+			<input type="time" value="<?php p($_['starttime']);?>" name="fromtime" id="fromtime">
+		</div>
+		<div id="event-time-to">
+			<?php p($l->t('to'));?>
+			<input type="text" value="<?php p($_['enddate']);?>" name="to" id="to">
+			<input type="time" value="<?php p($_['endtime']);?>" name="totime" id="totime">
+		</div>
+	</div>
+
+	<label id="event-allday">
+		<input id="allday_checkbox" type="checkbox"<?php if($_['allday']) {print_unescaped('checked="checked"');} ?> name="allday">
+		<?php p($l->t("All Day Event"));?>
+	</label>
+
+	<input id="advanced_options_button" type="button" class="submit" value="<?php p($l->t('Advanced options')); ?>">
+
 	<div id="advanced_options" style="display: none;">
-		<hr>
-		<table>
-			<tr>
-				<th width="85px"><?php p($l->t("Location"));?>:</th>
-				<td>
-					<input type="text" style="width:350px;" size="100" placeholder="<?php p($l->t("Location of the Event"));?>" value="<?php p(isset($_['location']) ? $_['location'] : '') ?>" maxlength="100"  name="location" />
-				</td>
-			</tr>
-		</table>
-		<table>
-			<tr>
-				<th width="85px" style="vertical-align: top;"><?php p($l->t("Description"));?>:</th>
-				<td>
-					<textarea style="width:350px;height: 150px;" placeholder="<?php p($l->t("Description of the Event"));?>" name="description"><?php p(isset($_['description']) ? $_['description'] : '') ?></textarea>
-				</td>
-			</tr>
-		</table>
+		<input id="event-location" type="text" size="100"
+			placeholder="<?php p($l->t('Location'));?>"
+			value="<?php p(isset($_['location']) ? $_['location'] : '') ?>"
+			maxlength="100"  name="location" />
+
+		<input id="category" name="categories" type="text"
+			placeholder="<?php p($l->t('Categories (separate by comma)')); ?>"
+			value="<?php p(isset($_['categories']) ? $_['categories'] : '') ?>">
+		<a class="action edit" id="editCategories" title="<?php p($l->t('Edit categories')); ?>">
+		<img alt="<?php p($l->t('Edit categories')); ?>" src="<?php print_unescaped(OCP\image_path('core','actions/rename.svg'))?>" class="svg action" style="width: 16px; height: 16px;"></a>
+
+		<textarea id="event-description" placeholder="<?php p($l->t('Description'));?>" name="description"><?php p(isset($_['description']) ? $_['description'] : '') ?></textarea>
+
+		<input type="button" class="submit" id="editEvent-export"  name="export" value="<?php p($l->t('Export event'));?>" data-link="<?php print_unescaped(OCP\Util::linkTo('calendar', 'export.php')) ?>?eventid=<?php p($_['eventid']) ?>">
 	</div>
-	</div>
+</div>
+
 <div id="tabs-2">
 	<table style="width:100%">
 			<tr>
@@ -255,5 +217,12 @@
 <?php if($_['eventid'] != 'new' && $_['permissions'] & OCP\PERMISSION_SHARE) { ?>
 <div id="tabs-5">
 	<?php if($_['eventid'] != 'new') { print_unescaped($this->inc('part.share')); } ?>
+
+	<br>
+	<?php p($l->t('Visibility to people shared with'));?>
+	<select style="width:140px;" name="accessclass">
+		<?php if (!isset($_['calendar'])) {$_['calendar'] = false;}
+		print_unescaped(OCP\html_select_options($_['access_class_options'], $_['accessclass'])); ?>
+	</select>
 </div>
 <?php } ?>

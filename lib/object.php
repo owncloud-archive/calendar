@@ -528,9 +528,9 @@ class OC_Calendar_Object{
 	 */
 	public static function getAccessClassOptions($l10n) {
 		return array(
-			'PUBLIC'       => (string)$l10n->t('Public'),
-			'PRIVATE'      => (string)$l10n->t('Private'),
-			'CONFIDENTIAL' => (string)$l10n->t('Confidential')
+			'PUBLIC'       => (string)$l10n->t('Show full event'),
+			'PRIVATE'      => (string)$l10n->t('Show only busy'),
+			'CONFIDENTIAL' => (string)$l10n->t('Hide event')
 		);
 	}
 

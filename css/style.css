@@ -46,7 +46,6 @@
 .event {position:relative;}
 .event.colored {border-bottom: 1px solid white;}
 
-input[type="button"].active {color: #6193CF}
 #fromtime, #totime {
 color:#333;
 }
@@ -59,11 +58,13 @@ button.category{margin:0 3px;}
 .calendar-colorpicker-color{display:inline-block;width:20px;height:20px;margin-right:2px;cursor:pointer;border:2px solid transparent;}
 .calendar-colorpicker-color.active{border:2px solid black;}
 
-#event {padding: 0;margin: 0;margin-top:-5px}
+#event {
+	height: initial !important;
+	padding: 0;
+	margin: -5px 0 5px;
+}
 
 .sharedby li .shareactions { float: right; }
-.sharedby li > .shareactions > * { display: none; }
-.sharedby li:hover > .shareactions > * { display: inline-block; }
 
 .fc-state-highlight { background: #ffa; }
 
@@ -110,34 +111,6 @@ button.category{margin:0 3px;}
 {
      cursor: pointer;
 }
-.tipsy-event .tipsy-inner{
-background-color:#0098E4;
-border:2px solid #1d2d44;
-max-width:400px;
-padding:0;
-}
-.tipsy-event .tipsy-arrow-s{
-border-top-color:#1d2d44;
-}
-.tipsy-event .tipsy-arrow-n{
-border-bottom-color:#1d2d44;
-}
-.tipsy-event .summary,
-.tipsy-event .timespan,
-.tipsy-event .description{
-padding:0 8px;
-}
-.tipsy-event .summary{
-background-color:#1d2d44;
-font-size:1.2em;
-font-weight:bold;
-text-align:left;
-padding:0 8px 2px;
-}
-.tipsy-event .description{
-line-height:1.2;
-margin-bottom:4px;
-}
 
 #fullcalendar{
 	overflow: auto;
@@ -149,4 +122,114 @@ margin-bottom:4px;
 
 .link{
 	color:#148cf6;
+}
+
+
+/* fit buttons to control bar */
+#controls input[type="button"] {
+	height: 38px;
+	margin: 0;
+	font-weight: normal;
+}
+#controls #view, #controls #datecontrol {
+	margin: 3px;
+}
+#controls #datecontrol_date,
+#controls input[type="button"].active {
+	font-weight: bold;
+}
+
+/* input fields take whole width */
+#event-title,
+#event-location,
+#category,
+#event-description {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 3px 0;
+}
+/* bigger event title in detail view */
+#event-title {
+	font-size: 20px;
+}
+/* group from and to date fields */
+#event-time {
+	display: block;
+	margin: 5px 0;
+}
+#event-time-from {
+	float: left;
+}
+#event-time-to {
+	float: right;
+}
+#from, #to {
+	width: 65px;
+	margin: 0;
+}
+#fromtime, #totime {
+	margin: 0;
+}
+#event-allday {
+	display: inline-block;
+	margin: 7px 0;
+}
+/* category input field leaves room for edit button */
+#category {
+	width: 90%;
+}
+#editCategories {
+	display: inline-block;
+	padding: 6px 12px;
+}
+/* whole line for buttons of 'Advanced' and 'Export' */
+#advanced_options_button,
+#editEvent-export {
+	display: block;
+	margin: 0;
+}
+/* normal font weight for secondary buttons for less obtrusiveness */
+#advanced_options_button,
+#editEvent-export,
+#editEvent-delete {
+	font-weight: normal;
+}
+/* more space for action buttons below */
+#actions {
+	height: 45px;
+}
+
+
+/* make popups scrollable in smaller viewports */
+.ui-dialog {
+	max-height: 75% !important;
+	top: 15% !important;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0;
+}
+.ui-dialog .ui-dialog-content {
+	overflow: initial;
+}
+#appsettings_popup {
+	max-height: 70%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/* color weekends */
+.fc-sat, .fc-sun {
+	background-color: #f8f8f8;
+}
+
+/* don't bold weekday names in header */
+#fullcalendar th {
+	font-weight: normal;
+	color: #aaa;
+}
+
+/* lighter border color */
+.fc-widget-header, .fc-widget-content {
+	border: 1px solid #e8e8e8;
 }
