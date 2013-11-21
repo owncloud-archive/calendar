@@ -39,7 +39,7 @@ if(is_array($sharedwithByEvent)) {
 		data-item-type="event"
 		data-permissions="<?php p($sharee['permissions']); ?>"
 		data-share-type="<?php p($sharee['share_type']); ?>">
-		<?php p($sharee['share_with'] . ' (' . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_USER ? 'user' : 'group'). ')'); ?>
+		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>
 		<span class="shareactions">
 			<label>
 				<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
@@ -76,7 +76,7 @@ if(is_array($sharedwithByEvent)) {
 		data-item-type="calendar"
 		data-permissions="<?php p($sharee['permissions']); ?>"
 		data-share-type="<?php p($sharee['share_type']); ?>">
-		<?php p($sharee['share_with'] . ' (' . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_USER ? 'user' : 'group'). ')'); ?>
+		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>
 		<span class="shareactions">
 			<label>
 				<input class="update" type="checkbox"

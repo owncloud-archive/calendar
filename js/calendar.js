@@ -571,7 +571,9 @@ Calendar={
 							var newitem = '<li data-item-type="event"'
 								+ 'data-share-with="'+shareWith+'" '
 								+ 'data-permissions="'+permissions+'" '
-								+ 'data-share-type="'+shareType+'">'+shareWith+' ('+(shareType == OC.Share.SHARE_TYPE_USER ? t('core', 'user') : t('core', 'group'))+')'
+								+ 'data-share-type="'+shareType+'">'
+								+ shareWith
+								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
 								+ '<span class="shareactions"><label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
 								+ '<input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
 								+ '<input class="delete" type="checkbox" checked="checked">'+t('core', 'can delete')+'</label>'
