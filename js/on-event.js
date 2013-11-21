@@ -32,7 +32,6 @@ $('#allday_checkbox').live('click', function () {
 	Calendar.UI.lockTime();
 });
 $('#editEvent-submit').live('click', function () {
-	console.log('submit-event');
 	Calendar.UI.validateEventForm($(this).data('link'));
 });
 $('#editEvent-delete').live('click', function () {
