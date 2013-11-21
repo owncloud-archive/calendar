@@ -60,7 +60,7 @@ if(is_array($sharedwithByEvent)) {
 <?php endforeach; ?>
 </ul>
 <?php if(!$eventsharees) {
-	$nobody = $l->t('Nobody');
+	$nobody = $l->t('Not shared with anyone');
 	print_unescaped('<div id="sharedWithNobody">' . OC_Util::sanitizeHTML($nobody) . '</div>');
 } ?>
 <br />
@@ -96,5 +96,9 @@ if(is_array($sharedwithByEvent)) {
 	</li>
 <?php endforeach; ?>
 </ul>
+<?php if(!$calsharees) {
+	$nobody = $l->t('Not shared with anyone via calendar');
+	print_unescaped('<div>' . OC_Util::sanitizeHTML($nobody) . '</div>');
+} ?>
 <br />
 <?php p($l->t('NOTE: Actions on events shared via calendar will affect the entire calendar sharing.')); ?>
