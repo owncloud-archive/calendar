@@ -49,10 +49,6 @@ if(is_array($sharedwithByEvent)) {
 				<input class="share" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
 				 <?php p($l->t('can share')); ?>
 			</label>
-			<label>
-				<input class="delete" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_DELETE?'checked="checked"':''))?>>
-				 <?php p($l->t('can delete')); ?>
-			</label>
 			<img src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')); ?>" class="svg action delete"
 				title="<?php p($l->t('Unshare')); ?>">
 		</span>
@@ -89,12 +85,6 @@ if(is_array($sharedwithByEvent)) {
 					<?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>
 					disabled="disabled">
 				<?php p($l->t('can share')); ?>
-			</label>
-			<label>
-				<input class="delete" type="checkbox"
-					<?php p(($sharee['permissions'] & OCP\PERMISSION_DELETE?'checked="checked"':''))?>
-					disabled="disabled">
-				<?php p($l->t('can delete')); ?>
 			</label>
 		</span>
 	</li>
