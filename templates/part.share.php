@@ -28,10 +28,10 @@ if(is_array($sharedwithByEvent)) {
 }
 ?>
 
-<label for="sharewith"><?php p($l->t('Share with:')); ?></label>
-<input type="text" id="sharewith" data-item-source="<?php p($eventid); ?>" /><br />
+<input type="text" id="sharewith"
+	placeholder="<?php p($l->t('Share with user or group')); ?>"
+	data-item-source="<?php p($eventid); ?>" />
 
-<strong><?php p($l->t('Shared with')); ?></strong>
 <ul class="sharedby eventlist">
 <?php foreach($eventsharees as $sharee): ?>
 	<li data-share-with="<?php p($sharee['share_with']); ?>"
@@ -43,15 +43,15 @@ if(is_array($sharedwithByEvent)) {
 		<span class="shareactions">
 			<label>
 				<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
-				<?php p($l->t('can edit')); ?>
+				 <?php p($l->t('can edit')); ?>
 			</label>
 			<label>
 				<input class="share" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
-				<?php p($l->t('can share')); ?>
+				 <?php p($l->t('can share')); ?>
 			</label>
 			<label>
 				<input class="delete" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_DELETE?'checked="checked"':''))?>>
-				<?php p($l->t('can delete')); ?>
+				 <?php p($l->t('can delete')); ?>
 			</label>
 			<img src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')); ?>" class="svg action delete"
 				title="<?php p($l->t('Unshare')); ?>">
