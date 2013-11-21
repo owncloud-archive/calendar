@@ -218,6 +218,12 @@ button.category{margin:0 3px;}
 	overflow-x: hidden;
 }
 
+/* fix share dropdown being hidden and hiding calendar which will be shared */
+#appsettings_popup #dropdown {
+	left: 0;
+	margin-top: 20px;
+}
+
 /* color weekends */
 .fc-sat, .fc-sun {
 	background-color: #f8f8f8;
