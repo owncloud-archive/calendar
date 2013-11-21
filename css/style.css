@@ -64,7 +64,32 @@ button.category{margin:0 3px;}
 	margin: -5px 0 5px;
 }
 
-.sharedby li .shareactions { float: right; }
+
+
+#sharewith {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 5px 0 10px;
+}
+
+.sharedby li {
+	padding: 7px 0;
+}
+.sharedby .shareactions {
+	float: right;
+	clear: both;
+}
+.sharedby .shareactions label {
+	padding: 9px 5px;
+}
+.sharedby .shareactions input {
+	vertical-align: middle;
+}
+.sharedby .shareactions .delete {
+	float: right;
+	padding: 3px;
+}
 
 .fc-state-highlight { background: #ffa; }
 
@@ -216,6 +241,12 @@ button.category{margin:0 3px;}
 	max-height: 70%;
 	overflow-y: auto;
 	overflow-x: hidden;
+}
+
+/* fix share dropdown being hidden and hiding calendar which will be shared */
+#appsettings_popup #dropdown {
+	left: 0;
+	margin-top: 20px;
 }
 
 /* color weekends */

@@ -571,10 +571,12 @@ Calendar={
 							var newitem = '<li data-item-type="event"'
 								+ 'data-share-with="'+shareWith+'" '
 								+ 'data-permissions="'+permissions+'" '
-								+ 'data-share-type="'+shareType+'">'+shareWith+' ('+(shareType == OC.Share.SHARE_TYPE_USER ? t('core', 'user') : t('core', 'group'))+')'
-								+ '<span class="shareactions"><label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
-								+ '<input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
-								+ '<input class="delete" type="checkbox" checked="checked">'+t('core', 'can delete')+'</label>'
+								+ 'data-share-type="'+shareType+'">'
+								+ shareWith
+								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
+								+ '<span class="shareactions">'
+								+ '<label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
+								+ '<label><input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
 								+ '<img class="svg action delete" title="Unshare"src="'+ OC.imagePath('core', 'actions/delete.svg') +'"></span></li>';
 							$('.sharedby.eventlist').append(newitem);
 							$('#sharedWithNobody').remove();
@@ -594,10 +596,9 @@ Calendar={
 						var permission = null;
 						if($(this).hasClass('update')) {
 							permission = OC.PERMISSION_UPDATE;
+							permission = OC.PERMISSION_DELETE;
 						} else if($(this).hasClass('share')) {
 							permission = OC.PERMISSION_SHARE;
-						} else if($(this).hasClass('delete')) {
-							permission = OC.PERMISSION_DELETE;
 						}
 						// This is probably not the right way, but it works :-P
 						if($(this).is(':checked')) {
