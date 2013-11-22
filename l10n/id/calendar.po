@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-11 04:55-0500\n"
-"PO-Revision-Date: 2013-11-09 07:00+0000\n"
+"POT-Creation-Date: 2013-11-21 21:02-0500\n"
+"PO-Revision-Date: 2013-11-22 02:02+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/owncloud/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgstr "Zona waktu telah diubah"
 msgid "Invalid request"
 msgstr "Permintaan tidak sah"
 
-#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:30
+#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
 msgid "Calendar"
 msgstr "Kalender"
@@ -87,55 +87,47 @@ msgstr "Kalender"
 msgid "Deletion failed"
 msgstr "Penghapusan gagal"
 
-#: js/calendar.js:265
+#: js/calendar.js:263
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:267
+#: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:624
-msgid "user"
-msgstr "pengguna"
-
-#: js/calendar.js:624
+#: js/calendar.js:576
 msgid "group"
 msgstr "grup"
 
-#: js/calendar.js:625 templates/part.share.php:45 templates/part.share.php:76
-msgid "Editable"
-msgstr "Dapat diedit"
+#: js/calendar.js:578 templates/part.share.php:46 templates/part.share.php:81
+msgid "can edit"
+msgstr ""
 
-#: js/calendar.js:626 templates/part.share.php:47 templates/part.share.php:78
-msgid "Shareable"
-msgstr "Dapat dibagikan"
+#: js/calendar.js:579 templates/part.share.php:50 templates/part.share.php:87
+msgid "can share"
+msgstr ""
 
-#: js/calendar.js:627 templates/part.share.php:49 templates/part.share.php:80
-msgid "Deletable"
-msgstr "Dapat dihapus"
-
-#: js/calendar.js:897
+#: js/calendar.js:850
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:898
+#: js/calendar.js:851
 msgid "ddd M/d"
 msgstr "ddd d/M"
 
-#: js/calendar.js:899
+#: js/calendar.js:852
 msgid "dddd M/d"
 msgstr "dddd d/M"
 
-#: js/calendar.js:902
+#: js/calendar.js:855
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:904
+#: js/calendar.js:857
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:906
+#: js/calendar.js:859
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, d MMM yyyy"
 
@@ -303,8 +295,7 @@ msgstr "Kalendar Baru"
 msgid "Missing or invalid fields"
 msgstr "Isian tidak terisi atau tidak valid"
 
-#: js/l10n.php:86 templates/part.eventform.php:16
-#: templates/part.showevent.php:11
+#: js/l10n.php:86 templates/part.showevent.php:11
 msgid "Title"
 msgstr "Judul"
 
@@ -425,16 +416,16 @@ msgid "Busy"
 msgstr "Sibuk"
 
 #: lib/object.php:531
-msgid "Public"
-msgstr "Publik"
+msgid "Show full event"
+msgstr ""
 
 #: lib/object.php:532
-msgid "Private"
-msgstr "Pribadi"
+msgid "Show only busy"
+msgstr ""
 
 #: lib/object.php:533
-msgid "Confidential"
-msgstr "Rahasia"
+msgid "Hide event"
+msgstr ""
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -541,16 +532,16 @@ msgid "Cal."
 msgstr "Kalender"
 
 #: templates/calendar.php:6
+msgid "Day"
+msgstr ""
+
+#: templates/calendar.php:7
 msgid "Week"
 msgstr "Minggu"
 
-#: templates/calendar.php:7
+#: templates/calendar.php:8
 msgid "Month"
 msgstr "Bulan"
-
-#: templates/calendar.php:8
-msgid "List"
-msgstr "Daftar"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
@@ -577,7 +568,6 @@ msgid "Edit"
 msgstr "Edit"
 
 #: templates/part.choosecalendar.rowfields.php:36
-#: templates/part.editevent.php:9
 msgid "Delete"
 msgstr "Hapus"
 
@@ -593,34 +583,33 @@ msgstr "Edit kalender"
 msgid "Displayname"
 msgstr "Namatampilan"
 
-#: templates/part.editcalendar.php:23
-msgid "Active"
-msgstr "Aktif"
-
-#: templates/part.editcalendar.php:29
+#: templates/part.editcalendar.php:20
 msgid "Calendar color"
 msgstr "Warna kalender"
 
-#: templates/part.editcalendar.php:42
+#: templates/part.editcalendar.php:33
 msgid "Save"
 msgstr "Simpan"
 
-#: templates/part.editcalendar.php:42 templates/part.editevent.php:8
-#: templates/part.newevent.php:6
+#: templates/part.editcalendar.php:33
 msgid "Submit"
 msgstr "Kirim"
 
-#: templates/part.editcalendar.php:43
+#: templates/part.editcalendar.php:34
 msgid "Cancel"
 msgstr "Batal"
 
 #: templates/part.editevent.php:1
-msgid "Edit an event"
-msgstr "Edit agenda"
+msgid "Edit event"
+msgstr ""
 
-#: templates/part.editevent.php:10
-msgid "Export"
-msgstr "Ekspor"
+#: templates/part.editevent.php:8
+msgid "Save event"
+msgstr ""
+
+#: templates/part.editevent.php:9
+msgid "Delete event"
+msgstr ""
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -642,106 +631,98 @@ msgstr "Peserta"
 msgid "Share"
 msgstr "Bagikan"
 
-#: templates/part.eventform.php:18
+#: templates/part.eventform.php:15
 msgid "Title of the Event"
 msgstr "Judul Agenda"
 
-#: templates/part.eventform.php:24 templates/part.showevent.php:19
-msgid "Category"
-msgstr "Kategori"
+#: templates/part.eventform.php:31
+msgid "from"
+msgstr ""
 
-#: templates/part.eventform.php:26
-msgid "Separate categories with commas"
-msgstr "Pisahkan kategori dengan tanda koma"
+#: templates/part.eventform.php:36
+msgid "to"
+msgstr ""
 
-#: templates/part.eventform.php:27
-msgid "Edit categories"
-msgstr "Edit kategori"
-
-#: templates/part.eventform.php:47 templates/part.showevent.php:50
-msgid "Access Class"
-msgstr "Kelas Akses"
-
-#: templates/part.eventform.php:64 templates/part.showevent.php:66
+#: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
 msgstr "Agenda Sepanjang Hari"
 
-#: templates/part.eventform.php:68 templates/part.showevent.php:70
-msgid "From"
-msgstr "Dari"
-
-#: templates/part.eventform.php:76 templates/part.showevent.php:78
-msgid "To"
-msgstr "Kepada"
-
-#: templates/part.eventform.php:84 templates/part.showevent.php:86
+#: templates/part.eventform.php:47 templates/part.showevent.php:86
 msgid "Advanced options"
 msgstr "Opsi lanjutan"
 
-#: templates/part.eventform.php:89 templates/part.showevent.php:91
+#: templates/part.eventform.php:51 templates/part.showevent.php:91
 msgid "Location"
 msgstr "Lokasi"
 
-#: templates/part.eventform.php:91
-msgid "Location of the Event"
-msgstr "Lokasi Agenda"
+#: templates/part.eventform.php:56
+msgid "Categories (separate by comma)"
+msgstr ""
 
-#: templates/part.eventform.php:97 templates/part.showevent.php:99
+#: templates/part.eventform.php:58 templates/part.eventform.php:59
+msgid "Edit categories"
+msgstr "Edit kategori"
+
+#: templates/part.eventform.php:61 templates/part.showevent.php:99
 msgid "Description"
 msgstr "Deskripsi"
 
-#: templates/part.eventform.php:99
-msgid "Description of the Event"
-msgstr "Deskripsi Agenda"
+#: templates/part.eventform.php:63
+msgid "Export event"
+msgstr ""
 
-#: templates/part.eventform.php:108 templates/part.showevent.php:109
+#: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "Ulangi"
 
-#: templates/part.eventform.php:115 templates/part.showevent.php:116
+#: templates/part.eventform.php:77 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: templates/part.eventform.php:159 templates/part.showevent.php:160
+#: templates/part.eventform.php:121 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "Pilih hari kerja"
 
-#: templates/part.eventform.php:172 templates/part.eventform.php:185
+#: templates/part.eventform.php:134 templates/part.eventform.php:147
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "Pilih hari"
 
-#: templates/part.eventform.php:177 templates/part.showevent.php:178
+#: templates/part.eventform.php:139 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "dan agenda dalam setahun."
 
-#: templates/part.eventform.php:190 templates/part.showevent.php:191
+#: templates/part.eventform.php:152 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "dan agenda dalam sebulan."
 
-#: templates/part.eventform.php:198 templates/part.showevent.php:199
+#: templates/part.eventform.php:160 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "Pilih bulan"
 
-#: templates/part.eventform.php:211 templates/part.showevent.php:212
+#: templates/part.eventform.php:173 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "Pilih minggu"
 
-#: templates/part.eventform.php:216 templates/part.showevent.php:217
+#: templates/part.eventform.php:178 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "dan agenda mingguan setahun."
 
-#: templates/part.eventform.php:222 templates/part.showevent.php:223
+#: templates/part.eventform.php:184 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "Interval"
 
-#: templates/part.eventform.php:228 templates/part.showevent.php:229
+#: templates/part.eventform.php:190 templates/part.showevent.php:229
 msgid "End"
 msgstr "Akhir"
 
-#: templates/part.eventform.php:241 templates/part.showevent.php:242
+#: templates/part.eventform.php:203 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "perulangan"
+
+#: templates/part.eventform.php:222
+msgid "Visibility to people shared with"
+msgstr ""
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -785,39 +766,41 @@ msgstr "Tutup Dialog"
 msgid "Create a new event"
 msgstr "Buat agenda baru"
 
-#: templates/part.share.php:31
-msgid "Share with:"
-msgstr "Bagikan dengan:"
+#: templates/part.newevent.php:8
+msgid "Create event"
+msgstr ""
 
-#: templates/part.share.php:34
-msgid "Shared with"
-msgstr "Dibagikan dengan"
+#: templates/part.share.php:32
+msgid "Share with user or group"
+msgstr ""
 
-#: templates/part.share.php:51 templates/part.share.php:82
+#: templates/part.share.php:53
 msgid "Unshare"
 msgstr "Batalkan berbagi"
 
-#: templates/part.share.php:57
-msgid "Nobody"
-msgstr "Tidak seorang pun"
+#: templates/part.share.php:59
+msgid "Not shared with anyone"
+msgstr ""
 
-#: templates/part.share.php:61
+#: templates/part.share.php:63
 msgid "Send Email"
 msgstr ""
 
-#: templates/part.share.php:65
+#: templates/part.share.php:67
 msgid "Shared via calendar"
 msgstr "Dibagikan melalui kalender"
 
-#: templates/part.share.php:88
-msgid ""
-"NOTE: Actions on events shared via calendar will affect the entire calendar "
-"sharing."
-msgstr "CATATAN: Pengubahan pada agenda yang dibagi melalui kalender akan berpengaruh pada seluruh kalender yang dibagi."
+#: templates/part.share.php:94
+msgid "Not shared with anyone via calendar"
+msgstr ""
 
 #: templates/part.showevent.php:1
 msgid "View an event"
 msgstr "Tampilkan agenda"
+
+#: templates/part.showevent.php:19
+msgid "Category"
+msgstr "Kategori"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
@@ -827,9 +810,21 @@ msgstr "Tidak ada kategori yang terpilih"
 msgid "of"
 msgstr "dari"
 
+#: templates/part.showevent.php:50
+msgid "Access Class"
+msgstr "Kelas Akses"
+
+#: templates/part.showevent.php:70
+msgid "From"
+msgstr "Dari"
+
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
 msgstr "di"
+
+#: templates/part.showevent.php:78
+msgid "To"
+msgstr "Kepada"
 
 #: templates/settings.php:2
 msgid "Your calendars"

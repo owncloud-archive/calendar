@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-15 22:05-0500\n"
-"PO-Revision-Date: 2013-11-15 15:00+0000\n"
-"Last-Translator: zubr139 <zubr139@ukr.net>\n"
+"POT-Creation-Date: 2013-11-21 21:02-0500\n"
+"PO-Revision-Date: 2013-11-22 02:02+0000\n"
+"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/owncloud/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "Часовий пояс змінено"
 msgid "Invalid request"
 msgstr "Некоректний запит"
 
-#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:30
+#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
 msgid "Calendar"
 msgstr "Календар"
@@ -83,55 +83,47 @@ msgstr "Календар"
 msgid "Deletion failed"
 msgstr "Видалення не було виконано"
 
-#: js/calendar.js:265
+#: js/calendar.js:263
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:267
+#: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:624
-msgid "user"
-msgstr "користувач"
-
-#: js/calendar.js:624
+#: js/calendar.js:576
 msgid "group"
 msgstr "група"
 
-#: js/calendar.js:625 templates/part.share.php:45 templates/part.share.php:76
-msgid "Editable"
-msgstr "Редагуєме"
+#: js/calendar.js:578 templates/part.share.php:46 templates/part.share.php:81
+msgid "can edit"
+msgstr ""
 
-#: js/calendar.js:626 templates/part.share.php:47 templates/part.share.php:78
-msgid "Shareable"
-msgstr "Розподіляєме"
+#: js/calendar.js:579 templates/part.share.php:50 templates/part.share.php:87
+msgid "can share"
+msgstr ""
 
-#: js/calendar.js:627 templates/part.share.php:49 templates/part.share.php:80
-msgid "Deletable"
-msgstr "Видаляєме"
-
-#: js/calendar.js:900
+#: js/calendar.js:850
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:901
+#: js/calendar.js:851
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:902
+#: js/calendar.js:852
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:905
+#: js/calendar.js:855
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:907
+#: js/calendar.js:857
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:909
+#: js/calendar.js:859
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -299,8 +291,7 @@ msgstr "Новий Календар"
 msgid "Missing or invalid fields"
 msgstr "Відсутні або невірні поля"
 
-#: js/l10n.php:86 templates/part.eventform.php:16
-#: templates/part.showevent.php:11
+#: js/l10n.php:86 templates/part.showevent.php:11
 msgid "Title"
 msgstr "Назва"
 
@@ -421,16 +412,16 @@ msgid "Busy"
 msgstr "Зайнято"
 
 #: lib/object.php:531
-msgid "Public"
-msgstr "Загально"
+msgid "Show full event"
+msgstr ""
 
 #: lib/object.php:532
-msgid "Private"
-msgstr "Приватно"
+msgid "Show only busy"
+msgstr ""
 
 #: lib/object.php:533
-msgid "Confidential"
-msgstr "Конфіденційно"
+msgid "Hide event"
+msgstr ""
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -537,16 +528,16 @@ msgid "Cal."
 msgstr "Кал."
 
 #: templates/calendar.php:6
+msgid "Day"
+msgstr ""
+
+#: templates/calendar.php:7
 msgid "Week"
 msgstr "Тиждень"
 
-#: templates/calendar.php:7
+#: templates/calendar.php:8
 msgid "Month"
 msgstr "Місяць"
-
-#: templates/calendar.php:8
-msgid "List"
-msgstr "Список"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
@@ -573,7 +564,6 @@ msgid "Edit"
 msgstr "Редагувати"
 
 #: templates/part.choosecalendar.rowfields.php:36
-#: templates/part.editevent.php:9
 msgid "Delete"
 msgstr "Видалити"
 
@@ -589,34 +579,33 @@ msgstr "Редагувати календар"
 msgid "Displayname"
 msgstr "Відображуване ім'я"
 
-#: templates/part.editcalendar.php:23
-msgid "Active"
-msgstr "Активний"
-
-#: templates/part.editcalendar.php:29
+#: templates/part.editcalendar.php:20
 msgid "Calendar color"
 msgstr "Колір календаря"
 
-#: templates/part.editcalendar.php:42
+#: templates/part.editcalendar.php:33
 msgid "Save"
 msgstr "Зберегти"
 
-#: templates/part.editcalendar.php:42 templates/part.editevent.php:8
-#: templates/part.newevent.php:6
+#: templates/part.editcalendar.php:33
 msgid "Submit"
 msgstr "Передати"
 
-#: templates/part.editcalendar.php:43
+#: templates/part.editcalendar.php:34
 msgid "Cancel"
 msgstr "Відмінити"
 
 #: templates/part.editevent.php:1
-msgid "Edit an event"
-msgstr "Редагувати подію"
+msgid "Edit event"
+msgstr ""
 
-#: templates/part.editevent.php:10
-msgid "Export"
-msgstr "Експорт"
+#: templates/part.editevent.php:8
+msgid "Save event"
+msgstr ""
+
+#: templates/part.editevent.php:9
+msgid "Delete event"
+msgstr ""
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -638,106 +627,98 @@ msgstr "Учасників"
 msgid "Share"
 msgstr "Поділитися"
 
-#: templates/part.eventform.php:18
+#: templates/part.eventform.php:15
 msgid "Title of the Event"
 msgstr "Назва події"
 
-#: templates/part.eventform.php:24 templates/part.showevent.php:19
-msgid "Category"
-msgstr "Категорія"
+#: templates/part.eventform.php:31
+msgid "from"
+msgstr ""
 
-#: templates/part.eventform.php:26
-msgid "Separate categories with commas"
-msgstr "Розділити категорії комами"
+#: templates/part.eventform.php:36
+msgid "to"
+msgstr ""
 
-#: templates/part.eventform.php:27
-msgid "Edit categories"
-msgstr "Редагувати категорії"
-
-#: templates/part.eventform.php:47 templates/part.showevent.php:50
-msgid "Access Class"
-msgstr "Клас Доступу"
-
-#: templates/part.eventform.php:64 templates/part.showevent.php:66
+#: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
 msgstr "Подія на весь день"
 
-#: templates/part.eventform.php:68 templates/part.showevent.php:70
-msgid "From"
-msgstr "З"
-
-#: templates/part.eventform.php:76 templates/part.showevent.php:78
-msgid "To"
-msgstr "По"
-
-#: templates/part.eventform.php:84 templates/part.showevent.php:86
+#: templates/part.eventform.php:47 templates/part.showevent.php:86
 msgid "Advanced options"
 msgstr "Додаткові опції"
 
-#: templates/part.eventform.php:89 templates/part.showevent.php:91
+#: templates/part.eventform.php:51 templates/part.showevent.php:91
 msgid "Location"
 msgstr "Місце"
 
-#: templates/part.eventform.php:91
-msgid "Location of the Event"
-msgstr "Місце події"
+#: templates/part.eventform.php:56
+msgid "Categories (separate by comma)"
+msgstr ""
 
-#: templates/part.eventform.php:97 templates/part.showevent.php:99
+#: templates/part.eventform.php:58 templates/part.eventform.php:59
+msgid "Edit categories"
+msgstr "Редагувати категорії"
+
+#: templates/part.eventform.php:61 templates/part.showevent.php:99
 msgid "Description"
 msgstr "Опис"
 
-#: templates/part.eventform.php:99
-msgid "Description of the Event"
-msgstr "Опис події"
+#: templates/part.eventform.php:63
+msgid "Export event"
+msgstr ""
 
-#: templates/part.eventform.php:108 templates/part.showevent.php:109
+#: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "Повторювати"
 
-#: templates/part.eventform.php:115 templates/part.showevent.php:116
+#: templates/part.eventform.php:77 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "Додатково"
 
-#: templates/part.eventform.php:159 templates/part.showevent.php:160
+#: templates/part.eventform.php:121 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "Вибрати дні тижня"
 
-#: templates/part.eventform.php:172 templates/part.eventform.php:185
+#: templates/part.eventform.php:134 templates/part.eventform.php:147
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "Вибрати дні"
 
-#: templates/part.eventform.php:177 templates/part.showevent.php:178
+#: templates/part.eventform.php:139 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "і день подій в році."
 
-#: templates/part.eventform.php:190 templates/part.showevent.php:191
+#: templates/part.eventform.php:152 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "і день подій в місяці."
 
-#: templates/part.eventform.php:198 templates/part.showevent.php:199
+#: templates/part.eventform.php:160 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "Вибрати місяці"
 
-#: templates/part.eventform.php:211 templates/part.showevent.php:212
+#: templates/part.eventform.php:173 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "Вибрати тижні"
 
-#: templates/part.eventform.php:216 templates/part.showevent.php:217
+#: templates/part.eventform.php:178 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "і тиждень подій в році."
 
-#: templates/part.eventform.php:222 templates/part.showevent.php:223
+#: templates/part.eventform.php:184 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "Інтервал"
 
-#: templates/part.eventform.php:228 templates/part.showevent.php:229
+#: templates/part.eventform.php:190 templates/part.showevent.php:229
 msgid "End"
 msgstr "Кінець"
 
-#: templates/part.eventform.php:241 templates/part.showevent.php:242
+#: templates/part.eventform.php:203 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "нагоди"
+
+#: templates/part.eventform.php:222
+msgid "Visibility to people shared with"
+msgstr ""
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -781,39 +762,41 @@ msgstr "Закрити Діалог"
 msgid "Create a new event"
 msgstr "Створити нову подію"
 
-#: templates/part.share.php:31
-msgid "Share with:"
-msgstr "Поділитися з:"
+#: templates/part.newevent.php:8
+msgid "Create event"
+msgstr ""
 
-#: templates/part.share.php:34
-msgid "Shared with"
-msgstr "Розподілено з"
+#: templates/part.share.php:32
+msgid "Share with user or group"
+msgstr ""
 
-#: templates/part.share.php:51 templates/part.share.php:82
+#: templates/part.share.php:53
 msgid "Unshare"
 msgstr "Закрити доступ"
 
-#: templates/part.share.php:57
-msgid "Nobody"
-msgstr "Ніхто"
+#: templates/part.share.php:59
+msgid "Not shared with anyone"
+msgstr ""
 
-#: templates/part.share.php:61
+#: templates/part.share.php:63
 msgid "Send Email"
 msgstr "Надіслати Email"
 
-#: templates/part.share.php:65
+#: templates/part.share.php:67
 msgid "Shared via calendar"
 msgstr "Розподілено за допомогою календаря"
 
-#: templates/part.share.php:88
-msgid ""
-"NOTE: Actions on events shared via calendar will affect the entire calendar "
-"sharing."
-msgstr "ПРИМІТКА: Дії з подіями, які викладені в загальний доступ в календарі, будуть впливати на загальну доступність календаря."
+#: templates/part.share.php:94
+msgid "Not shared with anyone via calendar"
+msgstr ""
 
 #: templates/part.showevent.php:1
 msgid "View an event"
 msgstr "Подивитися подію"
+
+#: templates/part.showevent.php:19
+msgid "Category"
+msgstr "Категорія"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
@@ -823,9 +806,21 @@ msgstr "Жодної категорії не вибрано"
 msgid "of"
 msgstr "з"
 
+#: templates/part.showevent.php:50
+msgid "Access Class"
+msgstr "Клас Доступу"
+
+#: templates/part.showevent.php:70
+msgid "From"
+msgstr "З"
+
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
 msgstr "в"
+
+#: templates/part.showevent.php:78
+msgid "To"
+msgstr "По"
 
 #: templates/settings.php:2
 msgid "Your calendars"

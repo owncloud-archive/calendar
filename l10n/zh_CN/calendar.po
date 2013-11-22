@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-11 04:55-0500\n"
-"PO-Revision-Date: 2013-11-09 07:00+0000\n"
-"Last-Translator: hanfeng <appweb.cn@gmail.com>\n"
+"POT-Creation-Date: 2013-11-21 21:02-0500\n"
+"PO-Revision-Date: 2013-11-22 02:02+0000\n"
+"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/owncloud/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +79,7 @@ msgstr "时区已修改"
 msgid "Invalid request"
 msgstr "非法请求"
 
-#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:30
+#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
 msgid "Calendar"
 msgstr "日历"
@@ -88,55 +88,47 @@ msgstr "日历"
 msgid "Deletion failed"
 msgstr "删除失败"
 
-#: js/calendar.js:265
+#: js/calendar.js:263
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:267
+#: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:624
-msgid "user"
-msgstr "用户"
-
-#: js/calendar.js:624
+#: js/calendar.js:576
 msgid "group"
 msgstr "组"
 
-#: js/calendar.js:625 templates/part.share.php:45 templates/part.share.php:76
-msgid "Editable"
-msgstr "可编辑"
+#: js/calendar.js:578 templates/part.share.php:46 templates/part.share.php:81
+msgid "can edit"
+msgstr ""
 
-#: js/calendar.js:626 templates/part.share.php:47 templates/part.share.php:78
-msgid "Shareable"
-msgstr "可共享"
+#: js/calendar.js:579 templates/part.share.php:50 templates/part.share.php:87
+msgid "can share"
+msgstr ""
 
-#: js/calendar.js:627 templates/part.share.php:49 templates/part.share.php:80
-msgid "Deletable"
-msgstr "可删除"
-
-#: js/calendar.js:897
+#: js/calendar.js:850
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:898
+#: js/calendar.js:851
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:899
+#: js/calendar.js:852
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:902
+#: js/calendar.js:855
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:904
+#: js/calendar.js:857
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:906
+#: js/calendar.js:859
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -304,8 +296,7 @@ msgstr "新日历"
 msgid "Missing or invalid fields"
 msgstr "缺少或无效的字段"
 
-#: js/l10n.php:86 templates/part.eventform.php:16
-#: templates/part.showevent.php:11
+#: js/l10n.php:86 templates/part.showevent.php:11
 msgid "Title"
 msgstr "标题"
 
@@ -426,16 +417,16 @@ msgid "Busy"
 msgstr "忙碌"
 
 #: lib/object.php:531
-msgid "Public"
-msgstr "公共"
+msgid "Show full event"
+msgstr ""
 
 #: lib/object.php:532
-msgid "Private"
-msgstr "私人"
+msgid "Show only busy"
+msgstr ""
 
 #: lib/object.php:533
-msgid "Confidential"
-msgstr "证书"
+msgid "Hide event"
+msgstr ""
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -542,16 +533,16 @@ msgid "Cal."
 msgstr "日历"
 
 #: templates/calendar.php:6
+msgid "Day"
+msgstr ""
+
+#: templates/calendar.php:7
 msgid "Week"
 msgstr "星期"
 
-#: templates/calendar.php:7
+#: templates/calendar.php:8
 msgid "Month"
 msgstr "月"
-
-#: templates/calendar.php:8
-msgid "List"
-msgstr "列表"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
@@ -578,7 +569,6 @@ msgid "Edit"
 msgstr "编辑"
 
 #: templates/part.choosecalendar.rowfields.php:36
-#: templates/part.editevent.php:9
 msgid "Delete"
 msgstr "删除"
 
@@ -594,34 +584,33 @@ msgstr "编辑日历"
 msgid "Displayname"
 msgstr "显示名称"
 
-#: templates/part.editcalendar.php:23
-msgid "Active"
-msgstr "活动"
-
-#: templates/part.editcalendar.php:29
+#: templates/part.editcalendar.php:20
 msgid "Calendar color"
 msgstr "日历颜色"
 
-#: templates/part.editcalendar.php:42
+#: templates/part.editcalendar.php:33
 msgid "Save"
 msgstr "保存"
 
-#: templates/part.editcalendar.php:42 templates/part.editevent.php:8
-#: templates/part.newevent.php:6
+#: templates/part.editcalendar.php:33
 msgid "Submit"
 msgstr "提交"
 
-#: templates/part.editcalendar.php:43
+#: templates/part.editcalendar.php:34
 msgid "Cancel"
 msgstr "取消"
 
 #: templates/part.editevent.php:1
-msgid "Edit an event"
-msgstr "编辑事件"
+msgid "Edit event"
+msgstr ""
 
-#: templates/part.editevent.php:10
-msgid "Export"
-msgstr "导出"
+#: templates/part.editevent.php:8
+msgid "Save event"
+msgstr ""
+
+#: templates/part.editevent.php:9
+msgid "Delete event"
+msgstr ""
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -643,106 +632,98 @@ msgstr "参加者"
 msgid "Share"
 msgstr "共享"
 
-#: templates/part.eventform.php:18
+#: templates/part.eventform.php:15
 msgid "Title of the Event"
 msgstr "事件标题"
 
-#: templates/part.eventform.php:24 templates/part.showevent.php:19
-msgid "Category"
-msgstr "分类"
+#: templates/part.eventform.php:31
+msgid "from"
+msgstr ""
 
-#: templates/part.eventform.php:26
-msgid "Separate categories with commas"
-msgstr "用逗号分隔分类"
+#: templates/part.eventform.php:36
+msgid "to"
+msgstr ""
 
-#: templates/part.eventform.php:27
-msgid "Edit categories"
-msgstr "编辑分类"
-
-#: templates/part.eventform.php:47 templates/part.showevent.php:50
-msgid "Access Class"
-msgstr "访问分类"
-
-#: templates/part.eventform.php:64 templates/part.showevent.php:66
+#: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
 msgstr "全天事件"
 
-#: templates/part.eventform.php:68 templates/part.showevent.php:70
-msgid "From"
-msgstr "自"
-
-#: templates/part.eventform.php:76 templates/part.showevent.php:78
-msgid "To"
-msgstr "至"
-
-#: templates/part.eventform.php:84 templates/part.showevent.php:86
+#: templates/part.eventform.php:47 templates/part.showevent.php:86
 msgid "Advanced options"
 msgstr "高级选项"
 
-#: templates/part.eventform.php:89 templates/part.showevent.php:91
+#: templates/part.eventform.php:51 templates/part.showevent.php:91
 msgid "Location"
 msgstr "地点"
 
-#: templates/part.eventform.php:91
-msgid "Location of the Event"
-msgstr "事件地点"
+#: templates/part.eventform.php:56
+msgid "Categories (separate by comma)"
+msgstr ""
 
-#: templates/part.eventform.php:97 templates/part.showevent.php:99
+#: templates/part.eventform.php:58 templates/part.eventform.php:59
+msgid "Edit categories"
+msgstr "编辑分类"
+
+#: templates/part.eventform.php:61 templates/part.showevent.php:99
 msgid "Description"
 msgstr "描述"
 
-#: templates/part.eventform.php:99
-msgid "Description of the Event"
-msgstr "事件描述"
+#: templates/part.eventform.php:63
+msgid "Export event"
+msgstr ""
 
-#: templates/part.eventform.php:108 templates/part.showevent.php:109
+#: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "重复"
 
-#: templates/part.eventform.php:115 templates/part.showevent.php:116
+#: templates/part.eventform.php:77 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "高级"
 
-#: templates/part.eventform.php:159 templates/part.showevent.php:160
+#: templates/part.eventform.php:121 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "选择星期中的某天"
 
-#: templates/part.eventform.php:172 templates/part.eventform.php:185
+#: templates/part.eventform.php:134 templates/part.eventform.php:147
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "选择某天"
 
-#: templates/part.eventform.php:177 templates/part.showevent.php:178
+#: templates/part.eventform.php:139 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "选择每年事件发生的日子"
 
-#: templates/part.eventform.php:190 templates/part.showevent.php:191
+#: templates/part.eventform.php:152 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "选择每月事件发生的日子"
 
-#: templates/part.eventform.php:198 templates/part.showevent.php:199
+#: templates/part.eventform.php:160 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "选择月份"
 
-#: templates/part.eventform.php:211 templates/part.showevent.php:212
+#: templates/part.eventform.php:173 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "选择星期"
 
-#: templates/part.eventform.php:216 templates/part.showevent.php:217
+#: templates/part.eventform.php:178 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "选择每年的事件发生的星期"
 
-#: templates/part.eventform.php:222 templates/part.showevent.php:223
+#: templates/part.eventform.php:184 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "间隔"
 
-#: templates/part.eventform.php:228 templates/part.showevent.php:229
+#: templates/part.eventform.php:190 templates/part.showevent.php:229
 msgid "End"
 msgstr "结束"
 
-#: templates/part.eventform.php:241 templates/part.showevent.php:242
+#: templates/part.eventform.php:203 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "次"
+
+#: templates/part.eventform.php:222
+msgid "Visibility to people shared with"
+msgstr ""
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -786,39 +767,41 @@ msgstr "关闭对话框"
 msgid "Create a new event"
 msgstr "创建新事件"
 
-#: templates/part.share.php:31
-msgid "Share with:"
-msgstr "共享人"
+#: templates/part.newevent.php:8
+msgid "Create event"
+msgstr ""
 
-#: templates/part.share.php:34
-msgid "Shared with"
-msgstr "已共享给"
+#: templates/part.share.php:32
+msgid "Share with user or group"
+msgstr ""
 
-#: templates/part.share.php:51 templates/part.share.php:82
+#: templates/part.share.php:53
 msgid "Unshare"
 msgstr "取消共享"
 
-#: templates/part.share.php:57
-msgid "Nobody"
-msgstr "没有人"
+#: templates/part.share.php:59
+msgid "Not shared with anyone"
+msgstr ""
 
-#: templates/part.share.php:61
+#: templates/part.share.php:63
 msgid "Send Email"
 msgstr "发送邮件"
 
-#: templates/part.share.php:65
+#: templates/part.share.php:67
 msgid "Shared via calendar"
 msgstr "通过日历分享"
 
-#: templates/part.share.php:88
-msgid ""
-"NOTE: Actions on events shared via calendar will affect the entire calendar "
-"sharing."
-msgstr "备注：处理通过日历共享的事件将会影响整个日历共享项"
+#: templates/part.share.php:94
+msgid "Not shared with anyone via calendar"
+msgstr ""
 
 #: templates/part.showevent.php:1
 msgid "View an event"
 msgstr "查看事件"
+
+#: templates/part.showevent.php:19
+msgid "Category"
+msgstr "分类"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
@@ -828,9 +811,21 @@ msgstr "无选中分类"
 msgid "of"
 msgstr "在"
 
+#: templates/part.showevent.php:50
+msgid "Access Class"
+msgstr "访问分类"
+
+#: templates/part.showevent.php:70
+msgid "From"
+msgstr "自"
+
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
 msgstr "在"
+
+#: templates/part.showevent.php:78
+msgid "To"
+msgstr "至"
 
 #: templates/settings.php:2
 msgid "Your calendars"

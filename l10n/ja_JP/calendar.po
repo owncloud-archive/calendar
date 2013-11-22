@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-11 04:55-0500\n"
-"PO-Revision-Date: 2013-11-09 07:00+0000\n"
-"Last-Translator: Daisuke Deguchi <ddeguchi@nagoya-u.jp>\n"
+"POT-Creation-Date: 2013-11-21 21:02-0500\n"
+"PO-Revision-Date: 2013-11-22 02:02+0000\n"
+"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/owncloud/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "タイムゾーンが変更されました"
 msgid "Invalid request"
 msgstr "無効なリクエストです"
 
-#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:30
+#: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
 msgid "Calendar"
 msgstr "カレンダー"
@@ -83,55 +83,47 @@ msgstr "カレンダー"
 msgid "Deletion failed"
 msgstr "削除に失敗しました"
 
-#: js/calendar.js:265
+#: js/calendar.js:263
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:267
+#: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:624
-msgid "user"
-msgstr "ユーザ"
-
-#: js/calendar.js:624
+#: js/calendar.js:576
 msgid "group"
 msgstr "グループ"
 
-#: js/calendar.js:625 templates/part.share.php:45 templates/part.share.php:76
-msgid "Editable"
-msgstr "編集可能"
+#: js/calendar.js:578 templates/part.share.php:46 templates/part.share.php:81
+msgid "can edit"
+msgstr ""
 
-#: js/calendar.js:626 templates/part.share.php:47 templates/part.share.php:78
-msgid "Shareable"
-msgstr "共有可能"
+#: js/calendar.js:579 templates/part.share.php:50 templates/part.share.php:87
+msgid "can share"
+msgstr ""
 
-#: js/calendar.js:627 templates/part.share.php:49 templates/part.share.php:80
-msgid "Deletable"
-msgstr "削除可能"
-
-#: js/calendar.js:897
+#: js/calendar.js:850
 msgid "ddd"
 msgstr "dddd"
 
-#: js/calendar.js:898
+#: js/calendar.js:851
 msgid "ddd M/d"
 msgstr "M月d日 （dddd）"
 
-#: js/calendar.js:899
+#: js/calendar.js:852
 msgid "dddd M/d"
 msgstr "M月d日 （dddd）"
 
-#: js/calendar.js:902
+#: js/calendar.js:855
 msgid "MMMM yyyy"
 msgstr "yyyy年M月"
 
-#: js/calendar.js:904
+#: js/calendar.js:857
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "yyyy年MMMMd日{ '～' yyyy年MMMMd日}"
 
-#: js/calendar.js:906
+#: js/calendar.js:859
 msgid "dddd, MMM d, yyyy"
 msgstr "yyyy年M月d日 （dddd）"
 
@@ -299,8 +291,7 @@ msgstr "新しくカレンダーを作成"
 msgid "Missing or invalid fields"
 msgstr "不明もしくは無効なフィールド"
 
-#: js/l10n.php:86 templates/part.eventform.php:16
-#: templates/part.showevent.php:11
+#: js/l10n.php:86 templates/part.showevent.php:11
 msgid "Title"
 msgstr "タイトル"
 
@@ -421,16 +412,16 @@ msgid "Busy"
 msgstr "多忙"
 
 #: lib/object.php:531
-msgid "Public"
-msgstr "公開"
+msgid "Show full event"
+msgstr ""
 
 #: lib/object.php:532
-msgid "Private"
-msgstr "プライベート"
+msgid "Show only busy"
+msgstr ""
 
 #: lib/object.php:533
-msgid "Confidential"
-msgstr "秘密"
+msgid "Hide event"
+msgstr ""
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -537,16 +528,16 @@ msgid "Cal."
 msgstr "カレンダー"
 
 #: templates/calendar.php:6
+msgid "Day"
+msgstr ""
+
+#: templates/calendar.php:7
 msgid "Week"
 msgstr "週"
 
-#: templates/calendar.php:7
+#: templates/calendar.php:8
 msgid "Month"
 msgstr "月"
-
-#: templates/calendar.php:8
-msgid "List"
-msgstr "予定リスト"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
@@ -573,7 +564,6 @@ msgid "Edit"
 msgstr "編集"
 
 #: templates/part.choosecalendar.rowfields.php:36
-#: templates/part.editevent.php:9
 msgid "Delete"
 msgstr "削除"
 
@@ -589,34 +579,33 @@ msgstr "カレンダーを編集"
 msgid "Displayname"
 msgstr "表示名"
 
-#: templates/part.editcalendar.php:23
-msgid "Active"
-msgstr "アクティブ"
-
-#: templates/part.editcalendar.php:29
+#: templates/part.editcalendar.php:20
 msgid "Calendar color"
 msgstr "カレンダーの色"
 
-#: templates/part.editcalendar.php:42
+#: templates/part.editcalendar.php:33
 msgid "Save"
 msgstr "保存"
 
-#: templates/part.editcalendar.php:42 templates/part.editevent.php:8
-#: templates/part.newevent.php:6
+#: templates/part.editcalendar.php:33
 msgid "Submit"
 msgstr "完了"
 
-#: templates/part.editcalendar.php:43
+#: templates/part.editcalendar.php:34
 msgid "Cancel"
 msgstr "キャンセル"
 
 #: templates/part.editevent.php:1
-msgid "Edit an event"
-msgstr "イベントを編集"
+msgid "Edit event"
+msgstr ""
 
-#: templates/part.editevent.php:10
-msgid "Export"
-msgstr "エクスポート"
+#: templates/part.editevent.php:8
+msgid "Save event"
+msgstr ""
+
+#: templates/part.editevent.php:9
+msgid "Delete event"
+msgstr ""
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -638,106 +627,98 @@ msgstr "参加者"
 msgid "Share"
 msgstr "共有"
 
-#: templates/part.eventform.php:18
+#: templates/part.eventform.php:15
 msgid "Title of the Event"
 msgstr "イベントのタイトル"
 
-#: templates/part.eventform.php:24 templates/part.showevent.php:19
-msgid "Category"
-msgstr "カテゴリー"
+#: templates/part.eventform.php:31
+msgid "from"
+msgstr ""
 
-#: templates/part.eventform.php:26
-msgid "Separate categories with commas"
-msgstr "カテゴリをコンマで区切る"
+#: templates/part.eventform.php:36
+msgid "to"
+msgstr ""
 
-#: templates/part.eventform.php:27
-msgid "Edit categories"
-msgstr "カテゴリを編集"
-
-#: templates/part.eventform.php:47 templates/part.showevent.php:50
-msgid "Access Class"
-msgstr "公開設定"
-
-#: templates/part.eventform.php:64 templates/part.showevent.php:66
+#: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
 msgstr "終日イベント"
 
-#: templates/part.eventform.php:68 templates/part.showevent.php:70
-msgid "From"
-msgstr "開始"
-
-#: templates/part.eventform.php:76 templates/part.showevent.php:78
-msgid "To"
-msgstr "終了"
-
-#: templates/part.eventform.php:84 templates/part.showevent.php:86
+#: templates/part.eventform.php:47 templates/part.showevent.php:86
 msgid "Advanced options"
 msgstr "詳細設定"
 
-#: templates/part.eventform.php:89 templates/part.showevent.php:91
+#: templates/part.eventform.php:51 templates/part.showevent.php:91
 msgid "Location"
 msgstr "場所"
 
-#: templates/part.eventform.php:91
-msgid "Location of the Event"
-msgstr "イベントの場所"
+#: templates/part.eventform.php:56
+msgid "Categories (separate by comma)"
+msgstr ""
 
-#: templates/part.eventform.php:97 templates/part.showevent.php:99
+#: templates/part.eventform.php:58 templates/part.eventform.php:59
+msgid "Edit categories"
+msgstr "カテゴリを編集"
+
+#: templates/part.eventform.php:61 templates/part.showevent.php:99
 msgid "Description"
 msgstr "メモ"
 
-#: templates/part.eventform.php:99
-msgid "Description of the Event"
-msgstr "イベントの説明"
+#: templates/part.eventform.php:63
+msgid "Export event"
+msgstr ""
 
-#: templates/part.eventform.php:108 templates/part.showevent.php:109
+#: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "繰り返し"
 
-#: templates/part.eventform.php:115 templates/part.showevent.php:116
+#: templates/part.eventform.php:77 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "詳細設定"
 
-#: templates/part.eventform.php:159 templates/part.showevent.php:160
+#: templates/part.eventform.php:121 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "曜日を指定"
 
-#: templates/part.eventform.php:172 templates/part.eventform.php:185
+#: templates/part.eventform.php:134 templates/part.eventform.php:147
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "日付を指定"
 
-#: templates/part.eventform.php:177 templates/part.showevent.php:178
+#: templates/part.eventform.php:139 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "対象の年を選択する。"
 
-#: templates/part.eventform.php:190 templates/part.showevent.php:191
+#: templates/part.eventform.php:152 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "対象の月を選択する。"
 
-#: templates/part.eventform.php:198 templates/part.showevent.php:199
+#: templates/part.eventform.php:160 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "月を指定する"
 
-#: templates/part.eventform.php:211 templates/part.showevent.php:212
+#: templates/part.eventform.php:173 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "週を指定する"
 
-#: templates/part.eventform.php:216 templates/part.showevent.php:217
+#: templates/part.eventform.php:178 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "対象の週を選択する。"
 
-#: templates/part.eventform.php:222 templates/part.showevent.php:223
+#: templates/part.eventform.php:184 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "間隔"
 
-#: templates/part.eventform.php:228 templates/part.showevent.php:229
+#: templates/part.eventform.php:190 templates/part.showevent.php:229
 msgid "End"
 msgstr "繰り返す期間"
 
-#: templates/part.eventform.php:241 templates/part.showevent.php:242
+#: templates/part.eventform.php:203 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "回繰り返す"
+
+#: templates/part.eventform.php:222
+msgid "Visibility to people shared with"
+msgstr ""
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -781,39 +762,41 @@ msgstr "ダイアログを閉じる"
 msgid "Create a new event"
 msgstr "新しいイベントを作成"
 
-#: templates/part.share.php:31
-msgid "Share with:"
-msgstr "共有:"
+#: templates/part.newevent.php:8
+msgid "Create event"
+msgstr ""
 
-#: templates/part.share.php:34
-msgid "Shared with"
-msgstr "共有"
+#: templates/part.share.php:32
+msgid "Share with user or group"
+msgstr ""
 
-#: templates/part.share.php:51 templates/part.share.php:82
+#: templates/part.share.php:53
 msgid "Unshare"
 msgstr "非共有"
 
-#: templates/part.share.php:57
-msgid "Nobody"
-msgstr "無記名"
+#: templates/part.share.php:59
+msgid "Not shared with anyone"
+msgstr ""
 
-#: templates/part.share.php:61
+#: templates/part.share.php:63
 msgid "Send Email"
 msgstr "メールを送信"
 
-#: templates/part.share.php:65
+#: templates/part.share.php:67
 msgid "Shared via calendar"
 msgstr "カレンダー経由で共有中"
 
-#: templates/part.share.php:88
-msgid ""
-"NOTE: Actions on events shared via calendar will affect the entire calendar "
-"sharing."
-msgstr "注意: カレンダーを通して共有しているイベント上のアクションはカレンダー共有全体に影響します。"
+#: templates/part.share.php:94
+msgid "Not shared with anyone via calendar"
+msgstr ""
 
 #: templates/part.showevent.php:1
 msgid "View an event"
 msgstr "イベントを閲覧"
+
+#: templates/part.showevent.php:19
+msgid "Category"
+msgstr "カテゴリー"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
@@ -823,9 +806,21 @@ msgstr "カテゴリが選択されていません"
 msgid "of"
 msgstr "of"
 
+#: templates/part.showevent.php:50
+msgid "Access Class"
+msgstr "公開設定"
+
+#: templates/part.showevent.php:70
+msgid "From"
+msgstr "開始"
+
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
 msgstr "at"
+
+#: templates/part.showevent.php:78
+msgid "To"
+msgstr "終了"
 
 #: templates/settings.php:2
 msgid "Your calendars"

@@ -26,13 +26,11 @@
 "Calendar color" => "ပြက္ခဒိန်အရောင်",
 "Submit" => "ထည့်သွင်းမည်",
 "Cancel" => "ပယ်ဖျက်မည်",
-"Edit an event" => "ပွဲကိုပြင်ဆင်မည်",
 "Title of the Event" => "ပွဲ၏ခေါင်းစဉ်",
-"From" => "မှ",
-"To" => "သို့",
 "Location" => "တည်နေရာ",
-"Location of the Event" => "ပွဲ၏တည်နေရာ",
 "Description" => "ဖော်ပြချက်",
 "Advanced" => "အဆင့်မြင့်",
-"Create a new event" => "ပွဲအသစ်တစ်ပွဲပြုလုပ်မည်"
+"Create a new event" => "ပွဲအသစ်တစ်ပွဲပြုလုပ်မည်",
+"From" => "မှ",
+"To" => "သို့"
 );
