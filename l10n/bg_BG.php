@@ -76,6 +76,7 @@
 "Cancel" => "Отказ",
 "Share" => "Споделяне",
 "Title of the Event" => "Име на Събитието",
+"from" => "от",
 "All Day Event" => "Целодневно събитие",
 "Advanced options" => "Разширени настройки",
 "Location" => "Място",

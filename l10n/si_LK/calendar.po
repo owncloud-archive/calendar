@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-21 21:02-0500\n"
-"PO-Revision-Date: 2013-11-22 02:02+0000\n"
+"POT-Creation-Date: 2013-11-24 00:09-0500\n"
+"PO-Revision-Date: 2013-11-22 02:30+0000\n"
 "Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
 "Language-Team: Sinhala (Sri Lanka) (http://www.transifex.com/projects/p/owncloud/language/si_LK/)\n"
 "MIME-Version: 1.0\n"
@@ -91,39 +91,39 @@ msgstr "දිදිදි දි මාමාමාමා [ වවවව]{ - [�
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "දිදිදි දි මාමාමාමා [ වවවව] පැපැ:මිමි{ - [ දිදිදි දි මාමාමාමා වවවව] පැපැ:මිමි}"
 
-#: js/calendar.js:576
+#: js/calendar.js:581
 msgid "group"
 msgstr "කණ්ඩායම"
 
-#: js/calendar.js:578 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:583 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr ""
+msgstr "සංස්කරණය කළ හැක"
 
-#: js/calendar.js:579 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr ""
 
-#: js/calendar.js:850
+#: js/calendar.js:855
 msgid "ddd"
 msgstr "දිදිදි"
 
-#: js/calendar.js:851
+#: js/calendar.js:856
 msgid "ddd M/d"
 msgstr "දිදිදි මා/දි"
 
-#: js/calendar.js:852
+#: js/calendar.js:857
 msgid "dddd M/d"
 msgstr "දිදිදිදි මා/දි"
 
-#: js/calendar.js:855
+#: js/calendar.js:860
 msgid "MMMM yyyy"
 msgstr "මාමාමාමා වවවව"
 
-#: js/calendar.js:857
+#: js/calendar.js:862
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:859
+#: js/calendar.js:864
 msgid "dddd, MMM d, yyyy"
 msgstr "දිදිදිදි, මාමාමා දි, වවවව"
 
@@ -633,7 +633,7 @@ msgstr "සිදුවීමේ මාතෘකාව"
 
 #: templates/part.eventform.php:31
 msgid "from"
-msgstr ""
+msgstr "වෙතින්"
 
 #: templates/part.eventform.php:36
 msgid "to"

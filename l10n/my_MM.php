@@ -2,6 +2,7 @@
 "Timezone changed" => "အချိန်ဇုံပြောင်းလဲသည်",
 "Invalid request" => "တောင်းဆိုချက်မမှန်ကန်ပါ",
 "Calendar" => "ပြက္ခဒိန်",
+"can edit" => "ပြင်ဆင်နိုင်",
 "January" => "ဇန်နဝါရီ",
 "February" => "ဖေဖော်ဝါရီ",
 "March" => "မတ်",

@@ -17,6 +17,7 @@
 "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" => "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}",
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
 "group" => "grŵp",
+"can edit" => "yn gallu golygu",
 "ddd" => "ddd",
 "ddd M/d" => "ddd M/d",
 "dddd M/d" => "dddd M/d",

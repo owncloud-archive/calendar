@@ -74,6 +74,7 @@
 "by events date" => "per data de eventos",
 "by day and month" => "per dia e mense",
 "Date" => "Data",
+"Day" => "Die",
 "Week" => "Septimana",
 "Month" => "Mense",
 "Today" => "Hodie",

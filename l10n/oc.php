@@ -15,6 +15,7 @@
 "Calendar" => "Calendièr",
 "Deletion failed" => "Fracàs d'escafatge",
 "group" => "grop",
+"can edit" => "pòt modificar",
 "ddd" => "jjj",
 "ddd M/d" => "jjj M/j",
 "dddd M/d" => "jjjj M/j",

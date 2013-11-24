@@ -6,6 +6,7 @@
 "Timezone changed" => "Vremenska zona promijenjena",
 "Invalid request" => "Neispravan zahtjev",
 "Calendar" => "Kalendar",
+"can edit" => "može mjenjat",
 "Sunday" => "nedelja",
 "Monday" => "ponedeljak",
 "Tuesday" => "utorak",

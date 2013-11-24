@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-21 21:02-0500\n"
-"PO-Revision-Date: 2013-11-22 02:02+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-11-24 00:09-0500\n"
+"PO-Revision-Date: 2013-11-22 18:10+0000\n"
+"Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,17 +48,17 @@ msgstr "Yanlış takvim"
 
 #: ajax/event/edit.form.php:224 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
-msgstr "Bu olayı düzeltme yetkisine sahip değilsiniz."
+msgstr "Bu etkinliğ düzeltme yetkisine sahip değilsiniz."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr "Dosya ya hiçbir etkinlik içermiyor veya bütün etkinlikler takviminizde zaten saklı."
+msgstr "Dosya ya hiçbir etkinlik içermiyor ya da bütün etkinlikler takviminize zaten kaydedilmiş."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
-msgstr "Etkinlikler yeni takvimde saklandı"
+msgstr "etkinlikler yeni takvime kaydedildi"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
@@ -66,7 +66,7 @@ msgstr "İçeri aktarma başarısız oldu."
 
 #: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
-msgstr "Etkinlikler takviminizde saklandı"
+msgstr "etkinlikler takviminize kaydedildi"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -97,39 +97,39 @@ msgstr "ggg g aaaa[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ggg g aaaa[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:576
+#: js/calendar.js:581
 msgid "group"
 msgstr "grup"
 
-#: js/calendar.js:578 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:583 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr ""
+msgstr "düzenleyebilir"
 
-#: js/calendar.js:579 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "paylaşılabilir"
 
-#: js/calendar.js:850
+#: js/calendar.js:855
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:851
+#: js/calendar.js:856
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:852
+#: js/calendar.js:857
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:855
+#: js/calendar.js:860
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:857
+#: js/calendar.js:862
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "AAA g[ yyyy]{ '-'[ AAA] g yyyy}"
 
-#: js/calendar.js:859
+#: js/calendar.js:864
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -319,7 +319,7 @@ msgstr "Bu Saate"
 
 #: js/l10n.php:92
 msgid "The event ends before it starts"
-msgstr "Olay başlamadan önce bitiyor"
+msgstr "Etkinlik başlamadan önce bitiyor"
 
 #: js/l10n.php:93
 msgid "There was a database fail"
@@ -407,11 +407,11 @@ msgstr "Bu takvime ekleme yetkisine sahip değilsiniz."
 
 #: lib/object.php:122 lib/object.php:162 lib/object.php:317
 msgid "You do not have the permissions to add events to this calendar."
-msgstr "Bu takvime olay ekleme yetkisine sahip değilsiniz."
+msgstr "Bu takvime etkinlik ekleme yetkisine sahip değilsiniz."
 
 #: lib/object.php:267 lib/object.php:297
 msgid "You do not have the permissions to delete this event."
-msgstr "Bu olayı silme yetkisine sahip değilsiniz."
+msgstr "Bu etkinliğ silme yetkisine sahip değilsiniz."
 
 #: lib/object.php:491
 msgid "Busy"
@@ -419,15 +419,15 @@ msgstr "Meşgul"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "Tam etkinliği göster"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "Sadece meşgulleri göster"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "Etkinliği gizle"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -507,7 +507,7 @@ msgstr "sonuncu"
 
 #: lib/object.php:659
 msgid "by events date"
-msgstr "olay tarihine göre"
+msgstr "etkinlik tarihine göre"
 
 #: lib/object.php:660
 msgid "by yearday(s)"
@@ -535,7 +535,7 @@ msgstr "Takv."
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "Gün"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -603,15 +603,15 @@ msgstr "İptal"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Etkinliği düzenle"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Etkinliği kaydet"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Etkinliği sil"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -635,11 +635,11 @@ msgstr "Paylaş"
 
 #: templates/part.eventform.php:15
 msgid "Title of the Event"
-msgstr "Olayın Başlığı"
+msgstr "Etkinliğin Başlığı"
 
 #: templates/part.eventform.php:31
 msgid "from"
-msgstr ""
+msgstr "dan "
 
 #: templates/part.eventform.php:36
 msgid "to"
@@ -647,7 +647,7 @@ msgstr ""
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr "Tüm Gün Olay"
+msgstr "Tüm Gün Etkinliği"
 
 #: templates/part.eventform.php:47 templates/part.showevent.php:86
 msgid "Advanced options"
@@ -659,7 +659,7 @@ msgstr "Konum"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategoriler (virgül ile ayırın)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -671,7 +671,7 @@ msgstr "Açıklama"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "Etkinliği dışa aktar"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -724,7 +724,7 @@ msgstr "olaylar"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Paylaşılan insanlara görünürlük"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -754,7 +754,7 @@ msgstr "Bu isimde bir takvim zaten mevcut. Yine de devam ederseniz bu takvimler 
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr "Seçilen bir takvimden girişlerı kaldır"
+msgstr "Seçilen bir takvimdeki tüm etkinlikleri kaldır"
 
 #: templates/part.import.php:50
 msgid "Import"
@@ -766,15 +766,15 @@ msgstr "Diyalogu kapat"
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
-msgstr "Yeni olay oluştur"
+msgstr "Yeni bir etkinlik oluştur"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Etkinlik oluştur"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Kullanıcı veya grupla payla"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -782,7 +782,7 @@ msgstr "Paylaşılmayan"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Kimseyle paylaşılmamış"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -794,11 +794,11 @@ msgstr "Takvimle paylaş"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Takvim aracılığıyla kimseyle paylaşılmamış"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
-msgstr "Bir olay görüntüle"
+msgstr "Bir etkinlik görüntüle"
 
 #: templates/part.showevent.php:19
 msgid "Category"

@@ -1,4 +1,5 @@
 <?php $TRANSLATIONS = array(
+"can edit" => "ایڈٹ کر سکے",
 "January" => "جنوری",
 "February" => "فرورئ",
 "March" => "مارچ",

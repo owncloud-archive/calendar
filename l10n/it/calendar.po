@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-21 21:02-0500\n"
-"PO-Revision-Date: 2013-11-22 02:02+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-11-24 00:09-0500\n"
+"PO-Revision-Date: 2013-11-22 21:20+0000\n"
+"Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/owncloud/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,39 +97,39 @@ msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:576
+#: js/calendar.js:581
 msgid "group"
 msgstr "gruppo"
 
-#: js/calendar.js:578 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:583 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr ""
+msgstr "può modificare"
 
-#: js/calendar.js:579 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "può condividere"
 
-#: js/calendar.js:850
+#: js/calendar.js:855
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:851
+#: js/calendar.js:856
 msgid "ddd M/d"
 msgstr "ddd d/M"
 
-#: js/calendar.js:852
+#: js/calendar.js:857
 msgid "dddd M/d"
 msgstr "dddd d/M"
 
-#: js/calendar.js:855
+#: js/calendar.js:860
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:857
+#: js/calendar.js:862
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "d MMM[ yyyy]{ '–'d [ MMM] yyyy}"
 
-#: js/calendar.js:859
+#: js/calendar.js:864
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, d MMM yyyy"
 
@@ -419,15 +419,15 @@ msgstr "Occupato"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "Mostra evento completo"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "Mostra solo occupato"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "Nascondi evento"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -535,7 +535,7 @@ msgstr "Cal."
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "Giorno"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -603,15 +603,15 @@ msgstr "Annulla"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Modifica evento"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Salva evento"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Elimina evento"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -639,11 +639,11 @@ msgstr "Titolo dell'evento"
 
 #: templates/part.eventform.php:31
 msgid "from"
-msgstr ""
+msgstr "da"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "a"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -659,7 +659,7 @@ msgstr "Luogo"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Categorie (separate da virgola)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -671,7 +671,7 @@ msgstr "Descrizione"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "Esporta evento"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -770,11 +770,11 @@ msgstr "Crea un nuovo evento"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Crea evento"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Condividi con utente o gruppo"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -782,7 +782,7 @@ msgstr "Rimuovi condivisione"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Non condiviso con altri"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -794,7 +794,7 @@ msgstr "Condiviso tramite calendario"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Non condiviso con altri tramite calendario"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
