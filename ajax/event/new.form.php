@@ -79,8 +79,24 @@ $tmpl->assign('enddate', $end->format('d-m-Y'));
 $tmpl->assign('endtime', $end->format('H:i'));
 $tmpl->assign('allday', $allday);
 $tmpl->assign('repeat', 'doesnotrepeat');
+
+//init hidden values date values for repeating
+$tWeekDay=$start->format('l');
+$transWeekDay=$l->t((string)$tWeekDay);
+$tDayOfMonth=$start->format('j');
+$tMonth=$start->format('F');
+$transMonth=$l->t((string)$tMonth);
+$transByWeekNo=$start->format('W');
+$transByYearDay=$start->format('z');
+
+$tmpl->assign('repeat_weekdays',$transWeekDay);
+$tmpl -> assign('repeat_bymonthday',$tDayOfMonth);
+$tmpl->assign('repeat_bymonth',$transMonth);
+$tmpl -> assign('repeat_byweekno', $transByWeekNo);
+$tmpl -> assign('repeat_byyearday',$transByYearDay);
+
 $tmpl->assign('repeat_month', 'monthday');
-$tmpl->assign('repeat_weekdays', array());
+//$tmpl->assign('repeat_weekdays', array());
 $tmpl->assign('repeat_interval', 1);
 $tmpl->assign('repeat_end', 'never');
 $tmpl->assign('repeat_count', '10');
