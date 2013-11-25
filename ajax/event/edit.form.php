@@ -273,7 +273,7 @@ if($repeat['repeat'] != 'doesnotrepeat') {
 	$tmpl->assign('repeat_bymonth', isset($repeat['bymonth']) ? $repeat['bymonth'] : array());
 	$tmpl->assign('repeat_byweekno', isset($repeat['byweekno']) ? $repeat['byweekno'] : array());
 } else {
-	//Some hidden init Values prefend User Errors
+	//Some hidden init Values prevent User Errors
 	//init
 	$start=$dtstart-> getDateTime();
 	$tWeekDay=$start->format('l');
