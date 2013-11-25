@@ -62,14 +62,14 @@ class OC_Calendar_Object{
 	 * in ['calendardata']
 	 */
 	public static function allInPeriod($id, $start, $end) {
-		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ?'
-		.' AND ((`startdate` >= ? AND `startdate` <= ? AND `repeating` = 0)'
-		.' OR (`enddate` >= ? AND `enddate` <= ? AND `repeating` = 0)'
-		.' OR (`startdate` <= ? AND `repeating` = 1))' );
+		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ? AND `objecttype`= ?' 
+		.' AND ((`startdate` >= ? AND `enddate` <= ? AND `repeating` = 0)'
+		.' OR (`enddate` >= ? AND `startdate` <= ? AND `repeating` = 0)'
+		.' OR (`startdate` <= ? AND `repeating` = 1) )' );
 		$start = self::getUTCforMDB($start);
 		$end = self::getUTCforMDB($end);
-		$result = $stmt->execute(array($id,
-					$start, $end,
+		$result = $stmt->execute(array($id,'VEVENT',
+					$start, $end,					
 					$start, $end,
 					$end));
 
