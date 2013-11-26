@@ -80,6 +80,9 @@ $tmpl->assign('endtime', $end->format('H:i'));
 $tmpl->assign('allday', $allday);
 $tmpl->assign('repeat', 'doesnotrepeat');
 
+//init translation util
+$l = OCP\Util::getL10N('calendar');
+
 //init hidden values date values for repeating
 $tWeekDay=$start->format('l');
 $transWeekDay=$l->t((string)$tWeekDay);

@@ -274,6 +274,10 @@ if($repeat['repeat'] != 'doesnotrepeat') {
 	$tmpl->assign('repeat_byweekno', isset($repeat['byweekno']) ? $repeat['byweekno'] : array());
 } else {
 	//Some hidden init Values prevent User Errors
+	
+	//init translation util
+	$l = OCP\Util::getL10N('calendar');
+
 	//init
 	$start=$dtstart-> getDateTime();
 	$tWeekDay=$start->format('l');
