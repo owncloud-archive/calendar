@@ -554,7 +554,7 @@ Calendar={
 			init:function(){
 				if(typeof OC.Share !== typeof undefined){
 					var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP];
-					$('#sharewith').autocomplete({minLength: 2, source: function(search, response) {
+					$('#sharewith').autocomplete({minLength: 1, source: function(search, response) {
 						$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
 							if (result.status == 'success' && result.data.length > 0) {
 								response(result.data);
