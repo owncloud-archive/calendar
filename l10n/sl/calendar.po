@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-24 00:09-0500\n"
-"PO-Revision-Date: 2013-11-22 21:50+0000\n"
+"POT-Creation-Date: 2013-11-26 03:18-0500\n"
+"PO-Revision-Date: 2013-11-25 19:00+0000\n"
 "Last-Translator: mateju <>\n"
 "Language-Team: Slovenian (http://www.transifex.com/projects/p/owncloud/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "Ni najdenih dogodkov."
 msgid "Wrong calendar"
 msgstr "Napačen koledar"
 
-#: ajax/event/edit.form.php:224 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
 msgstr "Ni ustreznih dovoljenj za urejanje tega dogodka."
 
@@ -89,11 +89,11 @@ msgstr "Brisanje je spodletelo."
 
 #: js/calendar.js:263
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
-msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
+msgstr "ddd, d. MMMM [ yyyy]{ - [ddd, d.] MMMM yyyy}"
 
 #: js/calendar.js:265
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
+msgstr "ddd. d. MMMM[ yyyy] HH:mm{ - [ ddd. d. MMMM yyyy] HH:mm}"
 
 #: js/calendar.js:581
 msgid "group"
@@ -125,11 +125,11 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:862
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
+msgstr "d. MMM[ yyyy]{ '–' d.[ MMM] yyyy}"
 
 #: js/calendar.js:864
 msgid "dddd, MMM d, yyyy"
-msgstr "dddd, d. MMM, yyyy"
+msgstr "dddd, d. MMM yyyy"
 
 #: js/l10n.php:77 lib/object.php:588 templates/settings.php:93
 msgid "Sunday"

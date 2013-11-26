@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud calendar 5.0.0\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-24 00:09-0500\n"
+"POT-Creation-Date: 2013-11-26 03:18-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Wrong calendar"
 msgstr ""
 
-#: ajax/event/edit.form.php:224 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
 msgstr ""
 

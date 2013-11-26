@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-24 00:09-0500\n"
-"PO-Revision-Date: 2013-11-22 18:10+0000\n"
+"POT-Creation-Date: 2013-11-26 03:18-0500\n"
+"PO-Revision-Date: 2013-11-24 16:30+0000\n"
 "Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Etkinlik yok."
 msgid "Wrong calendar"
 msgstr "Yanlış takvim"
 
-#: ajax/event/edit.form.php:224 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
 msgstr "Bu etkinliğ düzeltme yetkisine sahip değilsiniz."
 
@@ -639,11 +639,11 @@ msgstr "Etkinliğin Başlığı"
 
 #: templates/part.eventform.php:31
 msgid "from"
-msgstr "dan "
+msgstr "başlangıç"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "bitiş"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
