@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Jan Krejci <krejca85@gmail.com>, 2011-2012
+# liska_, 2013
 # Martin <fireball@atlas.cz>, 2011-2012
 # Michal Hrušecký <Michal@hrusecky.net>, 2012
 # pstast <petr@stastny.eu>, 2013
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-24 00:09-0500\n"
-"PO-Revision-Date: 2013-11-22 02:20+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-11-27 12:03-0500\n"
+"PO-Revision-Date: 2013-11-26 14:18+0000\n"
+"Last-Translator: liska_\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,7 +43,7 @@ msgstr "Žádné události nenalezeny."
 msgid "Wrong calendar"
 msgstr "Nesprávný kalendář"
 
-#: ajax/event/edit.form.php:224 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
 msgstr "Nemáte práva upravovat tuto událost."
 
@@ -103,7 +104,7 @@ msgstr "lze upravovat"
 
 #: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "může sdílet"
 
 #: js/calendar.js:855
 msgid "ddd"
@@ -415,15 +416,15 @@ msgstr "Zaneprázdněná"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "Zobraz celou událost"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "Zobrazit pouze zaneprázdněné"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "Skrýt událost"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -599,15 +600,15 @@ msgstr "Zrušit"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Upravit událost"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Uložit událost"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Smazat událost"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -639,7 +640,7 @@ msgstr "z"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "do"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -655,7 +656,7 @@ msgstr "Umístění"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategorie (oddělené čárkou)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -667,7 +668,7 @@ msgstr "Popis"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "Exportuj událost"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -720,7 +721,7 @@ msgstr "výskyty"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Viditelnost pro lidi, se kterými je sdílena"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -766,11 +767,11 @@ msgstr "Vytvořit novou událost"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Vytvořit událost"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Sdílej s uživatelem nebo skupinou"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -778,7 +779,7 @@ msgstr "Zrušit sdílení"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Nesdíleno s nikým"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -790,7 +791,7 @@ msgstr "Sdíleno skrze kalendář"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Nesdíleno s nikým skrze kalendář"
 
 #: templates/part.showevent.php:1
 msgid "View an event"

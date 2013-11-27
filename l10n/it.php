@@ -172,6 +172,7 @@
 "Interval" => "Intervallo",
 "End" => "Fine",
 "occurrences" => "occorrenze",
+"Visibility to people shared with" => "Visibile alle persone con cui hai condiviso",
 "create a new calendar" => "Crea un nuovo calendario",
 "Import a calendar file" => "Importa un file di calendario",
 "Please choose a calendar" => "Scegli un calendario",
