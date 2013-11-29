@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-24 00:09-0500\n"
-"PO-Revision-Date: 2013-11-22 02:20+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-11-29 13:20-0500\n"
+"PO-Revision-Date: 2013-11-28 14:10+0000\n"
+"Last-Translator: mnestis <transifex@mnestis.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/owncloud/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +38,7 @@ msgstr "No events found."
 msgid "Wrong calendar"
 msgstr "Wrong calendar"
 
-#: ajax/event/edit.form.php:224 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
 msgstr "You do not have permission to edit this event."
 
@@ -99,7 +99,7 @@ msgstr "can edit"
 
 #: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "can share"
 
 #: js/calendar.js:855
 msgid "ddd"
@@ -411,15 +411,15 @@ msgstr "Busy"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "Show full event"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "Show only busy"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "Hide event"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -527,7 +527,7 @@ msgstr "Cal."
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "Day"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -595,15 +595,15 @@ msgstr "Cancel"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Edit event"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Save event"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Delete event"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -635,7 +635,7 @@ msgstr "from"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "to"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -651,7 +651,7 @@ msgstr "Location"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Categories (separate by comma)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -663,7 +663,7 @@ msgstr "Description"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "Export event"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -716,7 +716,7 @@ msgstr "occurrences"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Visibility to people shared with"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -762,11 +762,11 @@ msgstr "Create a new event"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Create event"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Share with user or group"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -774,7 +774,7 @@ msgstr "Unshare"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Not shared with anyone"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -786,7 +786,7 @@ msgstr "Shared via calendar"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Not shared with anyone via calendar"
 
 #: templates/part.showevent.php:1
 msgid "View an event"

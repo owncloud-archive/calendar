@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-27 12:03-0500\n"
-"PO-Revision-Date: 2013-11-26 14:18+0000\n"
-"Last-Translator: liska_\n"
+"POT-Creation-Date: 2013-11-29 13:20-0500\n"
+"PO-Revision-Date: 2013-11-27 18:10+0000\n"
+"Last-Translator: pstast <petr@stastny.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -532,7 +532,7 @@ msgstr "Kal."
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr "den"
+msgstr "Den"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -668,7 +668,7 @@ msgstr "Popis"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr "Exportuj událost"
+msgstr "Exportovat událost"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -771,7 +771,7 @@ msgstr "Vytvořit událost"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr "Sdílej s uživatelem nebo skupinou"
+msgstr "Sdílet s uživatelem nebo skupinou"
 
 #: templates/part.share.php:53
 msgid "Unshare"
