@@ -9,15 +9,15 @@
 # Emre Saraçoğlu <emresaracoglu@live.com>, 2012
 # alpere <info@beyboo.de>, 2012
 # mesutgungor <mesutgungor@iyte.edu.tr>, 2012
-# Murat Bişkin <mbiskin@gmail.com>, 2012
+# Murat Bişkin <murat@muratbiskin.com.tr>, 2012
 # Necdet Yücel <necdetyucel@gmail.com>, 2012
 # volkangezer <volkangezer@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-11-26 03:18-0500\n"
-"PO-Revision-Date: 2013-11-24 16:30+0000\n"
+"POT-Creation-Date: 2013-12-02 17:23-0500\n"
+"PO-Revision-Date: 2013-12-02 20:40+0000\n"
 "Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
