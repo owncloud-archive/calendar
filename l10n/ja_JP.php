@@ -170,6 +170,7 @@
 "Interval" => "間隔",
 "End" => "繰り返す期間",
 "occurrences" => "回繰り返す",
+"Visibility to people shared with" => "共有者への可視性",
 "create a new calendar" => "新規カレンダーの作成",
 "Import a calendar file" => "カレンダーファイルをインポート",
 "Please choose a calendar" => "カレンダーを選択してください",
