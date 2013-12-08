@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-02 17:23-0500\n"
-"PO-Revision-Date: 2013-12-02 20:40+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-12-07 22:22-0500\n"
+"PO-Revision-Date: 2013-12-07 11:30+0000\n"
+"Last-Translator: asieriko <asieriko@gmail.com>\n"
 "Language-Team: Basque (http://www.transifex.com/projects/p/owncloud/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,7 +103,7 @@ msgstr "editatu dezake"
 
 #: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "elkarbana dezake"
 
 #: js/calendar.js:855
 msgid "ddd"
@@ -415,7 +415,7 @@ msgstr "Lanpetuta"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "Bistaratu gertaera osoa"
 
 #: lib/object.php:532
 msgid "Show only busy"
@@ -423,7 +423,7 @@ msgstr ""
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "Ezkutatu gertaera"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -531,7 +531,7 @@ msgstr "Eg."
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "Eguna"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -599,15 +599,15 @@ msgstr "Ezeztatu"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Editatu gertaera"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Gorde gertaera"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Ezabatu gertaera"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -655,7 +655,7 @@ msgstr "Kokalekua"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategoriak (komaz banatuta)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -667,7 +667,7 @@ msgstr "Deskribapena"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "Esportatu gertaera"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -766,11 +766,11 @@ msgstr "Sortu gertaera berria"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Sortu gertaera"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Elkarbanatu erabiltzaile edo taldearekin"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -778,7 +778,7 @@ msgstr "Ez elkarbanatu"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Ez dago elkarbanatuta"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -790,7 +790,7 @@ msgstr "Egutegiaren bidez elkarbanatuta"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Ez dago egutegiaren bidez partekatuta"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
