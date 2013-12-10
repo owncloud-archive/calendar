@@ -31,9 +31,6 @@ use OCA\Calendar\AppFramework\Middleware\Http\HttpMiddleware;
 use OCA\Calendar\AppFramework\Middleware\Security\SecurityMiddleware;
 use OCA\Calendar\AppFramework\Utility\TimeFactory;
 
-// register 3rdparty autoloaders
-require_once __DIR__ . '/../../3rdparty/Pimple/Pimple.php';
-
 /**
  * This class extends Pimple (http://pimple.sensiolabs.org/) for reusability
  * To use this class, extend your own container from this. Should you require it
