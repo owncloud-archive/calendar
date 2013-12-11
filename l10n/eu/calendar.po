@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-07 22:22-0500\n"
-"PO-Revision-Date: 2013-12-07 11:30+0000\n"
+"POT-Creation-Date: 2013-12-11 12:43-0500\n"
+"PO-Revision-Date: 2013-12-10 21:30+0000\n"
 "Last-Translator: asieriko <asieriko@gmail.com>\n"
 "Language-Team: Basque (http://www.transifex.com/projects/p/owncloud/language/eu/)\n"
 "MIME-Version: 1.0\n"
@@ -419,7 +419,7 @@ msgstr "Bistaratu gertaera osoa"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "Erakutsi bakarrik lanpetuta"
 
 #: lib/object.php:533
 msgid "Hide event"
@@ -639,7 +639,7 @@ msgstr "lekua"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "Noiz arte"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -720,7 +720,7 @@ msgstr "errepikapenak"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Bistaratzea elkarbanatutako pertsonekin"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
