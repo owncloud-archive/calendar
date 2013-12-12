@@ -56,6 +56,19 @@ class Local extends Backend {
 		parent::__construct($api, 'local');
 	}
 
+
+	/**
+	 * @brief returns whether or not calendars should be cached
+	 * @param string $userId
+	 * @returns boolean
+	 * 
+	 * This method returns a boolen. true if calendars should be cached, false if calendars shouldn't be cached
+	 * This method is mandatory!
+	 */
+	public function cacheCalendars($userId) {
+		return false;
+	}
+
 	/**
 	 * @brief returns whether or not a calendar should be cached
 	 * @param string $calendarURI
@@ -66,7 +79,7 @@ class Local extends Backend {
 	 * This method returns a boolen. true if the calendar should be cached, false if the calendar shouldn't be cached
 	 * This method is mandatory!
 	 */
-	public function cacheCalendar($calendarURI, $userId) {
+	public function cacheObjects($calendarURI, $userId) {
 		$this->findCalendar($calendarURI, $userId);
 		return false;
 	}

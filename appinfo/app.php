@@ -9,7 +9,7 @@ namespace OCA\Calendar;
 
 use OCA\Calendar\AppFramework\Core\API;
 
-require_once(__DIR__ . '/consts.php');;
+require_once(__DIR__ . '/consts.php');
 
 $api = new API('calendar');
 //add the navigation entry

@@ -8,7 +8,8 @@
 namespace OCA\Calendar\Db;
 
 class ObjectType {
-	const EVENT       = 'VEVENT';
-	const JOURNAL     = 'VJOURNAL';
-	const TODO        = 'VTODO';
+	const CALENDAR	= 0;
+	const EVENT		= 1;
+	const JOURNAL	= 2;
+	const TODO		= 3;
 }

@@ -18,7 +18,6 @@ use OCA\Calendar\AppFramework\DoesNotExistException;
 use \OCA\Calendar\BusinessLayer\BackendBusinessLayer;
 use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
 use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
-
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
 use OCA\Calendar\Db\Object;
@@ -97,9 +96,9 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	public function create() {
 		$userId = $this->api->getUserId();
 		$calendarId = $this->params('calendarId');
+		$json = file_get_contents('php://input');
 
 		try {
-			$json = $this->params('data');
 			$jsonReader = new JSONObjectReader($json);
 			$object = $jsonReader->getObjectObject();
 
@@ -123,9 +122,9 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 		$userId = $this->api->getUserId();
 		$calendarId = $this->api->params('calendarId');
 		$objectURI = $this->api->params('objectId');
+		$json = file_get_contents('php://input');
 
 		try {
-			$json = $this->params('data');
 			$jsonReader = new JSONObjectReader($json);
 			$object = $jsonReader->getObjectObject();
 

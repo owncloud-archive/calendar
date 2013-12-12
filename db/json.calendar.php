@@ -191,12 +191,12 @@ class JSONCalendar extends JSON{
 	private function setCruds() {
 		$cruds = (int) $this->calendarObject->getCruds();
 		$this->cruds = array(
-			'code' => $cruds,
-			'create' => (bool) ($cruds & Permissions::CREATE),
-			'read' => (bool) ($cruds & Permissions::READ),
-			'update' => (bool) ($cruds & Permissions::UPDATE),
-			'delete' => (bool) ($cruds & Permissions::DELETE),
-			'share' => (bool) ($cruds & Permissions::SHARE),
+			'code' => 	$cruds,
+			'create' =>	(bool) ($cruds & Permissions::CREATE),
+			'read' => 	(bool) ($cruds & Permissions::READ),
+			'update' =>	(bool) ($cruds & Permissions::UPDATE),
+			'delete' =>	(bool) ($cruds & Permissions::DELETE),
+			'share' =>	(bool) ($cruds & Permissions::SHARE),
 		);
 	}
 }

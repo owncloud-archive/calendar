@@ -11,7 +11,7 @@ use OCA\Calendar\BusinessLayer\BusinessLayerException;
 
 class BackendController extends \OCA\Calendar\AppFramework\Controller\Controller {
 	
-	private $businessLayer;
+	protected $businessLayer;
 	
 	/**
 	 * @param Request $request: an instance of the request
@@ -30,7 +30,6 @@ class BackendController extends \OCA\Calendar\AppFramework\Controller\Controller
 	public function index() {
 		try {
 			$allBackends = $this->businessLayer->findAll();
-
 			return new JSONResponse($allBackends);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
@@ -44,9 +43,9 @@ class BackendController extends \OCA\Calendar\AppFramework\Controller\Controller
 	 */
 	 public function show() {
 	 	$backendId = $this->params('backendId');
+
 		try {
 			$backend = $this->businessLayer->find($backendId);
-
 			return new JSONResponse($backend);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
@@ -74,9 +73,10 @@ class BackendController extends \OCA\Calendar\AppFramework\Controller\Controller
 			$jsonarray = json_decode($json);
 			if(array_key_exists('enabled', $jsonarray)) {
 				$backend = $this->businessLayer->find($backendId);
-				$backend->setEnabled($jsonarray['enabled']);-
+				$backend->setEnabled($jsonarray['enabled']);
 				$this->businessLayer->update($backend);
 				$this->show();
+			}
 		} catch(BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();

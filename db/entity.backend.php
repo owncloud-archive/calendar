@@ -9,14 +9,14 @@ namespace OCA\Calendar\Db;
 
 use \OCA\Calendar\AppFramework\Db\Entity;
 
-class Backend extends Entity{
+class Backend extends Entity {
 
 	public $id;
 	public $backend;
 	public $classname;
 	public $arguments;
 	public $enabled;
-	
+
 	public $api;
 
 	public function __construct($fromRow=null){
@@ -29,12 +29,12 @@ class Backend extends Entity{
 		$this->api = $api;
 		return $this;
 	}
-	
+
 	public function disable() {
 		$this->setEnabled(false);
 		return $this;
 	}
-	
+
 	public function enable() {
 		$this->setEnabled(true);
 		return $this;

@@ -22,17 +22,26 @@ interface CalendarInterface {
 	public function implementsActions($actions);
 
 	/**
-	 * @brief returns whether or not a calendar should be cached
+	 * @brief returns whether or not calendars should be cached
+	 * @param string $userId
+	 * @returns boolean
+	 * 
+	 * This method returns a boolen. true if calendars should be cached, false if calendars shouldn't be cached
+	 * This method is mandatory!
+	 */
+	public function cacheCalendars($userId);
+
+	/**
+	 * @brief returns whether or not calendar objects should be cached
 	 * @param string $calendarURI
 	 * @param string $userId
 	 * @returns boolean
 	 * @throws DoesNotExistException if uri does not exist
 	 * 
-	 * This method returns a boolen. true if the calendar should be cached, false if the calendar shouldn't be cached
+	 * This method returns a boolen. true if calendar objects should be cached, false if the calendar objects shouldn't be cached
 	 * This method is mandatory!
-	 * If you don't overwrite this method, it will return true! (for reference see \OCA\Calendar\Backend\Backend)
 	 */
-	public function cacheCalendar($calendarURI, $userId);
+	public function cacheObjects($calendarURI, $userId);
 
 	/**
 	 * @brief returns information about calendar $calendarURI of the user $userId

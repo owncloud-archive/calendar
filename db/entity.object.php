@@ -9,7 +9,7 @@ namespace OCA\Calendar\Db;
 
 use \OCA\Calendar\AppFramework\Db\Entity;
 
-class Object extends Entity{
+class Object extends Entity {
 
 	public $id;
 	public $calendarId;
@@ -24,6 +24,7 @@ class Object extends Entity{
 	public $calendarData;
 	public $lastModified;
 	public $deleteAt;
+	public $etag;
 
 	public $backend;
 	public $calendarURI;
@@ -35,15 +36,78 @@ class Object extends Entity{
 	public function __construct($fromRow=null){
 		if($fromRow){
 			$this->fromRow($fromRow);
+
+			$this->startDate = new \DateTime($this->startDate);
+			$this->endDate = new \DateTime($this->endDate);
+
+			if($etag === null) {
+				$this->updateETag();
+			}
 		}
-		$this->startDate = new \DateTime($this->startDate);
-		$this->endDate = new \DateTime($this->endDate);
+	}
+
+	/**
+	 * @brief expand an Array
+	 * @param DateTime $start 
+	 * @param DateTime $end
+	 * @return array of Object objects
+	 */
+	public function expand($start=null, $end=null) {
+		$objects = array();
+		$objects[] = $this;
+
+		if($start == null) {
+			$start = new DateTime('01-01-' . date('Y') . ' 00:00:00', new DateTimeZone('UTC'));
+			$start->modify('-5 years');
+		}
+
+		if($end == null) {
+			$end = new DateTime('31-12-' . date('Y') . ' 23:59:59', new DateTimeZone('UTC'));
+			$end->modify('+5 years');	
+		}
+
+		try {
+			$vobject->expand($start, $end);
+			foreach($vobject->getComponents() as $singleVObject) {
+				if(!($singleVObject instanceof Sabre\VObject\Component\VEvent) &&
+				   !($singleVObject instanceof Sabre\VObject\Component\VJournal) &&
+				   !($singleVObject instanceof Sabre\VObject\Component\VTodo)) {
+					continue;
+				}
+
+				$parsedVObject = new VObjectObjectReader($singleVObject);
+				$objects[] = $parsedVObject;
+			}
+		}
+	}
+
+	/**
+	 * @brief set lastModified to now and update ETag
+	 */
+	public function touch() {
+		$this->updateLastModified();
+		$this->updateCalendarData();
+		$this->updateETag();
+	}
+
+	/**
+	 * @brief updates calendar data
+	 */
+	public function updateCalendarData() {
+		
+	}
+
+	/**
+	 * @brief update Etag
+	 */
+	public function updateETag() {
+		$this->etag = '"' . md5($this->calendarId . $this->objectURI . $this->calendarData . $this->lastModified) . '"';
 	}
 
 	/**
 	 * @brief set lastModified to now
 	 */
-	public function touch() {
+	public function updateLastModified() {
 		$this->lastModified = time();
 	}
 }

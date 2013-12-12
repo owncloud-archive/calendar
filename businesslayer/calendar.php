@@ -16,15 +16,10 @@ use \OCA\Calendar\Db\Calendar;
 
 class CalendarBusinessLayer extends BusinessLayer {
 
-	private $autoPurgeMinimumInterval;
-	private $timeFactory;
-
 	public function __construct(CalendarMapper $calendarMapper,
 								BackendBusinessLayer $backends,
-	                            API $api,
-	                            TimeFactory $timeFactory){
+	                            API $api){
 		$this->mapper = $calendarMapper;
-		$this->timeFactory = $timeFactory;
 		parent::__construct($api, $calendarMapper, $backends);
 	}
 
@@ -34,7 +29,26 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return array containing all Calendar items
 	 */
 	public function findAll($userId) {
-		return $this->mapper->findAll($userId);
+		$backends = &$this->backends->findAllEnabled();
+		$calendars = $this->mapper->findAll($userId);
+
+		try {
+			foreach($backends as $backend) {
+				$api = &$this->backends->find($backend)->api;
+				if(!$api->cacheCalendars()) {
+					$backendsCalendars = $api->findCalendars($userId);
+					if(is_array($backendsCalendars) && !empty($backendsCalendars)) {
+						$calendars = array_merge($calendars, $backendsCalendars);
+					}
+				}
+			}
+
+			return $calendars;
+		} catch (DoesNotExistException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		} catch(BackendException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		}
 	}
 
 	/**
@@ -51,10 +65,17 @@ class CalendarBusinessLayer extends BusinessLayer {
 		$this->checkBackendEnabled($backend);
 
 		try {
-			return $this->mapper->find($backend, $calendarURI, $userId);
+			$api = &$this->backends->find($backend)->api;
+			if($api->cacheCalendars()) {
+				return $this->mapper->find($backend, $calendarURI, $userId);
+			} else {
+				return $api->findCalendar($calendarURI, $userId);
+			}
 		} catch (DoesNotExistException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		} catch (MultipleObjectsReturnedException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		} catch (BackendException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		}
 	}
@@ -82,12 +103,14 @@ class CalendarBusinessLayer extends BusinessLayer {
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\CREATE_CALENDAR);
 
 			$calendar = $api->createCalendar($calendar, $calendarURI, $userId);
-			$this->mapper->insert($calendar, $calendarURI, $userId);
+			if($api->cacheCalendars()) {
+				$this->mapper->insert($calendar, $calendarURI, $userId);
+			}
 
 			return $calendar;
-		} catch(DoesNotImplementException $ex) {
+		} catch (DoesNotImplementException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
-		} catch(BackendException $ex) {
+		} catch (BackendException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		}
 	}
@@ -107,21 +130,52 @@ class CalendarBusinessLayer extends BusinessLayer {
 		$this->checkBackendEnabled($backend);
 
 		try {
-			if($calendar->getBackend() !== $backend) {
+			//if backend changed and uri is available on other calendar move calendar to new backend
+			if($calendar->getBackend() !== $backend && $this->isCalendarURIAvailable($calendar->getBackend(), $calendar->getUri(), $userId)) {
 				return $this->move($calendar, $calendarId, $userId);
 			}
 
-			if($calendar->getUri() !== $calendarURI) {
-				
+			//if backend changed and uri is not available on other calendar
+			if($calendar->getBackend() !== $backend && !$this->isCalendarURIAvailable($calendar->getBackend(), $calendar->getUri(), $userId)) {
+				return $this->merge($calendar, $calendarId, $userId);
+			}
+
+			//if uri changed and new uri is already taken, merge these calendars
+			if($calendar->getUri() !== $calendarURI && !$this->isCalendarURIAvailable($backend, $calendar->getUri(), $userId)) {
+				return $this->merge($calendar, $calendarId, $userId);
 			}
 
 			$api = &$this->backends->find($backend)->api;
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\UPDATE_CALENDAR);
 
 			$calendar = $api->updateCalendar($calendar, $calendarURI, $userId);
-			$this->mapper->update($calendar, $calendarURI, $userId);
+			if($api->cacheCalendars()) {
+				$this->mapper->update($calendar, $calendarURI, $userId);
+			}
 
 			return $calendar;
+		} catch(DoesNotImplementException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		} catch(BackendException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		}
+	}
+
+	public function delete($calendarId, $userId) {
+		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		$this->checkBackendEnabled($backend);
+
+		try {
+			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\DELETE_CALENDAR);
+
+			$api = &$this->backends->find($backend)->api;
+			$api->deleteCalendar($calendarURI, $userId);
+
+			if($api->cacheCalendars()) {
+				$this->mapper->delete($calendar);
+			}
+
+			return true;
 		} catch(DoesNotImplementException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		} catch(BackendException $ex) {
@@ -144,14 +198,14 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 */
 	public function move($calendar, $calendarId, $userId) {
 		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
-		$this->checkBackendEnabled($backend);
+
+		if($calendar->getBackend() === $backend) {
+			throw new BusinessLayerException('Can not move calendar to another backend. Calendar is already stored in this backend.');
+		}
 
 		try {
 			$oldBackend = $backend;
 			$newBackend = $calendar->getBackend();
-			if($oldBackend === $newBackend) {
-				return $calendar;
-			}
 
 			$this->backends->checkEnabled($oldBackend);
 			$this->backends->checkEnabled($newBackend);
@@ -167,12 +221,21 @@ class CalendarBusinessLayer extends BusinessLayer {
 			$allObjects = $oldBackendsAPI->findObjects($calendarURI, $userId);
 			$calendar = $newBackendsAPI->createCalendar($calendar, $calendar->getUri(), $userId);
 
+			$overallStatus = true;
 			foreach($allObjects as $object) {
-				$newBackendsAPI->createObject($object, $calendar->getUri(), $uid, $userId);
-				$oldBackendsAPI->deleteObject($calendar->getUri, $object->getUid(), $userId);
+				$createStatus = $newBackendsAPI->createObject($object, $calendar->getUri(), $uid, $userId);
+				if($createStatus) {
+					$$oldBackendsAPI->deleteObject($calendar->getUri, $object->getUid(), $userId);
+				} else {
+					$overallStatus = false;
+				}
 			}
 
-			$oldBackendsAPI->deleteCalendar($calendarURI, $userId);
+			//only delete old calendar if all objects were copied successfully 
+			if($overallStatus === true) {
+				$oldBackendsAPI->deleteCalendar($calendarURI, $userId);
+			}
+
 			return $calendar;
 		} catch(DoesNotImplementException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
@@ -195,8 +258,47 @@ class CalendarBusinessLayer extends BusinessLayer {
 		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
+		if($calendar->getUri() === $calendarURI) {
+			throw new BusinessLayerException('Can not merge calendar with itself.');
+		}
+
+		if($this->isCalendarURIAvailable($backend, $calendar->getUri(), $userId)) {
+			throw new BusinessLayerException('Can not merge calendar. At least one calendar does not exist.');
+		}
+
 		try {
-			
+			$oldBackend = $backend;
+			$newBackend = $calendar->getBackend();
+
+			$this->backends->checkEnabled($oldBackend);
+			$this->backends->checkEnabled($newBackend);
+
+			$this->checkBackendSupports($oldBackend, \OCA\Calendar\Backend\DELETE_CALENDAR);
+			$this->checkBackendSupports($oldBackend, \OCA\Calendar\Backend\DELETE_OBJECT);
+			$this->checkBackendSupports($newBackend, \OCA\Calendar\Backend\CREATE_CALENDAR);
+			$this->checkBackendSupports($newBackend, \OCA\Calendar\Backend\CREATE_OBJECT);
+
+			$oldBackendsAPI = &$this->backends->find($oldBackend)->api;
+			$newBackendsAPI = &$this->backends->find($newBackend)->api;
+
+			$allObjects = $oldBackendsAPI->findObjects($calendarURI, $userId);
+
+			$overallStatus = true;
+			foreach($allObjects as $object) {
+				$createStatus = $newBackendsAPI->createObject($object, $calendar->getUri(), $uid, $userId);
+				if($createStatus) {
+					$$oldBackendsAPI->deleteObject($calendar->getUri, $object->getUid(), $userId);
+				} else {
+					$overallStatus = false;
+				}
+			}
+
+			//only delete old calendar if all objects were copied successfully 
+			if($overallStatus === true) {
+				$oldBackendsAPI->deleteCalendar($calendarURI, $userId);
+			}
+
+			return $calendar;
 		} catch(DoesNotImplementException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		} catch(BackendException $ex) {
@@ -218,63 +320,6 @@ class CalendarBusinessLayer extends BusinessLayer {
 		$calendar->incrementCtag();
 		$calendar = $this->update($calendar, $calendarId, $userId);
 		return $calendar;
-	}
-
-	/**
-	 * touch a calendar
-	 * @param string $calendarId global uri of calendar e.g. local-work
-	 * @param string $userId
-	 * @throws BusinessLayerException if backends do not exist
-	 * @throws BusinessLayerException if backends are disabled
-	 * @throws BusinessLayerException if backend does not implement updating a calendar
-	 * @return Calendar $calendar - calendar object
-	 */
-	public function markDeleted($calendarURI, $userId) {
-		$calendar = $this->find($calendarURI, $userId);
-		$calendar->setDeletedAt($this->timeFactory->getTime());
-		$this->mapper->update($calendar);
-	}
-
-	/**
-	 * touch a calendar
-	 * @param string $calendarId global uri of calendar e.g. local-work
-	 * @param string $userId
-	 * @throws BusinessLayerException if backends do not exist
-	 * @throws BusinessLayerException if backends are disabled
-	 * @throws BusinessLayerException if backend does not implement updating a calendar
-	 * @return Calendar $calendar - calendar object
-	 */
-	public function unmarkDeleted($calendarURI, $userId) {
-		$calendar = $this->find($calendarURI, $userId);
-		$calendar->setDeletedAt(0);
-		$this->mapper->update($calendar);
-	}
-
-	/**
-	 * touch a calendar
-	 * @param string $calendarId global uri of calendar e.g. local-work
-	 * @param string $userId
-	 * @throws BusinessLayerException if backends do not exist
-	 * @throws BusinessLayerException if backends are disabled
-	 * @throws BusinessLayerException if backend does not implement updating a calendar
-	 * @return Calendar $calendar - calendar object
-	 */
-	public function purgeDeleted($userId=null, $useInterval=true) {
-		$deleteOlderThan = null;
-
-		if ($useInterval) {
-			$now = $this->timeFactory->getTime();
-			$deleteOlderThan = $now - $this->autoPurgeMinimumInterval;
-		}
-
-		$toDelete = $this->mapper->getToDelete($deleteOlderThan, $userId);
-
-		foreach ($toDelete as $calendar) {
-			try {
-				$this->backends->find($calendar->getBackend())->api->deleteCalendar($calendar->getURI());
-				$this->mapper->delete($calendar);
-			} catch (Exception $ex) {}
-		}
 	}
 
 	/**

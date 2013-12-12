@@ -25,7 +25,7 @@ use OCA\Calendar\Db\JSONCalendar;
 
 class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controller {
 
-	private $calendarBusinessLayer;
+	protected $calendarBusinessLayer;
 
 	/**
 	 * @param Request $request: an instance of the request
@@ -94,9 +94,9 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 */
 	public function create() {
 		$userId = $this->api->getUserId();
+		$json = file_get_contents('php://input');
 
 		try {
-			$json = $this->params('data');
 			$jsonReader = new JSONCalendarReader($json);
 			$calendar = $jsonReader->getCalendarObject();
 			$calendar->setUserId($userId);
@@ -120,9 +120,9 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	public function update() {
 		$userId = $this->api->getUserId();
 		$calendarId = $this->api->params('calendarId');
+		$json = file_get_contents('php://input');
 
 		try {
-			$json = $this->params('data');
 			$jsonReader = new JSONCalendarReader($json);
 			$calendar = $jsonReader->getCalendarObject();
 

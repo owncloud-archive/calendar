@@ -47,6 +47,27 @@ abstract class BusinessLayer {
 	}
 
 	/**
+	 * get backend and real calendar uri and real object uri from public uri
+	 * public uri: backend-uri; e.g. local-work
+	 * backend: backend; e.g. local for standard database backend
+	 * real uri: uri; e.g. work
+	 * @param string $uri public uri
+	 * @throws BusinessLayerException if uri is empty
+	 * @throws BusinessLayerException if uri is not valid
+	 * @throws DoesNotImplementException if backend does not implement searched implementation
+	 */
+	final protected function getBackendAndRealCalendarURIAndRealObjectURIFromURI($publicURI=null) {
+		if ( $publicURI === false || $publicURI === null || $publicURI === '' ) {
+			throw new BusinessLayerException('URI is empty');
+		}
+		if ( substr_count($publicURI, '-') === 0 ){
+			throw new BusinessLayerException('URI is not valid');
+		}
+		list($backend, $realCalendarURI, $realObjectURI) = explode('-', $publicURI, 3);
+		return array($backend, $realCalendarURI, $realObjectURI);
+	}
+
+	/**
 	 * check if a backend does implement smth
 	 * @param string $backend - id of backend
 	 * @param string $implementations 
