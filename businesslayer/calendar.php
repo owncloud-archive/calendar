@@ -61,7 +61,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return calendar item
 	 */
 	public function find($calendarId, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		try {
@@ -92,7 +92,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return Calendar $calendar - calendar object
 	 */
 	public function create($calendar, $calendarId, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		try {
@@ -126,7 +126,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return Calendar $calendar - calendar object
 	 */
 	public function update($calendar, $calendarId, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		try {
@@ -172,7 +172,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return Calendar $calendar - calendar object
 	 */
 	public function delete($calendar, $calendarId, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		try {
@@ -207,7 +207,8 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return Calendar $calendar - calendar object
 	 */
 	public function move($calendar, $calendarId, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
 
 		if($calendar->getBackend() === $backend) {
 			throw new BusinessLayerException('Can not move calendar to another backend. Calendar is already stored in this backend.');
@@ -265,7 +266,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return Calendar $calendar - calendar object
 	 */
 	public function merge($calendar, $calendarId, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		if($calendar->getUri() === $calendarURI) {
@@ -337,13 +338,19 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @param string $backend
 	 * @param string $calendarURI
 	 * @param string $userId
+	 * @return boolean
 	 * @throws BusinessLayerException if uri is already taken
 	 */
 	private function allowNoCalendarURITwice($backend, $calendarURI, $userId){
+		$this->checkBackendEnabled($backend);
+
 		$isAvailable = $this->isCalendarURIAvailable($backend, $calendarURI, $userId);
+
 		if(!$isAvailable) {
 			throw new BusinessLayerException('Can not add calendar: URI exists already');
 		}
+
+		return true;
 	}
 
 	/**
@@ -372,6 +379,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 				}
 			}
 		}
+
 		return $calendarURI;
 	}
 

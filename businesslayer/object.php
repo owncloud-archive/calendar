@@ -38,15 +38,19 @@ class ObjectBusinessLayer extends BusinessLayer {
 	}
 
 	/**
-	 * Find the objects $objectURI of calendar $calendarId of user $userId
+	 * Find the object $objectURI of calendar $calendarId of user $userId
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $objectURI UID of the object
 	 * @param string $userId
+	 * @param boolean $expand expand if repeating event
+	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
+	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function find($calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+	public function find($calendarId, $objectURI, $userId, $expand=false, $expandStart=null, $expandEnd=null) {
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
 
 		try {
 			$api = &$this->backends->find($backend)->api;
@@ -56,6 +60,12 @@ class ObjectBusinessLayer extends BusinessLayer {
 			} else {
 				$object = $api->findObject($calendarURI, $objectURI, $userId);
 			}
+
+			if($expand === true) {
+				$object = $object->expand($expandStart, $expandEnd);
+			}
+
+			return $object;
 		} catch (DoesNotExistException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		} catch (MultipleObjectsReturnedException $ex) {
@@ -63,18 +73,22 @@ class ObjectBusinessLayer extends BusinessLayer {
 		} catch (BackendException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		}
-		return $object;
 	}
 
 	/**
 	 * Finds all objects of calendar $calendarId of user $userId
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $userId
+	 * @param boolean $expand expand if repeating event
+	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
+	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAll($calendarId, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+	public function findAll($calendarId, $userId, $expand=false, $expandStart=null, $expandEnd=null) {
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
+
 		try {
 			$api = &$this->backends->find($backend)->api;
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
@@ -83,6 +97,15 @@ class ObjectBusinessLayer extends BusinessLayer {
 			} else { 
 				$objects = $api->findObjects($calendarURI, $userId);
 			}
+
+			if($expand === true) {
+				$expandedObjects = array();
+				foreach($objects as $object) {
+					$expandedObjects = array_merge($expandedObjects, $object->expand($expandStart, $expandEnd));
+				}
+				$objects = $expandedObjects;
+			}
+
 			return $objects;
 		} catch (DoesNotExistException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
@@ -97,14 +120,22 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param string $objectURI UID of the object
 	 * @param string $type type of the searched objects, use OCA\Calendar\Db\ObjectType
 	 * @param string $userId
+	 * @param boolean $expand expand if repeating event
+	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
+	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findByType($calendarId, $objectURI, $type, $userId) {
+	public function findByType($calendarId, $objectURI, $type, $userId, $expand=false, $expandStart=null, $expandEnd=null) {
 		$object = $this->find($calendarId, $objectURI, $userId);
 		if($object->getType() !== $type) {
 			throw new BusinessLayerException('Object exists, but is of different type.');
 		}
+
+		if($expand === true) {
+			$object = $object->expand($expandStart, $expandEnd);
+		}
+
 		return $object;
 	}
 
@@ -113,11 +144,16 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $type type of the searched objects, use OCA\Calendar\Db\ObjectType
 	 * @param string $userId
+	 * @param boolean $expand expand if repeating event
+	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
+	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllByType($calendarId, $type, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+	public function findAllByType($calendarId, $type, $userId, $expand=false, $expandStart=null, $expandEnd=null) {
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
+
 		try {
 			$api = &$this->backends->find($backend)->api;
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
@@ -137,6 +173,15 @@ class ObjectBusinessLayer extends BusinessLayer {
 					}
 				}
 			}
+
+			if($expand === true) {
+				$expandedObjects = array();
+				foreach($objects as $object) {
+					$expandedObjects = array_merge($expandedObjects, $object->expand($expandStart, $expandEnd));
+				}
+				$objects = $expandedObjects;
+			}
+
 			return $objects;
 		} catch (DoesNotExistException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
@@ -151,11 +196,14 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param DateTime $start start of timeframe
 	 * @param DateTime $end end of timeframe
 	 * @param string $userId
+	 * @param boolean $expand expand if repeating event
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllInPeriod($calendarId, $start, $end, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+	public function findAllInPeriod($calendarId, $start, $end, $userId, $expand=false) {
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
+
 		try {
 			$api = &$this->backends->find($backend)->api;
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
@@ -180,6 +228,15 @@ class ObjectBusinessLayer extends BusinessLayer {
 					}
 				}
 			}
+
+			if($expand === true) {
+				$expandedObjects = array();
+				foreach($objects as $object) {
+					$expandedObjects = array_merge($expandedObjects, $object->expand($start, $end));
+				}
+				$objects = $expandedObjects;
+			}
+
 			return $objects;
 		} catch (DoesNotExistException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
@@ -195,11 +252,15 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param DateTime $start start of the timeframe
 	 * @param DateTime $end end of the timeframe
 	 * @param string $userId
+	 * @param boolean $expand expand if repeating event
+	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
+	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+	public function findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId, $expand=false) {
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
 
 		try {
 			$api = &$this->backends->find($backend)->api;
@@ -229,6 +290,15 @@ class ObjectBusinessLayer extends BusinessLayer {
 					}
 				}
 			}
+
+			if($expand === true) {
+				$expandedObjects = array();
+				foreach($objects as $object) {
+					$expandedObjects = array_merge($expandedObjects, $object->expand($start, $end));
+				}
+				$objects = $expandedObjects;
+			}
+
 			return $objects;
 		} catch (DoesNotExistException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
@@ -245,9 +315,9 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function create($object, $calendarId, $objectURI, $userId) {
-		$this->allowNoNameTwice($calendarId, $objectURI, $userId);
-
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->allowNoObjectURITwice($backend, $calendarURI, $objectURI, $userId);
+		$this->checkBackendEnabled($backend);
 
 		try {
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\CREATE_OBJECT);
@@ -279,7 +349,8 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function update($object, $calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
 
 		try {
 			if($object->getBackend() !== $backend || $object->getUri() !== $calendarURI) {
@@ -306,8 +377,16 @@ class ObjectBusinessLayer extends BusinessLayer {
 		}
 	}
 
+	/**
+	 * delete an object from a calendar
+	 * @param string $calendarId global uri of calendar e.g. local-work
+	 * @param string $objectURI UID of the object
+	 * @param string $userId
+	 * @throws BusinessLayerException
+	 * @return boolean
+	 */
 	public function delete($calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		try {
@@ -338,7 +417,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function move($object, $calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 
 		if($calendarBusinessLayer->isCalendarURIAvailable($object->getBackend(), $object->getUri(), $userId)) {
 			throw new BusinessLayerException('Can not move object to another calendar. Calendar does not exist');
@@ -347,6 +426,9 @@ class ObjectBusinessLayer extends BusinessLayer {
 		try {
 			$oldBackend = $backend;
 			$newBackend = $calendar->getBackend();
+
+			$this->checkBackendEnabled($oldBackend);
+			$this->checkBackendEnabled($newBackend);
 
 			$oldBackendsAPI = &$this->backends->find($oldBackend)->api;
 			$newBackendsAPI = &$this->backends->find($newBackend)->api;
@@ -387,20 +469,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	}
 
 	/**
-	 * Find the objects $objectURI of calendar $calendarId of user $userId
-	 * @param string $calendarId global uri of calendar e.g. local-work
-	 * @param string $objectURI UID of the object
-	 * @param string $userId
-	 * @throws BusinessLayerException
-	 * @return array containing all items
-	 */
-	public function moveAll($calendarId, $objectURI, $userId) {
-		//todo missing parameter for new calendarid
-		return $this->calendarBusinessLayer->move($calendarId, $userId);
-	}
-
-	/**
-	 * Find the objects $objectURI of calendar $calendarId of user $userId
+	 * touch an object
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $objectURI UID of the object
 	 * @param string $userId
@@ -408,11 +477,14 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function touch($calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
 
 		try {
 			$object = $this->find($calendarId, $objectURI, $userid);
+
 			$object->touch();
+
 			$this->update($object, $calendarId, $userId);
 		} catch(DoesNotImplementException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
@@ -429,12 +501,15 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function touchAll($calendarId, $userId) {
-		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+
 		try {
 			$objects = $this->findAll($calendarId, $userId);
+
 			foreach($objects as $object) {
-				$this->touch($calendarId, $object->getUid(), $userId);
+				$this->touch($calendarId, $object->getUri(), $userId);
 			}
+
 		} catch(DoesNotImplementException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		} catch(BackendException $ex) {
@@ -443,31 +518,39 @@ class ObjectBusinessLayer extends BusinessLayer {
 	}
 
 	/**
-	 * make sure that uri does not already exist when creating a new calendar
+	 * make sure that uri does not already exist when creating a new object
 	 * @param string $backend
 	 * @param string $calendarURI
 	 * @param string $userId
+	 * @return boolean
 	 * @throws BusinessLayerException if uri is already taken
 	 */
 	private function allowNoObjectURITwice($backend, $calendarURI, $userId){
 		$isAvailable = $this->isObjectURIAvailable($backend, $calendarURI, $userId);
+
 		if(!$isAvailable) {
-			throw new BusinessLayerException('Can not add object: UID exists already');
+			throw new BusinessLayerException('Can not add object: UID already exists');
 		}
+
+		return true;
 	}
 
 	/**
 	 * suggest available uri for backend
 	 * if given uri is already available, the given uri will be returned
-	 * @param string $backeend
+	 * @param string $backend
 	 * @param string $calendarURI
+	 * @param string $objectURI
 	 * @param string $userId
 	 * @return string $calendarURI available uri
 	 */
 	private function suggestObjectURI($backend, $calendarURI, $objectURI, $userId) {
+		$objectURI = '';
+
 		while(!$this->isObjectURIAvailable($backend, $calendarURI, $objectURI, $userId)) {
 			$objectURI = substr(md5(rand().time().rand()),rand(0,11),20);
 		}
+
 		return $objectURI;
 	}
 
@@ -475,6 +558,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * checks if a uri is available
 	 * @param string $backend
 	 * @param string $calendarURI
+	 * @param string $objectURI
 	 * @param string $userId
 	 * @return boolean
 	 */

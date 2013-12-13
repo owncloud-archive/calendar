@@ -35,14 +35,16 @@ abstract class BusinessLayer {
 	 * @throws BusinessLayerException if uri is not valid
 	 * @throws DoesNotImplementException if backend does not implement searched implementation
 	 */
-	final protected function getBackendAndRealURIFromURI ($publicURI=null) {
+	final protected function splitPublicURI ($publicURI=null) {
 		if ( $publicURI === false || $publicURI === null || $publicURI === '' ) {
 			throw new BusinessLayerException('URI is empty');
 		}
 		if ( substr_count($publicURI, '-') === 0 ){
 			throw new BusinessLayerException('URI is not valid');
 		}
+
 		list($backend, $realURI) = explode('-', $publicURI, 2);
+
 		return array($backend, $realURI);
 	}
 
@@ -63,7 +65,9 @@ abstract class BusinessLayer {
 		if ( substr_count($publicURI, '-') === 0 ){
 			throw new BusinessLayerException('URI is not valid');
 		}
+
 		list($backend, $realCalendarURI, $realObjectURI) = explode('-', $publicURI, 3);
+
 		return array($backend, $realCalendarURI, $realObjectURI);
 	}
 
@@ -71,38 +75,48 @@ abstract class BusinessLayer {
 	 * check if a backend does implement smth
 	 * @param string $backend - id of backend
 	 * @param string $implementations 
+	 * @return boolean
 	 * @throws BusinessLayerException if backend does not exist
 	 * @throws BusinessLayerException if backend is disabled
 	 * @throws DoesNotImplementException if backend does not implement searched implementation
 	 */
 	final protected function checkBackendSupports($backend, $implementation) {
 		$isSupported = $this->backends->find($backend)->api->implementsActions($implementation);
+
 		if(!$isSupported) {
 			throw new DoesNotImplementException('This Backend (' . $backend . ') does not implement "' . $implementation . '".');
 		}
+
+		return true;
 	}
 
 	/**
 	 * check if a backend exists
 	 * @param string $backend - id of backend
+	 * @return boolean
 	 * @throws BusinessLayerException if backend does not exist
 	 * @throws BusinessLayerException if multiple backends exist for the given backend id
 	 */
 	final protected function checkBackendExists($backend) {
 		$this->backends->find($backend);
+		return true;
 	}
 
 	/**
 	 * check if a backend is enabled
 	 * @param string $backend - id of backend
+	 * @return boolean
 	 * @throws BusinessLayerException if backend does not exist
 	 * @throws BusinessLayerException if multiple backends exist for the given backend id
 	 * @throws BusinessLayerException if backend is disabled
 	 */
 	final protected function checkBackendEnabled($backend) {
 		$backend = $this->backends->find($backend);
+
 		if($backend->getEnabled() !== true) {
 			throw new BusinessLayerException('Backend ("' . $backend . '") is not enabled.');
 		}
+
+		return true;
 	}
 }

@@ -25,9 +25,6 @@ class BackendBusinessLayer {
 		$this->setup();
 	}
 
-	public function isEnabled($id) {
-		return true;
-	}
 
 	public function find($id) {
 		try {
@@ -65,6 +62,10 @@ class BackendBusinessLayer {
 
 	public function delete($id) {
 		return $this->mapper->delete($id);
+	}
+
+	public function isEnabled($id) {
+		return true;
 	}
 
 	public function disable($id){
