@@ -34,5 +34,14 @@ if(version_compare($installedVersion, '0.9.8', '<=')) {
 	$stmtComponents = OCP\DB::prepare('UPDATE `*PREFIX*clndr_calendars` SET `components`=?');
 	$stmtComponents->execute(array((string) ObjectType::ALL));
 
-	
+	$differentComponents = array(
+		'VEVENT'	=> ObjectType::EVENT,
+		'VJOURNAL'	=> ObjectType::JOURNAL,
+		'VTODO'		=> ObjectType::TODO,
+	);
+
+	foreach($differentComponents as $legaceKey => $newKey) {
+		$stmt = OCP\DB::prepare('UPDATE `*PREFIX*clndr_objects` SET `objecttype`=? WHERE `objecttype`=?');
+		$stmt->execute(array($newKey, $legaceKey));
+	}
 }
