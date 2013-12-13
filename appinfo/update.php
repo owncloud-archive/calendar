@@ -40,8 +40,8 @@ if(version_compare($installedVersion, '0.9.8', '<=')) {
 		'VTODO'		=> ObjectType::TODO,
 	);
 
-	foreach($differentComponents as $legaceKey => $newKey) {
+	foreach($differentComponents as $legacyKey => $newKey) {
 		$stmt = OCP\DB::prepare('UPDATE `*PREFIX*clndr_objects` SET `objecttype`=? WHERE `objecttype`=?');
-		$stmt->execute(array($newKey, $legaceKey));
+		$stmt->execute(array($newKey, $legacyKey));
 	}
 }
