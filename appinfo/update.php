@@ -7,7 +7,7 @@ if(version_compare($installedVersion, '0.9.8', '<=')) {
     //add backends:
     $backends = array(
 					array (
-						'backend' => 'Database',
+						'backend' => 'local',
 						'classname' => '\OCA\Calendar\Backend\Local',
 						'arguments' => '',
 						'enabled' => true

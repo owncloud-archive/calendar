@@ -178,7 +178,9 @@ class JSONCalendar extends JSON{
 		$this->timezone = array(
 			'name' => $timezoneId,
 			'stdOffset' => $standardOffset,
-			'dstOffset' => $daylightSavingOffset
+			'dstOffset' => $daylightSavingOffset,
+			'stdOffsetBegin' => 'not implemented yet',
+			'dstOffsetBegin' => 'not implemented yet',
 		);
 	}
 
