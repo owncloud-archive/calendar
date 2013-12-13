@@ -46,13 +46,16 @@ class BackendMapper {
 	 * @return the item
 	 */
 	public function find($id){
-		$backends = $this->findAll();
-		foreach($backends as $backend) {
-			if($id === $backend->getBackend()) {
-				return $backend;
+		try {
+			$backends = $this->findAll();
+			foreach($backends as $backend) {
+				if($id === $backend->getBackend()) {
+					return $backend;
+				}
 			}
+		} catch (Exception $ex) {
+			throw new DoesNotExistException('Backend "' . $id . '" does not exist');
 		}
-		throw new DoesNotExistException('Backend "' . $id . '" does not exist');
 	}
 
 	/**

@@ -29,13 +29,13 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return array containing all Calendar items
 	 */
 	public function findAll($userId) {
-		$backends = &$this->backends->findAllEnabled();
+		$backends = $this->backends->findAllEnabled();
 		$calendars = $this->mapper->findAll($userId);
 
 		try {
 			foreach($backends as $backend) {
-				$api = &$this->backends->find($backend)->api;
-				if(!$api->cacheCalendars()) {
+				$api = &$this->backends->find($backend->getBackend())->api;
+				if(!$api->cacheCalendars($userId)) {
 					$backendsCalendars = $api->findCalendars($userId);
 					if(is_array($backendsCalendars) && !empty($backendsCalendars)) {
 						$calendars = array_merge($calendars, $backendsCalendars);
@@ -66,7 +66,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 
 		try {
 			$api = &$this->backends->find($backend)->api;
-			if($api->cacheCalendars()) {
+			if($api->cacheCalendars($userId)) {
 				return $this->mapper->find($backend, $calendarURI, $userId);
 			} else {
 				return $api->findCalendar($calendarURI, $userId);
@@ -103,7 +103,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\CREATE_CALENDAR);
 
 			$calendar = $api->createCalendar($calendar, $calendarURI, $userId);
-			if($api->cacheCalendars()) {
+			if($api->cacheCalendars($userId)) {
 				$this->mapper->insert($calendar, $calendarURI, $userId);
 			}
 
@@ -149,7 +149,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\UPDATE_CALENDAR);
 
 			$calendar = $api->updateCalendar($calendar, $calendarURI, $userId);
-			if($api->cacheCalendars()) {
+			if($api->cacheCalendars($userId)) {
 				$this->mapper->update($calendar, $calendarURI, $userId);
 			}
 
@@ -161,7 +161,17 @@ class CalendarBusinessLayer extends BusinessLayer {
 		}
 	}
 
-	public function delete($calendarId, $userId) {
+	/**
+	 * delete a calendar
+	 * @param Calendar $calendar
+	 * @param string $calendarId global uri of calendar e.g. local-work
+	 * @param string $userId
+	 * @throws BusinessLayerException if backend does not exist
+	 * @throws BusinessLayerException if backend is disabled
+	 * @throws BusinessLayerException if backend does not implement updating a calendar
+	 * @return Calendar $calendar - calendar object
+	 */
+	public function delete($calendar, $calendarId, $userId) {
 		list($backend, $calendarURI) = $this->getBackendAndRealURIFromURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
@@ -171,7 +181,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 			$api = &$this->backends->find($backend)->api;
 			$api->deleteCalendar($calendarURI, $userId);
 
-			if($api->cacheCalendars()) {
+			if($api->cacheCalendars($userId)) {
 				$this->mapper->delete($calendar);
 			}
 

@@ -61,7 +61,6 @@ class JSONCalendar extends JSON{
 	public $timezone;
 	public $enabled;
 	public $cruds;
-	public $deleteAt;
 
 	private $calendarObject;
 
@@ -72,7 +71,6 @@ class JSONCalendar extends JSON{
 	public function __construct(Calendar $calendar) {
 		$this->properties = array(
 			'displayname',
-			'deleteAt',
 			'enabled',
 			'color',
 			'ctag',
@@ -122,7 +120,7 @@ class JSONCalendar extends JSON{
 	 * @brief set user info
 	 */
 	private function setUser() {
-		$userId = $this->calendarObject->getUserid();
+		$userId = $this->calendarObject->getUserId();
 		$this->user = $this->getUserInfo($userId);
 	}
 
@@ -130,7 +128,7 @@ class JSONCalendar extends JSON{
 	 * @brief set owner info
 	 */
 	private function setOwner() {
-		$ownerId = $this->calendarObject->getOwnerid();
+		$ownerId = $this->calendarObject->getOwnerId();
 		$this->owner = $this->getUserInfo($ownerId);
 	}
 
@@ -141,7 +139,7 @@ class JSONCalendar extends JSON{
 	 */
 	private function getUserInfo($userId=null){
 		return array(
-			'userid' => $userId,
+			'userid' => (string) $userId,
 			'displayname' => \OCP\User::getDisplayName($userId),
 		);
 	}
@@ -150,17 +148,12 @@ class JSONCalendar extends JSON{
 	 * @brief set components info
 	 */
 	private function setComponents() {
-		$components = $this->calendarObject->getComponents();
-		$components = strtoupper($components);
-
-		$vevent = (bool) substr_count($components, ObjectType::EVENT);
-		$vjournal = (bool) substr_count($components, ObjectType::JOURNAL);
-		$vtodo = (bool) substr_count($components, ObjectType::TODO);
+		$components = (int) $this->calendarObject->getComponents();
 
 		$this->components = array(
-			'vevent' => $vevent,
-			'vjournal' => $vjournal,
-			'vtodo' => $vtodo,
+			'vevent'	=> (bool) ($components & ObjectType::EVENT),
+			'vjournal'	=> (bool) ($components & ObjectType::JOURNAL),
+			'vtodo'		=> (bool) ($components & ObjectType::TODO),
 		);
 	}
 
@@ -169,6 +162,10 @@ class JSONCalendar extends JSON{
 	 */
 	private function setTimezone($timezoneId='UTC') {
 		$timezoneId = $this->calendarObject->getTimezone();
+
+		if($timezoneId === null) {
+			$timezoneId = 'UTC';
+		}
 
 		$currentYear = date('Y');
 		$dateTimeZone = new \DateTimeZone($timezoneId);

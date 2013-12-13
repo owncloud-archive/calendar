@@ -13,7 +13,7 @@ abstract class JSON {
 
 	protected $properties;
 
-	public function __construct(Entity $object) {
+	public function __construct($object) {
 		foreach($this->properties as $property) {
 			$this->$property = $object->$property;
 		}

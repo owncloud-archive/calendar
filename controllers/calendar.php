@@ -22,6 +22,8 @@ use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
 use OCA\Calendar\Db\Calendar;
 use OCA\Calendar\Db\JSONCalendar;
+use OCA\Calendar\Db\JSONCalendarReader;
+
 
 class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controller {
 

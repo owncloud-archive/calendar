@@ -77,7 +77,7 @@ class BackendController extends \OCA\Calendar\AppFramework\Controller\Controller
 				$this->businessLayer->update($backend);
 				$this->show();
 			}
-		} catch(BusinessLayerException $ex) {
+		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
 			return new JSONResponse($msg, HTTP::STATUS_BAD_REQUEST);

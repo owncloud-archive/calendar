@@ -524,6 +524,6 @@ class API {
 	}
 
 	public function isDebug() {
-		return (\DEBUG === true);
+		return true; //(\DEBUG === true);
 	}
 }

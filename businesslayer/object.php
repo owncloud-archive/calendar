@@ -103,7 +103,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	public function findByType($calendarId, $objectURI, $type, $userId) {
 		$object = $this->find($calendarId, $objectURI, $userId);
 		if($object->getType() !== $type) {
-			throw new BusinessLayerException('Object exists, but is of different type');
+			throw new BusinessLayerException('Object exists, but is of different type.');
 		}
 		return $object;
 	}
@@ -316,7 +316,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 			$api = &$this->backends->find($backend)->api;
 			$api->deleteObject($calendarURI, $objectURI, $userId);
 
-			if($api->cacheObjects($calendarURI, $userId);) {
+			if($api->cacheObjects($calendarURI, $userId)) {
 				$this->mapper->delete($calendar);
 			}
 
@@ -361,7 +361,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 				if($status) {
 					$object = $this->backends->find($object->getBackend())->api->createObject();
 				} else {
-					throw new BusinessLayerException('Could not move object to another calendar.')
+					throw new BusinessLayerException('Could not move object to another calendar.');
 				}
 			}
 
@@ -396,7 +396,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 */
 	public function moveAll($calendarId, $objectURI, $userId) {
 		//todo missing parameter for new calendarid
-		return $this->calendarBusinessLayer->move($calendarId, $userId)
+		return $this->calendarBusinessLayer->move($calendarId, $userId);
 	}
 
 	/**

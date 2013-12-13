@@ -45,6 +45,8 @@ use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\Object;
 use \OCA\Calendar\Db\ObjectType;
 
+use \OCA\Calendar\Db\Permissions;
+
 class Local extends Backend {
 	
 	private $calTableName;
@@ -109,8 +111,9 @@ class Local extends Backend {
 			throw new MultipleObjectsReturnedException('More than one result');
 		} else {
 			$calendar = new Calendar($row);
-			$calendar->setBackend($this->backend);
+			$this->fixCalendarEntity($calendar, $row);
 		}
+		return $calendar;
 	}
 
 	/**
@@ -128,6 +131,7 @@ class Local extends Backend {
 		$entities = array();
 		while($row = $result->fetchRow()){
 			$entity = new Calendar($row);
+			$this->fixCalendarEntity($entity, $row);
 			array_push($entities, $entity);
 		}
 		return $entities;
@@ -364,5 +368,20 @@ class Local extends Backend {
 	
 	private function getUTCforMDB($datetime){
 		return date('Y-m-d H:i:s', $datetime->format('U'));
+	}
+
+	private function fixCalendarEntity(&$entity, $row) {
+		$entity->setBackend('local');
+		$entity->setCruds(Permissions::ALL);
+		if($row['color'] === null) {
+			//todo - use a better color
+			$entity->setColor('#000000');
+		}
+		if($row['enabled'] === null) {
+			$entity->setEnabled(true);
+		}
+		$entity->setComponents($row['components']);
+		$entity->setUserId($row['userid']);
+		$entity->setOwnerId($row['userid']);
 	}
 }
