@@ -195,6 +195,7 @@ button.category{margin:0 3px;}
 }
 #fromtime, #totime {
 	margin: 0;
+	width: 60px;
 }
 #event-allday {
 	display: inline-block;
