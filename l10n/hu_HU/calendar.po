@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-02 17:23-0500\n"
-"PO-Revision-Date: 2013-12-02 20:40+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-12-17 06:41-0500\n"
+"PO-Revision-Date: 2013-12-14 22:00+0000\n"
+"Last-Translator: ebela <bela@dandre.hu>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/owncloud/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -107,7 +107,7 @@ msgstr "módosíthat"
 
 #: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "megosztható"
 
 #: js/calendar.js:855
 msgid "ddd"
@@ -419,15 +419,15 @@ msgstr "Elfoglalt"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "A teljese esemény megjelenítése"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "Csak az elfogaltak mutatása"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "Esemény elrejtése"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -535,7 +535,7 @@ msgstr "Naptár"
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "Nap"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -603,15 +603,15 @@ msgstr "Mégse"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Esemény szerkesztése"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Esemény mentése"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Esemény törlése"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -643,7 +643,7 @@ msgstr "innen:"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "oda"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -659,7 +659,7 @@ msgstr "Hely"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategóriák (vesszővel elválasztva)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -671,7 +671,7 @@ msgstr "Leírás"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "Esemény exportálása"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -724,7 +724,7 @@ msgstr "előfordulás"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Láthatósága az emberek számára akik a következővel osztották meg"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -770,11 +770,11 @@ msgstr "Új esemény létrehozása"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Esemény létrehozása"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Megosztva egy felhasználóval vagy csoporttal"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -782,7 +782,7 @@ msgstr "A megosztás visszavonása"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Nincs megosztva senkivel"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -794,7 +794,7 @@ msgstr "Az egész naptár megosztása miatt meg van osztva a következőkkel:"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Nincs megosztva senkivel a naptáron keresztül"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
