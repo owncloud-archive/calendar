@@ -62,14 +62,14 @@ class OC_Calendar_Object{
 	 * in ['calendardata']
 	 */
 	public static function allInPeriod($id, $start, $end) {
-		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ? AND `objecttype`= ?' 
+		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ? AND `objecttype`= ?'
 		.' AND ((`startdate` >= ? AND `enddate` <= ? AND `repeating` = 0)'
 		.' OR (`enddate` >= ? AND `startdate` <= ? AND `repeating` = 0)'
 		.' OR (`startdate` <= ? AND `repeating` = 1) )' );
 		$start = self::getUTCforMDB($start);
 		$end = self::getUTCforMDB($end);
 		$result = $stmt->execute(array($id,'VEVENT',
-					$start, $end,					
+					$start, $end,
 					$start, $end,
 					$end));
 
@@ -197,18 +197,21 @@ class OC_Calendar_Object{
 	public static function edit($id, $data) {
 		$oldobject = self::find($id);
 		$calid = self::getCalendarid($id);
-		
+
 		$calendar = OC_Calendar_Calendar::find($calid);
 		$oldvobject = OC_VObject::parse($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $calid); //calid, not objectid !!!! 1111 one one one eleven
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE) || !($sharedAccessClassPermissions & OCP\PERMISSION_UPDATE)) {
-				throw new Exception(
-					OC_Calendar_App::$l10n->t(
-						'You do not have the permissions to edit this event.'
-					)
-				);
+				$sharedEvent = OCP\Share::getItemSharedWithBySource('event', $id);
+				if (!$sharedEvent || !($sharedEvent['permissions'] & OCP\PERMISSION_UPDATE)) {
+					throw new Exception(
+						OC_Calendar_App::$l10n->t(
+							'You do not have the permissions to edit this event.'
+						)
+					);
+				}
 			}
 		}
 		$object = OC_VObject::parse($data);
@@ -240,11 +243,14 @@ class OC_Calendar_Object{
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $cid);
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE) || !($sharedAccessClassPermissions & OCP\PERMISSION_UPDATE)) {
-				throw new \Sabre\DAV\Exception\Forbidden(
-					OC_Calendar_App::$l10n->t(
-						'You do not have the permissions to edit this event.'
-					)
-				);
+				$sharedEvent = OCP\Share::getItemSharedWithBySource('event', $id);
+				if (!$sharedEvent || !($sharedEvent['permissions'] & OCP\PERMISSION_UPDATE)) {
+					throw new \Sabre\DAV\Exception\Forbidden(
+						OC_Calendar_App::$l10n->t(
+							'You do not have the permissions to edit this event.'
+						)
+					);
+				}
 			}
 		}
 		$object = OC_VObject::parse($data);
@@ -267,7 +273,7 @@ class OC_Calendar_Object{
 	public static function delete($id) {
 		$oldobject = self::find($id);
 		$calid = self::getCalendarid($id);
-		
+
 		$calendar = OC_Calendar_Calendar::find($calid);
 		$oldvobject = OC_VObject::parse($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {

@@ -42,7 +42,7 @@ if(is_array($sharedwithByEvent)) {
 		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>
 		<span class="shareactions">
 			<label>
-				<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
+				<input class="update" type="checkbox" <?php p(($sharee['permissions'] & (OCP\PERMISSION_UPDATE | OCP\PERMISSION_DELETE)?'checked="checked"':''))?>>
 				 <?php p($l->t('can edit')); ?>
 			</label>
 			<label>
