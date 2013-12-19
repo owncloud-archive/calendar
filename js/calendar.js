@@ -757,8 +757,7 @@ Calendar={
 					var shareWith = container.data('share-with');
 					var permission = null;
 					if($(this).hasClass('update')) {
-						permission = OC.PERMISSION_UPDATE;
-						permission = OC.PERMISSION_DELETE;
+						permission = OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE;
 					} else if($(this).hasClass('share')) {
 						permission = OC.PERMISSION_SHARE;
 					}
