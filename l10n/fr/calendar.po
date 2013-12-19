@@ -22,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-02 17:23-0500\n"
-"PO-Revision-Date: 2013-12-02 20:40+0000\n"
-"Last-Translator: etiess <etiess@gmail.com>\n"
+"POT-Creation-Date: 2013-12-19 01:47-0500\n"
+"PO-Revision-Date: 2013-12-18 10:40+0000\n"
+"Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/owncloud/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +54,7 @@ msgstr "Mauvais calendrier"
 
 #: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
 msgid "You do not have the permissions to edit this event."
-msgstr "Vous n'avez pas les droits suffisants pour éditer cet événement."
+msgstr "Vous n'avez pas les droits suffisants pour modifier cet événement."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
@@ -425,15 +425,15 @@ msgstr "Occupé"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr "Montrer l'évènement complet"
+msgstr "Montrer l'événement complet"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr "Montrer seulement les évènements occupés"
+msgstr "Montrer seulement les événements occupés"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr "Masquer l'évènement"
+msgstr "Masquer l'événement"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -609,15 +609,15 @@ msgstr "Annuler"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr "Modifier l'évènement"
+msgstr "Modifier l'événement"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr "Sauvegarder l'évènement"
+msgstr "Sauvegarder l'événement"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr "Supprimer l'évènement"
+msgstr "Supprimer l'événement"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -677,7 +677,7 @@ msgstr "Description"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr "Exporter l'évènement"
+msgstr "Exporter l'événement"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -776,7 +776,7 @@ msgstr "Créer un nouvel événement"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr "Créer un évènement"
+msgstr "Créer un événement"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
