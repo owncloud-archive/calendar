@@ -23,7 +23,6 @@ class Object extends Entity {
 	public $summary;
 	public $calendarData;
 	public $lastModified;
-	public $deleteAt;
 	public $etag;
 
 	public $backend;
@@ -40,7 +39,7 @@ class Object extends Entity {
 			$this->startDate = new \DateTime($this->startDate);
 			$this->endDate = new \DateTime($this->endDate);
 
-			if($etag === null) {
+			if($this->etag === null) {
 				$this->updateETag();
 			}
 		}

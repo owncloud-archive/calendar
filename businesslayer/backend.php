@@ -14,6 +14,8 @@ use \OCA\Calendar\AppFramework\Db\MultipleObjectsReturnedException;
 use \OCA\Calendar\Db\Backend;
 use \OCA\Calendar\Db\BackendMapper;
 
+//TODO - write doc
+
 class BackendBusinessLayer {
 
 	private $backends;
@@ -36,16 +38,16 @@ class BackendBusinessLayer {
 		}
 	}
 
-	public function findAll() {
-		return $this->mapper->findAll();
+	public function findAll($limit = null, $offset = null) {
+		return $this->mapper->findAll($limit, $offset);
 	}
 
-	public function findAllDisabled() {
-		return $this->mapper->findWhereEnabledIs(false);
+	public function findAllDisabled($limit = null, $offset = null) {
+		return $this->mapper->findWhereEnabledIs(false, $limit, $offset);
 	}
 
-	public function findAllEnabled() {
-		return $this->mapper->findWhereEnabledIs(true);
+	public function findAllEnabled($limit = null, $offset = null) {
+		return $this->mapper->findWhereEnabledIs(true, $limit, $offset);
 	}
 
 	public function create($backend, $classname, $arguments='', $enabled=true) {

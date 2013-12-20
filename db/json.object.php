@@ -18,7 +18,6 @@ class JSONObject extends JSON{
 	public $objectURI;
 	public $url;
 	public $type;
-	public $deleteAt;
 	public $data;
 
 	private $objectObject;

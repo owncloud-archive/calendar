@@ -42,13 +42,10 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $objectURI UID of the object
 	 * @param string $userId
-	 * @param boolean $expand expand if repeating event
-	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
-	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function find($calendarId, $objectURI, $userId, $expand=false, $expandStart=null, $expandEnd=null) {
+	public function find($calendarId, $objectURI, $userId) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
@@ -59,10 +56,6 @@ class ObjectBusinessLayer extends BusinessLayer {
 				$object = $this->mapper->find($backend, $calendarURI, $objectURI, $userId);
 			} else {
 				$object = $api->findObject($calendarURI, $objectURI, $userId);
-			}
-
-			if($expand === true) {
-				$object = $object->expand($expandStart, $expandEnd);
 			}
 
 			return $object;
@@ -79,13 +72,12 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * Finds all objects of calendar $calendarId of user $userId
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $userId
-	 * @param boolean $expand expand if repeating event
-	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
-	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
+	 * @param int limit
+	 * @param int offset
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAll($calendarId, $userId, $expand=false, $expandStart=null, $expandEnd=null) {
+	public function findAll($calendarId, $userId, $limit = null, $offset = null) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
@@ -93,17 +85,9 @@ class ObjectBusinessLayer extends BusinessLayer {
 			$api = &$this->backends->find($backend)->api;
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
 			if($cacheObjects) {
-				$objects = $this->mapper->findAll($backend, $calendarURI, $userId);
+				$objects = $this->mapper->findAll($backend, $calendarURI, $userId, $limit, $offset);
 			} else { 
-				$objects = $api->findObjects($calendarURI, $userId);
-			}
-
-			if($expand === true) {
-				$expandedObjects = array();
-				foreach($objects as $object) {
-					$expandedObjects = array_merge($expandedObjects, $object->expand($expandStart, $expandEnd));
-				}
-				$objects = $expandedObjects;
+				$objects = $api->findObjects($calendarURI, $userId, $limit, $offset);
 			}
 
 			return $objects;
@@ -120,20 +104,13 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param string $objectURI UID of the object
 	 * @param string $type type of the searched objects, use OCA\Calendar\Db\ObjectType
 	 * @param string $userId
-	 * @param boolean $expand expand if repeating event
-	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
-	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findByType($calendarId, $objectURI, $type, $userId, $expand=false, $expandStart=null, $expandEnd=null) {
+	public function findByType($calendarId, $objectURI, $type, $userId) {
 		$object = $this->find($calendarId, $objectURI, $userId);
 		if($object->getType() !== $type) {
 			throw new BusinessLayerException('Object exists, but is of different type.');
-		}
-
-		if($expand === true) {
-			$object = $object->expand($expandStart, $expandEnd);
 		}
 
 		return $object;
@@ -144,13 +121,12 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $type type of the searched objects, use OCA\Calendar\Db\ObjectType
 	 * @param string $userId
-	 * @param boolean $expand expand if repeating event
-	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
-	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
+	 * @param int limit
+	 * @param int offset
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllByType($calendarId, $type, $userId, $expand=false, $expandStart=null, $expandEnd=null) {
+	public function findAllByType($calendarId, $type, $userId, $limit = null, $offset = null) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
@@ -158,28 +134,32 @@ class ObjectBusinessLayer extends BusinessLayer {
 			$api = &$this->backends->find($backend)->api;
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
 			if($cacheObjects) {
-				$object = $this->mapper->findAllByType($backend, $calendarURI, $type, $userId);
+				$object = $this->mapper->findAllByType($backend, $calendarURI, $type, $userId, $limit, $offset);
 			} else {
 				$isSupported = $api->implementsActions(\OCA\Calendar\Backend\FIND_OBJECTS_BY_TYPE);
 				if($isSupported) {
-					$objects = $api->findObjectsByType($calendarURI, $type, $userId);
+					$objects = $api->findObjectsByType($calendarURI, $type, $userId, $limit, $offset);
 				} else {
 					$allObjects = $api->findObjects($calendarURI, $userId);
-					$objects = array();
+
 					foreach($allObjects as $objectToCheck) {
 						if($objectToCheck->getType() === $type) {
 							$objects[] = $objectToCheck;
 						}
 					}
-				}
-			}
 
-			if($expand === true) {
-				$expandedObjects = array();
-				foreach($objects as $object) {
-					$expandedObjects = array_merge($expandedObjects, $object->expand($expandStart, $expandEnd));
+					if($limit !== null) {
+						if($offset === null) {
+							$offset = 0;
+						}
+		
+						$objectsWithInLimit = array();
+						for($i = $offset;$i <= ($offset + $limit);i++) {
+							$objectsWithInLimit[] = $objects[$i];
+						}
+						$objects = $objectsWithInLimit;
+					}
 				}
-				$objects = $expandedObjects;
 			}
 
 			return $objects;
@@ -196,11 +176,12 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param DateTime $start start of timeframe
 	 * @param DateTime $end end of timeframe
 	 * @param string $userId
-	 * @param boolean $expand expand if repeating event
+	 * @param int limit
+	 * @param int offset
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllInPeriod($calendarId, $start, $end, $userId, $expand=false) {
+	public function findAllInPeriod($calendarId, $start, $end, $userId, $limit = null, $offset = null) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
@@ -208,11 +189,11 @@ class ObjectBusinessLayer extends BusinessLayer {
 			$api = &$this->backends->find($backend)->api;
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
 			if($cacheObjects) {
-				$objects = $this->mapper->findAllInPeriod($backend, $calendarURI, $start, $end, $userId);
+				$objects = $this->mapper->findAllInPeriod($backend, $calendarURI, $start, $end, $userId, $limit, $offset);
 			} else {
 				$isSupported = $api->implementsActions(\OCA\Calendar\Backend\FIND_IN_PERIOD);
 				if($isSupported) {
-					$objects = $api->findObjectsInPeriod($calendarURI, $type, $userId);
+					$objects = $api->findObjectsInPeriod($calendarURI, $type, $userId, $limit, $offset);
 				} else {
 					$allObjects = $api->findObjects($calendarURI, $userId);
 					$objects = array();
@@ -226,15 +207,19 @@ class ObjectBusinessLayer extends BusinessLayer {
 							$objects[] = $objectToCheck;
 						}
 					}
-				}
-			}
 
-			if($expand === true) {
-				$expandedObjects = array();
-				foreach($objects as $object) {
-					$expandedObjects = array_merge($expandedObjects, $object->expand($start, $end));
+					if($limit !== null) {
+						if($offset === null) {
+							$offset = 0;
+						}
+		
+						$objectsWithInLimit = array();
+						for($i = $offset;$i <= ($offset + $limit);i++) {
+							$objectsWithInLimit[] = $objects[$i];
+						}
+						$objects = $objectsWithInLimit;
+					}
 				}
-				$objects = $expandedObjects;
 			}
 
 			return $objects;
@@ -255,10 +240,12 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param boolean $expand expand if repeating event
 	 * @param DateTime $expandStart don't return repeating events earlier than $expandStart
 	 * @param DateTime $expandEnd  don't return repeating events later than $expandEnd
+	 * @param int limit
+	 * @param int offset
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId, $expand=false) {
+	public function findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId, $limit = null, $offset = null) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
@@ -288,15 +275,19 @@ class ObjectBusinessLayer extends BusinessLayer {
 							$objects[] = $objectToCheck;
 						}
 					}
-				}
-			}
 
-			if($expand === true) {
-				$expandedObjects = array();
-				foreach($objects as $object) {
-					$expandedObjects = array_merge($expandedObjects, $object->expand($start, $end));
+					if($limit !== null) {
+						if($offset === null) {
+							$offset = 0;
+						}
+			
+						$objectsWithInLimit = array();
+						for($i = $offset;$i <= ($offset + $limit);i++) {
+							$objectsWithInLimit[] = $objects[$i];
+						}
+						$objects = $objectsWithInLimit;
+					}
 				}
-				$objects = $expandedObjects;
 			}
 
 			return $objects;
@@ -311,6 +302,8 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $objectURI UID of the object
 	 * @param string $userId
+	 * @param int limit
+	 * @param int offset
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */

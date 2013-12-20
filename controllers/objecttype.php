@@ -42,16 +42,40 @@ class ObjectTypeController extends ObjectController {
 	 * @API
 	 */
 	public function index() {
-		$userId = $this->api->getUserId();
+		$userId 	= $this->api->getUserId();
 		$calendarId = $this->params('calendarId');
-		$type = $this->objectType;
+		$type 		= $this->objectType;
+		$limit		= $this->params('limit');
+		$offset		= $this->params('offset');
+		$expand		= $this->params('expand');
+		$start		= $this->params('start');
+		$end		= $this->params('end');
 
 		try {
-			$objects = $this->objectBusinessLayer->findAllByType($calendarId, $type, $userId);
-			$jsonObjects = array();
-			foreach($objects as $object) {
-				$jsonObjects[] = new JSONObject($object);
+			$this->parseBooleanString($expand);
+			$this->parseDateTimeString($start);
+			$this->parseDateTimeString($end);
+
+			if($start === null || $end === null) {
+				public function findAllByType($calendarId, $type, $userId, $limit = null, $offset = null) {
+				$objects = $this->objectBusinessLayer->findAllByType($calendarId, $type, $userId, $limit, $offset);
+			} else {
+				$objects = $this->objectBusinessLayer->findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId, $limit, $offset);
 			}
+
+			if($expand === true) {
+				foreach($objects as $object) {
+					$expandedObjects = $object->expand($start, $end);
+					foreach($expandedObjects as $expandedObject) {
+						$jsonObjects = array_merge($jsonObjects, new JSONObject($expandedObject));
+					}
+				}
+			} else {
+				foreach($objects as $object) {
+					$jsonObjects[] = new JSONObject($object);
+				}
+			}
+
 			return new JSONResponse($jsonObjects);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
@@ -67,15 +91,23 @@ class ObjectTypeController extends ObjectController {
 	 * @API
 	 */
 	public function show() {
-		$userId = $this->api->getUserId();
+		$userId 	= $this->api->getUserId();
 		$calendarId = $this->params('calendarId');
+		$type 		= $this->objectType;
+		$limit		= $this->params('limit');
+		$offset		= $this->params('offset');
+		$expand		= $this->params('expand');
+		$start		= $this->params('start');
+		$end		= $this->params('end');
+
 		list($routeApp, $routeController, $routeMethod) = explode('.', $this->params('_route'));
 		$objectId = $this->params(substr($routeController, 0, strlen($routeController) - 1) . 'Id');
-		$type = $this->objectType;
 
 		try {
 			$object = $this->objectBusinessLayer->findByType($calendarId, $objectId, $type, $userId);
+
 			$jsonObject = new JSONObject($object);
+
 			return new JSONResponse($jsonObject);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');

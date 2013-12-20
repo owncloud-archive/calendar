@@ -6,5 +6,9 @@
  * See the COPYING-README file.
  */
 namespace OCA\Calendar;
+
 //current version of json api
 define('JSONAPIVERSION', '1.0');
+
+//current version of php api
+define('PHPAPIVERSION',  '1.0');

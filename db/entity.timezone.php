@@ -9,21 +9,13 @@ namespace OCA\Calendar\Db;
 
 use \OCA\Calendar\AppFramework\Db\Entity;
 
-class Calendar extends Entity {
+class Timezone extends Entity {
 
 	public $id;
-	public $userId;
-	public $ownerId;
-	public $backend;
-	public $uri;
-	public $displayname;
-	public $components;
-	public $ctag;
-	public $timezone;
-	public $color;
-	public $order;
-	public $enabled;
-	public $cruds;
+	public $name;
+	public $isDST;
+	public $stdOffset;
+	public $dstOffset;
 
 	/**
 	 * @brief init Calendar object with data from db row

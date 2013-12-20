@@ -36,22 +36,22 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 */
 	public function __construct(API $api, Request $request,
 								CalendarBusinessLayer $businessLayer){
-		//call parent's constructor
 		parent::__construct($api, $request);
 		$this->calendarBusinessLayer = $businessLayer;
 	}
 
 	/**
-	 * @CSRFExemption
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
 	 * @API
 	 */
 	public function index() {
-		$userId = $this->api->getUserId();
+		$userId	= $this->api->getUserId();
+		$limit	= $this->params('limit');
+		$offset	= $this->params('offset');
 
 		try {
-			$calendars = $this->calendarBusinessLayer->findAll($userId);
+			$calendars = $this->calendarBusinessLayer->findAll($userId, $limit, $offset);
 
 			$jsonCalendars = array();
 			foreach($calendars as $calendar) {
@@ -67,14 +67,13 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	}
 
 	/**
-	 * @CSRFExemption
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
 	 * @API
 	 */
 	 public function show() {
-		$userId = $this->api->getUserId();
-		$calendarId = $this->params('calendarId');
+		$userId		= $this->api->getUserId();
+		$calendarId	= $this->params('calendarId');
 
 		try {
 			$calendar = $this->calendarBusinessLayer->find($calendarId, $userId);
@@ -95,18 +94,19 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @API
 	 */
 	public function create() {
-		$userId = $this->api->getUserId();
-		$json = file_get_contents('php://input');
+		$userId	= $this->api->getUserId();
+		$json	= file_get_contents('php://input');
 
 		try {
-			$jsonReader = new JSONCalendarReader($json);
-			$calendar = $jsonReader->getCalendarObject();
+			$jsonReader	= new JSONCalendarReader($json);
+			$calendar	= $jsonReader->getCalendar();
 			$calendar->setUserId($userId);
+			$calendar->setOwnerId($userId);
 
-			$this->calendarBusinessLayer->purgeDelete($userId, false);
-			$calendar = $this->calendarBusinessLayer->create($calendar, $userId);
+			$calendar		= $this->calendarBusinessLayer->create($calendar, $userId);
+			$jsonCalendar	= new JSONCalendar($calendar);
 
-			return new JSONResponse(array(), HTTP::STATUS_CREATED);
+			return new JSONResponse($jsonCalendar, HTTP::STATUS_CREATED);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
@@ -120,18 +120,18 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @API
 	 */
 	public function update() {
-		$userId = $this->api->getUserId();
-		$calendarId = $this->api->params('calendarId');
-		$json = file_get_contents('php://input');
+		$userId		= $this->api->getUserId();
+		$calendarId	= $this->api->params('calendarId');
+		$json		= file_get_contents('php://input');
 
 		try {
-			$jsonReader = new JSONCalendarReader($json);
-			$calendar = $jsonReader->getCalendarObject();
+			$jsonReader	= new JSONCalendarReader($json);
+			$calendar	= $jsonReader->getCalendar();
 
-			$this->calendarBusinessLayer->purgeDelete($userId, false);
-			$calendar = $this->calendarBusinessLayer->update($calendar, $userId);
+			$calendar		= $this->calendarBusinessLayer->update($calendar, $userId);
+			$jsonCalendar	= new JSONCalendar($calendar);
 
-			return new JSONResponse(array(), HTTP::STATUS_CREATED);
+			return new JSONResponse($jsonCalendar, HTTP::STATUS_CREATED);
 		} catch(BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
@@ -144,18 +144,8 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @IsSubAdminExemption
 	 * @API
 	 */
-	public function destroy() {
-		$userId = $this->api->getUserId();
-		$calendarId = $this->params('calendarId');
-
-		try {
-			$this->calendarBusinessLayer->markDeleted($calendarId, $userId);
-			return $this->renderJSON();
-		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, HTTP::STATUS_BAD_REQUEST);
-		}
+	public function patch() {
+		return new JSONResponse(array(), HTTP::STATUS_NOT_IMPLEMENTED);
 	}
 
 	/**
@@ -163,13 +153,14 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @IsSubAdminExemption
 	 * @API
 	 */
-	public function restore() {
-		$userId = $this->api->getUserId();
-		$calendarId = $this->params('calendarId');
+	public function destroy() {
+		$userId		= $this->api->getUserId();
+		$calendarId	= $this->params('calendarId');
 
 		try {
-			$this->calendarBusinessLayer->unmarkDeleted($calendarId, $userId);
-			return $this->renderJSON();
+			$this->calendarBusinessLayer->delete($calendarId, $userId);
+
+			return new JSONRespose();
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();

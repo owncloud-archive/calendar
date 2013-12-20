@@ -28,11 +28,12 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @param string $userId
 	 * @return array containing all Calendar items
 	 */
-	public function findAll($userId) {
+	public function findAll($userId, $limit = null, $offset = null) {
 		$backends = $this->backends->findAllEnabled();
-		$calendars = $this->mapper->findAll($userId);
 
 		try {
+			$calendars = $this->mapper->findAll($userId);
+
 			foreach($backends as $backend) {
 				$api = &$this->backends->find($backend->getBackend())->api;
 				if(!$api->cacheCalendars($userId)) {
@@ -41,6 +42,23 @@ class CalendarBusinessLayer extends BusinessLayer {
 						$calendars = array_merge($calendars, $backendsCalendars);
 					}
 				}
+			}
+
+			if($limit !== null) {
+				if($offset === null) {
+					$offset = 0;
+				}
+
+				if($offset !== 0 || count($calendars) > $limit) {
+					$this->sortCalendarsByOrder($calendars);
+				}
+
+				$calendarsWithinLimit = array();
+				for($i = $offset;$i <= ($offset + $limit);i++) {
+					$calendarsWithinLimit[] = $calendars[$i];
+				}
+
+				return $calendarsWithinLimit;
 			}
 
 			return $calendars;
@@ -402,5 +420,21 @@ class CalendarBusinessLayer extends BusinessLayer {
 		}
 
 		return true;
+	}
+
+	/**
+	 * sort a list of calendars by order attribute
+	 * @param array $calendars
+	 * @return void
+	 */
+	private function sortCalendarsByOrder(&$calendars) {
+		$compareOrder = function($firstElement, $secondElement) {
+			if($firstElement->getOrder() == $secondElement->getOrder()) {
+				return 0;
+			}
+			return ($firstElement->getOrder() > $secondElement->getOrder()) ? 1 : -1;
+		}
+
+		usort($calendars, $compareOrder);
 	}
 }
