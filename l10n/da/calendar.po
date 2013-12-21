@@ -6,6 +6,7 @@
 # Sappe, 2013
 # cronner <cronner@gmail.com>, 2012
 # Frederik Lassen <frederiklassen@gmail.com>, 2012
+# lodahl <leiflodahl@gmail.com>, 2013
 # mikkel_ilu <mikkelbjerglarsen@gmail.com>, 2011
 # Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2011-2013
 # Ole Holm Frandsen <froksen@gmail.com>, 2012
@@ -19,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-20 01:47-0500\n"
-"PO-Revision-Date: 2013-12-20 06:21+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-12-21 01:47-0500\n"
+"PO-Revision-Date: 2013-12-20 21:40+0000\n"
+"Last-Translator: lodahl <leiflodahl@gmail.com>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/owncloud/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,7 +111,7 @@ msgstr "kan redigere"
 
 #: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "kan dele"
 
 #: js/calendar.js:855
 msgid "ddd"
@@ -422,15 +423,15 @@ msgstr "Optaget"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "Vis den fulde begivenhed"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "Vis kun optaget"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "Skjul begivenhed"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -606,15 +607,15 @@ msgstr "Annuller"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Rediger begivenhed"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Gem begivenhed"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Slet begivenhed"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -646,7 +647,7 @@ msgstr "fra"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "til"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -662,7 +663,7 @@ msgstr "Sted"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategorier (adskilt af komma)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -674,7 +675,7 @@ msgstr "Beskrivelse"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "Eksporter begivenhed"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -727,7 +728,7 @@ msgstr "forekomster"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Synlig for personer delt med"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -773,11 +774,11 @@ msgstr "Opret en ny begivenhed"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Opret begivenhed"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Del med bruger eller gruppe"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -785,7 +786,7 @@ msgstr "Fjern deling"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Ikke delt med nogen"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -797,7 +798,7 @@ msgstr "Delt via kalender"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Ikke delt med nogen via kalender"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
