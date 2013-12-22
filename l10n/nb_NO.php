@@ -119,6 +119,7 @@
 "by day and month" => "etter dag og måned",
 "Date" => "Dato",
 "Cal." => "Kal.",
+"Day" => "Dag",
 "Week" => "Uke",
 "Month" => "ned",
 "Today" => "I dag",
