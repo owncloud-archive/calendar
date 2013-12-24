@@ -18,6 +18,7 @@
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
 "group" => "ομάδα",
 "can edit" => "δυνατότητα αλλαγής",
+"can share" => "μπορεί να διαμοιραστεί",
 "ddd" => "ddd",
 "ddd M/d" => "ddd M/d",
 "dddd M/d" => "dddd M/d",
