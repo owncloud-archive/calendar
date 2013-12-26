@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-20 01:47-0500\n"
-"PO-Revision-Date: 2013-12-20 06:21+0000\n"
+"POT-Creation-Date: 2013-12-26 01:46-0500\n"
+"PO-Revision-Date: 2013-12-25 20:20+0000\n"
 "Last-Translator: mateju <>\n"
 "Language-Team: Slovenian (http://www.transifex.com/projects/p/owncloud/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -641,7 +641,7 @@ msgstr "od"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr "za"
+msgstr "do"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"

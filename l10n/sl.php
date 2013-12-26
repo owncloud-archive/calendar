@@ -152,7 +152,7 @@
 "Share" => "Souporaba",
 "Title of the Event" => "Naslov dogodka",
 "from" => "od",
-"to" => "za",
+"to" => "do",
 "All Day Event" => "Celodnevni dogodek",
 "Advanced options" => "Napredne možnosti",
 "Location" => "Mesto",
