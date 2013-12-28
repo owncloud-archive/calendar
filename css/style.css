@@ -264,3 +264,11 @@ button.category{margin:0 3px;}
 .fc-widget-header, .fc-widget-content {
 	border: 1px solid #e8e8e8;
 }
+
+#calendar td a.share {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
