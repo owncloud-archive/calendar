@@ -5,10 +5,12 @@
 # Translators:
 # aoiob4305 <aoiob4305@gmail.com>, 2013
 # aoiob4305 <aoiob4305@gmail.com>, 2013
+# 책읽는달팽 <bjh13579@gmail.com>, 2013
 # 남자사람 <cessnagi@gmail.com>, 2012
 # 남자사람 <cessnagi@gmail.com>, 2012
 # yunhye <limonade83@gmail.com>, 2012
 # Shinjo Park <kde@peremen.name>, 2013
+# Park Shinjo <peremen@gmail.com>, 2013
 # Shinjo Park <kde@peremen.name>, 2012-2013
 # 책읽는달팽 <bjh13579@gmail.com>, 2013
 # yunhye <limonade83@gmail.com>, 2012
@@ -16,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-20 01:47-0500\n"
-"PO-Revision-Date: 2013-12-20 06:21+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2013-12-29 01:46-0500\n"
+"PO-Revision-Date: 2013-12-28 22:05+0000\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean (http://www.transifex.com/projects/p/owncloud/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,11 +30,11 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "모든 달력이 완벽히 캐시되지 않았음"
+msgstr "모든 달력이 완전히 캐시되지 않았음"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr "모든 항목이 완벽히 캐시됨"
+msgstr "모든 항목이 완전히 캐시됨"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
@@ -85,51 +87,51 @@ msgstr "잘못된 요청"
 msgid "Calendar"
 msgstr "달력"
 
-#: js/calendar.js:176
+#: js/calendar.js:179
 msgid "Deletion failed"
 msgstr "삭제 실패"
 
-#: js/calendar.js:263
+#: js/calendar.js:266
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "[yyyy ]MMMM d ddd{- yyyy MMMM[ d ddd]}"
 
-#: js/calendar.js:265
+#: js/calendar.js:268
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "[yyyy ]MMMM d ddd HH:mm{ - [yyyy MMMM d ddd] HH:mm}"
 
-#: js/calendar.js:581
+#: js/calendar.js:584
 msgid "group"
 msgstr "그룹"
 
-#: js/calendar.js:583 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:586 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "편집 가능"
 
-#: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:587 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "공유 가능"
 
-#: js/calendar.js:855
+#: js/calendar.js:858
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:856
+#: js/calendar.js:859
 msgid "ddd M/d"
 msgstr "M/d ddd"
 
-#: js/calendar.js:857
+#: js/calendar.js:860
 msgid "dddd M/d"
 msgstr "M/d dddd"
 
-#: js/calendar.js:860
+#: js/calendar.js:863
 msgid "MMMM yyyy"
 msgstr "yyyy MMMM"
 
-#: js/calendar.js:862
+#: js/calendar.js:865
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:864
+#: js/calendar.js:867
 msgid "dddd, MMM d, yyyy"
 msgstr "yyyy MMM d dddd"
 
@@ -419,15 +421,15 @@ msgstr "바쁨"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "전체 일정 보이기"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "바쁨만 보이기"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "일정 숨기기"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -507,7 +509,7 @@ msgstr "마지막"
 
 #: lib/object.php:659
 msgid "by events date"
-msgstr "이벤트 날짜 순"
+msgstr "일정 날짜 순"
 
 #: lib/object.php:660
 msgid "by yearday(s)"
@@ -523,7 +525,7 @@ msgstr "날짜 순"
 
 #: lib/sabre/backend.php:66
 msgid "Contact birthdays"
-msgstr "생일때 알려주기"
+msgstr "연락처에 등록된 생일"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -535,7 +537,7 @@ msgstr "달력"
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "날짜"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -603,15 +605,15 @@ msgstr "취소"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "일정 편집"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "일정 저장"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "일정 삭제"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -639,11 +641,11 @@ msgstr "일정 제목"
 
 #: templates/part.eventform.php:31
 msgid "from"
-msgstr "원본 사이트"
+msgstr "시작"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "끝"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -659,7 +661,7 @@ msgstr "위치"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "분류 (쉼표로 구분됨)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -671,7 +673,7 @@ msgstr "설명"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "일정 내보내기"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -724,7 +726,7 @@ msgstr "번 이후"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "공유된 사람들에게 보임"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -770,11 +772,11 @@ msgstr "새 일정 만들기"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "일정 만들기"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "사용자나 그룹과 공유하기"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -782,7 +784,7 @@ msgstr "공유 해제"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "아무와도 공유 안 함"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -794,7 +796,7 @@ msgstr "달력으로 공유됨"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "아무와도 달력으로 공유 안 함"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
