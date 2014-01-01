@@ -200,6 +200,7 @@ button.category{margin:0 3px;}
 #event-allday {
 	display: inline-block;
 	margin: 7px 0;
+	width: 100%;
 }
 /* category input field leaves room for edit button */
 #category {
