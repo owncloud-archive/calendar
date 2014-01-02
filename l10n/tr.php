@@ -213,5 +213,5 @@
 "more info" => "daha fazla bilgi",
 "Primary address (Kontact et al)" => "Öncelikli adres",
 "iOS/OS X" => "iOS/OS X",
-"Read only iCalendar link(s)" => "Sadece okunabilir iCalendar link(ler)i"
+"Read only iCalendar link(s)" => "Salt okunur iCalendar bağlantıları"
 );
