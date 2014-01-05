@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# TheHiter <magicreative.fr@gmail.com>, 2013
+# TheHiter <magicreative.fr@gmail.com>, 2013-2014
 # TYMAH <hussein-atef@hotmail.com>, 2012
 # Meesh <M_almohimeed@yahoo.com>, 2013
 # Raed667 <shemada@gmail.com>, 2013
@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-20 01:47-0500\n"
-"PO-Revision-Date: 2013-12-20 06:21+0000\n"
-"Last-Translator: I Robot <owncloud-bot@tmit.eu>\n"
+"POT-Creation-Date: 2014-01-05 01:47-0500\n"
+"PO-Revision-Date: 2014-01-04 07:50+0000\n"
+"Last-Translator: TheHiter <magicreative.fr@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/owncloud/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,51 +84,51 @@ msgstr "طلب غير مفهوم"
 msgid "Calendar"
 msgstr "الجدول الزمني"
 
-#: js/calendar.js:176
+#: js/calendar.js:179
 msgid "Deletion failed"
 msgstr "فشل الحذف"
 
-#: js/calendar.js:263
+#: js/calendar.js:266
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ي ش [ع]{-[ي] ش ع}"
 
-#: js/calendar.js:265
+#: js/calendar.js:268
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ي ش [ع] س:د{-[ي ش ع] س:د}"
 
-#: js/calendar.js:581
+#: js/calendar.js:584
 msgid "group"
 msgstr "مجموعة"
 
-#: js/calendar.js:583 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:586 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "التحرير مسموح"
 
-#: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:587 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "يمكن مشاركته"
 
-#: js/calendar.js:855
+#: js/calendar.js:858
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:856
+#: js/calendar.js:859
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:857
+#: js/calendar.js:860
 msgid "dddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:860
+#: js/calendar.js:863
 msgid "MMMM yyyy"
 msgstr "ddd M/d"
 
-#: js/calendar.js:862
+#: js/calendar.js:865
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "الشهر اليوم [ السنه] { '–' [الشهر] اليوم السنه }"
 
-#: js/calendar.js:864
+#: js/calendar.js:867
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -418,15 +418,15 @@ msgstr "مشغول"
 
 #: lib/object.php:531
 msgid "Show full event"
-msgstr ""
+msgstr "أظهر الأحداث كاملة"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "أظهر فقط المشغولة"
 
 #: lib/object.php:533
 msgid "Hide event"
-msgstr ""
+msgstr "اخفاء الحدث"
 
 #: lib/object.php:543
 msgid "Does not repeat"
@@ -602,15 +602,15 @@ msgstr "إلغاء"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "تعديل الحدث"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "حفظ الحدث"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "حذف الحدث"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -638,11 +638,11 @@ msgstr "عنوان الحدث"
 
 #: templates/part.eventform.php:31
 msgid "from"
-msgstr ""
+msgstr "من"
 
 #: templates/part.eventform.php:36
 msgid "to"
-msgstr ""
+msgstr "إلى"
 
 #: templates/part.eventform.php:44 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -658,7 +658,7 @@ msgstr "مكان"
 
 #: templates/part.eventform.php:56
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "الفئات (منفصلة بواسطة فاصلة)"
 
 #: templates/part.eventform.php:58 templates/part.eventform.php:59
 msgid "Edit categories"
@@ -670,7 +670,7 @@ msgstr "مواصفات"
 
 #: templates/part.eventform.php:63
 msgid "Export event"
-msgstr ""
+msgstr "تصدير الحدث"
 
 #: templates/part.eventform.php:70 templates/part.showevent.php:109
 msgid "Repeat"
@@ -723,7 +723,7 @@ msgstr "الاحداث"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "واضحة لمشاركيها"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -769,11 +769,11 @@ msgstr "إضافة حدث جديد"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "تأليف حدث"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "مشاركتها مع مستخدم أو جماعة"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -781,7 +781,7 @@ msgstr "إلغاء مشاركة"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "عدم مشاركتها مع أي شخص"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -793,7 +793,7 @@ msgstr "تمت المشاركة عبر التقويم"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "عدم مشاركتها مع أي شخص عبر المفكرة"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
