@@ -46,13 +46,24 @@ class OC_Calendar_Calendar{
 		$result = $stmt->execute($values);
 
 		$calendars = array();
+		$owned_calendar_ids = array();
 		while( $row = $result->fetchRow()) {
 			$row['permissions'] = OCP\PERMISSION_CREATE
 				| OCP\PERMISSION_READ | OCP\PERMISSION_UPDATE
 				| OCP\PERMISSION_DELETE | OCP\PERMISSION_SHARE;
 			$calendars[] = $row;
+			$owned_calendar_ids[] = $row['id'];
 		}
-		$calendars = array_merge($calendars, OCP\Share::getItemsSharedWith('calendar', OC_Share_Backend_Calendar::FORMAT_CALENDAR));
+
+		$shared_calendars = OCP\Share::getItemsSharedWith('calendar', OC_Share_Backend_Calendar::FORMAT_CALENDAR);
+		// Remove shared calendars that are already owned by the user.
+		foreach ($shared_calendars as $key => $calendar) {
+			if (in_array($calendar['id'], $owned_calendar_ids)) {
+				unset($shared_calendars[$key]);
+			}
+		}
+
+		$calendars = array_merge($calendars, $shared_calendars);
 
 		return $calendars;
 	}
