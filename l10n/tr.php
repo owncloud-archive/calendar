@@ -9,7 +9,7 @@
 "events has been saved in the new calendar" => "etkinlikler yeni takvime kaydedildi",
 "Import failed" => "İçeri aktarma başarısız oldu.",
 "events has been saved in your calendar" => "etkinlikler takviminize kaydedildi",
-"New Timezone:" => "Yeni Zamandilimi:",
+"New Timezone:" => "Yeni Zaman Dilimi:",
 "Timezone changed" => "Zaman dilimi değiştirildi",
 "Invalid request" => "Geçersiz istek",
 "Calendar" => "Takvim",
