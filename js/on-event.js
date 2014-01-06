@@ -28,6 +28,9 @@ $('#chooseCalendar').live('click', function () {
 $('.activeCalendar').live('change', function () {
 	Calendar.UI.Calendar.activation(this,$(this).data('id'));
 });
+$('#active_shared_events').live('change', function () {
+	Calendar.UI.Calendar.sharedEventsActivation(this);
+});
 $('#allday_checkbox').live('click', function () {
 	Calendar.UI.lockTime();
 });

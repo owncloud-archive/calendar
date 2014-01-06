@@ -448,6 +448,14 @@ Calendar={
 					}
 				  });
 			},
+			sharedEventsActivation:function(checkbox)
+			{
+				if (checkbox.checked){
+					$('#fullcalendar').fullCalendar('addEventSource', sharedEventSource);
+				}else{
+					$('#fullcalendar').fullCalendar('removeEventSource', sharedEventSource.url);
+				}
+			},
 			newCalendar:function(object){
 				var tr = $(document.createElement('tr'))
 					.load(OC.filePath('calendar', 'ajax/calendar', 'new.form.php'),
@@ -956,4 +964,10 @@ $(document).ready(function(){
 		OC.appSettings({appid:'calendar', loadJS:true, cache:false, scriptName:'settingswrapper.php'});
 	});
 	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
+	// Save the eventSource for shared events.
+	for (var i in eventSources) {
+		if (eventSources[i].url.substr(-13) === 'shared_events') {
+			sharedEventSource = eventSources[i];
+		}
+	}
 });
