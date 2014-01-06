@@ -56,9 +56,9 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 		$calendar = OC_Calendar_App::getCalendar( $itemSource );
 		$user_calendars = array();
 		foreach(OC_Calendar_Calendar::allCalendars($shareWith) as $user_calendar) {
-			$user_calendars[] = $user_calendar['displayname'];
+			$user_calendars[] = $user_calendar['default_displayname'];
 		}
-		$name = $calendar['userid']."'s ".$calendar['displayname'];
+		$name = $calendar['userid']."'s ".$calendar['default_displayname'];
 		$suffix = '';
 		while (in_array($name.$suffix, $user_calendars)) {
 			$suffix++;

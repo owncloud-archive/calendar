@@ -73,3 +73,21 @@ if (version_compare($installedVersion, '0.6.1', '<=')) {
 	session_regenerate_id(true);
 	OC_User::setUserId($user);
 }
+if (version_compare($installedVersion, '0.6.4', '<')) {
+	// We need to add default calendar-user preferences for three categories of calendar/user relationships:
+	// - Those where the user owns the calendar.
+	// - Those where the calendar is shared with the user.
+	// - Those where the calendar is shared with a group the user belongs to.
+	// We handle those categories for each of the three default preferences that need to be set.
+	// Perhaps this should simply make many calls to OC_Calendar_Calendar::setCalendarUserPreference()?
+	$stmt = OCP\DB::prepare( 'INSERT INTO `*PREFIX*clndr_user_preferences` (`userid`, `calendarid`, `key`, `value`)
+SELECT * FROM
+(
+SELECT DISTINCT super.`userid`, super.`calendarid`, ?, 1 FROM (SELECT `userid`, `id` AS `calendarid` FROM `*PREFIX*clndr_calendars` UNION SELECT `share_with` AS `userid`, CAST(`item_source` AS integer) AS `calendarid` FROM `*PREFIX*share` WHERE `item_type`=? AND `share_type`=? UNION SELECT gu.`uid` AS `userid`, CAST(s.`item_source` AS integer) AS `calendarid` FROM `*PREFIX*share` s JOIN `*PREFIX*group_user` gu ON gu.`gid`=s.`share_with` WHERE s.`item_type`=? AND s.`share_type`=?) super JOIN `*PREFIX*clndr_calendars` cal ON cal.`id`=super.`calendarid`
+UNION
+SELECT DISTINCT super.`userid`, super.`calendarid`, ?, cal.`displayname` FROM (SELECT `userid`, `id` AS `calendarid` FROM `*PREFIX*clndr_calendars` UNION SELECT `share_with` AS `userid`, CAST(`item_source` AS integer) AS `calendarid` FROM `*PREFIX*share` WHERE `item_type`=? AND `share_type`=? UNION SELECT gu.`uid` AS `userid`, CAST(s.`item_source` AS integer) AS `calendarid` FROM `*PREFIX*share` s JOIN `*PREFIX*group_user` gu ON gu.`gid`=s.`share_with` WHERE s.`item_type`=? AND s.`share_type`=?) super JOIN `*PREFIX*clndr_calendars` cal ON cal.`id`=super.`calendarid`
+UNION
+SELECT DISTINCT super.`userid`, super.`calendarid`, ?, cal.`calendarcolor` FROM (SELECT `userid`, `id` AS `calendarid` FROM `*PREFIX*clndr_calendars` UNION SELECT `share_with` AS `userid`, CAST(`item_source` AS integer) AS `calendarid` FROM `*PREFIX*share` WHERE `item_type`=? AND `share_type`=? UNION SELECT gu.`uid` AS `userid`, CAST(s.`item_source` AS integer) AS `calendarid` FROM `*PREFIX*share` s JOIN `*PREFIX*group_user` gu ON gu.`gid`=s.`share_with` WHERE s.`item_type`=? AND s.`share_type`=?) super JOIN `*PREFIX*clndr_calendars` cal ON cal.`id`=super.`calendarid`
+)' );
+	$stmt->execute(array('active', 'calendar', \OCP\Share::SHARE_TYPE_USER, 'calendar', \OCP\Share::SHARE_TYPE_GROUP, 'active', 'displayname', \OCP\Share::SHARE_TYPE_USER, 'calendar', \OCP\Share::SHARE_TYPE_GROUP, 'calendarcolor', 'calendar', \OCP\Share::SHARE_TYPE_USER, 'calendar', \OCP\Share::SHARE_TYPE_GROUP));
+}

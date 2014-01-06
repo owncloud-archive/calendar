@@ -1,7 +1,5 @@
 <td width="20px">
-  <?php if($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
   <input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
-  <?php } ?>
 </td>
 <td id="<?php p(OCP\USER::getUser()) ?>_<?php p($_['calendar']['id']) ?>">
   <label for="active_<?php p($_['calendar']['id']) ?>"><?php p($_['calendar']['displayname']) ?></label>
@@ -27,7 +25,7 @@ if($_['calendar']['userid'] == OCP\USER::getUser()){
   <a href="<?php print_unescaped(OCP\Util::linkTo('calendar', 'export.php') . '?calid=' . $_['calendar']['id']) ?>" title="<?php p($l->t('Download')) ?>" class="action"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/download.svg')) ?>"></a>
 </td>
 <td width="20px">
-  <?php if($_['calendar']['permissions'] & OCP\PERMISSION_UPDATE) { ?>
+  <?php if($_['calendar']['permissions'] & OCP\PERMISSION_READ) { ?>
   <a href="#" id="chooseCalendar-edit" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Edit')) ?>" class="action"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/rename.svg')) ?>"></a>
   <?php } ?>
 </td>
