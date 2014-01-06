@@ -18,6 +18,11 @@ OC::$CLASSPATH['OC_Share_Backend_Event'] = 'calendar/lib/share/event.php';
 //General Hooks
 OCP\Util::connectHook('OC_User', 'post_createUser', 'OC_Calendar_Hooks', 'createUser');
 OCP\Util::connectHook('OC_User', 'post_deleteUser', 'OC_Calendar_Hooks', 'deleteUser');
+OCP\Util::connectHook('OCP\Share', 'post_shared', 'OC_Calendar_Hooks', 'createShare');
+OCP\Util::connectHook('OCP\Share', 'post_unshare', 'OC_Calendar_Hooks', 'postDeleteShare');
+OCP\Util::connectHook('OC_User', 'post_addToGroup', 'OC_Calendar_Hooks', 'addToGroup');
+OCP\Util::connectHook('OC_User', 'post_removeFromGroup', 'OC_Calendar_Hooks', 'postRemoveFromGroup');
+OCP\Util::connectHook('OC_User', 'post_deleteGroup', 'OC_Calendar_Hooks', 'postDeleteGroup');
 //Repeating Events Hooks
 OCP\Util::connectHook('OC_Calendar', 'addEvent', 'OC_Calendar_Repeat', 'generate');
 OCP\Util::connectHook('OC_Calendar', 'editEvent', 'OC_Calendar_Repeat', 'update');

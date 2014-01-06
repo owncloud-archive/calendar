@@ -12,7 +12,7 @@ OCP\JSON::checkAppEnabled('calendar');
 OCP\JSON::callCheck();
 
 $calendarid = $_POST['calendarid'];
-$calendar = OC_Calendar_App::getCalendar($calendarid, true);
+$calendar = OC_Calendar_App::getCalendar($calendarid, true, true);
 if(!$calendar) {
 	OCP\JSON::error(array('message'=>'permission denied'));
 	exit;
@@ -25,7 +25,8 @@ try {
 	exit;
 }
 
-$calendar = OC_Calendar_App::getCalendar($calendarid);
+// We can skip security here, because we just checked it above.
+$calendar = OC_Calendar_App::getCalendar($calendarid, false);
 OCP\JSON::success(array(
 	'active' => $calendar['active'],
 	'eventSource' => OC_Calendar_Calendar::getEventSourceInfo($calendar),

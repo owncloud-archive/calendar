@@ -15,7 +15,6 @@
  *     userid VARCHAR(255),
  *     displayname VARCHAR(100),
  *     uri VARCHAR(100),
- *     active INTEGER UNSIGNED NOT NULL DEFAULT '0',
  *     ctag INTEGER UNSIGNED NOT NULL DEFAULT '0',
  *     calendarorder INTEGER UNSIGNED NOT NULL DEFAULT '0',
  *     calendarcolor VARCHAR(10),
@@ -36,14 +35,8 @@ class OC_Calendar_Calendar{
 	 * @return array
 	 */
 	public static function allCalendars($uid, $active=false) {
-		$values = array($uid);
-		$active_where = '';
-		if (!is_null($active) && $active) {
-			$active_where = ' AND `active` = ?';
-			$values[] = (int)$active;
-		}
-		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_calendars` WHERE `userid` = ?' . $active_where );
-		$result = $stmt->execute($values);
+		$stmt = OCP\DB::prepare( 'SELECT `id`, `userid`, `displayname`, `uri`, `ctag`, `calendarorder`, `calendarcolor`, `timezone`, `components`, 1 AS active, `displayname` AS default_displayname FROM `*PREFIX*clndr_calendars` WHERE `userid` = ?' );
+		$result = $stmt->execute(array($uid));
 
 		$calendars = array();
 		$owned_calendar_ids = array();
@@ -52,8 +45,23 @@ class OC_Calendar_Calendar{
 				| OCP\PERMISSION_READ | OCP\PERMISSION_UPDATE
 				| OCP\PERMISSION_DELETE | OCP\PERMISSION_SHARE;
 			$row['description'] = '';
-			$calendars[] = $row;
+			$calendars[$row['id']] = $row;
 			$owned_calendar_ids[] = $row['id'];
+		}
+
+		// Include calendar-user preferences (May override default
+		// values retrieved above).
+		// Note, we only need to do this for the calendars owned by the
+		// user, as the shared calendars retrieved below will have their
+		// preferences loaded in OC_Calendar_Calendar::find().
+		$stmt = OCP\DB::prepare( 'SELECT `calendarid`, `key`, `value` FROM `*PREFIX*clndr_user_preferences` WHERE `userid` = ?' );
+		$result = $stmt->execute(array($uid));
+		while( $pref_row = $result->fetchRow()) {
+			$calendarid = (int)$pref_row['calendarid'];
+			// Only set the preference if the calendar is in the list of calendars.
+			if (array_key_exists($calendarid, $calendars)) {
+				$calendars[$calendarid][$pref_row['key']] = $pref_row['value'];
+			}
 		}
 
 		$shared_calendars = OCP\Share::getItemsSharedWith('calendar', OC_Share_Backend_Calendar::FORMAT_CALENDAR);
@@ -65,6 +73,15 @@ class OC_Calendar_Calendar{
 		}
 
 		$calendars = array_merge($calendars, $shared_calendars);
+
+		foreach($calendars as $key => $calendar) {
+		    // Make sure the active property is boolean (as it may have come from a clob preference).
+		    $calendars[$key]['active'] = ($calendar['active'] == 1) ? true : false;
+		    // Remove inactive calendars if we are restricting to active calendars only.
+		    if (!is_null($active) && $active && $calendars[$key]['active'] !== true) {
+		        unset($calendars[$key]);
+		    }
+		}
 
 		return $calendars;
 	}
@@ -82,23 +99,39 @@ class OC_Calendar_Calendar{
 	/**
 	 * @brief Gets the data of one calendar
 	 * @param integer $id
+	 * @param integer $uid
 	 * @return associative array
 	 */
-	public static function find($id) {
-		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_calendars` WHERE `id` = ?' );
+	public static function find($id, $uid = false) {
+		if ($uid == false) {
+			$uid = OCP\USER::getUser();
+		}
+		$stmt = OCP\DB::prepare( 'SELECT `id`, `userid`, `displayname`, `uri`, `ctag`, `calendarorder`, `calendarcolor`, `timezone`, `components`, 1 AS active, `displayname` AS default_displayname FROM `*PREFIX*clndr_calendars` WHERE `id` = ?' );
 		$result = $stmt->execute(array($id));
 
 		$row = $result->fetchRow();
-		if($row['userid'] != OCP\USER::getUser() && !OC_Group::inGroup(OCP\User::getUser(), 'admin')) {
+
+		// Include current user's permissions.
+		if($row['userid'] != OCP\USER::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
-			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_READ)) {
-				return $row; // I have to return the row so e.g. OC_Calendar_Object::getowner() works.
+			if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ)) {
+				$row['permissions'] = $sharedCalendar['permissions'];
 			}
-			$row['permissions'] = $sharedCalendar['permissions'];
 		} else {
 			$row['permissions'] = OCP\PERMISSION_ALL;
 		}
-		return $row;
+
+		// Include calendar-user preferences (May override default values retrieved above).
+		$stmt = OCP\DB::prepare( 'SELECT `key`, `value` FROM `*PREFIX*clndr_user_preferences` WHERE `userid` = ? AND `calendarid` = ?' );
+		$result = $stmt->execute(array($uid,$id));
+		while( $pref_row = $result->fetchRow()) {
+			$row[$pref_row['key']] = $pref_row['value'];
+		}
+
+		// Make sure the active property is boolean (as it may have come from a clob preference).
+		$row['active'] = ($row['active'] == 1) ? true : false;
+        
+		return $row; // Even if the user has no permissions, the row must be returned so e.g. OC_Calendar_Object::getowner() works.
 	}
 
 	/**
@@ -124,9 +157,109 @@ class OC_Calendar_Calendar{
 		$result = $stmt->execute(array($userid,$name,$uri,1,$order,$color,$timezone,$components));
 
 		$insertid = OCP\DB::insertid('*PREFIX*clndr_calendars');
+		self::setCalendarDefaultUserPreferences($userid, $insertid);
 		OCP\Util::emitHook('OC_Calendar', 'addCalendar', $insertid);
 
 		return $insertid;
+	}
+
+	/**
+	 * @brief Gets the display names of the calendars a user has preferences saved for.
+	 * @param string $userid
+	 * @return associative array of calendar ids and calendar names.
+	 */
+	public static function getCalendarDisplayNames($userid) {
+		$calendars = self::allCalendars($userid);
+		$calendar_names = array();
+		foreach ($calendars as $calendar) {
+			$calendar_names[$calendar['id']] = $calendar['displayname'];
+		}
+		return $calendar_names;
+	}
+
+	/**
+	 * @brief Returns a version of the given display name
+	 * that is unique for this user's calendar display names.
+	 * @param string $userid
+	 * @param string $display_name
+	 * @param string $calendar_userid
+	 * @return array of calendar names.
+	 */
+	public static function getUniqueDisplayName($userid, $display_name, $calendar_userid = false) {
+		if ($calendar_userid && $calendar_userid != $userid) {
+			$display_name = $display_name . ' (' . $calendar_userid . ')';
+		}
+		$existing_calendar_names = self::getCalendarDisplayNames($userid);
+		$suffix = 0;
+		$temp_name = $display_name;
+		while (in_array($temp_name, $existing_calendar_names)) {
+			$suffix++;
+			$temp_name = $display_name . ' - ' . $suffix;
+		}
+		return $temp_name;
+	}
+
+	/**
+	 * @brief Sets the default calendar-user preferences for a calendar and user.
+	 * @param string $userid
+	 * @param string $calendarid
+	 */
+	public static function setCalendarDefaultUserPreferences($userid, $calendarid) {
+		$calendar = self::find($calendarid,$userid);
+
+		// Check that user can share the calendar, and therefore set default preferences for other users.
+		if (!(isset($calendar['permissions'])) || !($calendar['permissions'] & OCP\PERMISSION_SHARE)) {
+			throw new Exception(
+				OC_Calendar_App::$l10n->t(
+					'You do not have the permissions to update this calendar preference.'
+				)
+			);
+		}
+
+		// Get a unique displayname if the user doesn't already own the calendar.
+		$displayname = ($calendar['userid'] == $userid) ? $calendar['displayname'] : self::getUniqueDisplayName($userid, $calendar['displayname'], $calendar['userid']);        
+		$default_preferences = array(
+			'active' => 1,
+			'displayname' => $displayname,
+			'calendarcolor' => $calendar['calendarcolor'],
+		);
+
+		foreach ($default_preferences as $key => $value) {
+			$stmt = OCP\DB::prepare( 'INSERT INTO `*PREFIX*clndr_user_preferences` (`userid`, `calendarid`, `key`, `value`) SELECT ?,?,?,? WHERE NOT EXISTS (SELECT 1 FROM `*PREFIX*clndr_user_preferences` WHERE `userid` = ? AND `calendarid` = ? AND `key` = ?)' );
+			$stmt->execute(array($userid,$calendarid,$key,$value,$userid,$calendarid,$key));
+		}
+	}
+
+	/**
+	 * @brief Sets a specific calendar-user preference.
+	 * @param string $calendarid
+	 * @param string $key
+	 * @param string $value
+	 * @return boolean
+	 */
+	public static function setCalendarUserPreference($calendarid, $key, $value) {
+		$userid = OCP\User::getUser();
+		$calendar = self::find($calendarid,$userid);
+
+		// Check permissions.
+		if (!(isset($calendar['permissions'])) || !($calendar['permissions'] & OCP\PERMISSION_READ)) {
+			throw new Exception(
+				OC_Calendar_App::$l10n->t(
+					'You do not have the permissions to update this calendar preference.'
+				)
+			);
+		}
+
+		$stmt = OCP\DB::prepare( 'UPDATE `*PREFIX*clndr_user_preferences` SET `value` = ? WHERE `userid` = ? AND `calendarid` = ? AND `key` = ?' );
+		$rowsUpdated = $stmt->execute(array($value,$userid,$calendarid,$key));
+
+		if ($rowsUpdated <= 0) {
+			// If no rows were updated, insert a new row.
+			$stmt = OCP\DB::prepare( 'INSERT INTO `*PREFIX*clndr_user_preferences` (`userid`, `calendarid`, `key`, `value`) VALUES(?,?,?,?)' );
+			$stmt->execute(array($userid,$calendarid,$key,$value));
+		}
+
+		return true;
 	}
 
 	/**
@@ -162,6 +295,7 @@ class OC_Calendar_Calendar{
 		$result = $stmt->execute(array($userid,$name,$uri,1,$order,$color,$timezone,$components));
 
 		$insertid = OCP\DB::insertid('*PREFIX*clndr_calendars');
+		self::setCalendarDefaultUserPreferences($userid, $insertid);
 		OCP\Util::emitHook('OC_Calendar', 'addCalendar', $insertid);
 
 		return $insertid;
@@ -180,9 +314,12 @@ class OC_Calendar_Calendar{
 	 * Values not null will be set
 	 */
 	public static function editCalendar($id,$name=null,$components=null,$timezone=null,$order=null,$color=null) {
+		// Update this user's calendar preferences.
+		self::editCalendarPreferences($id,$name,$color);
+
 		// Need these ones for checking uri
 		$calendar = self::find($id);
-		if ($calendar['userid'] != OCP\User::getUser() && !OC_Group::inGroup(OCP\User::getUser(), 'admin')) {
+		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
 				throw new Exception(
@@ -200,11 +337,36 @@ class OC_Calendar_Calendar{
 		if(is_null($order)) $order = $calendar['calendarorder'];
 		if(is_null($color)) $color = $calendar['calendarcolor'];
 
-		$stmt = OCP\DB::prepare( 'UPDATE `*PREFIX*clndr_calendars` SET `displayname`=?,`calendarorder`=?,`calendarcolor`=?,`timezone`=?,`components`=?,`ctag`=`ctag`+1 WHERE `id`=?' );
-		$result = $stmt->execute(array($name,$order,$color,$timezone,$components,$id));
+		if ($calendar['userid'] == OCP\User::getUser()) {
+			// This user is the owner of the calendar, so update global calendar settings and default values for calendar preferences.
+			$stmt = OCP\DB::prepare( 'UPDATE `*PREFIX*clndr_calendars` SET `displayname`=?,`calendarorder`=?,`calendarcolor`=?,`timezone`=?,`components`=?,`ctag`=`ctag`+1 WHERE `id`=?' );
+			$result = $stmt->execute(array($name,$order,$color,$timezone,$components,$id));
+		}
+		else {
+			// This user is not the owner of the calendar, so only update global calendar settings.
+			$stmt = OCP\DB::prepare( 'UPDATE `*PREFIX*clndr_calendars` SET `calendarorder`=?,`timezone`=?,`components`=?,`ctag`=`ctag`+1 WHERE `id`=?' );
+			$result = $stmt->execute(array($order,$timezone,$components,$id));
+		}
 
 		OCP\Util::emitHook('OC_Calendar', 'editCalendar', $id);
 		return true;
+	}
+
+	/**
+	 * @brief Edits a user's preferences for a calendar
+	 * @param integer $id
+	 * @param string $name Default: null
+	 * @param string $color Default: null, format: '#RRGGBB(AA)'
+	 * @return boolean
+	 *
+	 * Values not null will be set
+	 */
+	public static function editCalendarPreferences($id,$name=null,$color=null) {
+		// Keep old stuff
+		if(is_null($name)) $name = $calendar['displayname'];
+		if(is_null($color)) $color = $calendar['calendarcolor'];
+		self::setCalendarUserPreference($id,'displayname',$name);
+		self::setCalendarUserPreference($id,'calendarcolor',$color);
 	}
 
 	/**
@@ -214,21 +376,7 @@ class OC_Calendar_Calendar{
 	 * @return boolean
 	 */
 	public static function setCalendarActive($id,$active) {
-		$calendar = self::find($id);
-		if ($calendar['userid'] != OCP\User::getUser()) {
-			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
-			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
-				throw new Exception(
-					OC_Calendar_App::$l10n->t(
-						'You do not have the permissions to update this calendar.'
-					)
-				);
-			}
-		}
-		$stmt = OCP\DB::prepare( 'UPDATE `*PREFIX*clndr_calendars` SET `active` = ? WHERE `id` = ?' );
-		$stmt->execute(array((int)$active, $id));
-
-		return true;
+		return self::setCalendarUserPreference($id,'active',(int)$active);
 	}
 
 	/**
@@ -250,7 +398,7 @@ class OC_Calendar_Calendar{
 	 */
 	public static function deleteCalendar($id) {
 		$calendar = self::find($id);
-		if ($calendar['userid'] != OCP\User::getUser() && !OC_Group::inGroup(OCP\User::getUser(), 'admin')) {
+		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_DELETE)) {
 				throw new Exception(
@@ -264,6 +412,9 @@ class OC_Calendar_Calendar{
 		$stmt->execute(array($id));
 
 		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ?' );
+		$stmt->execute(array($id));
+
+		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_user_preferences` WHERE `calendarid` = ?' );
 		$stmt->execute(array($id));
 
 		OCP\Share::unshareAll('calendar', $id);
@@ -284,7 +435,7 @@ class OC_Calendar_Calendar{
 	 */
 	public static function mergeCalendar($id1, $id2) {
 		$calendar = self::find($id1);
-		if ($calendar['userid'] != OCP\User::getUser() && !OC_Group::inGroup(OCP\User::getUser(), 'admin')) {
+		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id1);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
 				throw new Exception(
@@ -403,5 +554,29 @@ class OC_Calendar_Calendar{
 	 */
 	public static function getUsersEmails($names) {
 		return \OCP\Config::getUserValue(\OCP\User::getUser(), 'settings', 'email');
+	}
+
+	/**
+	 * @brief Remove unused calendar preferences.
+	 * This method removes calendar preferences for the given users and calendar
+	 * where the calendar is not shared with the user and the user does not own the calendar.
+	 */
+	public static function cleanPreferences($userids, $calendarid) {
+		$toDeletePreferences = array();
+		$calendar = OC_Calendar_Calendar::find($calendarid);
+		foreach ($userids as $userid) {
+			if ($calendar['userid'] != $userid) {
+				$sharedCalendars = OCP\Share::getItemSharedWithUser('calendar', $calendarid, $userid);
+				if (empty($sharedCalendars)) {
+					$toDeletePreferences[] = $userid;
+				}
+			}
+		}
+		if (!empty($toDeletePreferences)) {
+			$placeholders = implode(',', array_fill(0, count($toDeletePreferences), '?'));
+			$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_user_preferences` WHERE `userid` IN (' . $placeholders . ') AND `calendarid`=?' );
+			$params = array_merge($toDeletePreferences, array($calendarid));
+			$result = $stmt->execute($params);
+		}
 	}
 }

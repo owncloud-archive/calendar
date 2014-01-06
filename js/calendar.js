@@ -611,6 +611,9 @@ Calendar={
 							}
 						}else{
 							$("#displayname_"+calendarid).css('background-color', '#FF2626');
+							if ($("#duplicate-calendar-name-"+calendarid).length == 0) {
+								$("#displayname_"+calendarid).after('<p id="duplicate-calendar-name-'+calendarid+'">Name not available.</p>');
+							}
 							$("#displayname_"+calendarid).focus(function(){
 								$("#displayname_"+calendarid).css('background-color', '#F8F8F8');
 							});
