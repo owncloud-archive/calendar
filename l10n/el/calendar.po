@@ -11,13 +11,13 @@
 # Nisok Kosin <nikos.efthimiou@gmail.com>, 2012
 # Petros Kyladitis <petros.kyladitis@gmail.com>, 2011-2012
 # xneo1 <vagelis@cyberdest.com>, 2013
-# vkehayas <vkehayas@gmail.com>, 2013
+# vkehayas <vkehayas@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-01-07 01:47-0500\n"
-"PO-Revision-Date: 2014-01-06 20:50+0000\n"
+"POT-Creation-Date: 2014-01-08 01:46-0500\n"
+"PO-Revision-Date: 2014-01-07 15:21+0000\n"
 "Last-Translator: vkehayas <vkehayas@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/owncloud/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -724,7 +724,7 @@ msgstr "περιστατικά"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Ορατότητα σε ανθρώπους με τους οποίους διαμοιραστήκατε"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"

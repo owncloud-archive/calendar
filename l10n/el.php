@@ -172,6 +172,7 @@
 "Interval" => "Διάστημα",
 "End" => "Τέλος",
 "occurrences" => "περιστατικά",
+"Visibility to people shared with" => "Ορατότητα σε ανθρώπους με τους οποίους διαμοιραστήκατε",
 "create a new calendar" => "δημιουργία νέου ημερολογίου",
 "Import a calendar file" => "Εισαγωγή αρχείου ημερολογίου",
 "Please choose a calendar" => "Παρακαλώ επέλεξε ένα ημερολόγιο",
