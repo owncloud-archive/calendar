@@ -97,5 +97,6 @@
 "Category" => "Kategorija",
 "From" => "Od",
 "To" => "Do",
+"General" => "Opšte",
 "Timezone" => "Vremenska zona"
 );
