@@ -64,7 +64,7 @@ interface CalendarInterface {
 	 * This method returns an array of \OCA\Calendar\Db\Object objects.
 	 * This method is mandatory!
 	 */
-	public function findCalendars($userId);
+	public function findCalendars($userId, $limit, $offset);
 
 	/**
 	 * @brief returns information about the object (event/journal/todo) with the uid $objectURI in the calendar $calendarURI of the user $userId 
@@ -90,5 +90,5 @@ interface CalendarInterface {
 	 * This method returns an array of \OCA\Calendar\Db\Object objects.
 	 * This method is mandatory!
 	 */
-	public function findObjects($calendarURI, $userId);
+	public function findObjects($calendarURI, $userId, $limit, $offset);
 }

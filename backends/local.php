@@ -6,33 +6,6 @@
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
- *
- * database structur of database backend
- *
- * CREATE TABLE clndr_calendars (
- *     id INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
- *     userid VARCHAR(255),
- *     displayname VARCHAR(100),
- *     uri VARCHAR(100),
- *     ctag INTEGER UNSIGNED NOT NULL DEFAULT '0',
- *     color VARCHAR(10),
- *     timezone TEXT,
- *     components VARCHAR(20)
- * );
- *
- * CREATE TABLE clndr_objects (
- *     id INTEGER UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
- *     calendarid INTEGER UNSIGNED NOT NULL,
- *     objecttype VARCHAR(40) NOT NULL,
- *     startdate DATETIME,
- *     enddate DATETIME,
- *     repeating INT(1),
- *     summary VARCHAR(255),
- *     calendardata TEXT,
- *     uri VARCHAR(100),
- *     lastmodified INT(11)
- * );
- *
  */
 namespace OCA\Calendar\Backend;
 
@@ -43,8 +16,8 @@ use \OCA\Calendar\AppFramework\Db\MultipleObjectsReturnedException;
 
 use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\Object;
-use \OCA\Calendar\Db\ObjectType;
 
+use \OCA\Calendar\Db\ObjectType;
 use \OCA\Calendar\Db\Permissions;
 
 class Local extends Backend {
@@ -58,45 +31,46 @@ class Local extends Backend {
 		parent::__construct($api, 'local');
 	}
 
-
-	/**
-	 * @brief returns whether or not calendars should be cached
-	 * @param string $userId
-	 * @returns boolean
-	 * 
-	 * This method returns a boolen. true if calendars should be cached, false if calendars shouldn't be cached
-	 * This method is mandatory!
-	 */
 	public function cacheCalendars($userId) {
 		return false;
 	}
 
-	/**
-	 * @brief returns whether or not a calendar should be cached
-	 * @param string $calendarURI
-	 * @param string $userId
-	 * @returns boolean
-	 * @throws DoesNotExistException if uri does not exist
-	 * 
-	 * This method returns a boolen. true if the calendar should be cached, false if the calendar shouldn't be cached
-	 * This method is mandatory!
-	 */
 	public function cacheObjects($calendarURI, $userId) {
-		$this->findCalendar($calendarURI, $userId);
 		return false;
 	}
 
-	/**
-	 * @brief returns information about calendar $calendarURI of the user $userId
-	 * @param string $calendarURI
-	 * @param string $userId
-	 * @returns array with \OCA\Calendar\Db\Calendar object
-	 * @throws DoesNotExistException if uri does not exist
-	 * @throws MultipleObjectsReturnedException if multiple calendars exist
-	 * 
-	 * This method returns an array of \OCA\Calendar\Db\Calendar object.
-	 * This method is mandatory!
-	 */
+	public function canStoreColor() {
+		return true;
+	}
+
+	public function canStoreComponents() {
+		return true;
+	}
+
+	public function canStoreDisplayname() {
+		return true;
+	}
+
+	public function canStoreEnabled() {
+		return true;
+	}
+
+	public function canStoreOrder() {
+		return true;
+	}
+
+	public function canStoreCustomTimezone() {
+		return true;
+	}
+
+	public function getDisplayName() {
+		return $this->api->getTrans()->t('Database-Backend');
+	}
+
+	public function getDescription() {
+		return $this->api->getTrans()->t('The database-backend stores all calendars and events, journals and todos in the database you used to setup ownCloud.');
+	}
+
 	public function findCalendar($calendarURI, $userId) {
 		$sql = 'SELECT * FROM `'. $this->calTableName . '` WHERE `uri` = ? AND `userid` = ?';
 		$result = $this->api->prepareQuery($sql)->execute(array($calendarURI, $userId));
@@ -107,48 +81,111 @@ class Local extends Backend {
 		}
 		$row2 = $result->fetchRow();
 		//MDB2 returns null, PDO and doctrine false when no row is available
-		if( ! ($row2 === false || $row2 === null )) {
+		if( ! ($row2 === false || $row2 === null ) ) {
 			throw new MultipleObjectsReturnedException('More than one result');
-		} else {
-			$calendar = new Calendar($row);
-			$this->fixCalendarEntity($calendar, $row);
 		}
+
+		$calendar = new Calendar($row);
+		$this->completeCalendarEntity($calendar, $row);
+
 		return $calendar;
 	}
 
-	/**
-	 * @brief returns all calendars of the user $userId
-	 * @param string $userId
-	 * @returns array with \OCA\Calendar\Db\Calendar objects
-	 * 
-	 * This method returns an array of \OCA\Calendar\Db\Object objects.
-	 * This method is mandatory!
-	 */
-	public function findCalendars($userId) {
+	public function findCalendars($userId, $limit, $offset) {
 		$sql = 'SELECT * FROM `' . $this->calTableName . '` WHERE `userid` = ?';
 		$result = $this->api->prepareQuery($sql)->execute(array($userId));
 
 		$entities = array();
 		while($row = $result->fetchRow()){
 			$entity = new Calendar($row);
-			$this->fixCalendarEntity($entity, $row);
+			$this->completeCalendarEntity($entity, $row);
 			array_push($entities, $entity);
 		}
+
 		return $entities;
 	}
 
-	/**
-	 * @brief returns information about the object (event/journal/todo) with the uid $objectURI in the calendar $calendarURI of the user $userId 
-	 * @param string $calendarURI
-	 * @param string $objectURI
-	 * @param string $userid
-	 * @returns \OCA\Calendar\Db\Object object
-	 * @throws DoesNotExistException if uri does not exist
-	 * @throws DoesNotExistException if uid does not exist
-	 *
-	 * This method returns an \OCA\Calendar\Db\Object object.
-	 * This method is mandatory!
-	 */
+	public function createCalendar(Calendar $calendar) {
+		$sql  = 'INSERT INTO `' . $this->calTableName . '` ';
+		$sql .= '(`userid`, `displayname`, `uri`, `active`, `ctag`, `calendarorder`, `calendarcolor`, `timezone`, `components`) ';
+		$sql .= 'VALUES(?,?,?,1,?,?,?,?,?)';
+		$result = $this->api->prepareQuery($sql)->execute(array(
+			$calendar->getUserid(),
+			$calendar->getDisplayName(),
+			$calendar->getUri(),
+			$calendar->getEnabled(),
+			$calendar->getCtag(),
+			$calendar->getOrder(),
+			$calendar->getColor(),
+			$calendar->getTimezone(),
+			$calendar->getComponents(),
+		));
+
+		return $calendar;
+	}
+
+	public function updateCalendar(Calendar $calendar, $calendarId, $userId) {
+		$sql  = 'UPDATE `' . $this->calTableName . '` SET';
+		$sql .= '`userid` = `?`, `displayname` = `?`, `uri` = `?`, `active` = `?`, `ctag` = `?`,';
+		$sql .= '`calendarorder` = `?`, `calendarcolor` = `?`, `timezone` = `?`, `components` = `?`';
+		$sql .= 'WHERE `userid` = `?` AND `uri` = `?`';
+		$result = $this->api->prepareQuery($sql)->execute(array(
+			$calendar->getUserid(),
+			$calendar->getDisplayName(),
+			$calendar->getUri(),
+			$calendar->getEnabled(),
+			$calendar->getCtag(),
+			$calendar->getOrder(),
+			$calendar->getColor(),
+			$calendar->getTimezone(),
+			$calendar->getComponents(),
+			$userId,
+			$calendarId,
+		));
+
+		return $calendar;
+	}
+
+	public function deleteCalendar(Calendar $calendar) {
+		$calendarId = $calendar->getURI();
+		$userId = $calendar->getUserId();
+
+		if($calendarId === null || $userId === null || $calendarId === '' || $userId === '' || $calendarId === false) {
+			throw new BackendException('Can\'t delete Calendar. Calendar object does not contain sufficient information');
+		}
+
+		$sqlObjects  = 'DELETE * FROM `' . $this->objTableName . '`';
+		$sqlObjects .= 'LEFT OUTER JOIN `' . $this->calTableName . '` ON ';
+		$sqlObjects .= '`' . $this->objTableName . '.calendarid`=`' . $this->calTableName . '.id`';
+		$sqlObjects .= 'WHERE `' . $this->calTableName . '.uri` = ? and `' . $this->calTableName . '.userid` = ?';
+		$resultObjs = $this->api->prepareQuery($sqlObjs)->execute(array($calendarId, $userId));
+
+		$sqlCalendar = 'DELETE * FROM `' . $this->calTableName . '` where `uri` = ? AND `userid` = ?';
+		$resultCal = $this->api->prepareQuery($sqlCal)->execute(array($calendarId, $userId));
+
+		return true;
+	}
+	
+	public function mergeCalendar(Calendar $calendar, $calendarId=null, $userId=null) {
+		$newCalendarId = $calendar->getCalendarId();
+		$newUserId = $calendar->getUserId();
+
+		if($calendarId === null || $userId === null || $newCalendarId === null || $newUserId === null) {
+			throw new BackendException('Can\'t delete Calendar. Calendar object does not contain sufficient information');
+		}
+
+		$newCalendarDBId = $this->getCalendarDBId($newCalendarId, $newUserId);
+		$oldCalendarDBId = $this->getCalendarDBId($calendarId, $userId);
+
+		$sqlObjects  = 'UPDATE `' . $this->objTableName . '` SET `calendarid` = `?` WHERE `calendarid` = `?`';
+		$rsltObjects = $this->api->prepareQuery($sqlObjects)->execute(array($newCalendarDBId, $oldCalendarDBId));
+
+		$sqlCalendar  = 'DELETE * FROM `' . $this->calTableName . '` where `uri` = ? AND `userid` = ?';
+		$rsltCalendar = $this->api->prepareQuery($sqlCalendar)->execute(array($calendarId, $userId));
+
+		return true;
+	}
+
 	public function findObject($calendarURI, $objectURI, $userId) {
 		$sql  = 'SELECT `' . $this->objTableName . '`.* FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
 		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id` ';
@@ -159,223 +196,228 @@ class Local extends Backend {
 		if($row === false || $row === null){
 			throw new DoesNotExistException('No matching entry found');
 		}
+
 		$row2 = $result->fetchRow();
 		//MDB2 returns null, PDO and doctrine false when no row is available
 		if( ! ($row2 === false || $row2 === null )) {
 			throw new MultipleObjectsReturnedException('More than one result');
-		} else {
-			$calendar = new Object($row);
-			$calendar->setBackend($this->backend);
 		}
+
 		$entity = new Object($row);
-		$entity->setBackend($this->backend);
-		$entity->setType($row['objecttype']);
-		$entity->setObjectURI($row['uri']);
-		$entity->setCalendarURI($calendarURI);
-		$entity->setCalendarData($row['calendardata']);
+		$this->completeObjectEntity($entity, $row);
 
 		return $entity;
 	}
 
-	/**
-	 * @brief returns all objects in the calendar $calendarURI of the user $userId
-	 * @param string $calendarURI
-	 * @param string $userId
-	 * @returns array with \OCA\Calendar\Db\Object objects
-	 * @throws DoesNotExistException if uri does not exist
-	 * 
-	 * This method returns an array of \OCA\Calendar\Db\Object objects.
-	 * This method is mandatory!
-	 */
-	public function findObjects($calendarURI, $userId) {
+	public function findObjects($calendarId, $userId, $limit, $offset) {
 		$sql  = 'SELECT `' . $this->objTableName . '`.* FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
 		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id` ';
 		$sql .= 'AND `' . $this->calTableName . '`.`uri` = ? AND `' . $this->calTableName . '`.`userid` = ?';
-		$result = $this->api->prepareQuery($sql)->execute(array($calendarURI, $userId));
+		$result = $this->api->prepareQuery($sql)->execute(array($calendarId, $userId));
 
 		$entities = array();
 		while($row = $result->fetchRow()){
 			$entity = new Object($row);
-			$entity->setBackend($this->backend);
-			$entity->setType($row['objecttype']);
-			$entity->setObjectURI($row['uri']);
-			$entity->setCalendarURI($calendarURI);
-			$entity->setCalendarData($row['calendardata']);
+			$this->completeObjectEntity($entity, $row);
 			array_push($entities, $entity);
 		}
+
 		return $entities;
 	}
 
-	/**
-	 * @brief creates a new calendar
-	 * @param \OCA\Calendar\Db\Calendar $calendar
-	 * @returns \OCA\Calendar\Db\Calendar $calendar - may differ from $calendar given as param!
-	 * @throws BackendLayerException if uri already exists
-	 * 
-	 * This method returns an \OCA\Calendar\Db\Calendar object.
-	 * The returned object may differ from the given one!
-	 * This method is optional.
-	 */
-	public function createCalendar(Calendar $calendar) {
-		$sql  = 'INSERT INTO `' . $this->calTableName . '` ';
-		$sql .= '(`userid`, `displayname`, `uri`, `active`, `ctag`, `calendarorder`, `calendarcolor`, `timezone`, `components`) ';
-		$sql .= 'VALUES(?,?,?,1,?,?,?,?,?)';
-		$result = $this->api->prepareQuery($sql)->execute(array());
-		$result = $stmt->execute( array(
-			$calendar->getUserid(),
-			$calendar->getDisplayName(),
-			$calendar->getUri(),
-			$calendar->getCtag(),
-			$calendar->getOrder(),
-			$calendar->getColor(),
-			$calendar->getTimezone(),
-			$calendar->getComponents(),
-		));
+	public function findObjectsInPeriod($calendarId, $start, $end, $userId, $limit, $offset){
+		$sql  = 'SELECT `' . $this->objTableName . '`.* FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
+		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id`';
+		$sql .= ' AND `' . $this->calTableName . '`.`uri` = ? AND `' . $this->calTableName . '`.`userid` = ?';
+        $sql .= ' AND ((`' . $this->objTableName . '.startdate` >= ? AND `' . $this->objTableName . '.enddate` <= ? AND `' . $this->objTableName . '.repeating` = 0)';
+        $sql .= ' OR (`' . $this->objTableName . '.enddate` >= ? AND `' . $this->objTableName . '.startdate` <= ? AND `' . $this->objTableName . '.repeating` = 0)';
+        $sql .= ' OR (`' . $this->objTableName . '.startdate` <= ? AND `' . $this->objTableName . '.repeating` = 1))';
 
-		$insertid = OCP\DB::insertid('*PREFIX*clndr_calendars');
-		OCP\Util::emitHook('OCA\Calendar\Backend\Local', 'addCalendar', $insertid);
-
-		return $calendar;
-	}
-	
-	/*
-	 * @brief updates a calendar
-	 * @param string $calendarURI - old uri
-	 * @param \OCA\Calendar\Db\Calendar $calendar
-	 * @returns \OCA\Calendar\Db\Calendar $calendar - may differ from $calendar given as param!
-	 * 
-	 * This method returns an \OCA\Calendar\Db\Calendar object.
-	 * The returned object may differ from the given one!
-	 * This method is optional.
-	 */
-	public function updateCalendar(Calendar $calendar) {
-
-	}
-	
-	/*
-	 * @brief deletes a calendar and all of it's objects
-	 * @param \OCA\Calendar\Db\Calendar $calendar
-	 * 
-	 * The returned object may differ from the given one!
-	 * This method is optional.
-	 */
-	public function deleteCalendar(Calendar $calendar) {
-		$calendarURI = $calendar->getURI();
-		$userId = $calendar->getUserId();
-		//delete all objects
-		$sqlObjs = 'DELETE * FROM `' . $this->objTableName . '` LEFT OUTER JOIN `' . $this->calTableName . '` ON `' . $this->objTableName . '.calendarid`=`' . $this->calTableName . '.id` WHERE `uri` = ? and `userid` = ?';
-		$resultObjs = $this->api->prepareQuery($sqlObjs)->execute(array($calendarURI, $userId));
-		//delete the calendar itself
-		$sqlCal = 'DELETE * FROM `' . $this->calTableName . '` where `uri` = ? AND `userid` = ?';
-		$resultCal = $this->api->prepareQuery($sqlCal)->execute(array($calendarURI, $userId));
-	}
-	
-	/**
-	* @brief check if a calendar exists
-	* @param $calid calendarid
-	* @returns boolean if a calendar exists or not
-	*
-	* Get all calendar informations the backend provides.
-	*/
-	public function mergeCalendar() {
-		return false;
-	}
-	
-	/**
-	* @brief check if a calendar exists
-	* @param $calid calendarid
-	* @returns boolean if a calendar exists or not
-	*
-	* Get all calendar informations the backend provides.
-	*/
-	public function createObject(Object $object) {
-
-	}
-	
-	/**
-	* @brief check if a calendar exists
-	* @param $calid calendarid
-	* @returns boolean if a calendar exists or not
-	*
-	* Get all calendar informations the backend provides.
-	*/
-	public function updateObject() {
-		return false;
-	}
-	
-	/**
-	* @brief check if a calendar exists
-	* @param $calid calendarid
-	* @returns boolean if a calendar exists or not
-	*
-	* Get all calendar informations the backend provides.
-	*/
-	public function deleteObject(Object $object){
-		
-	}
-	
-	/**
-	* @brief check if a calendar exists
-	* @param $calid calendarid
-	* @param $start DateTime Object of start
-	* @param $end DateTime Object of end
-	* @returns boolean if a calendar exists or not
-	*
-	* Get all calendar informations the backend provides.
-	*/
-	public function findObjectsInPeriod($calendarURI, $start, $end, $userId){
-		$calendarid = self::getCalendarIdByURI($calendarURI);
-		$sql =  'SELECT * FROM `*PREFIX*calendar_objects` WHERE `calendarid` = ?';
-		$sql .= 'AND ((`startdate` >= ? AND `startdate` <= ?  AND `repeating` = 0)';
-		$sql .= ' OR (`enddate` >= ? AND `enddate` <= ? AND `repeating` = 0)';
-		$sql .= ' OR (`repeating` = 1))';
-		$stmt = \OCP\DB::prepare($sql);
-		$start = self::getUTCforMDB($start);
-		$end = self::getUTCforMDB($end);
-		$result = $stmt->execute(array($calendarid,
+		$start	= $this->getUTCforMDB($start);
+		$end	= $this->getUTCforMDB($end);
+		$result	= $stmt->execute(array(
+					$calendarid, $userId,
 					$start, $end,
 					$start, $end,
 					$end));
-		$calendarobjects = array();
-		while( $row = $result->fetchRow()){
-			$calendarobjects[] = $row;
-		}
-		return $calendarobjects;
-	}
-
-	public function findObjectsByType($calendarURI, $type, $userId) {
-		$sql  = 'SELECT `' . $this->objTableName . '`.* FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
-		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id` ';
-		$sql .= 'AND `' . $this->calTableName . '`.`uri` = ? and `' . $this->calTableName . '`.`userid` = ? AND `' . $this->objTableName . '`.`objecttype` = ?';
-		$result = $this->api->prepareQuery($sql)->execute(array($calendarURI, $userId, $type));
 
 		$entities = array();
 		while($row = $result->fetchRow()){
 			$entity = new Object($row);
-			$entity->setBackend($this->backend);
-			$entity->setType($row['objecttype']);
-			$entity->setObjectURI($row['uri']);
-			$entity->setCalendarURI($calendarURI);
-			$entity->setCalendarData($row['calendardata']);
+			$this->completeObjectEntity($entity, $row);
+			array_push($entities, $entity);
+		}
+
+		return $entities;
+	}
+
+	public function findObjectsByType($calendarId, $type, $userId, $limit, $offset) {
+		$sql  = 'SELECT `' . $this->objTableName . '`.* FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
+		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id` ';
+		$sql .= 'AND `' . $this->calTableName . '`.`uri` = ? and `' . $this->calTableName . '`.`userid` = ? AND `' . $this->objTableName . '`.`objecttype` = ?';
+		$result = $this->api->prepareQuery($sql)->execute(array($calendarId, $userId, $type));
+
+		$entities = array();
+		while($row = $result->fetchRow()){
+			$entity = new Object($row);
+			$this->completeObjectEntity($entity, $row);
 			array_push($entities, $entity);
 		}
 		return $entities;
 	}
-	
-	public function findObjectsByTypeInPeriod($calendarURI, $type, $start, $end, $userId) {
-		
+
+	public function findObjectsByTypeInPeriod($calendarId, $type, $start, $end, $userId, $limit, $offset) {
+		$sql  = 'SELECT `' . $this->objTableName . '`.* FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
+		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id`';
+		$sql .= ' AND `' . $this->calTableName . '`.`uri` = ? AND `' . $this->calTableName . '`.`userid` = ?';
+        $sql .= ' AND ((`' . $this->objTableName . '.startdate` >= ? AND `' . $this->objTableName . '.enddate` <= ? AND `' . $this->objTableName . '.repeating` = 0)';
+        $sql .= ' OR (`' . $this->objTableName . '.enddate` >= ? AND `' . $this->objTableName . '.startdate` <= ? AND `' . $this->objTableName . '.repeating` = 0)';
+        $sql .= ' OR (`' . $this->objTableName . '.startdate` <= ? AND `' . $this->objTableName . '.repeating` = 1))';
+        $sql .= ' AND `' . $this->objTableName . '.objecttype` = `?`';
+
+		$start	= $this->getUTCforMDB($start);
+		$end	= $this->getUTCforMDB($end);
+		$result	= $stmt->execute(array(
+					$calendarid, $userId,
+					$start, $end,
+					$start, $end,
+					$end,
+					$type));
+
+		$entities = array();
+		while($row = $result->fetchRow()){
+			$entity = new Object($row);
+			$this->completeObjectEntity($entity, $row);
+			array_push($entities, $entity);
+		}
+
+		return $entities;
 	}
-	
-	private function getUTCforMDB($datetime){
+
+	public function createObject(Object $object, $userId) {
+		$calendarId		= $object->getCalendarid();
+		$userId			= $object->getUserId()
+		$calendarDBId	= $this->getCalendarDBId($calendarId, $userId);
+
+		$sql  = 'INSERT INTO `' . $this->objTableName . '` ';
+		$sql .= '(`calendarid`,`objecttype`,`startdate`,`enddate`,`repeating`,`summary`,`calendardata`,`uri`,`lastmodified`) ';
+		$sql .= 'VALUES(?,?,?,?,?,?,?,?,?)';
+		$result = $this->api->prepareQuery($sql)->execute(array(
+			$calendarDBId,
+			$object->getType(),
+			$object->getStartDate(),
+			$object->getEndDate(),
+			$object->getRepeating(),
+			$object->getSummary(),
+			$object->getCalendarData(),
+			$object->getObjectURI(),
+			$object->gerLastModified(),
+		));
+
+		return $object;
+	}
+
+	public function updateObject(Object $object, $calendarId, $uri, $userId) {
+		$calendarId		= $object->getCalendarid();
+		$userId			= $object->getUserId()
+		$calendarDBId	= $this->getCalendarDBId($calendarId, $userId);
+
+		$sql  = 'INSERT INTO `' . $this->objTableName . '` ';
+		$sql .= '(`calendarid`,`objecttype`,`startdate`,`enddate`,`repeating`,`summary`,`calendardata`,`uri`,`lastmodified`) ';
+		$sql .= 'VALUES(?,?,?,?,?,?,?,?,?)';
+		$result = $this->api->prepareQuery($sql)->execute(array(
+			$calendarDBId,
+			$object->getType(),
+			$object->getStartDate(),
+			$object->getEndDate(),
+			$object->getRepeating(),
+			$object->getSummary(),
+			$object->getCalendarData(),
+			$object->getObjectURI(),
+			$object->gerLastModified(),
+		));
+
+		return $object;
+	}
+
+	public function deleteObject(Object $object){
+		$userId		= $object->getUserId();
+		$calendarId	= $object->getCalendarId();
+		$objectURI	= $object->getObjectURI();
+
+		$sql  = 'DELETE * FROM `' . $this->objTableName . '`';
+		$sql .= 'LEFT OUTER JOIN `' . $this->calTableName . '` ON ';
+		$sql .= '`' . $this->objTableName . '.calendarid`=`' . $this->calTableName . '.id`';
+		$sql .= 'WHERE `' . $this->calTableName . '.uri` = ? AND `' . $this->calTableName . '.userid` = ?';
+		$sql .= ' AND `' . $this->objTableName . '.uri` = `?`';
+		$result = $this->api->prepareQuery($sql)->execute(array(
+			$calendarId, $userId
+			$objectURI));
+
+		return true;
+	}
+
+	public function searchByProperties($properties=array(), $calendarId=null, $userId=null) {
+		if($calendarId === null || $userId === null) {
+			return array();
+		}
+
+		if(empty($properties)) {
+			return $this->findObjects($calendarId, $userId);
+		}
+
+		$sql  = 'SELECT `' . $this->objTableName . '`.* FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
+		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id` ';
+		$sql .= 'AND `' . $this->calTableName . '`.`uri` = ? AND `' . $this->calTableName . '`.`userid` = ?';
+
+		$parameters = array($calendarId, $userId);
+		$sqlWhereClauses = array();
+
+		foreach($properties as $key => $value) {
+			$key	= strtoupper($key);
+			$value	= strtolower($value);
+
+			$sqlWhereClauses[] = 'WHERE UPPER(`' . $this->objTableName . '.calendardata`) LIKE `%?%`';
+			$sqlWhereClauses[] = 'WHERE LOWER(`' . $this->objTableName . '.calendardata`) LIKE `%?%`';
+
+			$parameters[] = $key;
+			$parameters[] = $value;
+			
+		}
+
+		$sql .= 'AND (';
+		$sql .= implode(' AND ', $sqlWhereClauses);
+		$sql .= ')';
+
+		$result = $this->api->prepareQuery($sql)->execute($parameters);
+
+		$entities = array();
+		while($row = $result->fetchRow()){
+			$entity = new Object($row);
+			$this->completeObjectEntity($entity, $row);
+			array_push($entities, $entity);
+		}
+
+		return $entities;
+	}
+
+	private function getUTCforMDB($datetime=null){
+		if($datetime === null) {
+			return null;
+		}
+
 		return date('Y-m-d H:i:s', $datetime->format('U'));
 	}
 
-	private function fixCalendarEntity(&$entity, $row) {
-		$entity->setBackend('local');
+	private function completeCalendarEntity(&$entity, $row=null) {
+		if($row === null) {
+			return;
+		}
+
+		$entity->setBackend($this->backend);
 		$entity->setCruds(Permissions::ALL);
 		if($row['color'] === null) {
-			//todo - use a better color
-			$entity->setColor('#000000');
+			$entity->setColor('#1d2d44');
 		}
 		if($row['enabled'] === null) {
 			$entity->setEnabled(true);
@@ -383,5 +425,97 @@ class Local extends Backend {
 		$entity->setComponents($row['components']);
 		$entity->setUserId($row['userid']);
 		$entity->setOwnerId($row['userid']);
+	}
+
+	private function completeObjectEntity(&$entity, $row=null) {
+		if($row === null) {
+			return;
+		}
+
+		$entity->setBackend($this->backend);
+		$entity->setType($row['objecttype']);
+		$entity->setObjectURI($row['uri']);
+		$entity->setCalendarURI($calendarURI);
+		$entity->setCalendarData($row['calendardata']);
+	}
+
+	private function getCalendarDBId($calendarId=null, $userId=null) {
+		if($calendarId === null || $userId === null) {
+			return null;
+		}
+
+		$sql	= 'SELECT id from `' . $this->calTableName . '` WHERE `uri` = `?` AND `userid` = `?`');
+		$result	= $this->api->prepareQuery($sql)->execute(array($calendarURI, $userId));
+
+		$calendarId	= $result->fetchOne();
+		return $calendarId;
+	}
+
+	private function countCalendars($userId=null) {
+		if($userId === null) {
+			return 0;
+		}
+
+		$sql  = 'SELECT COUNT(*) FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
+		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id` ';
+		$sql .= 'AND `' . $this->calTableName . '`.`uri` = `?` AND `' . $this->calTableName . '`.`userid` = `?`';
+
+		$result = $this->api->prepareQuery($sql)->execute(array($calendarURI, $userId));
+		$count	= $result->fetchOne();
+
+		return $count;
+	}
+
+	private function countObjects($calendarId=null, $userId=null) {
+		if($calendarId === null || $userId === null) {
+			return 0;
+		}
+
+		$sql = 'SELECT COUNT(*) FROM `' . $this->calTableName . '`';
+		if($userId !== null) {
+			$sql .= ' WHERE `userid` = `?`';
+		}
+
+		$result	= $this->api->prepareQuery($sql)->execute(array($userId));
+		$count	= $result->fetchOne();
+
+		return $count;
+	}
+
+	private function doesCalendarExist($calendarId=null, $userId=null) {
+		if($calendarId === null || $userId === null) {
+			return false;
+		}
+
+		$sql  = 'SELECT COUNT(*) FROM `' . $this->calTableName . '`';
+		$sql .= ' WHERE `uri` = `?` AND `userid` = `?`';
+
+		$result	= $this->api->prepareQuery($sql)->execute(array($calendarId, $userId));
+		$count	= $result->fetchOne();
+
+		if($count === 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	private function doesObjectExist($objectURI=null, $calendarId=null, $userId=null) {
+		if($objectURI === null || $calendarId === null || $userId === null) {
+			return false;
+		}
+
+		$sql  = 'SELECT COUNT(*) FROM `' . $this->objTableName . '`, `' . $this->calTableName . '` ';
+		$sql .= 'WHERE `' . $this->objTableName . '`.`calendarid`=`' . $this->calTableName . '`.`id` ';
+		$sql .= 'AND `' . $this->calTableName . '`.`uri` = `?` AND `' . $this->calTableName . '`.`userid` = `?` AND `' . $this->objTableName . '`.`uri`= `?`';
+
+		$result = $this->api->prepareQuery($sql)->execute(array($calendarURI, $userId, $objectURI));
+		$count	= $result->fetchOne();
+
+		if($count === 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

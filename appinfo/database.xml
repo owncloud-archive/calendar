@@ -213,6 +213,14 @@
 				<length>4</length>
 			</field>
 			<field>
+				<name>calendarid</name>
+				<type>integer</type>
+				<default></default>
+				<notnull>true</notnull>
+				<unsigned>true</unsigned>
+				<length>4</length>
+			</field>
+			<field>
 				<name>objectid</name>
 				<type>integer</type>
 				<default></default>
@@ -230,6 +238,33 @@
 				<name>enddate</name>
 				<type>timestamp</type>
 				<default>1970-01-01 00:00:00</default>
+				<notnull>false</notnull>
+			</field>
+		</declaration>
+	</table>
+	<!-- table for calendar properties events -->
+	<table>
+		<name>*dbprefix*clndr_properties</name>
+		<declaration>
+			<field>
+				<name>id</name>
+				<type>integer</type>
+				<default>0</default>
+				<notnull>true</notnull>
+				<autoincrement>1</autoincrement>
+				<unsigned>true</unsigned>
+				<length>4</length>
+			</field>
+			<field>
+				<name>key</name>
+				<type>text</type>
+				<default></default>
+				<notnull>false</notnull>
+				<length>255</length>
+			</field>
+			<field>
+				<name>value</name>
+				<type>clob</type>
 				<notnull>false</notnull>
 			</field>
 		</declaration>

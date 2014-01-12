@@ -40,5 +40,19 @@ class Calendar extends Entity {
 	 */
 	public function touch() {
 		$this->ctag++;
+		return $this;
+	}
+
+	/**
+	 * @brief parse custom ics properties
+	 */
+	public function parseCustomProperties() {
+		/*
+		 * X-OWNCLOUD-DISPAYNAME - string
+		 * X-OWNCLOUD-COMPONENTS - integer
+		 * X-OWNCLOUD-COLOR - rgb(a) code
+		 * X-OWNCLOUD-ORDER - integer
+		 * X-OWNCLOUD-ENABLED - integer 0 or 1
+		 */
 	}
 }

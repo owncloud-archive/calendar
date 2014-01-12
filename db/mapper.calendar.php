@@ -39,8 +39,8 @@ class CalendarMapper extends Mapper {
 	 * Finds all Items from user
 	 * @return array containing all items
 	 */
-	public function findAll($userId){
+	public function findAll($userId, $limit, $offset){
 		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `userid` = ?';
-		return $this->findEntities($sql, array($userId));
+		return $this->findEntities($sql, array($userId), $limit, $offset);
 	}
 }

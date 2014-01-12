@@ -12,6 +12,8 @@ use \OCA\Calendar\AppFramework\Db\Entity;
 class Object extends Entity {
 
 	public $id;
+	public $userId;
+	public $ownerId;
 	public $calendarId;
 	public $objectURI;
 	public $type;

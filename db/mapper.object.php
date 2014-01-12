@@ -39,9 +39,9 @@ class ObjectMapper extends Mapper {
 	 * @param integer $calendarId
 	 * @return array containing all items
 	 */
-	public function findAll($calendarId){
+	public function findAll($calendarId, $limit, $offset){
 		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `calendarid` = ?';
-		return $this->findEntities($sql, array($calendarId));
+		return $this->findEntities($sql, array($calendarId), $limit, $offset);
 	}
 
 	/**
@@ -50,9 +50,9 @@ class ObjectMapper extends Mapper {
 	 * @param \OCA\Calendar\Db\ObjectType $type
 	 * @return array containing all items of type $type
 	 */
-	public function findAllByType($calendarId, $type) {
+	public function findAllByType($calendarId, $type, $limit, $offset) {
 		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `calendarid` = ? AND `type` = ?';
-		return $this->findEntities($sql, array($calendarId, $type));
+		return $this->findEntities($sql, array($calendarId, $type), $limit, $offset);
 	}
 
 	/**
@@ -62,7 +62,7 @@ class ObjectMapper extends Mapper {
 	 * @param DateTime $end
 	 * @return array containing all items of type $type
 	 */
-	public function findAllInPeriod($calendarId, $start, $end) {
+	public function findAllInPeriod($calendarId, $start, $end, $limit, $offset) {
 		$utcStart = $this->getUTC($start);
 		$utcEnd = $this->getUTC($end);
 		$sql =  'SELECT * FROM `'. $this->tableName . '` WHERE `calendarid` = ?';
@@ -74,7 +74,8 @@ class ObjectMapper extends Mapper {
 											   $utcStart, $utcEnd,
 											   $utcStart, $utcEnd,
 											   $utcStart, $utcEnd,
-											   $utcStart, $utcEnd));
+											   $utcStart, $utcEnd),
+											   $limit, $offset);
 	}
 
 	/**
@@ -85,7 +86,7 @@ class ObjectMapper extends Mapper {
 	 * @param \OCA\Calendar\Db\ObjectType $type
 	 * @return array containing all items of type $type
 	 */
-	public function findAllByTypeInPeriod($calendarId, $start, $end, $type) {
+	public function findAllByTypeInPeriod($calendarId, $start, $end, $type, $limit, $offset) {
 		$utcStart = $this->getUTC($start);
 		$utcEnd = $this->getUTC($end);
 		$sql =  'SELECT * FROM `'. $this->tableName . '` WHERE `calendarid` = ? AND `type` = ?';
@@ -97,7 +98,8 @@ class ObjectMapper extends Mapper {
 											   $utcStart, $utcEnd,
 											   $utcStart, $utcEnd,
 											   $utcStart, $utcEnd,
-											   $utcStart, $utcEnd));
+											   $utcStart, $utcEnd),
+											   $limit, $offset);
 	}
 
 	/**

@@ -9,18 +9,22 @@ namespace OCA\Calendar\Backend;
 
 use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
 
+use \OCA\Calendar\Db\ObjectType;
+use \OCA\Calendar\Db\Permissions;
+
 //constants
 define('OCA\Calendar\Backend\NOT_IMPLEMENTED',  	 	-501);
-define('OCA\Calendar\Backend\CREATE_CALENDAR', 			0x0000000001);
-define('OCA\Calendar\Backend\UPDATE_CALENDAR',			0x0000000010);
-define('OCA\Calendar\Backend\DELETE_CALENDAR',			0x0000000100);
-define('OCA\Calendar\Backend\MERGE_CALENDAR',			0x0000001000);
-define('OCA\Calendar\Backend\CREATE_OBJECT',			0x0000010000);
-define('OCA\Calendar\Backend\UPDATE_OBJECT',			0x0000100000);
-define('OCA\Calendar\Backend\DELETE_OBJECT',			0x0001000000);
-define('OCA\Calendar\Backend\FIND_IN_PERIOD',			0x0010000000);
-define('OCA\Calendar\Backend\FIND_OBJECTS_BY_TYPE',		0x0100000000);
-define('OCA\Calendar\Backend\FIND_IN_PERIOD_BY_TYPE',	0x1000000000);
+define('OCA\Calendar\Backend\CREATE_CALENDAR', 			0x00000000001);
+define('OCA\Calendar\Backend\UPDATE_CALENDAR',			0x00000000010);
+define('OCA\Calendar\Backend\DELETE_CALENDAR',			0x00000000100);
+define('OCA\Calendar\Backend\MERGE_CALENDAR',			0x00000001000);
+define('OCA\Calendar\Backend\CREATE_OBJECT',			0x00000010000);
+define('OCA\Calendar\Backend\UPDATE_OBJECT',			0x00000100000);
+define('OCA\Calendar\Backend\DELETE_OBJECT',			0x00001000000);
+define('OCA\Calendar\Backend\FIND_IN_PERIOD',			0x00010000000);
+define('OCA\Calendar\Backend\FIND_OBJECTS_BY_TYPE',		0x00100000000);
+define('OCA\Calendar\Backend\FIND_IN_PERIOD_BY_TYPE',	0x01000000000);
+define('OCA\Calendar\Backend\SEARCH_BY_PROPERTIES',		0x10000000000);
 
 abstract class Backend implements CalendarInterface {
 
@@ -37,7 +41,8 @@ abstract class Backend implements CalendarInterface {
 		DELETE_OBJECT 			=> 'deleteObject',
 		FIND_IN_PERIOD 			=> 'findObjectsInPeriod',
 		FIND_OBJECTS_BY_TYPE	=> 'findObjectsByType',
-		FIND_IN_PERIOD_BY_TYPE	=> 'findObjectsByTypeInPeriod'
+		FIND_IN_PERIOD_BY_TYPE	=> 'findObjectsByTypeInPeriod',
+		SEARCH_BY_PROPERTIES	=> 'searchByProperties',
 	);
 
 	public function __construct($api, $backend){
@@ -45,6 +50,13 @@ abstract class Backend implements CalendarInterface {
 		$this->backend = strtolower($backend);
 	}
 
+	/**
+	 * @brief get integer that represents supported actions 
+	 * @returns integer
+	 * 
+	 * This method returns an integer.
+	 * This method is mandatory!
+	 */
 	public function getSupportedActions() {
 		$actions = 0;
 		foreach($this->possibleActions AS $action => $methodName) {
@@ -79,7 +91,12 @@ abstract class Backend implements CalendarInterface {
 	 * This method is mandatory!
 	 */
 	public function cacheCalendars($userId) {
-		return true;
+		return !($this->canStoreColor() &&
+				 $this->canStoreComponents() &&
+				 $this->canStoreDisplayname() &&
+				 $this->canStoreEnabled() &&
+				 $this->canStoreOrder() &&
+				 $this->canStoreCustomTimezone());
 	}
 
 	/**
@@ -120,7 +137,7 @@ abstract class Backend implements CalendarInterface {
 	 * This method returns an array of \OCA\Calendar\Db\Object objects.
 	 * This method is mandatory!
 	 */
-	public function findCalendars($userId) {
+	public function findCalendars($userId, $limit, $offset) {
 		return array();
 	}
 
@@ -150,7 +167,95 @@ abstract class Backend implements CalendarInterface {
 	 * This method returns an array of \OCA\Calendar\Db\Object objects.
 	 * This method is mandatory!
 	 */
-	public function findObjects($calendarURI, $userId) {
+	public function findObjects($calendarURI, $userId, $limit, $offset) {
 		throw new DoesNotExistException();
+	}
+
+	/**
+	 * @brief returns whether or not a backend can store a calendar's color
+	 * @returns boolean
+	 * 
+	 * This method returns a boolean
+	 * This method is mandatory!
+	 */
+	public function canStoreColor() {
+		return false;
+	}
+
+	/**
+	 * @brief returns whether or not a backend can store a calendar's supported components
+	 * @returns boolean
+	 * 
+	 * This method returns a boolean
+	 * This method is mandatory!
+	 */
+	public function canStoreComponents() {
+		return false;
+	}
+
+	/**
+	 * @brief returns whether or not a backend can store a calendar's displayname
+	 * @returns boolean
+	 * 
+	 * This method returns a boolean
+	 * This method is mandatory!
+	 */
+	public function canStoreDisplayname() {
+		return false;
+	}
+
+	/**
+	 * @brief returns whether or not a backend can store if a calendar is enabled
+	 * @returns boolean
+	 * 
+	 * This method returns a boolean
+	 * This method is mandatory!
+	 */
+	public function canStoreEnabled() {
+		return false;
+	}
+
+	/**
+	 * @brief returns whether or not a backend can store a calendar's order
+	 * @returns boolean
+	 * 
+	 * This method returns a boolean
+	 * This method is mandatory!
+	 */
+	public function canStoreOrder() {
+		return false;
+	}
+
+	/**
+	 * @brief get displayname for backend
+	 * @returns boolean
+	 * 
+	 * This method returns a boolean
+	 * This method is mandatory!
+	 */
+	public function getDisplayName() {
+		return '';
+	}
+
+	/**
+	 * @brief get description for backend
+	 * @returns boolean
+	 * 
+	 * This method returns a boolean
+	 * This method is mandatory!
+	 */
+	public function getDescription() {
+		return '';
+	}
+
+	/**
+	 * @brief get components for backend
+	 * @returns boolean
+	 * 
+	 * This method returns a boolean
+	 * This method is mandatory!
+	 */
+	public function getComponents() {
+		return ObjectType::ALL;
 	}
 }

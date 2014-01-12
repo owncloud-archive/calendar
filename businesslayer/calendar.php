@@ -120,7 +120,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 			$api = &$this->backends->find($backend)->api;
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\CREATE_CALENDAR);
 
-			$calendar = $api->createCalendar($calendar, $calendarURI, $userId);
+			$calendar = $api->createCalendar($calendar);
 			if($api->cacheCalendars($userId)) {
 				$this->mapper->insert($calendar, $calendarURI, $userId);
 			}

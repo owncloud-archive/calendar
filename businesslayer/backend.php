@@ -123,7 +123,7 @@ class BackendBusinessLayer {
 			}
 			
 			$reflectionObj = new \ReflectionClass($class);
-			$api = $reflectionObj->newInstanceArgs(array($this->api, $arguments));
+			$api = $reflectionObj->newInstanceArgs(array($this->api, $arguments, $this));
 			$backend->registerAPI($api);
 			array_push($this->backends, array($class => $backend));
 		}
