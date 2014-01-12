@@ -23,7 +23,7 @@
 	bottom: 0;
 	right: 0;
 	left: 0;
-	top: 43px;
+	top: 0;
 }
 #listview {margin: 0; padding: 10px; background: #EEEEEE;}
 #listview #more_before, #listview #more_after {border: 1px solid #1a1a1a; width:25em;padding: 3px;text-align: center;}
@@ -274,4 +274,124 @@ button.category{margin:0 3px;}
 	height: 20px;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+#app-navigation {
+	width: 250px;
+}
+
+#app-settings {
+	width: 249px;
+}
+
+#navigation-list li {
+	min-height: 44px;
+	padding: 6px;
+}
+#navigation-list form {
+	width: 100%;
+}
+
+#navigation-list input[type=button], #navigation-list button {
+	height: 34px;
+	padding: 8px;
+	margin: 0;
+}
+
+#onedayview_radio {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right: 0;
+}
+
+#oneweekview_radio {
+	border-radius: 0;
+}
+
+#onemonthview_radio {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-left: 0;
+}
+
+#datecontrol_current {
+	float: left;
+	width: 168px;
+	height: 26px;
+	padding-top: 6px;
+	background-color: white;
+	border: 1px solid rgba(190, 190, 190, 0.9);
+	border-radius: 3px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	color: rgb(85, 85, 85);
+	font-weight: bold;
+	text-align: center;
+	overflow: hidden;
+}
+
+#datecontrol_left {
+	border-radius: 0;
+	border-left: 0;
+}
+
+#datecontrol_right {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-left: 0;
+}
+
+#datecontrol_today {
+	float: right;
+}
+
+#datecontrol_date select {
+	padding: 0;
+}
+
+#datecontrol_date .ui-datepicker-prev {
+	position: relative;
+	float: left;
+}
+
+#datecontrol_date .ui-datepicker-next {
+	position: relative;
+	float: left;
+}
+
+#datecontrol_date ui-datepicker-inline,
+#datecontrol_date .ui-widget-header,
+#datecontrol_date .ui-datepicker-title,
+#datecontrol_date .ui-datepicker-prev,
+#datecontrol_date .ui-datepicker-next,
+#datecontrol_date .ui-widget-content {
+	background: 0;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	color: rgb(85, 85, 85);
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#datecontrol_date .ui-datepicker-inline {
+	width: 100%;
+}
+
+#datecontrol_date table a {
+	text-align: center;
+}
+
+#datecontrol_date table thead th {
+	padding-top: 0px;
+}
+
+#datecontrol_date .ui-datepicker-month,
+#datecontrol_date .ui-datepicker-year,
+#datecontrol_date .ui-datepicker-prev,
+#datecontrol_date .ui-datepicker-next,
+#datecontrol_date .ui-datepicker-current {
+	display: none;
 }

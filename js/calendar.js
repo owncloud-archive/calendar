@@ -874,7 +874,8 @@ $(document).ready(function(){
 		dayNamesShort: dayNamesShort,
 		allDayText: allDayText,
 		viewDisplay: function(view) {
-			$('#datecontrol_date').val($('<p>').html(view.title).text());
+			$('#datecontrol_current').html($('<p>').html(view.title).text());
+			$( "#datecontrol_date" ).datepicker("setDate", $('#fullcalendar').fullCalendar('getDate'));
 			if (view.name != defaultView) {
 				$.post(OC.filePath('calendar', 'ajax', 'changeview.php'), {v:view.name});
 				defaultView = view.name;
