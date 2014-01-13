@@ -5,8 +5,10 @@
  * later.
  * See the COPYING-README file.
  */
-namespace OCA\Calendar\JSON;
+namespace OCA\Calendar\Db;
 
-class ObjectReader {
-	
+class TimezoneTypes {
+	const STANDARD	= 1;
+	const FLOATING	= 2;
+	const CUSTOM	= 4;
 }

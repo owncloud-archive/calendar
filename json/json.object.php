@@ -5,14 +5,14 @@
  * later.
  * See the COPYING-README file.
  */
-namespace OCA\Calendar\Db;
+namespace OCA\Calendar\JSON;
 
 use Sabre\VObject\Reader;
 use Sabre\VObject\Component\VEvent;
 use Sabre\VObject\Component\VJournal;
 use Sabre\VObject\Component\VTodo;
 
-class JSONObject extends JSON{
+class Object extends JSON{
 
 	public $calendarId;
 	public $objectURI;

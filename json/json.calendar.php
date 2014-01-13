@@ -45,9 +45,9 @@
  * }
  * ```
  */
-namespace OCA\Calendar\Db;
+namespace OCA\Calendar\JSON;
 
-class JSONCalendar extends JSON{
+class Calendar extends JSON{
 
 	public $calendarURI;
 	public $url;
@@ -61,6 +61,7 @@ class JSONCalendar extends JSON{
 	public $timezone;
 	public $enabled;
 	public $cruds;
+	public $x = array();
 
 	private $calendarObject;
 

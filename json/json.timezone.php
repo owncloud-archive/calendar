@@ -7,6 +7,13 @@
  */
 namespace OCA\Calendar\JSON;
 
-class ObjectReader {
+class Timezone extends JSON{
+
+	public $tzid;
+	public $lastModified;
+	public $standard;
+	public $daylight;
+
+	
 	
 }

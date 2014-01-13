@@ -5,17 +5,16 @@
  * later.
  * See the COPYING-README file.
  */
-namespace OCA\Calendar\JSON;
+namespace OCA\Calendar\Db;
 
 use \OC\AppFramework\Db\Entity;
 
-abstract class JSON {
+class Timezone extends Entity {
 
-	protected $properties;
+	public $id;
+	public $tzid;
+	public $lastModified;
+	public $standard = array();
+	public $daylight = array();
 
-	public function __construct($object) {
-		foreach($this->properties as $property) {
-			$this->$property = $object->$property;
-		}
-	}
 }

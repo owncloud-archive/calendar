@@ -7,6 +7,4 @@
  */
 namespace OCA\Calendar\JSON;
 
-class ObjectReader {
-	
-}
+class TimezoneReader extends JSON{

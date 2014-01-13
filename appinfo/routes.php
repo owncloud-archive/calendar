@@ -8,10 +8,10 @@
 
 namespace OCA\Calendar;
 
-use OCA\Calendar\AppFramework\routing\RouteConfig;
-use OCA\Calendar\DependencyInjection\DIContainer;
+use \OC\AppFramework\routing\RouteConfig;
+use \OCA\Calendar\DependencyInjection\DIContainer;
 
-require_once(__DIR__ . '/dicontainer.php');
+require_once(__DIR__ . '/../dependencyinjection/dicontainer.php');
 
 $routeConfig = new RouteConfig(new DIContainer(), $this, __DIR__ . '/routes.yaml');
 $routeConfig->register();

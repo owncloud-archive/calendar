@@ -6,9 +6,9 @@
  * See the COPYING-README file.
  */
 
-namespace OCA\Calendar\Db;
+namespace OCA\Calendar\JSON;
 
-class JSONCalendarReader {
+class CalendarReader {
 
 	private $data;
 	private $calendar;

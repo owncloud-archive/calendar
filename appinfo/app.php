@@ -7,34 +7,52 @@
  */
 namespace OCA\Calendar;
 
-use OCA\Calendar\AppFramework\Core\API;
-
-require_once(__DIR__ . '/consts.php');
+use \OC\AppFramework\Core\API;
 
 $api = new API('calendar');
-//add the navigation entry
-$api->addNavigationEntry( array(
+
+/*
+ * Constants for calendar:
+ */
+//current version of json api
+define('OCA\Calendar\JSONAPIVERSION', '1.0');
+
+//current version of php api
+define('OCA\Calendar\PHPAPIVERSION',  '1.0');
+
+//enable experimental jcal support
+define('OCA\Calendar\ENABLEJCAL', false);
+
+/*
+ * add navigation entry
+ */
+\OCP\App::addNavigationEntry(array(
 	'id' => 'calendar',
 	'order' => 10,
-	'href' => \OC_Helper::linkToRoute('calendar.view.index'),
-	'icon' => \OCP\Util::imagePath( 'calendar', 'calendar.svg' ),
-	'name' => \OC_L10N::get('calendar')->t('Calendar')
+	'href' => \OCP\Util::linkToRoute('calendar.view.index'),
+	'icon' => \OCP\Util::imagePath('calendar', 'calendar.svg'),
+	'name' => \OC_L10N::get('calendar')->t('Calendar'),
 ));
 
-//register for cron job
+/*
+ * register things like cron, admin page, hooks, search, sharing, etc.
+ */
 $api->addRegularTask('OCA\Calendar\Cron', 'run');
-//register admin settings
 $api->registerAdmin('admin/settings');
-//register for hooks
 $api->connectHook('OC_User', 'post_createUser', '\OC\Calendar\Util\UserHooks', 'create');
 $api->connectHook('OC_User', 'post_deleteUser', '\OC\Calendar\Util\UserHooks', 'delete');
 //$api->connectHook();
 //$api->connectJook();
-//javascript for importing calendars in the files app
-//$api->addScript('fileaction');
-//search
 //\OC_Search::registerProvider('\OCA\Calendar\SearchProvider');
-
-//sharing
 //\OCP\Share::registerBackend('calendar', '\OCA\Calendar\Share\Calendar');
 //\OCP\Share::registerBackend('event', '\OCA\Calendar\Share\Event');
+
+/*
+ * add a global script for calendar import
+ */
+//$api->addScript('fileaction');
+
+/*
+ * register some classpaths
+ */
+\OC::$CLASSPATH['Sabre\VObject\Component'] = 'calendar/3rdparty/php/VObject/Component.php';
