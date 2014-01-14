@@ -20,6 +20,8 @@
 * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
+
 class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 	const FORMAT_CALENDAR = 1;
 
@@ -35,6 +37,7 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 	* The formatItems() function will translate the source returned back into the item
 	*/
 	public function isValidSource($itemSource, $uidOwner) {
+    OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
 		$calendar = OC_Calendar_App::getCalendar( $itemSource );
 		if ($calendar === false || $calendar['userid'] != $uidOwner) {
 			return false;
@@ -53,6 +56,7 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 	* If it does generate a new name e.g. name_#
 	*/
 	public function generateTarget($itemSource, $shareWith, $exclude = null) {
+    OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
 		$calendar = OC_Calendar_App::getCalendar( $itemSource );
 		$user_calendars = array();
 		foreach(OC_Calendar_Calendar::allCalendars($shareWith) as $user_calendar) {
@@ -81,6 +85,7 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 	* It is only called through calls to the public getItem(s)Shared(With) functions.
 	*/
 	public function formatItems($items, $format, $parameters = null) {
+    OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
 		$calendars = array();
 		if ($format == self::FORMAT_CALENDAR) {
 			foreach ($items as $item) {
@@ -103,6 +108,7 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 	}
 
 	public function getChildren($itemSource) {
+    OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
 		$query = OCP\DB::prepare('SELECT `id`, `summary` FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ?');
 		$result = $query->execute(array($itemSource));
 		$children = array();

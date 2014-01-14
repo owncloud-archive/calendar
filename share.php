@@ -5,7 +5,7 @@
  * later.
  * See the COPYING-README file.
  */
-
+ 
 OCP\App::checkAppEnabled('calendar');
 
 function calendar404($msg=null) {
@@ -32,8 +32,7 @@ if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes')
 
 if (isset($_GET['t'])) {
   $token = $_GET['t'];
-  $linkItem = OCP\Share::getShareByToken($token);
-  //var_dump($linkItem);
+  $linkItem = OCP\Share::getShareByToken($token, false);
   if (is_array($linkItem) && isset($linkItem['uid_owner'])) {
     // seems to be a valid share
     $rootLinkItem = OCP\Share::resolveReShare($linkItem);
@@ -54,6 +53,7 @@ if (isset($rootLinkItem)) {
   $url = OCP\Util::linkToPublic('calendar') . '&t=' . $token;
   // let's set the token in the session for further reference
   \OC::$session->set('public_link_token', $token);
+  \OC::$session->set('public_link_owner', $linkItem['uid_owner']);
 
   // do we have a password on this share?
   if (isset($linkItem['share_with'])) {
@@ -148,21 +148,27 @@ if (isset($rootLinkItem)) {
     OCP\Util::addscript('calendar','jquery.multi-autocomplete');
     OCP\Util::addscript('','tags');
     OCP\Util::addscript('calendar','on-event');
+    OCP\Util::addscript('calendar','settings');
     OCP\App::setActiveNavigationEntry('calendar_index');
-    $tmpl = new OCP\Template('calendar', 'calendar', 'user');
+    $tmpl = new OCP\Template('calendar', 'calendar', 'base');
     $tmpl->assign('link_shared_calendar_name', $linkItem['item_target']);
     $tmpl->assign('link_shared_calendar_owner', $linkItem['uid_owner']);
     $tmpl->assign('link_shared_calendar_url', $url);
+    $tmpl->assign('timezone', OC_Calendar_App::$tz);
+    $tmpl->assign('timezones',DateTimeZone::listIdentifiers());
     $tmpl->printPage();
 
   // Display the event
   } elseif ($linkItem['item_type'] === 'event') {
     OCP\Util::addStyle('calendar', 'style');
     OCP\Util::addStyle('calendar', 'tooltips');
+    OCP\Util::addscript('calendar','settings');
     OCP\App::setActiveNavigationEntry('calendar_index');
-    $tmpl = new OCP\Template('calendar', 'event', 'user');
+    $tmpl = new OCP\Template('calendar', 'event', 'base');
     $tmpl->assign('link_shared_event', $linkItem);
     $tmpl->assign('link_shared_event_url', $url);
+    $tmpl->assign('timezone', OC_Calendar_App::$tz);
+    $tmpl->assign('timezones',DateTimeZone::listIdentifiers());
     $tmpl->printPage();
   }
   exit();
