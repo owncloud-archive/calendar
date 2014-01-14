@@ -591,7 +591,7 @@ Calendar={
 							var newitem = '<li data-item-type="event"'
 								+ 'data-share-with="'+shareWith+'" '
 								+ 'data-permissions="'+permissions+'" '
-								+ 'data-share-type="'+shareType+'">'
+								+ 'data-share-type="'+shareType+'" data-link="true">'
 								+ shareWith
 								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
 								+ '<span class="shareactions">'

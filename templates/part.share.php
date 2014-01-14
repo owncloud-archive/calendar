@@ -37,6 +37,7 @@ if(is_array($sharedwithByEvent)) {
 	<li data-share-with="<?php p($sharee['share_with']); ?>"
 		data-item="<?php p($eventid); ?>"
 		data-item-type="event"
+		data-link="true"
 		data-permissions="<?php p($sharee['permissions']); ?>"
 		data-share-type="<?php p($sharee['share_type']); ?>">
 		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>
@@ -70,6 +71,7 @@ if(is_array($sharedwithByEvent)) {
 	<li data-share-with="<?php p($sharee['share_with']); ?>"
 		data-item="<?php p($calid); ?>"
 		data-item-type="calendar"
+		data-link="true"
 		data-permissions="<?php p($sharee['permissions']); ?>"
 		data-share-type="<?php p($sharee['share_type']); ?>">
 		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>

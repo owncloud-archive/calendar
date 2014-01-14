@@ -22,3 +22,4 @@
 <div id="fullcalendar"></div>
 <div id="dialog_holder"></div>
 <div id="appsettings" class="popup topright hidden"></div>
+<input type="hidden" name="allowShareWithLink" id="allowShareWithLink" value="yes" />
