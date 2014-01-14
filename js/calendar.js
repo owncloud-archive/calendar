@@ -719,7 +719,7 @@ Calendar={
               }
             });
           });
-	
+
           // using .off() to make sure the event is only attached once
           $(document)
             .off('change', '.shared-with-entry-container input:checkbox[data-permissions]')
