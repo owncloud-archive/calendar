@@ -283,11 +283,6 @@ button.category{margin:0 3px;}
 #app-settings {
 	width: 249px;
 }
-
-#navigation-list li {
-	min-height: 44px;
-	padding: 6px;
-}
 #navigation-list form {
 	width: 100%;
 }
@@ -295,10 +290,14 @@ button.category{margin:0 3px;}
 #navigation-list input[type=button], #navigation-list button {
 	height: 34px;
 	padding: 8px;
-	margin: 0;
+	margin-top: 6px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
 }
 
-#onedayview_radio {
+#navigation-list #onedayview_radio {
+	margin-left: 6px;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	border-right: 0;
@@ -316,8 +315,10 @@ button.category{margin:0 3px;}
 
 #datecontrol_current {
 	float: left;
-	width: 168px;
+	width: 169px;
 	height: 26px;
+	margin-top: 6px;
+	margin-left: 6px;
 	padding-top: 6px;
 	background-color: white;
 	border: 1px solid rgba(190, 190, 190, 0.9);
@@ -331,18 +332,25 @@ button.category{margin:0 3px;}
 }
 
 #datecontrol_left {
+	margin-top: 6px;
 	border-radius: 0;
 	border-left: 0;
 }
 
 #datecontrol_right {
+	margin-top: 6px;
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 	border-left: 0;
 }
 
-#datecontrol_today {
+#navigation-list #datecontrol_today {
 	float: right;
+	margin-right: 6px;
+}
+
+#datecontrol_date {
+	margin: 6px 6px 0 6px;
 }
 
 #datecontrol_date select {

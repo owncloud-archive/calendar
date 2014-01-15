@@ -953,6 +953,10 @@ $(document).ready(function(){
 	$('#datecontrol_right').click(function(){
 		$('#fullcalendar').fullCalendar('next');
 	});
+	$('#datecontrol_current').click(function() {
+		$('#datecontrol_date').slideToggle(500);
+	});
+	$('#datecontrol_date').hide();
 	Calendar.UI.Share.init();
 	Calendar.UI.Drop.init();
 	$('#choosecalendar .generalsettings').on('click keydown', function(event) {
