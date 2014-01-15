@@ -114,8 +114,10 @@ if (isset($rootLinkItem)) {
   } else {
     /* RENDERING THE ITEM */
     header('HTTP/1.0 501 Not Implemented');
-    OCP\Util::addStyle('calendar', '404');
-    $tmpl = new OCP\Template('', '404', 'guest');
+    #$errorTemplate = new OCP\Template('calendar', 'part.404', '');
+    $errorContent = $errorTemplate->fetchPage();
+    #OCP\Util::addStyle('calendar', '404');
+    #$tmpl = new OCP\Template('', '404', 'guest');
     $tmpl->assign('content', $errorContent);
     $tmpl->printPage();
     /*OCP\Util::addScript('files', 'file-upload');
