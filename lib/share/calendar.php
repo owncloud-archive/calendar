@@ -38,6 +38,8 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 	*/
 	public function isValidSource($itemSource, $uidOwner) {
     OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
+    OC_Log::write('calendar', '+- $itemSource: ' . var_export($itemSource, true), OC_Log::ERROR);
+    OC_Log::write('calendar', '+- $uidOwner  : ' . var_export($uidOwner, true), OC_Log::ERROR);
 		$calendar = OC_Calendar_App::getCalendar( $itemSource );
 		if ($calendar === false || $calendar['userid'] != $uidOwner) {
 			return false;
@@ -57,6 +59,9 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 	*/
 	public function generateTarget($itemSource, $shareWith, $exclude = null) {
     OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
+    OC_Log::write('calendar', '+- $itemSource: ' . var_export($itemSource, true), OC_Log::ERROR);
+    OC_Log::write('calendar', '+- $shareWith : ' . var_export($shareWith, true), OC_Log::ERROR);
+    OC_Log::write('calendar', '+- $exclude   : ' . var_export($exclude, true), OC_Log::ERROR);
 		$calendar = OC_Calendar_App::getCalendar( $itemSource );
 		$user_calendars = array();
 		foreach(OC_Calendar_Calendar::allCalendars($shareWith) as $user_calendar) {
@@ -68,6 +73,7 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 			$suffix++;
 		}
 
+		OC_Log::write('calendar', '+- generated name: ' . var_export($name.$suffix, true), OC_Log::ERROR);
 		return $name.$suffix;
 	}
 

@@ -10,41 +10,54 @@ if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
 if (isset($_GET['t'])) {
   $token = $_GET['t'];
   $linkItem = OCP\Share::getShareByToken($token);
-  echo '$linkItem: ';
-  var_dump($linkItem);
-  #if (is_array($linkItem) && isset($linkItem['uid_owner'])) {
+  //var_dump($linkItem);
+  if (is_array($linkItem) && isset($linkItem['uid_owner'])) {
     // seems to be a valid share
-    /*$type = $linkItem['item_type'];
-    $fileSource = $linkItem['file_source'];
+    $type = $linkItem['item_type'];
+    //$fileSource = $linkItem['file_source']; unnecessary, it's a calendar...
     $shareOwner = $linkItem['uid_owner'];
-    $path = null;
+    //$path = null;
     $rootLinkItem = OCP\Share::resolveReShare($linkItem);
     $fileOwner = $rootLinkItem['uid_owner'];
-    if (isset($fileOwner)) {
-      OC_Util::tearDownFS();
-      OC_Util::setupFS($fileOwner);
-      $path = \OC\Files\Filesystem::getPath($linkItem['file_source']);
-    }*/
-  #}
+  }
 }
-/*if (isset($path)) {
+/*echo '<pre style="background:white; color:black">';
+var_dump($linkItem);
+var_dump($rootLinkItem);*/
+// apparently, we have something to work with
+if (isset($rootLinkItem)) {
+
+  // is there a type?
   if (!isset($linkItem['item_type'])) {
+    // nope -> 404
     OCP\Util::writeLog('share', 'No item type set for share id: ' . $linkItem['id'], \OCP\Util::ERROR);
     header('HTTP/1.0 404 Not Found');
     $tmpl = new OCP\Template('', '404', 'guest');
     $tmpl->printPage();
     exit();
   }
+
+  // we're sharing with anybody, right?
   if (isset($linkItem['share_with'])) {
-    // Authenticate share_with
-    $url = OCP\Util::linkToPublic('files') . '&t=' . $token;
-    if (isset($_GET['file'])) {
-      $url .= '&file=' . urlencode($_GET['file']);
-    } else {
-      if (isset($_GET['dir'])) {
-        $url .= '&dir=' . urlencode($_GET['dir']);
-      }
-    }
+    OCP\Util::writeLog('share', 'share_with should be NULL for publicly link-shared items', \OCP\Util::ERROR);
+    header('HTTP/1.0 404 Not Found');
+    $tmpl = new OCP\Template('', '404', 'guest');
+    $tmpl->printPage();
+    exit();
+  }
+  
+  // Authenticate share_with
+  //$url = OCP\Util::linkToPublic('calendar') . '&t=' . $token;
+  //var_dump($url);
+
+//   if (isset($_GET['file'])) {
+//     $url .= '&file=' . urlencode($_GET['file']);
+//   } else {
+//     if (isset($_GET['dir'])) {
+//       $url .= '&dir=' . urlencode($_GET['dir']);
+//     }
+//   }
+    /* PASSWORD-PROTECTED SHARES
     if (isset($_POST['password'])) {
       $password = $_POST['password'];
       if ($linkItem['share_type'] == OCP\Share::SHARE_TYPE_LINK) {
@@ -84,33 +97,28 @@ if (isset($_GET['t'])) {
         $tmpl->printPage();
         exit();
       }
-    }
-  }
-  $basePath = $path;
-  if (isset($_GET['path']) && \OC\Files\Filesystem::isReadable($basePath . $_GET['path'])) {
-    $getPath = \OC\Files\Filesystem::normalizePath($_GET['path']);
-    $path .= $getPath;
-  } else {
-    $getPath = '';
-  }
-  $dir = dirname($path);
-  $file = basename($path);
-  // Download the file
+    }*/
+
+  // Download the item
   if (isset($_GET['download'])) {
-    if (isset($_GET['files'])) { // download selected files
-      $files = urldecode($_GET['files']);
-      $files_list = json_decode($files);
-      // in case we get only a single file
-      if ($files_list === NULL ) {
-        $files_list = array($files);
-      }
-      OC_Files::get($path, $files_list, $_SERVER['REQUEST_METHOD'] == 'HEAD');
-    } else {
-      OC_Files::get($dir, $file, $_SERVER['REQUEST_METHOD'] == 'HEAD');
+    $calendar = OC_Calendar_App::getCalendar($rootLinkItem['item_source'], true, true);
+    if(!$calendar) {
+      OCP\Util::writeLog('share', 'forbidden!', \OCP\Util::ERROR);
+      header('HTTP/1.0 403 Forbidden');
+      exit;
     }
+    header('Content-Type: text/calendar');
+    header('Content-Disposition: inline; filename=' . str_replace(' ', '-', $calendar['displayname']) . '.ics');
+    echo OC_Calendar_Export::export($rootLinkItem['item_source'], OC_Calendar_Export::CALENDAR);
     exit();
   } else {
-    OCP\Util::addScript('files', 'file-upload');
+    /* RENDERING THE ITEM */
+    header('HTTP/1.0 501 Not Implemented');
+    OCP\Util::addStyle('calendar', '404');
+    $tmpl = new OCP\Template('', '404', 'guest');
+    $tmpl->assign('content', $errorContent);
+    $tmpl->printPage();
+    /*OCP\Util::addScript('files', 'file-upload');
     OCP\Util::addStyle('files_sharing', 'public');
     OCP\Util::addScript('files_sharing', 'public');
     OCP\Util::addScript('files', 'fileactions');
@@ -232,18 +240,18 @@ if (isset($_GET['t'])) {
                     .$urlLinkIdentifiers.'&download&path='.urlencode($getPath));
       }
     }
-    $tmpl->printPage();
+    $tmpl->printPage();*/
   }
   exit();
 } else {
   OCP\Util::writeLog('share', 'could not resolve linkItem', \OCP\Util::DEBUG);
 }
 
-$errorTemplate = new OCP\Template('files_sharing', 'part.404', '');
+$errorTemplate = new OCP\Template('calendar', 'part.404', '');
 $errorContent = $errorTemplate->fetchPage();
 
 header('HTTP/1.0 404 Not Found');
-OCP\Util::addStyle('files_sharing', '404');
+OCP\Util::addStyle('calendar', '404');
 $tmpl = new OCP\Template('', '404', 'guest');
 $tmpl->assign('content', $errorContent);
-$tmpl->printPage();*/
+$tmpl->printPage();

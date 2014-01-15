@@ -971,10 +971,19 @@ $(document).ready(function(){
 		OC.appSettings({appid:'calendar', loadJS:true, cache:false, scriptName:'settingswrapper.php'});
 	});
 	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
+
 	// Save the eventSource for shared events.
 	for (var i in eventSources) {
 		if (eventSources[i].url.substr(-13) === 'shared_events') {
 			sharedEventSource = eventSources[i];
 		}
 	}
+  // fixing the calendar share link
+  // https://github.com/owncloud/apps/issues/411#issuecomment-32303184
+  var oldOCShareShowLink = OC.Share.showLink;
+  OC.Share.showLink = function () {
+      var r = oldOCShareShowLink.apply(this, arguments);
+      $('#linkText').val($('#linkText').val().replace('service=files', 'service=calendar'));
+      return r;
+  };
 });
