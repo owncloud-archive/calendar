@@ -1,5 +1,6 @@
 <?php
-OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
+OCP\App::checkAppEnabled('calendar');
+
 if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
   header('HTTP/1.0 404 Not Found');
   $tmpl = new OCP\Template('', '404', 'guest');
@@ -13,12 +14,7 @@ if (isset($_GET['t'])) {
   //var_dump($linkItem);
   if (is_array($linkItem) && isset($linkItem['uid_owner'])) {
     // seems to be a valid share
-    $type = $linkItem['item_type'];
-    //$fileSource = $linkItem['file_source']; unnecessary, it's a calendar...
-    $shareOwner = $linkItem['uid_owner'];
-    //$path = null;
     $rootLinkItem = OCP\Share::resolveReShare($linkItem);
-    $fileOwner = $rootLinkItem['uid_owner'];
   }
 }
 /*echo '<pre style="background:white; color:black">';
@@ -36,38 +32,34 @@ if (isset($rootLinkItem)) {
     $tmpl->printPage();
     exit();
   }
-
-  // we're sharing with anybody, right?
-  if (isset($linkItem['share_with'])) {
-    OCP\Util::writeLog('share', 'share_with should be NULL for publicly link-shared items', \OCP\Util::ERROR);
-    header('HTTP/1.0 404 Not Found');
-    $tmpl = new OCP\Template('', '404', 'guest');
-    $tmpl->printPage();
-    exit();
-  }
   
-  // Authenticate share_with
-  //$url = OCP\Util::linkToPublic('calendar') . '&t=' . $token;
-  //var_dump($url);
+  // the full URL
+  $url = OCP\Util::linkToPublic('files') . '&t=' . $token;
+  // let's set the token in the session for further reference
+  \OC::$session->set('public_link_token', $token);
 
-//   if (isset($_GET['file'])) {
-//     $url .= '&file=' . urlencode($_GET['file']);
-//   } else {
-//     if (isset($_GET['dir'])) {
-//       $url .= '&dir=' . urlencode($_GET['dir']);
-//     }
-//   }
-    /* PASSWORD-PROTECTED SHARES
+  // do we have a password on this share?
+  if (isset($linkItem['share_with'])) {
+
+    // do we have a password in POST?
     if (isset($_POST['password'])) {
+    
+      // cool, let's use it, shall we?
       $password = $_POST['password'];
+      
+      // there is a single SHARE_TYPE that is of use here: SHARE_TYPE_LINK
       if ($linkItem['share_type'] == OCP\Share::SHARE_TYPE_LINK) {
+
         // Check Password
-        $forcePortable = (CRYPT_BLOWFISH != 1);
-        $hasher = new PasswordHash(8, $forcePortable);
+        $hasher = new PasswordHash(8, (CRYPT_BLOWFISH != 1));
+        // does the password match?
         if (!($hasher->CheckPassword($password.OC_Config::getValue('passwordsalt', ''),
                        $linkItem['share_with']))) {
-          OCP\Util::addStyle('files_sharing', 'authenticate');
-          $tmpl = new OCP\Template('files_sharing', 'authenticate', 'guest');
+          // NOPE! Chuck Testa! Log it.
+          OCP\Util::writeLog('share', 'Wrong password!', \OCP\Util::ERROR);
+          // inform the user
+          OCP\Util::addStyle('calendar', 'authenticate');
+          $tmpl = new OCP\Template('calendar', 'authenticate', 'guest');
           $tmpl->assign('URL', $url);
           $tmpl->assign('wrongpw', true);
           $tmpl->printPage();
@@ -76,7 +68,10 @@ if (isset($rootLinkItem)) {
           // Save item id in session for future requests
           \OC::$session->set('public_link_authenticated', $linkItem['id']);
         }
+
+      // this only works for SHARE_TYPE_LINK, hence...
       } else {
+        // ...if it is not SHARE_TYPE_LINK, complain!
         OCP\Util::writeLog('share', 'Unknown share type '.$linkItem['share_type']
                        .' for share id '.$linkItem['id'], \OCP\Util::ERROR);
         header('HTTP/1.0 404 Not Found');
@@ -91,13 +86,14 @@ if (isset($rootLinkItem)) {
         || \OC::$session->get('public_link_authenticated') !== $linkItem['id']
       ) {
         // Prompt for password
-        OCP\Util::addStyle('files_sharing', 'authenticate');
-        $tmpl = new OCP\Template('files_sharing', 'authenticate', 'guest');
+        OCP\Util::addStyle('calendar', 'authenticate');
+        $tmpl = new OCP\Template('calendar', 'authenticate', 'guest');
         $tmpl->assign('URL', $url);
         $tmpl->printPage();
         exit();
       }
-    }*/
+    }
+  }
 
   // Download the item
   if (isset($_GET['download'])) {
@@ -111,138 +107,23 @@ if (isset($rootLinkItem)) {
     header('Content-Disposition: inline; filename=' . str_replace(' ', '-', $calendar['displayname']) . '.ics');
     echo OC_Calendar_Export::export($rootLinkItem['item_source'], OC_Calendar_Export::CALENDAR);
     exit();
+   
+  // Display the item
   } else {
-    /* RENDERING THE ITEM */
-    header('HTTP/1.0 501 Not Implemented');
-    #$errorTemplate = new OCP\Template('calendar', 'part.404', '');
-    $errorContent = $errorTemplate->fetchPage();
-    #OCP\Util::addStyle('calendar', '404');
-    #$tmpl = new OCP\Template('', '404', 'guest');
-    $tmpl->assign('content', $errorContent);
+    OCP\Util::addscript('calendar/3rdparty/fullcalendar', 'fullcalendar');
+    OCP\Util::addStyle('calendar/3rdparty/fullcalendar', 'fullcalendar');
+    OCP\Util::addscript('3rdparty/timepicker', 'jquery.ui.timepicker');
+    OCP\Util::addStyle('3rdparty/timepicker', 'jquery.ui.timepicker');
+    OCP\Util::addscript('calendar', 'calendar');
+    OCP\Util::addStyle('calendar', 'style');
+    OCP\Util::addscript('', 'jquery.multiselect');
+    OCP\Util::addStyle('', 'jquery.multiselect');
+    OCP\Util::addscript('calendar','jquery.multi-autocomplete');
+    OCP\Util::addscript('','tags');
+    OCP\Util::addscript('calendar','on-event');
+    OCP\App::setActiveNavigationEntry('calendar_index');
+    $tmpl = new OCP\Template('calendar', 'calendar', 'user');
     $tmpl->printPage();
-    /*OCP\Util::addScript('files', 'file-upload');
-    OCP\Util::addStyle('files_sharing', 'public');
-    OCP\Util::addScript('files_sharing', 'public');
-    OCP\Util::addScript('files', 'fileactions');
-    OCP\Util::addScript('files', 'jquery.iframe-transport');
-    OCP\Util::addScript('files', 'jquery.fileupload');
-    $maxUploadFilesize=OCP\Util::maxUploadFilesize($path);
-    $tmpl = new OCP\Template('files_sharing', 'public', 'base');
-    $tmpl->assign('uidOwner', $shareOwner);
-    $tmpl->assign('displayName', \OCP\User::getDisplayName($shareOwner));
-    $tmpl->assign('filename', $file);
-    $tmpl->assign('directory_path', $linkItem['file_target']);
-    $tmpl->assign('mimetype', \OC\Files\Filesystem::getMimeType($path));
-    $tmpl->assign('fileTarget', basename($linkItem['file_target']));
-    $tmpl->assign('dirToken', $linkItem['token']);
-    $tmpl->assign('sharingToken', $token);
-    $tmpl->assign('disableSharing', true);
-    $allowPublicUploadEnabled = (bool) ($linkItem['permissions'] & OCP\PERMISSION_CREATE);
-    if (OC_Appconfig::getValue('core', 'shareapi_allow_public_upload', 'yes') === 'no') {
-      $allowPublicUploadEnabled = false;
-    }
-    if ($linkItem['item_type'] !== 'folder') {
-      $allowPublicUploadEnabled = false;
-    }
-    $tmpl->assign('allowPublicUploadEnabled', $allowPublicUploadEnabled);
-    $tmpl->assign('uploadMaxFilesize', $maxUploadFilesize);
-    $tmpl->assign('uploadMaxHumanFilesize', OCP\Util::humanFileSize($maxUploadFilesize));
-
-    $urlLinkIdentifiers= (isset($token)?'&t='.$token:'')
-              .(isset($_GET['dir'])?'&dir='.$_GET['dir']:'')
-              .(isset($_GET['file'])?'&file='.$_GET['file']:'');
-    // Show file list
-    if (\OC\Files\Filesystem::is_dir($path)) {
-      $tmpl->assign('dir', $getPath);
-
-      OCP\Util::addStyle('files', 'files');
-      OCP\Util::addStyle('files', 'upload');
-      OCP\Util::addScript('files', 'files');
-      OCP\Util::addScript('files', 'filelist');
-      OCP\Util::addscript('files', 'keyboardshortcuts');
-      $files = array();
-      $rootLength = strlen($basePath) + 1;
-      $totalSize = 0;
-      foreach (\OC\Files\Filesystem::getDirectoryContent($path) as $i) {
-        $totalSize += $i['size'];
-        $i['date'] = OCP\Util::formatDate($i['mtime']);
-        if ($i['type'] == 'file') {
-          $fileinfo = pathinfo($i['name']);
-          $i['basename'] = $fileinfo['filename'];
-          if (!empty($fileinfo['extension'])) {
-            $i['extension'] = '.' . $fileinfo['extension'];
-          } else {
-            $i['extension'] = '';
-          }
-          $i['isPreviewAvailable'] = \OC::$server->getPreviewManager()->isMimeSupported($i['mimetype']);
-        }
-        $i['directory'] = $getPath;
-        $i['permissions'] = OCP\PERMISSION_READ;
-        $i['icon'] = determineIcon($i, $basePath, $token);
-        $files[] = $i;
-      }
-      usort($files, "fileCmp");
-
-      // Make breadcrumb
-      $breadcrumb = array();
-      $pathtohere = '';
-      foreach (explode('/', $getPath) as $i) {
-        if ($i != '') {
-          $pathtohere .= '/' . $i;
-          $breadcrumb[] = array('dir' => $pathtohere, 'name' => $i);
-        }
-      }
-      $list = new OCP\Template('files', 'part.list', '');
-      $list->assign('files', $files);
-      $list->assign('baseURL', OCP\Util::linkToPublic('files') . $urlLinkIdentifiers . '&path=');
-      $list->assign('downloadURL',
-        OCP\Util::linkToPublic('files') . $urlLinkIdentifiers . '&download&path=');
-      $list->assign('isPublic', true);
-      $list->assign('sharingtoken', $token);
-      $list->assign('sharingroot', $basePath);
-      $breadcrumbNav = new OCP\Template('files', 'part.breadcrumb', '');
-      $breadcrumbNav->assign('breadcrumb', $breadcrumb);
-      $breadcrumbNav->assign('baseURL', OCP\Util::linkToPublic('files') . $urlLinkIdentifiers . '&path=');
-      $maxUploadFilesize=OCP\Util::maxUploadFilesize($path);
-      $fileHeader = (!isset($files) or count($files) > 0);
-      $emptyContent = ($allowPublicUploadEnabled and !$fileHeader);
-      $folder = new OCP\Template('files', 'index', '');
-      $folder->assign('fileList', $list->fetchPage());
-      $folder->assign('breadcrumb', $breadcrumbNav->fetchPage());
-      $folder->assign('dir', $getPath);
-      $folder->assign('isCreatable', false);
-      $folder->assign('permissions', OCP\PERMISSION_READ);
-      $folder->assign('isPublic',true);
-      $folder->assign('publicUploadEnabled', 'no');
-      $folder->assign('files', $files);
-      $folder->assign('uploadMaxFilesize', $maxUploadFilesize);
-      $folder->assign('uploadMaxHumanFilesize', OCP\Util::humanFileSize($maxUploadFilesize));
-      $folder->assign('allowZipDownload', intval(OCP\Config::getSystemValue('allowZipDownload', true)));
-      $folder->assign('usedSpacePercent', 0);
-      $folder->assign('fileHeader', $fileHeader);
-      $folder->assign('disableSharing', true);
-      $folder->assign('trash', false);
-      $folder->assign('emptyContent', $emptyContent);
-      $folder->assign('ajaxLoad', false);
-      $tmpl->assign('folder', $folder->fetchPage());
-      $maxInputFileSize = OCP\Config::getSystemValue('maxZipInputSize', OCP\Util::computerFileSize('800 MB'));
-      $allowZip = OCP\Config::getSystemValue('allowZipDownload', true)
-            && ( $maxInputFileSize === 0 || $totalSize <= $maxInputFileSize);
-      $tmpl->assign('allowZipDownload', intval($allowZip));
-      $tmpl->assign('downloadURL',
-        OCP\Util::linkToPublic('files') . $urlLinkIdentifiers . '&download&path=' . urlencode($getPath));
-    } else {
-      $tmpl->assign('dir', $dir);
-
-      // Show file preview if viewer is available
-      if ($type == 'file') {
-        $tmpl->assign('downloadURL', OCP\Util::linkToPublic('files') . $urlLinkIdentifiers . '&download');
-      } else {
-        $tmpl->assign('downloadURL', OCP\Util::linkToPublic('files')
-                    .$urlLinkIdentifiers.'&download&path='.urlencode($getPath));
-      }
-    }
-    $tmpl->printPage();*/
   }
   exit();
 } else {

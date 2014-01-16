@@ -18,7 +18,7 @@ OC::$CLASSPATH['OC_Calendar_Import'] = 'calendar/lib/import.php';
 // sharing -- classpaths
 OC::$CLASSPATH['OC_Share_Backend_Calendar'] = 'calendar/lib/share/calendar.php';
 OC::$CLASSPATH['OC_Share_Backend_Event'] = 'calendar/lib/share/event.php';
-OC::$CLASSPATH['OCA\Files\Share\Api'] = 'calendar/lib/api.php';
+OC::$CLASSPATH['OCA\Calendar\Share\Api'] = 'calendar/lib/api.php';
 
 //General Hooks
 OCP\Util::connectHook('OC_User', 'post_createUser', 'OC_Calendar_Hooks', 'createUser');
