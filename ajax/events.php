@@ -48,7 +48,7 @@ if (OCP\User::isLoggedIn()) {
     header('HTTP/1.0 404 Not Found');
     exit();
   }
-  
+
   // get the data
   $linkItem = OCP\Share::getShareByToken(
     \OC::$session->get('public_link_token')
