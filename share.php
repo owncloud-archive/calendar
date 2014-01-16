@@ -5,7 +5,7 @@
  * later.
  * See the COPYING-README file.
  */
- 
+
 OCP\App::checkAppEnabled('calendar');
 
 function calendar404($msg=null) {
