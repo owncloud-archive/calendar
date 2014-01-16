@@ -1,13 +1,14 @@
 <?php
 /**
  * Copyright (c) 2011, 2012 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2014 Michał "rysiek" Woźniak <rysiek@hackerspace.pl>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
  */
 
 // is a user logged-in?
-if (OC_User::isLoggedIn()) {
+if (OCP\User::isLoggedIn()) {
 
   // is the app enabled?
   OCP\JSON::checkAppEnabled('calendar');
@@ -30,7 +31,7 @@ if (OC_User::isLoggedIn()) {
   $calendar_id = (is_null($calendar_id)?strip_tags($_GET['calendar_id']):$calendar_id);
 
 // no logged-in user? ookaay, do we have a token?
-} elseif(\OC::$session->exists('public_link_token')) {
+} elseif (\OC::$session->exists('public_link_token')) {
 
   // is the app enabled?
   OCP\JSON::checkAppEnabled('calendar');

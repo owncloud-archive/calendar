@@ -1,18 +1,81 @@
 <?php
 /**
  * Copyright (c) 2011 Bart Visscher <bartv@thisnet.nl>
+ * Copyright (c) 2014 Michał "rysiek" Woźniak <rysiek@hackerspace.pl>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
  */
 
+// "this is from a link-shared calendar" flag
+$link_shared = false;
 
+// do we have a logged-in user?
+if(OCP\User::isLoggedIn()) {
+  // yeah, we do. check if the app is enabled
+  OCP\JSON::checkAppEnabled('calendar');
 
-if(!OCP\User::isLoggedIn()) {
-	OCP\User::checkLoggedIn();
+// no, we do not.
+} else {
+
+  // dow e have a token?
+  if (!\OC::$session->exists('public_link_token'))
+    // nope, bail out!
+    OCP\User::checkLoggedIn();
+
+  // is the app enabled?
+  OCP\JSON::checkAppEnabled('calendar');
+  session_write_close();
+
+  // shareapi enabled?
+  if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
+    header('HTTP/1.0 404 Not Found');
+    exit();
+  }
+
+  // get the data
+  $linkItem = OCP\Share::getShareByToken(
+    \OC::$session->get('public_link_token')
+  );
+
+  // did we get anything?
+  if (!is_array($linkItem) || !isset($linkItem['uid_owner'])) {
+    // nope! chuck testa!
+    header('HTTP/1.0 404 Not Found');
+    exit();
+  }
+
+  // resolve all the re-shares
+  $rootLinkItem = OCP\Share::resolveReShare($linkItem);
+  
+  // did we get anything?
+  if (!is_array($rootLinkItem) || !isset($rootLinkItem['uid_owner'])) {
+    // nnnneewp!
+    header('HTTP/1.0 404 Not Found');
+    exit();
+  }
+  
+  // do we have a password on this share?
+  if (isset($linkItem['share_with'])) {
+    // we're not going to check the password here, we're in AJAX mode
+    // what we can do is to check for 'public_link_authenticated' session var
+    if ( ! \OC::$session->exists('public_link_authenticated')
+        || \OC::$session->get('public_link_authenticated') !== $linkItem['id']
+      ) {
+        header('HTTP/1.0 401 Unauthorized');
+        exit();
+      }
+  }
+
+  // just another check
+  if (!OC_Calendar_App::getCalendar($rootLinkItem['item_source'], true, true)) {
+    header('HTTP/1.0 403 Forbidden');
+    exit();
+  }
+  
+  // set the flag and go
+  $link_shared = true;
 }
-
-OCP\JSON::checkAppEnabled('calendar');
 
 $id = $_POST['id'];
 $data = OC_Calendar_App::getEventObject($id, false, false);
@@ -218,10 +281,14 @@ $repeat_bymonth_options = OC_Calendar_App::getByMonthOptions();
 $repeat_byweekno_options = OC_Calendar_App::getByWeekNoOptions();
 $repeat_bymonthday_options = OC_Calendar_App::getByMonthDayOptions();
 
+// edit rights
 if($permissions & OCP\PERMISSION_UPDATE) {
 	$tmpl = new OCP\Template('calendar', 'part.editevent');
-} elseif($permissions & OCP\PERMISSION_READ) {
+
+// read-only rights (including lin-shared calendar events)
+} elseif ( ($permissions & OCP\PERMISSION_READ) || ($link_shared === true) ) {
 	$tmpl = new OCP\Template('calendar', 'part.showevent');
+
 } elseif($permissions === 0) {
 	OCP\JSON::error(array('data' => array('message' => OC_Calendar_App::$l10n->t('You do not have the permissions to edit this event.'))));
 	exit;
