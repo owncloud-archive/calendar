@@ -275,3 +275,33 @@ button.category{margin:0 3px;}
 	background-repeat: no-repeat;
 	background-position: center;
 }
+
+#linksharedinfo {
+  text-align:center;
+  font-weight:bold;
+  background: #777;
+  color:#ddd;
+  padding:0.2em;
+  position:fixed;
+  top:0px;
+  width:100%;
+  height:44px;
+  top:43px;
+}
+
+#linksharedinfo a {
+  color:inherit;
+}
+
+#linksharedinfo a:hover {
+  text-decoration:underline;
+  color:white;
+}
+
+#linksharedinfo + #controls {
+  top:86px;
+}
+
+#linksharedinfo + #controls + #fullcalendar {
+  top:86px;
+}

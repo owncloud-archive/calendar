@@ -1,6 +1,7 @@
 <script type="text/javascript" src="<?php print_unescaped(OC_Helper::linkTo('calendar/js', 'l10n.php'));?>"></script>
 
 <div id="notification" style="display:none;"></div>
+<div id="linksharedinfo">LINK SHARED INFO<br/><a href="https://owncloud.localhost/public.php?service=calendar&amp;t=db56070e44be208808a5a44ca16a45db">https://owncloud.localhost/public.php?service=calendar&amp;t=db56070e44be208808a5a44ca16a45db</a></div>
 <div id="controls">
 	<form id="view">
 		<input type="button" value="<?php p($l->t('Day'));?>" id="onedayview_radio"/>
