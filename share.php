@@ -24,9 +24,7 @@ if (isset($_GET['t'])) {
     $rootLinkItem = OCP\Share::resolveReShare($linkItem);
   }
 }
-/*echo '<pre style="background:white; color:black">';
-var_dump($linkItem);
-var_dump($rootLinkItem);*/
+
 // apparently, we have something to work with
 if (isset($rootLinkItem)) {
 
@@ -130,6 +128,9 @@ if (isset($rootLinkItem)) {
     OCP\Util::addscript('calendar','on-event');
     OCP\App::setActiveNavigationEntry('calendar_index');
     $tmpl = new OCP\Template('calendar', 'calendar', 'user');
+    $tmpl->assign('link_shared_calendar_name', $linkItem['item_target']);
+    $tmpl->assign('link_shared_calendar_owner', $linkItem['uid_owner']);
+    $tmpl->assign('link_shared_calendar_url', $url);
     $tmpl->printPage();
   }
   exit();

@@ -1,7 +1,9 @@
 <script type="text/javascript" src="<?php print_unescaped(OC_Helper::linkTo('calendar/js', 'l10n.php'));?>"></script>
 
 <div id="notification" style="display:none;"></div>
-<div id="linksharedinfo">LINK SHARED INFO<br/><a href="https://owncloud.localhost/public.php?service=calendar&amp;t=db56070e44be208808a5a44ca16a45db">https://owncloud.localhost/public.php?service=calendar&amp;t=db56070e44be208808a5a44ca16a45db</a></div>
+<?php if (isset($_['link_shared_calendar_name'])) { ?>
+<div id="linksharedinfo">User <?php p($_['link_shared_calendar_owner'])?> shared &quot;<?php p($_['link_shared_calendar_name'])?>&quot; calendar with you; explore below or download using this link:<br/><a href="<?php p($_['link_shared_calendar_url'])?>"><?php p($_['link_shared_calendar_url'])?></a></div>
+<?php } ?>
 <div id="controls">
 	<form id="view">
 		<input type="button" value="<?php p($l->t('Day'));?>" id="onedayview_radio"/>
