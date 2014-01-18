@@ -1,6 +1,5 @@
 <?php
 
-OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
 // OCS API
 
 //TODO: SET: mail notification, waiting for PR #4689 to be accepted

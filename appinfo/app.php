@@ -1,5 +1,4 @@
 <?php
-OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
 $l = OCP\Util::getL10N('calendar');
 OC::$CLASSPATH['OC_Calendar_App'] = 'calendar/lib/app.php';
 OC::$CLASSPATH['OC_Calendar_Calendar'] = 'calendar/lib/calendar.php';

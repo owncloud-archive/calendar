@@ -5,8 +5,6 @@
  * later.
  * See the COPYING-README file.
  */
-
-OC_Log::write('calendar', __FILE__ . ' : ' . __LINE__ . ' [' . __FUNCTION__ . ']', OC_Log::ERROR);
  
 class OC_Share_Backend_Event implements OCP\Share_Backend {
 

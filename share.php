@@ -8,12 +8,27 @@
 
 OCP\App::checkAppEnabled('calendar');
 
-if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
+function calendar404($msg=null) {
+  $errorTemplate = new OCP\Template('calendar', 'part.404', '');
+  if ($msg !== null) $errorTemplate->assign('message', $msg);
+  $errorContent = $errorTemplate->fetchPage();
+
   header('HTTP/1.0 404 Not Found');
   $tmpl = new OCP\Template('', '404', 'guest');
+  $tmpl->assign('content', $errorContent);
   $tmpl->printPage();
   exit();
 }
+
+function calendar403() {
+  header('HTTP/1.0 403 Forbidden');
+  $tmpl = new OCP\Template('', '403', 'guest');
+  $tmpl->printPage();
+  exit();
+}
+
+if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes')
+  calendar404('Link-sharing is disabled by admin.');
 
 if (isset($_GET['t'])) {
   $token = $_GET['t'];
@@ -32,14 +47,11 @@ if (isset($rootLinkItem)) {
   if (!isset($linkItem['item_type'])) {
     // nope -> 404
     OCP\Util::writeLog('share', 'No item type set for share id: ' . $linkItem['id'], \OCP\Util::ERROR);
-    header('HTTP/1.0 404 Not Found');
-    $tmpl = new OCP\Template('', '404', 'guest');
-    $tmpl->printPage();
-    exit();
+    calendar404('No such share.');
   }
   
   // the full URL
-  $url = OCP\Util::linkToPublic('files') . '&t=' . $token;
+  $url = OCP\Util::linkToPublic('calendar') . '&t=' . $token;
   // let's set the token in the session for further reference
   \OC::$session->set('public_link_token', $token);
 
@@ -63,7 +75,6 @@ if (isset($rootLinkItem)) {
           // NOPE! Chuck Testa! Log it.
           OCP\Util::writeLog('share', 'Wrong password!', \OCP\Util::ERROR);
           // inform the user
-          OCP\Util::addStyle('calendar', 'authenticate');
           $tmpl = new OCP\Template('calendar', 'authenticate', 'guest');
           $tmpl->assign('URL', $url);
           $tmpl->assign('wrongpw', true);
@@ -79,10 +90,7 @@ if (isset($rootLinkItem)) {
         // ...if it is not SHARE_TYPE_LINK, complain!
         OCP\Util::writeLog('share', 'Unknown share type '.$linkItem['share_type']
                        .' for share id '.$linkItem['id'], \OCP\Util::ERROR);
-        header('HTTP/1.0 404 Not Found');
-        $tmpl = new OCP\Template('', '404', 'guest');
-        $tmpl->printPage();
-        exit();
+        calendar404('Unknown share type.');
       }
 
     } else {
@@ -91,7 +99,6 @@ if (isset($rootLinkItem)) {
         || \OC::$session->get('public_link_authenticated') !== $linkItem['id']
       ) {
         // Prompt for password
-        OCP\Util::addStyle('calendar', 'authenticate');
         $tmpl = new OCP\Template('calendar', 'authenticate', 'guest');
         $tmpl->assign('URL', $url);
         $tmpl->printPage();
@@ -138,11 +145,4 @@ if (isset($rootLinkItem)) {
   OCP\Util::writeLog('share', 'could not resolve linkItem', \OCP\Util::DEBUG);
 }
 
-$errorTemplate = new OCP\Template('calendar', 'part.404', '');
-$errorContent = $errorTemplate->fetchPage();
-
-header('HTTP/1.0 404 Not Found');
-OCP\Util::addStyle('calendar', '404');
-$tmpl = new OCP\Template('', '404', 'guest');
-$tmpl->assign('content', $errorContent);
-$tmpl->printPage();
+calendar404();
