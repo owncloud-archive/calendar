@@ -48,6 +48,7 @@ $tmpl->assign('basic_edit_options', true);
 $tmpl->assign('shared_with', $eventsharees);
 $tmpl->printpage();
 ?><strong><?php p($l->t('Shared via calendar')); ?></strong>
+
 <ul class="sharedby calendarlist">
 <?php foreach($calsharees as $sharee): ?>
 	<li data-share-with="<?php p($sharee['share_with']); ?>"
