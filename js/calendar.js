@@ -986,4 +986,138 @@ $(document).ready(function(){
       $('#linkText').val($('#linkText').val().replace('service=files', 'service=calendar'));
       return r;
   };
+
+  /* sharing/unsharing single events done right */
+  $('.share-link-container input[type="checkbox"].share-link').live('change', function(e){
+    // get the data
+    slcontainer = $(this).parents('.share-link-container')
+    itemType = slcontainer.attr('data-item-type')
+    itemSource = slcontainer.attr('data-item')
+    itemSourceName = slcontainer.attr('data-item-source-name')
+    
+    // sharing?
+    if ($(this).is(':checked')) {
+      // share it!
+      // we're sharing the item for the first time, so no password, no expiration date for sure
+      OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, '', OC.PERMISSION_READ, itemSourceName, function(data) {
+        console.log(data)
+        // update the data
+        $(slcontainer)
+          .find('.link-text')
+            .val(
+              window.location.protocol + '//' + location.host + OC.linkTo('', 'public.php') + '?service=calendar&t='+data.token
+            );
+      })
+
+    // nope, un-sharing!
+    } else {
+      OC.Share.unshare(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, '', function(data) {
+        console.log(data)
+        // clear data
+        $(slcontainer)
+          .find('.link-text, .share-link-password, .expire-date')
+            .val('')
+        // clear checkboxes
+        $(slcontainer)
+          .find('.password-protect, .expire')
+            .attr('checked', false)
+      });
+    }
+  })
+  
+  /* setting the password */
+  $('.share-link-container input[type="password"].share-link-password').live('blur', function(e){
+    // get the data
+    slcontainer = $(this).parents('.share-link-container')
+    itemType = slcontainer.attr('data-item-type')
+    itemSource = slcontainer.attr('data-item')
+    itemSourceName = slcontainer.attr('data-item-source-name')
+    itemPassword = $(this).val()
+    
+    // set the password!
+    OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, itemPassword, OC.PERMISSION_READ, itemSourceName, function(data) {
+      console.log(data)
+      $(slcontainer)
+        .find('input.share-link-password')
+          .attr('placeholder', 'Password protected')
+          .val('')
+    })
+  })
+  
+  /* what about Enter and Escape keys? */
+  $('.share-link-container input[type="password"].share-link-password').live('keydown', function(e){
+    // Enter? submit!
+    if (e.which == 13) {
+      e.preventDefault();
+      $(this).blur()
+      return false;
+    }
+    // escape? ignore!
+    // if (e.which == 13) { TODO?
+  })
+  
+  /* removing password */
+  $('.share-link-container input[type="checkbox"].password-protect').live('change', function(e){
+    // clear the data input
+    $(this)
+      .siblings('.displayable')
+        .children('input')
+          .attr('placeholder', 'Password')
+          .val('')
+    // get the data
+    slcontainer = $(this).parents('.share-link-container')
+    itemType = slcontainer.attr('data-item-type')
+    itemSource = slcontainer.attr('data-item')
+    itemSourceName = slcontainer.attr('data-item-source-name')
+    itemPassword = slcontainer.find('input.share-link-password').val()
+    
+    // we only handle removal of password
+    if (!$(this).is(':checked')) {
+      OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, itemPassword, OC.PERMISSION_READ, itemSourceName, function(data) {
+        console.log(data)
+      });
+    }
+  })
+  
+  /* setting the expiration date */
+  $('.share-link-container input[type="date"].expire-date').live('change', function(e){
+    // get the data
+    slcontainer = $(this).parents('.share-link-container')
+    itemType = slcontainer.attr('data-item-type')
+    itemSource = slcontainer.attr('data-item')
+    itemSourceName = slcontainer.attr('data-item-source-name')
+    itemPassword = slcontainer.find('input.share-link-password').val()
+    expiryDate = $(this).val()
+    
+    // set the date!
+    $.post(OC.filePath('core', 'ajax', 'share.php'), { action: 'setExpirationDate', itemType: itemType, itemSource: itemSource, date: expiryDate }, function(result) {
+      if (!result || result.status !== 'success') {
+        OC.dialogs.alert(t('core', 'Error setting expiration date'), t('core', 'Error'));
+      }
+    });
+  })
+  
+  /* removing password */
+  $('.share-link-container input[type="checkbox"].password-protect').live('change', function(e){
+    // clear the data input
+    $(this)
+      .siblings('.displayable')
+        .children('input')
+          .val('')
+    // get the data
+    slcontainer = $(this).parents('.share-link-container')
+    itemType = slcontainer.attr('data-item-type')
+    itemSource = slcontainer.attr('data-item')
+    itemSourceName = slcontainer.attr('data-item-source-name')
+    itemPassword = slcontainer.find('input.share-link-password').val()
+    
+    // we only handle removal of expiry date
+    if (!$(this).is(':checked')) {
+      $.post(OC.filePath('core', 'ajax', 'share.php'), { action: 'setExpirationDate', itemType: itemType, itemSource: itemSource, date: '' }, function(result) {
+        if (!result || result.status !== 'success') {
+          OC.dialogs.alert(t('core', 'Error unsetting expiration date'), t('core', 'Error'));
+        }
+      });
+    }
+  })
 });

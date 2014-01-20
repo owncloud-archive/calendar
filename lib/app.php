@@ -8,6 +8,7 @@
  *
  * This class manages our app actions
  */
+ 
 OC_Calendar_App::$l10n = OCP\Util::getL10N('calendar');
 OC_Calendar_App::$tz = OC_Calendar_App::getTimezone();
 class OC_Calendar_App{
@@ -65,10 +66,15 @@ class OC_Calendar_App{
 	 * @return mixed - bool / array
 	 */
 	public static function getEventObject($id, $security = true, $shared = false) {
+    if(! is_numeric($id)) {
+      return false;
+    }
 		$event = OC_Calendar_Object::find($id);
-		if($shared === true || $security === true) {
+		// link-shared event
+		if ( ($shared === true) && ($security === true) ) {
+      return $event;
+		} elseif($shared === true || $security === true) {
 			$permissions = self::getPermissions($id, self::EVENT);
-			OCP\Util::writeLog('contacts', __METHOD__.' id: '.$id.', permissions: '.$permissions, OCP\Util::DEBUG);
 			if(self::getPermissions($id, self::EVENT)) {
 				return $event;
 			}

@@ -18,7 +18,7 @@ if(OCP\User::isLoggedIn()) {
 // no, we do not.
 } else {
 
-  // dow e have a token?
+  // do we have a token?
   if (!\OC::$session->exists('public_link_token'))
     // nope, bail out!
     OCP\User::checkLoggedIn();
@@ -79,6 +79,9 @@ if(OCP\User::isLoggedIn()) {
 
 $id = $_POST['id'];
 $data = OC_Calendar_App::getEventObject($id, false, false);
+echo "<pre>";
+var_dump($data);
+echo "</pre>";
 
 if(!$data) {
 	OCP\JSON::error(array('data' => array('message' => OC_Calendar_App::$l10n->t('Wrong calendar'))));

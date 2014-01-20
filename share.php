@@ -109,19 +109,30 @@ if (isset($rootLinkItem)) {
 
   // Download the item
   if (isset($_GET['download'])) {
-    $calendar = OC_Calendar_App::getCalendar($rootLinkItem['item_source'], true, true);
-    if(!$calendar) {
+    OCP\Util::writeLog('calendar', __FILE__ . ' : ' . __METHOD__, OCP\Util::ERROR);
+    // calendar
+    if ($linkItem['item_type'] === 'calendar') {
+      OCP\Util::writeLog('calendar', __FILE__ . ' : ' . __METHOD__, OCP\Util::ERROR);
+      $data = OC_Calendar_App::getCalendar($rootLinkItem['item_source'], true, true);
+      $type = OC_Calendar_Export::CALENDAR;
+    // event
+    } else {
+      OCP\Util::writeLog('calendar', __FILE__ . ' : ' . __METHOD__, OCP\Util::ERROR);
+      $data = OC_Calendar_App::getEventObject($rootLinkItem['item_source'], true, true);
+      $type = OC_Calendar_Export::EVENT;
+    }
+    if(!$data) {
       OCP\Util::writeLog('share', 'forbidden!', \OCP\Util::ERROR);
       header('HTTP/1.0 403 Forbidden');
       exit;
     }
     header('Content-Type: text/calendar');
-    header('Content-Disposition: inline; filename=' . str_replace(' ', '-', $calendar['displayname']) . '.ics');
-    echo OC_Calendar_Export::export($rootLinkItem['item_source'], OC_Calendar_Export::CALENDAR);
+    header('Content-Disposition: inline; filename=' . str_replace(' ', '-', $data['displayname']) . '.ics');
+    echo OC_Calendar_Export::export($rootLinkItem['item_source'], $type);
     exit();
    
-  // Display the item
-  } else {
+  // Display the calendar
+  } elseif ($linkItem['item_type'] === 'calendar') {
     OCP\Util::addscript('calendar/3rdparty/fullcalendar', 'fullcalendar');
     OCP\Util::addStyle('calendar/3rdparty/fullcalendar', 'fullcalendar');
     OCP\Util::addscript('3rdparty/timepicker', 'jquery.ui.timepicker');
@@ -138,6 +149,21 @@ if (isset($rootLinkItem)) {
     $tmpl->assign('link_shared_calendar_name', $linkItem['item_target']);
     $tmpl->assign('link_shared_calendar_owner', $linkItem['uid_owner']);
     $tmpl->assign('link_shared_calendar_url', $url);
+    $tmpl->printPage();
+
+  // Display the event
+  } elseif ($linkItem['item_type'] === 'event') {
+    //OCP\Util::addscript('calendar', 'calendar');
+    OCP\Util::addStyle('calendar', 'style');
+    //OCP\Util::addscript('', 'jquery.multiselect');
+    //OCP\Util::addStyle('', 'jquery.multiselect');
+    //OCP\Util::addscript('calendar','jquery.multi-autocomplete');
+    //OCP\Util::addscript('','tags');
+    //OCP\Util::addscript('calendar','on-event');
+    OCP\App::setActiveNavigationEntry('calendar_index');
+    $tmpl = new OCP\Template('calendar', 'event', 'user');
+    $tmpl->assign('link_shared_event', $linkItem);
+    $tmpl->assign('link_shared_event_url', $url);
     $tmpl->printPage();
   }
   exit();

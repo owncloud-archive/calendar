@@ -42,7 +42,7 @@ OCP\Util::addscript('','tags');
 OCP\Util::addscript('calendar','on-event');
 OCP\App::setActiveNavigationEntry('calendar_index');
 $tmpl = new OCP\Template('calendar', 'calendar', 'user');
-
+$tmpl->assign("allowShareWithLink", \OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes'));
 if(array_key_exists('showevent', $_GET)) {
 	$tmpl->assign('showevent', $_GET['showevent']);
 }
