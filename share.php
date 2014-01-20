@@ -170,6 +170,21 @@ if (isset($rootLinkItem)) {
     $tmpl->assign('timezone', OC_Calendar_App::$tz);
     $tmpl->assign('timezones',DateTimeZone::listIdentifiers());
     $tmpl->printPage();
+
+  // Display the event
+  } elseif ($linkItem['item_type'] === 'event') {
+    //OCP\Util::addscript('calendar', 'calendar');
+    OCP\Util::addStyle('calendar', 'style');
+    //OCP\Util::addscript('', 'jquery.multiselect');
+    //OCP\Util::addStyle('', 'jquery.multiselect');
+    //OCP\Util::addscript('calendar','jquery.multi-autocomplete');
+    //OCP\Util::addscript('','tags');
+    //OCP\Util::addscript('calendar','on-event');
+    OCP\App::setActiveNavigationEntry('calendar_index');
+    $tmpl = new OCP\Template('calendar', 'event', 'user');
+    $tmpl->assign('link_shared_event', $linkItem);
+    $tmpl->assign('link_shared_event_url', $url);
+    $tmpl->printPage();
   }
   exit();
 } else {
