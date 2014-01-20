@@ -23,8 +23,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-20 01:47-0500\n"
-"PO-Revision-Date: 2013-12-20 06:10+0000\n"
+"POT-Creation-Date: 2014-01-15 02:02-0500\n"
+"PO-Revision-Date: 2014-01-14 14:12+0000\n"
 "Last-Translator: Art O. Pal <artopal@fastmail.fm>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/owncloud/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -92,51 +92,51 @@ msgstr "Petición no válida"
 msgid "Calendar"
 msgstr "Calendario"
 
-#: js/calendar.js:176
+#: js/calendar.js:179
 msgid "Deletion failed"
 msgstr "Falló el borrado"
 
-#: js/calendar.js:263
+#: js/calendar.js:266
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ -[ddd d] MMMM yyyy}"
 
-#: js/calendar.js:265
+#: js/calendar.js:268
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ -[ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:581
+#: js/calendar.js:584
 msgid "group"
 msgstr "grupo"
 
-#: js/calendar.js:583 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:586 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "puede editar"
 
-#: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:587 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "puede compartir"
 
-#: js/calendar.js:855
+#: js/calendar.js:858
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:856
+#: js/calendar.js:859
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:857
+#: js/calendar.js:860
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:860
+#: js/calendar.js:863
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:862
+#: js/calendar.js:865
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:864
+#: js/calendar.js:867
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
