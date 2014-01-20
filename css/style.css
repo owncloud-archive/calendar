@@ -285,6 +285,7 @@ button.category{margin:0 3px;}
 }
 #navigation-list form {
 	width: 100%;
+	margin-bottom: 3px;
 }
 
 #navigation-list input[type=button], #navigation-list button {
@@ -402,4 +403,50 @@ button.category{margin:0 3px;}
 #datecontrol_date .ui-datepicker-next,
 #datecontrol_date .ui-datepicker-current {
 	display: none;
+}
+
+#app-navigation li {
+	min-height: 44px;
+}
+
+#app-navigation li:nth-child(2) {
+	min-height: 0;
+}
+
+#app-navigation li .action {
+	width: 16px;
+	height: 16px;
+	margin-left: 2px;
+	background-size: auto;
+}
+
+#app-navigation label {
+	vertical-align: text-bottom;
+}
+
+#app-navigation input[type=checkbox] {
+	margin-left: 6px;
+	margin-top: 13px;
+}
+
+#app-navigation .utils {
+	position: relative;
+	padding: 13px 7px 0 0;
+	float: right;
+}
+
+#app-navigation li[data-id]:hover {
+	background-color: rgb(221, 221, 221);
+}
+
+#newCalendar:before {
+	position: absolute;
+	content: '+';
+	font-weight: bold;
+	font-size: 150%;
+	left: 7px;
+}
+
+#newCalendar {
+	padding-left: 23px !important;
 }
