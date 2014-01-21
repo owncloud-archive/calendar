@@ -4,18 +4,21 @@
 # 
 # Translators:
 # khanhnd <khanhnd@kenhgiaiphap.vn>, 2012
+# khanhnd <khanhnd@kenhgiaiphap.vn>, 2012
 # mattheu_9x <mattheu.9x@gmail.com>, 2012
+# mattheu_9x <mattheu.9x@gmail.com>, 2012,2014
 # mattheu_9x <mattheu.9x@gmail.com>, 2012
 # mattheu_9x <mattheu.9x@gmail.com>, 2014
+# saosangm <saosangmo@yahoo.com>, 2013
 # saosangm <saosangmo@yahoo.com>, 2013
 # Sơn Nguyễn <sonnghit@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-01-19 01:46-0500\n"
-"PO-Revision-Date: 2014-01-18 15:00+0000\n"
-"Last-Translator: mattheu_9x <mattheu.9x@gmail.com>\n"
+"POT-Creation-Date: 2014-01-21 01:46-0500\n"
+"PO-Revision-Date: 2014-01-21 06:40+0000\n"
+"Last-Translator: Sơn Nguyễn <sonnghit@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/owncloud/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -420,7 +423,7 @@ msgstr "Hiển thị đầy đủ sự kiện"
 
 #: lib/object.php:532
 msgid "Show only busy"
-msgstr ""
+msgstr "Hiển thị bận"
 
 #: lib/object.php:533
 msgid "Hide event"
@@ -520,7 +523,7 @@ msgstr "Theo ngày, tháng"
 
 #: lib/sabre/backend.php:66
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Danh sách sinh nhật"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -721,7 +724,7 @@ msgstr "Sự kiện"
 
 #: templates/part.eventform.php:222
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Hiển thị với những người chia sẻ"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -859,11 +862,11 @@ msgstr "Ngày bắt đầu trong tuần"
 
 #: templates/settings.php:100
 msgid "Cache"
-msgstr "Bộ nhớ đệm"
+msgstr "Bộ đệm"
 
 #: templates/settings.php:104
 msgid "Clear cache for repeating events"
-msgstr "Xóa bộ nhớ đệm cho các sự kiện lặp đi lặp lại"
+msgstr "Xóa bộ nhớ đệm cho các sự kiện trùng nhau"
 
 #: templates/settings.php:109
 msgid "URLs"
