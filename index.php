@@ -35,6 +35,7 @@ if(OCP\Config::getUserValue(OCP\USER::getUser(), "calendar", "timezone") == null
 }
 OCP\Util::addscript('calendar', 'calendar');
 OCP\Util::addStyle('calendar', 'style');
+OCP\Util::addStyle('calendar', 'linkshare');
 OCP\Util::addscript('', 'jquery.multiselect');
 OCP\Util::addStyle('', 'jquery.multiselect');
 OCP\Util::addscript('calendar','jquery.multi-autocomplete');
