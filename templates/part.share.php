@@ -82,7 +82,7 @@ $tmpl->assign('item_id', $_['eventid']);
 $tmpl->assign('item_type', 'event');
 $tmpl->assign('permissions', $_['permissions']);
 $tmpl->assign('link_share', $linkShare);
-$tmpl->assign('shared', $shared);
+//$tmpl->assign('shared', $shared);
 $tmpl->printpage();
 /* end link-sharing an event */
 ?><br />

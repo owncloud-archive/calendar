@@ -44,8 +44,12 @@
   overflow:hidden;
   opacity:0.1;
 }
+/* a hidden control checkbox should be hidden */
+.displayable-container > .displayable-control.hide {
+  display:none;
+}
 /* a marker to end a given displayable */
-.displayable-container > .displayable:last-child::after {
+.displayable-container > .displayable:not(.noafter):last-child::after {
   width:75%;
   height:0px;
   display:block;

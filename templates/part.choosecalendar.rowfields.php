@@ -1,3 +1,5 @@
+<!-- BEGIN -->
+<?php var_dump($_['shared']) ?>
 <td width="20px">
   <?php if($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
   <input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
@@ -7,11 +9,13 @@
   <label for="active_<?php p($_['calendar']['id']) ?>"><?php p($_['calendar']['displayname']) ?></label>
 </td>
 <td width="20px">
-  <?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE) { ?>
-  <a href="#" class="share" data-item-type="calendar" data-item="<?php p($_['calendar']['id']); ?>"
-	data-possible-permissions="<?php p($_['calendar']['permissions']) ?>" data-link="true"
-	title="<?php p($l->t('Share Calendar')) ?>" class="action permanent" style="background-image: url(<?php print_unescaped((!$_['shared']) ? OCP\Util::imagePath('core', 'actions/share.svg') : OCP\Util::imagePath('core', 'actions/shared.svg')) ?>);"></a>
-  <?php } ?>
+  <?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
+  <label
+    for="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"
+    title="<?php p($l->t('Share Calendar')) ?>"
+    class="action permanent"
+    style="cursor: pointer; width:20px; height:20px; display:block; background-repeat:no-repeat; background-image: url(<?php print_unescaped((!$_['shared']) ? OCP\Util::imagePath('core', 'actions/share.svg') : OCP\Util::imagePath('core', 'actions/shared.svg')) ?>);"></label>
+  <?php endif; ?>
 </td>
 <td width="20px">
 <?php
@@ -36,3 +40,23 @@ if($_['calendar']['userid'] == OCP\USER::getUser()){
   <a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>" class="action"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')) ?>"></a>
   <?php } ?>
 </td>
+<?php /* public calendar link-sharing interface */ ?>
+<?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
+<tr>
+  <th class="displayable-container" colspan="7">
+    <input type="checkbox" class="displayable-control hide" id="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"/>
+    <div class="displayable noafter" style="padding-left:0.5em"><?php
+      $tmpl = new OCP\Template('calendar', 'part.linkshare');
+      $tmpl->assign('item_id', $_['calendar']['id']);
+      $tmpl->assign('item_type', 'calendar');
+      $tmpl->assign('permissions', $_['calendar']['permissions']);
+      $tmpl->assign('link_share', $linkShare);
+      //$tmpl->assign('shared', $shared);
+      $tmpl->printpage();
+    ?></div>
+  </td>
+</tr>
+<?php endif; ?>
+<?php /* end public calendar link-sharing interface */
+?>
+<!-- END -->
