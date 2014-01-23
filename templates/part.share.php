@@ -79,6 +79,7 @@ if(is_array($sharedwithByEvent)) {
 /* link-sharing an event */
 $tmpl = new OCP\Template('calendar', 'part.linkshare');
 $tmpl->assign('item_id', $_['eventid']);
+$tmpl->assign('item_type', 'event');
 $tmpl->assign('permissions', $_['permissions']);
 $tmpl->assign('link_share', $linkShare);
 $tmpl->assign('shared', $shared);
