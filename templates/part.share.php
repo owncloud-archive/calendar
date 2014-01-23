@@ -44,8 +44,13 @@ $tmpl = new OCP\Template('calendar', 'part.internalshare');
 $tmpl->assign('item_id', $_['eventid']);
 $tmpl->assign('item_type', 'event');
 $tmpl->assign('permissions', $_['permissions']);
+<<<<<<< HEAD
 $tmpl->assign('basic_edit_options', true);
 $tmpl->assign('shared_with', $eventsharees);
+=======
+$tmpl->assign('link_share', $linkShare);
+//$tmpl->assign('shared', $shared);
+>>>>>>> a70b987... implementing a decent sharing interface
 $tmpl->printpage();
 ?><strong><?php p($l->t('Shared via calendar')); ?></strong>
 
