@@ -58,8 +58,6 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 			$calendars[] = $calendar;
 		}
 		if(\OCP\App::isEnabled('contacts')) {
-			\OCP\Share::registerBackend('addressbook', 'OCA\Contacts\Share\Addressbook', 'contact');
-			$app = new \OCA\Contacts\App(\OCP\User::getUser());
 			$calendars[] = array(
 				'id' => 'contact_birthdays',
 				'uri' => 'contact_birthdays',
@@ -262,13 +260,10 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 		$data = array();
 		if($calendarId === 'contact_birthdays') {
 			$app = new \OCA\Contacts\App();
-			$addressBooks = $app->getAddressBooksForUser();
-			foreach($addressBooks as $addressBook) {
-				if($addressBook->getBackend()->name !== 'local'
-					|| !$addressBook->getBackend()->isActive($addressBook->getId())
-				) {
-					continue;
-				}
+			$backend = $app->getBackend('local');
+			$addressBooks = $backend->getAddressBooksForUser();
+			foreach($addressBooks as $addressBookInfo) {
+				$addressBook = $app->getAddressBook('local', $addressBookInfo['id']);
 				foreach($addressBook->getChildren() as $contact) {
 					$vevent = $contact->getBirthdayEvent();
 					if(is_null($vevent)) {
