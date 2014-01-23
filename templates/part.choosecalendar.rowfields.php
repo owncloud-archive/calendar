@@ -1,5 +1,4 @@
 <!-- BEGIN -->
-<?php var_dump($_['shared']) ?>
 <td width="20px">
   <?php if($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
   <input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
@@ -14,7 +13,7 @@
     for="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"
     title="<?php p($l->t('Share Calendar')) ?>"
     class="action permanent"
-    style="cursor: pointer; width:20px; height:20px; display:block; background-repeat:no-repeat; background-image: url(<?php print_unescaped((!$_['shared']) ? OCP\Util::imagePath('core', 'actions/share.svg') : OCP\Util::imagePath('core', 'actions/shared.svg')) ?>);"></label>
+    style="cursor: pointer; width:20px; height:20px; display:block; background-repeat:no-repeat; background-image: url(<?php print_unescaped($_['share_icon']); ?>);"></label>
   <?php endif; ?>
 </td>
 <td width="20px">
@@ -42,7 +41,7 @@ if($_['calendar']['userid'] == OCP\USER::getUser()){
 </td>
 <?php /* public calendar link-sharing interface */ ?>
 <?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
-<tr>
+</tr><tr>
   <th class="displayable-container" colspan="7">
     <input type="checkbox" class="displayable-control hide" id="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"/>
     <div class="displayable noafter" style="padding-left:0.5em"><?php
@@ -50,12 +49,10 @@ if($_['calendar']['userid'] == OCP\USER::getUser()){
       $tmpl->assign('item_id', $_['calendar']['id']);
       $tmpl->assign('item_type', 'calendar');
       $tmpl->assign('permissions', $_['calendar']['permissions']);
-      $tmpl->assign('link_share', $linkShare);
-      //$tmpl->assign('shared', $shared);
+      $tmpl->assign('link_share', $_['link_share']);
       $tmpl->printpage();
     ?></div>
   </td>
-</tr>
 <?php endif; ?>
 <?php /* end public calendar link-sharing interface */
 ?>
