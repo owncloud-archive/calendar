@@ -599,68 +599,113 @@ Calendar={
 						event.preventDefault();
 					},
 					select: function(event, selected) {
-						var itemType = 'event';
-						var itemSource = $('#sharewith').data('item-source');
+						var itemType = $(this).data('item-type');
+						var itemSource = $(this).data('item-source');
 						var shareType = selected.item.value.shareType;
 						var shareWith = selected.item.value.shareWith;
 						$(this).val(shareWith);
+            var shareWithInput = $(this)
 						// Default permissions are Read and Share
 						var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
 						OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
-							var newitem = '<li data-item-type="event"'
-								+ 'data-share-with="'+shareWith+'" '
-								+ 'data-permissions="'+permissions+'" '
-								+ 'data-share-type="'+shareType+'" data-link="true">'
-								+ shareWith
-								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
-								+ '<span class="shareactions">'
-								+ '<label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
-								+ '<label><input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
-								+ '<img class="svg action delete" title="Unshare"src="'+ OC.imagePath('core', 'actions/delete.svg') +'"></span></li>';
-							$('.sharedby.eventlist').append(newitem);
-							$('#sharedWithNobody').remove();
-							$('#sharewith').val('');
+              // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
+              var editCheckboxIdStub = 'share-can-edit-' + itemType + '-' + itemSource + '-'
+              var curEditCheckboxId = $(shareWithInput).parents('.share-interface-container.internal-share').find('.shared-with-entry-container').length
+              // find the stub
+              var newitem = $(shareWithInput)
+                .parents('.share-interface-container.internal-share')
+                  .find('.shared-with-entry-container.stub')
+                    // clone it
+                    .clone()
+                      // populate the stub with data
+                      .attr('data-item-type', itemType)
+                      .attr('data-share-with', shareWith)
+                      .attr('data-permissions', permissions)
+                      .attr('data-share-type', shareType)
+                      .attr('data-item-soutce', itemSource)
+                      .attr('title', shareWith)
+                      // populate stub's elements
+                      .find('.username')
+                        .html(shareWith + (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : ''))
+                        .end()
+                      .find('.share-options input[name="create"]')
+                        .prop('checked', true) // TODO base that on what we get in response?
+                        .end()
+                      .find('.share-options input[name="update"]')
+                        .prop('checked', true) // TODO base that on what we get in response?
+                        .end()
+                      .find('.share-options input[name="delete"]')
+                        .prop('checked', true) // TODO base that on what we get in response?
+                        .end()
+                      .find('.share-options input[name="share"]')
+                        .prop('checked', true) // TODO base that on what we get in response?
+                        .end()
+                      // handle the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
+                      .find('#' + editCheckboxIdStub + '0')
+                        .prop('id', editCheckboxIdStub + curEditCheckboxId)
+                        .end()
+                      .find('label[for=' + editCheckboxIdStub + '0]')
+                        .prop('for', editCheckboxIdStub + curEditCheckboxId)
+                        .end()
+                      // remove the "stub" class
+                      .removeClass('stub')
+              // append it where it's needed most
+              $(shareWithInput)
+                .parents('.share-interface-container.internal-share')
+                  .children('.shared-with-list')
+                    .append(newitem)
+              // clear
+              $(shareWithInput).val('');
 						});
 						return false;
 					}
 					});});
 	
-					$('.shareactions > input:checkbox').change(function() {
-						var container = $(this).parents('li').first();
-						var permissions = parseInt(container.data('permissions'));
-						var itemType = container.data('item-type');
-						var shareType = container.data('share-type');
-						var itemSource = container.data('item');
-						var shareWith = container.data('share-with');
-						var permission = null;
-						if($(this).hasClass('update')) {
-							permission = OC.PERMISSION_UPDATE;
-							permission = OC.PERMISSION_DELETE;
-						} else if($(this).hasClass('share')) {
-							permission = OC.PERMISSION_SHARE;
-						}
-						// This is probably not the right way, but it works :-P
-						if($(this).is(':checked')) {
-							permissions += permission;
-						} else {
-							permissions -= permission;
-						}
+          // using .off() to make sure the event is only attached once
+          $(document)
+            .off('change', '.shared-with-entry-container input:checkbox[data-permissions]')
+            .on('change', '.shared-with-entry-container input:checkbox[data-permissions]', function(){
 						
-						container.data('permissions',permissions);
-						
-						OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
-					});
+              console.log('PERMISSIONS!')
+              var container = $(this).parents('li').first();
+              var permissions = parseInt(container.data('permissions'));
+              var itemType = container.data('item-type');
+              var shareType = container.data('share-type');
+              var itemSource = container.data('item');
+              var shareWith = container.data('share-with');
+              var permission = null;
+              if($(this).hasClass('update')) {
+                permission = OC.PERMISSION_UPDATE;
+                permission = OC.PERMISSION_DELETE;
+              } else if($(this).hasClass('share')) {
+                permission = OC.PERMISSION_SHARE;
+              }
+              // This is probably not the right way, but it works :-P
+              if($(this).is(':checked')) {
+                permissions += permission;
+              } else {
+                permissions -= permission;
+              }
+              
+              container.data('permissions',permissions);
+              console.log('setting permissions to: ' + permissions)
+              
+              //OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
+            });
 	
-					$('.shareactions > .delete').click(function() {
-						var container = $(this).parents('li').first();
-						var itemType = container.data('item-type');
-						var shareType = container.data('share-type');
-						var itemSource = container.data('item');
-						var shareWith = container.data('share-with');
-						OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
-							container.remove();
-						});
-					});
+          // using .off() to make sure the event is only attached once
+					$(document)
+            .off('click', '.shared-with-entry-container .unshare')
+            .on('click', '.shared-with-entry-container .unshare', function(e) {
+              var container = $(this).parents('li').first();
+              var itemType = container.data('item-type');
+              var shareType = container.data('share-type');
+              var itemSource = container.data('item');
+              var shareWith = container.data('share-with');
+              OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
+                container.remove();
+              });
+            });
 				}
 			}
 		},

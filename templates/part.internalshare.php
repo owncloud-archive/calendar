@@ -1,19 +1,41 @@
 <div class="share-interface-container internal-share">
   <input type="text" class="share-with ui-autocomplete-input"
     placeholder="<?php p($l->t('Share with user or group')); ?>"
-    data-item-source="<?php p($_['item_id']); ?>" data-item-type="<?php p($_['item_type']); ?>" autocomplete="off" />
+    data-item-source="<?php p($_['item_id']); ?>"
+    data-item-type="<?php p($_['item_type']); ?>"
+    data-permissions="<?php p($_['permissions']) ?>"
+    autocomplete="off" />
 
   <ul class="shared-with-list">
-  <?php foreach($_['shared_with'] as $i => $sharee): ?>
+  <?php
+    /*
+     * iterating through shared-with array
+     * we also need a single stub to be used with JS when adding new share-withs
+     * let's add that as index 0
+     */
+    array_unshift(
+      $_['shared_with'],
+      // all the data will be filled-in by PHP below or by JS upon creating an entry from the stub
+      array (
+        'share_type' => '',
+        'share_with' => '',
+        'permissions' => ''
+      )
+    );
+    /* 
+     * iterate!
+     */
+    foreach($_['shared_with'] as $i => $sharee): ?>
     <li
-      data-share-type="1"
+      data-share-type="<?php p($sharee['share_type']); ?>"
       data-share-with="<?php p($sharee['share_with']); ?>"
       data-item="<?php p($_['item_id']); ?>"
+      data-item-source="<?php p($_['item_id']); ?>"
       data-item-type="<?php p($_['item_type']); ?>"
       data-link="true"
       data-permissions="<?php p($_['permissions']) ?>"
       title="<?php p($sharee['share_with']); ?>"
-      class="shared-with-entry-container">
+      class="shared-with-entry-container <?php if($i === 0): ?>stub<?php endif; ?>">
       <!-- the username -->
       <span class="username"><?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?></span>
       <!-- unshare link -->
@@ -31,7 +53,7 @@
           <?php if(empty($_['basic_edit_options'])): ?>
             name="edit" checked="checked" disabled="disabled"
           <?php else: ?>
-            name="update" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?> id="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
+            name="update" data-permissions="2" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?> id="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
           <?php endif; ?>
         />
         <!-- "can edit" displayable-control label -->

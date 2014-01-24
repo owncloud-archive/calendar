@@ -89,6 +89,10 @@
 .shared-with-list > li {
   text-align:right;
 }
+/* that's just a stub to be used by JS later, hid it! */
+.shared-with-list > li.stub {
+  display:none;
+}
 .shared-with-list > li img {
   vertical-align:-20%;
   opacity:0.5;
