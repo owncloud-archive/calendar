@@ -9,6 +9,9 @@
 </td>
 <td width="20px">
   <?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
+  <a href="#" class="share" data-item-type="calendar" data-item="<?php p($_['calendar']['id']); ?>"
+  data-possible-permissions="<?php p($_['calendar']['permissions']) ?>" data-link="true"
+  title="<?php p($l->t('Share Calendar')) ?>" class="action permanent" style="background-image: url(<?php print_unescaped($_['share_icon']); ?>);"></a>
   <label
     for="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"
     title="<?php p($l->t('Share Calendar')) ?>"
