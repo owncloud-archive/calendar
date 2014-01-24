@@ -165,6 +165,7 @@
   height:1em;
 }
 /* end noscript fun */
+
 .share-interface-container.internal-share::after {
   width:75%;
   height:0px;
