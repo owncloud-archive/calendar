@@ -587,79 +587,101 @@ Calendar={
 		Share:{
 			init:function(){
 				if(typeof OC.Share !== typeof undefined){
-					var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP];
-					$('#sharewith, .internal-share .share-with.ui-autocomplete-input').live('keydown.autocomplete', function(){$(this).autocomplete({minLength: 1, source: function(search, response) {
-						$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
-							if (result.status == 'success' && result.data.length > 0) {
-								response(result.data);
-							}
-						});
-					},
-					focus: function(event, focused) {
-						event.preventDefault();
-					},
-					select: function(event, selected) {
-						var itemType = $(this).data('item-type');
-						var itemSource = $(this).data('item-source');
-						var shareType = selected.item.value.shareType;
-						var shareWith = selected.item.value.shareWith;
-						$(this).val(shareWith);
-            var shareWithInput = $(this)
-						// Default permissions are Read and Share
-						var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
-						OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
-              // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
-              var editCheckboxIdStub = 'share-can-edit-' + itemType + '-' + itemSource + '-'
-              var curEditCheckboxId = $(shareWithInput).parents('.share-interface-container.internal-share').find('.shared-with-entry-container').length
-              // find the stub
-              var newitem = $(shareWithInput)
-                .parents('.share-interface-container.internal-share')
-                  .find('.shared-with-entry-container.stub')
-                    // clone it
-                    .clone()
-                      // populate the stub with data
-                      .attr('data-item-type', itemType)
-                      .attr('data-share-with', shareWith)
-                      .attr('data-permissions', permissions)
-                      .attr('data-share-type', shareType)
-                      .attr('data-item-soutce', itemSource)
-                      .attr('title', shareWith)
-                      // populate stub's elements
-                      .find('.username')
-                        .html(shareWith + (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : ''))
-                        .end()
-                      .find('.share-options input[name="create"]')
-                        .prop('checked', true) // TODO base that on what we get in response?
-                        .end()
-                      .find('.share-options input[name="update"]')
-                        .prop('checked', true) // TODO base that on what we get in response?
-                        .end()
-                      .find('.share-options input[name="delete"]')
-                        .prop('checked', true) // TODO base that on what we get in response?
-                        .end()
-                      .find('.share-options input[name="share"]')
-                        .prop('checked', true) // TODO base that on what we get in response?
-                        .end()
-                      // handle the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
-                      .find('#' + editCheckboxIdStub + '0')
-                        .prop('id', editCheckboxIdStub + curEditCheckboxId)
-                        .end()
-                      .find('label[for=' + editCheckboxIdStub + '0]')
-                        .prop('for', editCheckboxIdStub + curEditCheckboxId)
-                        .end()
-                      // remove the "stub" class
-                      .removeClass('stub')
-              // append it where it's needed most
-              $(shareWithInput)
-                .parents('.share-interface-container.internal-share')
-                  .children('.shared-with-list')
-                    .append(newitem)
-              // clear
-              $(shareWithInput).val('');
-						});
-						return false;
-					}
-					});});
+					//var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP]; // huh? what is that supposed to do?..
+					$('.internal-share .share-with.ui-autocomplete-input').live('keydown.autocomplete', function(){
+            // we need itemshares
+            var itemShares = []
+            $(this)
+              .siblings('.shared-with-list')
+                .children('li:not(.stub)')
+                  .each(function(){
+                    var stype = $(this).attr('data-share-type')
+                    var swith = $(this).attr('data-share-with')
+                    if (typeof itemShares[stype] == "undefined") itemShares[stype] = []
+                    itemShares[stype].push(swith)
+                  })
+            // now, handle the damn thing!
+            $(this).autocomplete({
+              minLength: 1,
+              source: function(search, response) {
+                $.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
+                  if (result.status == 'success' && result.data.length > 0) {
+                    response(result.data);
+                  } else {
+                    response([t('core', 'No people found')]);
+                  }
+                });
+              },
+              focus: function(event, focused) {
+                event.preventDefault();
+              },
+              select: function(event, selected) {
+                // checking if we got a valid sharewith partner
+                if ( (typeof selected.item.value.shareType == "undefined") || (typeof selected.item.value.shareWith == "undefined") )
+                  return false;
+                // okay, on with the show
+                var itemType = $(this).data('item-type');
+                var itemSource = $(this).data('item-source');
+                var shareType = selected.item.value.shareType;
+                var shareWith = selected.item.value.shareWith;
+                $(this).val(shareWith);
+                var shareWithInput = $(this)
+                // Default permissions are Read and Share
+                var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
+                OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
+                  // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
+                  var editCheckboxIdStub = 'share-can-edit-' + itemType + '-' + itemSource + '-'
+                  var curEditCheckboxId = $(shareWithInput).parents('.share-interface-container.internal-share').find('.shared-with-entry-container').length
+                  // find the stub
+                  var newitem = $(shareWithInput)
+                    .parents('.share-interface-container.internal-share')
+                      .find('.shared-with-entry-container.stub')
+                        // clone it
+                        .clone()
+                          // populate the stub with data
+                          .attr('data-item-type', itemType)
+                          .attr('data-share-with', shareWith)
+                          .attr('data-permissions', permissions)
+                          .attr('data-share-type', shareType)
+                          .attr('data-item-soutce', itemSource)
+                          .attr('title', shareWith)
+                          // populate stub's elements
+                          .find('.username')
+                            .html(shareWith + (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : ''))
+                            .end()
+                          .find('.share-options input[name="create"]')
+                            .prop('checked', true) // TODO base that on what we get in response?
+                            .end()
+                          .find('.share-options input[name="update"]')
+                            .prop('checked', true) // TODO base that on what we get in response?
+                            .end()
+                          .find('.share-options input[name="delete"]')
+                            .prop('checked', true) // TODO base that on what we get in response?
+                            .end()
+                          .find('.share-options input[name="share"]')
+                            .prop('checked', true) // TODO base that on what we get in response?
+                            .end()
+                          // handle the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
+                          .find('#' + editCheckboxIdStub + '0')
+                            .prop('id', editCheckboxIdStub + curEditCheckboxId)
+                            .end()
+                          .find('label[for=' + editCheckboxIdStub + '0]')
+                            .prop('for', editCheckboxIdStub + curEditCheckboxId)
+                            .end()
+                          // remove the "stub" class
+                          .removeClass('stub')
+                  // append it where it's needed most
+                  $(shareWithInput)
+                    .parents('.share-interface-container.internal-share')
+                      .children('.shared-with-list')
+                        .append(newitem)
+                  // clear
+                  $(shareWithInput).val('');
+                });
+                return false;
+              }
+            });
+          });
 	
           // using .off() to make sure the event is only attached once
           $(document)
