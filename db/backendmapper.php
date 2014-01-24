@@ -7,10 +7,10 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Db\Mapper;
-use \OC\AppFramework\Db\DoesNotExistException;
-use \OC\AppFramework\Db\Entity;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Db\Mapper;
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
+use \OCA\Calendar\AppFramework\Db\Entity;
 
 use \OC\Files\Filesystem;
 

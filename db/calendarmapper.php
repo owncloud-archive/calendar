@@ -7,9 +7,9 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Db\Mapper;
-use \OC\AppFramework\Db\DoesNotExistException;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Db\Mapper;
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
 
 use \OCA\Calendar\Db\Calendar;
 
@@ -20,7 +20,7 @@ class CalendarMapper extends Mapper {
 	 * @param API $api: Instance of the API abstraction layer
 	 */
 	public function __construct($api, $tablename=null){
-		parent::__construct($api, $tablename);
+		parent::__construct($api, '');
 
 		//fix me, make use of parameter
 		$this->tableName = '*PREFIX*' . 'clndr_calcache';

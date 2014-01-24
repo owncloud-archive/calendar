@@ -8,7 +8,7 @@
  */
 namespace OCA\Calendar\DependencyInjection;
 
-use \OC\AppFramework\DependencyInjection\DIContainer as AppFrameworkDIContainer;
+use \OCA\Calendar\AppFramework\DependencyInjection\DIContainer as AppFrameworkDIContainer;
 
 use OCA\Calendar\Controller\BackendController;
 use OCA\Calendar\Controller\CalendarController;

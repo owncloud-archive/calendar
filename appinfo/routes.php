@@ -8,7 +8,7 @@
 
 namespace OCA\Calendar;
 
-use \OC\AppFramework\routing\RouteConfig;
+use \OCA\Calendar\AppFramework\routing\RouteConfig;
 use \OCA\Calendar\DependencyInjection\DIContainer;
 
 require_once(__DIR__ . '/../dependencyinjection/dicontainer.php');

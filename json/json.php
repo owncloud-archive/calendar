@@ -7,7 +7,7 @@
  */
 namespace OCA\Calendar\JSON;
 
-use \OC\AppFramework\Db\Entity;
+use \OCA\Calendar\AppFramework\Db\Entity;
 
 abstract class JSON {
 

@@ -7,7 +7,7 @@
  */
 namespace OCA\Calendar;
 
-use \OC\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Core\API;
 
 $api = new API('calendar');
 

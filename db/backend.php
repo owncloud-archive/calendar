@@ -7,7 +7,7 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OC\AppFramework\Db\Entity;
+use \OCA\Calendar\AppFramework\Db\Entity;
 
 class Backend extends Entity {
 

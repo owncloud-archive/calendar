@@ -7,8 +7,8 @@
  */
 namespace OCA\Calendar\Controller;
 
-use \OC\AppFramework\Http\Request;
-use \OC\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Http\Request;
+use \OCA\Calendar\AppFramework\Core\API;
 
 use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use OCA\Calendar\Db\ObjectType;

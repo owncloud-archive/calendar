@@ -9,10 +9,10 @@
  */
 namespace OCA\Calendar\Backend;
 
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Db\Mapper;
-use \OC\AppFramework\Db\DoesNotExistException;
-use \OC\AppFramework\Db\MultipleObjectsReturnedException;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Db\Mapper;
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
+use \OCA\Calendar\AppFramework\Db\MultipleObjectsReturnedException;
 
 use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\Object;

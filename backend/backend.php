@@ -7,7 +7,7 @@
  */
 namespace OCA\Calendar\Backend;
 
-use \OC\AppFramework\Db\DoesNotExistException;
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
 
 use \OCA\Calendar\Db\ObjectType;
 use \OCA\Calendar\Db\Permissions;

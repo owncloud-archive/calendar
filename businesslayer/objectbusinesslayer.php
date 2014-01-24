@@ -7,11 +7,11 @@
  */
 namespace OCA\Calendar\BusinessLayer;
 
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Utility\TimeFactory;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Utility\TimeFactory;
 
-use \OC\AppFramework\Db\DoesNotExistException;
-use \OC\AppFramework\Db\MultipleObjectsReturnedException;
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
+use \OCA\Calendar\AppFramework\Db\MultipleObjectsReturnedException;
 
 use \OCA\Calendar\Db\Object;
 use \OCA\Calendar\Db\ObjectMapper;
@@ -154,7 +154,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 						}
 		
 						$objectsWithInLimit = array();
-						for($i = $offset;$i <= ($offset + $limit);i++) {
+						for($i = $offset;$i <= ($offset + $limit);$i++) {
 							$objectsWithInLimit[] = $objects[$i];
 						}
 						$objects = $objectsWithInLimit;
@@ -214,7 +214,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 						}
 		
 						$objectsWithInLimit = array();
-						for($i = $offset;$i <= ($offset + $limit);i++) {
+						for($i = $offset;$i <= ($offset + $limit);$i++) {
 							$objectsWithInLimit[] = $objects[$i];
 						}
 						$objects = $objectsWithInLimit;
@@ -282,7 +282,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 						}
 			
 						$objectsWithInLimit = array();
-						for($i = $offset;$i <= ($offset + $limit);i++) {
+						for($i = $offset;$i <= ($offset + $limit);$i++) {
 							$objectsWithInLimit[] = $objects[$i];
 						}
 						$objects = $objectsWithInLimit;

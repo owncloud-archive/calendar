@@ -7,9 +7,9 @@
  */
 namespace OCA\Calendar\BusinessLayer;
 
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Db\Mapper;
-use \OC\AppFramework\Db\DoesNotExistException;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Db\Mapper;
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
 
 abstract class BusinessLayer {
 

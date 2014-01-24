@@ -7,13 +7,13 @@
  */
 namespace OCA\Calendar\Controller;
 
-use \OC\AppFramework\Controller\Controller;
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Http\Http;
-use \OC\AppFramework\Http\Request;
-use \OC\AppFramework\Http\JSONResponse;
+use \OCA\Calendar\AppFramework\Controller\Controller;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Http\Http;
+use \OCA\Calendar\AppFramework\Http\Request;
+use \OCA\Calendar\AppFramework\Http\JSONResponse;
 
-use \OC\AppFramework\DoesNotExistException;
+use \OCA\Calendar\AppFramework\DoesNotExistException;
 
 use \OCA\Calendar\BusinessLayer\BackendBusinessLayer;
 use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
@@ -25,7 +25,7 @@ use OCA\Calendar\Db\JSONCalendar;
 use OCA\Calendar\Db\JSONCalendarReader;
 
 
-class CalendarController extends \OC\AppFramework\Controller\Controller {
+class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controller {
 
 	protected $calendarBusinessLayer;
 
@@ -43,6 +43,7 @@ class CalendarController extends \OC\AppFramework\Controller\Controller {
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function index() {
@@ -69,6 +70,7 @@ class CalendarController extends \OC\AppFramework\Controller\Controller {
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	 public function show() {
@@ -91,6 +93,7 @@ class CalendarController extends \OC\AppFramework\Controller\Controller {
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function create() {
@@ -117,6 +120,7 @@ class CalendarController extends \OC\AppFramework\Controller\Controller {
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function update() {
@@ -142,6 +146,7 @@ class CalendarController extends \OC\AppFramework\Controller\Controller {
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function patch() {
@@ -151,6 +156,7 @@ class CalendarController extends \OC\AppFramework\Controller\Controller {
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function destroy() {

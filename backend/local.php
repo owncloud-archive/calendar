@@ -9,10 +9,10 @@
  */
 namespace OCA\Calendar\Backend;
 
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Db\Mapper;
-use \OC\AppFramework\Db\DoesNotExistException;
-use \OC\AppFramework\Db\MultipleObjectsReturnedException;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Db\Mapper;
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
+use \OCA\Calendar\AppFramework\Db\MultipleObjectsReturnedException;
 
 use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\Object;
@@ -296,7 +296,7 @@ class Local extends Backend {
 
 	public function createObject(Object $object, $userId) {
 		$calendarId		= $object->getCalendarid();
-		$userId			= $object->getUserId()
+		$userId			= $object->getUserId();
 		$calendarDBId	= $this->getCalendarDBId($calendarId, $userId);
 
 		$sql  = 'INSERT INTO `' . $this->objTableName . '` ';
@@ -319,7 +319,7 @@ class Local extends Backend {
 
 	public function updateObject(Object $object, $calendarId, $uri, $userId) {
 		$calendarId		= $object->getCalendarid();
-		$userId			= $object->getUserId()
+		$userId			= $object->getUserId();
 		$calendarDBId	= $this->getCalendarDBId($calendarId, $userId);
 
 		$sql  = 'INSERT INTO `' . $this->objTableName . '` ';
@@ -351,7 +351,7 @@ class Local extends Backend {
 		$sql .= 'WHERE `' . $this->calTableName . '.uri` = ? AND `' . $this->calTableName . '.userid` = ?';
 		$sql .= ' AND `' . $this->objTableName . '.uri` = `?`';
 		$result = $this->api->prepareQuery($sql)->execute(array(
-			$calendarId, $userId
+			$calendarId, $userId,
 			$objectURI));
 
 		return true;
@@ -444,7 +444,7 @@ class Local extends Backend {
 			return null;
 		}
 
-		$sql	= 'SELECT id from `' . $this->calTableName . '` WHERE `uri` = `?` AND `userid` = `?`');
+		$sql	= 'SELECT id from `' . $this->calTableName . '` WHERE `uri` = `?` AND `userid` = `?`';
 		$result	= $this->api->prepareQuery($sql)->execute(array($calendarURI, $userId));
 
 		$calendarId	= $result->fetchOne();

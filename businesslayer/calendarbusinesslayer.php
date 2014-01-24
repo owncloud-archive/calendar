@@ -7,9 +7,9 @@
  */
 namespace OCA\Calendar\BusinessLayer;
 
-use \OC\AppFramework\Db\DoesNotExistException;
-use \OC\AppFramework\Utility\TimeFactory;
-use \OC\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
+use \OCA\Calendar\AppFramework\Utility\TimeFactory;
+use \OCA\Calendar\AppFramework\Core\API;
 
 use \OCA\Calendar\Db\CalendarMapper;
 use \OCA\Calendar\Db\Calendar;
@@ -32,34 +32,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 		$backends = $this->backends->findAllEnabled();
 
 		try {
-			$calendars = $this->mapper->findAll($userId);
-
-			foreach($backends as $backend) {
-				$api = &$this->backends->find($backend->getBackend())->api;
-				if(!$api->cacheCalendars($userId)) {
-					$backendsCalendars = $api->findCalendars($userId);
-					if(is_array($backendsCalendars) && !empty($backendsCalendars)) {
-						$calendars = array_merge($calendars, $backendsCalendars);
-					}
-				}
-			}
-
-			if($limit !== null) {
-				if($offset === null) {
-					$offset = 0;
-				}
-
-				if($offset !== 0 || count($calendars) > $limit) {
-					$this->sortCalendarsByOrder($calendars);
-				}
-
-				$calendarsWithinLimit = array();
-				for($i = $offset;$i <= ($offset + $limit);i++) {
-					$calendarsWithinLimit[] = $calendars[$i];
-				}
-
-				return $calendarsWithinLimit;
-			}
+			$calendars = $this->mapper->findAll($userId, 0, 0);
 
 			return $calendars;
 		} catch (DoesNotExistException $ex) {
@@ -83,12 +56,9 @@ class CalendarBusinessLayer extends BusinessLayer {
 		$this->checkBackendEnabled($backend);
 
 		try {
-			$api = &$this->backends->find($backend)->api;
-			if($api->cacheCalendars($userId)) {
-				return $this->mapper->find($backend, $calendarURI, $userId);
-			} else {
-				return $api->findCalendar($calendarURI, $userId);
-			}
+			$calendar = $this->mapper->find($backend, $calendarURI, $userId);
+
+			return $calendar;
 		} catch (DoesNotExistException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		} catch (MultipleObjectsReturnedException $ex) {
@@ -115,15 +85,12 @@ class CalendarBusinessLayer extends BusinessLayer {
 
 		try {
 			$this->allowNoCalendarURITwice($calendarId, $userId);
-			$this->backends->checkEnabled($backend);
 
 			$api = &$this->backends->find($backend)->api;
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\CREATE_CALENDAR);
 
 			$calendar = $api->createCalendar($calendar);
-			if($api->cacheCalendars($userId)) {
-				$this->mapper->insert($calendar, $calendarURI, $userId);
-			}
+			$this->mapper->insert($calendar, $calendarURI, $userId);
 
 			return $calendar;
 		} catch (DoesNotImplementException $ex) {
@@ -167,9 +134,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\UPDATE_CALENDAR);
 
 			$calendar = $api->updateCalendar($calendar, $calendarURI, $userId);
-			if($api->cacheCalendars($userId)) {
-				$this->mapper->update($calendar, $calendarURI, $userId);
-			}
+			$this->mapper->update($calendar, $calendarURI, $userId);
 
 			return $calendar;
 		} catch(DoesNotImplementException $ex) {
@@ -198,10 +163,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 
 			$api = &$this->backends->find($backend)->api;
 			$api->deleteCalendar($calendarURI, $userId);
-
-			if($api->cacheCalendars($userId)) {
-				$this->mapper->delete($calendar);
-			}
+			$this->mapper->delete($calendar);
 
 			return true;
 		} catch(DoesNotImplementException $ex) {
@@ -433,7 +395,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 				return 0;
 			}
 			return ($firstElement->getOrder() > $secondElement->getOrder()) ? 1 : -1;
-		}
+		};
 
 		usort($calendars, $compareOrder);
 	}

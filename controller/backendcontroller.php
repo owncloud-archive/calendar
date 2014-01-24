@@ -9,7 +9,7 @@ namespace OCA\Calendar\Controller;
 
 use OCA\Calendar\BusinessLayer\BusinessLayerException;
 
-class BackendController extends \OC\AppFramework\Controller\Controller {
+class BackendController extends \OCA\Calendar\AppFramework\Controller\Controller {
 	
 	protected $businessLayer;
 	

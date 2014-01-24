@@ -7,13 +7,13 @@
  */
 namespace OCA\Calendar\Controller;
 
-use \OC\AppFramework\Controller\Controller;
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Http\Http;
-use \OC\AppFramework\Http\Request;
-use \OC\AppFramework\Http\JSONResponse;
+use \OCA\Calendar\AppFramework\Controller\Controller;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Http\Http;
+use \OCA\Calendar\AppFramework\Http\Request;
+use \OCA\Calendar\AppFramework\Http\JSONResponse;
 
-use \OC\AppFramework\DoesNotExistException;
+use \OCA\Calendar\AppFramework\DoesNotExistException;
 
 use \OCA\Calendar\BusinessLayer\BackendBusinessLayer;
 use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
@@ -26,7 +26,7 @@ use OCA\Calendar\Db\JSONCalendar;
 use OCA\Calendar\Db\Object;
 use OCA\Calendar\Db\JSONObject;
 
-class ViewController extends \OC\AppFramework\Controller\Controller {
+class ViewController extends \OCA\Calendar\AppFramework\Controller\Controller {
 	
 	private $calendarBusinessLayer;
 	private $objectBusinessLayer;

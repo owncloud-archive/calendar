@@ -7,11 +7,11 @@
  */
 namespace OCA\Calendar\Controller;
 
-use \OC\AppFramework\Controller\Controller;
-use \OC\AppFramework\Core\API;
-use \OC\AppFramework\Http\Http;
-use \OC\AppFramework\Http\Request;
-use \OC\AppFramework\Http\JSONResponse;
+use \OCA\Calendar\AppFramework\Controller\Controller;
+use \OCA\Calendar\AppFramework\Core\API;
+use \OCA\Calendar\AppFramework\Http\Http;
+use \OCA\Calendar\AppFramework\Http\Request;
+use \OCA\Calendar\AppFramework\Http\JSONResponse;
 
 use OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
