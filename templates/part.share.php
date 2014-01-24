@@ -39,50 +39,20 @@ if(is_array($sharedwithByEvent)) {
 	}
 }
 
-?>
-
-<input type="text" id="sharewith"
-	placeholder="<?php p($l->t('Share with user or group')); ?>"
-	data-item-source="<?php p($eventid); ?>" />
-
-<ul class="sharedby eventlist">
-<?php foreach($eventsharees as $sharee): ?>
-	<li data-share-with="<?php p($sharee['share_with']); ?>"
-		data-item="<?php p($eventid); ?>"
-		data-item-type="event"
-		data-link="true"
-		data-permissions="<?php p($sharee['permissions']); ?>"
-		data-share-type="<?php p($sharee['share_type']); ?>">
-		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>
-		<span class="shareactions">
-			<label>
-				<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
-				 <?php p($l->t('can edit')); ?>
-			</label>
-			<label>
-				<input class="share" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
-				 <?php p($l->t('can share')); ?>
-			</label>
-			<img src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')); ?>" class="svg action delete"
-				title="<?php p($l->t('Unshare')); ?>">
-		</span>
-	</li>
-<?php endforeach; ?>
-</ul>
-<?php if(!$eventsharees) {
-	$nobody = $l->t('Not shared with anyone');
-	print_unescaped('<div id="sharedWithNobody">' . OC_Util::sanitizeHTML($nobody) . '</div>');
-} ?>
-<br />
-<input type="button" id="sendemailbutton" style="float:right;" class="submit" value="<?php p($l->t("Send Email")); ?>" data-eventid="<?php p($eventid);?>" data-location="<?php p($location);?>" data-description="<?php p($description);?>" data-dtstart="<?php p($dtstart);?>" data-dtend="<?php p($dtend);?>">
-<br /><?php
+/* sharing an event internally */
+$tmpl = new OCP\Template('calendar', 'part.internalshare');
+$tmpl->assign('item_id', $_['eventid']);
+$tmpl->assign('item_type', 'event');
+$tmpl->assign('permissions', $_['permissions']);
+$tmpl->assign('basic_edit_options', true);
+$tmpl->assign('shared_with', $eventsharees);
+$tmpl->printpage();
 /* link-sharing an event */
 $tmpl = new OCP\Template('calendar', 'part.linkshare');
 $tmpl->assign('item_id', $_['eventid']);
 $tmpl->assign('item_type', 'event');
 $tmpl->assign('permissions', $_['permissions']);
 $tmpl->assign('link_share', $linkShare);
-//$tmpl->assign('shared', $shared);
 $tmpl->printpage();
 /* end link-sharing an event */
 ?><br />

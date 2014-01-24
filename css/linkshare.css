@@ -118,3 +118,12 @@
 .shared-with-list .edit-options {
   text-align:right;
 }
+
+.share-interface-container.internal-share::after {
+  width:75%;
+  height:0px;
+  display:block;
+  content:" ";
+  margin:0.2em auto 0.5em auto;
+  border-top:solid 1px #ddd;
+}
