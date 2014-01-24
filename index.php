@@ -40,8 +40,12 @@ OCP\Util::addStyle('', 'jquery.multiselect');
 OCP\Util::addscript('calendar','jquery.multi-autocomplete');
 OCP\Util::addscript('','tags');
 OCP\Util::addscript('calendar','on-event');
+OCP\Util::addscript('calendar','settings');
 OCP\App::setActiveNavigationEntry('calendar_index');
 $tmpl = new OCP\Template('calendar', 'calendar', 'user');
+$timezone=OCP\Config::getUserValue(OCP\USER::getUser(),'calendar','timezone','');
+$tmpl->assign('timezone',$timezone);
+$tmpl->assign('timezones',DateTimeZone::listIdentifiers());
 
 if(array_key_exists('showevent', $_GET)) {
 	$tmpl->assign('showevent', $_GET['showevent']);

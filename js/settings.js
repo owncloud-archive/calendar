@@ -4,7 +4,6 @@ $(document).ready(function(){
 		$.post( OC.filePath('calendar', 'ajax/settings', 'settimezone.php'), post, function(data){return;});
 		return false;
 	});
-	$('#timezone').chosen();
 	$('#timeformat').change( function(){
 		var data = $('#timeformat').serialize();
 		$.post( OC.filePath('calendar', 'ajax/settings', 'settimeformat.php'), data, function(data){
@@ -29,7 +28,6 @@ $(document).ready(function(){
 	});
 	$.getJSON(OC.filePath('calendar', 'ajax/settings', 'timeformat.php'), function(jsondata, status) {
 		$('#' + jsondata.timeformat).attr('selected',true);
-		$('#timeformat').chosen();
 		$('#timeformat_chzn').css('width', '100px');
 	});
 	$.getJSON(OC.filePath('calendar', 'ajax/settings', 'gettimezonedetection.php'), function(jsondata, status){
@@ -39,7 +37,6 @@ $(document).ready(function(){
 	});
 	$.getJSON(OC.filePath('calendar', 'ajax/settings', 'getfirstday.php'), function(jsondata, status) {
 		$('#' + jsondata.firstday).attr('selected',true);
-		$('#firstday').chosen();
 		$('#firstday_chzn').css('width', '100px');
 	});
 	$('#cleancalendarcache').click(function(){

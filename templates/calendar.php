@@ -61,7 +61,7 @@
 						</tr>
 						<tr>
 							<td>
-								<select style="display: none;" id="timezone" name="timezone">
+								<select id="timezone" name="timezone">
 								<?php
 								$continent = '';
 								foreach($_['timezones'] as $timezone):
