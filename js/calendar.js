@@ -83,6 +83,13 @@ Calendar={
 		}
 	},
 	UI:{
+    /*
+     * checking if the calendar is link-shared and hence not editable
+     */
+    isLinkShared: function() {
+      // simple enough, eh?
+      return ( $('#linksharedinfo').length > 0 )
+    },
 		loading: function(isLoading){
 			if (isLoading){
 				$('#loading').show();
@@ -141,6 +148,10 @@ Calendar={
 			$('#event-title').focus().val('').val(val);
 		},
 		newEvent:function(start, end, allday){
+
+      // nothing to do for link-shared public calendars
+      if (Calendar.UI.isLinkShared()) return false;
+
 			start = Math.round(start.getTime()/1000);
 			if (end){
 				end = Math.round(end.getTime()/1000);
@@ -154,7 +165,7 @@ Calendar={
 			}
 		},
 		editEvent:function(calEvent, jsEvent, view){
-			if (calEvent.editable == false || calEvent.source.editable == false) {
+      if (calEvent.editable == false || calEvent.source.editable == false) {
 				return;
 			}
 			var id = calEvent.id;
@@ -223,10 +234,14 @@ Calendar={
 				},"json");
 		},
 		moveEvent:function(event, dayDelta, minuteDelta, allDay, revertFunc){
-			if($('#event').length != 0) {
-				revertFunc();
-				return;
-			}
+      // nothing to do for link-shared public calendars
+      if (Calendar.UI.isLinkShared()) return false;
+      
+      if($('#event').length != 0) {
+        revertFunc();
+        return;
+      }
+
 			Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'move.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, allDay: allDay?1:0, lastmodified: event.lastmodified},
 			function(data) {
@@ -241,7 +256,11 @@ Calendar={
 			});
 		},
 		resizeEvent:function(event, dayDelta, minuteDelta, revertFunc){
-			Calendar.UI.loading(true);
+
+      // nothing to do for link-shared public calendars
+      if (Calendar.UI.isLinkShared()) return false;
+
+      Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'resize.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, lastmodified: event.lastmodified},
 			function(data) {
 				Calendar.UI.loading(false);
@@ -569,7 +588,7 @@ Calendar={
 			init:function(){
 				if(typeof OC.Share !== typeof undefined){
 					var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP];
-					$('#sharewith').autocomplete({minLength: 1, source: function(search, response) {
+					$('#sharewith, .internal-share .share-with.ui-autocomplete-input').live('keydown.autocomplete', function(){$(this).autocomplete({minLength: 1, source: function(search, response) {
 						$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
 							if (result.status == 'success' && result.data.length > 0) {
 								response(result.data);
@@ -604,7 +623,7 @@ Calendar={
 						});
 						return false;
 					}
-					});
+					});});
 	
 					$('.shareactions > input:checkbox').change(function() {
 						var container = $(this).parents('li').first();

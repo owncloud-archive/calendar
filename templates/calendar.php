@@ -1,7 +1,13 @@
 <script type="text/javascript" src="<?php print_unescaped(OC_Helper::linkTo('calendar/js', 'l10n.php'));?>"></script>
 
 <div id="notification" style="display:none;"></div>
-<?php if (isset($_['link_shared_calendar_name'])) { ?>
+<?php
+  /* 
+   * if the calendar is link-shared -- display the info
+   * the existence of #linksharedinfo is also used in calendar.js to determine if the calendar is link-shared
+   */
+  if (isset($_['link_shared_calendar_name'])) {
+?>
 <div id="linksharedinfo">User <?php p($_['link_shared_calendar_owner'])?> shared &quot;<?php p($_['link_shared_calendar_name'])?>&quot; calendar with you; explore below or download using this link:<br/><a href="<?php p($_['link_shared_calendar_url'])?>&amp;download"><?php p($_['link_shared_calendar_url'])?>&amp;download</a></div>
 <?php } ?>
 <div id="controls">

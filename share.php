@@ -153,7 +153,6 @@ if (isset($rootLinkItem)) {
 
   // Display the event
   } elseif ($linkItem['item_type'] === 'event') {
-    //OCP\Util::addscript('calendar', 'calendar');
     OCP\Util::addStyle('calendar', 'style');
     //OCP\Util::addscript('', 'jquery.multiselect');
     //OCP\Util::addStyle('', 'jquery.multiselect');
