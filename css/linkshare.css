@@ -3,17 +3,17 @@
 |* | (c) 2014 Michał "rysiek" Woźniak <rysiek@hackerspace.pl>              | *|
 |* | Licensed under AGPL                                                   | *|
 \* +-----------------------------------------------------------------------+ */
-.share-link-container h3 {
+.share-interface-container h3 {
   font-weight:bold;
 }
-.share-link-container input[type="checkbox"] {
+.share-interface-container input[type="checkbox"] {
   vertical-align:middle;
 }
-.share-link-container input[type="text"],
-.share-link-container input[type="e-mail"],
-.share-link-container input[type="password"],
-.share-link-container input[type="submit"],
-.share-link-container input[type="date"] {
+.share-interface-container input[type="text"],
+.share-interface-container input[type="e-mail"],
+.share-interface-container input[type="password"],
+.share-interface-container input[type="submit"],
+.share-interface-container input[type="date"] {
   color:#333;
   font-family: "Lucida Grande", Arial, Verdana, sans-serif;
   font-size: 1em;
@@ -29,20 +29,20 @@
   min-width:10em;
   box-sizing:border-box;
 }
-.share-link-container input[type="submit"] {
+.share-interface-container input[type="submit"] {
   cursor:pointer;
 }
-.share-link-container input:invalid {
+.share-interface-container input:invalid {
   background:#fee;
 }
 /* by default, in a .displayable-container do not display direct-descending .displayable */
 .displayable-container > .displayable {
   max-height:0px;
-  -moz-transition:max-height ease-out 0.5s, opacity ease-out 0.5s;
-  -webkit-transition:max-height ease-out 0.5s, opacity ease-out 0.5s;
-  transition:max-height ease-out 0.5s, opacity ease-out 0.5s;
   overflow:hidden;
-  opacity:0.1;
+  -moz-transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/; /* BUG? animating/transitioning on opacity makes elemets move just a tiny bit for the duration of the transition; doesn't look good */
+  -webkit-transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
+  transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
+  opacity:0.3;
 }
 /* a hidden control checkbox should be hidden */
 .displayable-container > .displayable-control.hide {
@@ -57,13 +57,18 @@
   margin:0.2em auto 0.5em auto;
   border-top:solid 1px #ddd;
 }
+.displayable-container > .displayable.displayable-container:last-child > .displayable:last-child::after,
+.displayable-container > .displayable > .displayable-container:last-child > .displayable:last-child::after {
+  content:"";
+  display:none;
+}
 /* display the rest once the checkbox is :checked */
 .displayable-container > .displayable-control:checked ~ .displayable {
   max-height:500px;
   opacity:1;
-  -moz-transition:max-height ease-in 1s, opacity ease-in 0.5s;
-  -webkit-transition:max-height ease-in 1s, opacity ease-in 0.5s;
-  transition:max-height ease-in 1s, opacity ease-in 0.5s;
+  -moz-transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
+  -webkit-transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
+  transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
 }
 /* e-mail form */
 .e-mail-form-container {
@@ -76,4 +81,40 @@
 .e-mail-form-container > input[type="submit"] {
   min-width:5em;
   width:auto;
+}
+/* shared-with list */
+.shared-with-list {
+  padding:0.5em 0em;
+}
+.shared-with-list > li {
+  text-align:right;
+}
+.shared-with-list > li img {
+  vertical-align:-20%;
+  opacity:0.5;
+}
+.shared-with-list > li *:hover > img {
+  opacity:1;
+}
+.shared-with-list > li label,
+.shared-with-list > li label img {
+  cursor: pointer;
+}
+.shared-with-list > li .unshare {
+  float:right;
+  opacity:1;
+}
+.shared-with-list .share-options {
+  display: inline-table;
+  text-align: left;
+}
+.shared-with-list .share-options .share-label {
+  margin-left:0.5em;
+}
+.shared-with-list .username {
+  font-weight:bold;
+  float:left;
+}
+.shared-with-list .edit-options {
+  text-align:right;
 }

@@ -1,5 +1,5 @@
 <?php /*
-  Public link-sharing of events/calendars (or, indeed, any items, once integrated into app's interface)
+  Public link-sharing of events/calendars (or, actually, any items, once integrated into app's interface)
   (c) 2014 Michał "rysiek" Woźniak <rysiek@hackerspace.pl>
   Licensed under AGPL.
 */ ?>
@@ -10,12 +10,11 @@
     display:none;
   }
 </style></noscript>
-<div class="share-link-container displayable-container"
+<div class="share-interface-container link-share displayable-container"
      data-item-type="<?php p($_['item_type']); ?>"
      data-item="<?php p($_['item_id']); ?>"
      data-possible-permissions="<?php p($_['permissions']) ?>"
-     data-link="true"
-     data-js-enabled="javascript:alert('test')">
+     data-link="true">
   <!-- the checkbox that enables and disables the whole thing -->
   <form>
   <h3><?php p($l->t('Share via link')); ?></h3>

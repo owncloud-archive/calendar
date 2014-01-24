@@ -9,6 +9,9 @@
 </td>
 <td width="20px">
   <?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
+  <a href="#" class="share" data-item-type="calendar" data-item="<?php p($_['calendar']['id']); ?>"
+  data-possible-permissions="<?php p($_['calendar']['permissions']) ?>" data-link="true"
+  title="<?php p($l->t('Share Calendar')) ?>" class="action permanent" style="background-image: url(<?php print_unescaped($_['share_icon']); ?>);"></a>
   <label
     for="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"
     title="<?php p($l->t('Share Calendar')) ?>"
@@ -18,6 +21,7 @@
 </td>
 <td width="20px">
 <?php
+// this can be changed to use $_['shared_by'] TODO
 if($_['calendar']['userid'] == OCP\USER::getUser()){
 	$caldav = rawurlencode(html_entity_decode($_['calendar']['uri'], ENT_QUOTES, 'UTF-8'));
 }else{
@@ -39,12 +43,20 @@ if($_['calendar']['userid'] == OCP\USER::getUser()){
   <a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>" class="action"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')) ?>"></a>
   <?php } ?>
 </td>
-<?php /* public calendar link-sharing interface */ ?>
+<?php /* calendar sharing interface */ ?>
 <?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
 </tr><tr>
   <th class="displayable-container" colspan="7">
     <input type="checkbox" class="displayable-control hide" id="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"/>
-    <div class="displayable noafter" style="padding-left:0.5em"><?php
+    <div class="displayable" style="padding-left:0.5em"><?php
+      /* internal calendar sharing interface */
+      $tmpl = new OCP\Template('calendar', 'part.internalshare');
+      $tmpl->assign('item_id', $_['calendar']['id']);
+      $tmpl->assign('item_type', 'calendar');
+      $tmpl->assign('permissions', $_['calendar']['permissions']);
+      $tmpl->assign('shared_with', $_['shared_with']);
+      $tmpl->printpage();
+      /* public calendar link-sharing interface */
       $tmpl = new OCP\Template('calendar', 'part.linkshare');
       $tmpl->assign('item_id', $_['calendar']['id']);
       $tmpl->assign('item_type', 'calendar');
@@ -52,8 +64,7 @@ if($_['calendar']['userid'] == OCP\USER::getUser()){
       $tmpl->assign('link_share', $_['link_share']);
       $tmpl->printpage();
     ?></div>
-  </td>
+  </th>
+<?php /* end calendar sharing interface */ ?>
 <?php endif; ?>
-<?php /* end public calendar link-sharing interface */
-?>
 <!-- END -->
