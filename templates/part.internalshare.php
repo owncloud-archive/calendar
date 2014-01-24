@@ -12,7 +12,8 @@
       data-item-type="<?php p($_['item_type']); ?>"
       data-link="true"
       data-permissions="<?php p($_['permissions']) ?>"
-      title="<?php p($sharee['share_with']); ?>">
+      title="<?php p($sharee['share_with']); ?>"
+      class="shared-with-entry-container">
       <!-- the username -->
       <span class="username"><?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?></span>
       <!-- unshare link -->

@@ -987,10 +987,10 @@ $(document).ready(function(){
       return r;
   };
 
-  /* sharing/unsharing single events done right */
-  $('.share-link-container input[type="checkbox"].share-link').live('change', function(e){
+  /* link-sharing/unsharing of single events and calendars done right */
+  $('.share-interface-container.link-share input[type="checkbox"].share-link').live('change', function(e){
     // get the data
-    slcontainer = $(this).parents('.share-link-container')
+    slcontainer = $(this).parents('.share-interface-container.link-share')
     itemType = slcontainer.attr('data-item-type')
     itemSource = slcontainer.attr('data-item')
     itemSourceName = slcontainer.attr('data-item-source-name')
@@ -1026,9 +1026,9 @@ $(document).ready(function(){
   })
   
   /* setting the password */
-  $('.share-link-container input[type="password"].share-link-password').live('blur', function(e){
+  $('.share-interface-container.link-share input[type="password"].share-link-password').live('blur', function(e){
     // get the data
-    slcontainer = $(this).parents('.share-link-container')
+    slcontainer = $(this).parents('.share-interface-container.link-share')
     itemType = slcontainer.attr('data-item-type')
     itemSource = slcontainer.attr('data-item')
     itemSourceName = slcontainer.attr('data-item-source-name')
@@ -1045,7 +1045,7 @@ $(document).ready(function(){
   })
   
   /* what about Enter and Escape keys? */
-  $('.share-link-container input[type="password"].share-link-password').live('keydown', function(e){
+  $('.share-interface-container.link-share input[type="password"].share-link-password').live('keydown', function(e){
     // Enter? submit!
     if (e.which == 13) {
       e.preventDefault();
@@ -1057,7 +1057,7 @@ $(document).ready(function(){
   })
   
   /* removing password */
-  $('.share-link-container input[type="checkbox"].password-protect').live('change', function(e){
+  $('.share-interface-container.link-share input[type="checkbox"].password-protect').live('change', function(e){
     // clear the data input
     $(this)
       .siblings('.displayable')
@@ -1065,7 +1065,7 @@ $(document).ready(function(){
           .attr('placeholder', 'Password')
           .val('')
     // get the data
-    slcontainer = $(this).parents('.share-link-container')
+    slcontainer = $(this).parents('.share-interface-container.link-share')
     itemType = slcontainer.attr('data-item-type')
     itemSource = slcontainer.attr('data-item')
     itemSourceName = slcontainer.attr('data-item-source-name')
@@ -1080,9 +1080,9 @@ $(document).ready(function(){
   })
   
   /* setting the expiration date */
-  $('.share-link-container input[type="date"].expire-date').live('change', function(e){
+  $('.share-interface-container.link-share input[type="date"].expire-date').live('change', function(e){
     // get the data
-    slcontainer = $(this).parents('.share-link-container')
+    slcontainer = $(this).parents('.share-interface-container.link-share')
     itemType = slcontainer.attr('data-item-type')
     itemSource = slcontainer.attr('data-item')
     itemSourceName = slcontainer.attr('data-item-source-name')
@@ -1098,14 +1098,14 @@ $(document).ready(function(){
   })
   
   /* removing password */
-  $('.share-link-container input[type="checkbox"].password-protect').live('change', function(e){
+  $('.share-interface-container.link-share input[type="checkbox"].password-protect').live('change', function(e){
     // clear the data input
     $(this)
       .siblings('.displayable')
         .children('input')
           .val('')
     // get the data
-    slcontainer = $(this).parents('.share-link-container')
+    slcontainer = $(this).parents('.share-interface-container.link-share')
     itemType = slcontainer.attr('data-item-type')
     itemSource = slcontainer.attr('data-item')
     itemSourceName = slcontainer.attr('data-item-source-name')
