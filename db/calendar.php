@@ -24,31 +24,45 @@ class Calendar extends Entity {
 	public $order;
 	public $enabled;
 	public $cruds;
-	public $x = array();
 
 	/**
 	 * @brief init Calendar object with data from db row
-	 * @param array $fromRow
+	 * @param mixed (array / VCalendar) $from
 	 */
-	public function __construct($fromRow=null){
-		if($fromRow){
-			$this->fromRow($fromRow);
+	public function __construct($from=null){
+		//if $from is an array, parse it like a db row
+		if(is_array($from)){
+			$this->fromRow($from);
+		}
+
+		//if $from is an VObject, parse it like an VObject
+		if($from instanceof VCalendar) {
+			$this->fromVObject($from);
 		}
 	}
 
 	/**
-	 * @brief increment ctag
+	 * @brief take data from VObject and put into this Calendar object
+	 * @return VCalendar Object
 	 */
-	public function touch() {
-		$this->ctag++;
-		return $this;
+	public function fromVObject($vobject) {
+		
 	}
 
+	/**
+	 * @brief get VObject from Calendar Object
+	 * @return VCalendar Object
+	 */
 	public function getVObject() {
 		
 	}
 
-	public function readFromVObject($vobject) {
-		
+	/**
+	 * @brief increment ctag
+	 * @return Calendar
+	 */
+	public function touch() {
+		$this->ctag++;
+		return $this;
 	}
 }

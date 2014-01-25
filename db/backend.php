@@ -8,6 +8,7 @@
 namespace OCA\Calendar\Db;
 
 use \OCA\Calendar\AppFramework\Db\Entity;
+use \OCA\Calendar\Backend\CalendarInterface;
 
 class Backend extends Entity {
 
@@ -19,22 +20,39 @@ class Backend extends Entity {
 
 	public $api;
 
+	/**
+	 * @brief init Backend object with data from db row
+	 * @param array $fromRow
+	 */
 	public function __construct($fromRow=null){
 		if($fromRow){
 			$this->fromRow($fromRow);
 		}
 	}
 
-	public function registerAPI($api){
+	/**
+	 * registers an API for a backend
+	 * @param CalendarInterface $api
+	 * @return Backend
+	 */
+	public function registerAPI(CalendarInterface $api){
 		$this->api = $api;
 		return $this;
 	}
 
+	/**
+	 * disables a backend
+	 * @return Backend
+	 */
 	public function disable() {
 		$this->setEnabled(false);
 		return $this;
 	}
 
+	/**
+	 * enables a backend
+	 * @return Backend
+	 */
 	public function enable() {
 		$this->setEnabled(true);
 		return $this;

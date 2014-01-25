@@ -173,7 +173,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 								$objects[] = $objectToCheck;
 							}
 							if($limit !== null) {
-								$i==;
+								$i++;
 								if($i > ($offset + $limit)) {
 									break;
 								}	
@@ -241,7 +241,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 								$objects[] = $objectToCheck;
 							}
 							if($limit !== null) {
-								$i==;
+								$i++;
 								if($i > ($offset + $limit)) {
 									break;
 								}	
@@ -317,7 +317,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 								$objects[] = $objectToCheck;
 							}
 							if($limit !== null) {
-								$i==;
+								$i++;
 								if($i > ($offset + $limit)) {
 									break;
 								}	

@@ -21,8 +21,8 @@ use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
 use OCA\Calendar\Db\Calendar;
-use OCA\Calendar\Db\JSONCalendar;
-use OCA\Calendar\Db\JSONCalendarReader;
+use OCA\Calendar\JSON\JSONCalendar;
+use OCA\Calendar\JSON\JSONCalendarReader;
 
 
 class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controller {
@@ -103,8 +103,8 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 		try {
 			$jsonReader	= new JSONCalendarReader($json);
 			$calendar	= $jsonReader->getCalendar();
-			$calendar->setUserId($userId);
-			$calendar->setOwnerId($userId);
+			//$calendar->setUserId($userId);
+			//$calendar->setOwnerId($userId);
 
 			$calendar		= $this->calendarBusinessLayer->create($calendar, $userId);
 			$jsonCalendar	= new JSONCalendar($calendar);
@@ -153,7 +153,7 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 		return new JSONResponse(array(), HTTP::STATUS_NOT_IMPLEMENTED);
 	}
 
-	/**
+	/** 
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
 	 * @CSRFExemption

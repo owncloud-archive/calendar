@@ -26,7 +26,6 @@ class Object extends Entity {
 	public $calendarData;
 	public $lastModified;
 	public $etag;
-	public $x = array();
 
 	public $backend;
 	public $calendarURI;
@@ -46,6 +45,14 @@ class Object extends Entity {
 				$this->updateETag();
 			}
 		}
+	}
+
+	public function fromVObject($vobject) {
+		
+	}
+
+	public function getVObject() {
+		
 	}
 
 	/**
@@ -114,11 +121,4 @@ class Object extends Entity {
 	}
 
 
-	public function getVObject() {
-		
-	}
-
-	public function readFromVObject($vobject) {
-		
-	}
 }

@@ -47,7 +47,11 @@
  */
 namespace OCA\Calendar\JSON;
 
-class Calendar extends JSON{
+use \OCA\Calendar\Db\Calendar;
+use \OCA\Calendar\Db\ObjectType;
+use \OCA\Calendar\Db\Permissions;
+
+class JSONCalendar extends JSON{
 
 	public $calendarURI;
 	public $url;
@@ -61,7 +65,6 @@ class Calendar extends JSON{
 	public $timezone;
 	public $enabled;
 	public $cruds;
-	public $x = array();
 
 	private $calendarObject;
 
@@ -163,26 +166,7 @@ class Calendar extends JSON{
 	 */
 	private function setTimezone($timezoneId='UTC') {
 		$timezoneId = $this->calendarObject->getTimezone();
-
-		if($timezoneId === null) {
-			$timezoneId = 'UTC';
-		}
-
-		$currentYear = date('Y');
-		$dateTimeZone = new \DateTimeZone($timezoneId);
-		$standard = new \DateTime($currentYear . '-01-01', $dateTimeZone);
-		$daylightSaving = new \DateTime($currentYear . '-07-31', $dateTimeZone);
-
-		$standardOffset = (int) $standard->format('Z');
-		$daylightSavingOffset = (int) $daylightSaving->format('Z');
-
-		$this->timezone = array(
-			'name' => $timezoneId,
-			'stdOffset' => $standardOffset,
-			'dstOffset' => $daylightSavingOffset,
-			'stdOffsetBegin' => 'not implemented yet',
-			'dstOffsetBegin' => 'not implemented yet',
-		);
+		//todo - implement
 	}
 
 	/**

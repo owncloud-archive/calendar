@@ -20,12 +20,10 @@ class CalendarMapper extends Mapper {
 	/**
 	 * @param API $api: Instance of the API abstraction layer
 	 */
-	public function __construct($api, $tablename=null){
+	public function __construct($api, $tablename='clndr_calcache'){
 		parent::__construct($api, '');
 
-		//fix me, make use of parameter
-		$this->tableName = '*PREFIX*' . 'clndr_calcache';
-		$this->keyValueTableName = '*PREFIX*' . 'clndr_cal_prop';
+		$this->tableName = '*PREFIX*' . $tablename;
 	}
 
 	/**
@@ -36,8 +34,6 @@ class CalendarMapper extends Mapper {
 	public function find($backend, $uri, $userId){
 		$sql = 'SELECT * FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
 		$row = $this->findOneQuery($sql, array($backend, $uri, $userId));
-		$kvsql = 'SELECT * FROM `' . $this->keyValueTableName . '` WHERE `calendarid` = ?';
-		$kvrow = $this->findEntities($sql, array($row['id']));
 		return new Calendar($row);
 	}
 
