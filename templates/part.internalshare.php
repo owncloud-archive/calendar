@@ -53,16 +53,34 @@
           otherwise the noscript tag makes space for a CSS/HTML "checkbox" showing the state of the create/update/delete checkboxes
         -->
         <noscript class="share-can-edit-space"><!--</noscript>
+        
         <input type="checkbox" class="permissions" 
           <?php if(empty($_['basic_edit_options'])): ?>
-            name="edit" data-permissions="<?php p(OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE); ?>" <?php if ($sharee['permissions'] & (OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE ) ): ?> checked="checked"<?php endif; ?>
+            name="edit" data-permissions="<?php p(OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE); ?>" <?php if ($sharee['permissions'] & (OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE ) ): ?> checked="checked"<?php endif; ?> id="share-collective-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
           <?php else: ?>
             name="update" data-permissions="<?php p(OCP\PERMISSION_UPDATE); ?>" <?php if ($sharee['permissions'] & OCP\PERMISSION_UPDATE): ?> checked="checked"<?php endif; ?> id="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
           <?php endif; ?>
         />
-        <noscript>--></noscript>
-        <!-- "can edit" displayable-control label -->
-        <label for="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><?php p($l->t('can edit')); ?><?php if(empty($_['basic_edit_options'])): ?><img class="svg" alt="access control" src="<?php p(OCP\Util::imagePath('core', 'actions/triangle-s.svg')); ?>"><?php endif; ?></label>
+
+        <?php /* "can edit" label for the above share-can-edit checkbox */ ?>
+        <label
+          <?php if(empty($_['basic_edit_options'])): ?>
+          for="share-collective-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
+          <?php else: ?>
+          for="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
+          <?php endif; ?>
+        ><?php p($l->t('can edit')); ?></label>
+
+        <noscript>-->
+        <!-- "can edit" displayable-control label OR if basic_edit_options a label for the above share-can-edit checkbox -->
+        <label for="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><?php p($l->t('can edit')); ?></label>
+        </noscript>
+        
+        <!-- "can edit triangle" displayable-control label - not needed when only basic edit options are available -->
+        <?php if(empty($_['basic_edit_options'])): ?>
+        <label for="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><?php if(empty($_['basic_edit_options'])): ?><img class="svg" alt="access control" src="<?php p(OCP\Util::imagePath('core', 'actions/triangle-s.svg')); ?>"><?php endif; ?></label>
+        <?php endif; ?>
+
         <!-- "can share" label and checkbox -->
         <label class="share-label"><input type="checkbox" name="share" class="permissions" data-permissions="<?php p(OCP\PERMISSION_SHARE); ?>" <?php if ($sharee['permissions'] & OCP\PERMISSION_SHARE): ?> checked="checked"<?php endif; ?>><?php p($l->t('can share')); ?></label>
         <!-- if we only have basic edit options available, there is no need for the advanced edit options controls, right? display these only when not in basic edit options regime -->

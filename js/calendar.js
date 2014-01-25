@@ -691,7 +691,7 @@ Calendar={
           $(document)
             .off('change', '.shared-with-entry-container input:checkbox[data-permissions]')
             .on('change', '.shared-with-entry-container input:checkbox[data-permissions]', function(){
-
+              console.log('PERMISSION CHECKBOX CHANGE')
               // get the data
               var container = $(this).parents('li').first();
               var permissions = parseInt(container.attr('data-permissions'));
@@ -711,6 +711,27 @@ Calendar={
               // save current permissions on the container
               container.attr('data-permissions', permissions);
               
+              // set statuses of all the checkboxes
+              switch ($(this).attr('name')) {
+                case 'create':
+                case 'update':
+                case 'delete':
+                  console.log('CREATE-UPDATE-DELETE: ' + permissions)
+                  $(this)
+                    .parents('.share-options')
+                      .find('input[type="checkbox"][name="edit"]')
+                        .prop('checked', permissions & ( OC.PERMISSION_CREATE | OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE ) )
+                  break;
+                case 'edit':
+                  console.log('EDIT: ' + permissions)
+                  $(this)
+                    .parents('.share-options')
+                      .find('input[type="checkbox"][name="create"]').prop('checked', permissions & OC.PERMISSION_CREATE )
+                      .siblings('input[type="checkbox"][name="update"]').prop('checked', permissions & OC.PERMISSION_UPDATE )
+                      .siblings('input[type="checkbox"][name="delete"]').prop('checked', permissions & OC.PERMISSION_DELETE )
+                  break;
+              }
+
               // run the request
               OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
             });
