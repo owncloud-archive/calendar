@@ -9,10 +9,11 @@
      data-possible-permissions="<?php p($_['permissions']) ?>"
      data-link="true">
   <!--
-    TODO: prepare backend for direct submission, then fill-in the details of the form;
+    TODO:
+    add a <form>
+    prepare backend for direct submission, then fill-in the details of the form;
     if JS is disabled, the submit button will be available, automagically
   -->
-  <form>
   <h3><?php p($l->t('Share via link')); ?></h3>
   <!-- the checkbox that enables and disables the whole thing -->
   <input type="checkbox" name="share-link" class="share-link displayable-control" value="0" id="share-link-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>" <?php if (isset($_['link_share']['token'])): ?> checked="checked"<?php endif; ?>/>
@@ -48,5 +49,4 @@
     <!-- the submit button (unneeded and invisible if JS is enabled) -->
     <noscript><input class="share-link-form-submit" type="submit" value="<?php p($l->t('Submit link-sharing settings')) ?>"/></noscript>
   </div>
-  </form>
 </div>
