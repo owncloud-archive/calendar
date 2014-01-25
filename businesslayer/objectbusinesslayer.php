@@ -37,6 +37,46 @@ class ObjectBusinessLayer extends BusinessLayer {
 		parent::__construct($api, $objectMapper, $backendBusinessLayer);
 	}
 
+
+	/**
+	 * Finds all objects of calendar $calendarId of user $userId
+	 * @param string $calendarId global uri of calendar e.g. local-work
+	 * @param string $userId
+	 * @param int limit
+	 * @param int offset
+	 * @throws BusinessLayerException
+	 * @return array containing all items
+	 */
+	public function findAll($calendarId, $userId, $limit=null, $offset=null) {
+		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		$this->checkBackendEnabled($backend);
+
+		if($limit !== null) {
+			$limit = (int) $limit;
+		}
+
+		if($offset !== null || $limit !== null) {
+			$offset = (int) $offset;
+		}
+
+		try {
+			$api = &$this->backends->find($backend)->api;
+
+			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
+			if($cacheObjects) {
+				$objects = $this->mapper->findAll($backend, $calendarURI, $userId, $limit, $offset);
+			} else { 
+				$objects = $api->findObjects($calendarURI, $userId, $limit, $offset);
+			}
+
+			return $objects;
+		} catch (DoesNotExistException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		} catch (BackendException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		}
+	}
+
 	/**
 	 * Find the object $objectURI of calendar $calendarId of user $userId
 	 * @param string $calendarId global uri of calendar e.g. local-work
@@ -51,6 +91,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 
 		try {
 			$api = &$this->backends->find($backend)->api;
+
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
 			if($cacheObjects) {
 				$object = $this->mapper->find($backend, $calendarURI, $objectURI, $userId);
@@ -69,36 +110,6 @@ class ObjectBusinessLayer extends BusinessLayer {
 	}
 
 	/**
-	 * Finds all objects of calendar $calendarId of user $userId
-	 * @param string $calendarId global uri of calendar e.g. local-work
-	 * @param string $userId
-	 * @param int limit
-	 * @param int offset
-	 * @throws BusinessLayerException
-	 * @return array containing all items
-	 */
-	public function findAll($calendarId, $userId, $limit = null, $offset = null) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
-		$this->checkBackendEnabled($backend);
-
-		try {
-			$api = &$this->backends->find($backend)->api;
-			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
-			if($cacheObjects) {
-				$objects = $this->mapper->findAll($backend, $calendarURI, $userId, $limit, $offset);
-			} else { 
-				$objects = $api->findObjects($calendarURI, $userId, $limit, $offset);
-			}
-
-			return $objects;
-		} catch (DoesNotExistException $ex) {
-			throw new BusinessLayerException($ex->getMessage());
-		} catch (BackendException $ex) {
-			throw new BusinessLayerException($ex->getMessage());
-		}
-	}
-
-	/**
 	 * Find the objects $objectURI of type $type of calendar $calendarId of user $userId
 	 * @param string $calendarId global uri of calendar e.g. local-work
 	 * @param string $objectURI UID of the object
@@ -109,6 +120,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 */
 	public function findByType($calendarId, $objectURI, $type, $userId) {
 		$object = $this->find($calendarId, $objectURI, $userId);
+
 		if($object->getType() !== $type) {
 			throw new BusinessLayerException('Object exists, but is of different type.');
 		}
@@ -126,15 +138,24 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllByType($calendarId, $type, $userId, $limit = null, $offset = null) {
+	public function findAllByType($calendarId, $type, $userId, $limit=null, $offset=null) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
+		if($limit !== null) {
+			$limit = (int) $limit;
+		}
+
+		if($offset !== null || $limit !== null) {
+			$offset = (int) $offset;
+		}
+
 		try {
 			$api = &$this->backends->find($backend)->api;
+
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
 			if($cacheObjects) {
-				$object = $this->mapper->findAllByType($backend, $calendarURI, $type, $userId, $limit, $offset);
+				$objects = $this->mapper->findAllByType($backend, $calendarURI, $type, $userId, $limit, $offset);
 			} else {
 				$isSupported = $api->implementsActions(\OCA\Calendar\Backend\FIND_OBJECTS_BY_TYPE);
 				if($isSupported) {
@@ -142,22 +163,22 @@ class ObjectBusinessLayer extends BusinessLayer {
 				} else {
 					$allObjects = $api->findObjects($calendarURI, $userId);
 
-					foreach($allObjects as $objectToCheck) {
-						if($objectToCheck->getType() === $type) {
-							$objects[] = $objectToCheck;
-						}
+					if($limit !== null) {
+						$i = 0;						
 					}
 
-					if($limit !== null) {
-						if($offset === null) {
-							$offset = 0;
+					foreach($allObjects as $objectToCheck) {
+						if($objectToCheck->getType() === $type) {
+							if($limit === null || ($i >= $offset)) {
+								$objects[] = $objectToCheck;
+							}
+							if($limit !== null) {
+								$i==;
+								if($i > ($offset + $limit)) {
+									break;
+								}	
+							}
 						}
-		
-						$objectsWithInLimit = array();
-						for($i = $offset;$i <= ($offset + $limit);$i++) {
-							$objectsWithInLimit[] = $objects[$i];
-						}
-						$objects = $objectsWithInLimit;
 					}
 				}
 			}
@@ -181,9 +202,17 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllInPeriod($calendarId, $start, $end, $userId, $limit = null, $offset = null) {
+	public function findAllInPeriod($calendarId, $start, $end, $userId, $limit=null, $offset=null) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
+
+		if($limit !== null) {
+			$limit = (int) $limit;
+		}
+
+		if($offset !== null) {
+			$offset = (int) $offset;
+		}
 
 		try {
 			$api = &$this->backends->find($backend)->api;
@@ -196,7 +225,11 @@ class ObjectBusinessLayer extends BusinessLayer {
 					$objects = $api->findObjectsInPeriod($calendarURI, $type, $userId, $limit, $offset);
 				} else {
 					$allObjects = $api->findObjects($calendarURI, $userId);
-					$objects = array();
+
+					if($limit !== null) {
+						$i = 0;						
+					}
+
 					foreach($allObjects as $objectToCheck) {
 						$startDate = $objectToCheck->getStartdate();
 						$endDate = $objectToCheck->getEnddate();
@@ -204,20 +237,16 @@ class ObjectBusinessLayer extends BusinessLayer {
 							($startDate >= $start && $startDate <= $start) ||
 							($endDate >= $end && $endDate <= $end) ||
 							($startDate <= $start && $endDate >= $end)){
-							$objects[] = $objectToCheck;
+							if($limit === null || ($i >= $offset)) {
+								$objects[] = $objectToCheck;
+							}
+							if($limit !== null) {
+								$i==;
+								if($i > ($offset + $limit)) {
+									break;
+								}	
+							}
 						}
-					}
-
-					if($limit !== null) {
-						if($offset === null) {
-							$offset = 0;
-						}
-		
-						$objectsWithInLimit = array();
-						for($i = $offset;$i <= ($offset + $limit);$i++) {
-							$objectsWithInLimit[] = $objects[$i];
-						}
-						$objects = $objectsWithInLimit;
 					}
 				}
 			}
@@ -245,9 +274,17 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @throws BusinessLayerException
 	 * @return array containing all items
 	 */
-	public function findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId, $limit = null, $offset = null) {
+	public function findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId, $limit=null, $offset=null) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 		$this->checkBackendEnabled($backend);
+
+		if($limit !== null) {
+			$limit = (int) $limit;
+		}
+
+		if($offset !== null) {
+			$offset = (int) $offset;
+		}
 
 		try {
 			$api = &$this->backends->find($backend)->api;
@@ -260,7 +297,11 @@ class ObjectBusinessLayer extends BusinessLayer {
 					$objects = $api->findObjectsByTypeInPeriod($calendarURI, $start, $end, $type, $userId);
 				} else {
 					$allObjects = $api->findObjects($calendarURI, $userId);
-					$objects = array();
+
+					if($limit !== null) {
+						$i = 0;						
+					}
+
 					foreach($allObjects as $objectToCheck) {
 						if($objectToCheck->getType() !== $type) {
 							continue;
@@ -272,20 +313,16 @@ class ObjectBusinessLayer extends BusinessLayer {
 							($startDate >= $start && $startDate <= $start) ||
 							($endDate >= $end && $endDate <= $end) ||
 							($startDate <= $start && $endDate >= $end)){
-							$objects[] = $objectToCheck;
+							if($limit === null || ($i >= $offset)) {
+								$objects[] = $objectToCheck;
+							}
+							if($limit !== null) {
+								$i==;
+								if($i > ($offset + $limit)) {
+									break;
+								}	
+							}
 						}
-					}
-
-					if($limit !== null) {
-						if($offset === null) {
-							$offset = 0;
-						}
-			
-						$objectsWithInLimit = array();
-						for($i = $offset;$i <= ($offset + $limit);$i++) {
-							$objectsWithInLimit[] = $objects[$i];
-						}
-						$objects = $objectsWithInLimit;
 					}
 				}
 			}
@@ -316,7 +353,12 @@ class ObjectBusinessLayer extends BusinessLayer {
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\CREATE_OBJECT);
 			$api = &$this->backends->find($backend)->api;
 
+			if($object->isValid() === false) {
+				$object->fix();
+			}
+
 			$object = $api->createObject($object, $calendarURI, $objectURI, $userId);
+
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
 			if($cacheObjects) {
 				$this->mapper->insert($object, $calendarURI, $objectURI, $userId);
@@ -353,6 +395,10 @@ class ObjectBusinessLayer extends BusinessLayer {
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\UPDATE_OBJECT);
 
 			$api = &$this->backends->find($backend)->api;
+
+			if($object->isValid() === false) {
+				$object->fix();
+			}
 
 			$object = $api->updateObject($object, $calendarURI, $objectURI, $userId);
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
@@ -391,6 +437,8 @@ class ObjectBusinessLayer extends BusinessLayer {
 			if($api->cacheObjects($calendarURI, $userId)) {
 				$this->mapper->delete($calendar);
 			}
+
+			$this->calendarBusinessLayer->touch($calendarId, $userId);
 
 			return true;
 		} catch(DoesNotImplementException $ex) {
@@ -479,30 +527,6 @@ class ObjectBusinessLayer extends BusinessLayer {
 			$object->touch();
 
 			$this->update($object, $calendarId, $userId);
-		} catch(DoesNotImplementException $ex) {
-			throw new BusinessLayerException($ex->getMessage());
-		} catch(BackendException $ex) {
-			throw new BusinessLayerException($ex->getMessage());
-		}
-	}
-
-	/**
-	 * Find the objects $objectURI of calendar $calendarId of user $userId
-	 * @param string $calendarId global uri of calendar e.g. local-work
-	 * @param string $userId
-	 * @throws BusinessLayerException
-	 * @return array containing all items
-	 */
-	public function touchAll($calendarId, $userId) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
-
-		try {
-			$objects = $this->findAll($calendarId, $userId);
-
-			foreach($objects as $object) {
-				$this->touch($calendarId, $object->getUri(), $userId);
-			}
-
 		} catch(DoesNotImplementException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		} catch(BackendException $ex) {

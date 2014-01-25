@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * This file is licensed under the Affero General Public License version 3 or
+ * later.
+ * See the COPYING-README file.
+ */
+namespace OCA\Calendar\Utility;
+
+class CalendarUtility extends Utility{
+
+	public static function suggestURI($calendarURI) {
+		if(substr_count($calendarURI, '-') === 0) {
+			$calendarURI . '-1';
+		} else {
+			$positionLastDash = strrpos($calendarURI, '-');
+			$firstPart = substr($calendarURI, 0, strlen($calendarURI) - $positionLastDash);
+			$lastPart = substr($calendarURI, $positionLastDash + 1);
+			$pattern = "^\d$";
+			if(preg_match($pattern, $lastPart)) {
+				$lastPart = (int) $lastPart;
+				$lastPart++;
+				$calendarURI = $firstPart . '-' . $lastPart;
+			} else {
+				$calendarURI . '-1';
+			}
+		}
+	}	
+
+}
