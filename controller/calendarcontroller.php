@@ -106,7 +106,7 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 			//$calendar->setUserId($userId);
 			//$calendar->setOwnerId($userId);
 
-			$calendar		= $this->calendarBusinessLayer->create($calendar, $userId);
+			//$calendar		= $this->calendarBusinessLayer->create($calendar, $userId);
 			$jsonCalendar	= new JSONCalendar($calendar);
 
 			return new JSONResponse($jsonCalendar, HTTP::STATUS_CREATED);

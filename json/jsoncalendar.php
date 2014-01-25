@@ -142,8 +142,11 @@ class JSONCalendar extends JSON{
 	 * @return array
 	 */
 	private function getUserInfo($userId=null){
+		if($userId === null) {
+			$userId = \OCP\User::getUser();
+		}
 		return array(
-			'userid' => (string) $userId,
+			'userid' => $userId,
 			'displayname' => \OCP\User::getDisplayName($userId),
 		);
 	}

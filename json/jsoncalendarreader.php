@@ -8,7 +8,11 @@
 
 namespace OCA\Calendar\JSON;
 
-class CalendarReader {
+use \OCA\Calendar\Db\Calendar;
+use \OCA\Calendar\Db\ObjectType;
+use \OCA\Calendar\Db\Permissions;
+
+class JSONCalendarReader {
 
 	private $data;
 	private $calendar;
@@ -24,20 +28,25 @@ class CalendarReader {
 		}
 
 		$this->data = $data;
+
+		$this->extractData();
 	}
 
 	public function extractData() {
 		$this->calendar = new Calendar();
 
 		try{
-			foreach($data as $key => $value) {
+			foreach($this->data as $key => $value) {
 				switch(strtolower($key)) {
 					//strings
 					case 'displayname':
-					case 'calendarURI':
 						$this->parseString($key, $value);
 						break;
-	
+
+					case 'calendaruri':
+						$this->parseCalendarURI($key, $value);
+						break;
+
 					case 'color':
 						$this->parseColor($key, $value);
 						break;
@@ -72,7 +81,7 @@ class CalendarReader {
 						break;
 					
 					default:
-						//ignore custom values
+						//ignore custom values for now
 						break;
 				}
 			}
@@ -83,44 +92,55 @@ class CalendarReader {
 	}
 
 	private function parseString($key, $value) {
-		$this->calendar->set{ucfirst($key)}((string) $value);
+		if($key === 'calendarURI') {
+			$key = 'uri';
+		}
+
+		$this->calendar->{'set' . ucfirst($key)}((string) $value);
 	}
 
 	private function parseColor($key, $value) {
-		//validate and try to fix $value
-		$this->calendar->setColor($value);
+		if(preg_match('/#((?:[0-9a-fA-F]{2}){3}|(?:[0-9a-fA-F]{1}){3}|(?:[0-9a-fA-F]{1}){4}|(?:[0-9a-fA-F]{2}){4})$/', $value)) {
+			$this->calendar->setColor($value);
+		}
 	}
 
 	private function parseInteger($key, $value) {
-		$this->calendar->set{ucfirst($key)}((int) $value);
+		$this->calendar->{'set' . ucfirst($key)}((int) $value);
 	}
 
 	private function parseBoolean($key, $value) {
-		$this->calendar->set{ucfirst($key)}((boolean) $value);	
+		$this->calendar->{'set' . ucfirst($key)}((boolean) $value);	
 	}
 
 	private function parseUserArray($key, $value) {
+		if($key === 'owner') {
+			$key = 'ownerId';
+		}
+		if($key === 'user') {
+			$key = 'userId';
+		}
 		if(array_key_exists('userid', $value) === false) {
 			throw new JSONCalendarReaderException('The key "' . $key . '" does not contain an userid!');
 		}
 
-		$this->calendar->set{ucfirst($key)}((string) $value['userid']);
+		$this->calendar->{'set' . ucfirst($key)}((string) $value['userid']);
 	}
 
 	private function parseComponents($key, $value) {
 		$components = 0;
 
-		if(is_array($value) === false {
-			throw new JSONCalendarReaderException('Components must be an array!')
+		if(is_array($value) === false) {
+			throw new JSONCalendarReaderException('Components must be an array!');
 		}
 
-		if(array_key_exists('vevent', $value) && $value['vevent'] === 'true') {
+		if(array_key_exists('vevent', $value) && $value['vevent'] === true) {
 			$components += ObjectType::EVENT;
 		}
-		if(array_key_exists('vjournal', $value) && $value['vjournal'] === 'true') {
+		if(array_key_exists('vjournal', $value) && $value['vjournal'] === true) {
 			$components += ObjectType::JOURNAL;
 		}
-		if(array_key_exists('vtodo', $value) && $value['vtodo'] === 'true') {
+		if(array_key_exists('vtodo', $value) && $value['vtodo'] === true) {
 			$components += ObjectType::TODO;
 		}
 
@@ -134,27 +154,27 @@ class CalendarReader {
 	private function parseCruds($key, $value) {
 		$cruds = 0;
 
-		if(is_array($value) === false {
-			throw new JSONCalendarReaderException('Cruds must be an array!')
+		if(is_array($value) === false) {
+			throw new JSONCalendarReaderException('Cruds must be an array!');
 		}
 
 		//use code if given
 		if(array_key_exists('code', $value) && (int) $value['code'] >= 0 && (int) $value['code'] <= 31) {
-			$cruds = (int) $value['code']
+			$cruds = (int) $value['code'];
 		} else {
-			if(array_key_exists('create', $value) && $value['create'] === 'true') {
+			if(array_key_exists('create', $value) && $value['create'] === true) {
 				$cruds += Permissions::CREATE;
 			}
-			if(array_key_exists('update', $value) && $value['update'] === 'true') {
+			if(array_key_exists('update', $value) && $value['update'] === true) {
 				$cruds += Permissions::UPDATE;
 			}
-			if(array_key_exists('delete', $value) && $value['delete'] === 'true') {
+			if(array_key_exists('delete', $value) && $value['delete'] === true) {
 				$cruds += Permissions::DELETE;
 			}
-			if(array_key_exists('read', $value) && $value['read'] === 'true') {
+			if(array_key_exists('read', $value) && $value['read'] === true) {
 				$cruds += Permissions::READ;
 			}
-			if(array_key_exists('share', $value) && $value['share'] === 'true') {
+			if(array_key_exists('share', $value) && $value['share'] === true) {
 				$cruds += Permissions::SHARE;
 			}
 		}
@@ -162,7 +182,11 @@ class CalendarReader {
 		$this->calendar->setCruds($cruds);
 	}
 
-	private function getCalendar() {
+	public static function parseCalendarURI($key, $value) {
+		
+	}
+
+	public function getCalendar() {
 		return $this->calendar;
 	}
 }
