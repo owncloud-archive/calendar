@@ -42,7 +42,7 @@
   -moz-transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/; /* BUG? animating/transitioning on opacity makes elemets move just a tiny bit for the duration of the transition; doesn't look good */
   -webkit-transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
   transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
-  opacity:0.3;
+  opacity:0.5;
 }
 /* a hidden control checkbox should be hidden */
 .displayable-container > .displayable-control.hide {
@@ -111,6 +111,7 @@
 .shared-with-list .share-options {
   display: inline-table;
   text-align: left;
+  position:relative;
 }
 .shared-with-list .share-options .share-label {
   margin-left:0.5em;
@@ -122,7 +123,35 @@
 .shared-with-list .edit-options {
   text-align:right;
 }
-
+/* noscript fun! */
+.shared-with-list .share-options .share-can-edit-checkbox {
+  display:block;
+  width:1px;
+  height:1px;
+  position:absolute;
+  top:0em;
+  left:0em;
+}
+.shared-with-list .share-options .share-can-edit-checkbox::before {
+  content:" ";
+  display:inline-block;
+  font-size:100%;
+  border:solid 0.15em black;
+  color:black;
+  width:0.6em;
+  height:0.6em;
+  line-height:0.6em;
+  border-radius:0.1em;
+}
+.shared-with-list .share-options .edit-options :checked ~ .share-can-edit-checkbox::before {
+  content:"✔";
+}
+.shared-with-list .share-options .share-can-edit-space {
+  display:inline-block;
+  width:1.5em;
+  height:1em;
+}
+/* end noscript fun */
 .share-interface-container.internal-share::after {
   width:75%;
   height:0px;
@@ -131,15 +160,3 @@
   margin:0.2em auto 0.5em auto;
   border-top:solid 1px #ddd;
 }
-
-/*::before {
-    content:"✔";
-    display:inline-block;
-    font-size:100%;
-    border:solid 0.15em black;
-    color:black;
-    width:0.6em;
-    height:0.6em;
-    line-height:0.6em;
-    border-radius:0.1em;
-}*/

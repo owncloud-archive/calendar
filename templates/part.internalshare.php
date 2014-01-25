@@ -45,29 +45,36 @@
       <div class="displayable-container share-options">
         <!--
           "can edit" checkbox
-           - if the item type allows for precise sharing settings (update, create, delete), just an info box, readonly/disabled
-           - if the item type allows only for editable/uneditable (actually, just update) setting, a valid checkbox
+            - if the item type allows for precise sharing settings (update, create, delete), setting/un-setting all three at the same time via JS (and reflecting their state)
+            - if the item type allows only for editable/uneditable (actually, just update) setting, the "update" checkbox
           this is checked via $_['basic_edit_options'] flag (if set and true, only editable/uneditable setting available)
+
+          this checkbox is available only when JS is enabled
+          otherwise the noscript tag makes space for a CSS/HTML "checkbox" showing the state of the create/update/delete checkboxes
         -->
+        <noscript class="share-can-edit-space"><!--</noscript>
         <input type="checkbox" class="permissions" 
           <?php if(empty($_['basic_edit_options'])): ?>
-            name="edit" data-permissions="<?php p(OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE); ?>" <?php if ($sharee['permissions'] & (OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE ) ): ?> checked="checked"<?php endif; ?> disabled="disabled"
+            name="edit" data-permissions="<?php p(OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE); ?>" <?php if ($sharee['permissions'] & (OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE ) ): ?> checked="checked"<?php endif; ?>
           <?php else: ?>
-            name="update" data-permissions="<?php p(OCP\PERMISSION_UPDATE); ?>" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?> id="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
+            name="update" data-permissions="<?php p(OCP\PERMISSION_UPDATE); ?>" <?php if ($sharee['permissions'] & OCP\PERMISSION_UPDATE): ?> checked="checked"<?php endif; ?> id="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
           <?php endif; ?>
         />
+        <noscript>--></noscript>
         <!-- "can edit" displayable-control label -->
         <label for="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><?php p($l->t('can edit')); ?><?php if(empty($_['basic_edit_options'])): ?><img class="svg" alt="access control" src="<?php p(OCP\Util::imagePath('core', 'actions/triangle-s.svg')); ?>"><?php endif; ?></label>
         <!-- "can share" label and checkbox -->
-        <label class="share-label"><input type="checkbox" name="share" class="permissions" data-permissions="<?php p(OCP\PERMISSION_SHARE); ?>" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>><?php p($l->t('can share')); ?></label>
+        <label class="share-label"><input type="checkbox" name="share" class="permissions" data-permissions="<?php p(OCP\PERMISSION_SHARE); ?>" <?php if ($sharee['permissions'] & OCP\PERMISSION_SHARE): ?> checked="checked"<?php endif; ?>><?php p($l->t('can share')); ?></label>
         <!-- if we only have basic edit options available, there is no need for the advanced edit options controls, right? display these only when not in basic edit options regime -->
         <?php if(empty($_['basic_edit_options'])): ?>
           <!-- edit options displayable control and displayable itself -->
           <input type="checkbox" class="displayable-control hide" name="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>" id="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"/>
           <div class="displayable edit-options">
-            <label><input type="checkbox" name="create" class="permissions" data-permissions="<?php p(OCP\PERMISSION_CREATE); ?>" <?php p(($sharee['permissions'] & OCP\PERMISSION_CREATE?'checked="checked"':''))?>><?php p($l->t('create')); ?></label>
-            <label><input type="checkbox" name="update" class="permissions" data-permissions="<?php p(OCP\PERMISSION_UPDATE); ?>" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>><?php p($l->t('update')); ?></label>
-            <label><input type="checkbox" name="delete" class="permissions" data-permissions="<?php p(OCP\PERMISSION_DELETE); ?>" <?php p(($sharee['permissions'] & OCP\PERMISSION_DELETE?'checked="checked"':''))?>><?php p($l->t('delete')); ?></label>
+            <input type="checkbox" name="create" class="permissions" data-permissions="<?php p(OCP\PERMISSION_CREATE); ?>" <?php if ($sharee['permissions'] & OCP\PERMISSION_CREATE): ?> checked="checked"<?php endif; ?> id="share-permissions-create-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><label for="share-permissions-create-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><?php p($l->t('create')); ?></label>
+            <input type="checkbox" name="update" class="permissions" data-permissions="<?php p(OCP\PERMISSION_UPDATE); ?>" <?php if ($sharee['permissions'] & OCP\PERMISSION_UPDATE): ?> checked="checked"<?php endif; ?> id="share-permissions-update-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><label for="share-permissions-update-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><?php p($l->t('update')); ?></label>
+            <input type="checkbox" name="delete" class="permissions" data-permissions="<?php p(OCP\PERMISSION_DELETE); ?>" <?php if ($sharee['permissions'] & OCP\PERMISSION_DELETE): ?> checked="checked"<?php endif; ?> id="share-permissions-delete-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><label for="share-permissions-delete-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"><?php p($l->t('delete')); ?></label>
+            <!-- a CSS/HTML "checkbox" showing the state of the create/update/delete checkboxes -->
+            <noscript class="share-can-edit-checkbox"></noscript>
           </div>
         <?php endif; ?>
       </div>

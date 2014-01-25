@@ -3,13 +3,6 @@
   (c) 2014 Michał "rysiek" Woźniak <rysiek@hackerspace.pl>
   Licensed under AGPL.
 */ ?>
-<noscript><style>
-  /* if JS is disabled, .share-link-form-submit will be available,
-     hence .share-link-e-mail-send is un-needed*/
-  .share-link-e-mail-send {
-    display:none;
-  }
-</style></noscript>
 <div class="share-interface-container link-share displayable-container"
      data-item-type="<?php p($_['item_type']); ?>"
      data-item="<?php p($_['item_id']); ?>"
@@ -44,7 +37,9 @@
     <div class="e-mail-form-container">
       <input class="share-link-e-mail-address" value="" placeholder="<?php p($l->t('Email link to person')) ?>" type="e-mail"/>
       <!-- the send e-mail submit button (unneeded and invisible if JS is disabled) -->
+      <noscript><!--</noscript>
       <input class="share-link-e-mail-send" type="submit" value="<?php p($l->t('Send')) ?>"/>
+      <noscript>--></noscript>
     </div>
     <!-- the submit button (unneeded and invisible if JS is enabled) -->
     <noscript><input class="share-link-form-submit" type="submit" value="<?php p($l->t('Submit link-sharing settings')) ?>"/></noscript>
