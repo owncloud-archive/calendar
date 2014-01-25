@@ -131,3 +131,15 @@
   margin:0.2em auto 0.5em auto;
   border-top:solid 1px #ddd;
 }
+
+/*::before {
+    content:"✔";
+    display:inline-block;
+    font-size:100%;
+    border:solid 0.15em black;
+    color:black;
+    width:0.6em;
+    height:0.6em;
+    line-height:0.6em;
+    border-radius:0.1em;
+}*/
