@@ -630,6 +630,7 @@ Calendar={
                 // shouldn't it be OC.PERMISSION_READ | OC.PERMISSION_SHARE instead, as a sensible default?
                 var permissions = $(this).data('permissions')
                 OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
+                  console.log('PERMISSIONS: ' + permissions)
                   // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
                   var editCheckboxIdStub = {
                     'can': 'share-can-edit-' + itemType + '-' + itemSource + '-',
