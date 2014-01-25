@@ -128,7 +128,10 @@ if (isset($rootLinkItem)) {
     }
     header('Content-Type: text/calendar');
     header('Content-Disposition: inline; filename=' . str_replace(' ', '-', $data['displayname']) . '.ics');
-    echo OC_Calendar_Export::export($rootLinkItem['item_source'], $type);
+    // export the data
+    // if it is a link-shared concrete event, ignore security
+    // calendars should be shared *with* security enabled, so as to not divulge private/busy events
+    echo OC_Calendar_Export::export($rootLinkItem['item_source'], $type, ($type !== OC_Calendar_Export::EVENT) );
     exit();
    
   // Display the calendar
@@ -156,11 +159,6 @@ if (isset($rootLinkItem)) {
   } elseif ($linkItem['item_type'] === 'event') {
     OCP\Util::addStyle('calendar', 'style');
     OCP\Util::addStyle('calendar', 'tooltips');
-    //OCP\Util::addscript('', 'jquery.multiselect');
-    //OCP\Util::addStyle('', 'jquery.multiselect');
-    //OCP\Util::addscript('calendar','jquery.multi-autocomplete');
-    //OCP\Util::addscript('','tags');
-    //OCP\Util::addscript('calendar','on-event');
     OCP\App::setActiveNavigationEntry('calendar_index');
     $tmpl = new OCP\Template('calendar', 'event', 'user');
     $tmpl->assign('link_shared_event', $linkItem);
