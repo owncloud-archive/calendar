@@ -14,7 +14,7 @@
     title="<?php p($l->t('Share Calendar')) ?>"
     class="action permanent"
     data-tooltip="<?php p($l->t('Share Calendar')) ?>"
-    style="cursor: pointer; width:20px; height:20px; display:block; background-repeat:no-repeat; background-image: url(<?php print_unescaped($_['share_icon']); ?>);"></label>
+    style="cursor: pointer;"><img class="svg" src="<?php print_unescaped($_['share_icon']); ?>"/></label>
   <?php endif; ?>
 </td>
 <td width="20px">
