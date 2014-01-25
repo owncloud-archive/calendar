@@ -629,6 +629,7 @@ Calendar={
                 // Default permissions are Read and Share
                 var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
                 OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
+                  console.log('PERMISSIONS: ' + permissions)
                   // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
                   var editCheckboxIdStub = 'share-can-edit-' + itemType + '-' + itemSource + '-'
                   var curEditCheckboxId = $(shareWithInput).parents('.share-interface-container.internal-share').find('.shared-with-entry-container').length
@@ -650,16 +651,16 @@ Calendar={
                             .html(shareWith + (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : ''))
                             .end()
                           .find('.share-options input[name="create"]')
-                            .prop('checked', true) // TODO base that on what we get in response?
+                            .prop('checked', permissions & OC.PERMISSION_CREATE)
                             .end()
                           .find('.share-options input[name="update"]')
-                            .prop('checked', true) // TODO base that on what we get in response?
+                            .prop('checked', permissions & OC.PERMISSION_UPDATE)
                             .end()
                           .find('.share-options input[name="delete"]')
-                            .prop('checked', true) // TODO base that on what we get in response?
+                            .prop('checked', permissions & OC.PERMISSION_DELETE)
                             .end()
                           .find('.share-options input[name="share"]')
-                            .prop('checked', true) // TODO base that on what we get in response?
+                            .prop('checked', permissions & OC.PERMISSION_SHARE)
                             .end()
                           // handle the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
                           .find('#' + editCheckboxIdStub + '0')

@@ -94,7 +94,7 @@ $tmpl->printpage();
   </li>
 <?php endif; ?>
 </ul>
-<?php if(!$calsharees) {
+<?php if(!$calsharees and !$linkSharedCalendar) {
 	$nobody = $l->t('Not shared with anyone via calendar');
 	print_unescaped('<div>' . OC_Util::sanitizeHTML($nobody) . '</div>');
 } ?>
