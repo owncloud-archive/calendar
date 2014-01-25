@@ -25,6 +25,19 @@ class CalendarUtility extends Utility{
 				$calendarURI . '-1';
 			}
 		}
-	}	
+	}
+
+	public static function splitURI($publicURI) {
+		if ( $publicURI === false || $publicURI === null || $publicURI === '' ) {
+			return array(false, false);
+		}
+		if ( substr_count($publicURI, '-') === 0 ){
+			return array(false, false);
+		}
+
+		list($backend, $realCalendarURI) = explode('-', $publicURI, 2);
+
+		return array($backend, $realCalendarURI);
+	}
 
 }

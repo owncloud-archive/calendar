@@ -103,10 +103,12 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 		try {
 			$jsonReader	= new JSONCalendarReader($json);
 			$calendar	= $jsonReader->getCalendar();
-			//$calendar->setUserId($userId);
-			//$calendar->setOwnerId($userId);
+			$calendar->setUserId($userId);
+			$calendar->setOwnerId($userId);
 
-			//$calendar		= $this->calendarBusinessLayer->create($calendar, $userId);
+			$calendarId = $calendar->getBackend() . '-' . $calendar->getUri();
+
+			$calendar		= $this->calendarBusinessLayer->create($calendar, $calendarId, $userId);
 			$jsonCalendar	= new JSONCalendar($calendar);
 
 			return new JSONResponse($jsonCalendar, HTTP::STATUS_CREATED);

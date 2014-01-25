@@ -12,6 +12,8 @@ use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\ObjectType;
 use \OCA\Calendar\Db\Permissions;
 
+use \OCA\Calendar\Utility\CalendarUtility;
+
 class JSONCalendarReader {
 
 	private $data;
@@ -182,8 +184,10 @@ class JSONCalendarReader {
 		$this->calendar->setCruds($cruds);
 	}
 
-	public static function parseCalendarURI($key, $value) {
-		
+	public function parseCalendarURI($key, $value) {
+		list($backend, $calendarURI) = CalendarUtility::splitURI($value);
+		$this->calendar->setBackend($backend);
+		$this->calendar->setUri($calendarURI);
 	}
 
 	public function getCalendar() {

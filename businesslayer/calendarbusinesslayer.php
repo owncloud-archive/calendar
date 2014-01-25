@@ -30,7 +30,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @param int $offset
 	 * @return array containing all Calendar items
 	 */
-	public function findAll($userId, $limit = null, $offset = null) {
+	public function findAll($userId, $limit=null, $offset=null) {
 		if($limit !== null) {
 			$limit = (int) $limit;
 		}
@@ -94,7 +94,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 		try {
 			$this->checkBackendEnabled($backend);
 
-			$this->allowNoCalendarURITwice($calendarId, $userId);
+			$this->allowNoCalendarURITwice($backend, $calendarURI, $userId);
 
 			$api = &$this->backends->find($backend)->api;
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\CREATE_CALENDAR);
@@ -382,18 +382,21 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @return boolean
 	 */
 	private function isCalendarURIAvailable($backend, $calendarURI, $userId, $checkRemote=false) {
-		$existingCalendars = $this->mapper->find($backend, $calendarURI, $userId);
-		if(count($existingCalendars) !== 0) {
+		$existingCalendars = (int) $this->mapper->countFind($backend, $calendarURI, $userId);
+
+		if($existingCalendars !== 0) {
 			return false;
 		}
 
-		if($checkRemote === true) {
-			$api = &$this->backends->find($backend)->api;
-			$existingRemoteCalendars = $api->findCalendar($calendarURI, $userId);
-			if(count($existingRemoteCalendars) !== 0) {
-				return false;
+		try{
+			if($checkRemote === true) {
+				$api = &$this->backends->find($backend)->api;
+				$existingRemoteCalendars = $api->findCalendar($calendarURI, $userId);
+				if(count($existingRemoteCalendars) !== 0) {
+					return false;
+				}
 			}
-		}
+		} catch(DoesNotExistException $ex) {}
 
 		return true;
 	}

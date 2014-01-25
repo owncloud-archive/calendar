@@ -37,6 +37,16 @@ class CalendarMapper extends Mapper {
 		return new Calendar($row);
 	}
 
+	/**
+	 * Finds an item from user by it's uri
+	 * @throws DoesNotExistException: if the item does not exist
+	 * @return the item
+	 */
+	public function countFind($backend, $uri, $userId){
+		$sql = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
+		$row = $this->findOneQuery($sql, array($backend, $uri, $userId));
+		return $row['count'];
+	}
 
 	/**
 	 * Finds all Items from user
