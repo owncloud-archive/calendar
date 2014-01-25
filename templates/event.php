@@ -27,7 +27,6 @@ if(!$data) calendar404();
 
 $object = OC_VObject::parse($data['calendardata']);
 $vevent = $object->VEVENT;
-$object = OC_Calendar_Object::cleanByAccessClass($id, $object);
 $accessclass = $vevent->getAsString('CLASS');
 $permissions = OC_Calendar_App::getPermissions($id, OC_Calendar_App::EVENT, $accessclass);
 
