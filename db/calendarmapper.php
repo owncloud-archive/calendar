@@ -21,7 +21,7 @@ class CalendarMapper extends Mapper {
 	 * @param API $api: Instance of the API abstraction layer
 	 */
 	public function __construct($api, $tablename='clndr_calcache'){
-		parent::__construct($api, '');
+		parent::__construct($api, $tablename);
 
 		$this->tableName = '*PREFIX*' . $tablename;
 	}
@@ -32,7 +32,7 @@ class CalendarMapper extends Mapper {
 	 * @return the item
 	 */
 	public function find($backend, $uri, $userId){
-		$sql = 'SELECT * FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
+		$sql = 'SELECT * FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `user_id` = ?';
 		$row = $this->findOneQuery($sql, array($backend, $uri, $userId));
 		return new Calendar($row);
 	}
@@ -43,7 +43,7 @@ class CalendarMapper extends Mapper {
 	 * @return the item
 	 */
 	public function countFind($backend, $uri, $userId){
-		$sql = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
+		$sql = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `user_id` = ?';
 		$row = $this->findOneQuery($sql, array($backend, $uri, $userId));
 		return $row['count'];
 	}
@@ -53,7 +53,7 @@ class CalendarMapper extends Mapper {
 	 * @return array containing all items
 	 */
 	public function findAll($userId, $limit, $offset){
-		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `userid` = ?';
+		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `user_id` = ?';
 		return $this->findEntities($sql, array($userId), $limit, $offset);
 	}
 }

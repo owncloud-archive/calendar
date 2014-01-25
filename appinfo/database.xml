@@ -18,14 +18,14 @@
 				<length>4</length>
 			</field>
 			<field>
-				<name>userid</name>
+				<name>user_id</name>
 				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>
 				<length>255</length>
 			</field>
 			<field>
-				<name>ownerid</name>
+				<name>owner_id</name>
 				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>
@@ -98,13 +98,6 @@
 				<type>integer</type>
 				<default>31</default>
 				<notnull>true</notnull>
-			</field>
-			<field>
-				<name>deletedat</name>
-				<type>integer</type>
-				<default>0</default>
-				<notnull>false</notnull>
-				<unsigned>true</unsigned>
 			</field>
 		</declaration>
 	</table>

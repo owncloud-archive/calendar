@@ -108,10 +108,10 @@ class Local extends Backend {
 	public function createCalendar(Calendar $calendar) {
 		$sql  = 'INSERT INTO `' . $this->calTableName . '` ';
 		$sql .= '(`userid`, `displayname`, `uri`, `active`, `ctag`, `calendarorder`, `calendarcolor`, `timezone`, `components`) ';
-		$sql .= 'VALUES(?,?,?,1,?,?,?,?,?)';
+		$sql .= 'VALUES(?,?,?,?,?,?,?,?,?)';
 		$result = $this->api->prepareQuery($sql)->execute(array(
-			$calendar->getUserid(),
-			$calendar->getDisplayName(),
+			$calendar->getUserId(),
+			$calendar->getDisplayname(),
 			$calendar->getUri(),
 			$calendar->getEnabled(),
 			$calendar->getCtag(),
@@ -130,8 +130,8 @@ class Local extends Backend {
 		$sql .= '`calendarorder` = `?`, `calendarcolor` = `?`, `timezone` = `?`, `components` = `?`';
 		$sql .= 'WHERE `userid` = `?` AND `uri` = `?`';
 		$result = $this->api->prepareQuery($sql)->execute(array(
-			$calendar->getUserid(),
-			$calendar->getDisplayName(),
+			$calendar->getUserId(),
+			$calendar->getDisplayname(),
 			$calendar->getUri(),
 			$calendar->getEnabled(),
 			$calendar->getCtag(),

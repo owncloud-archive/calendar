@@ -65,4 +65,12 @@ class Calendar extends Entity {
 		$this->ctag++;
 		return $this;
 	}
+
+	public function isValid() {
+		return true;
+	}
+
+	public function fix() {
+		return $this;
+	}
 }
