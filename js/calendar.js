@@ -630,7 +630,6 @@ Calendar={
                 // shouldn't it be OC.PERMISSION_READ | OC.PERMISSION_SHARE instead, as a sensible default?
                 var permissions = $(this).data('permissions')
                 OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
-                  console.log('PERMISSIONS: ' + permissions)
                   // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
                   var editCheckboxIdStub = 'share-can-edit-' + itemType + '-' + itemSource + '-'
                   var curEditCheckboxId = $(shareWithInput).parents('.share-interface-container.internal-share').find('.shared-with-entry-container').length
@@ -679,7 +678,7 @@ Calendar={
                   $(shareWithInput)
                     .parents('.share-interface-container.internal-share')
                       .children('.shared-with-list')
-                        .append(newitem)
+                        .append(newitem.fadeIn(500))
                   // clear
                   $(shareWithInput).val('');
                 });
@@ -726,7 +725,7 @@ Calendar={
               var itemSource = container.data('item');
               var shareWith = container.data('share-with');
               OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
-                container.remove();
+                container.fadeOut(500, function(){ $(this).remove() });
               });
             });
 				}
