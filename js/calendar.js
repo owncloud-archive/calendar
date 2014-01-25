@@ -1254,4 +1254,7 @@ $(document).ready(function(){
       });
     }
   })
+  /*
+  $('a.action').each(function(){$(this).tipsy('disable')})
+  */
 });

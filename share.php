@@ -139,6 +139,7 @@ if (isset($rootLinkItem)) {
     OCP\Util::addStyle('3rdparty/timepicker', 'jquery.ui.timepicker');
     OCP\Util::addscript('calendar', 'calendar');
     OCP\Util::addStyle('calendar', 'style');
+    OCP\Util::addStyle('calendar', 'tooltips');
     OCP\Util::addscript('', 'jquery.multiselect');
     OCP\Util::addStyle('', 'jquery.multiselect');
     OCP\Util::addscript('calendar','jquery.multi-autocomplete');
@@ -154,6 +155,7 @@ if (isset($rootLinkItem)) {
   // Display the event
   } elseif ($linkItem['item_type'] === 'event') {
     OCP\Util::addStyle('calendar', 'style');
+    OCP\Util::addStyle('calendar', 'tooltips');
     //OCP\Util::addscript('', 'jquery.multiselect');
     //OCP\Util::addStyle('', 'jquery.multiselect');
     //OCP\Util::addscript('calendar','jquery.multi-autocomplete');
