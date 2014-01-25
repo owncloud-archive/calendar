@@ -631,8 +631,16 @@ Calendar={
                 var permissions = $(this).data('permissions')
                 OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
                   // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
-                  var editCheckboxIdStub = 'share-can-edit-' + itemType + '-' + itemSource + '-'
-                  var curEditCheckboxId = $(shareWithInput).parents('.share-interface-container.internal-share').find('.shared-with-entry-container').length
+                  var editCheckboxIdStub = {
+                    'can': 'share-can-edit-' + itemType + '-' + itemSource + '-',
+                    'collective': 'share-collective-edit-' + itemType + '-' + itemSource + '-'
+                  }
+                  var permsCheckboxIdStub = {
+                    'create': 'share-permissions-create-' + itemType + '-' + itemSource + '-',
+                    'update': 'share-permissions-update-' + itemType + '-' + itemSource + '-',
+                    'delete': 'share-permissions-delete-' + itemType + '-' + itemSource + '-'
+                  }
+                  var curShareWithId = $(shareWithInput).parents('.share-interface-container.internal-share').find('.shared-with-entry-container').length
                   // find the stub
                   var newitem = $(shareWithInput)
                     .parents('.share-interface-container.internal-share')
@@ -665,12 +673,37 @@ Calendar={
                           .find('.share-options input[name="edit"]')
                             .prop('checked', permissions & ( OC.PERMISSION_CREATE | OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE ) )
                             .end()
-                          // handle the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
-                          .find('#' + editCheckboxIdStub + '0')
-                            .prop('id', editCheckboxIdStub + curEditCheckboxId)
+                          // handle the share-(CAN|COLLECTIVE)-edit-ITEMPTYPE-ITEMSOURCE-0 checkboxes and labels
+                          .find('#' + editCheckboxIdStub['can'] + '0')
+                            .prop('id', editCheckboxIdStub['can'] + curShareWithId)
                             .end()
-                          .find('label[for=' + editCheckboxIdStub + '0]')
-                            .prop('for', editCheckboxIdStub + curEditCheckboxId)
+                          .find('label[for=' + editCheckboxIdStub['can'] + '0]')
+                            .prop('for', editCheckboxIdStub['can'] + curShareWithId)
+                            .end()
+                          .find('#' + editCheckboxIdStub['collective'] + '0')
+                            .prop('id', editCheckboxIdStub['collective'] + curShareWithId)
+                            .end()
+                          .find('label[for=' + editCheckboxIdStub['collective'] + '0]')
+                            .prop('for', editCheckboxIdStub['collective'] + curShareWithId)
+                            .end()
+                          // handle the share-permissions-(CREATE|UPDATE|DELETE)-ITEMPTYPE-ITEMSOURCE-0 checkboxes and labels
+                          .find('#' + permsCheckboxIdStub['create'] + '0')
+                            .prop('id', permsCheckboxIdStub['create'] + curShareWithId)
+                            .end()
+                          .find('label[for=' + permsCheckboxIdStub['create'] + '0]')
+                            .prop('for', permsCheckboxIdStub['create'] + curShareWithId)
+                            .end()
+                          .find('#' + permsCheckboxIdStub['update'] + '0')
+                            .prop('id', permsCheckboxIdStub['update'] + curShareWithId)
+                            .end()
+                          .find('label[for=' + permsCheckboxIdStub['update'] + '0]')
+                            .prop('for', permsCheckboxIdStub['update'] + curShareWithId)
+                            .end()
+                          .find('#' + permsCheckboxIdStub['delete'] + '0')
+                            .prop('id', permsCheckboxIdStub['delete'] + curShareWithId)
+                            .end()
+                          .find('label[for=' + permsCheckboxIdStub['delete'] + '0]')
+                            .prop('for', permsCheckboxIdStub['delete'] + curShareWithId)
                             .end()
                           // remove the "stub" class
                           .removeClass('stub')
@@ -691,7 +724,6 @@ Calendar={
           $(document)
             .off('change', '.shared-with-entry-container input:checkbox[data-permissions]')
             .on('change', '.shared-with-entry-container input:checkbox[data-permissions]', function(){
-              console.log('PERMISSION CHECKBOX CHANGE')
               // get the data
               var container = $(this).parents('li').first();
               var permissions = parseInt(container.attr('data-permissions'));
@@ -716,14 +748,12 @@ Calendar={
                 case 'create':
                 case 'update':
                 case 'delete':
-                  console.log('CREATE-UPDATE-DELETE: ' + permissions)
                   $(this)
                     .parents('.share-options')
                       .find('input[type="checkbox"][name="edit"]')
                         .prop('checked', permissions & ( OC.PERMISSION_CREATE | OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE ) )
                   break;
                 case 'edit':
-                  console.log('EDIT: ' + permissions)
                   $(this)
                     .parents('.share-options')
                       .find('input[type="checkbox"][name="create"]').prop('checked', permissions & OC.PERMISSION_CREATE )
@@ -1107,7 +1137,6 @@ $(document).ready(function(){
       // share it!
       // we're sharing the item for the first time, so no password, no expiration date for sure
       OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, '', OC.PERMISSION_READ, itemSourceName, function(data) {
-        console.log(data)
         // update the data
         $(slcontainer)
           .find('.link-text')
@@ -1119,7 +1148,6 @@ $(document).ready(function(){
     // nope, un-sharing!
     } else {
       OC.Share.unshare(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, '', function(data) {
-        console.log(data)
         // clear data
         $(slcontainer)
           .find('.link-text, .share-link-password, .expire-date')
@@ -1181,7 +1209,6 @@ $(document).ready(function(){
     // we only handle removal of password
     if (!$(this).is(':checked')) {
       OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, itemPassword, OC.PERMISSION_READ, itemSourceName, function(data) {
-        console.log(data)
       });
     }
   })
