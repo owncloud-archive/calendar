@@ -175,11 +175,6 @@ if (isset($rootLinkItem)) {
   } elseif ($linkItem['item_type'] === 'event') {
     OCP\Util::addStyle('calendar', 'style');
     OCP\Util::addStyle('calendar', 'tooltips');
-    //OCP\Util::addscript('', 'jquery.multiselect');
-    //OCP\Util::addStyle('', 'jquery.multiselect');
-    //OCP\Util::addscript('calendar','jquery.multi-autocomplete');
-    //OCP\Util::addscript('','tags');
-    //OCP\Util::addscript('calendar','on-event');
     OCP\App::setActiveNavigationEntry('calendar_index');
     $tmpl = new OCP\Template('calendar', 'event', 'user');
     $tmpl->assign('link_shared_event', $linkItem);
