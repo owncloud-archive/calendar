@@ -724,7 +724,7 @@ Calendar={
           $(document)
             .off('change', '.shared-with-entry-container input:checkbox[data-permissions]')
             .on('change', '.shared-with-entry-container input:checkbox[data-permissions]', function(){
-
+              console.log('PERMISSION CHECKBOX CHANGE')
               // get the data
               var container = $(this).parents('li').first();
               var permissions = parseInt(container.attr('data-permissions'));
