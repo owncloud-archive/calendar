@@ -626,8 +626,9 @@ Calendar={
                 var shareWith = selected.item.value.shareWith;
                 $(this).val(shareWith);
                 var shareWithInput = $(this)
-                // Default permissions are Read and Share
-                var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
+                // getting the default permissions from data-permissions
+                // shouldn't it be OC.PERMISSION_READ | OC.PERMISSION_SHARE instead, as a sensible default?
+                var permissions = $(this).data('permissions')
                 OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
                   console.log('PERMISSIONS: ' + permissions)
                   // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
@@ -662,6 +663,9 @@ Calendar={
                           .find('.share-options input[name="share"]')
                             .prop('checked', permissions & OC.PERMISSION_SHARE)
                             .end()
+                          .find('.share-options input[name="edit"]')
+                            .prop('checked', permissions & ( OC.PERMISSION_CREATE | OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE ) )
+                            .end()
                           // handle the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
                           .find('#' + editCheckboxIdStub + '0')
                             .prop('id', editCheckboxIdStub + curEditCheckboxId)
@@ -688,32 +692,28 @@ Calendar={
           $(document)
             .off('change', '.shared-with-entry-container input:checkbox[data-permissions]')
             .on('change', '.shared-with-entry-container input:checkbox[data-permissions]', function(){
-						
-              console.log('PERMISSIONS!')
+
+              // get the data
               var container = $(this).parents('li').first();
-              var permissions = parseInt(container.data('permissions'));
+              var permissions = parseInt(container.attr('data-permissions'));
               var itemType = container.data('item-type');
               var shareType = container.data('share-type');
               var itemSource = container.data('item');
               var shareWith = container.data('share-with');
-              var permission = null;
-              if($(this).hasClass('update')) {
-                permission = OC.PERMISSION_UPDATE;
-                permission = OC.PERMISSION_DELETE;
-              } else if($(this).hasClass('share')) {
-                permission = OC.PERMISSION_SHARE;
-              }
-              // This is probably not the right way, but it works :-P
+              var permission = $(this).data('permissions');
+
+              // find the required perms
               if($(this).is(':checked')) {
-                permissions += permission;
+                permissions |= permission;
               } else {
-                permissions -= permission;
+                permissions &= ~permission;
               }
               
-              container.data('permissions',permissions);
-              console.log('setting permissions to: ' + permissions)
+              // save current permissions on the container
+              container.attr('data-permissions', permissions);
               
-              //OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
+              // run the request
+              OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
             });
 	
           // using .off() to make sure the event is only attached once

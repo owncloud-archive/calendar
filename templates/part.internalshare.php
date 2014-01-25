@@ -33,7 +33,7 @@
       data-item-source="<?php p($_['item_id']); ?>"
       data-item-type="<?php p($_['item_type']); ?>"
       data-link="true"
-      data-permissions="<?php p($_['permissions']) ?>"
+      data-permissions="<?php p($sharee['permissions']); ?>"
       title="<?php p($sharee['share_with']); ?>"
       class="shared-with-entry-container <?php if($i === 0): ?>stub<?php endif; ?>">
       <!-- the username -->
@@ -51,7 +51,7 @@
         -->
         <input type="checkbox" class="permissions" 
           <?php if(empty($_['basic_edit_options'])): ?>
-            name="edit" checked="checked" disabled="disabled"
+            name="edit" <?php if ($sharee['permissions'] & (OCP\PERMISSION_UPDATE | OCP\PERMISSION_CREATE | OCP\PERMISSION_DELETE ) ): ?> checked="checked"<?php endif; ?> disabled="disabled"
           <?php else: ?>
             name="update" data-permissions="2" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?> id="share-can-edit-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>-<?php p($i); ?>"
           <?php endif; ?>
