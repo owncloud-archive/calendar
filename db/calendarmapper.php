@@ -16,6 +16,7 @@ use \OCA\Calendar\Db\Calendar;
 class CalendarMapper extends Mapper {
 	private $tableName;
 	private $keyValueTableName;
+
 	/**
 	 * @param API $api: Instance of the API abstraction layer
 	 */

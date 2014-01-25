@@ -460,28 +460,34 @@ class ObjectBusinessLayer extends BusinessLayer {
 	public function move($object, $calendarId, $objectURI, $userId) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
 
-		if($calendarBusinessLayer->isCalendarURIAvailable($object->getBackend(), $object->getUri(), $userId)) {
-			throw new BusinessLayerException('Can not move object to another calendar. Calendar does not exist');
-		}
-
 		try {
 			$oldBackend = $backend;
 			$newBackend = $calendar->getBackend();
 
+			$oldCalendarURI = $calendarURI;
+			$newCalendarURI = $object->getCalendarURI();
+
+			$oldObjectURI = $objectURI;
+			$newObjectURI = $object->getURI();
+
 			$this->checkBackendEnabled($oldBackend);
 			$this->checkBackendEnabled($newBackend);
+
+			$this->allowNoObjectURITwice($newBackend, $newCalendarURI, $newObjectURI, $userId);
 
 			$oldBackendsAPI = &$this->backends->find($oldBackend)->api;
 			$newBackendsAPI = &$this->backends->find($newBackend)->api;
 
-			if($oldBackend == $newBackend && $oldBackendsAPI->implementsActions(\OCA\Calendar\Backend\MOVE_OBJECT)) {
+			$doesBackendSupportMovingEvents = $oldBackendsAPI->implementsActions(\OCA\Calendar\Backend\MOVE_OBJECT)
+
+			if($oldBackend == $newBackend && $doesBackendSupportMovingEvents === true) {
 				$object = $newBackendsAPI->moveObject($object, $calendarURI, $objectURI, $userId);
 			} else {
 				$this->checkBackendSupports($oldBackend, \OCA\Calendar\Backend\DELETE_OBJECT);
 				$this->checkBackendSupports($newBackend, \OCA\Calendar\Backend\CREATE_OBJECT);
 
 				$status = $newBackendsAPI->createObject($object);
-				if($status) {
+				if($status === true) {
 					$object = $this->backends->find($object->getBackend())->api->createObject();
 				} else {
 					throw new BusinessLayerException('Could not move object to another calendar.');
@@ -489,12 +495,14 @@ class ObjectBusinessLayer extends BusinessLayer {
 			}
 
 			$cacheObjectsInOldBackend = $oldBackendsAPI->cacheObjects($calendarURI, $userId);
-			if($cacheObjectsInOldBackend) {
+			if($cacheObjectsInOldBackend === true) {
+				//dafuq
 				$this->mapper->delete($object, $calendarURI, $objectURI, $userId);
 			}
 
 			$cacheObjectsInNewBackend = $newBackendsAPI->cacheObjects($calendarURI, $userId);
-			if($cacheObjectsInNewBackend) {
+			if($cacheObjectsInNewBackend === true) {
+				//dafuq
 				$this->mapper->create($object, $object->getCalendarUri(), $object->getObjectUri(), $userId);
 			}
 
@@ -519,11 +527,11 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 */
 	public function touch($calendarId, $objectURI, $userId) {
 		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
-		$this->checkBackendEnabled($backend);
 
 		try {
-			$object = $this->find($calendarId, $objectURI, $userid);
+			$this->checkBackendEnabled($backend);
 
+			$object = $this->find($calendarId, $objectURI, $userid);
 			$object->touch();
 
 			$this->update($object, $calendarId, $userId);
@@ -542,15 +550,36 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return boolean
 	 * @throws BusinessLayerException if uri is already taken
 	 */
-	private function allowNoObjectURITwice($backend, $calendarURI, $userId){
-		$isAvailable = $this->isObjectURIAvailable($backend, $calendarURI, $userId);
-
-		if(!$isAvailable) {
+	private function allowNoObjectURITwice($backend, $calendarURI, $objectURI, $userId){
+		if($this->isObjectURIAvailable($backend, $calendarURI, $objectURI, $userId, true) === false) {
 			throw new BusinessLayerException('Can not add object: UID already exists');
+		}
+	}
+
+	/**
+	 * checks if a uri is available
+	 * @param string $backend
+	 * @param string $calendarURI
+	 * @param string $objectURI
+	 * @param string $userId
+	 * @return boolean
+	 */
+	private function isObjectURIAvailable($backend, $calendarURI, $objectURI, $userId, $checkRemote=false) {
+		$existingObjects = $this->mapper->find($backend, $calendarURI, $objectURI, $userId);
+		if(count($existingObjects) !== 0) {
+			return false;
+		}
+
+		if($checkRemote === true) {
+			$existingRemoteObjects = $this->backends->find($backend)->api->findObject($calendarURI, $objectURI, $userId);
+			if(count($existingRemoteObjects) !== 0) {
+				return false;
+			}
 		}
 
 		return true;
 	}
+
 
 	/**
 	 * suggest available uri for backend
@@ -569,27 +598,5 @@ class ObjectBusinessLayer extends BusinessLayer {
 		}
 
 		return $objectURI;
-	}
-
-	/**
-	 * checks if a uri is available
-	 * @param string $backend
-	 * @param string $calendarURI
-	 * @param string $objectURI
-	 * @param string $userId
-	 * @return boolean
-	 */
-	private function isObjectURIAvailable($backend, $calendarURI, $objectURI, $userId) {
-		$existingObjects = $this->mapper->find($backend, $calendarURI, $objectURI, $userId);
-		if(count($existingObjects) > 0) {
-			return false;
-		}
-
-		$existingRemoteObjects = $this->backends->find($backend)->api->findObject($calendarURI, $objectURI, $userId);
-		if(count($existingRemoteObjects) > 0) {
-			return false;
-		}
-
-		return true;
 	}
 }

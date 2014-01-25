@@ -367,7 +367,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @throws BusinessLayerException if uri is already taken
 	 */
 	private function allowNoCalendarURITwice($backend, $calendarURI, $userId){
-		if($this->isCalendarURIAvailable($backend, $calendarURI, $userId, true)) {
+		if($this->isCalendarURIAvailable($backend, $calendarURI, $userId, true) === false) {
 			throw new BusinessLayerException('Can not add calendar: URI is already taken!');
 		}
 	}
