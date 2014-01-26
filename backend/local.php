@@ -146,22 +146,15 @@ class Local extends Backend {
 		return $calendar;
 	}
 
-	public function deleteCalendar(Calendar $calendar) {
-		$calendarId = $calendar->getURI();
-		$userId = $calendar->getUserId();
+	public function deleteCalendar($calendarURI, $userId) {
+		//$sqlObjects  = 'DELETE `' . $this->objTableName . '` FROM `' . $this->objTableName . '` ';
+		//$sqlObjects .= 'JOIN `' . $this->calTableName . '` ON ';
+		//$sqlObjects .= '`' . $this->objTableName . '.calendarid` = `' . $this->calTableName . '.id` ';
+		//$sqlObjects .= 'WHERE `' . $this->calTableName . '.uri` = ? AND `' . $this->calTableName . '.userid` = ?';
+		//$resultObjs = $this->api->prepareQuery($sqlObjects)->execute(array($calendarURI, $userId)); 
 
-		if($calendarId === null || $userId === null || $calendarId === '' || $userId === '' || $calendarId === false) {
-			throw new BackendException('Can\'t delete Calendar. Calendar object does not contain sufficient information');
-		}
-
-		$sqlObjects  = 'DELETE * FROM `' . $this->objTableName . '`';
-		$sqlObjects .= 'LEFT OUTER JOIN `' . $this->calTableName . '` ON ';
-		$sqlObjects .= '`' . $this->objTableName . '.calendarid`=`' . $this->calTableName . '.id`';
-		$sqlObjects .= 'WHERE `' . $this->calTableName . '.uri` = ? and `' . $this->calTableName . '.userid` = ?';
-		$resultObjs = $this->api->prepareQuery($sqlObjs)->execute(array($calendarId, $userId));
-
-		$sqlCalendar = 'DELETE * FROM `' . $this->calTableName . '` where `uri` = ? AND `userid` = ?';
-		$resultCal = $this->api->prepareQuery($sqlCal)->execute(array($calendarId, $userId));
+		$sqlCalendar = 'DELETE FROM `' . $this->calTableName . '` where `uri` = ? AND `userid` = ?';
+		$resultCal = $this->api->prepareQuery($sqlCalendar)->execute(array($calendarURI, $userId));
 
 		return true;
 	}
@@ -416,7 +409,7 @@ class Local extends Backend {
 
 		$entity->setBackend($this->backend);
 		$entity->setCruds(Permissions::ALL);
-		if($row['color'] === null) {
+		if($row['calendarcolor'] === null) {
 			$entity->setColor('#1d2d44');
 		}
 		if($row['enabled'] === null) {

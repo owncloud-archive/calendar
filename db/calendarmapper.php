@@ -82,7 +82,7 @@ class CalendarMapper extends Mapper {
 			$calendar->getEnabled(),
 			$calendar->getCruds(),
 			$calendar->getUserId(),
-			$claendar->getOwnerId(),
+			$calendar->getOwnerId(),
 		));
 	}
 

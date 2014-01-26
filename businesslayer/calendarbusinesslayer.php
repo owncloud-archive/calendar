@@ -352,7 +352,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @throws BusinessLayerException if backend does not implement updating a calendar
 	 * @return Calendar $calendar - calendar object
 	 */
-	public function delete($calendar, $calendarId, $userId) {
+	public function delete($calendarId, $userId) {
 		try {
 			if($userId === null) {
 				$userId = $this->api->getUserId();

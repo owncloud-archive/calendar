@@ -166,7 +166,7 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 		try {
 			$this->calendarBusinessLayer->delete($calendarId, $userId);
 
-			return new JSONRespose();
+			return new JSONResponse();
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
