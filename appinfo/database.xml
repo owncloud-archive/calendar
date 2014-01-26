@@ -18,14 +18,14 @@
 				<length>4</length>
 			</field>
 			<field>
-				<name>user_id</name>
+				<name>userid</name>
 				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>
 				<length>255</length>
 			</field>
 			<field>
-				<name>owner_id</name>
+				<name>ownerid</name>
 				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>

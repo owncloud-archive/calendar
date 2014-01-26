@@ -125,10 +125,10 @@ class Local extends Backend {
 	}
 
 	public function updateCalendar(Calendar $calendar, $calendarId, $userId) {
-		$sql  = 'UPDATE `' . $this->calTableName . '` SET';
-		$sql .= '`userid` = `?`, `displayname` = `?`, `uri` = `?`, `active` = `?`, `ctag` = `?`,';
-		$sql .= '`calendarorder` = `?`, `calendarcolor` = `?`, `timezone` = `?`, `components` = `?`';
-		$sql .= 'WHERE `userid` = `?` AND `uri` = `?`';
+		$sql  = 'UPDATE `' . $this->calTableName . '` SET ';
+		$sql .= '`userid` = ?, `displayname` = ?, `uri` = ?, `active` = ?, `ctag` = ?, ';
+		$sql .= '`calendarorder` = ?, `calendarcolor` = ?, `timezone` = ?, `components` = ? ';
+		$sql .= 'WHERE `userid` = ? AND `uri` = ?';
 		$result = $this->api->prepareQuery($sql)->execute(array(
 			$calendar->getUserId(),
 			$calendar->getDisplayname(),

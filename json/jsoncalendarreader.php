@@ -20,16 +20,20 @@ class JSONCalendarReader {
 	private $calendar;
 
 	public function __construct($json=null) {
-		if($json === null) {
-			throw new JSONCalendarReaderException('Given json string is empty!');
-		}
+		if(is_array($json) === false) {
+			if($json === null) {
+				throw new JSONCalendarReaderException('Given json string is empty!');
+			}
+	
+			$data = json_decode($json, true);
+			if($data === false) {
+				throw new JSONCalendarReaderException('Could not parse given json string!');
+			}
 
-		$data = json_decode($json, true);
-		if($data === false) {
-			throw new JSONCalendarReaderException('Could not parse given json string!');
+			$this->data = $data;
+		} else {
+			$this->data = $json;
 		}
-
-		$this->data = $data;
 
 		$this->extractData();
 	}

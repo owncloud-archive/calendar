@@ -98,7 +98,7 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 */
 	public function create() {
 		$userId	= $this->api->getUserId();
-		$json	= file_get_contents('php://input');
+		$json	= $this->request->params;
 
 		try {
 			$jsonReader	= new JSONCalendarReader($json);
@@ -106,9 +106,7 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 			$calendar->setUserId($userId);
 			$calendar->setOwnerId($userId);
 
-			$calendarId = $calendar->getBackend() . '-' . $calendar->getUri();
-
-			$calendar		= $this->calendarBusinessLayer->create($calendar, $calendarId, $userId);
+			$calendar		= $this->calendarBusinessLayer->create($calendar, $userId);
 			$jsonCalendar	= new JSONCalendar($calendar);
 
 			return new JSONResponse($jsonCalendar, HTTP::STATUS_CREATED);
@@ -127,14 +125,14 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 */
 	public function update() {
 		$userId		= $this->api->getUserId();
-		$calendarId	= $this->api->params('calendarId');
-		$json		= file_get_contents('php://input');
+		$calendarId	= $this->params('calendarId');
+		$json		= $this->request->params;
 
 		try {
 			$jsonReader	= new JSONCalendarReader($json);
 			$calendar	= $jsonReader->getCalendar();
 
-			$calendar		= $this->calendarBusinessLayer->update($calendar, $userId);
+			$calendar		= $this->calendarBusinessLayer->update($calendar, $calendarId, $userId);
 			$jsonCalendar	= new JSONCalendar($calendar);
 
 			return new JSONResponse($jsonCalendar, HTTP::STATUS_CREATED);

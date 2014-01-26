@@ -32,7 +32,7 @@ class CalendarMapper extends Mapper {
 	 * @return the item
 	 */
 	public function find($backend, $uri, $userId){
-		$sql = 'SELECT * FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `user_id` = ?';
+		$sql = 'SELECT * FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
 		$row = $this->findOneQuery($sql, array($backend, $uri, $userId));
 		return new Calendar($row);
 	}
@@ -43,7 +43,7 @@ class CalendarMapper extends Mapper {
 	 * @return the item
 	 */
 	public function countFind($backend, $uri, $userId){
-		$sql = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `user_id` = ?';
+		$sql = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
 		$row = $this->findOneQuery($sql, array($backend, $uri, $userId));
 		return $row['count'];
 	}
@@ -53,7 +53,80 @@ class CalendarMapper extends Mapper {
 	 * @return array containing all items
 	 */
 	public function findAll($userId, $limit, $offset){
-		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `user_id` = ?';
+		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `userid` = ?';
 		return $this->findEntities($sql, array($userId), $limit, $offset);
+	}
+
+	/**
+	 * inserts an item
+	 * @param Calendar $calendar
+	 * @param string $backend
+	 * @param string $calendarURI
+	 * @param string $userId
+	 * @return null
+	 */
+	public function insertEntity($calendar, $backend, $calendarURI, $userId) {
+		$sql  = 'INSERT INTO `'. $this->tableName . '` ';
+		$sql .= '(`backend`, `uri`, `displayname`, `components`, `ctag`, `timezone`, ';
+		$sql .= '`color`, `order`, `enabled`, `cruds`, `userid`, `ownerid`) ';
+		$sql .= 'VALUES(?,?,?,?,?,?,?,?,?,?,?,?)';
+		$result = $this->api->prepareQuery($sql)->execute(array(
+			$calendar->getBackend(),
+			$calendar->getUri(),
+			$calendar->getDisplayname(),
+			$calendar->getComponents(),
+			$calendar->getCtag(),
+			$calendar->getTimezone(),
+			$calendar->getColor(),
+			$calendar->getOrder(),
+			$calendar->getEnabled(),
+			$calendar->getCruds(),
+			$calendar->getUserId(),
+			$claendar->getOwnerId(),
+		));
+	}
+
+	/**
+	 * updates an item
+	 * @param Calendar $calendar
+	 * @param string $backend
+	 * @param string $calendarURI
+	 * @param string $userId
+	 * @return null
+	 */
+	public function updateEntity($calendar, $backend, $calendarURI, $userId) {
+		$sql  = 'UPDATE `'. $this->tableName . '` SET ';
+		$sql .= '`backend` = ?, `uri` = ?, `displayname` = ?, `components` = ?, `ctag` = ?, `timezone` = ?, ';
+		$sql .= '`color` = ?, `order` = ?, `enabled` = ?, `cruds` = ?, `userid` = ?, `ownerid` = ? ';
+		$sql .= 'WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
+		$result = $this->api->prepareQuery($sql)->execute(array(
+			$calendar->getBackend(),
+			$calendar->getUri(),
+			$calendar->getDisplayname(),
+			$calendar->getComponents(),
+			$calendar->getCtag(),
+			$calendar->getTimezone(),
+			$calendar->getColor(),
+			$calendar->getOrder(),
+			$calendar->getEnabled(),
+			$calendar->getCruds(),
+			$calendar->getUserId(),
+			$calendar->getOwnerId(),
+			$backend,
+			$calendarURI,
+			$userId
+		));
+	}
+
+	/**
+	 * deletes an item
+	 * @param string $backend
+	 * @param string $calendarURI
+	 * @param string $userId
+	 * @return null
+	 */
+	public function deleteEntity($backend, $calendarURI, $userId) {
+		$sql = 'DELETE FROM `'. $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
+		$this->execute($sql, array($backend, $calendarURI, $userId));
 	}
 }

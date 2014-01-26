@@ -40,4 +40,8 @@ class CalendarUtility extends Utility{
 		return array($backend, $realCalendarURI);
 	}
 
+	public static function getURI($backend, $calendarURI) {
+		return $backend . '-' . $calendarURI;
+	}
+
 }
