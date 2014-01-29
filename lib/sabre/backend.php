@@ -299,20 +299,23 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 */
 	public function getCalendarObject($calendarId,$objectUri) {
 		if($calendarId === 'contact_birthdays') {
-			$app = new \OCA\Contacts\App();
-			list($backend, $addressBookId, $contactId) = explode('::', $objectUri);
-			$contact = $app->getContact($backend, $addressBookId, $contactId);
-			$vevent = $contact->getBirthdayEvent();
-			if(is_null($vevent)) {
-				return false;
+			$objectUriArray = explode('::', $objectUri);
+			if(count($objectUriArray) === 3) {
+				$app = new \OCA\Contacts\App();
+				list($backend, $addressBookId, $contactId) = $objectUriArray;
+				$contact = $app->getContact($backend, $addressBookId, $contactId);
+				$vevent = $contact->getBirthdayEvent();
+				if(is_null($vevent)) {
+					return false;
+				}
+				return $this->OCAddETag(array(
+					'id' => 0,
+					'calendarid' => 'contact_birthdays',
+					'uri' => $contact->getBackend()->name.'::'.$contact->getParent()->getId().'::'.$contact->getId(),
+					'lastmodified' => $contact->lastModified(),
+					'calendardata' => $vevent->serialize()
+				));
 			}
-			return $this->OCAddETag(array(
-				'id' => 0,
-				'calendarid' => 'contact_birthdays',
-				'uri' => $contact->getBackend()->name.'::'.$contact->getParent()->getId().'::'.$contact->getId(),
-				'lastmodified' => $contact->lastModified(),
-				'calendardata' => $vevent->serialize()
-			));
 		}
 		$data = OC_Calendar_Object::findWhereDAVDataIs($calendarId,$objectUri);
 		if(is_array($data)) {
