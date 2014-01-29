@@ -260,10 +260,8 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 		$data = array();
 		if($calendarId === 'contact_birthdays') {
 			$app = new \OCA\Contacts\App();
-			$backend = $app->getBackend('local');
-			$addressBooks = $backend->getAddressBooksForUser();
-			foreach($addressBooks as $addressBookInfo) {
-				$addressBook = $app->getAddressBook('local', $addressBookInfo['id']);
+			$addressBooks = $app->getAddressBooksForUser();
+			foreach($addressBooks as $addressBook) {
 				foreach($addressBook->getChildren() as $contact) {
 					$vevent = $contact->getBirthdayEvent();
 					if(is_null($vevent)) {
