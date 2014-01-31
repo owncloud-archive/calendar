@@ -53,7 +53,7 @@ class CalendarMapper extends Mapper {
 	 * @return array containing all items
 	 */
 	public function findAll($userId, $limit, $offset){
-		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `userid` = ?';
+		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `userid` = ? ORDER BY `order`';
 		return $this->findEntities($sql, array($userId), $limit, $offset);
 	}
 
@@ -114,7 +114,7 @@ class CalendarMapper extends Mapper {
 			$calendar->getOwnerId(),
 			$backend,
 			$calendarURI,
-			$userId
+			$userId,
 		));
 	}
 

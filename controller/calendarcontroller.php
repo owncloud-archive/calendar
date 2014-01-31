@@ -47,11 +47,11 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @API
 	 */
 	public function index() {
-		$userId	= $this->api->getUserId();
-		$limit	= $this->params('limit');
-		$offset	= $this->params('offset');
-
 		try {
+			$userId	= $this->api->getUserId();
+			$limit	= $this->params('limit');
+			$offset	= $this->params('offset');
+
 			$calendars = $this->calendarBusinessLayer->findAll($userId, $limit, $offset);
 
 			$jsonCalendars = array();
@@ -74,10 +74,10 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @API
 	 */
 	 public function show() {
-		$userId		= $this->api->getUserId();
-		$calendarId	= $this->params('calendarId');
-
 		try {
+			$userId		= $this->api->getUserId();
+			$calendarId	= $this->params('calendarId');
+
 			$calendar = $this->calendarBusinessLayer->find($calendarId, $userId);
 
 			$jsonCalendar = new JSONCalendar($calendar);
@@ -97,14 +97,14 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @API
 	 */
 	public function create() {
-		$userId	= $this->api->getUserId();
-		$json	= $this->request->params;
-
 		try {
+			$userId	= $this->api->getUserId();
+			$json	= $this->request->params;
+
 			$jsonReader	= new JSONCalendarReader($json);
-			$calendar	= $jsonReader->getCalendar();
-			$calendar->setUserId($userId);
-			$calendar->setOwnerId($userId);
+			$calendar	= $jsonReader->getCalendar()
+									 ->setUserId($userId)
+									 ->setOwnerId($userId);
 
 			$calendar		= $this->calendarBusinessLayer->create($calendar, $userId);
 			$jsonCalendar	= new JSONCalendar($calendar);
@@ -124,13 +124,14 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @API
 	 */
 	public function update() {
-		$userId		= $this->api->getUserId();
-		$calendarId	= $this->params('calendarId');
-		$json		= $this->request->params;
-
 		try {
+			$userId		= $this->api->getUserId();
+			$calendarId	= $this->params('calendarId');
+			$json		= $this->request->params;
+
 			$jsonReader	= new JSONCalendarReader($json);
-			$calendar	= $jsonReader->getCalendar();
+			$calendar	= $jsonReader->getCalendar()
+									 ->setUserId($userId);
 
 			$calendar		= $this->calendarBusinessLayer->update($calendar, $calendarId, $userId);
 			$jsonCalendar	= new JSONCalendar($calendar);
@@ -160,10 +161,10 @@ class CalendarController extends \OCA\Calendar\AppFramework\Controller\Controlle
 	 * @API
 	 */
 	public function destroy() {
-		$userId		= $this->api->getUserId();
-		$calendarId	= $this->params('calendarId');
-
 		try {
+			$userId		= $this->api->getUserId();
+			$calendarId	= $this->params('calendarId');
+
 			$this->calendarBusinessLayer->delete($calendarId, $userId);
 
 			return new JSONResponse();

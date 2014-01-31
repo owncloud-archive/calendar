@@ -428,7 +428,7 @@ class Local extends Backend {
 		$entity->setBackend($this->backend);
 		$entity->setType($row['objecttype']);
 		$entity->setObjectURI($row['uri']);
-		$entity->setCalendarURI($calendarURI);
+		$entity->setCalendarURI('test');
 		$entity->setCalendarData($row['calendardata']);
 	}
 

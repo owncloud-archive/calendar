@@ -69,9 +69,10 @@ class JSONCalendarReader {
 						break;
 	
 					//arrays
-					case 'owner':
 					case 'user':
-						$this->parseUserArray($key, $value);
+					case 'owner':
+						//$this->parseUserArray($key, $value);
+						//ignore user and owner array, those properties must not be set by the user
 						break;
 	
 					case 'components':

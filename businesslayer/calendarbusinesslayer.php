@@ -21,7 +21,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	                            API $api){
 		$this->mapper = $calendarMapper;
 		parent::__construct($api, $calendarMapper, $backends);
-	}
+	}
 
 	/**
 	 * Find calendars of user $userId

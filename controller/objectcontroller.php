@@ -44,23 +44,33 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	 * @API
 	 */
 	public function index() {
-		$userId		= $this->api->getUserId();
-		$calendarId	= $this->params('calendarId');
-		$limit		= $this->params('limit');
-		$offset		= $this->params('offset');
-		$expand		= $this->params('expand');
-		$start		= $this->params('start');
-		$end		= $this->params('end');
-
 		try {
+			$userId		= $this->api->getUserId();
+			$calendarId	= $this->params('calendarId');
+			$limit		= $this->params('limit');
+			$offset		= $this->params('offset');
+			$expand		= $this->params('expand');
+			$start		= $this->params('start');
+			$end		= $this->params('end');
+
 			$this->parseBooleanString($expand);
 			$this->parseDateTimeString($start);
 			$this->parseDateTimeString($end);
 
 			if($start === null || $end === null) {
-				$objects = $this->objectBusinessLayer->findAll($calendarId, $userId, $limit, $offset);
+				$objects = $this->objectBusinessLayer
+								->findAll($calendarId,
+										  $userId,
+										  $limit,
+										  $offset);
 			} else {
-				$objects = $this->objectBusinessLayer->findAllInPeriod($calendarId, $start, $end, $userId, $limit, $offset);
+				$objects = $this->objectBusinessLayer
+								->findAllInPeriod($calendarId,
+												  $start,
+												  $end,
+												  $userId,
+												  $limit,
+												  $offset);
 			}
 
 			$jsonObjects = array();
@@ -95,14 +105,14 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	 * @return an instance of a Response implementation 
 	 */
 	public function show() {
-		$userId		= $this->api->getUserId();
-		$calendarId	= $this->params('calendarId');
-		$objectURI	= $this->params('objectId');
-		$expand		= $this->params('expand');
-		$start		= $this->params('start');
-		$end		= $this->params('end');
-
 		try {
+			$userId		= $this->api->getUserId();
+			$calendarId	= $this->params('calendarId');
+			$objectURI	= $this->params('objectId');
+			$expand		= $this->params('expand');
+			$start		= $this->params('start');
+			$end		= $this->params('end');
+
 			$this->parseBooleanString($expand);
 			$this->parseDateTimeString($start);
 			$this->parseDateTimeString($end);
@@ -133,11 +143,11 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	 * @API
 	 */
 	public function create() {
-		$userId		= $this->api->getUserId();
-		$calendarId	= $this->params('calendarId');
-		$json		= file_get_contents('php://input');
-
 		try {
+			$userId		= $this->api->getUserId();
+			$calendarId	= $this->params('calendarId');
+			$json		= $this->request->params;
+
 			$jsonReader	= new JSONObjectReader($json);
 			$object		= $jsonReader->getObject();
 
@@ -158,12 +168,12 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	 * @API
 	 */
 	public function update() {
-		$userId		= $this->api->getUserId();
-		$calendarId	= $this->api->params('calendarId');
-		$objectURI	= $this->api->params('objectId');
-		$json		= file_get_contents('php://input');
-
 		try {
+			$userId		= $this->api->getUserId();
+			$calendarId	= $this->api->params('calendarId');
+			$objectURI	= $this->api->params('objectId');
+			$json		= $this->request->params;
+
 			$jsonReader	= new JSONObjectReader($json);
 			$object		= $jsonReader->getObject();
 
@@ -193,11 +203,11 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	 * @API
 	 */
 	public function destroy() {
-		$userId		= $this->api->getUserId();
-		$calendarId	= $this->params('calendarId');
-		$objectURI	= $this->params('objectId');
-
 		try {
+			$userId		= $this->api->getUserId();
+			$calendarId	= $this->params('calendarId');
+			$objectURI	= $this->params('objectId');
+
 			$this->objectBusinessLayer->delete($calendarId, $objectURI, $userId);
 
 			return new JSONResponse();
@@ -208,7 +218,7 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 		}
 	}
 
-	private function parseBooleanString(&$string) {
+	protected function parseBoolean(&$string) {
 		if($string === true || $string === 1 || $string === 'true') {
 			$string = true;
 		} else {
@@ -216,7 +226,7 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 		}
 	}
 
-	private function parseDateTimeString(&$string) {
+	protected function parseDateTime(&$string) {
 		if($string !== null) {
 			$string = DateTime::createFromFormat(\DateTime::RFC2822, $string);
 			if($string === false) {

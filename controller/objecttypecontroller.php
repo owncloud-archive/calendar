@@ -17,7 +17,7 @@ use OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
 use OCA\Calendar\Db\ObjectType;
-use OCA\Calendar\Db\JSONObject;
+use OCA\Calendar\JSON\JSONObject;
 
 abstract class ObjectTypeController extends ObjectController {
 
@@ -42,37 +42,50 @@ abstract class ObjectTypeController extends ObjectController {
 	 * @API
 	 */
 	public function index() {
-		$userId 	= $this->api->getUserId();
-		$calendarId = $this->params('calendarId');
-		$type 		= $this->objectType;
-		$limit		= $this->params('limit');
-		$offset		= $this->params('offset');
-		$expand		= $this->params('expand');
-		$start		= $this->params('start');
-		$end		= $this->params('end');
-
 		try {
-			$this->parseBooleanString($expand);
-			$this->parseDateTimeString($start);
-			$this->parseDateTimeString($end);
+			$userId 	= $this->api->getUserId();
+			$calendarId = $this->params('calendarId');
+			$limit		= $this->params('limit');
+			$offset		= $this->params('offset');
 
+			$expand		= $this->params('expand');
+			$start		= $this->params('start');
+			$end		= $this->params('end');
+
+			$this->parseBoolean($expand);
+			$this->parseDateTime($start);
+			$this->parseDateTime($end);
+
+			$objects = array();
 			if($start === null || $end === null) {
-				public function findAllByType($calendarId, $type, $userId, $limit = null, $offset = null) {
-				$objects = $this->objectBusinessLayer->findAllByType($calendarId, $type, $userId, $limit, $offset);
+				$objects = $this->objectBusinessLayer
+								->findAllByType($calendarId,
+												$this->objectType,
+												$userId,
+												$limit,
+												$offset);
 			} else {
-				$objects = $this->objectBusinessLayer->findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId, $limit, $offset);
+				$objects = $this->objectBusinessLayer
+								->findAllByTypeInPeriod($calendarId,
+														$this->objectType,
+														$start,
+														$end,
+														$userId,
+														$limit,
+														$offset);
 			}
 
-			if($expand === true) {
+			$jsonObjects = array();
+			if($expand === false) {
+				foreach($objects as $object) {
+					$jsonObjects[] = new JSONObject($object);
+				}
+			} else {
 				foreach($objects as $object) {
 					$expandedObjects = $object->expand($start, $end);
 					foreach($expandedObjects as $expandedObject) {
 						$jsonObjects = array_merge($jsonObjects, new JSONObject($expandedObject));
 					}
-				}
-			} else {
-				foreach($objects as $object) {
-					$jsonObjects[] = new JSONObject($object);
 				}
 			}
 
@@ -91,20 +104,23 @@ abstract class ObjectTypeController extends ObjectController {
 	 * @API
 	 */
 	public function show() {
-		$userId 	= $this->api->getUserId();
-		$calendarId = $this->params('calendarId');
-		$type 		= $this->objectType;
-		$limit		= $this->params('limit');
-		$offset		= $this->params('offset');
-		$expand		= $this->params('expand');
-		$start		= $this->params('start');
-		$end		= $this->params('end');
-
-		list($routeApp, $routeController, $routeMethod) = explode('.', $this->params('_route'));
-		$objectId = $this->params(substr($routeController, 0, strlen($routeController) - 1) . 'Id');
-
 		try {
-			$object = $this->objectBusinessLayer->findByType($calendarId, $objectId, $type, $userId);
+			$userId 	= $this->api->getUserId();
+			$calendarId = $this->params('calendarId');
+			$limit		= $this->params('limit');
+			$offset		= $this->params('offset');
+			$expand		= $this->params('expand');
+			$start		= $this->params('start');
+			$end		= $this->params('end');
+	
+			list($routeApp, $routeController, $routeMethod) = explode('.', $this->params('_route'));
+			$objectId = $this->params(substr($routeController, 0, strlen($routeController) - 1) . 'Id');
+
+			$object = $this->objectBusinessLayer
+						   ->findByType($calendarId,
+						   				$objectId,
+						   				$this->objecttype,
+						   				$userId);
 
 			$jsonObject = new JSONObject($object);
 

@@ -12,7 +12,9 @@ use Sabre\VObject\Component\VEvent;
 use Sabre\VObject\Component\VJournal;
 use Sabre\VObject\Component\VTodo;
 
-class Object extends JSON{
+use \OCA\Calendar\Db\Object;
+
+class JSONObject extends JSON{
 
 	public $calendarId;
 	public $objectURI;

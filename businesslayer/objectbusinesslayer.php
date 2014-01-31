@@ -478,7 +478,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 			$oldBackendsAPI = &$this->backends->find($oldBackend)->api;
 			$newBackendsAPI = &$this->backends->find($newBackend)->api;
 
-			$doesBackendSupportMovingEvents = $oldBackendsAPI->implementsActions(\OCA\Calendar\Backend\MOVE_OBJECT)
+			$doesBackendSupportMovingEvents = $oldBackendsAPI->implementsActions(\OCA\Calendar\Backend\MOVE_OBJECT);
 
 			if($oldBackend == $newBackend && $doesBackendSupportMovingEvents === true) {
 				$object = $newBackendsAPI->moveObject($object, $calendarURI, $objectURI, $userId);

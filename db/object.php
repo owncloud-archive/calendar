@@ -87,7 +87,7 @@ class Object extends Entity {
 				$parsedVObject = new VObjectObjectReader($singleVObject);
 				$objects[] = $parsedVObject;
 			}
-		}
+		} catch (Exception $ex) {}
 	}
 
 	/**
