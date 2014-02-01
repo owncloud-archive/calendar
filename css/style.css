@@ -281,7 +281,7 @@ button.category{margin:0 3px;}
   font-weight:bold;
   background: #777;
   color:#ddd;
-  padding:0.2em;
+  padding:0.7em;
   position:fixed;
   top:0px;
   width:100%;
@@ -297,6 +297,23 @@ button.category{margin:0 3px;}
 #linksharedinfo a:hover {
   text-decoration:underline;
   color:white;
+}
+
+#linksharedinfo .download-link {
+  display:inline-block;
+  background: #777;
+  border:solid 0.1em #ddd;
+  border-radius:0.2em;
+  padding:0.3em 1em;
+  color:#ddd;
+  text-decoration:none;
+}
+
+#linksharedinfo .download-link:hover {
+  background:#ddd;
+  border-color:#555;
+  color:#777;
+  text-decoration:none;
 }
 
 #linksharedinfo + #controls {
