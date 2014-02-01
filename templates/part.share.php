@@ -47,16 +47,7 @@ $tmpl->assign('permissions', $_['permissions']);
 $tmpl->assign('basic_edit_options', true);
 $tmpl->assign('shared_with', $eventsharees);
 $tmpl->printpage();
-/* link-sharing an event */
-$tmpl = new OCP\Template('calendar', 'part.linkshare');
-$tmpl->assign('item_id', $_['eventid']);
-$tmpl->assign('item_type', 'event');
-$tmpl->assign('permissions', $_['permissions']);
-$tmpl->assign('link_share', $linkShare);
-$tmpl->printpage();
-/* end link-sharing an event */
-?><br />
-<strong><?php p($l->t('Shared via calendar')); ?></strong>
+?><strong><?php p($l->t('Shared via calendar')); ?></strong>
 <ul class="sharedby calendarlist">
 <?php foreach($calsharees as $sharee): ?>
 	<li data-share-with="<?php p($sharee['share_with']); ?>"
@@ -98,3 +89,25 @@ $tmpl->printpage();
 	$nobody = $l->t('Not shared with anyone via calendar');
 	print_unescaped('<div>' . OC_Util::sanitizeHTML($nobody) . '</div>');
 } ?>
+
+<?php p($l->t('Visibility to people shared with'));?>
+<select style="width:140px;" name="accessclass">
+  <?php if (!isset($_['calendar'])) {$_['calendar'] = false;}
+  print_unescaped(OCP\html_select_options($_['access_class_options'], $_['accessclass'])); ?>
+</select>
+
+<!-- disclaimer -->
+<p class="disclaimer"><?php p($l->t('All items directly link-shared are available read-only but in full via the link, regardless of any visibility or privacy settings.')) ?></p>
+<hr class="elegant-divider"/>
+
+<?php
+
+/* link-sharing an event */
+$tmpl = new OCP\Template('calendar', 'part.linkshare');
+$tmpl->assign('item_id', $_['eventid']);
+$tmpl->assign('item_type', 'event');
+$tmpl->assign('permissions', $_['permissions']);
+$tmpl->assign('link_share', $linkShare);
+$tmpl->printpage();
+/* end link-sharing an event */
+?>

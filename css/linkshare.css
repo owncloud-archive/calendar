@@ -47,6 +47,7 @@
   transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
   opacity:0.5;
 }
+
 /* a hidden control checkbox should be hidden */
 .displayable-container > .displayable-control.hide {
   display:none;
@@ -87,11 +88,16 @@
 }
 /* shared-with list */
 .shared-with-list {
-  padding:0.5em 0em;
+  padding:0em;
 }
 .shared-with-list > li {
   text-align:right;
+  margin:0.5em 0em -0.5em 0em;
 }
+.shared-with-list > li:last-child {
+  margin-bottom:0.5em;
+}
+
 /* that's just a stub to be used by JS later, hid it! */
 .shared-with-list > li.stub {
   display:none;
@@ -162,4 +168,12 @@
   content:" ";
   margin:0.2em auto 0.5em auto;
   border-top:solid 1px #ddd;
+}
+
+hr.elegant-divider {
+  width: 75%;
+  height: 0px;
+  display: block;
+  margin: 0.2em auto 0.5em auto;
+  border-top: solid 1px #ddd;
 }

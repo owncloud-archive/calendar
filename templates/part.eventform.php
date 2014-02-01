@@ -227,12 +227,5 @@
 <?php if($_['eventid'] != 'new' && $_['permissions'] & OCP\PERMISSION_SHARE) { ?>
 <div id="tabs-5">
 	<?php if($_['eventid'] != 'new') { print_unescaped($this->inc('part.share')); } ?>
-
-	<br>
-	<?php p($l->t('Visibility to people shared with'));?>
-	<select style="width:140px;" name="accessclass">
-		<?php if (!isset($_['calendar'])) {$_['calendar'] = false;}
-		print_unescaped(OCP\html_select_options($_['access_class_options'], $_['accessclass'])); ?>
-	</select>
 </div>
 <?php } ?>
