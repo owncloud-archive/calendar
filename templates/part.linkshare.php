@@ -14,10 +14,9 @@
     prepare backend for direct submission, then fill-in the details of the form;
     if JS is disabled, the submit button will be available, automagically
   -->
-  <h3><?php p($l->t('Share via link')); ?></h3>
   <!-- the checkbox that enables and disables the whole thing -->
   <input type="checkbox" name="share-link" class="share-link displayable-control" value="0" id="share-link-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>" <?php if (isset($_['link_share']['token'])): ?> checked="checked"<?php endif; ?>/>
-  <label for="share-link-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>"><?php p($l->t('Share link')) ?></label>
+  <label for="share-link-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>"><h3><?php p($l->t('Share via link')); ?></h3></label>
   <!-- this should be visible only when the share-link checkbox is :checked -->
   <div class="share-link-enabled-container displayable">
     <!-- link container, contains the share link (duh) -->

@@ -6,6 +6,9 @@
 .share-interface-container h3 {
   font-weight:bold;
 }
+.share-interface-container label > h3 {
+  display:inline-block;
+}
 .share-interface-container input[type="checkbox"] {
   vertical-align:middle;
 }
