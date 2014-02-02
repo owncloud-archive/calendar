@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud calendar 5.0.0\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-01-30 01:47-0500\n"
+"POT-Creation-Date: 2014-02-02 01:47-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -280,7 +280,7 @@ msgstr ""
 msgid "All day"
 msgstr ""
 
-#: js/l10n.php:84 lib/import.php:214 templates/settings.php:23
+#: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
 msgid "New Calendar"
 msgstr ""
 
