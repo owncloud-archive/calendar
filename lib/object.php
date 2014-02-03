@@ -153,6 +153,7 @@ class OC_Calendar_Object{
 	 * @return insertid
 	 */
 	public static function addFromDAVData($id,$uri,$data) {
+		$shared = false;
 		$calendar = OC_Calendar_Calendar::find($id);
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
@@ -163,8 +164,19 @@ class OC_Calendar_Object{
 					)
 				);
 			}
+			$shared = true;
 		}
 		$object = OC_VObject::parse($data);
+		$vevent = self::getElement($object);
+
+		if($shared && isset($vevent->CLASS) && (string)$vevent->CLASS !== 'PUBLIC') {
+			throw new Sabre_DAV_Exception_PreconditionFailed(
+					OC_Calendar_App::$l10n->t(
+						'You do cannot add non-public events to a shared calendar.'
+					)
+			);
+		}
+
 		list($type,$startdate,$enddate,$summary,$repeating,$uid) = self::extractData($object);
 
 		$stmt = OCP\DB::prepare( 'INSERT INTO `*PREFIX*clndr_objects` (`calendarid`,`objecttype`,`startdate`,`enddate`,`repeating`,`summary`,`calendardata`,`uri`,`lastmodified`) VALUES(?,?,?,?,?,?,?,?,?)' );
@@ -501,21 +513,31 @@ class OC_Calendar_Object{
 	}
 
 	/**
+	 * Get the contained element VEVENT, VJOURNAL, VTODO
+	 *
+	 * @param Sabre_VObject $vobject
+	 * @return Sabre_VObject|null
+	 */
+	public static function getElement($vobject) {
+		if(isset($vobject->VEVENT)) {
+			return $vobject->VEVENT;
+		}
+		elseif(isset($vobject->VJOURNAL)) {
+			return $vobject->VJOURNAL;
+		}
+		elseif(isset($vobject->VTODO)) {
+			return $vobject->VTODO;
+		}
+	}
+
+	/**
 	 * @brief Get the permissions determined by the access class of an event/todo/journal
 	 * @param Sabre_VObject $vobject Sabre VObject
 	 * @return (int) $permissions - CRUDS permissions
 	 * @see OCP\Share
 	 */
 	public static function getAccessClassPermissions($vobject) {
-		if(isset($vobject->VEVENT)) {
-			$velement = $vobject->VEVENT;
-		}
-		elseif(isset($vobject->VJOURNAL)) {
-			$velement = $vobject->VJOURNAL;
-		}
-		elseif(isset($vobject->VTODO)) {
-			$velement = $vobject->VTODO;
-		}
+		$velement = self::getElement($vobject);
 
 		$accessclass = $velement->getAsString('CLASS');
 
