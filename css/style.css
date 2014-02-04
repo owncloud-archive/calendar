@@ -285,7 +285,6 @@ button.category{margin:0 3px;}
 }
 #navigation-list form {
 	width: 100%;
-	margin-bottom: 3px;
 }
 
 #navigation-list input[type=button], #navigation-list button {
@@ -449,4 +448,31 @@ button.category{margin:0 3px;}
 
 #newCalendar {
 	padding-left: 23px !important;
+}
+
+#newcalendar_dialog, #editcalendar_dialog {
+	margin: 6px;
+	margin-top: 0px;
+}
+
+#newcalendar_dialog input[type=text], #editcalendar_dialog input[type=text] {
+	height: 18px;
+	width: 172px;
+	float: left;
+	margin: 0;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border: 1px solid rgba(190, 190, 190, 0.9);
+	border-right: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#newcalendar_dialog #editCalendar-submit, #editcalendar_dialog #editCalendar-submit {
+	float: left;
+	margin-bottom: 6px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
 }

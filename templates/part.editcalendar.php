@@ -6,10 +6,11 @@
  * See the COPYING-README file.
  */
 ?>
-<li id="<?php p($_['new'] ? 'new' : 'edit') ?>calendar_dialog" title="<?php p($_['new'] ? $l->t("New calendar") : $l->t("Edit calendar")); ?>" colspan="6">
-
-<input id="displayname_<?php p($_['calendar']['id']) ?>" type="text" value="<?php p(OCP\Util::sanitizeHTML($_['calendar']['displayname'])) ?>">
-
+<div id="<?php p($_['new'] ? 'new' : 'edit') ?>calendar_dialog" title="<?php p($_['new'] ? $l->t("New calendar") : $l->t("Edit calendar")); ?>" colspan="6">
+	<span>
+		<input id="displayname_<?php p($_['calendar']['id']) ?>" type="text" value="<?php p(OCP\Util::sanitizeHTML($_['calendar']['displayname'])) ?>">
+		<input id="editCalendar-submit" class="primary" type="button" data-id="<?php p($_['new'] ? "new" : $_['calendar']['id']) ?>" value="<?php p($_['new'] ? $l->t("Save") : $l->t("Submit")); ?>">
+	</span>
 	<select id="calendarcolor_<?php p($_['calendar']['id']) ?>" class="colorpicker">
 		<?php
 		if (!isset($_['calendar']['calendarcolor'])) {$_['calendar']['calendarcolor'] = false;}
@@ -18,6 +19,4 @@
 		}
 		?>
 	</select>
-	<input style="float: left;"  id="editCalendar-submit" type="button" data-id="<?php p($_['new'] ? "new" : $_['calendar']['id']) ?>" value="<?php p($_['new'] ? $l->t("Save") : $l->t("Submit")); ?>">
-	<input style="float: left;"  id="editCalendar-cancel"  type="button" data-id="<?php p($_['new'] ? "new" : $_['calendar']['id']) ?>" value="<?php p($l->t("Cancel")); ?>">
-</li>
+</div>

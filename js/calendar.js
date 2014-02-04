@@ -452,16 +452,20 @@ Calendar={
 				  });
 			},
 			newCalendar:function(object){
-				var tr = $(document.createElement('tr'))
+				var div = $(document.createElement('div'))
 					.load(OC.filePath('calendar', 'ajax/calendar', 'new.form.php'),
-						function(){Calendar.UI.Calendar.colorPicker(this)});
-				$("#navigation-list").append(tr);
+						function(){
+							Calendar.UI.Calendar.colorPicker(this);
+							$('#displayname_new').focus();
+						});
+				$('#newCalendar').after(div);
+				$('#newCalendar').css('display', 'none');
 			},
 			edit:function(object, calendarid){
-				var tr = $(document.createElement('tr'))
+				var li = $(document.createElement('li'))
 					.load(OC.filePath('calendar', 'ajax/calendar', 'edit.form.php'), {calendarid: calendarid},
 						function(){Calendar.UI.Calendar.colorPicker(this)});
-				$(object).closest('tr').after(tr).hide();
+				$(object).closest('li').after(li).hide();
 			},
 			deleteCalendar:function(calid){
 				var check = confirm("Do you really want to delete this calendar?");
@@ -473,10 +477,8 @@ Calendar={
 						if (data.status == 'success'){
 							var url = 'ajax/events.php?calendar_id='+calid;
 							$('#fullcalendar').fullCalendar('removeEventSource', url);
-							$('#choosecalendar_dialog').dialog('destroy').remove();
-							Calendar.UI.Calendar.overview();
-							$('#calendar tr[data-id="'+calid+'"]').fadeOut(400,function(){
-								$('#calendar tr[data-id="'+calid+'"]').remove();
+							$('#navigation-list li[data-id="'+calid+'"]').fadeOut(400,function(){
+								$('#navigation-list li[data-id="'+calid+'"]').remove();
 							});
 							$('#fullcalendar').fullCalendar('refetchEvents');
 						}
@@ -485,11 +487,7 @@ Calendar={
 			},
 			submit:function(button, calendarid){
 				var displayname = $.trim($("#displayname_"+calendarid).val());
-				//var active = $("#edit_active_"+calendarid+":checked").length;
-				var active =0;
-				if( $("#edit_active_"+calendarid).is(':checked') ){
-					 active =1;
-				}
+				var active = $("#active_"+calendarid).attr("checked") ? 1 : 0;
 				
 				var description = $("#description_"+calendarid).val();
 				var calendarcolor = $("#calendarcolor_"+calendarid).val();
@@ -509,11 +507,18 @@ Calendar={
 				$.post(url, { id: calendarid, name: displayname, active: active, description: description, color: calendarcolor },
 					function(data){
 						if(data.status == 'success'){
-							$(button).closest('tr').prev().html(data.page).show().next().remove();
 							$('#fullcalendar').fullCalendar('removeEventSource', data.eventSource.url);
 							$('#fullcalendar').fullCalendar('addEventSource', data.eventSource);
 							if (calendarid == 'new'){
-								$('#calendar > table:first').append('<tr><td colspan="6"><a href="#" id="chooseCalendar"><input type="button" value="' + newcalendar + '"></a></td></tr>');
+								$('#newcalendar_dialog').parent().remove();
+								$("#newCalendar").css('display', '');
+								alert(JSON.stringify(data));
+								var li = $(document.createElement('li')).append(data.page);
+								$("#navigation-list").append(li);
+							}
+							else {
+								$('#editcalendar_dialog').parent().remove();
+								$('#navigation-list li[data-id="'+calendarid+'"]').html(data.page).show();
 							}
 						}else{
 							$("#displayname_"+calendarid).css('background-color', '#FF2626');
@@ -524,7 +529,8 @@ Calendar={
 					}, 'json');
 			},
 			cancel:function(button, calendarid){
-				$(button).closest('tr').prev().show().next().remove();
+				$('#newcalendar_dialog').parent().remove();
+				$("#newCalendar").css('display', '');
 			},
 			colorPicker:function(container){
 				// based on jquery-colorpicker at jquery.webspirited.com
