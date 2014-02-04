@@ -127,7 +127,7 @@ class OC_Calendar_Calendar{
 			$userid = OCP\USER::getUser();
 		}
 		
-		$id = self::addCalendar($userid,'Default calendar');
+		$id = self::addCalendar($userid,'Personal');
 
 		return true;
 	}

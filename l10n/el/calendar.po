@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-01-08 01:46-0500\n"
-"PO-Revision-Date: 2014-01-07 15:21+0000\n"
-"Last-Translator: vkehayas <vkehayas@gmail.com>\n"
+"POT-Creation-Date: 2014-02-04 01:46-0500\n"
+"PO-Revision-Date: 2014-02-04 06:46+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/owncloud/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,7 +46,7 @@ msgstr "Δε βρέθηκαν συμβάντα."
 msgid "Wrong calendar"
 msgstr "Λάθος ημερολόγιο"
 
-#: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
 msgstr "Δεν έχετε δικαιώματα να επεξεργαστείτε αυτό το συμβάν."
 
@@ -133,31 +133,31 @@ msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:588 templates/settings.php:93
+#: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
 msgid "Sunday"
 msgstr "Κυριακή"
 
-#: js/l10n.php:77 lib/object.php:582 templates/settings.php:92
+#: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
 msgid "Monday"
 msgstr "Δευτέρα"
 
-#: js/l10n.php:77 lib/object.php:583
+#: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
 msgstr "Τρίτη"
 
-#: js/l10n.php:77 lib/object.php:584
+#: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
 msgstr "Τετάρτη"
 
-#: js/l10n.php:77 lib/object.php:585
+#: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
 msgstr "Πέμπτη"
 
-#: js/l10n.php:77 lib/object.php:586
+#: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: js/l10n.php:77 lib/object.php:587 templates/settings.php:94
+#: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
 msgid "Saturday"
 msgstr "Σάββατο"
 
@@ -189,51 +189,51 @@ msgstr "Παρ."
 msgid "Sat."
 msgstr "Σάβ."
 
-#: js/l10n.php:79 lib/object.php:638
+#: js/l10n.php:79 lib/object.php:660
 msgid "January"
 msgstr "Ιανουάριος"
 
-#: js/l10n.php:79 lib/object.php:639
+#: js/l10n.php:79 lib/object.php:661
 msgid "February"
 msgstr "Φεβρουάριος"
 
-#: js/l10n.php:79 lib/object.php:640
+#: js/l10n.php:79 lib/object.php:662
 msgid "March"
 msgstr "Μάρτιος"
 
-#: js/l10n.php:79 lib/object.php:641
+#: js/l10n.php:79 lib/object.php:663
 msgid "April"
 msgstr "Απρίλιος"
 
-#: js/l10n.php:79 lib/object.php:642
+#: js/l10n.php:79 lib/object.php:664
 msgid "May"
 msgstr "Μάϊος"
 
-#: js/l10n.php:79 lib/object.php:643
+#: js/l10n.php:79 lib/object.php:665
 msgid "June"
 msgstr "Ιούνιος"
 
-#: js/l10n.php:79 lib/object.php:644
+#: js/l10n.php:79 lib/object.php:666
 msgid "July"
 msgstr "Ιούλιος"
 
-#: js/l10n.php:79 lib/object.php:645
+#: js/l10n.php:79 lib/object.php:667
 msgid "August"
 msgstr "Αύγουστος"
 
-#: js/l10n.php:79 lib/object.php:646
+#: js/l10n.php:79 lib/object.php:668
 msgid "September"
 msgstr "Σεπτέμβριος"
 
-#: js/l10n.php:79 lib/object.php:647
+#: js/l10n.php:79 lib/object.php:669
 msgid "October"
 msgstr "Οκτώβριος"
 
-#: js/l10n.php:79 lib/object.php:648
+#: js/l10n.php:79 lib/object.php:670
 msgid "November"
 msgstr "Νοέμβριος"
 
-#: js/l10n.php:79 lib/object.php:649
+#: js/l10n.php:79 lib/object.php:671
 msgid "December"
 msgstr "Δεκέμβριος"
 
@@ -289,7 +289,7 @@ msgstr "Δεκ."
 msgid "All day"
 msgstr "Ολοήμερο"
 
-#: js/l10n.php:84 lib/import.php:214 templates/settings.php:23
+#: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
 msgid "New Calendar"
 msgstr "Νέα Ημερολόγιο"
 
@@ -405,123 +405,127 @@ msgstr "Δεν έχετε δικαιώματα να διαγράψετε αυτ�
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Δεν έχετε δικαιώματα να προσθέσετε σε αυτό το ημερολόγιο."
 
-#: lib/object.php:122 lib/object.php:162 lib/object.php:317
+#: lib/object.php:122 lib/object.php:163 lib/object.php:329
 msgid "You do not have the permissions to add events to this calendar."
 msgstr "Δεν έχετε δικαιώματα να προσθέστε συμβάντα σε αυτό το ημερολόγιο."
 
-#: lib/object.php:267 lib/object.php:297
+#: lib/object.php:175
+msgid "You do cannot add non-public events to a shared calendar."
+msgstr ""
+
+#: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
 msgstr "Δεν έχετε δικαιώματα να διαγράψετε αυτό το συμβάν."
 
-#: lib/object.php:491
+#: lib/object.php:503
 msgid "Busy"
 msgstr "Απασχολημένος"
 
-#: lib/object.php:531
+#: lib/object.php:553
 msgid "Show full event"
 msgstr "Προβολή πλήρους συμβάντος"
 
-#: lib/object.php:532
+#: lib/object.php:554
 msgid "Show only busy"
 msgstr "Προβολή μόνο απασχολημένων"
 
-#: lib/object.php:533
+#: lib/object.php:555
 msgid "Hide event"
 msgstr "Απόκρυψη συμβάντος"
 
-#: lib/object.php:543
+#: lib/object.php:565
 msgid "Does not repeat"
 msgstr "Μη επαναλαμβανόμενο"
 
-#: lib/object.php:544
+#: lib/object.php:566
 msgid "Daily"
 msgstr "Καθημερινά"
 
-#: lib/object.php:545
+#: lib/object.php:567
 msgid "Weekly"
 msgstr "Εβδομαδιαία"
 
-#: lib/object.php:546
+#: lib/object.php:568
 msgid "Every Weekday"
 msgstr "Κάθε μέρα"
 
-#: lib/object.php:547
+#: lib/object.php:569
 msgid "Bi-Weekly"
 msgstr "Δύο φορές την εβδομάδα"
 
-#: lib/object.php:548
+#: lib/object.php:570
 msgid "Monthly"
 msgstr "Μηνιαία"
 
-#: lib/object.php:549
+#: lib/object.php:571
 msgid "Yearly"
 msgstr "Ετήσια"
 
-#: lib/object.php:559
+#: lib/object.php:581
 msgid "never"
 msgstr "ποτέ"
 
-#: lib/object.php:560
+#: lib/object.php:582
 msgid "by occurrences"
 msgstr "κατά συχνότητα πρόσβασης"
 
-#: lib/object.php:561
+#: lib/object.php:583
 msgid "by date"
 msgstr "κατά ημερομηνία"
 
-#: lib/object.php:571
+#: lib/object.php:593
 msgid "by monthday"
 msgstr "κατά ημέρα"
 
-#: lib/object.php:572
+#: lib/object.php:594
 msgid "by weekday"
 msgstr "κατά εβδομάδα"
 
-#: lib/object.php:598
+#: lib/object.php:620
 msgid "events week of month"
 msgstr "συμβάντα της εβδομάδας του μήνα"
 
-#: lib/object.php:599
+#: lib/object.php:621
 msgid "first"
 msgstr "πρώτο"
 
-#: lib/object.php:600
+#: lib/object.php:622
 msgid "second"
 msgstr "δεύτερο"
 
-#: lib/object.php:601
+#: lib/object.php:623
 msgid "third"
 msgstr "τρίτο"
 
-#: lib/object.php:602
+#: lib/object.php:624
 msgid "fourth"
 msgstr "τέταρτο"
 
-#: lib/object.php:603
+#: lib/object.php:625
 msgid "fifth"
 msgstr "πέμπτο"
 
-#: lib/object.php:604
+#: lib/object.php:626
 msgid "last"
 msgstr "τελευταίο"
 
-#: lib/object.php:659
+#: lib/object.php:681
 msgid "by events date"
 msgstr "κατά ημερομηνία συμβάντων"
 
-#: lib/object.php:660
+#: lib/object.php:682
 msgid "by yearday(s)"
 msgstr "κατά ημέρα(ες) του έτους"
 
-#: lib/object.php:661
+#: lib/object.php:683
 msgid "by weeknumber(s)"
 msgstr "κατά εβδομάδα(ες)"
 
-#: lib/object.php:662
+#: lib/object.php:684
 msgid "by day and month"
 msgstr "κατά ημέρα και μήνα"
 
-#: lib/sabre/backend.php:66
+#: lib/sabre/backend.php:64
 msgid "Contact birthdays"
 msgstr "Γενέθλια Επαφής"
 

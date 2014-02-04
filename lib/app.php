@@ -512,7 +512,7 @@ class OC_Calendar_App{
 			if(isset($event['uri'])){
 				$uid = $event['uri'];
 			}
-			\OCP\Util::writeLog('calendar', 'Event (' . $uid . ') contains invalid data!',\OCP\Util::WARN);
+			\OCP\Util::writeLog('calendar', 'Event (' . $uid . ') contains invalid data: ' . $e->getMessage(),\OCP\Util::WARN);
 		}
 	}
 	
