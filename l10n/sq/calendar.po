@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-01-18 01:46-0500\n"
-"PO-Revision-Date: 2014-01-17 12:10+0000\n"
-"Last-Translator: ard1t <ardit.dani@gmail.com>\n"
+"POT-Creation-Date: 2014-02-04 01:46-0500\n"
+"PO-Revision-Date: 2014-02-04 06:46+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/owncloud/language/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,7 @@ msgstr "Nuk u gjend asnjë ngjarje."
 msgid "Wrong calendar"
 msgstr "Kalendar i gabuar"
 
-#: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
 msgstr "Ju nuk keni të drejtë të modifikoni këtë ngjarje."
 
@@ -126,31 +126,31 @@ msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:588 templates/settings.php:93
+#: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
 msgid "Sunday"
 msgstr "Djelë"
 
-#: js/l10n.php:77 lib/object.php:582 templates/settings.php:92
+#: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
 msgid "Monday"
 msgstr "Hënë"
 
-#: js/l10n.php:77 lib/object.php:583
+#: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
 msgstr "Martë"
 
-#: js/l10n.php:77 lib/object.php:584
+#: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
 msgstr "Mërkurë"
 
-#: js/l10n.php:77 lib/object.php:585
+#: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
 msgstr "Enjte"
 
-#: js/l10n.php:77 lib/object.php:586
+#: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
 msgstr "Premte"
 
-#: js/l10n.php:77 lib/object.php:587 templates/settings.php:94
+#: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
 msgid "Saturday"
 msgstr "Shtune"
 
@@ -182,51 +182,51 @@ msgstr "Pre"
 msgid "Sat."
 msgstr "Shtu"
 
-#: js/l10n.php:79 lib/object.php:638
+#: js/l10n.php:79 lib/object.php:660
 msgid "January"
 msgstr "Janar"
 
-#: js/l10n.php:79 lib/object.php:639
+#: js/l10n.php:79 lib/object.php:661
 msgid "February"
 msgstr "Shkurt"
 
-#: js/l10n.php:79 lib/object.php:640
+#: js/l10n.php:79 lib/object.php:662
 msgid "March"
 msgstr "Mars"
 
-#: js/l10n.php:79 lib/object.php:641
+#: js/l10n.php:79 lib/object.php:663
 msgid "April"
 msgstr "Prill"
 
-#: js/l10n.php:79 lib/object.php:642
+#: js/l10n.php:79 lib/object.php:664
 msgid "May"
 msgstr "Maj"
 
-#: js/l10n.php:79 lib/object.php:643
+#: js/l10n.php:79 lib/object.php:665
 msgid "June"
 msgstr "Qershor"
 
-#: js/l10n.php:79 lib/object.php:644
+#: js/l10n.php:79 lib/object.php:666
 msgid "July"
 msgstr "Korrik"
 
-#: js/l10n.php:79 lib/object.php:645
+#: js/l10n.php:79 lib/object.php:667
 msgid "August"
 msgstr "Gusht"
 
-#: js/l10n.php:79 lib/object.php:646
+#: js/l10n.php:79 lib/object.php:668
 msgid "September"
 msgstr "Shtator"
 
-#: js/l10n.php:79 lib/object.php:647
+#: js/l10n.php:79 lib/object.php:669
 msgid "October"
 msgstr "Tetor"
 
-#: js/l10n.php:79 lib/object.php:648
+#: js/l10n.php:79 lib/object.php:670
 msgid "November"
 msgstr "Nëntor"
 
-#: js/l10n.php:79 lib/object.php:649
+#: js/l10n.php:79 lib/object.php:671
 msgid "December"
 msgstr "Dhjetor"
 
@@ -282,7 +282,7 @@ msgstr "Dhje"
 msgid "All day"
 msgstr "Gjatë gjithë dites"
 
-#: js/l10n.php:84 lib/import.php:214 templates/settings.php:23
+#: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
 msgid "New Calendar"
 msgstr "Kalendar i ri"
 
@@ -398,123 +398,127 @@ msgstr "Ju nuk keni të drejta të fshini këtë kalendar."
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Ju nuk keni të drejta të shtoni në këtë kalendar."
 
-#: lib/object.php:122 lib/object.php:162 lib/object.php:317
+#: lib/object.php:122 lib/object.php:163 lib/object.php:329
 msgid "You do not have the permissions to add events to this calendar."
 msgstr "Ju nuk keni të drejta të shtoni ngjarje në këtë kalendar."
 
-#: lib/object.php:267 lib/object.php:297
+#: lib/object.php:175
+msgid "You do cannot add non-public events to a shared calendar."
+msgstr ""
+
+#: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
 msgstr "Ju nuk keni të drejta të fshini këtë ngjarje."
 
-#: lib/object.php:491
+#: lib/object.php:503
 msgid "Busy"
 msgstr "I/e Zenë"
 
-#: lib/object.php:531
+#: lib/object.php:553
 msgid "Show full event"
 msgstr "Shfaq ngjarje plotë"
 
-#: lib/object.php:532
+#: lib/object.php:554
 msgid "Show only busy"
 msgstr "Shfaq vetëm i zënë"
 
-#: lib/object.php:533
+#: lib/object.php:555
 msgid "Hide event"
 msgstr "Fsheh Ngjarjen"
 
-#: lib/object.php:543
+#: lib/object.php:565
 msgid "Does not repeat"
 msgstr "Nuk përsëritet"
 
-#: lib/object.php:544
+#: lib/object.php:566
 msgid "Daily"
 msgstr "Përditë"
 
-#: lib/object.php:545
+#: lib/object.php:567
 msgid "Weekly"
 msgstr "Javore"
 
-#: lib/object.php:546
+#: lib/object.php:568
 msgid "Every Weekday"
 msgstr "Ç'do ditë jave"
 
-#: lib/object.php:547
+#: lib/object.php:569
 msgid "Bi-Weekly"
 msgstr "Bi-Javor"
 
-#: lib/object.php:548
+#: lib/object.php:570
 msgid "Monthly"
 msgstr "I përmuajshem"
 
-#: lib/object.php:549
+#: lib/object.php:571
 msgid "Yearly"
 msgstr "I përvitshem"
 
-#: lib/object.php:559
+#: lib/object.php:581
 msgid "never"
 msgstr "asnjëherë"
 
-#: lib/object.php:560
+#: lib/object.php:582
 msgid "by occurrences"
 msgstr "nga rastisjet"
 
-#: lib/object.php:561
+#: lib/object.php:583
 msgid "by date"
 msgstr "sipas datës"
 
-#: lib/object.php:571
+#: lib/object.php:593
 msgid "by monthday"
 msgstr "sipas dites së muajit"
 
-#: lib/object.php:572
+#: lib/object.php:594
 msgid "by weekday"
 msgstr "sipas dites së javes"
 
-#: lib/object.php:598
+#: lib/object.php:620
 msgid "events week of month"
 msgstr "ngjarje në javën e muajit"
 
-#: lib/object.php:599
+#: lib/object.php:621
 msgid "first"
 msgstr "i pari"
 
-#: lib/object.php:600
+#: lib/object.php:622
 msgid "second"
 msgstr "i dyti"
 
-#: lib/object.php:601
+#: lib/object.php:623
 msgid "third"
 msgstr "i treti"
 
-#: lib/object.php:602
+#: lib/object.php:624
 msgid "fourth"
 msgstr "i katerti"
 
-#: lib/object.php:603
+#: lib/object.php:625
 msgid "fifth"
 msgstr "i pesti"
 
-#: lib/object.php:604
+#: lib/object.php:626
 msgid "last"
 msgstr "i fundit"
 
-#: lib/object.php:659
+#: lib/object.php:681
 msgid "by events date"
 msgstr "sipas datës së ngjarjeve"
 
-#: lib/object.php:660
+#: lib/object.php:682
 msgid "by yearday(s)"
 msgstr "sipas ditës së viteve"
 
-#: lib/object.php:661
+#: lib/object.php:683
 msgid "by weeknumber(s)"
 msgstr "sipas nr të javes/ve"
 
-#: lib/object.php:662
+#: lib/object.php:684
 msgid "by day and month"
 msgstr "sipas ditës dhe muajit"
 
-#: lib/sabre/backend.php:66
+#: lib/sabre/backend.php:64
 msgid "Contact birthdays"
 msgstr "Kontakt ditëlindje"
 

@@ -184,7 +184,7 @@
 "Close Dialog" => "ダイアログを閉じる",
 "Create a new event" => "新しいイベントを作成",
 "Create event" => "イベントを作成",
-"Share with user or group" => "ユーザもしくはグループと共有",
+"Share with user or group" => "ユーザーもしくはグループと共有",
 "Unshare" => "非共有",
 "Not shared with anyone" => "誰とも共有していません",
 "Send Email" => "メールを送信",
