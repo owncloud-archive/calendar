@@ -113,7 +113,7 @@
 		<dt><?php p($l->t('Primary address (Kontact et al)')); ?></dt>
 		<dd><input type="text" style="width: 90%;float: left;" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>" readonly></dd>
 		<dt><?php p($l->t('iOS/OS X')); ?></dt>
-		<dd><input type="text" style="width: 90%;float: left;" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(OCP\USER::getUser()); ?>/" readonly></dd>
+		<dd><input type="text" style="width: 90%;float: left;" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(urlencode(OCP\USER::getUser())); ?>/" readonly></dd>
 		<dt><?php p($l->t('Read only iCalendar link(s)')); ?></dt>
 		<dd>
 			<?php foreach($_['calendars'] as $calendar) {
@@ -123,7 +123,7 @@
 				$uri = rawurlencode(html_entity_decode($calendar['uri'], ENT_QUOTES, 'UTF-8')) . '_shared_by_' . $calendar['userid'];
 			}
 			?>
-			<a href="<?php p(OCP\Util::linkToRemote('caldav').'calendars/'.OCP\USER::getUser().'/'.$uri) ?>?export" class="link"><?php p(OCP\Util::sanitizeHTML($calendar['displayname'])) ?></a><br />
+			<a href="<?php p(OCP\Util::linkToRemote('caldav').'calendars/'.urlencode(OCP\USER::getUser().'/'.$uri)) ?>?export" class="link"><?php p(OCP\Util::sanitizeHTML($calendar['displayname'])) ?></a><br />
 			<?php } ?>
 		</dd>
 		</dl>
