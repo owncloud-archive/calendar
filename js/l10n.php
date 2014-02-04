@@ -19,14 +19,17 @@ $l = OCP\Util::getL10N('calendar');
 
 // Get the event sources
 $eventSources = array();
-$calendars = OC_Calendar_Calendar::allCalendars(OCP\User::getUser());
-foreach($calendars as $calendar) {
-	if(!array_key_exists('active', $calendar)){
-		$calendar['active'] = 1;
-	}
-	if($calendar['active'] == 1) {
-		$eventSources[] = OC_Calendar_Calendar::getEventSourceInfo($calendar);
-	}
+
+if (OCP\User::isLoggedIn()) {
+  $calendars = OC_Calendar_Calendar::allCalendars(OCP\User::getUser());
+  foreach($calendars as $calendar) {
+    if(!array_key_exists('active', $calendar)){
+      $calendar['active'] = 1;
+    }
+    if($calendar['active'] == 1) {
+      $eventSources[] = OC_Calendar_Calendar::getEventSourceInfo($calendar);
+    }
+  }
 }
 
 $events_baseURL = OCP\Util::linkTo('calendar', 'ajax/events.php');
