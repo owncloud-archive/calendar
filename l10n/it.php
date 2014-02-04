@@ -161,7 +161,7 @@
 "Description" => "Descrizione",
 "Export event" => "Esporta evento",
 "Repeat" => "Ripeti",
-"Advanced" => "Avanzato",
+"Advanced" => "Avanzate",
 "Select weekdays" => "Seleziona i giorni della settimana",
 "Select days" => "Seleziona i giorni",
 "and the events day of year." => "e il giorno dell'anno degli eventi.",

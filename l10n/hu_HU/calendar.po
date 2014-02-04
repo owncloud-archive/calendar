@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2013-12-20 01:47-0500\n"
-"PO-Revision-Date: 2013-12-20 06:21+0000\n"
-"Last-Translator: ebela <bela@dandre.hu>\n"
+"POT-Creation-Date: 2014-02-04 01:46-0500\n"
+"PO-Revision-Date: 2014-02-04 06:46+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/owncloud/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,7 +46,7 @@ msgstr "Nem található esemény"
 msgid "Wrong calendar"
 msgstr "Hibás naptár"
 
-#: ajax/event/edit.form.php:226 lib/object.php:197 lib/object.php:233
+#: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
 msgstr "Nincs joga ahhoz, hogy módosítsa ezt az eseményt."
 
@@ -85,79 +85,79 @@ msgstr "Érvénytelen kérés"
 msgid "Calendar"
 msgstr "Naptár"
 
-#: js/calendar.js:176
+#: js/calendar.js:179
 msgid "Deletion failed"
 msgstr "A törlés nem sikerült"
 
-#: js/calendar.js:263
+#: js/calendar.js:266
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:265
+#: js/calendar.js:268
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:581
+#: js/calendar.js:584
 msgid "group"
 msgstr "csoport"
 
-#: js/calendar.js:583 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:586 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "módosíthat"
 
-#: js/calendar.js:584 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:587 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "megosztható"
 
-#: js/calendar.js:855
+#: js/calendar.js:858
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:856
+#: js/calendar.js:859
 msgid "ddd M/d"
 msgstr "ddd M.d."
 
-#: js/calendar.js:857
+#: js/calendar.js:860
 msgid "dddd M/d"
 msgstr "dddd M.d."
 
-#: js/calendar.js:860
+#: js/calendar.js:863
 msgid "MMMM yyyy"
 msgstr "yyyy MMMM"
 
-#: js/calendar.js:862
+#: js/calendar.js:865
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:864
+#: js/calendar.js:867
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:588 templates/settings.php:93
+#: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
 msgid "Sunday"
 msgstr "vasárnap"
 
-#: js/l10n.php:77 lib/object.php:582 templates/settings.php:92
+#: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
 msgid "Monday"
 msgstr "hétfő"
 
-#: js/l10n.php:77 lib/object.php:583
+#: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
 msgstr "kedd"
 
-#: js/l10n.php:77 lib/object.php:584
+#: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
 msgstr "szerda"
 
-#: js/l10n.php:77 lib/object.php:585
+#: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
 msgstr "csütörtök"
 
-#: js/l10n.php:77 lib/object.php:586
+#: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
 msgstr "péntek"
 
-#: js/l10n.php:77 lib/object.php:587 templates/settings.php:94
+#: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
 msgid "Saturday"
 msgstr "szombat"
 
@@ -189,51 +189,51 @@ msgstr "P."
 msgid "Sat."
 msgstr "Szo."
 
-#: js/l10n.php:79 lib/object.php:638
+#: js/l10n.php:79 lib/object.php:660
 msgid "January"
 msgstr "január"
 
-#: js/l10n.php:79 lib/object.php:639
+#: js/l10n.php:79 lib/object.php:661
 msgid "February"
 msgstr "február"
 
-#: js/l10n.php:79 lib/object.php:640
+#: js/l10n.php:79 lib/object.php:662
 msgid "March"
 msgstr "március"
 
-#: js/l10n.php:79 lib/object.php:641
+#: js/l10n.php:79 lib/object.php:663
 msgid "April"
 msgstr "április"
 
-#: js/l10n.php:79 lib/object.php:642
+#: js/l10n.php:79 lib/object.php:664
 msgid "May"
 msgstr "május"
 
-#: js/l10n.php:79 lib/object.php:643
+#: js/l10n.php:79 lib/object.php:665
 msgid "June"
 msgstr "június"
 
-#: js/l10n.php:79 lib/object.php:644
+#: js/l10n.php:79 lib/object.php:666
 msgid "July"
 msgstr "július"
 
-#: js/l10n.php:79 lib/object.php:645
+#: js/l10n.php:79 lib/object.php:667
 msgid "August"
 msgstr "augusztus"
 
-#: js/l10n.php:79 lib/object.php:646
+#: js/l10n.php:79 lib/object.php:668
 msgid "September"
 msgstr "szeptember"
 
-#: js/l10n.php:79 lib/object.php:647
+#: js/l10n.php:79 lib/object.php:669
 msgid "October"
 msgstr "október"
 
-#: js/l10n.php:79 lib/object.php:648
+#: js/l10n.php:79 lib/object.php:670
 msgid "November"
 msgstr "november"
 
-#: js/l10n.php:79 lib/object.php:649
+#: js/l10n.php:79 lib/object.php:671
 msgid "December"
 msgstr "december"
 
@@ -289,7 +289,7 @@ msgstr "dec."
 msgid "All day"
 msgstr "Egész nap"
 
-#: js/l10n.php:84 lib/import.php:214 templates/settings.php:23
+#: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
 msgid "New Calendar"
 msgstr "Új naptár"
 
@@ -405,123 +405,127 @@ msgstr "Nincs joga ahhoz, hogy törölje ezt a naptárat."
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Nincs joga ahhoz, hogy hozzáadjon ehhez a naptárhoz."
 
-#: lib/object.php:122 lib/object.php:162 lib/object.php:317
+#: lib/object.php:122 lib/object.php:163 lib/object.php:329
 msgid "You do not have the permissions to add events to this calendar."
 msgstr "Nincs joga ahhoz, hogy eseményeket illesszen ebbe a naptárba."
 
-#: lib/object.php:267 lib/object.php:297
+#: lib/object.php:175
+msgid "You do cannot add non-public events to a shared calendar."
+msgstr ""
+
+#: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
 msgstr "Nincs joga ahhoz, hogy törölje ezt az eseményt."
 
-#: lib/object.php:491
+#: lib/object.php:503
 msgid "Busy"
 msgstr "Elfoglalt"
 
-#: lib/object.php:531
+#: lib/object.php:553
 msgid "Show full event"
 msgstr "A teljese esemény megjelenítése"
 
-#: lib/object.php:532
+#: lib/object.php:554
 msgid "Show only busy"
 msgstr "Csak az elfogaltak mutatása"
 
-#: lib/object.php:533
+#: lib/object.php:555
 msgid "Hide event"
 msgstr "Esemény elrejtése"
 
-#: lib/object.php:543
+#: lib/object.php:565
 msgid "Does not repeat"
 msgstr "Nem ismétlődik"
 
-#: lib/object.php:544
+#: lib/object.php:566
 msgid "Daily"
 msgstr "Naponta"
 
-#: lib/object.php:545
+#: lib/object.php:567
 msgid "Weekly"
 msgstr "Hetente"
 
-#: lib/object.php:546
+#: lib/object.php:568
 msgid "Every Weekday"
 msgstr "Minden hétköznap"
 
-#: lib/object.php:547
+#: lib/object.php:569
 msgid "Bi-Weekly"
 msgstr "Kéthetente"
 
-#: lib/object.php:548
+#: lib/object.php:570
 msgid "Monthly"
 msgstr "Havonta"
 
-#: lib/object.php:549
+#: lib/object.php:571
 msgid "Yearly"
 msgstr "Évente"
 
-#: lib/object.php:559
+#: lib/object.php:581
 msgid "never"
 msgstr "soha"
 
-#: lib/object.php:560
+#: lib/object.php:582
 msgid "by occurrences"
 msgstr "előfordulások száma szerint"
 
-#: lib/object.php:561
+#: lib/object.php:583
 msgid "by date"
 msgstr "dátum szerint"
 
-#: lib/object.php:571
+#: lib/object.php:593
 msgid "by monthday"
 msgstr "hónap napja szerint"
 
-#: lib/object.php:572
+#: lib/object.php:594
 msgid "by weekday"
 msgstr "hét napja szerint"
 
-#: lib/object.php:598
+#: lib/object.php:620
 msgid "events week of month"
 msgstr "hónap heteinek sorszáma"
 
-#: lib/object.php:599
+#: lib/object.php:621
 msgid "first"
 msgstr "első"
 
-#: lib/object.php:600
+#: lib/object.php:622
 msgid "second"
 msgstr "második"
 
-#: lib/object.php:601
+#: lib/object.php:623
 msgid "third"
 msgstr "harmadik"
 
-#: lib/object.php:602
+#: lib/object.php:624
 msgid "fourth"
 msgstr "negyedik"
 
-#: lib/object.php:603
+#: lib/object.php:625
 msgid "fifth"
 msgstr "ötödik"
 
-#: lib/object.php:604
+#: lib/object.php:626
 msgid "last"
 msgstr "utolsó"
 
-#: lib/object.php:659
+#: lib/object.php:681
 msgid "by events date"
 msgstr "az esemény napja szerint"
 
-#: lib/object.php:660
+#: lib/object.php:682
 msgid "by yearday(s)"
 msgstr "az év napja(i) szerint"
 
-#: lib/object.php:661
+#: lib/object.php:683
 msgid "by weeknumber(s)"
 msgstr "a hét sorszáma szerint"
 
-#: lib/object.php:662
+#: lib/object.php:684
 msgid "by day and month"
 msgstr "nap és hónap szerint"
 
-#: lib/sabre/backend.php:66
+#: lib/sabre/backend.php:64
 msgid "Contact birthdays"
 msgstr "Az ismerősök születésnapjai"
 
