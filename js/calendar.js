@@ -136,9 +136,6 @@ Calendar={
 			$('#sendemailbutton').click(function() {
 				Calendar.Util.sendmail($(this).attr('data-eventid'), $(this).attr('data-location'), $(this).attr('data-description'), $(this).attr('data-dtstart'), $(this).attr('data-dtend'));
 			})
-			// Focus the title, and reset the text value so that it isn't selected.
-			var val = $('#event-title').val();
-			$('#event-title').focus().val('').val(val);
 		},
 		newEvent:function(start, end, allday){
 			start = Math.round(start.getTime()/1000);
@@ -223,6 +220,10 @@ Calendar={
 				},"json");
 		},
 		moveEvent:function(event, dayDelta, minuteDelta, allDay, revertFunc){
+			if($('#event').length != 0) {
+				revertFunc();
+				return;
+			}
 			Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'move.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, allDay: allDay?1:0, lastmodified: event.lastmodified},
 			function(data) {
