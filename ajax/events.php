@@ -42,6 +42,13 @@ if (OCP\User::isLoggedIn()) {
     header('HTTP/1.0 404 Not Found');
     exit();
   }
+  
+  // check if we're being asked for something we can provide
+  if ($_GET['calendar_id'] !== 'shared_events') {
+    header('HTTP/1.0 404 Not Found');
+    exit();
+  }
+  
   // get the data
   $linkItem = OCP\Share::getShareByToken(
     \OC::$session->get('public_link_token')
