@@ -172,7 +172,7 @@ class OC_Calendar_Object{
 		if($shared && isset($vevent->CLASS) && (string)$vevent->CLASS !== 'PUBLIC') {
 			throw new Sabre_DAV_Exception_PreconditionFailed(
 					OC_Calendar_App::$l10n->t(
-						'You do cannot add non-public events to a shared calendar.'
+						'You cannot add non-public events to a shared calendar.'
 					)
 			);
 		}
