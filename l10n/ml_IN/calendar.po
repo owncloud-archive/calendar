@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-04 01:46-0500\n"
-"PO-Revision-Date: 2014-02-04 06:46+0000\n"
+"POT-Creation-Date: 2014-02-05 02:01-0500\n"
+"PO-Revision-Date: 2014-02-05 07:01+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Malayalam (India) (http://www.transifex.com/projects/p/owncloud/language/ml_IN/)\n"
 "MIME-Version: 1.0\n"
@@ -80,47 +80,47 @@ msgstr ""
 msgid "Deletion failed"
 msgstr ""
 
-#: js/calendar.js:266
+#: js/calendar.js:270
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr ""
 
-#: js/calendar.js:268
+#: js/calendar.js:272
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr ""
 
-#: js/calendar.js:584
+#: js/calendar.js:588
 msgid "group"
 msgstr ""
 
-#: js/calendar.js:586 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:590 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr ""
 
-#: js/calendar.js:587 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr ""
 
-#: js/calendar.js:858
+#: js/calendar.js:862
 msgid "ddd"
 msgstr ""
 
-#: js/calendar.js:859
+#: js/calendar.js:863
 msgid "ddd M/d"
 msgstr ""
 
-#: js/calendar.js:860
+#: js/calendar.js:864
 msgid "dddd M/d"
 msgstr ""
 
-#: js/calendar.js:863
+#: js/calendar.js:867
 msgid "MMMM yyyy"
 msgstr ""
 
-#: js/calendar.js:865
+#: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:867
+#: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
 msgstr ""
 
@@ -401,7 +401,7 @@ msgid "You do not have the permissions to add events to this calendar."
 msgstr ""
 
 #: lib/object.php:175
-msgid "You do cannot add non-public events to a shared calendar."
+msgid "You cannot add non-public events to a shared calendar."
 msgstr ""
 
 #: lib/object.php:279 lib/object.php:309
@@ -516,7 +516,7 @@ msgstr ""
 msgid "by day and month"
 msgstr ""
 
-#: lib/sabre/backend.php:64
+#: lib/sabre/backend.php:73
 msgid "Contact birthdays"
 msgstr ""
 
@@ -632,92 +632,92 @@ msgstr ""
 msgid "Title of the Event"
 msgstr ""
 
-#: templates/part.eventform.php:31
+#: templates/part.eventform.php:41
 msgid "from"
 msgstr ""
 
-#: templates/part.eventform.php:36
+#: templates/part.eventform.php:46
 msgid "to"
 msgstr ""
 
-#: templates/part.eventform.php:44 templates/part.showevent.php:66
+#: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
 msgstr ""
 
-#: templates/part.eventform.php:47 templates/part.showevent.php:86
+#: templates/part.eventform.php:57 templates/part.showevent.php:86
 msgid "Advanced options"
 msgstr ""
 
-#: templates/part.eventform.php:51 templates/part.showevent.php:91
+#: templates/part.eventform.php:61 templates/part.showevent.php:91
 msgid "Location"
 msgstr ""
 
-#: templates/part.eventform.php:56
+#: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
 msgstr ""
 
-#: templates/part.eventform.php:58 templates/part.eventform.php:59
+#: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
 msgstr ""
 
-#: templates/part.eventform.php:61 templates/part.showevent.php:99
+#: templates/part.eventform.php:71 templates/part.showevent.php:99
 msgid "Description"
 msgstr ""
 
-#: templates/part.eventform.php:63
+#: templates/part.eventform.php:73
 msgid "Export event"
 msgstr ""
 
-#: templates/part.eventform.php:70 templates/part.showevent.php:109
+#: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr ""
 
-#: templates/part.eventform.php:77 templates/part.showevent.php:116
+#: templates/part.eventform.php:87 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr ""
 
-#: templates/part.eventform.php:121 templates/part.showevent.php:160
+#: templates/part.eventform.php:131 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr ""
 
-#: templates/part.eventform.php:134 templates/part.eventform.php:147
+#: templates/part.eventform.php:144 templates/part.eventform.php:157
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr ""
 
-#: templates/part.eventform.php:139 templates/part.showevent.php:178
+#: templates/part.eventform.php:149 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr ""
 
-#: templates/part.eventform.php:152 templates/part.showevent.php:191
+#: templates/part.eventform.php:162 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr ""
 
-#: templates/part.eventform.php:160 templates/part.showevent.php:199
+#: templates/part.eventform.php:170 templates/part.showevent.php:199
 msgid "Select months"
 msgstr ""
 
-#: templates/part.eventform.php:173 templates/part.showevent.php:212
+#: templates/part.eventform.php:183 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr ""
 
-#: templates/part.eventform.php:178 templates/part.showevent.php:217
+#: templates/part.eventform.php:188 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr ""
 
-#: templates/part.eventform.php:184 templates/part.showevent.php:223
+#: templates/part.eventform.php:194 templates/part.showevent.php:223
 msgid "Interval"
 msgstr ""
 
-#: templates/part.eventform.php:190 templates/part.showevent.php:229
+#: templates/part.eventform.php:200 templates/part.showevent.php:229
 msgid "End"
 msgstr ""
 
-#: templates/part.eventform.php:203 templates/part.showevent.php:242
+#: templates/part.eventform.php:213 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr ""
 
-#: templates/part.eventform.php:222
+#: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
 msgstr ""
 
