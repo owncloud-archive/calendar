@@ -997,7 +997,7 @@ $(document).ready(function(){
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
-		editable: true,
+		editable: !Calendar.UI.isLinkShared(),
 		defaultView: defaultView,
 		timeFormat: {
 			agenda: agendatime,
