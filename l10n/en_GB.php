@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "You do not have permission to delete this calendar.",
 "You do not have the permissions to add to this calendar." => "You do not have permission to add to this calendar.",
 "You do not have the permissions to add events to this calendar." => "You do not have permission to add events to this calendar.",
+"You cannot add non-public events to a shared calendar." => "You cannot add non-public events to a shared calendar.",
 "You do not have the permissions to delete this event." => "You do not have permission to delete this event.",
 "Busy" => "Busy",
 "Show full event" => "Show full event",

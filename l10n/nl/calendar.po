@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# André Koot <meneer@tken.net>, 2012-2013
+# André Koot <meneer@tken.net>, 2012-2014
 # isama <bart.formosus@gmail.com>, 2011-2012
 # bartv <transifex@thisnet.nl>, 2011
 # diederikdehaas <didi.debian@cknow.org>, 2012
@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-05 02:01-0500\n"
-"PO-Revision-Date: 2014-02-05 07:01+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-08 02:15-0500\n"
+"PO-Revision-Date: 2014-02-06 16:10+0000\n"
+"Last-Translator: André Koot <meneer@tken.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -411,7 +411,7 @@ msgstr "U heeft geen permissie om gebeurtenissen aan deze agenda toe te voegen."
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "U kunt geen besloten afspraken in een gedeelde agenda opnemen."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."

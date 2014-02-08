@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Sul pole õigusi selle kalendri kustutamiseks.",
 "You do not have the permissions to add to this calendar." => "Sul pole õigusi selle kalendri lisamiseks.",
 "You do not have the permissions to add events to this calendar." => "Sul pole õigusi sellesse kalendrisse ürituste lisamiseks.",
+"You cannot add non-public events to a shared calendar." => "Sa ei saa lisada jagatud kalendrisse mitte-avalikke sündmusi.",
 "You do not have the permissions to delete this event." => "Sul pole õigusi selle ürituse kustutamiseks.",
 "Busy" => "Hõivatud",
 "Show full event" => "Näita kogu sündmust",

@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Käyttöoikeutesi eivät riitä tämän kalenterin poistamiseen.",
 "You do not have the permissions to add to this calendar." => "Käyttöoikeutesi eivät riitä lisäämiseen tähän kalenteriin.",
 "You do not have the permissions to add events to this calendar." => "Käyttöoikeutesi eivät riitä tapahtumien lisäämiseen tähän kalenteriin.",
+"You cannot add non-public events to a shared calendar." => "Et voi lisätä ei-julkisia tapahtumia jaettuun kalenteriin.",
 "You do not have the permissions to delete this event." => "Käyttöoikeutesi eivät riitä tämän tapahtuman poistamiseen.",
 "Busy" => "Kiireinen",
 "Show full event" => "Näytä koko tapahtuma",

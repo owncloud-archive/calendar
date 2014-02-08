@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "У вас нет права удалять этот календарь",
 "You do not have the permissions to add to this calendar." => "У вас нет права добавлять в этот календарь.",
 "You do not have the permissions to add events to this calendar." => "У вас нет права создавать события в этом календаре.",
+"You cannot add non-public events to a shared calendar." => "Нельзя добавлять приватные события в опубликованный календарь.",
 "You do not have the permissions to delete this event." => "У вас нет права удалить это событие.",
 "Busy" => "Занято",
 "Show full event" => "Показать событие полностью",

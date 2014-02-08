@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-05 02:01-0500\n"
-"PO-Revision-Date: 2014-02-05 07:01+0000\n"
+"POT-Creation-Date: 2014-02-08 02:15-0500\n"
+"PO-Revision-Date: 2014-02-07 18:00+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Spanish (Chile) (http://www.transifex.com/projects/p/owncloud/language/es_CL/)\n"
 "MIME-Version: 1.0\n"
@@ -126,31 +126,31 @@ msgstr ""
 
 #: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
 msgid "Sunday"
-msgstr ""
+msgstr "Domingo"
 
 #: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
 msgid "Monday"
-msgstr ""
+msgstr "Lunes"
 
 #: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
-msgstr ""
+msgstr "Martes"
 
 #: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
-msgstr ""
+msgstr "Miércoles"
 
 #: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
-msgstr ""
+msgstr "Jueves"
 
 #: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
-msgstr ""
+msgstr "Viernes"
 
 #: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
 msgid "Saturday"
-msgstr ""
+msgstr "Sábado"
 
 #: js/l10n.php:78
 msgid "Sun."
@@ -182,51 +182,51 @@ msgstr ""
 
 #: js/l10n.php:79 lib/object.php:660
 msgid "January"
-msgstr ""
+msgstr "Enero"
 
 #: js/l10n.php:79 lib/object.php:661
 msgid "February"
-msgstr ""
+msgstr "Febrero"
 
 #: js/l10n.php:79 lib/object.php:662
 msgid "March"
-msgstr ""
+msgstr "Marzo"
 
 #: js/l10n.php:79 lib/object.php:663
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 #: js/l10n.php:79 lib/object.php:664
 msgid "May"
-msgstr ""
+msgstr "Mayo"
 
 #: js/l10n.php:79 lib/object.php:665
 msgid "June"
-msgstr ""
+msgstr "Junio"
 
 #: js/l10n.php:79 lib/object.php:666
 msgid "July"
-msgstr ""
+msgstr "Julio"
 
 #: js/l10n.php:79 lib/object.php:667
 msgid "August"
-msgstr ""
+msgstr "Agosto"
 
 #: js/l10n.php:79 lib/object.php:668
 msgid "September"
-msgstr ""
+msgstr "Septiembre"
 
 #: js/l10n.php:79 lib/object.php:669
 msgid "October"
-msgstr ""
+msgstr "Octubre"
 
 #: js/l10n.php:79 lib/object.php:670
 msgid "November"
-msgstr ""
+msgstr "Noviembre"
 
 #: js/l10n.php:79 lib/object.php:671
 msgid "December"
-msgstr ""
+msgstr "Diciembre"
 
 #: js/l10n.php:80
 msgid "Jan."
@@ -626,7 +626,7 @@ msgstr ""
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr ""
+msgstr "Compartir"
 
 #: templates/part.eventform.php:15
 msgid "Title of the Event"

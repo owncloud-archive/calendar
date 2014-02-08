@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Bu takvimi silme yetkisine sahip değilsiniz.",
 "You do not have the permissions to add to this calendar." => "Bu takvime ekleme yetkisine sahip değilsiniz.",
 "You do not have the permissions to add events to this calendar." => "Bu takvime etkinlik ekleme yetkisine sahip değilsiniz.",
+"You cannot add non-public events to a shared calendar." => "Paylaşılmış bir takvime gizli etkinlik ekleyemezsiniz.",
 "You do not have the permissions to delete this event." => "Bu etkinliğ silme yetkisine sahip değilsiniz.",
 "Busy" => "Meşgul",
 "Show full event" => "Tam etkinliği göster",

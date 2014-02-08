@@ -10,14 +10,15 @@
 # Hans Nesse <>, 2013
 # hdalgrav <hdalgrav@gmail.com>, 2012
 # owncloud <itssmail@yahoo.no>, 2012
+# TheLugal <thelugal@gmail.com>, 2014
 # sondre <sondre@nettfrihet.no>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-05 02:01-0500\n"
-"PO-Revision-Date: 2014-02-05 07:01+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-08 02:15-0500\n"
+"PO-Revision-Date: 2014-02-07 18:30+0000\n"
+"Last-Translator: TheLugal <thelugal@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/owncloud/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -106,7 +107,7 @@ msgstr "kan endre"
 
 #: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "kan dele"
 
 #: js/calendar.js:862
 msgid "ddd"
@@ -126,7 +127,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
@@ -410,7 +411,7 @@ msgstr "Du har ikke rettigheter til å legge til hendelser i denne kalender."
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "Du kan ikke legge til private hendelser i en delt kalender."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -422,15 +423,15 @@ msgstr "Opptatt"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "Vis hele hendelsen"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "Vis kun opptatt"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "Skjul hendelse"
 
 #: lib/object.php:565
 msgid "Does not repeat"
@@ -526,7 +527,7 @@ msgstr "etter dag og måned"
 
 #: lib/sabre/backend.php:73
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Kontakters bursdager"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -606,15 +607,15 @@ msgstr "Avbryt"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Rediger hendelse"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Lagre hendelse"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Slett hendelse"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -646,7 +647,7 @@ msgstr "fra"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "til"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -662,7 +663,7 @@ msgstr "Sted"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategorier (separer med komma)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
@@ -674,7 +675,7 @@ msgstr "Beskrivelse"
 
 #: templates/part.eventform.php:73
 msgid "Export event"
-msgstr ""
+msgstr "Eksporter hendelse"
 
 #: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
@@ -727,7 +728,7 @@ msgstr "forekomster"
 
 #: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Synlighet til andre delt med"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -773,11 +774,11 @@ msgstr "Opprett en ny hendelse"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Lag hendelse"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Del med bruker eller gruppe"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -785,11 +786,11 @@ msgstr "Avslutt deling"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Ikke delt med noen"
 
 #: templates/part.share.php:63
 msgid "Send Email"
-msgstr ""
+msgstr "Send e-post"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
@@ -797,7 +798,7 @@ msgstr "Delt via kalender"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Ikke delt med noen via kalender"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
