@@ -176,7 +176,7 @@ if (isset($rootLinkItem)) {
     OCP\Util::addStyle('calendar', 'style');
     OCP\Util::addStyle('calendar', 'tooltips');
     OCP\App::setActiveNavigationEntry('calendar_index');
-    $tmpl = new OCP\Template('calendar', 'event', 'user');
+    $tmpl = new OCP\Template('calendar', 'event', 'base');
     $tmpl->assign('link_shared_event', $linkItem);
     $tmpl->assign('link_shared_event_url', $url);
     $tmpl->printPage();

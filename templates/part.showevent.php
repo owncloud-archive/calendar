@@ -1,5 +1,14 @@
 <?php if (isset($_['link_shared_event'])) { ?>
-<div id="linksharedinfo"><?php p($l->t('Event')) ?> &quot;<?php p($_['link_shared_event']['item_target'])?>&quot;, <?php p($l->t('shared by'))?>: <?php p($_['link_shared_event']['uid_owner'])?>; <?php p($l->t('download or use in your calendar application:'))?> <a class="download-link" href="<?php echo $_['link_shared_event_url']; ?>&amp;download"><?php p($l->t('Download'))?></a></div>
+<header id="linksharedinfo">
+    <div class="header-right">
+      <span id="details"><?php p($l->t('shared by %s', array($_['link_shared_event']['uid_owner']))) ?></span>
+    </div>
+    <a href="<?php print_unescaped(link_to('', 'index.php')); ?>" title="" id="owncloud"><img class="svg"
+      src="<?php print_unescaped(image_path('', 'logo-wide.svg')); ?>" alt="<?php p($theme->getName()); ?>"
+    /></a>
+    <div id="logo-claim" style="display:none;"><?php p($theme->getLogoClaim()); ?></div>
+    <div><?php p($l->t('Event')) ?> &quot;<?php p($_['link_shared_event']['item_target'])?>&quot;; <?php p($l->t('download or use in your calendar application:'))?> <a class="download-link" href="<?php echo $_['link_shared_event_url']; ?>&amp;download"><?php p($l->t('Download'))?></a></div>
+</header>
 <?php } ?>
 <div id="event" class="event <?php if(isset($_['link_shared_event'])): ?>link-shared<?php endif; ?>" title="<?php p($l->t("View an event"));?>">
 <?php if (!isset($_['link_shared_event'])): ?>
