@@ -279,15 +279,19 @@ button.category{margin:0 3px;}
 #linksharedinfo {
   text-align:center;
   font-weight:bold;
-  background: #777;
+  background: #1d2d44;
   color:#ddd;
-  padding:0.7em;
+  padding:1.2em 0.7em 0.7em 0.7em;
   position:fixed;
   top:0px;
   width:100%;
   height:44px;
-  top:43px;
   font-size:90%;
+}
+
+#linksharedinfo .header-right {
+  float:right;
+  margin-right:1em;
 }
 
 #linksharedinfo a {
@@ -301,7 +305,7 @@ button.category{margin:0 3px;}
 
 #linksharedinfo .download-link {
   display:inline-block;
-  background: #777;
+  background: #1d2d44;
   border:solid 0.1em #ddd;
   border-radius:0.2em;
   padding:0.3em 1em;
@@ -317,11 +321,11 @@ button.category{margin:0 3px;}
 }
 
 #linksharedinfo + #controls {
-  top:86px;
+  top:50px;
 }
 
 #linksharedinfo + #controls + #fullcalendar {
-  top:86px;
+  top:50px;
 }
 
 #event.event.link-shared {
