@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Δεν έχετε δικαιώματα να διαγράψετε αυτό το ημερολόγιο.",
 "You do not have the permissions to add to this calendar." => "Δεν έχετε δικαιώματα να προσθέσετε σε αυτό το ημερολόγιο.",
 "You do not have the permissions to add events to this calendar." => "Δεν έχετε δικαιώματα να προσθέστε συμβάντα σε αυτό το ημερολόγιο.",
+"You cannot add non-public events to a shared calendar." => "Δεν μπορείτε να προσθέσετε μη-κοινόχρηστα γεγονότα σε ένα διαμοιρασμένο ημερολόγιο.",
 "You do not have the permissions to delete this event." => "Δεν έχετε δικαιώματα να διαγράψετε αυτό το συμβάν.",
 "Busy" => "Απασχολημένος",
 "Show full event" => "Προβολή πλήρους συμβάντος",
