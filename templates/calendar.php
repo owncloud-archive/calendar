@@ -31,7 +31,29 @@
 	if (!array_key_exists('link_shared_calendar_name', $_)) { ?><form id="choosecalendar">
 		<!--<input type="button" id="today_input" value="<?php p($l->t("Today"));?>"/>-->
 		<button class="settings generalsettings" title="<?php p($l->t('Settings')); ?>"><img class="svg" src="<?php print_unescaped(OCP\Util::imagePath('core', 'actions/settings.svg')); ?>" alt="<?php p($l->t('Settings')); ?>" /></button>
-	</form><?php } ?>
+	</form><?php } else {?>
+    <div class="settings timezonesettings">
+      <label for="timezone" title="<?php p($l->t('Timezone settings')); ?>"><?php p($l->t('Timezone'))?></label>
+      <select id="timezone" name="timezone">
+      <?php
+      $continent = '';
+      foreach($_['timezones'] as $timezone):
+        $ex=explode('/', $timezone, 2);//obtain continent,city
+        if (!isset($ex[1])) {
+          $ex[1] = $ex[0];
+          $ex[0] = "Other";
+        }
+        if ($continent!=$ex[0]):
+          if ($continent!="") print_unescaped('</optgroup>');
+          print_unescaped('<optgroup label="'.OC_Util::sanitizeHTML($ex[0]).'">');
+        endif;
+        $city=strtr($ex[1], '_', ' ');
+        $continent=$ex[0];
+        print_unescaped('<option value="'.OC_Util::sanitizeHTML($timezone).'"'.($_['timezone'] == $timezone?' selected="selected"':'').'>'.OC_Util::sanitizeHTML($city).'</option>');
+      endforeach;?>
+      </select>
+    </div>
+	<?php } ?>
 	<form id="datecontrol">
 		<input type="button" value="&nbsp;&lt;&nbsp;" id="datecontrol_left"/>
 		<input type="button" value="" id="datecontrol_date"/>

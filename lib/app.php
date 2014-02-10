@@ -328,10 +328,28 @@ class OC_Calendar_App{
 	 * @return (string) $timezone as set by user or the default timezone
 	 */
 	public static function getTimezone() {
-		return OCP\Config::getUserValue(OCP\User::getUser(),
-						'calendar',
-						'timezone',
-						date_default_timezone_get());
+
+    // are we in a user session?
+    if (OCP\User::isLoggedIn()) {
+      // aye, let's use the normal infrastructure
+      return OCP\Config::getUserValue(OCP\User::getUser(),
+              'calendar',
+              'timezone',
+              date_default_timezone_get());
+
+    // nope! probably link-shared stuff (no need to check that)
+    } else {
+      // is the timezone set in session vars?
+      if (\OC::$session->exists('public_link_timezone')) {
+        // aye, using that
+        return \OC::$session->get('public_link_timezone');
+        
+      // nope!
+      } else {
+        // use the default
+        return date_default_timezone_get();
+      }
+    }
 	}
 
 	/**

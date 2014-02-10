@@ -179,6 +179,8 @@ if (isset($rootLinkItem)) {
     $tmpl = new OCP\Template('calendar', 'event', 'base');
     $tmpl->assign('link_shared_event', $linkItem);
     $tmpl->assign('link_shared_event_url', $url);
+    $tmpl->assign('timezone', OC_Calendar_App::$tz);
+    $tmpl->assign('timezones',DateTimeZone::listIdentifiers());
     $tmpl->printPage();
   }
   exit();

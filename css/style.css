@@ -165,6 +165,15 @@ button.category{margin:0 3px;}
 	font-weight: bold;
 }
 
+#controls .settings.timezonesettings {
+  float:right;
+}
+
+#controls .settings.timezonesettings > .chzn-container {
+  position:relative;
+  top:0.5em;
+}
+
 /* input fields take whole width */
 #event-title,
 #event-location,

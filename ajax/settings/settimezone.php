@@ -8,19 +8,38 @@
 
 // Init owncloud
 
-
 $l = OCP\Util::getL10N('calendar');
 
-// Check if we are a user
-OCP\JSON::checkLoggedIn();
+// Check if the app is enabled
 OCP\JSON::checkAppEnabled('calendar');
-OCP\JSON::callCheck();
 
 // Get data
 if( isset( $_POST['timezone'] ) ) {
-	$timezone=$_POST['timezone'];
-	OCP\Config::setUserValue( OCP\USER::getUser(), 'calendar', 'timezone', $timezone );
-	OCP\JSON::success(array('data' => array( 'message' => $l->t('Timezone changed') )));
-}else{
-	OCP\JSON::error(array('data' => array( 'message' => $l->t('Invalid request') )));
+
+  // normal operation?
+  if (OCP\User::isLoggedIn()) {
+
+    // additional check
+    OCP\JSON::callCheck();
+
+    // set the value
+    OCP\Config::setUserValue( OCP\USER::getUser(), 'calendar', 'timezone', $_POST['timezone'] );
+
+  // public link-shared calendar
+  } elseif (\OC::$session->exists('public_link_token')) {
+    // save the value in session
+    \OC::$session->set('public_link_timezone', $_POST['timezone']);
+  
+  // this isn't right...
+  } else {
+    OCP\JSON::error(array('data' => array( 'message' => $l->t('Invalid request') )));
+    exit;
+  }
+  
+  // result
+  OCP\JSON::success(array('data' => array( 'message' => $l->t('Timezone changed') )));
+  
+// no data
+} else {
+  OCP\JSON::error(array('data' => array( 'message' => $l->t('Invalid request') )));
 }
