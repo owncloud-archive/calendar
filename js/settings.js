@@ -1,10 +1,7 @@
 $(document).ready(function(){
 	$('#timezone').change( function(){
 		var post = $( '#timezone' ).serialize();
-		$.post( OC.filePath('calendar', 'ajax/settings', 'settimezone.php'), post, function(data){
-      $('#fullcalendar').fullCalendar('refetchEvents');
-      return;
-    });
+		$.post( OC.filePath('calendar', 'ajax/settings', 'settimezone.php'), post, function(data){return;});
 		return false;
 	});
 	$('#timezone').chosen();
