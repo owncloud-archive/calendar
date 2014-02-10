@@ -279,26 +279,5 @@
 </div>
 <!--<div id="tabs-3">//Alarm</div>
 <div id="tabs-4">//Attendees</div>-->
-<hr/>
-<div class="settings timezonesettings">
-  <label for="timezone"><?php p($l->t('Timezone')) ?></label>
-  <select id="timezone" name="timezone">
-  <?php
-  $continent = '';
-  foreach($_['timezones'] as $timezone):
-    $ex=explode('/', $timezone, 2);//obtain continent,city
-    if (!isset($ex[1])) {
-      $ex[1] = $ex[0];
-      $ex[0] = "Other";
-    }
-    if ($continent!=$ex[0]):
-      if ($continent!="") print_unescaped('</optgroup>');
-      print_unescaped('<optgroup label="'.OC_Util::sanitizeHTML($ex[0]).'">');
-    endif;
-    $city=strtr($ex[1], '_', ' ');
-    $continent=$ex[0];
-    print_unescaped('<option value="'.OC_Util::sanitizeHTML($timezone).'"'.($_['timezone'] == $timezone?' selected="selected"':'').'>'.OC_Util::sanitizeHTML($city).'</option>');
-  endforeach;?>
-  </select>
-</div>
+
 </div>

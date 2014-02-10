@@ -169,7 +169,7 @@ button.category{margin:0 3px;}
   float:right;
 }
 
-.settings.timezonesettings > .chzn-container {
+#controls .settings.timezonesettings > .chzn-container {
   position:relative;
   top:0.5em;
 }
