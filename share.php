@@ -162,6 +162,7 @@ if (isset($rootLinkItem)) {
   } elseif ($linkItem['item_type'] === 'event') {
     OCP\Util::addStyle('calendar', 'style');
     OCP\Util::addStyle('calendar', 'tooltips');
+    OCP\Util::addscript('calendar','settings');
     OCP\App::setActiveNavigationEntry('calendar_index');
     $tmpl = new OCP\Template('calendar', 'event', 'base');
     $tmpl->assign('link_shared_event', $linkItem);

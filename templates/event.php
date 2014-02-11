@@ -36,7 +36,7 @@ $dtend = OC_Calendar_Object::getDTEndFromVEvent($vevent);
 switch($dtstart->getDateType()) {
 	case Sabre\VObject\Property\DateTime::UTC:
 	case Sabre\VObject\Property\DateTime::LOCALTZ:
-		$timezone = new DateTimeZone(OC_Calendar_App::$tz);
+		$timezone = new DateTimeZone($_['timezone']);
 		$newDT    = $dtstart->getDateTime();
 		$newDT->setTimezone($timezone);
 		$dtstart->setDateTime($newDT);
@@ -227,6 +227,8 @@ $tmpl = new OCP\Template('calendar', 'part.showevent');
 
 $tmpl->assign('link_shared_event', $_['link_shared_event']);
 $tmpl->assign('link_shared_event_url', $_['link_shared_event_url']);
+$tmpl->assign('timezone', $_['timezone']);
+$tmpl->assign('timezones', $_['timezones']);
 
 $tmpl->assign('eventid', $id);
 $tmpl->assign('permissions', $permissions);

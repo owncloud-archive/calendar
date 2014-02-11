@@ -173,6 +173,14 @@ button.category{margin:0 3px;}
   position:relative;
   top:0.5em;
 }
+header + .settings.timezonesettings {
+  float:right;
+  margin-top:-1.2em;
+}
+header + .settings.timezonesettings > .chzn-container {
+  position:relative;
+  top:0.5em;
+}
 
 /* input fields take whole width */
 #event-title,
