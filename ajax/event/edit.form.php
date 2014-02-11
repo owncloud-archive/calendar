@@ -94,14 +94,14 @@ $dtstart = $vevent->DTSTART;
 $dtend = OC_Calendar_Object::getDTEndFromVEvent($vevent);
 switch($dtstart->getDateType()) {
 	case Sabre\VObject\Property\DateTime::UTC:
-		$timezone = new DateTimeZone(OC_Calendar_App::getTimezone());
+	case Sabre\VObject\Property\DateTime::LOCALTZ:
+		$timezone = new DateTimeZone(OC_Calendar_App::$tz);
 		$newDT    = $dtstart->getDateTime();
 		$newDT->setTimezone($timezone);
 		$dtstart->setDateTime($newDT);
 		$newDT    = $dtend->getDateTime();
 		$newDT->setTimezone($timezone);
 		$dtend->setDateTime($newDT);
-	case Sabre\VObject\Property\DateTime::LOCALTZ:
 	case Sabre\VObject\Property\DateTime::LOCAL:
 		$startdate = $dtstart->getDateTime()->format('d-m-Y');
 		$starttime = $dtstart->getDateTime()->format('H:i');
