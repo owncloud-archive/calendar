@@ -8,6 +8,7 @@
 # idop <ido.parag@gmail.com>, 2012
 # nurielmeni <nurielmeni@gmail.com>, 2012
 # oriez, 2013
+# pinzerbib <pinzerbib@gmail.com>, 2014
 # Tomer Cohen <tomerc+transifex.net@gmail.com>, 2012
 # Tomer Cohen <tomerc+transifex.net@gmail.com>, 2011
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2011-2012
@@ -15,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-05 02:01-0500\n"
-"PO-Revision-Date: 2014-02-05 07:01+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-11 02:02-0500\n"
+"PO-Revision-Date: 2014-02-10 17:50+0000\n"
+"Last-Translator: pinzerbib <pinzerbib@gmail.com>\n"
 "Language-Team: Hebrew (http://www.transifex.com/projects/p/owncloud/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -106,7 +107,7 @@ msgstr "ניתן לערוך"
 
 #: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "ניתן לשתף"
 
 #: js/calendar.js:862
 msgid "ddd"
@@ -126,7 +127,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
@@ -410,7 +411,7 @@ msgstr "אין לך הרשאות להוספת אירועים ללוח השנה �
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "לא ניתן להוסיף אירוע  פרטי ללוח שנה משותפת"
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -422,15 +423,15 @@ msgstr "עסוק"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "הצג אירוע מלא"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "הצג רק תפוס"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "הסתר אירוע"
 
 #: lib/object.php:565
 msgid "Does not repeat"
@@ -526,7 +527,7 @@ msgstr "לפי יום וחודש"
 
 #: lib/sabre/backend.php:73
 msgid "Contact birthdays"
-msgstr ""
+msgstr "יום הולדת של אנשי קשר"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -606,15 +607,15 @@ msgstr "ביטול"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "ערוך אירוע"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "שמור אירוע"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "מחק אירוע"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -642,11 +643,11 @@ msgstr "כותרת האירוע"
 
 #: templates/part.eventform.php:41
 msgid "from"
-msgstr ""
+msgstr "מאת"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "אל"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -662,7 +663,7 @@ msgstr "מיקום"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "קטגוריות (להפריד בפסיק)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
@@ -674,7 +675,7 @@ msgstr "תיאור"
 
 #: templates/part.eventform.php:73
 msgid "Export event"
-msgstr ""
+msgstr "יצוא אירוע"
 
 #: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
@@ -727,7 +728,7 @@ msgstr "מופעים"
 
 #: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "נראה לאנשים שמשתתפים עם"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -773,11 +774,11 @@ msgstr "יצירת אירוע חדש"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "יצירת אירוע"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "שתף עם משתמש או קבוצה"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -785,7 +786,7 @@ msgstr "הסר שיתוף"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "לא משותף עם אף אחד"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -797,7 +798,7 @@ msgstr "משותף דרך לוח שנה"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "לא משותף עם אף אחד דרך לוח שנה"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
