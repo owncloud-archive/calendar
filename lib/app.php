@@ -343,10 +343,18 @@ class OC_Calendar_App{
       if (\OC::$session->exists('public_link_timezone')) {
         // aye, using that
         return \OC::$session->get('public_link_timezone');
-        
+      
+      // is it a shared calendar or event??
+      } elseif (\OC::$session->exists('public_link_owner')) {
+        // let's try to get the shared calendar
+        return OCP\Config::getUserValue(\OC::$session->get('public_link_owner'),
+              'calendar',
+              'timezone',
+              date_default_timezone_get());
+      
       // nope!
       } else {
-        // use the default
+        // use the default already!
         return date_default_timezone_get();
       }
     }
