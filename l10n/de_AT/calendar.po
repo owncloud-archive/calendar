@@ -3,13 +3,25 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# driz <driz@i2pmail.org>, 2012
+# george <social@georgehrke.com>, 2011-2012
+# goeck <admin@s-goecker.de>, 2011-2012
+# I Robot, 2012
+# JamFX <niko@nik-o-mat.de>, 2012
+# Jan-Christoph Borchardt <hey@jancborchardt.net>, 2011
+# Mirodin <blobbyjj@ymail.com>, 2012-2013
+# peddn <public@peddn.net>, 2012
+# Phi Lieb <>, 2012
+# SSL <albkert@gmail.com>, 2012
+# Susi <>, 2012
+# traductor <transifex-3.7.mensaje@spamgourmet.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-05 02:01-0500\n"
-"PO-Revision-Date: 2014-02-05 07:01+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-15 07:12-0500\n"
+"PO-Revision-Date: 2014-02-15 11:30+0000\n"
+"Last-Translator: pointhi\n"
 "Language-Team: German (Austria) (http://www.transifex.com/projects/p/owncloud/language/de_AT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,870 +31,870 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr ""
+msgstr "Noch sind nicht alle Kalender zwischengespeichert."
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr ""
+msgstr "Es sieht so aus, als wäre alles vollständig zwischengespeichert."
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr ""
+msgstr "Keine Kalender gefunden."
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr ""
+msgstr "Keine Termine gefunden."
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
-msgstr ""
+msgstr "Falscher Kalender"
 
 #: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
-msgstr ""
+msgstr "Du besitzt nicht die Berechtigung, diese Veranstaltung zu bearbeiten."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr ""
+msgstr "Entweder enthielt die Datei keine Termine oder alle Termine waren bereits im Kalender gespeichert."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
-msgstr ""
+msgstr "Der Termin wurde im neuen Kalender gespeichert."
 
 #: ajax/import/import.php:58
 msgid "Import failed"
-msgstr ""
+msgstr "Import fehlgeschlagen"
 
 #: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
-msgstr ""
+msgstr "Der Termin wurde in Deinem Kalender gespeichert."
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr ""
+msgstr "Neue Zeitzone:"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
-msgstr ""
+msgstr "Zeitzone geändert"
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
-msgstr ""
+msgstr "Fehlerhafte Anfrage"
 
 #: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
 msgid "Calendar"
-msgstr ""
+msgstr "Kalender"
 
 #: js/calendar.js:179
 msgid "Deletion failed"
-msgstr ""
+msgstr "Löschen fehlgeschlagen"
 
 #: js/calendar.js:270
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
-msgstr ""
+msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
 #: js/calendar.js:272
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr ""
+msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
 #: js/calendar.js:588
 msgid "group"
-msgstr ""
+msgstr "Gruppe"
 
 #: js/calendar.js:590 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr ""
+msgstr "kann bearbeiten"
 
 #: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "Kann teilen"
 
 #: js/calendar.js:862
 msgid "ddd"
-msgstr ""
+msgstr "ddd"
 
 #: js/calendar.js:863
 msgid "ddd M/d"
-msgstr ""
+msgstr "ddd d.M"
 
 #: js/calendar.js:864
 msgid "dddd M/d"
-msgstr ""
+msgstr "dddd d.M"
 
 #: js/calendar.js:867
 msgid "MMMM yyyy"
-msgstr ""
+msgstr "MMMM yyyy"
 
 #: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
-msgstr ""
+msgstr "dddd, d. MMM yyyy"
 
 #: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
 msgid "Sunday"
-msgstr ""
+msgstr "Sonntag"
 
 #: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
 msgid "Monday"
-msgstr ""
+msgstr "Montag"
 
 #: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
-msgstr ""
+msgstr "Dienstag"
 
 #: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
-msgstr ""
+msgstr "Mittwoch"
 
 #: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
-msgstr ""
+msgstr "Donnerstag"
 
 #: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
-msgstr ""
+msgstr "Freitag"
 
 #: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
 msgid "Saturday"
-msgstr ""
+msgstr "Samstag"
 
 #: js/l10n.php:78
 msgid "Sun."
-msgstr ""
+msgstr "So"
 
 #: js/l10n.php:78
 msgid "Mon."
-msgstr ""
+msgstr "Mo"
 
 #: js/l10n.php:78
 msgid "Tue."
-msgstr ""
+msgstr "Di"
 
 #: js/l10n.php:78
 msgid "Wed."
-msgstr ""
+msgstr "Mi"
 
 #: js/l10n.php:78
 msgid "Thu."
-msgstr ""
+msgstr "Do"
 
 #: js/l10n.php:78
 msgid "Fri."
-msgstr ""
+msgstr "Fr"
 
 #: js/l10n.php:78
 msgid "Sat."
-msgstr ""
+msgstr "Sa"
 
 #: js/l10n.php:79 lib/object.php:660
 msgid "January"
-msgstr ""
+msgstr "Januar"
 
 #: js/l10n.php:79 lib/object.php:661
 msgid "February"
-msgstr ""
+msgstr "Februar"
 
 #: js/l10n.php:79 lib/object.php:662
 msgid "March"
-msgstr ""
+msgstr "März"
 
 #: js/l10n.php:79 lib/object.php:663
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #: js/l10n.php:79 lib/object.php:664
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: js/l10n.php:79 lib/object.php:665
 msgid "June"
-msgstr ""
+msgstr "Juni"
 
 #: js/l10n.php:79 lib/object.php:666
 msgid "July"
-msgstr ""
+msgstr "Juli"
 
 #: js/l10n.php:79 lib/object.php:667
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: js/l10n.php:79 lib/object.php:668
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: js/l10n.php:79 lib/object.php:669
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: js/l10n.php:79 lib/object.php:670
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: js/l10n.php:79 lib/object.php:671
 msgid "December"
-msgstr ""
+msgstr "Dezember"
 
 #: js/l10n.php:80
 msgid "Jan."
-msgstr ""
+msgstr "Jan."
 
 #: js/l10n.php:80
 msgid "Feb."
-msgstr ""
+msgstr "Feb."
 
 #: js/l10n.php:80
 msgid "Mar."
-msgstr ""
+msgstr "Mär."
 
 #: js/l10n.php:80
 msgid "Apr."
-msgstr ""
+msgstr "Apr."
 
 #: js/l10n.php:80
 msgid "May."
-msgstr ""
+msgstr "Mai"
 
 #: js/l10n.php:80
 msgid "Jun."
-msgstr ""
+msgstr "Jun."
 
 #: js/l10n.php:80
 msgid "Jul."
-msgstr ""
+msgstr "Jul."
 
 #: js/l10n.php:80
 msgid "Aug."
-msgstr ""
+msgstr "Aug."
 
 #: js/l10n.php:80
 msgid "Sep."
-msgstr ""
+msgstr "Sep."
 
 #: js/l10n.php:80
 msgid "Oct."
-msgstr ""
+msgstr "Okt."
 
 #: js/l10n.php:80
 msgid "Nov."
-msgstr ""
+msgstr "Nov."
 
 #: js/l10n.php:80
 msgid "Dec."
-msgstr ""
+msgstr "Dez."
 
 #: js/l10n.php:83
 msgid "All day"
-msgstr ""
+msgstr "Ganztägig"
 
 #: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
 msgid "New Calendar"
-msgstr ""
+msgstr "Neuer Kalender"
 
 #: js/l10n.php:85
 msgid "Missing or invalid fields"
-msgstr ""
+msgstr "Fehlende oder ungültige Felder"
 
 #: js/l10n.php:86 templates/part.showevent.php:11
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: js/l10n.php:88
 msgid "From Date"
-msgstr ""
+msgstr "Startdatum"
 
 #: js/l10n.php:89
 msgid "From Time"
-msgstr ""
+msgstr "Startzeit"
 
 #: js/l10n.php:90
 msgid "To Date"
-msgstr ""
+msgstr "Enddatum"
 
 #: js/l10n.php:91
 msgid "To Time"
-msgstr ""
+msgstr "Endzeit"
 
 #: js/l10n.php:92
 msgid "The event ends before it starts"
-msgstr ""
+msgstr "Der Termin endet, bevor er angefangen hat."
 
 #: js/l10n.php:93
 msgid "There was a database fail"
-msgstr ""
+msgstr "Es ist ein Datenbankfehler aufgetreten"
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr ""
+msgstr "Geburtstag"
 
 #: lib/app.php:122
 msgid "Business"
-msgstr ""
+msgstr "Geschäftlich"
 
 #: lib/app.php:123
 msgid "Call"
-msgstr ""
+msgstr "Anruf"
 
 #: lib/app.php:124
 msgid "Clients"
-msgstr ""
+msgstr "Kunden"
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr ""
+msgstr "Lieferant"
 
 #: lib/app.php:126
 msgid "Holidays"
-msgstr ""
+msgstr "Urlaub"
 
 #: lib/app.php:127
 msgid "Ideas"
-msgstr ""
+msgstr "Ideen"
 
 #: lib/app.php:128
 msgid "Journey"
-msgstr ""
+msgstr "Reise"
 
 #: lib/app.php:129
 msgid "Jubilee"
-msgstr ""
+msgstr "Jubiläum"
 
 #: lib/app.php:130
 msgid "Meeting"
-msgstr ""
+msgstr "Treffen"
 
 #: lib/app.php:131
 msgid "Other"
-msgstr ""
+msgstr "Anderes"
 
 #: lib/app.php:132
 msgid "Personal"
-msgstr ""
+msgstr "Persönlich"
 
 #: lib/app.php:133
 msgid "Projects"
-msgstr ""
+msgstr "Projekte"
 
 #: lib/app.php:134
 msgid "Questions"
-msgstr ""
+msgstr "Fragen"
 
 #: lib/app.php:135
 msgid "Work"
-msgstr ""
+msgstr "Arbeit"
 
 #: lib/app.php:411
 msgid "by"
-msgstr ""
+msgstr "von"
 
 #: lib/app.php:474
 msgid "unnamed"
-msgstr ""
+msgstr "unbenannt"
 
 #: lib/calendar.php:178 lib/calendar.php:211
 msgid "You do not have the permissions to update this calendar."
-msgstr ""
+msgstr "Du besitzt nicht die Berechtigung, diesen Kalender zu aktualisieren."
 
 #: lib/calendar.php:246
 msgid "You do not have the permissions to delete this calendar."
-msgstr ""
+msgstr "Du besitzt nicht die Berechtigung, diesen Kalender zu löschen."
 
 #: lib/calendar.php:280
 msgid "You do not have the permissions to add to this calendar."
-msgstr ""
+msgstr "Du besitzt nicht die Berechtigung, diesem Kalender etwas hinzuzufügen."
 
 #: lib/object.php:122 lib/object.php:163 lib/object.php:329
 msgid "You do not have the permissions to add events to this calendar."
-msgstr ""
+msgstr "Du besitzt nicht die Berechtigung, diesem Kalender eine Veranstaltung hinzuzufügen."
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "Du kannst einem freigegeben Kalender nicht zu einem nicht-öffentlichen Kalender hinzufügen."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
-msgstr ""
+msgstr "Du besitzt nicht die Berechtigung, diese Veranstaltung zu löschen."
 
 #: lib/object.php:503
 msgid "Busy"
-msgstr ""
+msgstr "Beschäftigt"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "Vollständige Veranstaltung anzeigen"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "Nur beschäftigt anzeigen"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "Veranstaltung ausblenden"
 
 #: lib/object.php:565
 msgid "Does not repeat"
-msgstr ""
+msgstr "einmalig"
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr ""
+msgstr "täglich"
 
 #: lib/object.php:567
 msgid "Weekly"
-msgstr ""
+msgstr "wöchentlich"
 
 #: lib/object.php:568
 msgid "Every Weekday"
-msgstr ""
+msgstr "jeden Wochentag"
 
 #: lib/object.php:569
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "jede zweite Woche"
 
 #: lib/object.php:570
 msgid "Monthly"
-msgstr ""
+msgstr "monatlich"
 
 #: lib/object.php:571
 msgid "Yearly"
-msgstr ""
+msgstr "jährlich"
 
 #: lib/object.php:581
 msgid "never"
-msgstr ""
+msgstr "niemals"
 
 #: lib/object.php:582
 msgid "by occurrences"
-msgstr ""
+msgstr "nach Terminen"
 
 #: lib/object.php:583
 msgid "by date"
-msgstr ""
+msgstr "nach Datum"
 
 #: lib/object.php:593
 msgid "by monthday"
-msgstr ""
+msgstr "an einem Monatstag"
 
 #: lib/object.php:594
 msgid "by weekday"
-msgstr ""
+msgstr "an einem Wochentag"
 
 #: lib/object.php:620
 msgid "events week of month"
-msgstr ""
+msgstr "Woche des Monats des Termins"
 
 #: lib/object.php:621
 msgid "first"
-msgstr ""
+msgstr "erste"
 
 #: lib/object.php:622
 msgid "second"
-msgstr ""
+msgstr "zweite"
 
 #: lib/object.php:623
 msgid "third"
-msgstr ""
+msgstr "dritte"
 
 #: lib/object.php:624
 msgid "fourth"
-msgstr ""
+msgstr "vierte"
 
 #: lib/object.php:625
 msgid "fifth"
-msgstr ""
+msgstr "fünfte"
 
 #: lib/object.php:626
 msgid "last"
-msgstr ""
+msgstr "letzte"
 
 #: lib/object.php:681
 msgid "by events date"
-msgstr ""
+msgstr "nach Datum des Termins"
 
 #: lib/object.php:682
 msgid "by yearday(s)"
-msgstr ""
+msgstr "nach Tag des Jahres"
 
 #: lib/object.php:683
 msgid "by weeknumber(s)"
-msgstr ""
+msgstr "nach Wochennummer"
 
 #: lib/object.php:684
 msgid "by day and month"
-msgstr ""
+msgstr "nach Tag und Monat"
 
 #: lib/sabre/backend.php:73
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Geburtstage Deiner Kontakte"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: lib/search.php:43
 msgid "Cal."
-msgstr ""
+msgstr "Kal."
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "Tag"
 
 #: templates/calendar.php:7
 msgid "Week"
-msgstr ""
+msgstr "Woche"
 
 #: templates/calendar.php:8
 msgid "Month"
-msgstr ""
+msgstr "Monat"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: templates/calendar.php:13
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
-msgstr ""
+msgstr "Kalender freigeben"
 
 #: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
 msgid "CalDav Link"
-msgstr ""
+msgstr "CalDAV-Link"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
-msgstr ""
+msgstr "Herunterladen"
 
 #: templates/part.choosecalendar.rowfields.php:31
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: templates/part.choosecalendar.rowfields.php:36
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
-msgstr ""
+msgstr "Neuer Kalender"
 
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
-msgstr ""
+msgstr "Kalender bearbeiten"
 
 #: templates/part.editcalendar.php:12
 msgid "Displayname"
-msgstr ""
+msgstr "Anzeigename"
 
 #: templates/part.editcalendar.php:20
 msgid "Calendar color"
-msgstr ""
+msgstr "Kalenderfarbe"
 
 #: templates/part.editcalendar.php:33
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: templates/part.editcalendar.php:33
 msgid "Submit"
-msgstr ""
+msgstr "Bestätigen"
 
 #: templates/part.editcalendar.php:34
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Veranstaltung bearbeiten"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Veranstaltung speichern"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Veranstaltung löschen"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
-msgstr ""
+msgstr "Termininfo"
 
 #: templates/part.eventform.php:6 templates/part.showevent.php:4
 msgid "Repeating"
-msgstr ""
+msgstr "Wiederholen"
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
-msgstr ""
+msgstr "Alarm"
 
 #: templates/part.eventform.php:8 templates/part.showevent.php:6
 msgid "Attendees"
-msgstr ""
+msgstr "Teilnehmer"
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr ""
+msgstr "Freigeben"
 
 #: templates/part.eventform.php:15
 msgid "Title of the Event"
-msgstr ""
+msgstr "Titel"
 
 #: templates/part.eventform.php:41
 msgid "from"
-msgstr ""
+msgstr "von"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "bis"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr ""
+msgstr "Ganztägiges Ereignis"
 
 #: templates/part.eventform.php:57 templates/part.showevent.php:86
 msgid "Advanced options"
-msgstr ""
+msgstr "Erweiterte Optionen"
 
 #: templates/part.eventform.php:61 templates/part.showevent.php:91
 msgid "Location"
-msgstr ""
+msgstr "Ort"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategorien (getrennt durch Kommata)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
-msgstr ""
+msgstr "Kategorien ändern"
 
 #: templates/part.eventform.php:71 templates/part.showevent.php:99
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: templates/part.eventform.php:73
 msgid "Export event"
-msgstr ""
+msgstr "Veranstaltung exportieren"
 
 #: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
-msgstr ""
+msgstr "Wiederholen"
 
 #: templates/part.eventform.php:87 templates/part.showevent.php:116
 msgid "Advanced"
-msgstr ""
+msgstr "Erweitert"
 
 #: templates/part.eventform.php:131 templates/part.showevent.php:160
 msgid "Select weekdays"
-msgstr ""
+msgstr "Wochentage auswählen"
 
 #: templates/part.eventform.php:144 templates/part.eventform.php:157
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
-msgstr ""
+msgstr "Tage auswählen"
 
 #: templates/part.eventform.php:149 templates/part.showevent.php:178
 msgid "and the events day of year."
-msgstr ""
+msgstr "und den Tag des Jahres des Termins"
 
 #: templates/part.eventform.php:162 templates/part.showevent.php:191
 msgid "and the events day of month."
-msgstr ""
+msgstr "und den Tag des Monats des Termins"
 
 #: templates/part.eventform.php:170 templates/part.showevent.php:199
 msgid "Select months"
-msgstr ""
+msgstr "Monate auswählen"
 
 #: templates/part.eventform.php:183 templates/part.showevent.php:212
 msgid "Select weeks"
-msgstr ""
+msgstr "Wochen auswählen"
 
 #: templates/part.eventform.php:188 templates/part.showevent.php:217
 msgid "and the events week of year."
-msgstr ""
+msgstr "und den Tag des Jahres des Termins"
 
 #: templates/part.eventform.php:194 templates/part.showevent.php:223
 msgid "Interval"
-msgstr ""
+msgstr "Intervall"
 
 #: templates/part.eventform.php:200 templates/part.showevent.php:229
 msgid "End"
-msgstr ""
+msgstr "Ende"
 
 #: templates/part.eventform.php:213 templates/part.showevent.php:242
 msgid "occurrences"
-msgstr ""
+msgstr "Ereignisse"
 
 #: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Sichtbarkeit für Personen mit denen es geteilt ist"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
-msgstr ""
+msgstr "Neuen Kalender anlegen"
 
 #: templates/part.import.php:17
 msgid "Import a calendar file"
-msgstr ""
+msgstr "Kalenderdatei importieren"
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr ""
+msgstr "Bitte wähle einen Kalender."
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
-msgstr ""
+msgstr "Name des neuen Kalenders"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr ""
+msgstr "Bitte wähle einen verfügbaren Namen!"
 
 #: templates/part.import.php:45
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr ""
+msgstr "Ein Kalender mit diesem Namen existiert bereits. Solltest Du fortfahren, werden die beiden Kalender zusammengeführt."
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr ""
+msgstr "Entferne alle Termine von dem ausgewählten Kalender"
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr ""
+msgstr "Importieren"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
-msgstr ""
+msgstr "Dialog schließen"
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
-msgstr ""
+msgstr "Neues Ereignis erstellen"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Veranstaltung erstellen"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Mit Nutzer oder Gruppe teilen"
 
 #: templates/part.share.php:53
 msgid "Unshare"
-msgstr ""
+msgstr "Teilung zurücknehmen"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Mit niemanden geteilt"
 
 #: templates/part.share.php:63
 msgid "Send Email"
-msgstr ""
+msgstr "E-Mail senden"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
-msgstr ""
+msgstr "Mittels des Kalenders teilen"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Mit niemandem über einen Kalender geteilt"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
-msgstr ""
+msgstr "Termin ansehen"
 
 #: templates/part.showevent.php:19
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
-msgstr ""
+msgstr "Keine Kategorie ausgewählt"
 
 #: templates/part.showevent.php:41
 msgid "of"
-msgstr ""
+msgstr "von"
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
-msgstr ""
+msgstr "Zugriffsklasse"
 
 #: templates/part.showevent.php:70
 msgid "From"
-msgstr ""
+msgstr "von"
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
-msgstr ""
+msgstr "um"
 
 #: templates/part.showevent.php:78
 msgid "To"
-msgstr ""
+msgstr "bis"
 
 #: templates/settings.php:2
 msgid "Your calendars"
-msgstr ""
+msgstr "Deine Kalender"
 
 #: templates/settings.php:34
 msgid "General"
-msgstr ""
+msgstr "Allgemein"
 
 #: templates/settings.php:39
 msgid "Timezone"
-msgstr ""
+msgstr "Zeitzone"
 
 #: templates/settings.php:70
 msgid "Update timezone automatically"
-msgstr ""
+msgstr "Zeitzone automatisch aktualisieren"
 
 #: templates/settings.php:75
 msgid "Time format"
-msgstr ""
+msgstr "Zeitformat"
 
 #: templates/settings.php:80
 msgid "24h"
-msgstr ""
+msgstr "24 Stunden"
 
 #: templates/settings.php:81
 msgid "12h"
-msgstr ""
+msgstr "12 Stunden"
 
 #: templates/settings.php:87
 msgid "Start week on"
-msgstr ""
+msgstr "Erster Wochentag"
 
 #: templates/settings.php:100
 msgid "Cache"
-msgstr ""
+msgstr "Zwischenspeicher"
 
 #: templates/settings.php:104
 msgid "Clear cache for repeating events"
-msgstr ""
+msgstr "Lösche den Zwischenspeicher für wiederholende Veranstaltungen"
 
 #: templates/settings.php:109
 msgid "URLs"
-msgstr ""
+msgstr "URLs"
 
 #: templates/settings.php:111
 msgid "Calendar CalDAV syncing addresses"
-msgstr ""
+msgstr "CalDAV-Kalender gleicht Adressen ab"
 
 #: templates/settings.php:111
 msgid "more info"
-msgstr ""
+msgstr "weitere Informationen"
 
 #: templates/settings.php:113
 msgid "Primary address (Kontact et al)"
-msgstr ""
+msgstr "Primäre Adresse (Kontakt u.a.)"
 
 #: templates/settings.php:115
 msgid "iOS/OS X"
-msgstr ""
+msgstr "iOS/OS X"
 
 #: templates/settings.php:117
 msgid "Read only iCalendar link(s)"
-msgstr ""
+msgstr "Nur lesende(r) iCalender-Link(s)"
