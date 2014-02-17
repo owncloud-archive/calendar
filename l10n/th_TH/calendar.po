@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
+"POT-Creation-Date: 2014-02-17 03:17-0500\n"
+"PO-Revision-Date: 2014-02-16 08:41+0000\n"
 "Last-Translator: minkbear beary <minkbear@gmail.com>\n"
 "Language-Team: Thai (Thailand) (http://www.transifex.com/projects/p/owncloud/language/th_TH/)\n"
 "MIME-Version: 1.0\n"
@@ -121,7 +121,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
@@ -405,7 +405,7 @@ msgstr "คุณไม่ได้รับสิทธิ์ให้เพิ
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "คุณไม่สามารถเพิ่มกิจกรรมที่ไม่ใช่สาธารณะที่แชร์ปฎิทินได้"
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -421,7 +421,7 @@ msgstr "แสดงกิจกรรมทั้งหมด"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "แสดงตอนไม่ว่างเท่านั้น"
 
 #: lib/object.php:555
 msgid "Hide event"
@@ -521,7 +521,7 @@ msgstr "ตามวันและเดือน"
 
 #: lib/sabre/backend.php:73
 msgid "Contact birthdays"
-msgstr ""
+msgstr "วันเกิดของผู้ติดต่อ"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -657,7 +657,7 @@ msgstr "สถานที่"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "ประเภท (แยกด้วยเครื่องหมายคอมม่า)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
@@ -792,7 +792,7 @@ msgstr "แชร์ผ่านทางปฏิทิน"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "ไม่แชร์กับใครเลยผ่านทางปฏิทิน"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
