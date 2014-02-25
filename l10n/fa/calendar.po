@@ -5,13 +5,14 @@
 # Translators:
 # Hossein Rayeshman <rayeshman@gmail.com>, 2012
 # miki_mika1362 <miki_mika1362@yahoo.com>, 2013
+# S. Wasim Tayyeb, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-25 01:47-0500\n"
+"PO-Revision-Date: 2014-02-24 17:20+0000\n"
+"Last-Translator: S. Wasim Tayyeb\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/owncloud/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -100,7 +101,7 @@ msgstr "می توان ویرایش کرد"
 
 #: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "قابل به اشتراک گذاری"
 
 #: js/calendar.js:862
 msgid "ddd"
@@ -120,7 +121,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
@@ -404,7 +405,7 @@ msgstr "شما دسترسی مجاز برای افزودن رویداد به ا�
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "شما نمی‌توانید رویداد غیر عمومی را به یک تقویم اشتراک گذاشته شده اضافه کنید"
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -412,19 +413,19 @@ msgstr "شما دسترسی مجاز برای حذف این رویداد را ن
 
 #: lib/object.php:503
 msgid "Busy"
-msgstr "درحال کار"
+msgstr "مشغول"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "نمایش کامل رویداد"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "تنها نمایش مشغول ها"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "پنهان کردن رویداد"
 
 #: lib/object.php:565
 msgid "Does not repeat"
@@ -520,7 +521,7 @@ msgstr "به وسیله روز و ماه"
 
 #: lib/sabre/backend.php:73
 msgid "Contact birthdays"
-msgstr ""
+msgstr "تاریخ تولد افراد"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -532,7 +533,7 @@ msgstr "تقویم."
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "روز"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -600,15 +601,15 @@ msgstr "انصراف"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "ویرایش رویداد"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "ذخیره رویداد"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "حذف رویداد"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -640,7 +641,7 @@ msgstr "از"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "به"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -656,7 +657,7 @@ msgstr "منطقه"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "دسته بندی ها (با کاما جدا شوند)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
@@ -668,7 +669,7 @@ msgstr "توضیحات"
 
 #: templates/part.eventform.php:73
 msgid "Export event"
-msgstr ""
+msgstr "خروجی گرفتن رویداد"
 
 #: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
@@ -721,7 +722,7 @@ msgstr "ظهور"
 
 #: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "قابلیت نمایش به افرادی که با آنها به اشتراک گذاشته شده است"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -767,11 +768,11 @@ msgstr "یک رویداد ایجاد کنید"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "ایجاد کردن رویداد"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "اشتراک با فرد یا گروه"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -779,11 +780,11 @@ msgstr "لغو اشتراک"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "با هیچکس اشتراک نشده"
 
 #: templates/part.share.php:63
 msgid "Send Email"
-msgstr ""
+msgstr "ارسال ایمیل"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
@@ -791,7 +792,7 @@ msgstr "به اشتراک گذاشته شده از طریق تقویم"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "با هیچکس توسط تقویم اشتراک نشده"
 
 #: templates/part.showevent.php:1
 msgid "View an event"

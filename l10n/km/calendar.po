@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# សុវិចិត្រ Sovichet ទេព Tep <sovichet.tep@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-05 02:01-0500\n"
-"PO-Revision-Date: 2014-02-05 07:01+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-25 01:47-0500\n"
+"PO-Revision-Date: 2014-02-24 12:10+0000\n"
+"Last-Translator: សុវិចិត្រ Sovichet ទេព Tep <sovichet.tep@gmail.com>\n"
 "Language-Team: Khmer (http://www.transifex.com/projects/p/owncloud/language/km/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,11 +36,11 @@ msgstr ""
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
-msgstr ""
+msgstr "ប្រតិទិន​ខុស"
 
 #: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
-msgstr ""
+msgstr "អ្នក​ពុំ​មាន​សិទ្ធិ​កែប្រែ​ព្រឹត្តិការណ៍​នេះ​ទេ។"
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
@@ -61,24 +62,24 @@ msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr ""
+msgstr "ល្វែង​ម៉ោង​ថ្មី៖"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
-msgstr ""
+msgstr "បាន​ប្ដូរ​ល្វែង​ម៉ោង"
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
-msgstr ""
+msgstr "សំណើ​មិន​ត្រឹម​ត្រូវ"
 
 #: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
 msgid "Calendar"
-msgstr ""
+msgstr "ប្រតិទិន"
 
 #: js/calendar.js:179
 msgid "Deletion failed"
-msgstr ""
+msgstr "លុប​មិន​បាន​សម្រេច"
 
 #: js/calendar.js:270
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
@@ -86,19 +87,19 @@ msgstr ""
 
 #: js/calendar.js:272
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr ""
+msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
 #: js/calendar.js:588
 msgid "group"
-msgstr ""
+msgstr "ក្រុម"
 
 #: js/calendar.js:590 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr ""
+msgstr "អាច​កែប្រែ"
 
 #: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "អាច​ចែក​រំលែក"
 
 #: js/calendar.js:862
 msgid "ddd"
@@ -118,7 +119,7 @@ msgstr ""
 
 #: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
@@ -126,163 +127,163 @@ msgstr ""
 
 #: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
 msgid "Sunday"
-msgstr ""
+msgstr "ថ្ងៃអាទិត្យ"
 
 #: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
 msgid "Monday"
-msgstr ""
+msgstr "ថ្ងៃចន្ទ"
 
 #: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
-msgstr ""
+msgstr "ថ្ងៃអង្គារ"
 
 #: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
-msgstr ""
+msgstr "ថ្ងៃពុធ"
 
 #: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
-msgstr ""
+msgstr "ថ្ងៃព្រហស្បតិ៍"
 
 #: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
-msgstr ""
+msgstr "ថ្ងៃសុក្រ"
 
 #: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
 msgid "Saturday"
-msgstr ""
+msgstr "ថ្ងៃសៅរ៍"
 
 #: js/l10n.php:78
 msgid "Sun."
-msgstr ""
+msgstr "អាទិត្យ"
 
 #: js/l10n.php:78
 msgid "Mon."
-msgstr ""
+msgstr "ចន្ទ"
 
 #: js/l10n.php:78
 msgid "Tue."
-msgstr ""
+msgstr "អង្គារ"
 
 #: js/l10n.php:78
 msgid "Wed."
-msgstr ""
+msgstr "ពុធ"
 
 #: js/l10n.php:78
 msgid "Thu."
-msgstr ""
+msgstr "ព្រហ."
 
 #: js/l10n.php:78
 msgid "Fri."
-msgstr ""
+msgstr "សុក្រ"
 
 #: js/l10n.php:78
 msgid "Sat."
-msgstr ""
+msgstr "សៅរ៍"
 
 #: js/l10n.php:79 lib/object.php:660
 msgid "January"
-msgstr ""
+msgstr "ខែមករា"
 
 #: js/l10n.php:79 lib/object.php:661
 msgid "February"
-msgstr ""
+msgstr "ខែកុម្ភៈ"
 
 #: js/l10n.php:79 lib/object.php:662
 msgid "March"
-msgstr ""
+msgstr "ខែមីនា"
 
 #: js/l10n.php:79 lib/object.php:663
 msgid "April"
-msgstr ""
+msgstr "ខែមេសា"
 
 #: js/l10n.php:79 lib/object.php:664
 msgid "May"
-msgstr ""
+msgstr "ខែឧសភា"
 
 #: js/l10n.php:79 lib/object.php:665
 msgid "June"
-msgstr ""
+msgstr "ខែមិថុនា"
 
 #: js/l10n.php:79 lib/object.php:666
 msgid "July"
-msgstr ""
+msgstr "ខែកក្កដា"
 
 #: js/l10n.php:79 lib/object.php:667
 msgid "August"
-msgstr ""
+msgstr "ខែសីហា"
 
 #: js/l10n.php:79 lib/object.php:668
 msgid "September"
-msgstr ""
+msgstr "ខែកញ្ញា"
 
 #: js/l10n.php:79 lib/object.php:669
 msgid "October"
-msgstr ""
+msgstr "ខែតុលា"
 
 #: js/l10n.php:79 lib/object.php:670
 msgid "November"
-msgstr ""
+msgstr "ខែវិច្ឆិកា"
 
 #: js/l10n.php:79 lib/object.php:671
 msgid "December"
-msgstr ""
+msgstr "ខែធ្នូ"
 
 #: js/l10n.php:80
 msgid "Jan."
-msgstr ""
+msgstr "មករា"
 
 #: js/l10n.php:80
 msgid "Feb."
-msgstr ""
+msgstr "កុម្ភៈ"
 
 #: js/l10n.php:80
 msgid "Mar."
-msgstr ""
+msgstr "មីនា"
 
 #: js/l10n.php:80
 msgid "Apr."
-msgstr ""
+msgstr "មេសា"
 
 #: js/l10n.php:80
 msgid "May."
-msgstr ""
+msgstr "ឧសភា"
 
 #: js/l10n.php:80
 msgid "Jun."
-msgstr ""
+msgstr "មិថុនា"
 
 #: js/l10n.php:80
 msgid "Jul."
-msgstr ""
+msgstr "កក្កដា"
 
 #: js/l10n.php:80
 msgid "Aug."
-msgstr ""
+msgstr "សីហា"
 
 #: js/l10n.php:80
 msgid "Sep."
-msgstr ""
+msgstr "កញ្ញា"
 
 #: js/l10n.php:80
 msgid "Oct."
-msgstr ""
+msgstr "តុលា"
 
 #: js/l10n.php:80
 msgid "Nov."
-msgstr ""
+msgstr "វិច្ឆិកា"
 
 #: js/l10n.php:80
 msgid "Dec."
-msgstr ""
+msgstr "ធ្នូ"
 
 #: js/l10n.php:83
 msgid "All day"
-msgstr ""
+msgstr "គ្រប់​ថ្ងៃ"
 
 #: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
 msgid "New Calendar"
-msgstr ""
+msgstr "ប្រតិទិន​ថ្មី"
 
 #: js/l10n.php:85
 msgid "Missing or invalid fields"
@@ -290,91 +291,91 @@ msgstr ""
 
 #: js/l10n.php:86 templates/part.showevent.php:11
 msgid "Title"
-msgstr ""
+msgstr "ចំណងជើង"
 
 #: js/l10n.php:88
 msgid "From Date"
-msgstr ""
+msgstr "ពី​កាល​បរិច្ឆេទ"
 
 #: js/l10n.php:89
 msgid "From Time"
-msgstr ""
+msgstr "ម៉ោង​ចាប់ផ្ដើម"
 
 #: js/l10n.php:90
 msgid "To Date"
-msgstr ""
+msgstr "ទៅ​កាល​បរិច្ឆេទ"
 
 #: js/l10n.php:91
 msgid "To Time"
-msgstr ""
+msgstr "ទៅ​ម៉ោង"
 
 #: js/l10n.php:92
 msgid "The event ends before it starts"
-msgstr ""
+msgstr "ព្រឹត្តិការណ៍​ចប់​មុន​ចាប់​ផ្ដើម"
 
 #: js/l10n.php:93
 msgid "There was a database fail"
-msgstr ""
+msgstr "មាន​កំហុស​មូលដ្ឋាន​ទិន្នន័យ"
 
 #: lib/app.php:121
 msgid "Birthday"
-msgstr ""
+msgstr "ថ្ងៃ​កំណើត"
 
 #: lib/app.php:122
 msgid "Business"
-msgstr ""
+msgstr "ធុរកិច្ច"
 
 #: lib/app.php:123
 msgid "Call"
-msgstr ""
+msgstr "ហៅ"
 
 #: lib/app.php:124
 msgid "Clients"
-msgstr ""
+msgstr "អតិថិជន"
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr ""
+msgstr "អ្នក​ដឹក​ជញ្ជូន"
 
 #: lib/app.php:126
 msgid "Holidays"
-msgstr ""
+msgstr "ថ្ងៃ​សម្រាក"
 
 #: lib/app.php:127
 msgid "Ideas"
-msgstr ""
+msgstr "គំនិត"
 
 #: lib/app.php:128
 msgid "Journey"
-msgstr ""
+msgstr "ការ​ធ្វើ​ដំណើរ"
 
 #: lib/app.php:129
 msgid "Jubilee"
-msgstr ""
+msgstr "ខួប​៥០​ឆ្នាំ"
 
 #: lib/app.php:130
 msgid "Meeting"
-msgstr ""
+msgstr "ការ​ប្រជុំ"
 
 #: lib/app.php:131
 msgid "Other"
-msgstr ""
+msgstr "ផ្សេងៗ"
 
 #: lib/app.php:132
 msgid "Personal"
-msgstr ""
+msgstr "ផ្ទាល់​ខ្លួន"
 
 #: lib/app.php:133
 msgid "Projects"
-msgstr ""
+msgstr "គម្រោង"
 
 #: lib/app.php:134
 msgid "Questions"
-msgstr ""
+msgstr "សំណួរ"
 
 #: lib/app.php:135
 msgid "Work"
-msgstr ""
+msgstr "ធ្វើការ"
 
 #: lib/app.php:411
 msgid "by"
@@ -386,55 +387,55 @@ msgstr ""
 
 #: lib/calendar.php:178 lib/calendar.php:211
 msgid "You do not have the permissions to update this calendar."
-msgstr ""
+msgstr "អ្នក​ពុំ​មាន​សិទ្ធិ​ធ្វើ​បច្ចុប្បន្នភាព​ប្រតិទិន​នេះ​ទេ។"
 
 #: lib/calendar.php:246
 msgid "You do not have the permissions to delete this calendar."
-msgstr ""
+msgstr "អ្នក​ពុំ​មាន​សិទ្ធិ​លុប​ប្រតិទិន​នេះ​ទេ។"
 
 #: lib/calendar.php:280
 msgid "You do not have the permissions to add to this calendar."
-msgstr ""
+msgstr "អ្នក​ពុំ​មាន​សិទ្ធិ​បន្ថែម​ទៅ​ប្រតិទិន​នេះ​ទេ។"
 
 #: lib/object.php:122 lib/object.php:163 lib/object.php:329
 msgid "You do not have the permissions to add events to this calendar."
-msgstr ""
+msgstr "អ្នក​ពុំ​មាន​សិទ្ធិ​បន្ថែម​ព្រឹត្តិការណ៍​ទៅ​ប្រតិទិន​នេះ​ទេ។"
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "អ្នក​មិន​អាច​ដាក់​ព្រឹត្តិការណ៍​អសាធារណៈ​ទៅ ប្រតិទិន​ចែក​រំលែក ទេ។"
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
-msgstr ""
+msgstr "អ្នក​ពុំ​មាន​សិទ្ធិ​លុប​ព្រឹត្តិការណ៍​នេះ​ទេ។"
 
 #: lib/object.php:503
 msgid "Busy"
-msgstr ""
+msgstr "រវល់"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "បង្ហាញ​ព្រឹត្តិការណ៍​ពេញ"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "បង្ហាញ​តែ​រវល់"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "លាក់​ព្រឹត្តិការណ៍"
 
 #: lib/object.php:565
 msgid "Does not repeat"
-msgstr ""
+msgstr "កុំ​ធ្វើ​ឡើង​វិញ"
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr ""
+msgstr "រាល់ថ្ងៃ"
 
 #: lib/object.php:567
 msgid "Weekly"
-msgstr ""
+msgstr "រាល់​សប្ដាហ៍"
 
 #: lib/object.php:568
 msgid "Every Weekday"
@@ -446,11 +447,11 @@ msgstr ""
 
 #: lib/object.php:570
 msgid "Monthly"
-msgstr ""
+msgstr "រាល់​ខែ"
 
 #: lib/object.php:571
 msgid "Yearly"
-msgstr ""
+msgstr "រាល់​ឆ្នាំ"
 
 #: lib/object.php:581
 msgid "never"
@@ -462,15 +463,15 @@ msgstr ""
 
 #: lib/object.php:583
 msgid "by date"
-msgstr ""
+msgstr "តាម​កាល​បរិច្ឆេទ"
 
 #: lib/object.php:593
 msgid "by monthday"
-msgstr ""
+msgstr "តាម​ថ្ងៃ​នៃ​ខែ"
 
 #: lib/object.php:594
 msgid "by weekday"
-msgstr ""
+msgstr "តាម​ថ្ងៃ​ធ្វើការ"
 
 #: lib/object.php:620
 msgid "events week of month"
@@ -478,43 +479,43 @@ msgstr ""
 
 #: lib/object.php:621
 msgid "first"
-msgstr ""
+msgstr "ទីមួយ"
 
 #: lib/object.php:622
 msgid "second"
-msgstr ""
+msgstr "ទីពីរ"
 
 #: lib/object.php:623
 msgid "third"
-msgstr ""
+msgstr "ទីបី"
 
 #: lib/object.php:624
 msgid "fourth"
-msgstr ""
+msgstr "ទីបួន"
 
 #: lib/object.php:625
 msgid "fifth"
-msgstr ""
+msgstr "ទីប្រាំ"
 
 #: lib/object.php:626
 msgid "last"
-msgstr ""
+msgstr "ចុងក្រោយ"
 
 #: lib/object.php:681
 msgid "by events date"
-msgstr ""
+msgstr "តាម​កាល​បរិច្ឆេទ​ព្រឹត្តិការណ៍"
 
 #: lib/object.php:682
 msgid "by yearday(s)"
-msgstr ""
+msgstr "តាម​ថ្ងៃ​នៃ​ឆ្នាំ"
 
 #: lib/object.php:683
 msgid "by weeknumber(s)"
-msgstr ""
+msgstr "តាម​លេខ​សប្ដាហ៍"
 
 #: lib/object.php:684
 msgid "by day and month"
-msgstr ""
+msgstr "តាម​ថ្ងៃ​និង​ខែ"
 
 #: lib/sabre/backend.php:73
 msgid "Contact birthdays"
@@ -522,31 +523,31 @@ msgstr ""
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
-msgstr ""
+msgstr "កាល​បរិច្ឆេទ"
 
 #: lib/search.php:43
 msgid "Cal."
-msgstr ""
+msgstr "ប្រតិទិន"
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "ថ្ងៃ"
 
 #: templates/calendar.php:7
 msgid "Week"
-msgstr ""
+msgstr "សប្ដាហ៍"
 
 #: templates/calendar.php:8
 msgid "Month"
-msgstr ""
+msgstr "ខែ"
 
 #: templates/calendar.php:12 templates/calendar.php:18
 msgid "Today"
-msgstr ""
+msgstr "ថ្ងៃ​នេះ"
 
 #: templates/calendar.php:13
 msgid "Settings"
-msgstr ""
+msgstr "ការកំណត់"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
@@ -554,15 +555,15 @@ msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
 msgid "CalDav Link"
-msgstr ""
+msgstr "តំណ CalDav"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
-msgstr ""
+msgstr "ទាញយក"
 
 #: templates/part.choosecalendar.rowfields.php:31
 msgid "Edit"
-msgstr ""
+msgstr "កែ"
 
 #: templates/part.choosecalendar.rowfields.php:36
 msgid "Delete"
@@ -570,43 +571,43 @@ msgstr "លុប"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
-msgstr ""
+msgstr "ប្រតិទិន​ថ្មី"
 
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
-msgstr ""
+msgstr "កែ​ប្រតិទិន"
 
 #: templates/part.editcalendar.php:12
 msgid "Displayname"
-msgstr ""
+msgstr "ឈ្មោះ​បង្ហាញ"
 
 #: templates/part.editcalendar.php:20
 msgid "Calendar color"
-msgstr ""
+msgstr "ពណ៌​ប្រតិទិន"
 
 #: templates/part.editcalendar.php:33
 msgid "Save"
-msgstr ""
+msgstr "រក្សាទុក"
 
 #: templates/part.editcalendar.php:33
 msgid "Submit"
-msgstr ""
+msgstr "ដាក់ស្នើ"
 
 #: templates/part.editcalendar.php:34
 msgid "Cancel"
-msgstr ""
+msgstr "លើកលែង"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "កែ​ព្រឹត្តិការណ៍"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "រក្សាទុក​ព្រឹត្តិការណ៍"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "លុប​ព្រឹត្តិការណ៍"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -626,35 +627,35 @@ msgstr ""
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr ""
+msgstr "ចែក​រំលែក"
 
 #: templates/part.eventform.php:15
 msgid "Title of the Event"
-msgstr ""
+msgstr "ឈ្មោះ​ព្រឹត្តិការណ៍"
 
 #: templates/part.eventform.php:41
 msgid "from"
-msgstr ""
+msgstr "ពី"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "ទៅ"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr ""
+msgstr "ព្រឹត្តិការណ៍​គ្រប់​ថ្ងៃ"
 
 #: templates/part.eventform.php:57 templates/part.showevent.php:86
 msgid "Advanced options"
-msgstr ""
+msgstr "ជម្រើស​កម្រិត​ខ្ពស់"
 
 #: templates/part.eventform.php:61 templates/part.showevent.php:91
 msgid "Location"
-msgstr ""
+msgstr "ទីតាំង"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "ចំណាត់​ក្រុម (ញែក​ដោយ​ក្បៀស)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
@@ -662,11 +663,11 @@ msgstr ""
 
 #: templates/part.eventform.php:71 templates/part.showevent.php:99
 msgid "Description"
-msgstr ""
+msgstr "ការ​អធិប្បាយ"
 
 #: templates/part.eventform.php:73
 msgid "Export event"
-msgstr ""
+msgstr "នាំចេញ​ព្រឹត្តិការណ៍"
 
 #: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
@@ -674,7 +675,7 @@ msgstr "ធ្វើម្ដងទៀត"
 
 #: templates/part.eventform.php:87 templates/part.showevent.php:116
 msgid "Advanced"
-msgstr ""
+msgstr "កម្រិត​ខ្ពស់"
 
 #: templates/part.eventform.php:131 templates/part.showevent.php:160
 msgid "Select weekdays"
@@ -683,7 +684,7 @@ msgstr ""
 #: templates/part.eventform.php:144 templates/part.eventform.php:157
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
-msgstr ""
+msgstr "ជ្រើស​ថ្ងៃ"
 
 #: templates/part.eventform.php:149 templates/part.showevent.php:178
 msgid "and the events day of year."
@@ -719,7 +720,7 @@ msgstr ""
 
 #: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "ភាព​មើល​ឃើញ​សម្រាប់​មនុស្ស​ដែល​បាន​ចែក​រំលែក​ជាមួយ"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -731,7 +732,7 @@ msgstr ""
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr ""
+msgstr "សូម​រើស​ប្រតិទិន​មួយ"
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
@@ -739,7 +740,7 @@ msgstr ""
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr ""
+msgstr "យក​ឈ្មោះ​ដែល​អាច​ប្រើ​បាន!"
 
 #: templates/part.import.php:45
 msgid ""
@@ -749,11 +750,11 @@ msgstr ""
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr ""
+msgstr "ដក​ព្រឹត្តិការណ៍​ទាំង​អស់​ចេញ​ពី​ប្រតិទិន​ដែល​បាន​រើស"
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr ""
+msgstr "នាំយកចូល"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
@@ -761,35 +762,35 @@ msgstr ""
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
-msgstr ""
+msgstr "បង្កើត​ព្រឹត្តិការណ៍​ថ្មី​មួយ"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "បង្កើត​ព្រឹត្តិការណ៍"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "ចែក​រំលែក​ជាមួយ​អ្នក​ប្រើ ឬ ក្រុម"
 
 #: templates/part.share.php:53
 msgid "Unshare"
-msgstr ""
+msgstr "លែង​ចែក​រំលែក"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "មិន​បាន​ចែក​រំលែក​ជាមួយ​នរណា​ម្នាក់​ទេ"
 
 #: templates/part.share.php:63
 msgid "Send Email"
-msgstr ""
+msgstr "ផ្ញើ​អ៊ីមែល"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
-msgstr ""
+msgstr "បាន​ចែករំលែក​តាម​ប្រតិទិន"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "មិន​បាន​ចែក​រំលែក​ជាមួយ​នរណា​ម្នាក់​តាម​ប្រតិទិន​ទេ"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
@@ -797,7 +798,7 @@ msgstr ""
 
 #: templates/part.showevent.php:19
 msgid "Category"
-msgstr ""
+msgstr "ចំណាត់ក្រុម"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
@@ -813,7 +814,7 @@ msgstr ""
 
 #: templates/part.showevent.php:70
 msgid "From"
-msgstr ""
+msgstr "ពី"
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
@@ -821,7 +822,7 @@ msgstr ""
 
 #: templates/part.showevent.php:78
 msgid "To"
-msgstr ""
+msgstr "ទៅ"
 
 #: templates/settings.php:2
 msgid "Your calendars"
@@ -829,31 +830,31 @@ msgstr ""
 
 #: templates/settings.php:34
 msgid "General"
-msgstr ""
+msgstr "ទូទៅ"
 
 #: templates/settings.php:39
 msgid "Timezone"
-msgstr ""
+msgstr "ល្វែង​ម៉ោង"
 
 #: templates/settings.php:70
 msgid "Update timezone automatically"
-msgstr ""
+msgstr "ធ្វើ​បច្ចុប្បន្នភាព​ល្វែងម៉ោង​ដោយ​ស្វ័យ​ប្រវត្តិ"
 
 #: templates/settings.php:75
 msgid "Time format"
-msgstr ""
+msgstr "ទម្រង់​ម៉ោង"
 
 #: templates/settings.php:80
 msgid "24h"
-msgstr ""
+msgstr "24ម៉."
 
 #: templates/settings.php:81
 msgid "12h"
-msgstr ""
+msgstr "12ម៉."
 
 #: templates/settings.php:87
 msgid "Start week on"
-msgstr ""
+msgstr "សប្ដាហ៍​ផ្ដើម​ពី"
 
 #: templates/settings.php:100
 msgid "Cache"
@@ -865,7 +866,7 @@ msgstr ""
 
 #: templates/settings.php:109
 msgid "URLs"
-msgstr ""
+msgstr "URL"
 
 #: templates/settings.php:111
 msgid "Calendar CalDAV syncing addresses"
@@ -873,16 +874,16 @@ msgstr ""
 
 #: templates/settings.php:111
 msgid "more info"
-msgstr ""
+msgstr "ព័ត៌មាន​បន្ថែម"
 
 #: templates/settings.php:113
 msgid "Primary address (Kontact et al)"
-msgstr ""
+msgstr "អាសយដ្ឋាន​ចម្បង"
 
 #: templates/settings.php:115
 msgid "iOS/OS X"
-msgstr ""
+msgstr "iOS/OS X"
 
 #: templates/settings.php:117
 msgid "Read only iCalendar link(s)"
-msgstr ""
+msgstr "អាន​តែ​តំណ iCalendar ប៉ុណ្ណោះ"
