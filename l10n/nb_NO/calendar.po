@@ -10,15 +10,16 @@
 # Hans Nesse <>, 2013
 # hdalgrav <hdalgrav@gmail.com>, 2012
 # owncloud <itssmail@yahoo.no>, 2012
+# vidaren <news@vidartysse.net>, 2014
 # TheLugal <thelugal@gmail.com>, 2014
 # sondre <sondre@nettfrihet.no>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
-"Last-Translator: TheLugal <thelugal@gmail.com>\n"
+"POT-Creation-Date: 2014-02-26 01:47-0500\n"
+"PO-Revision-Date: 2014-02-25 21:50+0000\n"
+"Last-Translator: vidaren <news@vidartysse.net>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/owncloud/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +49,7 @@ msgstr "Feil kalender"
 
 #: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
-msgstr "Du har ikke tilgang til å endre dette eventet"
+msgstr "Du har ikke tilgang til å endre denne hendelsen."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
@@ -415,7 +416,7 @@ msgstr "Du kan ikke legge til private hendelser i en delt kalender."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
-msgstr "Du har ikke tilgang til å slette dette eventet"
+msgstr "Du har ikke tilgang til å slette denne hendelsen."
 
 #: lib/object.php:503
 msgid "Busy"
@@ -758,7 +759,7 @@ msgstr "En kalender med dette navnet finnes allerede. Hvis du velger å fortsett
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr "Fjern alle events fra valgt kalender"
+msgstr "Fjern alle hendelser fra valgt kalender"
 
 #: templates/part.import.php:50
 msgid "Import"

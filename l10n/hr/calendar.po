@@ -5,14 +5,15 @@
 # Translators:
 # Davor Kustec <dkustec@gmail.com>, 2011
 # Domagoj Delimar <transifex.net@domdelimar.com>, 2012
+# djelas <djelas007@gmail.com>, 2014
 # Thomas Silađi <thomas.siladi@net.hr>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-26 01:47-0500\n"
+"PO-Revision-Date: 2014-02-25 20:10+0000\n"
+"Last-Translator: djelas <djelas007@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/owncloud/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +23,11 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr ""
+msgstr "Nisu svi kalendari kompletno spremljeni u privremenu memoriju"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr ""
+msgstr "Čini se da je sve kompletno spremljeno u privremenu memoriju"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
@@ -48,19 +49,19 @@ msgstr ""
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr ""
+msgstr "Ovaj podatak nije sadržavao niti jedan događaj ili su svi događaji već spremljeni u tvoj kalendar."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
-msgstr ""
+msgstr "događaji su spremljeni u tvoj novi kalendar"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
-msgstr ""
+msgstr "Unos podataka nije uspio"
 
 #: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
-msgstr ""
+msgstr "događaji su spremljeni u tvoj kalendar"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -105,19 +106,19 @@ msgstr ""
 
 #: js/calendar.js:862
 msgid "ddd"
-msgstr ""
+msgstr "ddd"
 
 #: js/calendar.js:863
 msgid "ddd M/d"
-msgstr ""
+msgstr "ddd M/d"
 
 #: js/calendar.js:864
 msgid "dddd M/d"
-msgstr ""
+msgstr "dddd M/d"
 
 #: js/calendar.js:867
 msgid "MMMM yyyy"
-msgstr ""
+msgstr "MMMM gggg"
 
 #: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
@@ -125,7 +126,7 @@ msgstr ""
 
 #: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
-msgstr ""
+msgstr "dddd, MMM d, gggg"
 
 #: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
 msgid "Sunday"
@@ -157,31 +158,31 @@ msgstr "subota"
 
 #: js/l10n.php:78
 msgid "Sun."
-msgstr ""
+msgstr "Ned."
 
 #: js/l10n.php:78
 msgid "Mon."
-msgstr ""
+msgstr "Pon."
 
 #: js/l10n.php:78
 msgid "Tue."
-msgstr ""
+msgstr "Uto."
 
 #: js/l10n.php:78
 msgid "Wed."
-msgstr ""
+msgstr "Sri."
 
 #: js/l10n.php:78
 msgid "Thu."
-msgstr ""
+msgstr "Čet."
 
 #: js/l10n.php:78
 msgid "Fri."
-msgstr ""
+msgstr "Pet."
 
 #: js/l10n.php:78
 msgid "Sat."
-msgstr ""
+msgstr "Sub."
 
 #: js/l10n.php:79 lib/object.php:660
 msgid "January"
@@ -233,51 +234,51 @@ msgstr "prosinac"
 
 #: js/l10n.php:80
 msgid "Jan."
-msgstr ""
+msgstr "Siječanj "
 
 #: js/l10n.php:80
 msgid "Feb."
-msgstr ""
+msgstr "Veljača"
 
 #: js/l10n.php:80
 msgid "Mar."
-msgstr ""
+msgstr "Ožujak"
 
 #: js/l10n.php:80
 msgid "Apr."
-msgstr ""
+msgstr "Travanj"
 
 #: js/l10n.php:80
 msgid "May."
-msgstr ""
+msgstr "Svibanj"
 
 #: js/l10n.php:80
 msgid "Jun."
-msgstr ""
+msgstr "Lipanj"
 
 #: js/l10n.php:80
 msgid "Jul."
-msgstr ""
+msgstr "Srpanj"
 
 #: js/l10n.php:80
 msgid "Aug."
-msgstr ""
+msgstr "Kolovoz"
 
 #: js/l10n.php:80
 msgid "Sep."
-msgstr ""
+msgstr "Rujan"
 
 #: js/l10n.php:80
 msgid "Oct."
-msgstr ""
+msgstr "Listopad"
 
 #: js/l10n.php:80
 msgid "Nov."
-msgstr ""
+msgstr "Studeni"
 
 #: js/l10n.php:80
 msgid "Dec."
-msgstr ""
+msgstr "Prosinac"
 
 #: js/l10n.php:83
 msgid "All day"
@@ -477,7 +478,7 @@ msgstr "po tjednu"
 
 #: lib/object.php:620
 msgid "events week of month"
-msgstr ""
+msgstr "tjedni događaj godine"
 
 #: lib/object.php:621
 msgid "first"
@@ -690,11 +691,11 @@ msgstr "Odaberi dane"
 
 #: templates/part.eventform.php:149 templates/part.showevent.php:178
 msgid "and the events day of year."
-msgstr ""
+msgstr "i dnevni događaj godine"
 
 #: templates/part.eventform.php:162 templates/part.showevent.php:191
 msgid "and the events day of month."
-msgstr ""
+msgstr "i dnevni događaj mjeseca"
 
 #: templates/part.eventform.php:170 templates/part.showevent.php:199
 msgid "Select months"
@@ -706,7 +707,7 @@ msgstr "Odaberi tjedne"
 
 #: templates/part.eventform.php:188 templates/part.showevent.php:217
 msgid "and the events week of year."
-msgstr ""
+msgstr "i tjedni događaj godine"
 
 #: templates/part.eventform.php:194 templates/part.showevent.php:223
 msgid "Interval"
@@ -734,7 +735,7 @@ msgstr "Uvozite datoteku kalendara"
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr ""
+msgstr "Molim vas izaberite kalendar"
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
@@ -742,13 +743,13 @@ msgstr "Ime novog kalendara"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr ""
+msgstr "Uzmite slobodan naziv!"
 
 #: templates/part.import.php:45
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr ""
+msgstr "Kalendar sa ovim imenom već postoji. Ako nekako nastavite, ovi kalendari će biti spojeni."
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
@@ -860,7 +861,7 @@ msgstr ""
 
 #: templates/settings.php:100
 msgid "Cache"
-msgstr ""
+msgstr "privremeni spremnik"
 
 #: templates/settings.php:104
 msgid "Clear cache for repeating events"
