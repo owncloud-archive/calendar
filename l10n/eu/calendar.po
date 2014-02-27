@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# asieriko <asieriko@gmail.com>, 2013
+# asieriko <asieriko@gmail.com>, 2013-2014
 # asieriko <asieriko@gmail.com>, 2012
 # asieriko <asieriko@gmail.com>, 2011
 # Debatik mundura!, 2013
@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-27 01:47-0500\n"
+"PO-Revision-Date: 2014-02-26 18:40+0000\n"
+"Last-Translator: asieriko <asieriko@gmail.com>\n"
 "Language-Team: Basque (http://www.transifex.com/projects/p/owncloud/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -407,7 +407,7 @@ msgstr "Egutegi honetan gertaerak gehitzeko baimenik ez daukazu."
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "Ezin duzu partekatutako egutegi batean publikoak ez diren gertaerak gehitu."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."

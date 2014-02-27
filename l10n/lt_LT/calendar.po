@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Dr. ROX <to.dr.rox@gmail.com>, 2011, 2012
-# Liudas Ališauskas <liudas.alisauskas@gmail.com>, 2013
+# Liudas Ališauskas <liudas.alisauskas@gmail.com>, 2013-2014
 # mambuta <vspyshkin@gmail.com>, 2013
 # Min2liz <min2lizz@gmail.com>, 2013
 # fizikiukas <fizikiukas@gmail.com>, 2013
@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-27 01:47-0500\n"
+"PO-Revision-Date: 2014-02-26 12:10+0000\n"
+"Last-Translator: Liudas Ališauskas <liudas.alisauskas@gmail.com>\n"
 "Language-Team: Lithuanian (Lithuania) (http://www.transifex.com/projects/p/owncloud/language/lt_LT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,7 +103,7 @@ msgstr "gali redaguoti"
 
 #: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "gali dalintis"
 
 #: js/calendar.js:862
 msgid "ddd"
@@ -407,7 +407,7 @@ msgstr "Jūs neturite leidimo pridėti įvykių į šį kalendorių."
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "Negalite pridėti ne viešų įvykių į paviešintą kalendorių."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -419,15 +419,15 @@ msgstr "Užimtas"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "Rodyti pilną įvykį"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "Rodyti tik užimtus"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "PAslėpti įvykį"
 
 #: lib/object.php:565
 msgid "Does not repeat"
@@ -535,7 +535,7 @@ msgstr "Kal."
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "Diena"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -603,15 +603,15 @@ msgstr "Atšaukti"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Redaguoti įvykį"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Išsaugoti įvykį"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Ištrinti įvykį"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -643,7 +643,7 @@ msgstr "iš"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "į"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -659,7 +659,7 @@ msgstr "Vieta"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategorijos (atskirtos kableliais)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
@@ -671,7 +671,7 @@ msgstr "Aprašymas"
 
 #: templates/part.eventform.php:73
 msgid "Export event"
-msgstr ""
+msgstr "Eksportuoti įvykį"
 
 #: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
@@ -724,7 +724,7 @@ msgstr "įvykiai"
 
 #: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Matomumas asmenų su kuriais pasidalinta"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -770,11 +770,11 @@ msgstr "Sukurti naują įvykį"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Sukurti įvykį"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Dalintis su vartotoju arba grupe"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -782,7 +782,7 @@ msgstr "Nebesidalinti"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Nepasidalinta su niekuo"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -794,7 +794,7 @@ msgstr "Dalintis per kalendorių"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Nepasidalinta su niekuo per kalendorių"
 
 #: templates/part.showevent.php:1
 msgid "View an event"

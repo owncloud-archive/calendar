@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Egutegi hau ezabatzeko baimenik ez daukazu.",
 "You do not have the permissions to add to this calendar." => "Egutegi honetan gehitzeko baimenik ez daukazu.",
 "You do not have the permissions to add events to this calendar." => "Egutegi honetan gertaerak gehitzeko baimenik ez daukazu.",
+"You cannot add non-public events to a shared calendar." => "Ezin duzu partekatutako egutegi batean publikoak ez diren gertaerak gehitu.",
 "You do not have the permissions to delete this event." => "Gertaera hau ezabatzeko baimenik ez daukazu.",
 "Busy" => "Lanpetuta",
 "Show full event" => "Bistaratu gertaera osoa",

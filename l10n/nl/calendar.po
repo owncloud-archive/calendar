@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
+"POT-Creation-Date: 2014-02-27 01:47-0500\n"
+"PO-Revision-Date: 2014-02-26 21:30+0000\n"
 "Last-Translator: André Koot <meneer@tken.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -343,7 +343,7 @@ msgstr "Klanten"
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr "Leverancier"
+msgstr "Verantwoordelijke"
 
 #: lib/app.php:126
 msgid "Holidays"
@@ -367,7 +367,7 @@ msgstr "Vergadering"
 
 #: lib/app.php:131
 msgid "Other"
-msgstr "Ander"
+msgstr "Overig"
 
 #: lib/app.php:132
 msgid "Personal"
