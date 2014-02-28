@@ -9,10 +9,11 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 * @var array
 	 */
 	public $propertyMap = array(
-		'{DAV:}displayname'						  => 'displayname',
-		'{urn:ietf:params:xml:ns:caldav}calendar-timezone'	=> 'timezone',
-		'{http://apple.com/ns/ical/}calendar-order'  => 'calendarorder',
-		'{http://apple.com/ns/ical/}calendar-color'  => 'calendarcolor',
+		'{DAV:}displayname' => 'displayname',
+		'{urn:ietf:params:xml:ns:caldav}calendar-timezone' => 'timezone',
+		'{urn:ietf:params:xml:ns:caldav}calendar-description' => 'description',
+		'{http://apple.com/ns/ical/}calendar-order' => 'calendarorder',
+		'{http://apple.com/ns/ical/}calendar-color' => 'calendarcolor',
 	);
 
 	/**
