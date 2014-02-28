@@ -10,15 +10,16 @@
 # pellaeon <nfsmwlin@gmail.com>, 2013
 # sofiasu <sofia168@livemail.tw>, 2012
 # sy6614 <sy6614@yahoo.com.hk>, 2012
+# tifa_choi <tifa_choi@tungtex.com>, 2014
 # mktsai <mktsai@sweea.com>, 2013
 # ywang <ywang1007@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-28 01:46-0500\n"
+"PO-Revision-Date: 2014-02-27 09:31+0000\n"
+"Last-Translator: tifa_choi <tifa_choi@tungtex.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/owncloud/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -107,7 +108,7 @@ msgstr "可編輯"
 
 #: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "可分享"
 
 #: js/calendar.js:862
 msgid "ddd"
@@ -411,7 +412,7 @@ msgstr "您沒有權限在這個日曆建立活動。"
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "您無法在已分享的日暦中新增非公開事件"
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -423,15 +424,15 @@ msgstr "忙碌"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "顯示完整事件"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "只顯示忙碌事件"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "隱藏事件"
 
 #: lib/object.php:565
 msgid "Does not repeat"
@@ -539,7 +540,7 @@ msgstr "行事曆"
 
 #: templates/calendar.php:6
 msgid "Day"
-msgstr ""
+msgstr "日"
 
 #: templates/calendar.php:7
 msgid "Week"
@@ -607,15 +608,15 @@ msgstr "取消"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "編輯事件"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "儲存事件"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "刪除事件"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -647,7 +648,7 @@ msgstr "從"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "至"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -663,7 +664,7 @@ msgstr "位置"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "分類 (用逗號分隔)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
@@ -675,7 +676,7 @@ msgstr "描述"
 
 #: templates/part.eventform.php:73
 msgid "Export event"
-msgstr ""
+msgstr "匯出事件"
 
 #: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
@@ -774,11 +775,11 @@ msgstr "建立新活動"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "建立事件"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "與用戶或群組分享"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -786,7 +787,7 @@ msgstr "取消共享"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "未分享給任何人"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -798,7 +799,7 @@ msgstr "透過日曆分享"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "未透過日暦分享給任何人"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
