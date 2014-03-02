@@ -16,6 +16,7 @@
 		<input type="button" value="&nbsp;&lt;&nbsp;" id="datecontrol_left"/>
 		<input type="button" value="" id="datecontrol_date"/>
 		<input type="button" value="<?php p($l->t('Today'));?>" id="datecontrol_today"/>
+		<input type="button" value="<?php p($l->t('Refresh'));?>" id="onerefreshview_radio"/>
 		<input type="button" value="&nbsp;&gt;&nbsp;" id="datecontrol_right"/>
 	</form>
 </div>

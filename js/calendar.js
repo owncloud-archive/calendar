@@ -947,6 +947,9 @@ $(document).ready(function(){
 	$('#today_input').click(function(){
 		$('#fullcalendar').fullCalendar('today');
 	});
+	$('#onerefreshview_radio').click(function(){
+		$('#fullcalendar').fullCalendar('refetchEvents');
+	});
 	$('#datecontrol_left').click(function(){
 		$('#fullcalendar').fullCalendar('prev');
 	});
