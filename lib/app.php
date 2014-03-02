@@ -407,7 +407,19 @@ class OC_Calendar_App{
 		$events = array();
 		if($calendarid == 'shared_events') {
 			$singleevents = OCP\Share::getItemsSharedWith('event', OC_Share_Backend_Event::FORMAT_EVENT);
+			$calendars = OC_Calendar_Calendar::allCalendars(OCP\USER::getUser());
 			foreach($singleevents as $singleevent) {
+				// Skip this single event if the whole calendar is already shared with the user.
+				$calendarShared = false;
+				foreach ($calendars as $calendar) {
+					if ($singleevent['calendarid'] === $calendar['id']) {
+						$calendarShared = true;
+						break;
+					}
+				}
+				if ($calendarShared === true) {
+					continue;
+				}
 				$singleevent['summary'] .= ' (' . self::$l10n->t('by') .  ' ' . OC_Calendar_Object::getowner($singleevent['id']) . ')';
 				$events[] =  $singleevent;
 			}

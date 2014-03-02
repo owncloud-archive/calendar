@@ -19,6 +19,14 @@
 	}
 	?>
 	<tr>
+		<td width="20px">
+			<input type="checkbox" id="active_shared_events" data-id="shared_events" checked="checked">
+		</td>
+		<td id="<?php p(OCP\USER::getUser()) ?>_shared_events">
+			<label for="active_shared_events"><?php p($l->t('Shared events')) ?></label>
+		</td>
+	</tr>
+	<tr>
 		<td colspan="6">
 			<input type="button" value="<?php p($l->t('New Calendar')) ?>" id="newCalendar">
 		</td>
