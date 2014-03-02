@@ -83,6 +83,7 @@ Calendar={
 		}
 	},
 	UI:{
+		lastView: null,
 		loading: function(isLoading){
 			if (isLoading){
 				$('#loading').show();
@@ -849,6 +850,8 @@ function ListView(element, calendar) {
 	}
 }
 $(document).ready(function(){
+	Calendar.UI.lastView = defaultView
+
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
@@ -937,18 +940,27 @@ $(document).ready(function(){
 
 	$('#oneweekview_radio').click(function(){
 		$('#fullcalendar').fullCalendar('changeView', 'agendaWeek');
+		if (Calendar.UI.lastView == 'agendaWeek') {
+			$('#fullcalendar').fullCalendar('refetchEvents');
+		}
+		Calendar.UI.lastView = 'agendaWeek';
 	});
 	$('#onemonthview_radio').click(function(){
 		$('#fullcalendar').fullCalendar('changeView', 'month');
+		if (Calendar.UI.lastView == 'month') {
+			$('#fullcalendar').fullCalendar('refetchEvents');
+		}
+		Calendar.UI.lastView = 'month';
 	});
 	$('#onedayview_radio').click(function(){
 		$('#fullcalendar').fullCalendar('changeView', 'agendaDay');
+		if (Calendar.UI.lastView == 'agendaDay') {
+			$('#fullcalendar').fullCalendar('refetchEvents');
+		}
+		Calendar.UI.lastView = 'agendaDay';
 	});
 	$('#today_input').click(function(){
 		$('#fullcalendar').fullCalendar('today');
-	});
-	$('#onerefreshview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('refetchEvents');
 	});
 	$('#datecontrol_left').click(function(){
 		$('#fullcalendar').fullCalendar('prev');
