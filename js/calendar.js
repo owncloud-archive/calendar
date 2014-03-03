@@ -455,6 +455,14 @@ Calendar={
 					}
 				  });
 			},
+			sharedEventsActivation:function(checkbox)
+			{
+				if (checkbox.checked){
+					$('#fullcalendar').fullCalendar('addEventSource', sharedEventSource);
+				}else{
+					$('#fullcalendar').fullCalendar('removeEventSource', sharedEventSource.url);
+				}
+			},
 			newCalendar:function(object){
 				var div = $(document.createElement('div'))
 					.load(OC.filePath('calendar', 'ajax/calendar', 'new.form.php'),
@@ -997,6 +1005,12 @@ $(document).ready(function(){
 	Calendar.UI.Share.init();
 	Calendar.UI.Drop.init();
 	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
+	// Save the eventSource for shared events.
+	for (var i in eventSources) {
+		if (eventSources[i].url.substr(-13) === 'shared_events') {
+			sharedEventSource = eventSources[i];
+		}
+	}
 });
 
 var wrongKey = function(event) {
