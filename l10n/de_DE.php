@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Sie besitzen nicht die Berechtigung, diesen Kalender zu löschen.",
 "You do not have the permissions to add to this calendar." => "Sie besitzen nicht die Berechtigung, diesem Kalender etwas hinzuzufügen.",
 "You do not have the permissions to add events to this calendar." => "Sie besitzen nicht die Berechtigung, diesem Kalender einen Termin hinzuzufügen.",
+"You cannot add non-public events to a shared calendar." => "Sie können einem freigegeben Kalender nicht zu einem nicht-öffentlichen Kalender hinzufügen.",
 "You do not have the permissions to delete this event." => "Sie besitzen nicht die Berechtigung, diesen Termin zu löschen.",
 "Busy" => "Nicht verfügbar",
 "Show full event" => "Vollständigen Termin anzeigen",

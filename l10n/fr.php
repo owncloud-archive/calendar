@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Vous n'avez pas les droits suffisants pour supprimer ce calendrier.",
 "You do not have the permissions to add to this calendar." => "Vous n'avez pas les droits suffisants pour ajouter du contenu à ce calendrier.",
 "You do not have the permissions to add events to this calendar." => "Vous n'avez pas les droits suffisants pour ajouter des événements à ce calendrier.",
+"You cannot add non-public events to a shared calendar." => "Vous ne pouvez pas ajouter des évènements non publics à un calendrier partagé.",
 "You do not have the permissions to delete this event." => "Vous n'avez pas les droits suffisants pour supprimer cet événement.",
 "Busy" => "Occupé",
 "Show full event" => "Montrer l'événement complet",

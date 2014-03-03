@@ -10,14 +10,16 @@
 # Hans Nesse <>, 2013
 # hdalgrav <hdalgrav@gmail.com>, 2012
 # owncloud <itssmail@yahoo.no>, 2012
+# vidaren <news@vidartysse.net>, 2014
+# TheLugal <thelugal@gmail.com>, 2014
 # sondre <sondre@nettfrihet.no>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-04 01:46-0500\n"
-"PO-Revision-Date: 2014-02-04 06:46+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-26 01:47-0500\n"
+"PO-Revision-Date: 2014-02-25 21:50+0000\n"
+"Last-Translator: vidaren <news@vidartysse.net>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/owncloud/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,7 +49,7 @@ msgstr "Feil kalender"
 
 #: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
-msgstr "Du har ikke tilgang til å endre dette eventet"
+msgstr "Du har ikke tilgang til å endre denne hendelsen."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
@@ -88,47 +90,47 @@ msgstr "Kalender"
 msgid "Deletion failed"
 msgstr "Sletting feilet"
 
-#: js/calendar.js:266
+#: js/calendar.js:270
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:268
+#: js/calendar.js:272
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:584
+#: js/calendar.js:588
 msgid "group"
 msgstr "gruppe"
 
-#: js/calendar.js:586 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:590 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "kan endre"
 
-#: js/calendar.js:587 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "kan dele"
 
-#: js/calendar.js:858
+#: js/calendar.js:862
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:859
+#: js/calendar.js:863
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:860
+#: js/calendar.js:864
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:863
+#: js/calendar.js:867
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:865
+#: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:867
+#: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -409,12 +411,12 @@ msgid "You do not have the permissions to add events to this calendar."
 msgstr "Du har ikke rettigheter til å legge til hendelser i denne kalender."
 
 #: lib/object.php:175
-msgid "You do cannot add non-public events to a shared calendar."
-msgstr ""
+msgid "You cannot add non-public events to a shared calendar."
+msgstr "Du kan ikke legge til private hendelser i en delt kalender."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
-msgstr "Du har ikke tilgang til å slette dette eventet"
+msgstr "Du har ikke tilgang til å slette denne hendelsen."
 
 #: lib/object.php:503
 msgid "Busy"
@@ -422,15 +424,15 @@ msgstr "Opptatt"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "Vis hele hendelsen"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "Vis kun opptatt"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "Skjul hendelse"
 
 #: lib/object.php:565
 msgid "Does not repeat"
@@ -524,9 +526,9 @@ msgstr "etter ukenummer/-numre"
 msgid "by day and month"
 msgstr "etter dag og måned"
 
-#: lib/sabre/backend.php:64
+#: lib/sabre/backend.php:73
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Kontakters bursdager"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -606,15 +608,15 @@ msgstr "Avbryt"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Rediger hendelse"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Lagre hendelse"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Slett hendelse"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -640,94 +642,94 @@ msgstr "Del"
 msgid "Title of the Event"
 msgstr "Hendelsestittel"
 
-#: templates/part.eventform.php:31
+#: templates/part.eventform.php:41
 msgid "from"
 msgstr "fra"
 
-#: templates/part.eventform.php:36
+#: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "til"
 
-#: templates/part.eventform.php:44 templates/part.showevent.php:66
+#: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
 msgstr "Hele dagen-hendelse"
 
-#: templates/part.eventform.php:47 templates/part.showevent.php:86
+#: templates/part.eventform.php:57 templates/part.showevent.php:86
 msgid "Advanced options"
 msgstr "Avanserte innstillinger"
 
-#: templates/part.eventform.php:51 templates/part.showevent.php:91
+#: templates/part.eventform.php:61 templates/part.showevent.php:91
 msgid "Location"
 msgstr "Sted"
 
-#: templates/part.eventform.php:56
+#: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategorier (separer med komma)"
 
-#: templates/part.eventform.php:58 templates/part.eventform.php:59
+#: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
 msgstr "Rediger kategorier"
 
-#: templates/part.eventform.php:61 templates/part.showevent.php:99
+#: templates/part.eventform.php:71 templates/part.showevent.php:99
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: templates/part.eventform.php:63
+#: templates/part.eventform.php:73
 msgid "Export event"
-msgstr ""
+msgstr "Eksporter hendelse"
 
-#: templates/part.eventform.php:70 templates/part.showevent.php:109
+#: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "Gjenta"
 
-#: templates/part.eventform.php:77 templates/part.showevent.php:116
+#: templates/part.eventform.php:87 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "Avansert"
 
-#: templates/part.eventform.php:121 templates/part.showevent.php:160
+#: templates/part.eventform.php:131 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "Velg ukedager"
 
-#: templates/part.eventform.php:134 templates/part.eventform.php:147
+#: templates/part.eventform.php:144 templates/part.eventform.php:157
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "Velg dager"
 
-#: templates/part.eventform.php:139 templates/part.showevent.php:178
+#: templates/part.eventform.php:149 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "og hendelsenes dag i året."
 
-#: templates/part.eventform.php:152 templates/part.showevent.php:191
+#: templates/part.eventform.php:162 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "og hendelsenes dag i måneden."
 
-#: templates/part.eventform.php:160 templates/part.showevent.php:199
+#: templates/part.eventform.php:170 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "Velg måneder"
 
-#: templates/part.eventform.php:173 templates/part.showevent.php:212
+#: templates/part.eventform.php:183 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "Velg uker"
 
-#: templates/part.eventform.php:178 templates/part.showevent.php:217
+#: templates/part.eventform.php:188 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "og hendelsenes uke i året."
 
-#: templates/part.eventform.php:184 templates/part.showevent.php:223
+#: templates/part.eventform.php:194 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "Intervall"
 
-#: templates/part.eventform.php:190 templates/part.showevent.php:229
+#: templates/part.eventform.php:200 templates/part.showevent.php:229
 msgid "End"
 msgstr "Slutt"
 
-#: templates/part.eventform.php:203 templates/part.showevent.php:242
+#: templates/part.eventform.php:213 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "forekomster"
 
-#: templates/part.eventform.php:222
+#: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Synlighet til andre delt med"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -757,7 +759,7 @@ msgstr "En kalender med dette navnet finnes allerede. Hvis du velger å fortsett
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr "Fjern alle events fra valgt kalender"
+msgstr "Fjern alle hendelser fra valgt kalender"
 
 #: templates/part.import.php:50
 msgid "Import"
@@ -773,11 +775,11 @@ msgstr "Opprett en ny hendelse"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Lag hendelse"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Del med bruker eller gruppe"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -785,11 +787,11 @@ msgstr "Avslutt deling"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Ikke delt med noen"
 
 #: templates/part.share.php:63
 msgid "Send Email"
-msgstr ""
+msgstr "Send e-post"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
@@ -797,7 +799,7 @@ msgstr "Delt via kalender"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Ikke delt med noen via kalender"
 
 #: templates/part.showevent.php:1
 msgid "View an event"

@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "No teniu permisos per eliminar aquest calendari.",
 "You do not have the permissions to add to this calendar." => "No teniu permisos per afegir en aquest calendari.",
 "You do not have the permissions to add events to this calendar." => "No teniu permisos per afegir esdeveniments en aquest calendari.",
+"You cannot add non-public events to a shared calendar." => "No podeu afegir esdeveniments no públics en un calendari compartit",
 "You do not have the permissions to delete this event." => "No teniu permisos per eliminar aquest esdeveniment.",
 "Busy" => "Ocupat",
 "Show full event" => "Mostra l'esdeveniment sencer",

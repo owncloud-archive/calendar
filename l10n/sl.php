@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Ni ustreznih dovoljenj za izbris tega koledarja.",
 "You do not have the permissions to add to this calendar." => "Ni ustreznih dovoljenj za dodajanje tega koledarja.",
 "You do not have the permissions to add events to this calendar." => "Ni ustreznih dovoljenj za dodajanje dogodkov v ta koledar.",
+"You cannot add non-public events to a shared calendar." => "V koledar v souporabi ni mogoče dodati zasebnih dogodkov.",
 "You do not have the permissions to delete this event." => "Ni ustreznih dovoljenj za izbris tega dogodka.",
 "Busy" => "Zasedeno",
 "Show full event" => "Pokaži poln dogodek",

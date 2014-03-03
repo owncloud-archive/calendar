@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Du har ikke rettigheder til at slette denne kalender.",
 "You do not have the permissions to add to this calendar." => "Du har ikke rettigheder til at tilføje til denne kalender.",
 "You do not have the permissions to add events to this calendar." => "Du har ikke rettigheder til at tilføje begivenheder til denne kalender.",
+"You cannot add non-public events to a shared calendar." => "Du kan ikke tilføje ikke-offentlige begivenheder til en delt kalender.",
 "You do not have the permissions to delete this event." => "Du har ikke rettigheder til at slette denne begivenhed.",
 "Busy" => "Optaget",
 "Show full event" => "Vis den fulde begivenhed",

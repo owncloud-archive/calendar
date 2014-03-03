@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Nemáte práva pro smazání tohoto kalendáře.",
 "You do not have the permissions to add to this calendar." => "Nemáte práva pro přidání do tohoto kalendáře.",
 "You do not have the permissions to add events to this calendar." => "Nemáte práva pro přidání událostí do tohoto kalendáře.",
+"You cannot add non-public events to a shared calendar." => "Do sdíleného adresáře není možné vložit neveřejné události.",
 "You do not have the permissions to delete this event." => "Nemáte práva smazat tuto událost.",
 "Busy" => "Zaneprázdněná",
 "Show full event" => "Zobraz celou událost",

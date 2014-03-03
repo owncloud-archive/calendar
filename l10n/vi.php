@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "Bạn không có quyền xóa lịch này",
 "You do not have the permissions to add to this calendar." => "Bạn không có quyền thêm lịch này",
 "You do not have the permissions to add events to this calendar." => "Bạn không có quyền thêm các sự kiện vào lịch này.",
+"You cannot add non-public events to a shared calendar." => "Bạn không thể thêm sự kiện không phải công cộng để chia sẻ lịch.",
 "You do not have the permissions to delete this event." => "Bạn không có quyền xóa sự kiện này.",
 "Busy" => "Bận",
 "Show full event" => "Hiển thị đầy đủ sự kiện",

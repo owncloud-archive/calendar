@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# André Koot <meneer@tken.net>, 2012-2013
+# André Koot <meneer@tken.net>, 2012-2014
 # isama <bart.formosus@gmail.com>, 2011-2012
 # bartv <transifex@thisnet.nl>, 2011
 # diederikdehaas <didi.debian@cknow.org>, 2012
@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-04 01:46-0500\n"
-"PO-Revision-Date: 2014-02-04 06:46+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-02-27 01:47-0500\n"
+"PO-Revision-Date: 2014-02-26 21:30+0000\n"
+"Last-Translator: André Koot <meneer@tken.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -89,47 +89,47 @@ msgstr "Agenda"
 msgid "Deletion failed"
 msgstr "Verwijderen mislukt"
 
-#: js/calendar.js:266
+#: js/calendar.js:270
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:268
+#: js/calendar.js:272
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:584
+#: js/calendar.js:588
 msgid "group"
 msgstr "groep"
 
-#: js/calendar.js:586 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:590 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "kan wijzigen"
 
-#: js/calendar.js:587 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "kan delen"
 
-#: js/calendar.js:858
+#: js/calendar.js:862
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:859
+#: js/calendar.js:863
 msgid "ddd M/d"
 msgstr "ddd d.M"
 
-#: js/calendar.js:860
+#: js/calendar.js:864
 msgid "dddd M/d"
 msgstr "dddd d.M"
 
-#: js/calendar.js:863
+#: js/calendar.js:867
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:865
+#: js/calendar.js:869
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ jjjj]{ '–'[ MMM] d jjjj}"
 
-#: js/calendar.js:867
+#: js/calendar.js:871
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, d. MMM yyyy"
 
@@ -343,7 +343,7 @@ msgstr "Klanten"
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr "Leverancier"
+msgstr "Verantwoordelijke"
 
 #: lib/app.php:126
 msgid "Holidays"
@@ -367,7 +367,7 @@ msgstr "Vergadering"
 
 #: lib/app.php:131
 msgid "Other"
-msgstr "Ander"
+msgstr "Overig"
 
 #: lib/app.php:132
 msgid "Personal"
@@ -410,8 +410,8 @@ msgid "You do not have the permissions to add events to this calendar."
 msgstr "U heeft geen permissie om gebeurtenissen aan deze agenda toe te voegen."
 
 #: lib/object.php:175
-msgid "You do cannot add non-public events to a shared calendar."
-msgstr ""
+msgid "You cannot add non-public events to a shared calendar."
+msgstr "U kunt geen besloten afspraken in een gedeelde agenda opnemen."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -525,7 +525,7 @@ msgstr "volgens weeknummer(s)"
 msgid "by day and month"
 msgstr "per dag en maand"
 
-#: lib/sabre/backend.php:64
+#: lib/sabre/backend.php:73
 msgid "Contact birthdays"
 msgstr "Verjaardagen contactpersonen"
 
@@ -641,92 +641,92 @@ msgstr "Delen"
 msgid "Title of the Event"
 msgstr "Titel van de afspraak"
 
-#: templates/part.eventform.php:31
+#: templates/part.eventform.php:41
 msgid "from"
 msgstr "van"
 
-#: templates/part.eventform.php:36
+#: templates/part.eventform.php:46
 msgid "to"
 msgstr "naar"
 
-#: templates/part.eventform.php:44 templates/part.showevent.php:66
+#: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
 msgstr "Hele dag"
 
-#: templates/part.eventform.php:47 templates/part.showevent.php:86
+#: templates/part.eventform.php:57 templates/part.showevent.php:86
 msgid "Advanced options"
 msgstr "Geavanceerde opties"
 
-#: templates/part.eventform.php:51 templates/part.showevent.php:91
+#: templates/part.eventform.php:61 templates/part.showevent.php:91
 msgid "Location"
 msgstr "Locatie"
 
-#: templates/part.eventform.php:56
+#: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
 msgstr "Categorieën (commagescheiden)"
 
-#: templates/part.eventform.php:58 templates/part.eventform.php:59
+#: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
 msgstr "Wijzig categorieën"
 
-#: templates/part.eventform.php:61 templates/part.showevent.php:99
+#: templates/part.eventform.php:71 templates/part.showevent.php:99
 msgid "Description"
 msgstr "Beschrijving"
 
-#: templates/part.eventform.php:63
+#: templates/part.eventform.php:73
 msgid "Export event"
 msgstr "Exporteer gebeurtenis"
 
-#: templates/part.eventform.php:70 templates/part.showevent.php:109
+#: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "Herhaling"
 
-#: templates/part.eventform.php:77 templates/part.showevent.php:116
+#: templates/part.eventform.php:87 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: templates/part.eventform.php:121 templates/part.showevent.php:160
+#: templates/part.eventform.php:131 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "Selecteer weekdagen"
 
-#: templates/part.eventform.php:134 templates/part.eventform.php:147
+#: templates/part.eventform.php:144 templates/part.eventform.php:157
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "Selecteer dagen"
 
-#: templates/part.eventform.php:139 templates/part.showevent.php:178
+#: templates/part.eventform.php:149 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "en de gebeurtenissen dag van het jaar"
 
-#: templates/part.eventform.php:152 templates/part.showevent.php:191
+#: templates/part.eventform.php:162 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "en de gebeurtenissen dag van de maand"
 
-#: templates/part.eventform.php:160 templates/part.showevent.php:199
+#: templates/part.eventform.php:170 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "Selecteer maanden"
 
-#: templates/part.eventform.php:173 templates/part.showevent.php:212
+#: templates/part.eventform.php:183 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "Selecteer weken"
 
-#: templates/part.eventform.php:178 templates/part.showevent.php:217
+#: templates/part.eventform.php:188 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "en de gebeurtenissen week van het jaar"
 
-#: templates/part.eventform.php:184 templates/part.showevent.php:223
+#: templates/part.eventform.php:194 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "Interval"
 
-#: templates/part.eventform.php:190 templates/part.showevent.php:229
+#: templates/part.eventform.php:200 templates/part.showevent.php:229
 msgid "End"
 msgstr "Einde"
 
-#: templates/part.eventform.php:203 templates/part.showevent.php:242
+#: templates/part.eventform.php:213 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "gebeurtenissen"
 
-#: templates/part.eventform.php:222
+#: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
 msgstr "Zichtbaar voor alle personen waarmee wordt gedeeld"
 
