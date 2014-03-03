@@ -17,10 +17,6 @@
 				<input type="button" value="<?php p($l->t('Today'));?>" id="datecontrol_today"/>
 				<img id="loading" src="<?php print_unescaped(OCP\Util::imagePath('calendar', 'loading.gif')); ?>" />
 			</form>
-			<!--
-			<form id="choosecalendar">
-				<button class="settings generalsettings" title="<?php p($l->t('Settings')); ?>"><img class="svg" src="<?php print_unescaped(OCP\Util::imagePath('core', 'actions/settings.svg')); ?>" alt="<?php p($l->t('Settings')); ?>" /></button>
-			</form>-->
 		</li>
 		<li>
 			<a id="newCalendar"><?php p($l->t('New Calendar')) ?></a>
@@ -43,7 +39,10 @@
 				print_unescaped("</li>");
 			}
 		?>
-		<p style="width: 100%;"><input style="display:none;width: 78%;float: left;" type="text" id="caldav_url" title="<?php p($l->t("CalDav Link")); ?>"><img id="caldav_url_close" style="float:right;height: 16px;padding:7px;margin-top:3px;cursor:pointer;vertical-align: middle;display: none;" src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')) ?>" alt="close"/></p>
+		<li>
+			<input style="display:none;width: 78%;float: left;" type="text" id="caldav_url" title="<?php p($l->t("CalDav Link")); ?>">
+			<img id="caldav_url_close" style="float:right;height: 16px;padding:7px;margin-top:3px;cursor:pointer;vertical-align: middle;display: none;" src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')) ?>" alt="close"/>
+		</li>
 	</ul>
 	
 	<!-- Start of settings -->
@@ -117,7 +116,7 @@
 						</tr>
 						<tr class="advancedsettings">
 							<td>
-								<label for="" class="bold"><?php p($l->t('Cache'));?></label>
+								<label class="bold"><?php p($l->t('Cache'));?></label>
 							</td>
 						</tr>
 						<tr>

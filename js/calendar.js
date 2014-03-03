@@ -462,6 +462,16 @@ Calendar={
 							Calendar.UI.Calendar.colorPicker(this);
 							$('#displayname_new').focus();
 						});
+				
+				var bodyListener = function(e) {
+					if($('#newcalendar_dialog').find($(e.target)).length === 0) {
+						$('#newcalendar_dialog').parent().remove();
+						$("#newCalendar").css('display', '');
+						$('body').unbind('click', bodyListener);
+					}
+				};
+				$('body').bind('click', bodyListener);
+				
 				$('#newCalendar').after(div);
 				$('#newCalendar').css('display', 'none');
 			},
