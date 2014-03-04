@@ -8,14 +8,13 @@
 		</li>
 		<li>
 			<form id="datecontrol">
-				<div id="datecontrol_date"></div>
+				<div id="datecontrol_date"  style="display:none"></div>
 			</form>
 		</li>
 		<li>
 			<form id="view">
 				<input type="button" value="<?php p($l->t('Day'));?>" id="onedayview_radio"/><input type="button" value="<?php p($l->t('Week'));?>" id="oneweekview_radio"/><input type="button" value="<?php p($l->t('Month'));?>" id="onemonthview_radio"/>&nbsp;&nbsp;
 				<input type="button" value="<?php p($l->t('Today'));?>" id="datecontrol_today"/>
-				<img id="loading" src="<?php print_unescaped(OCP\Util::imagePath('calendar', 'loading.gif')); ?>" />
 			</form>
 		</li>
 		<li>
@@ -152,6 +151,6 @@
 			</div>
 		<!-- End of settings -->
 </div>
-<div id="fullcalendar"></div>
+<div id="fullcalendar"><img id="loading" src="<?php print_unescaped(OCP\Util::imagePath('calendar', 'loading.gif')); ?>" /></div>
 <div id="dialog_holder"></div>
 <div id="appsettings" class="popup topright hidden"></div>
