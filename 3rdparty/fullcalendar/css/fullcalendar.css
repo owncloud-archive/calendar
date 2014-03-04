@@ -263,11 +263,6 @@ a.fc-event {
 	text-decoration: none;
 	}
 	
-a.fc-event,
-.fc-event-draggable {
-	cursor: pointer;
-	}
-	
 .fc-rtl .fc-event {
 	text-align: right;
 	}
@@ -281,6 +276,12 @@ a.fc-event,
 .fc-event-time,
 .fc-event-title {
 	padding: 0 1px;
+	cursor: pointer;
+	}
+
+.fc-event-time:hover,
+.fc-event-title:hover {
+	text-decoration: underline;
 	}
 	
 .fc .ui-resizable-handle {
