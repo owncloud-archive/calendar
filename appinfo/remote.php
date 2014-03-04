@@ -14,6 +14,9 @@ if(substr(OCP\Util::getRequestUri(),0,strlen(OC_App::getAppWebPath('calendar').'
 // only need authentication apps
 $RUNTIME_APPTYPES=array('authentication');
 OC_App::loadApps($RUNTIME_APPTYPES);
+if(\OCP\App::isEnabled('contacts')) {
+	\OCP\Share::registerBackend('addressbook', 'OCA\Contacts\Share\Addressbook', 'contact');
+}
 
 // Backends
 $authBackend = new OC_Connector_Sabre_Auth();
