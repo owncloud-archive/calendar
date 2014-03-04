@@ -457,7 +457,7 @@ button.category{margin:0 3px;}
 
 #newcalendar_dialog input[type=text], #editcalendar_dialog input[type=text] {
 	height: 18px;
-	width: 172px;
+	width: 191px;
 	float: left;
 	margin: 0;
 	margin-top: 6px;
@@ -471,6 +471,7 @@ button.category{margin:0 3px;}
 }
 
 #newcalendar_dialog #editCalendar-submit, #editcalendar_dialog #editCalendar-submit {
+	width: 32px;
 	float: left;
 	margin-bottom: 6px;
 	border-top-left-radius: 0;

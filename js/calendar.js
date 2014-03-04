@@ -487,6 +487,16 @@ Calendar={
 				var li = $(document.createElement('li'))
 					.load(OC.filePath('calendar', 'ajax/calendar', 'edit.form.php'), {calendarid: calendarid},
 						function(){Calendar.UI.Calendar.colorPicker(this)});
+				
+				var bodyListener = function(e) {
+					if($('#editcalendar_dialog').find($(e.target)).length === 0) {
+						$(object).closest('li').before(li).show();
+						$('#editcalendar_dialog').parent().remove();
+						$('body').unbind('click', bodyListener);
+					}
+				};
+				$('body').bind('click', bodyListener);
+				
 				$(object).closest('li').after(li).hide();
 			},
 			deleteCalendar:function(calid){
@@ -534,7 +544,6 @@ Calendar={
 							if (calendarid == 'new'){
 								$('#newcalendar_dialog').parent().remove();
 								$("#newCalendar").css('display', '');
-								alert(JSON.stringify(data));
 								var li = $(document.createElement('li')).append(data.page);
 								$("#navigation-list").append(li);
 							}
