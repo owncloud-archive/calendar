@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Daisuke Deguchi <ddeguchi@nagoya-u.jp>, 2012
-# Daisuke Deguchi <ddeguchi@nagoya-u.jp>, 2012-2013
+# Daisuke Deguchi <ddeguchi@nagoya-u.jp>, 2012-2014
 # iLikeIT <dj_dark_junglist@yahoo.com>, 2013
 # kuromabo <md81bird@hitaki.net>, 2014
 # tt yn <tetuyano+transi@gmail.com>, 2012
@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
-"Last-Translator: kuromabo <md81bird@hitaki.net>\n"
+"POT-Creation-Date: 2014-03-05 01:47-0500\n"
+"PO-Revision-Date: 2014-03-05 06:47+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/owncloud/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -93,47 +93,47 @@ msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:588
+#: js/calendar.js:596
 msgid "group"
 msgstr "グループ"
 
-#: js/calendar.js:590 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "編集を許可"
 
-#: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "共有可"
 
-#: js/calendar.js:862
+#: js/calendar.js:870
 msgid "ddd"
 msgstr "dddd"
 
-#: js/calendar.js:863
+#: js/calendar.js:871
 msgid "ddd M/d"
 msgstr "M月d日 （dddd）"
 
-#: js/calendar.js:864
+#: js/calendar.js:872
 msgid "dddd M/d"
 msgstr "M月d日 （dddd）"
 
-#: js/calendar.js:867
+#: js/calendar.js:875
 msgid "MMMM yyyy"
 msgstr "yyyy年M月"
 
-#: js/calendar.js:869
+#: js/calendar.js:877
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "yyyy年MMMMd日{ '～' yyyy年MMMMd日}"
 
-#: js/calendar.js:871
+#: js/calendar.js:879
 msgid "dddd, MMM d, yyyy"
 msgstr "yyyy年M月d日 （dddd）"
 
-#: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
+#: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
 msgid "Sunday"
 msgstr "日"
 
-#: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
+#: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
 msgid "Monday"
 msgstr "月"
 
@@ -153,7 +153,7 @@ msgstr "木"
 msgid "Friday"
 msgstr "金"
 
-#: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
+#: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
 msgid "Saturday"
 msgstr "土"
 
@@ -285,7 +285,7 @@ msgstr "12月"
 msgid "All day"
 msgstr "終日"
 
-#: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
+#: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
 msgid "New Calendar"
 msgstr "新しくカレンダーを作成"
 
@@ -381,23 +381,23 @@ msgstr "質問事項"
 msgid "Work"
 msgstr "週の始まり"
 
-#: lib/app.php:411
+#: lib/app.php:423
 msgid "by"
 msgstr "による"
 
-#: lib/app.php:474
+#: lib/app.php:486
 msgid "unnamed"
 msgstr "無名"
 
-#: lib/calendar.php:178 lib/calendar.php:211
+#: lib/calendar.php:189 lib/calendar.php:222
 msgid "You do not have the permissions to update this calendar."
 msgstr "このカレンダーを更新する権限がありません。"
 
-#: lib/calendar.php:246
+#: lib/calendar.php:257
 msgid "You do not have the permissions to delete this calendar."
 msgstr "このカレンダーを削除する権限がありません。"
 
-#: lib/calendar.php:280
+#: lib/calendar.php:291
 msgid "You do not have the permissions to add to this calendar."
 msgstr "このカレンダーに追加する権限がありません。"
 
@@ -407,7 +407,7 @@ msgstr "このカレンダーにイベントを追加する権限がありませ
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "共有カレンダーに非公開のイベントを追加することはできません。"
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -557,7 +557,7 @@ msgstr "設定"
 msgid "Share Calendar"
 msgstr "カレンダーを共有する"
 
-#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
+#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
 msgid "CalDav Link"
 msgstr "CalDavへのリンク"
 
@@ -832,62 +832,66 @@ msgstr "終了"
 msgid "Your calendars"
 msgstr "あなたのカレンダー"
 
-#: templates/settings.php:34
+#: templates/settings.php:26
+msgid "Shared events"
+msgstr ""
+
+#: templates/settings.php:42
 msgid "General"
 msgstr "一般"
 
-#: templates/settings.php:39
+#: templates/settings.php:47
 msgid "Timezone"
 msgstr "タイムゾーン"
 
-#: templates/settings.php:70
+#: templates/settings.php:78
 msgid "Update timezone automatically"
 msgstr "自動的にタイムゾーンを更新"
 
-#: templates/settings.php:75
+#: templates/settings.php:83
 msgid "Time format"
 msgstr "時刻の表示形式"
 
-#: templates/settings.php:80
+#: templates/settings.php:88
 msgid "24h"
 msgstr "24h"
 
-#: templates/settings.php:81
+#: templates/settings.php:89
 msgid "12h"
 msgstr "12h"
 
-#: templates/settings.php:87
+#: templates/settings.php:95
 msgid "Start week on"
 msgstr "1週間の初めの曜日"
 
-#: templates/settings.php:100
+#: templates/settings.php:108
 msgid "Cache"
 msgstr "キャッシュ"
 
-#: templates/settings.php:104
+#: templates/settings.php:112
 msgid "Clear cache for repeating events"
 msgstr "繰り返しイベントのキャッシュをクリア"
 
-#: templates/settings.php:109
+#: templates/settings.php:117
 msgid "URLs"
 msgstr "URL"
 
-#: templates/settings.php:111
+#: templates/settings.php:119
 msgid "Calendar CalDAV syncing addresses"
 msgstr "CalDAVカレンダーの同期用アドレス"
 
-#: templates/settings.php:111
+#: templates/settings.php:119
 msgid "more info"
 msgstr "さらに"
 
-#: templates/settings.php:113
+#: templates/settings.php:121
 msgid "Primary address (Kontact et al)"
 msgstr "プライマリアドレス（コンタクト等）"
 
-#: templates/settings.php:115
+#: templates/settings.php:123
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:117
+#: templates/settings.php:125
 msgid "Read only iCalendar link(s)"
 msgstr "読み取り専用のiCalendarリンク"

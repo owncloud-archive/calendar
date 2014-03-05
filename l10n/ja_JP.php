@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "このカレンダーを削除する権限がありません。",
 "You do not have the permissions to add to this calendar." => "このカレンダーに追加する権限がありません。",
 "You do not have the permissions to add events to this calendar." => "このカレンダーにイベントを追加する権限がありません。",
+"You cannot add non-public events to a shared calendar." => "共有カレンダーに非公開のイベントを追加することはできません。",
 "You do not have the permissions to delete this event." => "このイベントを削除する権限がありません。",
 "Busy" => "多忙",
 "Show full event" => "すべてのイベントを表示",
