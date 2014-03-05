@@ -58,5 +58,3 @@ resources:
         url: /calendars/{calendarId}/todos
     journals:
         url: /calendars/{calendarId}/journals
-    objects:
-        url: /calendars/{calendarId}/objects

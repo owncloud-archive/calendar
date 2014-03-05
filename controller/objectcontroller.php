@@ -21,7 +21,8 @@ use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
 use OCA\Calendar\Db\Object;
-use OCA\Calendar\Db\JSONObject;
+use OCA\Calendar\JSON\JSONObject;
+use OCA\Calendar\JSON\JSONObjectReader;
 
 class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller {
 
@@ -144,12 +145,16 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	 */
 	public function create() {
 		try {
+			echo("reached create method");
 			$userId		= $this->api->getUserId();
 			$calendarId	= $this->params('calendarId');
 			$json		= $this->request->params;
 
 			$jsonReader	= new JSONObjectReader($json);
 			$object		= $jsonReader->getObject();
+
+			print_r($object);
+			exit;
 
 			$object		= $this->objectBusinessLayer->create($object, $calendarid, $userId);
 			$jsonObject	= new JSONObject($object);

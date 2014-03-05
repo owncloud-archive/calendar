@@ -45,12 +45,13 @@ abstract class ObjectTypeController extends ObjectController {
 		try {
 			$userId 	= $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
-			$limit		= $this->params('limit');
-			$offset		= $this->params('offset');
 
-			$expand		= $this->params('expand');
-			$start		= $this->params('start');
-			$end		= $this->params('end');
+			$limit		= $this->params('X-OC-CAL-LIMIT');
+			$offset		= $this->params('X-OC-CAL-OFFSET');
+
+			$expand		= $this->params('X-OC-CAL-EXPAND');
+			$start		= $this->params('X-OC-CAL-START');
+			$end		= $this->params('X-OC-CAL-END');
 
 			$this->parseBoolean($expand);
 			$this->parseDateTime($start);
@@ -107,11 +108,13 @@ abstract class ObjectTypeController extends ObjectController {
 		try {
 			$userId 	= $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
-			$limit		= $this->params('limit');
-			$offset		= $this->params('offset');
-			$expand		= $this->params('expand');
-			$start		= $this->params('start');
-			$end		= $this->params('end');
+
+			$limit		= $this->params('X-OC-CAL-LIMIT');
+			$offset		= $this->params('X-OC-CAL-OFFSET');
+
+			$expand		= $this->params('X-OC-CAL-EXPAND');
+			$start		= $this->params('X-OC-CAL-START');
+			$end		= $this->params('X-OC-CAL-END');
 	
 			list($routeApp, $routeController, $routeMethod) = explode('.', $this->params('_route'));
 			$objectId = $this->params(substr($routeController, 0, strlen($routeController) - 1) . 'Id');

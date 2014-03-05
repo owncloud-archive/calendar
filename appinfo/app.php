@@ -20,9 +20,6 @@ define('OCA\Calendar\JSONAPIVERSION', '1.0');
 //current version of php api
 define('OCA\Calendar\PHPAPIVERSION',  '1.0');
 
-//enable experimental jcal support
-define('OCA\Calendar\ENABLEJCAL', false);
-
 /*
  * add navigation entry
  */
@@ -51,8 +48,3 @@ $api->connectHook('OC_User', 'post_deleteUser', '\OC\Calendar\Util\UserHooks', '
  * add a global script for calendar import
  */
 //$api->addScript('fileaction');
-
-/*
- * register some classpaths
- */
-\OC::$CLASSPATH['Sabre\VObject\Component'] = 'calendar/3rdparty/php/VObject/Component.php';
