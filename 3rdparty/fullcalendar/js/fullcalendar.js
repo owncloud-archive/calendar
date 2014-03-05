@@ -449,7 +449,7 @@ function Calendar(element, options, eventSources) {
 			suggestedViewHeight = options.contentHeight;
 		}
 		else if (options.height) {
-			suggestedViewHeight = options.height - (headerElement ? headerElement.height() : 0) - vsides(content);
+			suggestedViewHeight = options.height() - (headerElement ? headerElement.height() : 0) - vsides(content);
 		}
 		else {
 			suggestedViewHeight = Math.round(content.width() / Math.max(options.aspectRatio, .5));
@@ -475,12 +475,10 @@ function Calendar(element, options, eventSources) {
 				var uid = ++resizeUID;
 				setTimeout(function() { // add a delay
 					if (uid == resizeUID && !ignoreWindowResize && elementVisible()) {
-						if (elementOuterWidth != (elementOuterWidth = element.outerWidth())) {
-							ignoreWindowResize++; // in case the windowResize callback changes the height
-							updateSize();
-							currentView.trigger('windowResize', _element);
-							ignoreWindowResize--;
-						}
+						ignoreWindowResize++; // in case the windowResize callback changes the height
+						updateSize();
+						currentView.trigger('windowResize', _element);
+						ignoreWindowResize--;
 					}
 				}, 200);
 			}else{

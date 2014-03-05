@@ -753,12 +753,6 @@ function ListView(element, calendar) {
 	t.setWidth=setWidth;
 	t.clearEvents=clearEvents;
 
-	function setHeight(height, dateChanged) {
-	}
-
-	function setWidth(width) {
-	}
-
 	function clearEvents() {
 		this.reportEventClear();
 	}
@@ -967,7 +961,6 @@ $(document).ready(function(){
 			$('#fullcalendar').fullCalendar('gotoDate', date);
 		}
 	});
-	fillWindow($('#content'));
 
 	$(OC.Tags).on('change', function(event, data) {
 		if(data.type === 'event') {
@@ -1019,7 +1012,9 @@ $(document).ready(function(){
 	});
 	Calendar.UI.Share.init();
 	Calendar.UI.Drop.init();
-	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
+	$('#fullcalendar').fullCalendar('option', 'height', function() {
+		return $(window).height() - $('#controls').height() - $('#header').height();
+	});
 	// Save the eventSource for shared events.
 	for (var i in eventSources) {
 		if (eventSources[i].url.substr(-13) === 'shared_events') {

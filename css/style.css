@@ -25,7 +25,12 @@
 	padding: 0;
 }
 
+body {
+	overflow: hidden;
+}
+
 #fullcalendar {
+	overflow: auto;
 	position: relative;
 	bottom: 0;
 	right: 0;
@@ -143,10 +148,6 @@ button.category{margin:0 3px;}
 .fc-list-event .fc-event-title
 {
      cursor: pointer;
-}
-
-#fullcalendar{
-	overflow: auto;
 }
 
 .ui-timepicker-hour-cell *, .ui-timepicker-minute-cell *{
