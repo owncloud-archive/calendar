@@ -441,6 +441,12 @@ Calendar={
 			},
 			activation:function(checkbox, calendarid)
 			{
+				if(checkbox.checked?1:0) {
+					$('#checkbox_'+calendarid).removeClass('unchecked');
+				}
+				else {
+					$('#checkbox_'+calendarid).addClass('unchecked');
+				}
 				Calendar.UI.loading(true);
 				$.post(OC.filePath('calendar', 'ajax/calendar', 'activation.php'), { calendarid: calendarid, active: checkbox.checked?1:0 },
 				  function(data) {

@@ -354,11 +354,6 @@ button.category{margin:0 3px;}
 	border-left: 0;
 }
 
-#navigation-list {
-	/* fix for scrollbar issues in app-navigation after expansion of datepicker */
-	overflow: initial !important;
-}
-
 #navigation-list #datecontrol_today {
 	float: right;
 	margin-right: 6px;
@@ -427,13 +422,6 @@ button.category{margin:0 3px;}
 	min-height: 0;
 }
 
-#app-navigation li .action {
-	width: 16px;
-	height: 16px;
-	margin-left: 2px;
-	background-size: auto;
-}
-
 #app-navigation label {
 	vertical-align: text-bottom;
 }
@@ -441,12 +429,6 @@ button.category{margin:0 3px;}
 #app-navigation input[type=checkbox] {
 	margin-left: 6px;
 	margin-top: 13px;
-}
-
-#app-navigation .utils {
-	position: relative;
-	padding: 13px 7px 0 0;
-	float: right;
 }
 
 #app-navigation li[data-id]:hover {
@@ -491,4 +473,57 @@ button.category{margin:0 3px;}
 	margin-bottom: 6px;
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+}
+
+.activeCalendar {
+	display: none;
+}
+
+.calendarCheckbox {
+	margin-left: 6px;
+	margin-top: 13px;
+	margin-bottom: -1px;
+	display: inline-block;
+	width: 11px;
+	height: 11px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+}
+
+.calendarCheckbox.unchecked {
+	background: rgba(0, 0, 0, 0) !important;
+	border-color: #aaa;
+}
+
+.calendarLabel {
+	display: block;
+	height: 44px;
+}
+
+#app-navigation .utils {
+	display: inline-block;
+	height: 44px;
+	padding: 0 5px 0 0;
+}
+
+#app-navigation .utils > * {
+	display: inline-block;
+	line-height: 44px;
+	height: 44px;
+	width: 20px;
+}
+
+#app-navigation .utils .action a img {
+	display: inline-block;
+	line-height: 44px;
+	height: 16px;
+	width: 16px;
+	padding: 14px  2px 14px 2px ;
+}
+
+.utils #dropdown {
+	margin-right: 0px;
+	width: 224px;
+	top: 44px;
 }
