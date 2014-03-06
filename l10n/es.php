@@ -200,6 +200,7 @@
 "at" => "a las",
 "To" => "Hasta",
 "Your calendars" => "Tus calendarios",
+"Shared events" => "Eventos compartidos",
 "General" => "General",
 "Timezone" => "Zona horaria",
 "Update timezone automatically" => "Actualizar zona horaria automáticamente",

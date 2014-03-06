@@ -200,6 +200,7 @@
 "at" => " ",
 "To" => "Päättyy",
 "Your calendars" => "Omat kalenterisi",
+"Shared events" => "Jaetut tapahtumat",
 "General" => "Yleiset",
 "Timezone" => "Aikavyöhyke",
 "Update timezone automatically" => "Päivitä aikavyöhykkeet automaattisesti",

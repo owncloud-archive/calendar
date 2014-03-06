@@ -200,6 +200,7 @@
 "at" => "um",
 "To" => "bis",
 "Your calendars" => "Ihre Kalender",
+"Shared events" => "Freigegebene Termine",
 "General" => "Allgemein",
 "Timezone" => "Zeitzone",
 "Update timezone automatically" => "Zeitzone automatisch aktualisieren",

@@ -200,6 +200,7 @@
 "at" => "at",
 "To" => "To",
 "Your calendars" => "Your calendars",
+"Shared events" => "Shared events",
 "General" => "General",
 "Timezone" => "Timezone",
 "Update timezone automatically" => "Update timezone automatically",
