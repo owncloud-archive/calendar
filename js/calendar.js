@@ -83,7 +83,6 @@ Calendar={
 		}
 	},
 	UI:{
-		lastView: null,
 		loading: function(isLoading){
 			if (isLoading){
 				$('#loading').show();
@@ -421,6 +420,51 @@ Calendar={
 			categories = $.map(newcategories, function(v) {return v.name;});
 			console.log('Calendar categories changed to: ' + categories);
 			$('#category').multiple_autocomplete('option', 'source', categories);
+		},
+		lastView:null,
+		isToday:true,
+		timerHolder:null,
+		timerInterval:300000, // 300000 = 5*60*1000ms = 5 min
+		changeView:function(view){
+			switch (view){
+				case 'today':
+				case 'prev':
+				case 'next':
+					$('#fullcalendar').fullCalendar(view);
+					if (view=='today' && Calendar.UI.isToday) {
+						Calendar.UI.changeView('refresh')
+					}
+					if (view=='today'){
+						Calendar.UI.isToday = true;
+					}else{
+						Calendar.UI.isToday = false;
+					}
+					break;
+
+				case 'agendaDay':
+				case 'agendaWeek':
+				case 'month':
+					$('#fullcalendar').fullCalendar('changeView', view);
+					if (Calendar.UI.lastView == view) {
+						Calendar.UI.changeView('refresh')
+					}
+					Calendar.UI.lastView = view;
+					break;
+
+				case 'refresh':
+					// refetch the events.
+					$('#fullcalendar').fullCalendar('refetchEvents');
+				case 'auto_refresh':
+					// reset the timer not to refetch before new 5 min.
+					if (Calendar.UI.timerHolder){
+						window.clearTimeout(Calendar.UI.timerHolder)
+					}
+					Calendar.UI.timerHolder = window.setTimeout( function(){Calendar.UI.changeView('refresh')}, Calendar.UI.timerInterval);
+					break;
+
+				default:
+					console.error('unsupported change view to:' + view);
+			}
 		},
 		Calendar:{
 			overview:function(){
@@ -850,7 +894,8 @@ function ListView(element, calendar) {
 	}
 }
 $(document).ready(function(){
-	Calendar.UI.lastView = defaultView
+	Calendar.UI.lastView = defaultView;
+	Calendar.UI.changeView('auto_refresh');
 
 	$('#fullcalendar').fullCalendar({
 		header: false,
@@ -939,37 +984,25 @@ $(document).ready(function(){
 	});
 
 	$('#oneweekview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'agendaWeek');
-		if (Calendar.UI.lastView == 'agendaWeek') {
-			$('#fullcalendar').fullCalendar('refetchEvents');
-		}
-		Calendar.UI.lastView = 'agendaWeek';
+		Calendar.UI.changeView('agendaWeek');
 	});
 	$('#onemonthview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'month');
-		if (Calendar.UI.lastView == 'month') {
-			$('#fullcalendar').fullCalendar('refetchEvents');
-		}
-		Calendar.UI.lastView = 'month';
+		Calendar.UI.changeView('month');
 	});
 	$('#onedayview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'agendaDay');
-		if (Calendar.UI.lastView == 'agendaDay') {
-			$('#fullcalendar').fullCalendar('refetchEvents');
-		}
-		Calendar.UI.lastView = 'agendaDay';
+		Calendar.UI.changeView('agendaDay');
 	});
 	$('#today_input').click(function(){
-		$('#fullcalendar').fullCalendar('today');
+		Calendar.UI.changeView('today');
 	});
 	$('#datecontrol_left').click(function(){
-		$('#fullcalendar').fullCalendar('prev');
+		Calendar.UI.changeView('prev');
 	});
 	$('#datecontrol_today').click(function(){
-		$('#fullcalendar').fullCalendar('today');
+		Calendar.UI.changeView('today');
 	});
 	$('#datecontrol_right').click(function(){
-		$('#fullcalendar').fullCalendar('next');
+		Calendar.UI.changeView('next');
 	});
 	Calendar.UI.Share.init();
 	Calendar.UI.Drop.init();
