@@ -200,6 +200,7 @@
 "at" => "w",
 "To" => "Do",
 "Your calendars" => "Twoje kalendarze",
+"Shared events" => "Wydarzenia współdzielone",
 "General" => "Ogólne",
 "Timezone" => "Strefa czasowa",
 "Update timezone automatically" => "Automatyczne aktualizuj strefę czasową",

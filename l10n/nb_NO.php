@@ -200,6 +200,7 @@
 "at" => "på",
 "To" => "Til",
 "Your calendars" => "Dine kalendere",
+"Shared events" => "Delte hendelser",
 "General" => "Generellt",
 "Timezone" => "Tidssone",
 "Update timezone automatically" => "Oppdater tidssone automatisk",
