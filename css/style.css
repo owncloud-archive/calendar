@@ -5,7 +5,6 @@
  * See the COPYING-README file.
  */
 
-#view { float: left; font-size: 12px; height: 100%;}
 #datecontrol {text-align: center;}
 #datecontrol_date_label {margin: 0; padding: 0; font-size: 12px;}
 #choosecalendar {margin-right: 10px; float: right; font-size: 12px;}
@@ -291,6 +290,10 @@ button.category{margin:0 3px;}
 #app-settings {
 	width: 249px;
 }
+#app-settings input, #app-settings select {
+	margin-left: 0;
+	margin-right: 0;
+}
 #navigation-list form {
 	width: 100%;
 }
@@ -425,11 +428,6 @@ button.category{margin:0 3px;}
 
 #app-navigation label {
 	vertical-align: text-bottom;
-}
-
-#app-navigation input[type=checkbox] {
-	margin-left: 6px;
-	margin-top: 13px;
 }
 
 #app-navigation li[data-id]:hover {
