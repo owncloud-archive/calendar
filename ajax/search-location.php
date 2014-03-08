@@ -7,6 +7,10 @@ $result = \OCP\Contacts::search($_REQUEST['term'], array('FN', 'ADR'));
 $contacts = array();
 
 foreach ($result as $r) {
+  if (!isset($r['ADR'])) {
+    continue;
+  }
+
   $tmp = $r['ADR'][0];
   $address = trim(implode(" ", $tmp));
   

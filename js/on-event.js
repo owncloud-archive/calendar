@@ -64,6 +64,7 @@ $('.choosecalendar-rowfield-active').live('click', function () {
 });
 $("#event-location:not(.ui-autocomplete-input)").live("focus", function (event) {
     $(this).autocomplete({
-        source: 'calendar/search-location.php'
+        source: OC.linkTo('calendar', 'ajax/search-location.php'),
+        minLength: 2
     });
 });
