@@ -552,6 +552,7 @@ Calendar={
 								$("#newCalendar").css('display', '');
 								var li = $(document.createElement('li')).append(data.page);
 								$("#navigation-list").append(li);
+								$('#caldav_url_entry').appendTo("#navigation-list");
 							}
 							else {
 								$('#editcalendar_dialog').parent().remove();

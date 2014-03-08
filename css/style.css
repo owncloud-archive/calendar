@@ -525,3 +525,7 @@ button.category{margin:0 3px;}
 	width: 224px;
 	top: 44px;
 }
+
+#navigation-list #caldav_url_entry {
+	min-height: 0;
+}

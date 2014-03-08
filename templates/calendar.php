@@ -38,7 +38,7 @@
 				print_unescaped("</li>");
 			}
 		?>
-		<li>
+		<li id="caldav_url_entry">
 			<input style="display:none;width: 78%;float: left;" type="text" id="caldav_url" title="<?php p($l->t("CalDav Link")); ?>">
 			<img id="caldav_url_close" style="float:right;height: 16px;padding:7px;margin-top:3px;cursor:pointer;vertical-align: middle;display: none;" src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')) ?>" alt="close"/>
 		</li>
