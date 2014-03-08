@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-05 01:47-0500\n"
-"PO-Revision-Date: 2014-03-05 06:47+0000\n"
+"POT-Creation-Date: 2014-03-08 01:46-0500\n"
+"PO-Revision-Date: 2014-03-07 15:31+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Telugu (http://www.transifex.com/projects/p/owncloud/language/te/)\n"
 "MIME-Version: 1.0\n"
@@ -362,7 +362,7 @@ msgstr ""
 
 #: lib/app.php:132
 msgid "Personal"
-msgstr ""
+msgstr "వ్యక్తిగతం"
 
 #: lib/app.php:133
 msgid "Projects"
@@ -674,7 +674,7 @@ msgstr ""
 
 #: templates/part.eventform.php:87 templates/part.showevent.php:116
 msgid "Advanced"
-msgstr ""
+msgstr "ఉన్నతం"
 
 #: templates/part.eventform.php:131 templates/part.showevent.php:160
 msgid "Select weekdays"
