@@ -7,14 +7,14 @@ $result = \OCP\Contacts::search($_REQUEST['term'], array('FN', 'ADR'));
 $contacts = array();
 
 foreach ($result as $r) {
-  if (!isset($r['ADR'])) {
-    continue;
-  }
+	if (!isset($r['ADR'])) {
+		continue;
+	}
 
-  $tmp = $r['ADR'][0];
-  $address = trim(implode(" ", $tmp));
+	$tmp = $r['ADR'][0];
+	$address = trim(implode(" ", $tmp));
   
-  $contacts[] = array('label' => $address);
+	$contacts[] = array('label' => $address);
 }
 
 \OCP\JSON::EncodedPrint($contacts);
