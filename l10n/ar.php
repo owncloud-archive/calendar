@@ -94,6 +94,7 @@
 "You do not have the permissions to delete this calendar." => "ليس لديك الصلاحية لحذف هذا التقويم.",
 "You do not have the permissions to add to this calendar." => "ليس لديك الصلاحية لإضافة هذا التقويم.",
 "You do not have the permissions to add events to this calendar." => "ليس لديك الصلاحية لإضافة أحداث لهذا التقويم.",
+"You cannot add non-public events to a shared calendar." => "لا يمكنك اضافه مواعيد خاصه لتقويم مشارك",
 "You do not have the permissions to delete this event." => "ليس لديك الصلاحية لحذف هذا الحدث.",
 "Busy" => "مشغول",
 "Show full event" => "أظهر الأحداث كاملة",

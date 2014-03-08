@@ -200,6 +200,7 @@
 "at" => "alle",
 "To" => "A",
 "Your calendars" => "I tuoi calendari",
+"Shared events" => "Eventi condivisi",
 "General" => "Generale",
 "Timezone" => "Fuso orario",
 "Update timezone automatically" => "Aggiorna automaticamente il fuso orario",

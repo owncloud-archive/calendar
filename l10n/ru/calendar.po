@@ -22,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-15 07:12-0500\n"
-"PO-Revision-Date: 2014-02-15 11:30+0000\n"
-"Last-Translator: Denis <reg.transifex.net@demitel.ru>\n"
+"POT-Creation-Date: 2014-03-05 01:47-0500\n"
+"PO-Revision-Date: 2014-03-05 06:47+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/owncloud/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,47 +103,47 @@ msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:588
+#: js/calendar.js:596
 msgid "group"
 msgstr "группа"
 
-#: js/calendar.js:590 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "может редактировать"
 
-#: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "можно дать доступ"
 
-#: js/calendar.js:862
+#: js/calendar.js:870
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:863
+#: js/calendar.js:871
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:864
+#: js/calendar.js:872
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:867
+#: js/calendar.js:875
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:869
+#: js/calendar.js:877
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:871
+#: js/calendar.js:879
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
+#: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
+#: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
 msgid "Monday"
 msgstr "Понедельник"
 
@@ -163,7 +163,7 @@ msgstr "Четверг"
 msgid "Friday"
 msgstr "Пятница"
 
-#: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
+#: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
 msgid "Saturday"
 msgstr "Суббота"
 
@@ -295,7 +295,7 @@ msgstr "Дек."
 msgid "All day"
 msgstr "Весь день"
 
-#: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
+#: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
 msgid "New Calendar"
 msgstr "Новый Календарь"
 
@@ -391,23 +391,23 @@ msgstr "Вопросы"
 msgid "Work"
 msgstr "Работа"
 
-#: lib/app.php:411
+#: lib/app.php:423
 msgid "by"
 msgstr "до свидания"
 
-#: lib/app.php:474
+#: lib/app.php:486
 msgid "unnamed"
 msgstr "без имени"
 
-#: lib/calendar.php:178 lib/calendar.php:211
+#: lib/calendar.php:189 lib/calendar.php:222
 msgid "You do not have the permissions to update this calendar."
 msgstr "У вас нет права изменять этот календарь."
 
-#: lib/calendar.php:246
+#: lib/calendar.php:257
 msgid "You do not have the permissions to delete this calendar."
 msgstr "У вас нет права удалять этот календарь"
 
-#: lib/calendar.php:280
+#: lib/calendar.php:291
 msgid "You do not have the permissions to add to this calendar."
 msgstr "У вас нет права добавлять в этот календарь."
 
@@ -567,7 +567,7 @@ msgstr "Параметры"
 msgid "Share Calendar"
 msgstr "Открыть общий доступ к календарю"
 
-#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
+#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
 msgid "CalDav Link"
 msgstr "Ссылка для CalDav"
 
@@ -842,62 +842,66 @@ msgstr "До"
 msgid "Your calendars"
 msgstr "Ваши календари"
 
-#: templates/settings.php:34
+#: templates/settings.php:26
+msgid "Shared events"
+msgstr ""
+
+#: templates/settings.php:42
 msgid "General"
 msgstr "Основные"
 
-#: templates/settings.php:39
+#: templates/settings.php:47
 msgid "Timezone"
 msgstr "Часовой пояс"
 
-#: templates/settings.php:70
+#: templates/settings.php:78
 msgid "Update timezone automatically"
 msgstr "Автоматическое обновление временной зоны"
 
-#: templates/settings.php:75
+#: templates/settings.php:83
 msgid "Time format"
 msgstr "Формат времени"
 
-#: templates/settings.php:80
+#: templates/settings.php:88
 msgid "24h"
 msgstr "24ч"
 
-#: templates/settings.php:81
+#: templates/settings.php:89
 msgid "12h"
 msgstr "12ч"
 
-#: templates/settings.php:87
+#: templates/settings.php:95
 msgid "Start week on"
 msgstr "Начало недели"
 
-#: templates/settings.php:100
+#: templates/settings.php:108
 msgid "Cache"
 msgstr "Кэш"
 
-#: templates/settings.php:104
+#: templates/settings.php:112
 msgid "Clear cache for repeating events"
 msgstr "Очистить кэш повторяющихся событий"
 
-#: templates/settings.php:109
+#: templates/settings.php:117
 msgid "URLs"
 msgstr "URLs"
 
-#: templates/settings.php:111
+#: templates/settings.php:119
 msgid "Calendar CalDAV syncing addresses"
 msgstr "Адрес синхронизации CalDAV"
 
-#: templates/settings.php:111
+#: templates/settings.php:119
 msgid "more info"
 msgstr "подробнее"
 
-#: templates/settings.php:113
+#: templates/settings.php:121
 msgid "Primary address (Kontact et al)"
 msgstr "Основной адрес (Kontact и др.)"
 
-#: templates/settings.php:115
+#: templates/settings.php:123
 msgid "iOS/OS X"
 msgstr "iOS/OS X"
 
-#: templates/settings.php:117
+#: templates/settings.php:125
 msgid "Read only iCalendar link(s)"
 msgstr "Читать только ссылки iCalendar"

@@ -200,6 +200,7 @@
 "at" => "a",
 "To" => "a",
 "Your calendars" => "Os seus calendarios",
+"Shared events" => "Actividades compartidas",
 "General" => "Xeral",
 "Timezone" => "Fuso horario",
 "Update timezone automatically" => "Actualizar o fuso horario automaticamente",
