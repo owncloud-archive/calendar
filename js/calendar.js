@@ -545,8 +545,10 @@ Calendar={
 				$.post(url, { id: calendarid, name: displayname, active: active, description: description, color: calendarcolor },
 					function(data){
 						if(data.status == 'success'){
-							$('#fullcalendar').fullCalendar('removeEventSource', data.eventSource.url);
-							$('#fullcalendar').fullCalendar('addEventSource', data.eventSource);
+							if(active) {
+								$('#fullcalendar').fullCalendar('removeEventSource', data.eventSource.url);
+								$('#fullcalendar').fullCalendar('addEventSource', data.eventSource);
+							}
 							if (calendarid == 'new'){
 								$('#newcalendar_dialog').parent().remove();
 								$("#newCalendar").css('display', '');
