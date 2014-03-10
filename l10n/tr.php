@@ -200,6 +200,7 @@
 "at" => "üzerinde",
 "To" => "Kime",
 "Your calendars" => "Takvimleriniz",
+"Shared events" => "Paylaşılan etkinlikler",
 "General" => "Genel",
 "Timezone" => "Zaman dilimi",
 "Update timezone automatically" => "Zaman dilimini otomatik güncelle",
