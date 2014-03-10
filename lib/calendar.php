@@ -51,6 +51,7 @@ class OC_Calendar_Calendar{
 			$row['permissions'] = OCP\PERMISSION_CREATE
 				| OCP\PERMISSION_READ | OCP\PERMISSION_UPDATE
 				| OCP\PERMISSION_DELETE | OCP\PERMISSION_SHARE;
+			$row['description'] = '';
 			$calendars[] = $row;
 			$owned_calendar_ids[] = $row['id'];
 		}

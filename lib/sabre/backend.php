@@ -10,6 +10,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 */
 	public $propertyMap = array(
 		'{DAV:}displayname'						  => 'displayname',
+		'{urn:ietf:params:xml:ns:caldav}calendar-description' => 'description',
 		'{urn:ietf:params:xml:ns:caldav}calendar-timezone'	=> 'timezone',
 		'{http://apple.com/ns/ical/}calendar-order'  => 'calendarorder',
 		'{http://apple.com/ns/ical/}calendar-color'  => 'calendarcolor',
@@ -52,7 +53,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 			);
 
 			foreach($this->propertyMap as $xmlName=>$dbName) {
-				$calendar[$xmlName] = $row[$dbName];
+				$calendar[$xmlName] = isset($row[$dbName]) ? $row[$dbName] : '';
 			}
 
 			$calendars[] = $calendar;
