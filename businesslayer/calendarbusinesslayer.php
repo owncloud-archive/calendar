@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -69,7 +69,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 				$userId = $this->api->getUserId();
 			}
 
-			list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+			list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 
 			$this->checkBackendEnabled($backend);
 
@@ -145,7 +145,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 				$userId = $this->api->getUserId();
 			}
 
-			list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+			list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 
 			$this->checkBackendEnabled($backend);
 
@@ -218,7 +218,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 				$userId = $this->api->getUserId();
 			}
 
-			list($oldBackend, $oldCalendarURI) = $this->splitPublicURI($calendarId);
+			list($oldBackend, $oldCalendarURI) = $this->splitCalendarURI($calendarId);
 
 			$newBackend = $calendar->getBackend();
 			$newCalendarURI = $calendar->getUri();
@@ -289,7 +289,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 				$userId = $this->api->getUserId();
 			}
 
-			list($oldBackend, $oldCalendarURI) = $this->splitPublicURI($calendarId);
+			list($oldBackend, $oldCalendarURI) = $this->splitCalendarURI($calendarId);
 
 			$newBackend = $calendar->getBackend();
 			$newCalendarURI = $calendar->getUri();
@@ -358,7 +358,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 				$userId = $this->api->getUserId();
 			}
 
-			list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+			list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 
 			$this->checkBackendEnabled($backend);
 

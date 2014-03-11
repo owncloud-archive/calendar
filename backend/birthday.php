@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -24,42 +24,44 @@ class Birthday extends Backend {
 		parent::__construct($api, 'Birthday');
 	}
 
-	public function cacheCalendars($userId) {
-		return true;
+	public function cacheObjects($uri, $userId) {
+		return false;
 	}
 
-	public function cacheObjects($uri, $userId) {
-		$this->findCalendar($uri, $userId);
-		return false;
+	public function canBeEnabled() {
+		return \OCP\App::isEnabled('contacts');
 	}
 
 	public function findCalendar($uri, $userId) {
 		if($uri !== 'birthday') {
 			throw new DoesNotExistException();
 		}
-		$calendar = new Calendar( array(
-			'userid' 		=> $userId,
-			'backend' 		=> $this->backend,
-			'uri' 			=> 'birthdays',
-			'displayname'	=> $this->api->getTrans()->t('Birthdays'),
-			'components'	=> ObjectType::VEVENT,
-			'ctag'			=> 1,
-			'timezone'		=> 'UTC',
-			'writable'		=> false,
-		));
+
+		$calendar = new Calendar();
+		$calendar->setUserId($userId)
+			->setOwnerId($userId)
+			->setBackend($this->backend)
+			->setUri('birthday')
+			->setDisplayname($this->api->getTrans()->t('Birthday'))
+			->setComponents(Components::EVENT)
+			->setCtag() //sum of all addressbook ctags
+			->setTimezone(new TimeZone('UTC'))
+			->setCruds(Permissions::READ + Permissions::SHARE);
+
+		return $calendar;
 	}
 
-	public function findCalendars($userId, $limit, $offset) {
-		return array($this->findCalendar('birthdays', $userId));
+	public function findCalendars($userId) {
+		$calendar = $this->findCalendar('birthday', $userId);
+
+		return array($calendar);
 	}
 
 	public function findObject($uri, $uid, $userId) {
-		$calendar = $this->findCalendar($uri, $userId);
-		return $this->objectMapper->find($uid, $calendar->getId());
+		return null;
 	}
 
-	public function findObjects($uri, $userId, $limit, $offset) {
-		$calendar = $this->findCalendar($uri, $userId);
-		return $this->objectMapper->findAll($calendar->getId());
+	public function findObjects($uri, $userId) {
+		return array();
 	}
 }

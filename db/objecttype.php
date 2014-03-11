@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -26,7 +26,7 @@ class ObjectType {
 			$types[] = 'VTODO';
 		}
 
-		$string = implode(', ', $types);
+		$string = implode(',', $types);
 		return $string;
 	}
 

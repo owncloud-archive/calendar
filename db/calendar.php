@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -8,6 +8,8 @@
 namespace OCA\Calendar\Db;
 
 use \OCA\Calendar\AppFramework\Db\Entity;
+
+use \Sabre\VObject\Component\VCalendar;
 
 class Calendar extends Entity {
 
@@ -66,10 +68,15 @@ class Calendar extends Entity {
 		return $this;
 	}
 
+	/**
+	 * @brief check if object is valid
+	 * @return Calendar
+	 */
 	public function isValid() {
-		return true;
+		
 	}
 
+	
 	public function fix() {
 		return $this;
 	}

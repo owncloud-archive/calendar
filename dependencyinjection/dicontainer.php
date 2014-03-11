@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * Copyright (c) 2012 Bernhard Posselt <nukeawhale@gmail.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
@@ -10,6 +10,16 @@ namespace OCA\Calendar\DependencyInjection;
 
 use \OCA\Calendar\AppFramework\DependencyInjection\DIContainer as AppFrameworkDIContainer;
 
+use OCA\Calendar\API\CalendarAPI;
+use OCA\Calendar\API\ObjectAPI;
+use OCA\Calendar\API\EventAPI;
+use OCA\Calendar\API\JournalAPI;
+use OCA\Calendar\API\TodoAPI;
+
+use OCA\Calendar\BusinessLayer\BackendBusinessLayer;
+use OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
+use OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
+
 use OCA\Calendar\Controller\BackendController;
 use OCA\Calendar\Controller\CalendarController;
 use OCA\Calendar\Controller\ObjectController;
@@ -18,12 +28,16 @@ use OCA\Calendar\Controller\JournalsController;
 use OCA\Calendar\Controller\TodosController;
 use OCA\Calendar\Controller\SettingsController;
 use OCA\Calendar\Controller\ViewController;
-use OCA\Calendar\BusinessLayer\BackendBusinessLayer;
-use OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
-use OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
+
 use OCA\Calendar\Db\BackendMapper;
 use OCA\Calendar\Db\CalendarMapper;
 use OCA\Calendar\Db\ObjectMapper;
+
+use OCA\Calendar\Fetcher\Fetcher;
+use OCA\Calendar\Fetcher\CalDAVFetcher;
+use OCA\Calendar\Fetcher\WebCalFetcher;
+
+use OCA\Calendar\Utility\Updater;
 
 class DIContainer extends AppFrameworkDIContainer {
 	/**
@@ -106,6 +120,70 @@ class DIContainer extends AppFrameworkDIContainer {
 		//mapper for cached objects like events, journals, todos
 		$this['ObjectMapper'] = $this->share(function($c){
 			return new ObjectMapper($c['API']);
+		});
+
+		/**
+		 * External API
+		 */
+		$this['CalendarAPI'] = $this->share(function($c){
+			return new CalendarAPI($c['API'], $c['Request'],
+								   $c['CalendarBusinessLayer']);
+		});
+
+		$this['ObjectAPI'] = $this->share(function($c){
+			return new ObjectAPI($c['API'], $c['Request'],
+			                     $c['CalendarBusinessLayer'],
+			                     $c['ObjectBusinessLayer']);
+		});
+
+		$this['EventAPI'] = $this->share(function($c){
+			return new EventAPI($c['API'], $c['Request'],
+			                     $c['CalendarBusinessLayer'],
+			                     $c['ObjectBusinessLayer']);
+		});
+
+		$this['JournalAPI'] = $this->share(function($c){
+			return new JournalAPI($c['API'], $c['Request'],
+			                     $c['CalendarBusinessLayer'],
+			                     $c['ObjectBusinessLayer']);
+		});
+
+		$this['TodoAPI'] = $this->share(function($c){
+			return new TodoAPI($c['API'], $c['Request'],
+			                     $c['CalendarBusinessLayer'],
+			                     $c['ObjectBusinessLayer']);
+		});
+
+		/**
+		 * Fetcher
+		 */
+		$this['Fetcher'] = $this->share(function($c){
+			$fetcher = new Fetcher();
+
+			// register fetchers in order
+			// the most generic fetcher should be the last one
+			$fetcher->registerFetcher($c['WebCalFetcher']);
+
+			return $fetcher;
+		});
+
+		$this['CalDAVFetcher'] = $this->share(function($c){
+			return new CalDAVFetcher();
+
+		});
+
+		$this['WebCalFetcher'] = $this->share(function($c){
+			return new WebCalFetcher();
+
+		});
+
+		/**
+		 * Updater
+		 */
+		$this['Updater'] = $this->share(function($c){
+			return new Updater($c['FolderBusinessLayer'],
+			                   $c['FeedBusinessLayer'],
+			                   $c['ItemBusinessLayer']);
 		});
 	}
 }

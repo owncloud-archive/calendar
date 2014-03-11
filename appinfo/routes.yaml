@@ -11,42 +11,6 @@ routes:
     url: /setView/{view}
     verb: GET
 
-  - name: export#exportAll
-    url: /export/all
-    verb: GET
-
-  - name: export#exportAllInTimeRange
-    url: /export/all/{from}/{to}
-    verb: GET
-
-  - name: export#exportCalendar
-    url: /export/calendar/{calendarId}
-    verb: GET
-
-  - name: export#exportCalendarInTimeRange
-    url: /export/calendar/{calendarId}/{from}/{to}
-    verb: GET
-
-  - name: export#exportEvent
-    url: /export/event/{calendarId}/{uid}
-    verb: GET
-
-  - name: import#importFile
-    url: /import/{file}
-    verb: GET
-
-  - name: import#importFileInTimeRange
-    url: /import/{file}/{from}/{to}
-    verb: GET
-
-  - name: import#importRaw
-    url: /import/raw
-    verb: POST
-
-  - name: import#importRawInTimeRange
-    url: /import/raw/{from}/{to}
-    verb: POST
-
 resources:
     backend:
         url: /backends
@@ -58,3 +22,5 @@ resources:
         url: /calendars/{calendarId}/todos
     journals:
         url: /calendars/{calendarId}/journals
+    objects:
+        url: /calendars/{calendarId}/objects

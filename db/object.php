@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -8,6 +8,8 @@
 namespace OCA\Calendar\Db;
 
 use \OCA\Calendar\AppFramework\Db\Entity;
+
+use Sabre\VObject\Reader;
 
 class Object extends Entity {
 
@@ -52,7 +54,8 @@ class Object extends Entity {
 	}
 
 	public function getVObject() {
-		
+		$vobject = Reader::read($this->calendarData);
+		return $vobject;
 	}
 
 	/**

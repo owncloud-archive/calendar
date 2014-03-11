@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -48,7 +48,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function findAll($calendarId, $userId, $limit=null, $offset=null) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		if($limit !== null) {
@@ -86,7 +86,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function find($calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		try {
@@ -139,7 +139,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function findAllByType($calendarId, $type, $userId, $limit=null, $offset=null) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		if($limit !== null) {
@@ -203,7 +203,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function findAllInPeriod($calendarId, $start, $end, $userId, $limit=null, $offset=null) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		if($limit !== null) {
@@ -275,7 +275,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function findAllByTypeInPeriod($calendarId, $type, $start, $end, $userId, $limit=null, $offset=null) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		if($limit !== null) {
@@ -345,7 +345,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function create($object, $calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->allowNoObjectURITwice($backend, $calendarURI, $objectURI, $userId);
 		$this->checkBackendEnabled($backend);
 
@@ -384,7 +384,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function update($object, $calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		try {
@@ -425,7 +425,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return boolean
 	 */
 	public function delete($calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
 		try {
@@ -458,7 +458,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function move($object, $calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 
 		try {
 			$oldBackend = $backend;
@@ -526,7 +526,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 	 * @return array containing all items
 	 */
 	public function touch($calendarId, $objectURI, $userId) {
-		list($backend, $calendarURI) = $this->splitPublicURI($calendarId);
+		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 
 		try {
 			$this->checkBackendEnabled($backend);

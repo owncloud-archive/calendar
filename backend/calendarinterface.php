@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -91,4 +91,6 @@ interface CalendarInterface {
 	 * This method is mandatory!
 	 */
 	public function findObjects($calendarURI, $userId, $limit, $offset);
+
+	public function canBeEnabled();
 }

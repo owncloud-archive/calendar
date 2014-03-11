@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -33,19 +33,15 @@ abstract class BusinessLayer {
 	 * @param string $uri public uri
 	 * @throws BusinessLayerException if uri is empty
 	 * @throws BusinessLayerException if uri is not valid
-	 * @throws DoesNotImplementException if backend does not implement searched implementation
 	 */
-	final protected function splitPublicURI ($publicURI=null) {
-		if ( $publicURI === false || $publicURI === null || $publicURI === '' ) {
-			throw new BusinessLayerException('URI is empty');
-		}
-		if ( substr_count($publicURI, '-') === 0 ){
-			throw new BusinessLayerException('URI is not valid');
+	final protected function splitCalendarURI($calendarURI=null) {
+		$split = CalendarUtility::splitURI($calendarURI);
+
+		if($split[0] === false || $split[1] === false) {
+			throw new BusinessLayerException('calendar uri is not valid');
 		}
 
-		list($backend, $realURI) = explode('-', $publicURI, 2);
-
-		return array($backend, $realURI);
+		return $split;
 	}
 
 	/**
@@ -58,17 +54,14 @@ abstract class BusinessLayer {
 	 * @throws BusinessLayerException if uri is not valid
 	 * @throws DoesNotImplementException if backend does not implement searched implementation
 	 */
-	final protected function getBackendAndRealCalendarURIAndRealObjectURIFromURI($publicURI=null) {
-		if ( $publicURI === false || $publicURI === null || $publicURI === '' ) {
-			throw new BusinessLayerException('URI is empty');
-		}
-		if ( substr_count($publicURI, '-') === 0 ){
-			throw new BusinessLayerException('URI is not valid');
+	final protected function splitObjectURI($objectURI=null) {
+		$split = ObjectUtility::splitURI($objectURI);
+
+		if($split[0] === false || $split[1] === false || $split[2] === false) {
+			throw new BusinessLayerException('object uri is not valid');
 		}
 
-		list($backend, $realCalendarURI, $realObjectURI) = explode('-', $publicURI, 3);
-
-		return array($backend, $realCalendarURI, $realObjectURI);
+		return $split;
 	}
 
 	/**
@@ -84,7 +77,7 @@ abstract class BusinessLayer {
 		$isSupported = $this->backends->find($backend)->api->implementsActions($implementation);
 
 		if(!$isSupported) {
-			throw new DoesNotImplementException('This Backend (' . $backend . ') does not implement "' . $implementation . '".');
+			throw new DoesNotImplementException('Backend (' . $backend . ') does not implement "' . $implementation . '".');
 		}
 
 		return true;

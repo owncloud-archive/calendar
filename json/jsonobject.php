@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -22,7 +22,6 @@ class JSONObject extends JSON{
 	public $type;
 	public $data;
 
-	private $objectObject;
 
 	/**
 	 * @brief init JSONObject object with data from Object object
@@ -31,12 +30,9 @@ class JSONObject extends JSON{
 	public function __construct(Object $object) {
 		$this->properties = array(
 			'type',
-			'deleteAt',
 			'objectURI',
 		);
 		parent::__construct($object);
-
-		$this->objectObject = $object;
 
 		$this->setCalendarId();
 		$this->setURL();
@@ -44,11 +40,18 @@ class JSONObject extends JSON{
 	}
 
 	/**
+	 * @brief get json-encoded string containing all information
+	 */
+	public function serialize() {
+		$this->
+	}
+
+	/**
 	 * @brief set public calendar id
 	 */
 	private function setCalendarId() {
-		$backend = $this->objectObject->getBackend();
-		$calendarURI = $this->objectObject->getCalendarURI();
+		$backend = $this->object->getBackend();
+		$calendarURI = $this->object->getCalendarURI();
 
 		$this->calendarId = strtolower($backend . '-' . $calendarURI);
 	}
@@ -69,7 +72,7 @@ class JSONObject extends JSON{
 	 * @brief set data array
 	 */
 	private function setData() {
-		$calendarData = $this->objectObject->getCalendarData();
+		$calendarData = $this->object->getCalendarData();
 
 		$childOfInterest = null;
 

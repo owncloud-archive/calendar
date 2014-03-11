@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -26,18 +26,35 @@ class Sharing extends Backend {
 
 	private $backend;
 
+	private $crudsMapper = array(
+		\OCP\PERMISSION_CREATE	=> Permissions::CREATE,
+		\OCP\PERMISSION_READ	=> Permissions::READ,
+		\OCP\PERMISSION_UPDATE	=> Permissions::UPDATE,
+		\OCP\PERMISSION_DELETE	=> Permissions::DELETE,
+		\OCP\PERMISSION_SHARE	=> Permissions::SHARE,
+		\OCP\PERMISSION_ALL		=> Permissions::ALL,
+	);
+
+	private $reverseCrudsMapper = array(
+		Permissions::CREATE	=> \OCP\PERMISSION_CREATE,
+		Permissions::READ	=> \OCP\PERMISSION_READ,
+		Permissions::UPDATE	=> \OCP\PERMISSION_UPDATE,
+		Permissions::DELETE	=> \OCP\PERMISSION_DELETE,
+		Permissions::SHARE	=> \OCP\PERMISSION_SHARE,
+		Permissions::ALL	=> \OCP\PERMISSION_ALL,
+	);
+
 	public function __construct($api, $parameters, &$backendBusinessLayer){
 		parent::__construct($api, 'sharing');
 		$this->backend = $backendBusinessLayer;
 	}
 
-	public function cacheCalendars($userId) {
-		//cache calendars so users can set custom colors and custom visibility
-		return true;
-	}
-
 	public function cacheObjects($calendarURI, $userId) {
 		return false;
+	}
+
+	public function canBeEnabled() {
+		return \OCP\Share::isEnabled();
 	}
 
 	public function findCalendar($calendarURI, $userId) {
@@ -45,7 +62,8 @@ class Sharing extends Backend {
 	}
 
 	public function findCalendars($userId, $limit, $offset) {
-
+		$sharedCalendars = OCP\Share::getItemsSharedWith('calendar', OC_Share_Backend_Calendar::FORMAT_CALENDAR);
+		$singleSharedEvents = null;
 	}
 
 	public function updateCalendar(Calendar $calendar, $calendarId, $userId) {

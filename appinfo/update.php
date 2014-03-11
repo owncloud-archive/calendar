@@ -10,7 +10,7 @@ if(version_compare($installedVersion, '0.9.8', '<=')) {
 						'backend' => 'local',
 						'classname' => '\OCA\Calendar\Backend\Local',
 						'arguments' => '',
-						'enabled' => true
+						'enabled' => true,
 					),/*
 					array (
 						'backend' => 'WebCal',
@@ -18,6 +18,7 @@ if(version_compare($installedVersion, '0.9.8', '<=')) {
 						'arguments' => '',
 						'enabled' => false
 					),*/
+					
 				);
     \OCP\Config::setSystemValue('calendar_backends', $backends);
 
@@ -33,15 +34,4 @@ if(version_compare($installedVersion, '0.9.8', '<=')) {
 	//there was no way set which calendar supports what kind of component, so we can set all calendars to support all components.
 	$stmtComponents = OCP\DB::prepare('UPDATE `*PREFIX*clndr_calendars` SET `components`=?');
 	$stmtComponents->execute(array((string) ObjectType::ALL));
-
-	$differentComponents = array(
-		'VEVENT'	=> ObjectType::EVENT,
-		'VJOURNAL'	=> ObjectType::JOURNAL,
-		'VTODO'		=> ObjectType::TODO,
-	);
-
-	foreach($differentComponents as $legacyKey => $newKey) {
-		$stmt = OCP\DB::prepare('UPDATE `*PREFIX*clndr_objects` SET `objecttype`=? WHERE `objecttype`=?');
-		$stmt->execute(array($newKey, $legacyKey));
-	}
 }

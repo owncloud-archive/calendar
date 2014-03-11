@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -19,7 +19,6 @@
  *   "color" : "#000000",
  *   "order" : 0,
  *   "enabled" : true,
- *   "deleteAt" : null,
  *   "components" : {
  *     "vevent" : true,
  *     "vjournal" : false,
@@ -87,8 +86,6 @@ class JSONCalendar extends JSON{
 		$this->ctag = (int) $this->ctag;
 		$this->order = (int) $this->order;
 
-		$this->calendarObject = $calendar;
-
 		$this->setCalendarURI();
 		$this->setURL();
 		$this->setUser();
@@ -99,11 +96,31 @@ class JSONCalendar extends JSON{
 	}
 
 	/**
+	 * @brief get json-encoded string containing all information
+	 */
+	public function serialize() {
+		return json_encode(array(
+			'calendarURI'	=> $this->calendarURI,
+			'url'			=> $this->url,
+			'user'			=> $this->user,
+			'owner'			=> $this->owner,
+			'displayname'	=> $this->displayname,
+			'ctag'			=> $this->ctag,
+			'color'			=> $this->color,
+			'order'			=> $this->order,
+			'components'	=> $this->components,
+			'timezone'		=> $this->timezone->serializeJSON(),
+			'enabled'		=> $this->enabled,
+			'cruds'			=> $this->cruds,
+		));
+	}
+
+	/**
 	 * @brief set public calendar uri
 	 */
 	private function setCalendarURI() {
-		$backend = $this->calendarObject->getBackend();
-		$uri = $this->calendarObject->getUri();
+		$backend = $this->object->getBackend();
+		$uri = $this->object->getUri();
 
 		$this->calendarURI = strtolower($backend . '-' . $uri);
 	}
@@ -124,7 +141,7 @@ class JSONCalendar extends JSON{
 	 * @brief set user info
 	 */
 	private function setUser() {
-		$userId = $this->calendarObject->getUserId();
+		$userId = $this->object->getUserId();
 		$this->user = $this->getUserInfo($userId);
 	}
 
@@ -132,7 +149,7 @@ class JSONCalendar extends JSON{
 	 * @brief set owner info
 	 */
 	private function setOwner() {
-		$ownerId = $this->calendarObject->getOwnerId();
+		$ownerId = $this->object->getOwnerId();
 		$this->owner = $this->getUserInfo($ownerId);
 	}
 
@@ -155,7 +172,7 @@ class JSONCalendar extends JSON{
 	 * @brief set components info
 	 */
 	private function setComponents() {
-		$components = (int) $this->calendarObject->getComponents();
+		$components = (int) $this->object->getComponents();
 
 		$this->components = array(
 			'vevent'	=> (bool) ($components & ObjectType::EVENT),
@@ -168,7 +185,7 @@ class JSONCalendar extends JSON{
 	 * @brief set timezone info
 	 */
 	private function setTimezone($timezoneId='UTC') {
-		$timezoneId = $this->calendarObject->getTimezone();
+		$timezoneId = $this->object->getTimezone();
 		//todo - implement
 	}
 
@@ -176,7 +193,7 @@ class JSONCalendar extends JSON{
 	 * @brief set cruds info
 	 */
 	private function setCruds() {
-		$cruds = (int) $this->calendarObject->getCruds();
+		$cruds = (int) $this->object->getCruds();
 		$this->cruds = array(
 			'code' => 	$cruds,
 			'create' =>	(bool) ($cruds & Permissions::CREATE),

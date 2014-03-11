@@ -1,13 +1,12 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
  */
 namespace OCA\Calendar\Controller;
 
-use \OCA\Calendar\AppFramework\Controller\Controller;
 use \OCA\Calendar\AppFramework\Core\API;
 use \OCA\Calendar\AppFramework\Http\Http;
 use \OCA\Calendar\AppFramework\Http\Request;
@@ -43,54 +42,49 @@ abstract class ObjectTypeController extends ObjectController {
 	 */
 	public function index() {
 		try {
-			$userId 	= $this->api->getUserId();
+			$userId = $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
-
-			$limit		= $this->params('X-OC-CAL-LIMIT');
-			$offset		= $this->params('X-OC-CAL-OFFSET');
-
-			$expand		= $this->params('X-OC-CAL-EXPAND');
-			$start		= $this->params('X-OC-CAL-START');
-			$end		= $this->params('X-OC-CAL-END');
+			$limit = $this->header('X-OC-CAL-LIMIT');
+			$offset = $this->header('X-OC-CAL-OFFSET');
+			$expand = $this->header('X-OC-CAL-EXPAND');
+			$start = $this->header('X-OC-CAL-START');
+			$end = $this->header('X-OC-CAL-END');
 
 			$this->parseBoolean($expand);
 			$this->parseDateTime($start);
 			$this->parseDateTime($end);
 
-			$objects = array();
 			if($start === null || $end === null) {
-				$objects = $this->objectBusinessLayer
-								->findAllByType($calendarId,
-												$this->objectType,
-												$userId,
-												$limit,
-												$offset);
-			} else {
-				$objects = $this->objectBusinessLayer
-								->findAllByTypeInPeriod($calendarId,
+				$objectCollection = $this->objectBusinessLayer
+										->findAllByType($calendarId,
 														$this->objectType,
-														$start,
-														$end,
 														$userId,
 														$limit,
 														$offset);
-			}
-
-			$jsonObjects = array();
-			if($expand === false) {
-				foreach($objects as $object) {
-					$jsonObjects[] = new JSONObject($object);
-				}
 			} else {
-				foreach($objects as $object) {
-					$expandedObjects = $object->expand($start, $end);
-					foreach($expandedObjects as $expandedObject) {
-						$jsonObjects = array_merge($jsonObjects, new JSONObject($expandedObject));
-					}
-				}
+				$objectCollection = $this->objectBusinessLayer
+										->findAllByTypeInPeriod($calendarId,
+																$this->objectType,
+																$start,
+																$end,
+																$userId,
+																$limit,
+																$offset);
 			}
 
-			return new JSONResponse($jsonObjects);
+			if($expand === true) {
+				$objectCollection->expand($start, $end);
+			}
+
+			if($returnRawICS === true) {
+				$VObject = $objectCollection->getVObject();
+				$ics = $VObject->serialize();
+				return new Response($ics, Http::STATUS_OK);
+			} else {
+				$jsonObjectCollection = new JSONObjectCollection($objectCollection);
+				$json = $jsonObjectCollection->serialize();
+				return new JSONResponse($json, Http::STATUS_OK);
+			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
@@ -108,30 +102,50 @@ abstract class ObjectTypeController extends ObjectController {
 		try {
 			$userId 	= $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
+			$objectId = $this->getObjectId();
 
-			$limit		= $this->params('X-OC-CAL-LIMIT');
-			$offset		= $this->params('X-OC-CAL-OFFSET');
+			$returnRawICS = $this->returnRawICS();
+			$expand = $this->header('X-OC-CAL-EXPAND');
+			$start = $this->header('X-OC-CAL-START');
+			$end = $this->header('X-OC-CAL-END');
 
-			$expand		= $this->params('X-OC-CAL-EXPAND');
-			$start		= $this->params('X-OC-CAL-START');
-			$end		= $this->params('X-OC-CAL-END');
-	
-			list($routeApp, $routeController, $routeMethod) = explode('.', $this->params('_route'));
-			$objectId = $this->params(substr($routeController, 0, strlen($routeController) - 1) . 'Id');
+			$this->parseBooleanString($expand);
+			$this->parseDateTimeString($start);
+			$this->parseDateTimeString($end);
 
-			$object = $this->objectBusinessLayer
-						   ->findByType($calendarId,
-						   				$objectId,
-						   				$this->objecttype,
-						   				$userId);
+			$object = $this->objectBusinessLayer->findByType($calendarId, $objectId, $this->objecttype, $userId);
 
-			$jsonObject = new JSONObject($object);
+			if($expand === true) {
+				$objectCollection = $object->expand($start, $end);
+				if($returnRawICS === true) {
+					$serializer = $objectCollection->getVObject();
+				} else {
+					$serializer = new JSONObjectCollection($objectCollection);
+				}
+			} else {
+				if($returnRawICS === true) {
+					$serializer = $object->getVObject();
+				} else {
+					$serializer = new JSONObject($object);
+				}
+			}
 
-			return new JSONResponse($jsonObject);
+			$serialized = $serializer->serialize();
+
+			if($returnRawICS === true) {
+				return new Response($serialized, Http::STATUS_OK);
+			} else {
+				return new JSONResponse($serialized, Http::STATUS_OK);
+			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
 			return new JSONResponse($msg, Http::STATUS_NOT_FOUND);
 		}
+	}
+
+	private function getObjectId() {
+		list($routeApp, $routeController, $routeMethod) = explode('.', $this->params('_route'));
+		return $this->params(substr($routeController, 0, strlen($routeController) - 1) . 'Id');
 	}
 }

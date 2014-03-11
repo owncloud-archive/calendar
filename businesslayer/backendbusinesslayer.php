@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -83,7 +83,7 @@ class BackendBusinessLayer {
 	}
 
 	public function getDefault(){
-		$backend = \OCP\Config::getAppValue('calendar', 'defaultBackend', 'database');
+		$backend = \OCP\Config::getAppValue('calendar', 'defaultBackend', 'local');
 		return $this->find($backend);
 	}
 
@@ -116,16 +116,18 @@ class BackendBusinessLayer {
 				$this->disable($backend);
 				continue;
 			}
-			
+
 			if(in_array($class, $this->backends)){
 				\OCP\Util::writeLog('calendar', 'Backend '.$class.' already initialized. Please check if there are multiple db entries for this backend.', \OCP\Util::DEBUG);
 				continue;
 			}
-			
+
 			$reflectionObj = new \ReflectionClass($class);
 			$api = $reflectionObj->newInstanceArgs(array($this->api, $arguments, $this));
 			$backend->registerAPI($api);
-			array_push($this->backends, array($class => $backend));
+			if($backend->api->canBeEnabled()) {
+				array_push($this->backends, array($class => $backend));
+			}
 		}
 		
 		if(count($this->backends) === 0){

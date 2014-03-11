@@ -5,10 +5,6 @@
  * later.
  * See the COPYING-README file.
  */
-namespace OCA\Calendar\Db;
+namespace OCA\Calendar\JSON;
 
-class TimezoneTypes {
-	const STANDARD	= 1;
-	const FLOATING	= 2;
-	const CUSTOM	= 4;
-}
+class JSONException extends \Exception {}

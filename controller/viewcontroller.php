@@ -1,13 +1,12 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
  */
 namespace OCA\Calendar\Controller;
 
-use \OCA\Calendar\AppFramework\Controller\Controller;
 use \OCA\Calendar\AppFramework\Core\API;
 use \OCA\Calendar\AppFramework\Http\Http;
 use \OCA\Calendar\AppFramework\Http\Request;
@@ -26,7 +25,7 @@ use OCA\Calendar\Db\JSONCalendar;
 use OCA\Calendar\Db\Object;
 use OCA\Calendar\Db\JSONObject;
 
-class ViewController extends \OCA\Calendar\AppFramework\Controller\Controller {
+class ViewController extends Controller {
 	
 	private $calendarBusinessLayer;
 	private $objectBusinessLayer;

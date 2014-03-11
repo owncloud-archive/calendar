@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -14,17 +14,18 @@ use \OCA\Calendar\Db\Permissions;
 
 //constants
 define('OCA\Calendar\Backend\NOT_IMPLEMENTED',  	 	-501);
-define('OCA\Calendar\Backend\CREATE_CALENDAR', 			0x00000000001);
-define('OCA\Calendar\Backend\UPDATE_CALENDAR',			0x00000000010);
-define('OCA\Calendar\Backend\DELETE_CALENDAR',			0x00000000100);
-define('OCA\Calendar\Backend\MERGE_CALENDAR',			0x00000001000);
-define('OCA\Calendar\Backend\CREATE_OBJECT',			0x00000010000);
-define('OCA\Calendar\Backend\UPDATE_OBJECT',			0x00000100000);
-define('OCA\Calendar\Backend\DELETE_OBJECT',			0x00001000000);
-define('OCA\Calendar\Backend\FIND_IN_PERIOD',			0x00010000000);
-define('OCA\Calendar\Backend\FIND_OBJECTS_BY_TYPE',		0x00100000000);
-define('OCA\Calendar\Backend\FIND_IN_PERIOD_BY_TYPE',	0x01000000000);
-define('OCA\Calendar\Backend\SEARCH_BY_PROPERTIES',		0x10000000000);
+define('OCA\Calendar\Backend\CREATE_CALENDAR', 			0x000000000001);
+define('OCA\Calendar\Backend\UPDATE_CALENDAR',			0x000000000010);
+define('OCA\Calendar\Backend\DELETE_CALENDAR',			0x000000000100);
+define('OCA\Calendar\Backend\MERGE_CALENDAR',			0x000000001000);
+define('OCA\Calendar\Backend\CREATE_OBJECT',			0x000000010000);
+define('OCA\Calendar\Backend\UPDATE_OBJECT',			0x000000100000);
+define('OCA\Calendar\Backend\DELETE_OBJECT',			0x000001000000);
+define('OCA\Calendar\Backend\FIND_IN_PERIOD',			0x000010000000);
+define('OCA\Calendar\Backend\FIND_OBJECTS_BY_TYPE',		0x000100000000);
+define('OCA\Calendar\Backend\FIND_IN_PERIOD_BY_TYPE',	0x001000000000);
+define('OCA\Calendar\Backend\SEARCH_BY_PROPERTIES',		0x010000000000);
+define('OCA\Calendar\Backend\PROVIDES_CRON_SCRIPT',		0x100000000000);
 
 abstract class Backend implements CalendarInterface {
 
@@ -97,6 +98,10 @@ abstract class Backend implements CalendarInterface {
 				 $this->canStoreEnabled() &&
 				 $this->canStoreOrder() &&
 				 $this->canStoreCustomTimezone());
+	}
+
+	public function canBeEnabled() {
+		return true;
 	}
 
 	/**

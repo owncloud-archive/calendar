@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -20,44 +20,41 @@ use \OCA\Calendar\Db\Permissions;
 
 class Anniversary extends Backend {
 
-	private $calendarURI;
-
 	public function __construct($api, $parameters){
 		parent::__construct($api, 'Anniversary');
-		$this->calendarURI = 'anniversary';
-	}
-
-	public function cacheCalendars($userId) {
-		return false;
 	}
 
 	public function cacheObjects($uri, $userId) {
 		return false;
 	}
 
+	public function canBeEnabled() {
+		return \OCP\App::isEnabled('contacts');
+	}
+
 	public function findCalendar($uri, $userId) {
-		if($uri !== $this->calendarURI) {
+		if($uri !== 'anniversary') {
 			throw new DoesNotExistException();
 		}
 
 		$calendar = new Calendar();
 		$calendar->setUserId($userId)
-				 ->setOwnerId($userId)
-				 ->setBackend($this->backend)
-				 ->setUri($this->calendarURI)
-				 ->setDisplayname()
-				 ->setComponents(Components::EVENT)
-				 ->setCtag()
-				 ->setTimezone(new TimeZone('UTC'))
-				 ->setCruds(Permissions::READ + Permissions::SHARE);
+			->setOwnerId($userId)
+			->setBackend($this->backend)
+			->setUri('anniversary')
+			->setDisplayname($this->api->getTrans()->t('Anniversary'))
+			->setComponents(Components::EVENT)
+			->setCtag() //sum of all addressbook ctags
+			->setTimezone(new TimeZone('UTC'))
+			->setCruds(Permissions::READ + Permissions::SHARE);
 
 		return $calendar;
 	}
 
 	public function findCalendars($userId) {
-		return array(
-			$this->findCalendar($this->calendarURI, $userId)
-		);
+		$calendar = $this->findCalendar('anniversary', $userId);
+
+		return array($calendar);
 	}
 
 	public function findObject($uri, $uid, $userId) {
@@ -65,6 +62,6 @@ class Anniversary extends Backend {
 	}
 
 	public function findObjects($uri, $userId) {
-		return null;
+		return array();
 	}
 }

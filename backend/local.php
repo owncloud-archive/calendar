@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * Copyright (c) 2012 Bart Visscher <bartv@thisnet.nl>
  * Copyright (c) 2011 Jakob Sack <mail@jakobsack.de>
  * This file is licensed under the Affero General Public License version 3 or
@@ -25,42 +25,26 @@ class Local extends Backend {
 	private $calTableName;
 	private $objTableName;
 
+	private $typeMapper = array(
+		ObjectType::EVENT	=> 'VEVENT',
+		ObjectType::JOURNAL => 'VJOURNAL',
+		ObjectType::TODO	=> 'VTODO',
+	);
+
+	private $reverseTypeMapper = array(
+		'VEVENT'	=> ObjectType::EVENT,
+		'VJOURNAL'	=> ObjectType::JOURNAL,
+		'VTODO'		=> ObjectType::TODO,
+	);
+
 	public function __construct($api, $parameters){
 		$this->calTableName = '*PREFIX*clndr_calendars';
 		$this->objTableName = '*PREFIX*clndr_objects';
 		parent::__construct($api, 'local');
 	}
 
-	public function cacheCalendars($userId) {
-		return false;
-	}
-
 	public function cacheObjects($calendarURI, $userId) {
 		return false;
-	}
-
-	public function canStoreColor() {
-		return true;
-	}
-
-	public function canStoreComponents() {
-		return true;
-	}
-
-	public function canStoreDisplayname() {
-		return true;
-	}
-
-	public function canStoreEnabled() {
-		return true;
-	}
-
-	public function canStoreOrder() {
-		return true;
-	}
-
-	public function canStoreCustomTimezone() {
-		return true;
 	}
 
 	public function getDisplayName() {

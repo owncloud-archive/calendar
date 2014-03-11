@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -9,7 +9,7 @@ namespace OCA\Calendar\Controller;
 
 use OCA\Calendar\BusinessLayer\BusinessLayerException;
 
-class BackendController extends \OCA\Calendar\AppFramework\Controller\Controller {
+class BackendController extends Controller {
 	
 	protected $businessLayer;
 	

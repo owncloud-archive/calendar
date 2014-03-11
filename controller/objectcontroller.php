@@ -1,13 +1,12 @@
 <?php
 /**
- * Copyright (c) 2013 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
  */
 namespace OCA\Calendar\Controller;
 
-use \OCA\Calendar\AppFramework\Controller\Controller;
 use \OCA\Calendar\AppFramework\Core\API;
 use \OCA\Calendar\AppFramework\Http\Http;
 use \OCA\Calendar\AppFramework\Http\Request;
@@ -24,7 +23,7 @@ use OCA\Calendar\Db\Object;
 use OCA\Calendar\JSON\JSONObject;
 use OCA\Calendar\JSON\JSONObjectReader;
 
-class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller {
+class ObjectController extends Controller {
 
 	protected $objectBusinessLayer;
 
@@ -42,54 +41,54 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function index() {
 		try {
-			$userId		= $this->api->getUserId();
-			$calendarId	= $this->params('calendarId');
-			$limit		= $this->params('limit');
-			$offset		= $this->params('offset');
-			$expand		= $this->params('expand');
-			$start		= $this->params('start');
-			$end		= $this->params('end');
+			$userId = $this->api->getUserId();
+			$calendarId = $this->params('calendarId');
+
+			$returnRawICS = $this->returnRawICS();
+			$limit = $this->header('X-OC-CAL-LIMIT');
+			$offset = $this->header('X-OC-CAL-OFFSET');
+			$expand = $this->header('X-OC-CAL-EXPAND');
+			$start = $this->header('X-OC-CAL-START');
+			$end = $this->header('X-OC-CAL-END');
 
 			$this->parseBooleanString($expand);
 			$this->parseDateTimeString($start);
 			$this->parseDateTimeString($end);
 
 			if($start === null || $end === null) {
-				$objects = $this->objectBusinessLayer
-								->findAll($calendarId,
-										  $userId,
-										  $limit,
-										  $offset);
+				$objectCollection = $this->objectBusinessLayer
+					->findAll($calendarId,
+							  $userId,
+							  $limit,
+							  $offset);
 			} else {
-				$objects = $this->objectBusinessLayer
-								->findAllInPeriod($calendarId,
-												  $start,
-												  $end,
-												  $userId,
-												  $limit,
-												  $offset);
+				$objectCollection = $this->objectBusinessLayer
+					->findAllInPeriod($calendarId,
+									  $start,
+									  $end,
+									  $userId,
+									  $limit,
+									  $offset);
 			}
-
-			$jsonObjects = array();
 
 			if($expand === true) {
-				foreach($objects as $object) {
-					$expandedObjects = $object->expand($start, $end);
-					foreach($expandedObjects as $expandedObject) {
-						$jsonObjects = array_merge($jsonObjects, new JSONObject($expandedObject));
-					}
-				}
-			} else {
-				foreach($objects as $object) {
-					$jsonObjects[] = new JSONObject($object);
-				}
+				$objectCollection->expand($start, $end);
 			}
 
-			return new JSONResponse($jsonObjects, Http::STATUS_OK);
+			if($returnRawICS === true) {
+				$VObject = $objectCollection->getVObject();
+				$ics = $VObject->serialize();
+				return new Response($ics, Http::STATUS_OK);
+			} else {
+				$jsonObjectCollection = new JSONObjectCollection($objectCollection);
+				$json = $jsonObjectCollection->serialize();
+				return new JSONResponse($json, Http::STATUS_OK);
+			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
@@ -100,6 +99,7 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 *
 	 * @brief returns $object specified by it's UID
@@ -107,12 +107,14 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	 */
 	public function show() {
 		try {
-			$userId		= $this->api->getUserId();
-			$calendarId	= $this->params('calendarId');
-			$objectURI	= $this->params('objectId');
-			$expand		= $this->params('expand');
-			$start		= $this->params('start');
-			$end		= $this->params('end');
+			$userId	= $this->api->getUserId();
+			$calendarId = $this->params('calendarId');
+			$objectURI = $this->params('objectId');
+
+			$returnRawICS = $this->returnRawICS();
+			$expand = $this->header('X-OC-CAL-EXPAND');
+			$start = $this->header('X-OC-CAL-START');
+			$end = $this->header('X-OC-CAL-END');
 
 			$this->parseBooleanString($expand);
 			$this->parseDateTimeString($start);
@@ -121,45 +123,67 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 			$object	= $this->objectBusinessLayer->find($calendarId, $objectURI, $userId);
 
 			if($expand === true) {
-				$expandedObjects = $object->expand($start, $end);
-				$jsonObject = array();
-				foreach($expandedObjects as $expandedObject) {
-					$jsonObject[] = new JSONObject($expandedObject);
+				$objectCollection = $object->expand($start, $end);
+				if($returnRawICS === true) {
+					$serializer = $objectCollection->getVObject();
+				} else {
+					$serializer = new JSONObjectCollection($objectCollection);
 				}
 			} else {
-				$jsonObject	= new JSONObject($object);
+				if($returnRawICS === true) {
+					$serializer = $object->getVObject();
+				} else {
+					$serializer = new JSONObject($object);
+				}
 			}
 
-			return new JSONResponse($jsonObject);
+			$serialized = $serializer->serialize();
+
+			if($returnRawICS === true) {
+				return new Response($serialized, Http::STATUS_OK);
+			} else {
+				return new JSONResponse($serialized, Http::STATUS_OK);
+			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, Http::STATUS_NOT_FOUND);
+			return new JSONResponse(null, Http::STATUS_NOT_FOUND);
+		} catch (JSONException $ex) {
+			//do smth
 		}
 	}
 
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function create() {
 		try {
-			echo("reached create method");
-			$userId		= $this->api->getUserId();
-			$calendarId	= $this->params('calendarId');
-			$json		= $this->request->params;
+			$userId = $this->api->getUserId();
+			$calendarId = $this->params('calendarId');
+			$requestBody = $this->request->params;
+			$returnRawICS = $this->returnRawICS();
 
-			$jsonReader	= new JSONObjectReader($json);
-			$object		= $jsonReader->getObject();
+			if($this->isRequestBodyRawICS() === true) {
+				$reader = new ICSObjectReader($requestBody);
+			} else {
+				$reader = new JSONObjectReader($requestBody);
+			}
 
-			print_r($object);
-			exit;
+			$object = $reader->getObject();
 
-			$object		= $this->objectBusinessLayer->create($object, $calendarid, $userId);
-			$jsonObject	= new JSONObject($object);
+			$object = $this->objectBusinessLayer->create($object, $calendarid, $userId);
 
-			return new JSONResponse($jsonObject, Http::STATUS_CREATED);
+			if($returnRawICS === true) {
+				$VObject = $object->getVObject();
+				$ics = $VObject->serialize();
+				return new Response($ics, Http::STATUS_CREATED);
+			} else {
+				$jsonObject = new JSONObject($object);
+				$json = $jsonObject->serialize();
+				return new JSONResponse($json, Http::STATUS_CREATED);
+			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
@@ -170,22 +194,36 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function update() {
 		try {
-			$userId		= $this->api->getUserId();
-			$calendarId	= $this->api->params('calendarId');
-			$objectURI	= $this->api->params('objectId');
-			$json		= $this->request->params;
+			$userId = $this->api->getUserId();
+			$calendarId = $this->api->params('calendarId');
+			$objectURI = $this->api->params('objectId');
+			$requestBody = $this->request->params;
+			$returnRawICS = $this->returnRawICS();
 
-			$jsonReader	= new JSONObjectReader($json);
-			$object		= $jsonReader->getObject();
+			if($this->isRequestBodyRawICS() === true) {
+				$reader = new ICSObjectReader($requestBody);
+			} else {
+				$reader = new JSONObjectReader($requestBody);
+			}
 
-			$object		= $this->objectBusinessLayer->update($object, $objectURI, $calendarId, $userId);
-			$jsonObject	= new JSONObject($object);
+			$object = $reader->getObject();
 
-			return new JSONResponse($jsonObject, Http::STATUS_CREATED);
+			$object = $this->objectBusinessLayer->update($object, $objectURI, $calendarId, $userId);
+
+			if($returnRawICS === true) {
+				$VObject = $object->getVObject();
+				$ics = $VObject->serialize();
+				return new Response($ics, Http::STATUS_CREATED);
+			} else {
+				$jsonObject = new JSONObject($object);
+				$json = $jsonObject->serialize();
+				return new JSONResponse($json, Http::STATUS_CREATED);
+			}
 		} catch(BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
@@ -196,6 +234,7 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function patch() {
@@ -205,38 +244,22 @@ class ObjectController extends \OCA\Calendar\AppFramework\Controller\Controller 
 	/**
 	 * @IsAdminExemption
 	 * @IsSubAdminExemption
+	 * @CSRFExemption
 	 * @API
 	 */
 	public function destroy() {
 		try {
-			$userId		= $this->api->getUserId();
-			$calendarId	= $this->params('calendarId');
-			$objectURI	= $this->params('objectId');
+			$userId = $this->api->getUserId();
+			$calendarId = $this->params('calendarId');
+			$objectURI = $this->params('objectId');
 
 			$this->objectBusinessLayer->delete($calendarId, $objectURI, $userId);
 
-			return new JSONResponse();
+			return new JSONResponse(null, HTTP::STATUS_NO_CONTENT);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
 			return new JSONResponse($msg, Http::STATUS_BAD_REQUEST);
-		}
-	}
-
-	protected function parseBoolean(&$string) {
-		if($string === true || $string === 1 || $string === 'true') {
-			$string = true;
-		} else {
-			$string = false;
-		}
-	}
-
-	protected function parseDateTime(&$string) {
-		if($string !== null) {
-			$string = DateTime::createFromFormat(\DateTime::RFC2822, $string);
-			if($string === false) {
-				$string = null;
-			}
 		}
 	}
 }
