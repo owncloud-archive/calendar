@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-06 01:47-0500\n"
-"PO-Revision-Date: 2014-03-05 09:11+0000\n"
+"POT-Creation-Date: 2014-03-11 06:35-0400\n"
+"PO-Revision-Date: 2014-03-11 06:11+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/owncloud/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
@@ -390,15 +390,15 @@ msgstr "toimesta:"
 msgid "unnamed"
 msgstr "nimetön"
 
-#: lib/calendar.php:189 lib/calendar.php:222
+#: lib/calendar.php:190 lib/calendar.php:223
 msgid "You do not have the permissions to update this calendar."
 msgstr "Käyttöoikeutesi eivät riitä tämän kalenterin päivittämiseen."
 
-#: lib/calendar.php:257
+#: lib/calendar.php:258
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Käyttöoikeutesi eivät riitä tämän kalenterin poistamiseen."
 
-#: lib/calendar.php:291
+#: lib/calendar.php:292
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Käyttöoikeutesi eivät riitä lisäämiseen tähän kalenteriin."
 
@@ -522,7 +522,7 @@ msgstr "viikkonumero(ide)n mukaan"
 msgid "by day and month"
 msgstr "päivän ja kuukauden mukaan"
 
-#: lib/sabre/backend.php:73
+#: lib/sabre/backend.php:74
 msgid "Contact birthdays"
 msgstr "Synttärit"
 

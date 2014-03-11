@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-05 01:47-0500\n"
-"PO-Revision-Date: 2014-03-05 06:47+0000\n"
+"POT-Creation-Date: 2014-03-11 06:35-0400\n"
+"PO-Revision-Date: 2014-03-11 06:11+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Sinhala (Sri Lanka) (http://www.transifex.com/projects/p/owncloud/language/si_LK/)\n"
 "MIME-Version: 1.0\n"
@@ -387,15 +387,15 @@ msgstr "විසින්"
 msgid "unnamed"
 msgstr "නිර්නාමික"
 
-#: lib/calendar.php:189 lib/calendar.php:222
+#: lib/calendar.php:190 lib/calendar.php:223
 msgid "You do not have the permissions to update this calendar."
 msgstr "මෙම දින දසුන යාත්කාලීන කිරීම සදහා ඔබට අවසර නොමැත"
 
-#: lib/calendar.php:257
+#: lib/calendar.php:258
 msgid "You do not have the permissions to delete this calendar."
 msgstr "මෙම දින දසුන මකාදැමිම සදහා ඔබට අවසර නොමැත"
 
-#: lib/calendar.php:291
+#: lib/calendar.php:292
 msgid "You do not have the permissions to add to this calendar."
 msgstr "මෙම දින දසුනට එකතු කිරීම සදහා ඔබට අවසර නොමැත"
 
@@ -519,7 +519,7 @@ msgstr "සතියේ අංකය අනුව"
 msgid "by day and month"
 msgstr "දිනය හා මාසය අනුව"
 
-#: lib/sabre/backend.php:73
+#: lib/sabre/backend.php:74
 msgid "Contact birthdays"
 msgstr ""
 

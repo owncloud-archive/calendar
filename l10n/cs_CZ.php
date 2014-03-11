@@ -200,6 +200,7 @@
 "at" => "v",
 "To" => "Do",
 "Your calendars" => "Vaše kalendáře",
+"Shared events" => "Sdílené události",
 "General" => "Hlavní",
 "Timezone" => "Časové pásmo",
 "Update timezone automatically" => "Aktualizovat automaticky časové pásmo",

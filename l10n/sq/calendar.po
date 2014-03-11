@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-05 01:47-0500\n"
-"PO-Revision-Date: 2014-03-05 06:47+0000\n"
+"POT-Creation-Date: 2014-03-11 06:35-0400\n"
+"PO-Revision-Date: 2014-03-11 06:11+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/owncloud/language/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -386,15 +386,15 @@ msgstr "nga"
 msgid "unnamed"
 msgstr "pa emer"
 
-#: lib/calendar.php:189 lib/calendar.php:222
+#: lib/calendar.php:190 lib/calendar.php:223
 msgid "You do not have the permissions to update this calendar."
 msgstr "Ju nuk keni të drejta të perditësoni këtë kalendar."
 
-#: lib/calendar.php:257
+#: lib/calendar.php:258
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Ju nuk keni të drejta të fshini këtë kalendar."
 
-#: lib/calendar.php:291
+#: lib/calendar.php:292
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Ju nuk keni të drejta të shtoni në këtë kalendar."
 
@@ -518,7 +518,7 @@ msgstr "sipas nr të javes/ve"
 msgid "by day and month"
 msgstr "sipas ditës dhe muajit"
 
-#: lib/sabre/backend.php:73
+#: lib/sabre/backend.php:74
 msgid "Contact birthdays"
 msgstr "Kontakt ditëlindje"
 

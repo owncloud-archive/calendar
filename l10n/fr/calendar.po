@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Borjan Tchakaloff <borjan@tchaka.fr>, 2013
-# Christophe Lherieau <skimpax@gmail.com>, 2012-2013
+# Christophe Lherieau <skimpax@gmail.com>, 2012-2014
 # etiess <etiess@gmail.com>, 2013-2014
 # Francois_Boulogne <fboulogne@sciunto.org>, 2011
 # gp4004 <gp4004@arghh.org>, 2011, 2012
@@ -23,9 +23,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-05 01:47-0500\n"
-"PO-Revision-Date: 2014-03-05 06:47+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-03-11 06:35-0400\n"
+"PO-Revision-Date: 2014-03-11 06:11+0000\n"
+"Last-Translator: Christophe Lherieau <skimpax@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/owncloud/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -400,15 +400,15 @@ msgstr "par"
 msgid "unnamed"
 msgstr "sans nom"
 
-#: lib/calendar.php:189 lib/calendar.php:222
+#: lib/calendar.php:190 lib/calendar.php:223
 msgid "You do not have the permissions to update this calendar."
 msgstr "Vous n'avez pas les droits suffisants pour mettre à jour ce calendrier."
 
-#: lib/calendar.php:257
+#: lib/calendar.php:258
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Vous n'avez pas les droits suffisants pour supprimer ce calendrier."
 
-#: lib/calendar.php:291
+#: lib/calendar.php:292
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Vous n'avez pas les droits suffisants pour ajouter du contenu à ce calendrier."
 
@@ -418,7 +418,7 @@ msgstr "Vous n'avez pas les droits suffisants pour ajouter des événements à c
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr "Vous ne pouvez pas ajouter des évènements non publics à un calendrier partagé."
+msgstr "Vous ne pouvez pas ajouter des événements non publics à un calendrier partagé."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -532,7 +532,7 @@ msgstr "par numéro(s) de semaine(s)"
 msgid "by day and month"
 msgstr "par jour et mois"
 
-#: lib/sabre/backend.php:73
+#: lib/sabre/backend.php:74
 msgid "Contact birthdays"
 msgstr "Anniversaires des contacts"
 
@@ -845,7 +845,7 @@ msgstr "Vos calendriers"
 
 #: templates/settings.php:26
 msgid "Shared events"
-msgstr ""
+msgstr "Evénements partagés"
 
 #: templates/settings.php:42
 msgid "General"

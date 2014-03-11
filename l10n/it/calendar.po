@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-06 01:47-0500\n"
-"PO-Revision-Date: 2014-03-05 07:10+0000\n"
+"POT-Creation-Date: 2014-03-11 06:35-0400\n"
+"PO-Revision-Date: 2014-03-11 06:11+0000\n"
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/owncloud/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -395,15 +395,15 @@ msgstr "da"
 msgid "unnamed"
 msgstr "senza nome"
 
-#: lib/calendar.php:189 lib/calendar.php:222
+#: lib/calendar.php:190 lib/calendar.php:223
 msgid "You do not have the permissions to update this calendar."
 msgstr "Non hai i permessi per aggiornare questo calendario."
 
-#: lib/calendar.php:257
+#: lib/calendar.php:258
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Non hai i permessi per eliminare questo calendario."
 
-#: lib/calendar.php:291
+#: lib/calendar.php:292
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Non hai i permessi per aggiungere a questo calendario."
 
@@ -527,7 +527,7 @@ msgstr "per numero/i settimana"
 msgid "by day and month"
 msgstr "per giorno e mese"
 
-#: lib/sabre/backend.php:73
+#: lib/sabre/backend.php:74
 msgid "Contact birthdays"
 msgstr "Compleanni dei contatti"
 
