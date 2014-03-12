@@ -200,6 +200,7 @@
 "at" => "at",
 "To" => "終了",
 "Your calendars" => "あなたのカレンダー",
+"Shared events" => "共有されるイベント",
 "General" => "一般",
 "Timezone" => "タイムゾーン",
 "Update timezone automatically" => "自動的にタイムゾーンを更新",
