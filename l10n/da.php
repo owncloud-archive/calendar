@@ -200,6 +200,7 @@
 "at" => "kl.",
 "To" => "Til",
 "Your calendars" => "Dine kalendere",
+"Shared events" => "Delte aftaler",
 "General" => "Generel",
 "Timezone" => "Tidszone",
 "Update timezone automatically" => "Opdater tidszone automatisk",
