@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-11 06:35-0400\n"
-"PO-Revision-Date: 2014-03-11 06:11+0000\n"
+"POT-Creation-Date: 2014-03-17 01:47-0400\n"
+"PO-Revision-Date: 2014-03-16 15:40+0000\n"
 "Last-Translator: Pongsametrey SOK <metreysk@gmail.com>\n"
 "Language-Team: Khmer (http://www.transifex.com/projects/p/owncloud/language/km/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr ""
+msgstr "មិនមែន​រាល់​ប្រតិទិន​ទាំង​អស់​ត្រូវបាន​ស្តុក​ទុកទេ"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
@@ -444,7 +444,7 @@ msgstr "រៀងរាល់​ថ្ងៃ​ធ្វើ​ការ"
 
 #: lib/object.php:569
 msgid "Bi-Weekly"
-msgstr ""
+msgstr "Bi-Weekly"
 
 #: lib/object.php:570
 msgid "Monthly"
@@ -476,7 +476,7 @@ msgstr "តាម​ថ្ងៃ​ធ្វើការ"
 
 #: lib/object.php:620
 msgid "events week of month"
-msgstr ""
+msgstr "ព្រឹត្តិការណ៍​ក្នុង​សប្តាហ៍​ក្នុងខែ"
 
 #: lib/object.php:621
 msgid "first"
@@ -520,7 +520,7 @@ msgstr "តាម​ថ្ងៃ​និង​ខែ"
 
 #: lib/sabre/backend.php:74
 msgid "Contact birthdays"
-msgstr ""
+msgstr "ខួប​កំណើត​អ្នក​ត្រូវ​ទាក់ទង"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -680,7 +680,7 @@ msgstr "កម្រិត​ខ្ពស់"
 
 #: templates/part.eventform.php:131 templates/part.showevent.php:160
 msgid "Select weekdays"
-msgstr ""
+msgstr "ជ្រើស​ថ្ងៃ​ធ្វើការ"
 
 #: templates/part.eventform.php:144 templates/part.eventform.php:157
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
@@ -689,11 +689,11 @@ msgstr "ជ្រើស​ថ្ងៃ"
 
 #: templates/part.eventform.php:149 templates/part.showevent.php:178
 msgid "and the events day of year."
-msgstr ""
+msgstr "និងព្រឹត្តិការណ៍​ប្រចាំថ្ងៃ​នៃ​ឆ្នាំ"
 
 #: templates/part.eventform.php:162 templates/part.showevent.php:191
 msgid "and the events day of month."
-msgstr ""
+msgstr "និងព្រឹត្តិការណ៍​ប្រចាំថ្ងៃ​នៃ​ខែ"
 
 #: templates/part.eventform.php:170 templates/part.showevent.php:199
 msgid "Select months"
@@ -705,7 +705,7 @@ msgstr "ជ្រើស​សប្ដាហ៍"
 
 #: templates/part.eventform.php:188 templates/part.showevent.php:217
 msgid "and the events week of year."
-msgstr ""
+msgstr "និងព្រឹត្តិការណ៍​ប្រចាំសប្តាហ៍នៃ​ឆ្នាំ"
 
 #: templates/part.eventform.php:194 templates/part.showevent.php:223
 msgid "Interval"
@@ -713,11 +713,11 @@ msgstr "ចន្លោះ​ពេល"
 
 #: templates/part.eventform.php:200 templates/part.showevent.php:229
 msgid "End"
-msgstr ""
+msgstr "បញ្ចប់"
 
 #: templates/part.eventform.php:213 templates/part.showevent.php:242
 msgid "occurrences"
-msgstr ""
+msgstr "ការសារចុះ​ឡើង"
 
 #: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
@@ -831,7 +831,7 @@ msgstr "ប្រតិទិន​របស់​អ្នក"
 
 #: templates/settings.php:26
 msgid "Shared events"
-msgstr ""
+msgstr "ព្រឹត្តិការណ៍បាន​ចែក​រំលែក"
 
 #: templates/settings.php:42
 msgid "General"
