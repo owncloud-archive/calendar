@@ -470,7 +470,7 @@ Calendar={
 				}
 			},
 			newCalendar:function(object){
-				var div = $(document.createElement('div'))
+				var div = $('<div />')
 					.load(OC.filePath('calendar', 'ajax/calendar', 'new.form.php'),
 						function(){
 							Calendar.UI.Calendar.colorPicker(this);
