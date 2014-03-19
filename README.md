@@ -6,8 +6,6 @@ Maintainers:
 - [Georg Ehrke](https://github.com/georgehrke)
 - [Thomas Tanghus](https://github.com/tanghus)
 - [Bart Visscher](https://github.com/bartv2)
-Calendar app
-============
 
 Remainder support:
 ------------------
