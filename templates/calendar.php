@@ -111,6 +111,6 @@
 	</div>
 	<!-- End of settings -->
 </div>
-<div id="fullcalendar"><img id="loading" src="<?php print_unescaped(OCP\Util::imagePath('calendar', 'loading.gif')); ?>" /></div>
+<div id="fullcalendar"><div id="loading" class="icon-loading"></div></div>
 <div id="dialog_holder"></div>
 <div id="appsettings" class="popup topright hidden"></div>

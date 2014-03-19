@@ -16,12 +16,13 @@
 #dialog_holder {display: none;}
 
 #loading {
+	height: 100%;
+	width: 100%;
 	position: absolute;
-	top: 3px;
-	left: 2px;
-	display: none;
-	margin: 0;
-	padding: 0;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	background-color: rgba(255,255,255,0.3);
 }
 
 body {
@@ -267,7 +268,7 @@ button.category{margin:0 3px;}
 /* don't bold weekday names in header */
 #fullcalendar th {
 	font-weight: normal;
-	color: #aaa;
+	color: rgb(120,120,120);
 }
 
 /* lighter border color */
@@ -487,6 +488,7 @@ button.category{margin:0 3px;}
 	border-width: 1px;
 	border-style: solid;
 	border-color: black;
+	cursor: pointer;
 }
 
 .calendarCheckbox.unchecked {
