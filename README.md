@@ -15,8 +15,8 @@ Note:
 -----
 \# command => Run the command in terminal as super user
 
-Configuration steps:
---------------------
+Configuration steps for setting up the remainder:
+-------------------------------------------------
 1. # gedit /etc/cron.d/owncloud
 2. Add the line "*/15  *  *  *  * php -f /var/www/owncloud6/cron.php" without double quotes. Note: &lt;tab&gt; is in between the asterisks
 3. Save the file and close text editor
