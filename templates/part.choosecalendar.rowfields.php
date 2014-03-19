@@ -10,9 +10,9 @@
 <span class="utils">
 	<span class="action">
 	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_SHARE) { ?>
-		<a href="#" class="share permanent" data-item-type="calendar" data-item="<?php p($_['calendar']['id']); ?>"
+		<a href="#" class="share icon-share permanent" data-item-type="calendar" data-item="<?php p($_['calendar']['id']); ?>"
 		   data-possible-permissions="<?php p($_['calendar']['permissions']) ?>"
-		   title="<?php p($l->t('Share Calendar')) ?>"><img class="svg" src="<?php p(OCP\Util::imagePath('core', 'actions/shared.svg')) ?>"></a>
+		   title="<?php p($l->t('Share Calendar')) ?>"></a>
 	<?php } ?>
 	</span>
 
@@ -25,24 +25,24 @@
 	?>
 
 	<span class="action">
-	<a href="#" id="chooseCalendar-showCalDAVURL" data-user="<?php p(OCP\USER::getUser()) ?>" data-caldav="<?php p($caldav) ?>" title="<?php p($l->t('CalDav Link')) ?>" class="permanent"><img class="svg" src="<?php p(OCP\Util::imagePath('core', 'actions/public.svg')) ?>"></a>
+	<a href="#" id="chooseCalendar-showCalDAVURL" data-user="<?php p(OCP\USER::getUser()) ?>" data-caldav="<?php p($caldav) ?>" title="<?php p($l->t('CalDav Link')) ?>" class="icon-public permanent"></a>
 	</span>
 
 	<span class="action">
-	<a href="<?php print_unescaped(OCP\Util::linkTo('calendar', 'export.php') . '?calid=' . $_['calendar']['id']) ?>" title="<?php p($l->t('Download')) ?>"><img class="svg" src="<?php p(OCP\Util::imagePath('core', 'actions/download.svg')) ?>"></a>
+	<a href="<?php print_unescaped(OCP\Util::linkTo('calendar', 'export.php') . '?calid=' . $_['calendar']['id']) ?>" title="<?php p($l->t('Download')) ?>" class="icon-download"></a>
 
 	</span>
 
 	<span class="action">
 	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_UPDATE) { ?>
-		<a href="#" id="chooseCalendar-edit" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Edit')) ?>"><img class="svg" src="<?php p(OCP\Util::imagePath('core', 'actions/rename.svg')) ?>"></a>
+		<a href="#" id="chooseCalendar-edit" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Edit')) ?>" class="icon-rename"></a>
 	<?php } ?>
 
 	</span>
 
 	<span class="action">
 	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_DELETE) { ?>
-		<a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>"><img class="svg" src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')) ?>"></a>
+		<a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>" class="icon-delete"></a>
 	<?php } ?>
 	</span>
 </span>
