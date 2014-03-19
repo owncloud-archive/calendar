@@ -4,6 +4,7 @@
 # 
 # Translators:
 # TheHiter <magicreative.fr@gmail.com>, 2013-2014
+# Abderraouf Mehdi Bouhali <armbouhali@gmail.com>, 2014
 # ezidan <ezidan@live.com>, 2014
 # TYMAH <hussein-atef@hotmail.com>, 2012
 # Meesh <M_almohimeed@yahoo.com>, 2013
@@ -16,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-11 06:35-0400\n"
-"PO-Revision-Date: 2014-03-11 06:11+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-03-19 01:47-0400\n"
+"PO-Revision-Date: 2014-03-18 18:50+0000\n"
+"Last-Translator: Abderraouf Mehdi Bouhali <armbouhali@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/owncloud/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,49 +29,49 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "ليس جميع الجداول الزمنيه محفوضه مؤقة"
+msgstr "ليست جميع المفكرات مخزنة في الذاكرة الوسيطة"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr "كل شيء محفوض مؤقة"
+msgstr "كل شيء يبدو مخزنا في الذاكرة الوسيطة"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr "لم يتم العثور على جدول الزمني"
+msgstr "لم يتم العثور على مفكرات"
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr "لم يتم العثور على احداث"
+msgstr "لا أحداث موجودة"
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
-msgstr "جدول زمني خاطئ"
+msgstr "مفكرة خاطئة"
 
 #: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
-msgstr "ليس لديك الصلاحية لتعديل هذا التقويم."
+msgstr "ليست لديك الصلاحيات لتعديل هذا التقويم."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr "الملف إما ليس به أحداث أو قد تكون كل الأحداث حفظت فى التقويم الخاص بك."
+msgstr "الملف إما خال من الأحداث أو تم حفظ كل أحداثه في مفكرتك"
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
-msgstr "تم حفظ الأحداث فى التقويم الجديد"
+msgstr "تم حفظ الأحداث فى المفكرة الجديدة"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
-msgstr "لقد فشل الإستيراد"
+msgstr "فشل الإستيراد"
 
 #: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
-msgstr "تم حفظ الأحداث فى التقويم الخاص بك"
+msgstr "تم حفظ الأحداث فى مفكرتك"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr "التوقيت الجديد"
+msgstr "منطقة زمنية الجديدة"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
@@ -83,7 +84,7 @@ msgstr "طلب غير مفهوم"
 #: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
 msgid "Calendar"
-msgstr "الجدول الزمني"
+msgstr "المفكرة"
 
 #: js/calendar.js:179
 msgid "Deletion failed"
@@ -91,11 +92,11 @@ msgstr "فشل الحذف"
 
 #: js/calendar.js:270
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
-msgstr "ي ش [ع]{-[ي] ش ع}"
+msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
 #: js/calendar.js:272
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr "ي ش [ع] س:د{-[ي ش ع] س:د}"
+msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
 #: js/calendar.js:596
 msgid "group"
@@ -103,11 +104,11 @@ msgstr "مجموعة"
 
 #: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr "التحرير مسموح"
+msgstr "يمكن التحرير"
 
 #: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr "يمكن مشاركته"
+msgstr "يمكن المشاركة"
 
 #: js/calendar.js:870
 msgid "ddd"
@@ -127,7 +128,7 @@ msgstr "ddd M/d"
 
 #: js/calendar.js:877
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr "الشهر اليوم [ السنه] { '–' [الشهر] اليوم السنه }"
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:879
 msgid "dddd, MMM d, yyyy"
@@ -135,11 +136,11 @@ msgstr "dddd, MMM d, yyyy"
 
 #: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
 msgid "Sunday"
-msgstr "الاحد"
+msgstr "الأحد"
 
 #: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
 msgid "Monday"
-msgstr "الأثنين"
+msgstr "الاثنين"
 
 #: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
@@ -147,7 +148,7 @@ msgstr "الثلاثاء"
 
 #: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
-msgstr "الاربعاء"
+msgstr "الأربعاء"
 
 #: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
@@ -155,7 +156,7 @@ msgstr "الخميس"
 
 #: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
-msgstr "الجمعه"
+msgstr "الجمعة"
 
 #: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
 msgid "Saturday"
@@ -167,7 +168,7 @@ msgstr "أحد"
 
 #: js/l10n.php:78
 msgid "Mon."
-msgstr "أثن."
+msgstr "اثن."
 
 #: js/l10n.php:78
 msgid "Tue."
@@ -227,7 +228,7 @@ msgstr "أيلول"
 
 #: js/l10n.php:79 lib/object.php:669
 msgid "October"
-msgstr "تشرين الاول"
+msgstr "تشرين الأول"
 
 #: js/l10n.php:79 lib/object.php:670
 msgid "November"
@@ -235,35 +236,35 @@ msgstr "تشرين الثاني"
 
 #: js/l10n.php:79 lib/object.php:671
 msgid "December"
-msgstr "كانون الاول"
+msgstr "كانون الأول"
 
 #: js/l10n.php:80
 msgid "Jan."
-msgstr "ك2"
+msgstr "كانون2"
 
 #: js/l10n.php:80
 msgid "Feb."
-msgstr "شبا."
+msgstr "شباط"
 
 #: js/l10n.php:80
 msgid "Mar."
-msgstr "آذا."
+msgstr "آذار"
 
 #: js/l10n.php:80
 msgid "Apr."
-msgstr "نيس."
+msgstr "نيسان"
 
 #: js/l10n.php:80
 msgid "May."
-msgstr "أيا."
+msgstr "أيار"
 
 #: js/l10n.php:80
 msgid "Jun."
-msgstr "حزي."
+msgstr "حزيران"
 
 #: js/l10n.php:80
 msgid "Jul."
-msgstr "تمو."
+msgstr "تموز"
 
 #: js/l10n.php:80
 msgid "Aug."
@@ -271,19 +272,19 @@ msgstr "آب"
 
 #: js/l10n.php:80
 msgid "Sep."
-msgstr "أيل."
+msgstr "أيلول"
 
 #: js/l10n.php:80
 msgid "Oct."
-msgstr "ت1"
+msgstr "تشرين1"
 
 #: js/l10n.php:80
 msgid "Nov."
-msgstr "ت2"
+msgstr "تشرين2"
 
 #: js/l10n.php:80
 msgid "Dec."
-msgstr "ك1"
+msgstr "كانون1"
 
 #: js/l10n.php:83
 msgid "All day"
@@ -291,31 +292,31 @@ msgstr "كل اليوم "
 
 #: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
 msgid "New Calendar"
-msgstr "جدول زمني جديد"
+msgstr "مفكرة جديدة"
 
 #: js/l10n.php:85
 msgid "Missing or invalid fields"
-msgstr "خانات غير صالحة أو خالية من المعلومات"
+msgstr "خانات ناقصة أو غير سليمة"
 
 #: js/l10n.php:86 templates/part.showevent.php:11
 msgid "Title"
-msgstr "عنوان"
+msgstr "العنوان"
 
 #: js/l10n.php:88
 msgid "From Date"
-msgstr "من تاريخ"
+msgstr "تاريخ البداية"
 
 #: js/l10n.php:89
 msgid "From Time"
-msgstr "إلى تاريخ"
+msgstr "وقت البداية"
 
 #: js/l10n.php:90
 msgid "To Date"
-msgstr "إلى يوم"
+msgstr "تاريخ النهاية"
 
 #: js/l10n.php:91
 msgid "To Time"
-msgstr "إلى وقت"
+msgstr "ساعة النهاية"
 
 #: js/l10n.php:92
 msgid "The event ends before it starts"
@@ -323,7 +324,7 @@ msgstr "هذا الحدث ينتهي قبل أن يبدأ"
 
 #: js/l10n.php:93
 msgid "There was a database fail"
-msgstr "خطأ في قاعدة البيانات"
+msgstr "حدث خطأ في قاعدة البيانات"
 
 #: lib/app.php:121
 msgid "Birthday"
@@ -343,7 +344,7 @@ msgstr "الزبائن"
 
 #: lib/app.php:125
 msgid "Deliverer"
-msgstr "المرسل"
+msgstr "المرسِل"
 
 #: lib/app.php:126
 msgid "Holidays"
@@ -363,7 +364,7 @@ msgstr "يوبيل"
 
 #: lib/app.php:130
 msgid "Meeting"
-msgstr "إجتماع"
+msgstr "لقاء"
 
 #: lib/app.php:131
 msgid "Other"
@@ -379,11 +380,11 @@ msgstr "مشاريع"
 
 #: lib/app.php:134
 msgid "Questions"
-msgstr "اسئلة"
+msgstr "أسئلة"
 
 #: lib/app.php:135
 msgid "Work"
-msgstr "العمل"
+msgstr "عمل"
 
 #: lib/app.php:423
 msgid "by"
@@ -395,27 +396,27 @@ msgstr "غير مسمى"
 
 #: lib/calendar.php:190 lib/calendar.php:223
 msgid "You do not have the permissions to update this calendar."
-msgstr "ليس لديك الصلاحية لتحديث هذا التقويم."
+msgstr "ليست لديك الصلاحيات لتحديث هذه المفكرة."
 
 #: lib/calendar.php:258
 msgid "You do not have the permissions to delete this calendar."
-msgstr "ليس لديك الصلاحية لحذف هذا التقويم."
+msgstr "ليست لديك الصلاحيات لحذف هذه المفكرة."
 
 #: lib/calendar.php:292
 msgid "You do not have the permissions to add to this calendar."
-msgstr "ليس لديك الصلاحية لإضافة هذا التقويم."
+msgstr "ليست لديك الصلاحيات للإضافة لهذه المفكرة."
 
 #: lib/object.php:122 lib/object.php:163 lib/object.php:329
 msgid "You do not have the permissions to add events to this calendar."
-msgstr "ليس لديك الصلاحية لإضافة أحداث لهذا التقويم."
+msgstr "ليست لديك الصلاحيات لإضافة أحداث لهذه المفكرة."
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr "لا يمكنك اضافه مواعيد خاصه لتقويم مشارك"
+msgstr "لا يمكنك اضافه مواعيد غير عامة لتقويم مشارَك"
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
-msgstr "ليس لديك الصلاحية لحذف هذا الحدث."
+msgstr "ليست لديك الصلاحيات لحذف هذا الحدث."
 
 #: lib/object.php:503
 msgid "Busy"
@@ -423,7 +424,7 @@ msgstr "مشغول"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr "أظهر الأحداث كاملة"
+msgstr "إظهار الأحداث كاملة"
 
 #: lib/object.php:554
 msgid "Show only busy"
@@ -435,7 +436,7 @@ msgstr "اخفاء الحدث"
 
 #: lib/object.php:565
 msgid "Does not repeat"
-msgstr "لا يعاد"
+msgstr "لا يتكرر"
 
 #: lib/object.php:566
 msgid "Daily"
@@ -467,7 +468,7 @@ msgstr "بتاتا"
 
 #: lib/object.php:582
 msgid "by occurrences"
-msgstr "حسب تسلسل الحدوث"
+msgstr "حسب زمن الحدوث"
 
 #: lib/object.php:583
 msgid "by date"
@@ -511,11 +512,11 @@ msgstr "أخير"
 
 #: lib/object.php:681
 msgid "by events date"
-msgstr "حسب تاريخ الحدث"
+msgstr "حسب تواريخ الأحدث"
 
 #: lib/object.php:682
 msgid "by yearday(s)"
-msgstr "حسب يوم السنه"
+msgstr "حسب يو] السنة"
 
 #: lib/object.php:683
 msgid "by weeknumber(s)"
@@ -543,7 +544,7 @@ msgstr "يوم"
 
 #: templates/calendar.php:7
 msgid "Week"
-msgstr "إسبوع"
+msgstr "أسبوع"
 
 #: templates/calendar.php:8
 msgid "Month"
@@ -555,15 +556,15 @@ msgstr "اليوم"
 
 #: templates/calendar.php:13
 msgid "Settings"
-msgstr "تعديلات"
+msgstr "إعدادات"
 
 #: templates/part.choosecalendar.rowfields.php:13
 msgid "Share Calendar"
-msgstr "شارك الجدول الزمني"
+msgstr "مشاركة المفكرة"
 
 #: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
 msgid "CalDav Link"
-msgstr "وصلة CalDav"
+msgstr "رابط CalDav"
 
 #: templates/part.choosecalendar.rowfields.php:27
 msgid "Download"
@@ -579,23 +580,23 @@ msgstr "حذف"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
-msgstr "جدول زمني جديد"
+msgstr "مفكرة جديدة"
 
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
-msgstr "عادل الجدول الزمني"
+msgstr "تعديل المفكرة"
 
 #: templates/part.editcalendar.php:12
 msgid "Displayname"
-msgstr "الاسم المرئي"
+msgstr "الاسم المعروض"
 
 #: templates/part.editcalendar.php:20
 msgid "Calendar color"
-msgstr "لون الجدول الزمني"
+msgstr "لون المفكرة"
 
 #: templates/part.editcalendar.php:33
 msgid "Save"
-msgstr "إحفظ"
+msgstr "حفظ"
 
 #: templates/part.editcalendar.php:33
 msgid "Submit"
@@ -619,11 +620,11 @@ msgstr "حذف الحدث"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
-msgstr "تفاصيل الحدث"
+msgstr "معلومات عن الحدث"
 
 #: templates/part.eventform.php:6 templates/part.showevent.php:4
 msgid "Repeating"
-msgstr "يعاد"
+msgstr "التكرار"
 
 #: templates/part.eventform.php:7 templates/part.showevent.php:5
 msgid "Alarm"
@@ -631,7 +632,7 @@ msgstr "تنبيه"
 
 #: templates/part.eventform.php:8 templates/part.showevent.php:6
 msgid "Attendees"
-msgstr "الحضور"
+msgstr "المشاركون"
 
 #: templates/part.eventform.php:10
 msgid "Share"
@@ -651,7 +652,7 @@ msgstr "إلى"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr "حدث في يوم كامل"
+msgstr "حدث طيلة اليوم"
 
 #: templates/part.eventform.php:57 templates/part.showevent.php:86
 msgid "Advanced options"
@@ -659,19 +660,19 @@ msgstr "خيارات متقدمة"
 
 #: templates/part.eventform.php:61 templates/part.showevent.php:91
 msgid "Location"
-msgstr "مكان"
+msgstr "المكان"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr "الفئات (منفصلة بواسطة فاصلة)"
+msgstr "الفئات (مفصولة بعلامة الفاصلة ,)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
-msgstr "عدل الفئات"
+msgstr "عدل الفئة"
 
 #: templates/part.eventform.php:71 templates/part.showevent.php:99
 msgid "Description"
-msgstr "مواصفات"
+msgstr "وصف"
 
 #: templates/part.eventform.php:73
 msgid "Export event"
@@ -679,7 +680,7 @@ msgstr "تصدير الحدث"
 
 #: templates/part.eventform.php:80 templates/part.showevent.php:109
 msgid "Repeat"
-msgstr "إعادة"
+msgstr "التكرار"
 
 #: templates/part.eventform.php:87 templates/part.showevent.php:116
 msgid "Advanced"
@@ -687,40 +688,40 @@ msgstr "تعديلات متقدمه"
 
 #: templates/part.eventform.php:131 templates/part.showevent.php:160
 msgid "Select weekdays"
-msgstr "اختر ايام الاسبوع"
+msgstr "اختر أيام الاسبوع"
 
 #: templates/part.eventform.php:144 templates/part.eventform.php:157
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
-msgstr "اختر الايام"
+msgstr "اختر الأيام"
 
 #: templates/part.eventform.php:149 templates/part.showevent.php:178
 msgid "and the events day of year."
-msgstr "و التواريخ حسب يوم السنه."
+msgstr "و التواريخ حسب يوم السنة."
 
 #: templates/part.eventform.php:162 templates/part.showevent.php:191
 msgid "and the events day of month."
-msgstr "و الاحداث حسب يوم الشهر."
+msgstr "و الأحداث حسب يوم الشهر."
 
 #: templates/part.eventform.php:170 templates/part.showevent.php:199
 msgid "Select months"
-msgstr "اختر الاشهر"
+msgstr "اختر الأشهر"
 
 #: templates/part.eventform.php:183 templates/part.showevent.php:212
 msgid "Select weeks"
-msgstr "اختر الاسابيع"
+msgstr "اختر الأسابيع"
 
 #: templates/part.eventform.php:188 templates/part.showevent.php:217
 msgid "and the events week of year."
-msgstr "و الاحداث حسب اسبوع السنه"
+msgstr "و الأحداث حسب أسبوع السنة"
 
 #: templates/part.eventform.php:194 templates/part.showevent.php:223
 msgid "Interval"
-msgstr "المده الفاصله"
+msgstr "المدة الفاصلة"
 
 #: templates/part.eventform.php:200 templates/part.showevent.php:229
 msgid "End"
-msgstr "نهايه"
+msgstr "النهاية"
 
 #: templates/part.eventform.php:213 templates/part.showevent.php:242
 msgid "occurrences"
@@ -732,33 +733,33 @@ msgstr "واضحة لمشاركيها"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
-msgstr "انشاء جدول زمني جديد"
+msgstr "إنشاء مفكرة جديدة"
 
 #: templates/part.import.php:17
 msgid "Import a calendar file"
-msgstr "أدخل ملف التقويم"
+msgstr "استيراد ملف المفكرة"
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr "من فضلك اختر التقويم"
+msgstr "يرجى اختيار مفكرة"
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
-msgstr "أسم الجدول الزمني الجديد"
+msgstr "اسم المفكرة الجديدة"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr "خذ اسم متاح!"
+msgstr "اختر اسما متاحا !"
 
 #: templates/part.import.php:45
 msgid ""
 "A Calendar with this name already exists. If you continue anyhow, these "
 "calendars will be merged."
-msgstr "تقويم مع هذا الاسم موجود مسبقا. إذا استمريت على أية حال، سوف يتم دمج هذه التقويمات."
+msgstr "توجد مفكرة بهذا الاسم. إذا واصلت على أية حال، فسيتم دمج هاتين المفكرتين"
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr "الغى كافة الأحداث من التقويم المحدد"
+msgstr "حذف كافة الأحداث من المفكرة المحددة"
 
 #: templates/part.import.php:50
 msgid "Import"
@@ -766,7 +767,7 @@ msgstr "إدخال"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
-msgstr "أغلق الحوار"
+msgstr "إغلاق الحوار"
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
@@ -774,19 +775,19 @@ msgstr "إضافة حدث جديد"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr "تأليف حدث"
+msgstr "إنشاء حدث"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr "مشاركتها مع مستخدم أو جماعة"
+msgstr "المشاركة مع مستخدم أو مجموعة"
 
 #: templates/part.share.php:53
 msgid "Unshare"
-msgstr "إلغاء مشاركة"
+msgstr "إلغاء المشاركة"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr "عدم مشاركتها مع أي شخص"
+msgstr "غير مشارَكة مع أي شخص"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -794,11 +795,11 @@ msgstr "إرسال بريد إلكتروني"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
-msgstr "تمت المشاركة عبر التقويم"
+msgstr "تمت المشاركة عبر المفكرة"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr "عدم مشاركتها مع أي شخص عبر المفكرة"
+msgstr "غير مشارَكة مع أي شخص عبر المفكرة"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
@@ -806,11 +807,11 @@ msgstr "شاهد الحدث"
 
 #: templates/part.showevent.php:19
 msgid "Category"
-msgstr "فئة"
+msgstr "تصنيف"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
-msgstr "لم يتم اختيار الفئات"
+msgstr "دون فئة محددة"
 
 #: templates/part.showevent.php:41
 msgid "of"
@@ -818,7 +819,7 @@ msgstr "من"
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
-msgstr "فئة السماح بالدخول"
+msgstr "الفئة المسموح لها بالدخول"
 
 #: templates/part.showevent.php:70
 msgid "From"
@@ -834,11 +835,11 @@ msgstr "إلى"
 
 #: templates/settings.php:2
 msgid "Your calendars"
-msgstr "جداولك الزمنيه"
+msgstr "مفكراتك"
 
 #: templates/settings.php:26
 msgid "Shared events"
-msgstr ""
+msgstr "الأحداث المشاركة"
 
 #: templates/settings.php:42
 msgid "General"
@@ -850,7 +851,7 @@ msgstr "المنطقة الزمنية"
 
 #: templates/settings.php:78
 msgid "Update timezone automatically"
-msgstr "حدث التوقيت تلقائياً"
+msgstr "تحدث المنطقة الزمنية تلقائياً"
 
 #: templates/settings.php:83
 msgid "Time format"
@@ -870,11 +871,11 @@ msgstr "بداية الأسبوع"
 
 #: templates/settings.php:108
 msgid "Cache"
-msgstr "ذاكرة التخزين المؤقت"
+msgstr "ذاكرة التخزين الوسيط"
 
 #: templates/settings.php:112
 msgid "Clear cache for repeating events"
-msgstr "امسح ذاكرة التخزين المؤقت لتكرار الأحداث"
+msgstr "مسح الذاكرة الوسيطة للأحداث المتكررة"
 
 #: templates/settings.php:117
 msgid "URLs"
@@ -882,20 +883,20 @@ msgstr "عناوين المواقع"
 
 #: templates/settings.php:119
 msgid "Calendar CalDAV syncing addresses"
-msgstr "عنواين التقويم عن بعد المزامنة"
+msgstr "عناوين CalDAV للتحديث التزامني للمفكرة"
 
 #: templates/settings.php:119
 msgid "more info"
-msgstr "مزيد من المعلومات"
+msgstr "المزيد من المعلومات"
 
 #: templates/settings.php:121
 msgid "Primary address (Kontact et al)"
-msgstr "العنوان الرئيسي (جهات الإتصال)"
+msgstr "العنوان الرئيسي (Kontact و غيرها)"
 
 #: templates/settings.php:123
 msgid "iOS/OS X"
-msgstr "ط ن ت/ ن ت 10"
+msgstr "iOS/OS X"
 
 #: templates/settings.php:125
 msgid "Read only iCalendar link(s)"
-msgstr "اقرأ وصلة(ت) التقويم فقط"
+msgstr "روابط iCalendar للقراءة فقط"
