@@ -15,8 +15,8 @@ Note:
 -----
 \# command => Run the command in terminal as super user
 
-Configuration steps:
---------------------
+Configuration steps for enabling reminder support:
+--------------------------------------------------
 1. # gedit /etc/cron.d/owncloud
 2. Add the line "*/15  *  *  *  * php -f /var/www/owncloud6/cron.php" without double quotes. Note: &lt;tab&gt; is in between the asterisks
 3. Save the file and close text editor
@@ -30,7 +30,7 @@ Configuration steps:
 11. Configure email settings in the /var/www/owncloud/config/config.php file. (Settings for gmail can be found [here](http://stackoverflow.com/questions/712392/send-email-using-gmail-smtp-server-from-php-page))
 12. Restart your computer
 
-If you keep your machine turned on &amp; your machine is connected to the internet, an email will be sent everyday remainding your tasks. If you want to change the time period of the email, you can edit it in the /var/www/owncloud/apps/calendar/lib/alarm.php file.
+If you keep your machine turned on &amp; your machine is connected to the internet, an email will be sent everyday, reminding your tasks. If you want to change the time period of the email, you can edit it in the /var/www/owncloud/apps/calendar/lib/alarm.php file.
 For example, if you want an email to be sent every hour (for demo purpose), you can change the line
 $this->interval = 60 * 60 * 24;
 to
