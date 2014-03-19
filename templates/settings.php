@@ -103,15 +103,6 @@
 				</select>
 			</td>
 		</tr>
-		<tr class="advancedsettings">
-			<td>
-				<label for="" class="bold"><?php p($l->t('Cache'));?></label>
-				&nbsp;&nbsp;
-			</td>
-			<td>
-				<input id="cleancalendarcache" type="button" class="button" value="<?php p($l->t('Clear cache for repeating events'));?>">
-			</td>
-		</tr>
 	</table>
 </div>
 <h2 id="title_urls"><?php p($l->t('URLs')); ?></h2>
