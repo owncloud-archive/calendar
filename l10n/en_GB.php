@@ -215,5 +215,15 @@
 "more info" => "more info",
 "Primary address (Kontact et al)" => "Primary address (Kontact et al)",
 "iOS/OS X" => "iOS/OS X",
-"Read only iCalendar link(s)" => "Read only iCalendar link(s)"
+"Read only iCalendar link(s)" => "Read only iCalendar link(s)",
+"Simple Alarm" => "Simple reminder",
+"Custom alarm-settings not supported!" => "Custom alarm-settings not (yet) supported!",
+"Start of Event" => "Start of Event",
+"minutes" => "minutes",
+"hour" => "hour",
+"hours" => "hours",
+"day" => "day",
+"days" => "days",
+"week" => "week",
+"weeks" => "weeks"
 );

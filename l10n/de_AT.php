@@ -214,5 +214,15 @@
 "more info" => "weitere Informationen",
 "Primary address (Kontact et al)" => "Primäre Adresse (Kontakt u.a.)",
 "iOS/OS X" => "iOS/OS X",
-"Read only iCalendar link(s)" => "Nur lesende(r) iCalender-Link(s)"
+"Read only iCalendar link(s)" => "Nur lesende(r) iCalender-Link(s)",
+"Simple Alarm" => "Einfache Erinnerung",
+"Custom alarm-settings not supported!" => "Individuelle Einstellungen für Erinnerungen werden (noch) nicht unterstützt!",
+"Start of Event" => "Pünktlich",
+"minutes" => "Minuten",
+"hour" => "Stunde",
+"hours" => "Stunden",
+"day" => "Tag",
+"days" => "Tage",
+"week" => "Woche",
+"weeks" => "Wochen"
 );
