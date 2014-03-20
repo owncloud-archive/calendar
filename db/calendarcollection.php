@@ -30,61 +30,51 @@ class CalendarCollection extends Collection {
 	}
 
 	/**
-	 * @brief get a collection of all enabled calendars within collection
-	 * @param string $key - property that's supposed to be searched
-	 * @param mixed $value - expected value, can be a regular expression when 3rd param is set to true
-	 * @param boolean $regex - disable / enable search based on regular expression
-	 * @return CalendarCollection of all calendars that meet criteria
+	 * @brief get a collection of all calendars owned by a certian user
+	 * @param string userId of owner
+	 * @return CalendarCollection of all calendars owned by user
 	 */
-	public function search($key, $value, $regex=false) {
-		$matchingObjects = new ObjectCollection();
+	public function ownedBy($userId) {
+		return $this->search('ownerId', $userId);
+	}
 
-		$propertyGetter = 'get' . ucfirst(strtolower($key));
+	/**
+	 * @brief get a collection of calendars that supports certian components
+	 * @param int $component use \OCA\Calendar\Db\ObjectType to get wanted component code
+	 * @return CalendarCollection of calendars that supports certian components
+	 */
+	public function components($component) {
+		$newCollection = new CalendarCollection();
 
-		foreach($this->objects as $object) {
-			if(is_callable(array($object, $propertyGetter)) && $object->{$propertyGetter}($key)) === $value) {
-				$matchingObjects->add($object);
+		$this->iterate(function($object, $param) {
+			$collection = $param[0];
+			$component = $param[1];
+
+			if($object->getComponents() & $component) {
+				$collection->add((clone) $object);
 			}
-		}
+		}, array(&$newCollection, $component)));
 
-		return $matchingObjects;
+		return $newCollection;
 	}
 
 	/**
 	 * @brief get a collection of calendars with a certain permission
 	 * @param int $cruds use \OCA\Calendar\Db\Permissions to get wanted permission code
-	 * @return CalendarCollection of all disabled calendars
+	 * @return CalendarCollection of calendars with a certian permission
 	 */
 	public function permissions($cruds) {
-		$allCalendarsWithPermission = new CalendarCollection();
+		$newCollection = new CalendarCollection();
 
-		foreach($this->objects as $object) {
+		$this->iterate(function($object, $param) {
+			$collection = $param[0];
+			$cruds = $param[1];
+
 			if($object->getCruds() & $cruds) {
-				$allCalendarsWithPermission->add($object);
+				$collection->add((clone) $object);
 			}
-		}
+		}, array(&$newCollection, $cruds)));
 
-		return $allCalendarsWithPermission;
-	}
-
-	/**
-	 * @brief set a property for all calendars
-	 * @param string $key key for property
-	 * @param mixed $value value to be set
-	 * @return CalendarCollection with new properties
-	 */
-	public function setProperty($key, $value) {
-		$calendarsWithNewProperty = new CalendarCollection();
-
-		$propertySetter = 'set' . ucfirst(strtolower($key));
-
-		foreach($this->objects as $object) {
-			if(is_callable($object, $propertySetter)) {
-				$object->{$propertySetter}($value);
-			}
-			$calendarsWithNewProperty->add($object);
-		}
-
-		return $calendarsWithNewProperty;
+		return $newCollection;
 	}
 }

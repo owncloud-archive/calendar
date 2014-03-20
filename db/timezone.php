@@ -36,7 +36,8 @@ class Timezone extends Entity {
 	 * @brief take data from VObject and put into this Calendar object
 	 * @return VCalendar Object
 	 */
-	public function fromVObject($vobject) {
+	public function fromVObject(VCalendar $vobject) {
+		foreach(
 		
 	}
 
@@ -45,14 +46,26 @@ class Timezone extends Entity {
 	 * @return VCalendar Object
 	 */
 	public function getVObject() {
-		
+		//do some magic
 	}
 
 	/**
 	 * @brief check if object is valid
-	 * @return Calendar
+	 * @return boolean
 	 */
 	public function isValid() {
-		
+		if(is_string($this->tzId) === false) {
+			return false;
+		}
+		if(trim($this->tzId) === '') {
+			return false;
+		}
+
+		$vobject = $this->getVObject();
+		if($vobject->valid() === false) {
+			return false;
+		}
+
+		return true;
 	}
 }

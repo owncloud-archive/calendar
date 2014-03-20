@@ -79,14 +79,14 @@ class Local extends Backend {
 		$sql = 'SELECT * FROM `' . $this->calTableName . '` WHERE `userid` = ?';
 		$result = $this->api->prepareQuery($sql)->execute(array($userId));
 
-		$entities = array();
+		$calendarCollection = new CalendarCollection();
 		while($row = $result->fetchRow()){
 			$entity = new Calendar($row);
 			$this->completeCalendarEntity($entity, $row);
-			array_push($entities, $entity);
+			$calendarCollection->add($entity);
 		}
 
-		return $entities;
+		return $calendarCollection;
 	}
 
 	public function createCalendar(Calendar $calendar) {
@@ -192,14 +192,14 @@ class Local extends Backend {
 		$sql .= 'AND `' . $this->calTableName . '`.`uri` = ? AND `' . $this->calTableName . '`.`userid` = ?';
 		$result = $this->api->prepareQuery($sql)->execute(array($calendarId, $userId));
 
-		$entities = array();
+		$objectCollection = array();
 		while($row = $result->fetchRow()){
 			$entity = new Object($row);
 			$this->completeObjectEntity($entity, $row);
-			array_push($entities, $entity);
+			$objectCollection->add($entity);
 		}
 
-		return $entities;
+		return $objectCollection;
 	}
 
 	public function findObjectsInPeriod($calendarId, $start, $end, $userId, $limit, $offset){
@@ -218,14 +218,14 @@ class Local extends Backend {
 					$start, $end,
 					$end));
 
-		$entities = array();
+		$objectCollection = array();
 		while($row = $result->fetchRow()){
 			$entity = new Object($row);
 			$this->completeObjectEntity($entity, $row);
-			array_push($entities, $entity);
+			$objectCollection->add($entity);
 		}
 
-		return $entities;
+		return $objectCollection;
 	}
 
 	public function findObjectsByType($calendarId, $type, $userId, $limit, $offset) {
@@ -234,13 +234,14 @@ class Local extends Backend {
 		$sql .= 'AND `' . $this->calTableName . '`.`uri` = ? and `' . $this->calTableName . '`.`userid` = ? AND `' . $this->objTableName . '`.`objecttype` = ?';
 		$result = $this->api->prepareQuery($sql)->execute(array($calendarId, $userId, $type));
 
-		$entities = array();
+		$objectCollection = array();
 		while($row = $result->fetchRow()){
 			$entity = new Object($row);
 			$this->completeObjectEntity($entity, $row);
-			array_push($entities, $entity);
+			$objectCollection->add($entity);
 		}
-		return $entities;
+
+		return $objectCollection;
 	}
 
 	public function findObjectsByTypeInPeriod($calendarId, $type, $start, $end, $userId, $limit, $offset) {
@@ -261,14 +262,14 @@ class Local extends Backend {
 					$end,
 					$type));
 
-		$entities = array();
+		$objectCollection = array();
 		while($row = $result->fetchRow()){
 			$entity = new Object($row);
 			$this->completeObjectEntity($entity, $row);
-			array_push($entities, $entity);
+			$objectCollection->add($entity);
 		}
 
-		return $entities;
+		return $objectCollection;
 	}
 
 	public function createObject(Object $object, $userId) {
@@ -368,14 +369,14 @@ class Local extends Backend {
 
 		$result = $this->api->prepareQuery($sql)->execute($parameters);
 
-		$entities = array();
+		$objectCollection = array();
 		while($row = $result->fetchRow()){
 			$entity = new Object($row);
 			$this->completeObjectEntity($entity, $row);
-			array_push($entities, $entity);
+			$objectCollection->add($entity);
 		}
 
-		return $entities;
+		return $objectCollection;
 	}
 
 	private function getUTCforMDB($datetime=null){

@@ -24,11 +24,7 @@
  *     "vjournal" : false,
  *     "vtodo" : true
  *   },
- *   "timezone" : {
- *     "stdOffset" : 3600,
- *     "dstOffset" : 7200,
- *     "name" : "Europe/Berlin"
- *   },
+ *   "timezone" : {}, //see JSONTIMEZONE
  *   "user" : {
  *     "userid" : "developer42",
  *     "displayname" : "developer42"
@@ -50,69 +46,68 @@ use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\ObjectType;
 use \OCA\Calendar\Db\Permissions;
 
-class JSONCalendar extends JSON{
+class JSONCalendar extends JSON {
 
-	public $calendarURI;
-	public $url;
-	public $user;
-	public $owner;
-	public $displayname;
-	public $ctag;
-	public $color;
-	public $order;
-	public $components;
-	public $timezone;
-	public $enabled;
-	public $cruds;
+	private $jsonArray;
 
-	private $calendarObject;
+	public function serialize($convenience=true) {
+		$properties = get_object_vars($this->object);
 
-	/**
-	 * @brief init JSONCalendar object with data from Calendar object
-	 * @param Calendar $calendar
-	 */
-	public function __construct(Calendar $calendar) {
-		$this->properties = array(
-			'displayname',
-			'enabled',
-			'color',
-			'ctag',
-			'order',
-		);
-		parent::__construct($calendar);
+		foreach($properties as $property) {
+			$propertyGetter = 'get' . ucfirst($property);
+			$key = strtolower($property);
+			$value = $object->{$propertyGetter}();
 
-		//some type fixes
-		$this->enabled = (bool) $this->enabled;
-		$this->ctag = (int) $this->ctag;
-		$this->order = (int) $this->order;
+			switch($property) {
+				case 'color':
+				case 'displayname':
+					$this->jsonArray[$key] = (string) $value;
+					break;
+
+				case 'ctag':
+				case 'order':
+					$this->jsonArray[$key] = (int) $value;
+					break;
+
+				case 'enabled':
+					$this->jsonArray[key] = (bool) $value;
+					break;
+
+				case 'components':
+					$this->jsonArray[$key] = JSONUtility::getComponents($value);
+					break;
+
+				case 'cruds':
+					$this->jsonArray[$key] = JSONUtility::getCruds($value);
+					break;
+
+				case 'ownerId':
+				case 'userId':
+					$key = substr($key, 0, (strlen($key) - 2));
+					$this->jsonArray[$key] = JSONUtility::getUserInformation($value);
+					break;
+
+				case 'timezone':
+					$this->jsonArray[$key] = JSONUtility::getTimeZone($value, $convenience);
+					break;
+
+				//blacklist
+				case 'id':
+				case 'backend':
+				case 'uri':
+					break;
+
+				default:
+					$this->jsonArray[$key] = $value;
+					break;
+				
+			}
+		}
 
 		$this->setCalendarURI();
-		$this->setURL();
-		$this->setUser();
-		$this->setOwner();		
-		$this->setComponents();
-		$this->setTimezone();
-		$this->setCruds();
-	}
+		$this->setCalendarURL();
 
-	/**
-	 * @brief get json-encoded string containing all information
-	 */
-	public function serialize() {
-		return json_encode(array(
-			'calendarURI'	=> $this->calendarURI,
-			'url'			=> $this->url,
-			'user'			=> $this->user,
-			'owner'			=> $this->owner,
-			'displayname'	=> $this->displayname,
-			'ctag'			=> $this->ctag,
-			'color'			=> $this->color,
-			'order'			=> $this->order,
-			'components'	=> $this->components,
-			'timezone'		=> $this->timezone->serializeJSON(),
-			'enabled'		=> $this->enabled,
-			'cruds'			=> $this->cruds,
-		));
+		return json_encode($this->jsonArray);
 	}
 
 	/**
@@ -120,87 +115,21 @@ class JSONCalendar extends JSON{
 	 */
 	private function setCalendarURI() {
 		$backend = $this->object->getBackend();
-		$uri = $this->object->getUri();
+		$calendarURI = $this->object->getUri();
 
-		$this->calendarURI = strtolower($backend . '-' . $uri);
+		$calendarURI = CalendarUtility::getURI($backend, $calendarURI);
+
+		$this->jsonArray['calendarURI'] = $calendarURI;
 	}
 
 	/**
 	 * @brief set api url to calendar
 	 */
-	private function setURL() {
-		$properties = array(
-			'calendarId' => $this->calendarURI,
-		);
+	private function setCalendarURL() {
+		$calendarURI = $this->jsonArray['calendarURI'];
 
-		$url = \OCP\Util::linkToRoute('calendar.calendars.show', $properties);
-		$this->url = \OCP\Util::linkToAbsolute('', substr($url, 1));
-	}
+		$calendarURL = JSONUtility::getURL($calendarURI);
 
-	/**
-	 * @brief set user info
-	 */
-	private function setUser() {
-		$userId = $this->object->getUserId();
-		$this->user = $this->getUserInfo($userId);
-	}
-
-	/**
-	 * @brief set owner info
-	 */
-	private function setOwner() {
-		$ownerId = $this->object->getOwnerId();
-		$this->owner = $this->getUserInfo($ownerId);
-	}
-
-	/**
-	 * @brief return array with user info
-	 * @param string $userId
-	 * @return array
-	 */
-	private function getUserInfo($userId=null){
-		if($userId === null) {
-			$userId = \OCP\User::getUser();
-		}
-		return array(
-			'userid' => $userId,
-			'displayname' => \OCP\User::getDisplayName($userId),
-		);
-	}
-
-	/**
-	 * @brief set components info
-	 */
-	private function setComponents() {
-		$components = (int) $this->object->getComponents();
-
-		$this->components = array(
-			'vevent'	=> (bool) ($components & ObjectType::EVENT),
-			'vjournal'	=> (bool) ($components & ObjectType::JOURNAL),
-			'vtodo'		=> (bool) ($components & ObjectType::TODO),
-		);
-	}
-
-	/**
-	 * @brief set timezone info
-	 */
-	private function setTimezone($timezoneId='UTC') {
-		$timezoneId = $this->object->getTimezone();
-		//todo - implement
-	}
-
-	/**
-	 * @brief set cruds info
-	 */
-	private function setCruds() {
-		$cruds = (int) $this->object->getCruds();
-		$this->cruds = array(
-			'code' => 	$cruds,
-			'create' =>	(bool) ($cruds & Permissions::CREATE),
-			'read' => 	(bool) ($cruds & Permissions::READ),
-			'update' =>	(bool) ($cruds & Permissions::UPDATE),
-			'delete' =>	(bool) ($cruds & Permissions::DELETE),
-			'share' =>	(bool) ($cruds & Permissions::SHARE),
-		);
+		$this->jsonArray['url'] = $calendarURL;
 	}
 }

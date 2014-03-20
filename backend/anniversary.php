@@ -1,6 +1,7 @@
 <?php
 /**
  * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
+ * Copyright (c) 2014 Thomas Tanghus <thomas@tanghus.net>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -34,7 +35,7 @@ class Anniversary extends Backend {
 
 	public function findCalendar($uri, $userId) {
 		if($uri !== 'anniversary') {
-			throw new DoesNotExistException();
+			throw new DoesNotExistException('');
 		}
 
 		$calendar = new Calendar();
@@ -44,7 +45,7 @@ class Anniversary extends Backend {
 			->setUri('anniversary')
 			->setDisplayname($this->api->getTrans()->t('Anniversary'))
 			->setComponents(Components::EVENT)
-			->setCtag() //sum of all addressbook ctags
+			->setCtag(1) //sum of all addressbook ctags
 			->setTimezone(new TimeZone('UTC'))
 			->setCruds(Permissions::READ + Permissions::SHARE);
 
@@ -52,16 +53,15 @@ class Anniversary extends Backend {
 	}
 
 	public function findCalendars($userId) {
-		$calendar = $this->findCalendar('anniversary', $userId);
-
-		return array($calendar);
+		return new CalendarCollection($this->findCalendar('anniversary', $userId));
 	}
 
 	public function findObject($uri, $uid, $userId) {
+		//anniversary uri equals uri of contact
 		return null;
 	}
 
 	public function findObjects($uri, $userId) {
-		return array();
+		return new ObjectCollection();
 	}
 }

@@ -7,19 +7,4 @@
  */
 namespace OCA\Calendar\JSON;
 
-class JSONTimezone extends JSON{
-
-	public $tzid;
-	public $tzData;
-
-	/**
-	 * @brief get json-encoded string containing all information
-	 */
-	public function serialize() {
-		
-	}
-
-	public function getVObject() {
-		
-	}
-}
+class JSONTimezone extends JSONObject{}

@@ -7,4 +7,13 @@
  */
 namespace OCA\Calendar\Db;
 
-class TimezoneCollection extends Collection {}
+abstract class Entity extends use \OCA\Calendar\AppFramework\Db\Entity {
+
+	public function isValid();
+
+
+	public function fromVObject();
+
+
+	public function getVObject();
+}

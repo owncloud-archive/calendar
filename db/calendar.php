@@ -48,7 +48,7 @@ class Calendar extends Entity {
 	 * @return VCalendar Object
 	 */
 	public function fromVObject($vobject) {
-		
+		//do some magic
 	}
 
 	/**
@@ -56,7 +56,7 @@ class Calendar extends Entity {
 	 * @return VCalendar Object
 	 */
 	public function getVObject() {
-		
+		//do some more magic
 	}
 
 	/**
@@ -73,11 +73,62 @@ class Calendar extends Entity {
 	 * @return Calendar
 	 */
 	public function isValid() {
-		
-	}
+		$strings = array(
+			$this->userId, 
+			$this->ownerId, 
+			$this->backend,
+			$this->uri,
+			$this->displayname);
 
-	
-	public function fix() {
-		return $this;
+		foreach($strings as $string) {
+			if(is_string($string) === false) {
+				return false;
+			}
+			if(trim($string) === '') {
+				return false;
+			}
+		}
+
+		if(is_int($this->components) === false) {
+			return false;
+		}
+		if($this->components <= 0 || $this->components >= ObjectType::ALL) {
+			return false;
+		}
+
+		if(is_int($this->ctag) === false) {
+			return false;
+		}
+		if($this->ctag < 0) {
+			return false;
+		}
+
+		if($this->timezone instanceof Timezone && $this->timezone->isValid() === false) {
+			return false;
+		}
+
+		if(is_string($this->color) === false) {
+			return false;
+		}
+		if(preg_match('/#((?:[0-9a-fA-F]{2}){3}|(?:[0-9a-fA-F]{1}){3}|(?:[0-9a-fA-F]{1}){4}|(?:[0-9a-fA-F]{2}){4})$/', $this->color) !== 1) {
+			return false;
+		}
+
+		if(is_int($this->order) === false) {
+			return false;
+		}
+
+		if(is_bool($this->enabled) === false) {
+			return false;
+		}
+
+		if(is_int($this->cruds) === false) {
+			return false;
+		}
+		if($this->cruds <= 0 || $this->cruds >= Permissions::ALL) {
+			return false;
+		}
+
+		return true;
 	}
 }

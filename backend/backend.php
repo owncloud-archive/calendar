@@ -143,7 +143,7 @@ abstract class Backend implements CalendarInterface {
 	 * This method is mandatory!
 	 */
 	public function findCalendars($userId, $limit, $offset) {
-		return array();
+		return new CalendarCollection();
 	}
 
 	/**

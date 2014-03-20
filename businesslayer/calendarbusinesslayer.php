@@ -14,6 +14,8 @@ use \OCA\Calendar\AppFramework\Core\API;
 use \OCA\Calendar\Db\CalendarMapper;
 use \OCA\Calendar\Db\Calendar;
 
+use \OCA\Calendar\Utility\CalendarUtility;
+
 class CalendarBusinessLayer extends BusinessLayer {
 
 	public function __construct(CalendarMapper $calendarMapper,
@@ -28,20 +30,12 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @param string $userId
 	 * @param int $limit
 	 * @param int $offset
-	 * @return array containing all Calendar items
+	 * @return CalendarCollection
 	 */
 	public function findAll($userId=null, $limit=null, $offset=null) {
 		try {
 			if($userId === null) {
 				$userId = $this->api->getUserId();
-			}
-
-			if($limit !== null) {
-				$limit = (int) $limit;
-			}
-	
-			if($offset !== null || $limit !== null) {
-				$offset = (int) $offset;
 			}
 
 			$calendars = $this->mapper->findAll($userId, $limit, $offset);
@@ -61,7 +55,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 * @param string $userId
 	 * @throws BusinessLayerException if backend does not exist
 	 * @throws BusinessLayerException if backend is disabled
-	 * @return calendar item
+	 * @return calendar object
 	 */
 	public function find($calendarId, $userId=null) {
 		try {
@@ -113,7 +107,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 			$this->checkBackendSupports($backend, \OCA\Calendar\Backend\CREATE_CALENDAR);
 
 			if($calendar->isValid() === false) {
-				$calendar->fix();
+				throw new BusinessLayerException('CalendarBusinessLayer::create(): Calendar object is not valid!');
 			}
 
 			$calendar = $api->createCalendar($calendar);
@@ -185,7 +179,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 				$this->checkBackendSupports($backend, \OCA\Calendar\Backend\UPDATE_CALENDAR);
 
 				if($calendar->isValid() === false) {
-					$calendar->fix();
+				throw new BusinessLayerException('CalendarBusinessLayer::update(): Calendar object is not valid!');
 				}
 
 				$calendar = $api->updateCalendar($calendar, $calendarURI, $userId);

@@ -51,21 +51,13 @@ class ObjectBusinessLayer extends BusinessLayer {
 		list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 		$this->checkBackendEnabled($backend);
 
-		if($limit !== null) {
-			$limit = (int) $limit;
-		}
-
-		if($offset !== null || $limit !== null) {
-			$offset = (int) $offset;
-		}
-
 		try {
 			$api = &$this->backends->find($backend)->api;
 
 			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
 			if($cacheObjects) {
 				$objects = $this->mapper->findAll($backend, $calendarURI, $userId, $limit, $offset);
-			} else { 
+			} else {
 				$objects = $api->findObjects($calendarURI, $userId, $limit, $offset);
 			}
 
@@ -162,24 +154,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 					$objects = $api->findObjectsByType($calendarURI, $type, $userId, $limit, $offset);
 				} else {
 					$allObjects = $api->findObjects($calendarURI, $userId);
-
-					if($limit !== null) {
-						$i = 0;						
-					}
-
-					foreach($allObjects as $objectToCheck) {
-						if($objectToCheck->getType() === $type) {
-							if($limit === null || ($i >= $offset)) {
-								$objects[] = $objectToCheck;
-							}
-							if($limit !== null) {
-								$i++;
-								if($i > ($offset + $limit)) {
-									break;
-								}	
-							}
-						}
-					}
+					$objects = $allObjects->byType($type)->subset($limit, $offset);
 				}
 			}
 
@@ -225,29 +200,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 					$objects = $api->findObjectsInPeriod($calendarURI, $type, $userId, $limit, $offset);
 				} else {
 					$allObjects = $api->findObjects($calendarURI, $userId);
-
-					if($limit !== null) {
-						$i = 0;						
-					}
-
-					foreach($allObjects as $objectToCheck) {
-						$startDate = $objectToCheck->getStartdate();
-						$endDate = $objectToCheck->getEnddate();
-						if( $objectToCheck->getRepeating() === true ||
-							($startDate >= $start && $startDate <= $start) ||
-							($endDate >= $end && $endDate <= $end) ||
-							($startDate <= $start && $endDate >= $end)){
-							if($limit === null || ($i >= $offset)) {
-								$objects[] = $objectToCheck;
-							}
-							if($limit !== null) {
-								$i++;
-								if($i > ($offset + $limit)) {
-									break;
-								}	
-							}
-						}
-					}
+					$objects = $allObjects->inPeriod($start, $end)->subset($limit, $offset)
 				}
 			}
 
@@ -297,33 +250,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 					$objects = $api->findObjectsByTypeInPeriod($calendarURI, $start, $end, $type, $userId);
 				} else {
 					$allObjects = $api->findObjects($calendarURI, $userId);
-
-					if($limit !== null) {
-						$i = 0;						
-					}
-
-					foreach($allObjects as $objectToCheck) {
-						if($objectToCheck->getType() !== $type) {
-							continue;
-						}
-
-						$startDate = $objectToCheck->getStartdate();
-						$endDate = $objectToCheck->getEnddate();
-						if( $objectToCheck->getRepeating() === true ||
-							($startDate >= $start && $startDate <= $start) ||
-							($endDate >= $end && $endDate <= $end) ||
-							($startDate <= $start && $endDate >= $end)){
-							if($limit === null || ($i >= $offset)) {
-								$objects[] = $objectToCheck;
-							}
-							if($limit !== null) {
-								$i++;
-								if($i > ($offset + $limit)) {
-									break;
-								}	
-							}
-						}
-					}
+					$objects = $allObjects->byType($type)->inPeriod($start, $end)->subset($limit, $offset);
 				}
 			}
 

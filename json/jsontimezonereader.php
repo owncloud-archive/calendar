@@ -7,10 +7,30 @@
  */
 namespace OCA\Calendar\JSON;
 
+use Sabre\VObject\Reader;
+
 class JSONTimezoneReader extends JSON{
 
-	private $data;
-	private $timezone;
+	public function parse() {
+		$data = &$this->data;
 
-	
+		try{
+			$vcalendar = Reader::readJSON($data);
+
+			$numTimezones = count($vcalendar->VTIMEZONE);
+
+			if($numTimezones !== 1) {
+				throw new JSONTimezoneReaderException('parsing multiple timezones at once is not implemented yet.');
+			}
+
+			$timezone = new Timezone();
+			$timezone->fromVObject($vcalendar);
+
+			$this->object = $timezone;
+		} catch(Exception $ex /* What exception is being thrown??? */) {
+			throw new JSONTimezoneReaderException($ex->getMessage());
+		}
+	}
 }
+
+class JSONTimezoneReaderException extends Exception{}

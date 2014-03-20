@@ -7,67 +7,81 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OCA\Calendar\AppFramework\Db\Entity;
-
-use \Sabre\VObject\Component\VCalendar;
+use \DateTime;
 
 class ObjectCollection extends Collection {
 
+	/**
+	 * @brief get a collection of entities within period
+	 * @param DateTime $start
+	 * @param DateTime $end
+	 * @return ObjectCollection
+	 */
 	public function inPeriod(DateTime $start, DateTime $end) {
-		
-	}
+		$objectsInPeriod = new ObjectCollection();
 
-	public function expand(DateTime $start, DateTime $end) {
-		
-	}
-
-	public function ofType($type) {
-		if($type === ObjectType::ALL) {
-			return (clone $this);
-		}
-
-		return $this->search('type', $type);
-	}
-
-	public function search($key, $value, $regex=false) {
-		$matchingObjects = new ObjectCollection();
-
-		$propertyGetter = 'get' . ucfirst(strtolower($key));
-
-		foreach($this->objects as $object) {
-			if(is_callable(array($object, $propertyGetter)) && $object->{$propertyGetter}($key)) === $value) {
-				$matchingObjects->add($object);
+		$this->iterate(function($object, $param) {
+			$collection = $param[0];
+			if($object->isRepeating() === true) {
+				$collection->add((clone) $object);
+			} else {
+				
+				
+				
 			}
-		}
+		}, array(&$objectsInPeriod));
 
-		return $matchingObjects;
+		return $objectsInPeriod;
 	}
 
-	public function searchData($key, $value, $regex) {
-		$matchingObjects = new ObjectCollection();
+	/**
+	 * @brief expand all entities of collection
+	 * @param DateTime $start
+	 * @param DateTime $end
+	 * @return ObjectCollection
+	 */
+	public function expand(DateTime $start, DateTime $end) {
+		$expandedObjects = new ObjectCollection();
 
-		$key = strtoupper($key);
+		$this->iterate(function($object, $param) {
+			$collection = $param[0];
+			if($object->isRepeating() === true) {
 
-		
+
+
+			} else {
+				$collection->add((clone) $object);
+			}
+		}, array(&$expandedObjects)));
+
+		return $expandedObjects;
 	}
 
-	public function getVObject() {
-		$vobject = new VCalendar();
-
-		foreach($this->objects as $object) {
-			$vobject->add($object->getVObject());
-		}
-
-		return $vobject;
+	/**
+	 * @brief get a collection of all calendars owned by a certian user
+	 * @param string userId of owner
+	 * @return ObjectCollection
+	 */
+	public function ownedBy($userId) {
+		return $this->search('ownerId', $userId);
 	}
 
-	public function getVObjects() {
-		$vobjects = array();
+	/**
+	 * @brief get a collection of all enabled calendars within collection
+	 * @return ObjectCollection
+	 */
+	public function ofType($type) {
+		$objectsOfType = new ObjectCollection();
 
-		foreach($this->objects as $object) {
-			$vobjects[] = $object->getVObject();
-		}
+		$this->iterate(function($object, $param) {
+			$collection = $param[0];
+			$type = $param[1];
 
-		return $vobjects;
+			if($object->getType() & $type) {
+				$collection->add((clone) $object);
+			}
+		}, array(&$objectsOfType, $type));
+
+		return $objectsOfType;
 	}
 }
