@@ -45,11 +45,13 @@ var defaults = {
 	
 	// time formats
 	titleFormat: {
+		fourWeeks: 'MMMM yyyy',
 		month: 'MMMM yyyy',
 		week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
 		day: 'dddd, MMM d, yyyy'
 	},
 	columnFormat: {
+		fourWeeks: 'ddd',
 		month: 'ddd',
 		week: 'ddd M/d',
 		day: 'dddd M/d'
@@ -1996,6 +1998,59 @@ function firstDefined() {
 	}
 }
 
+
+;;
+
+fcViews.fourWeeks = FourWeeksView;
+
+function FourWeeksView(element, calendar) {
+	var t = this;
+	
+	
+	// exports
+	t.render = render;
+	
+	
+	// imports
+	BasicView.call(t, element, calendar, 'fourWeeks');
+	var opt = t.opt;
+	var renderBasic = t.renderBasic;
+	var formatDate = calendar.formatDate;
+	
+	
+	
+	function render(date, delta) {
+		if (delta) {
+			addDays(date, delta * 7 * 4);
+		}
+		
+		var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + 7) % 7));
+		var end = addDays(cloneDate(start), 7 * 4);
+		var visStart = cloneDate(start);
+		var visEnd = cloneDate(end);
+		var firstDay = opt('firstDay');
+		var nwe = opt('weekends') ? 0 : 1;
+		if (nwe) {
+			skipWeekend(visStart);
+			skipWeekend(visEnd, -1, true);
+		}
+		addDays(visStart, -((visStart.getDay() - Math.max(firstDay, nwe) + 7) % 7));
+		addDays(visEnd, (7 - visEnd.getDay() + Math.max(firstDay, nwe)) % 7);
+		var rowCnt = Math.round((visEnd - visStart) / (DAY_MS * 7));
+		if (opt('weekMode') == 'fixed') {
+			addDays(visEnd, (4 - rowCnt) * 7);
+			rowCnt = 4;
+		}
+		t.title = formatDate(start, opt('titleFormat'));
+		t.start = start;
+		t.end = end;
+		t.visStart = visStart;
+		t.visEnd = visEnd;
+		renderBasic(rowCnt, nwe ? 5 : 7, true);
+	}
+	
+	
+}
 
 ;;
 

@@ -6,6 +6,7 @@
 		<input type="button" value="<?php p($l->t('Day'));?>" id="onedayview_radio"/>
 		<input type="button" value="<?php p($l->t('Week'));?>" id="oneweekview_radio"/>
 		<input type="button" value="<?php p($l->t('Month'));?>" id="onemonthview_radio"/>&nbsp;&nbsp;
+		<input type="button" value="<?php p($l->t('4 Weeks'));?>" id="fourweeksview_radio"/>&nbsp;&nbsp;
 		<img id="loading" src="<?php print_unescaped(OCP\Util::imagePath('calendar', 'loading.gif')); ?>" />
 	</form>
 	<form id="choosecalendar">

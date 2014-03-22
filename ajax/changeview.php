@@ -11,6 +11,7 @@ OCP\JSON::callCheck();
 $view = $_POST['v'];
 switch($view) {
 	case 'agendaWeek':
+	case 'fourWeeks':
 	case 'month';
 	case 'agendaDay':
 		break;

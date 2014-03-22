@@ -558,11 +558,15 @@ msgstr "Woche"
 msgid "Month"
 msgstr "Monat"
 
-#: templates/calendar.php:12 templates/calendar.php:18
+#: templates/calendar.php:9
+msgid "4 Weeks"
+msgstr "4 Wochen"
+
+#: templates/calendar.php:14 templates/calendar.php:20
 msgid "Today"
 msgstr "Heute"
 
-#: templates/calendar.php:13
+#: templates/calendar.php:15
 msgid "Settings"
 msgstr "Einstellungen"
 
