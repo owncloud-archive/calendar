@@ -10,34 +10,23 @@ namespace OCA\Calendar\Controller;
 use \OCA\Calendar\AppFramework\Core\API;
 use \OCA\Calendar\AppFramework\Http\Http;
 use \OCA\Calendar\AppFramework\Http\Request;
-use \OCA\Calendar\AppFramework\Http\JSONResponse;
 
 use \OCA\Calendar\AppFramework\DoesNotExistException;
 
-use \OCA\Calendar\BusinessLayer\BackendBusinessLayer;
 use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
 use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
-use OCA\Calendar\Db\Calendar;
-use OCA\Calendar\JSON\JSONCalendar;
-use OCA\Calendar\JSON\JSONCalendarCollection;
-use OCA\Calendar\JSON\JSONCalendarReader;
+use \OCA\Calendar\Db\Calendar;
+use \OCA\Calendar\Db\CalendarCollection;
+
+use \OCA\Calendar\Http\JSONResponse;
+
+use \OCA\Calendar\Http\JSON\JSONCalendar;
+use \OCA\Calendar\Http\JSON\JSONCalendarCollection;
+use \OCA\Calendar\Http\JSON\JSONCalendarReader;
 
 class CalendarController extends Controller {
-
-	protected $calendarBusinessLayer;
-
-	/**
-	 * @param Request $request: an instance of the request
-	 * @param API $api: an api wrapper instance
-	 * @param BusinessLayer $businessLayer: a businessLayer instance
-	 */
-	public function __construct(API $api, Request $request,
-								CalendarBusinessLayer $businessLayer){
-		parent::__construct($api, $request);
-		$this->calendarBusinessLayer = $businessLayer;
-	}
 
 	/**
 	 * @IsAdminExemption
@@ -48,8 +37,8 @@ class CalendarController extends Controller {
 	public function index() {
 		try {
 			$userId = $this->api->getUserId();
-			$limit = $this->header('X-OC-CAL-LIMIT');
-			$offset	= $this->header('X-OC-CAL-OFFSET');
+			$limit = $this->header('X-OC-CAL-LIMIT', 'integer');
+			$offset	= $this->header('X-OC-CAL-OFFSET', 'integer');
 
 			$calendarCollection = $this->calendarBusinessLayer->findAll($userId, $limit, $offset);
 			$jsonCalendarCollection = new JSONCalendarCollection($calendarCollection);
@@ -57,8 +46,7 @@ class CalendarController extends Controller {
 			return new JSONResponse($jsonCalendarCollection->serialize());
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, HTTP::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
@@ -77,11 +65,14 @@ class CalendarController extends Controller {
 
 			$jsonCalendar = new JSONCalendar($calendar);
 
+			$response = new Reponse();
+			$response->addHeader('X-Content-Type-Options', 'nosniff');
+			$response->addHeader('Content-type', 'application/json; charset=utf-8');
+
 			return new JSONResponse($jsonCalendar->serialize());
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, HTTP::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
@@ -102,13 +93,12 @@ class CalendarController extends Controller {
 								   ->setOwnerId($userId);
 
 			$calendar = $this->calendarBusinessLayer->create($calendar, $userId);
-			$jsonCalendar = new JSONCalendar($calendar->serialize());
+			$jsonCalendar = new JSONCalendar($calendar);
 
-			return new JSONResponse($jsonCalendar, HTTP::STATUS_CREATED);
+			return new JSONResponse($jsonCalendar->serialize(), HTTP::STATUS_CREATED);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, HTTP::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
@@ -129,24 +119,13 @@ class CalendarController extends Controller {
 								   ->setUserId($userId);
 
 			$calendar = $this->calendarBusinessLayer->update($calendar, $calendarId, $userId);
-			$jsonCalendar = new JSONCalendar($calendar->serialize());
+			$jsonCalendar = new JSONCalendar($calendar);
 
-			return new JSONResponse($jsonCalendar, HTTP::STATUS_CREATED);
+			return new JSONResponse($jsonCalendar->serialize(), HTTP::STATUS_CREATED);
 		} catch(BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, HTTP::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
-	}
-
-	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
-	 * @API
-	 */
-	public function patch() {
-		return new JSONResponse(array(), HTTP::STATUS_NOT_IMPLEMENTED);
 	}
 
 	/** 
@@ -165,8 +144,7 @@ class CalendarController extends Controller {
 			return new JSONResponse(null, HTTP::STATUS_NO_CONTENT);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, HTTP::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 }

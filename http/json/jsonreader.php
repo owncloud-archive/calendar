@@ -5,7 +5,7 @@
  * later.
  * See the COPYING-README file.
  */
-namespace OCA\Calendar\JSON;
+namespace OCA\Calendar\Http\JSON;
 
 use \OCA\Calendar\Db\Collection;
 
@@ -43,5 +43,5 @@ abstract class JSONReader {
 		return $this->object;
 	}
 
-	public function parse();
+	abstract public function parse();
 }

@@ -46,7 +46,7 @@ class Backend extends Entity {
 	 * @brief take data from VObject and put into this Calendar object
 	 * @return VCalendar Object
 	 */
-	public function fromVObject($vobject) {
+	public function fromVObject(VCalendar $vcalendar) {
 		throw new Exception();
 	}
 

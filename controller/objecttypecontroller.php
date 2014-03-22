@@ -10,13 +10,13 @@ namespace OCA\Calendar\Controller;
 use \OCA\Calendar\AppFramework\Core\API;
 use \OCA\Calendar\AppFramework\Http\Http;
 use \OCA\Calendar\AppFramework\Http\Request;
-use \OCA\Calendar\AppFramework\Http\JSONResponse;
 
-use OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
+use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
+use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
-use OCA\Calendar\Db\ObjectType;
-use OCA\Calendar\JSON\JSONObject;
+use \OCA\Calendar\Db\ObjectType;
+use \OCA\Calendar\HTTP\JSON\JSONObject;
 
 abstract class ObjectTypeController extends ObjectController {
 
@@ -29,8 +29,9 @@ abstract class ObjectTypeController extends ObjectController {
 	 * @param string $objectType: itemtype of wanted elements, use OCA\Calendar\Db\ObjectType::...
 	 */
 	public function __construct(API $api, Request $request,
-								ObjectBusinessLayer $businessLayer, $type){
-		parent::__construct($api, $request, $businessLayer);
+								CalendarBusinessLayer $calendarBusinessLayer,
+								ObjectBusinessLayer $objectBusinessLayer, $type){
+		parent::__construct($api, $request, $calendarBusinessLayer, $objectBusinessLayer);
 		$this->objectType = $type;
 	}
 
@@ -44,15 +45,11 @@ abstract class ObjectTypeController extends ObjectController {
 		try {
 			$userId = $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
-			$limit = $this->header('X-OC-CAL-LIMIT');
-			$offset = $this->header('X-OC-CAL-OFFSET');
-			$expand = $this->header('X-OC-CAL-EXPAND');
-			$start = $this->header('X-OC-CAL-START');
-			$end = $this->header('X-OC-CAL-END');
-
-			$this->parseBoolean($expand);
-			$this->parseDateTime($start);
-			$this->parseDateTime($end);
+			$limit = $this->header('X-OC-CAL-LIMIT', 'integer');
+			$offset = $this->header('X-OC-CAL-OFFSET', 'integer');
+			$expand = $this->header('X-OC-CAL-EXPAND', 'boolean');
+			$start = $this->header('X-OC-CAL-START', 'DateTime');
+			$end = $this->header('X-OC-CAL-END', 'DateTime');
 
 			if($start === null || $end === null) {
 				$objectCollection = $this->objectBusinessLayer
@@ -87,8 +84,7 @@ abstract class ObjectTypeController extends ObjectController {
 			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, Http::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, Http::STATUS_BAD_REQUEST);
 		}
 	}
 
@@ -104,14 +100,11 @@ abstract class ObjectTypeController extends ObjectController {
 			$calendarId = $this->params('calendarId');
 			$objectId = $this->getObjectId();
 
-			$returnRawICS = $this->returnRawICS();
-			$expand = $this->header('X-OC-CAL-EXPAND');
-			$start = $this->header('X-OC-CAL-START');
-			$end = $this->header('X-OC-CAL-END');
+			$expand = $this->header('X-OC-CAL-EXPAND', 'boolean');
+			$start = $this->header('X-OC-CAL-START', 'DateTime');
+			$end = $this->header('X-OC-CAL-END', 'DateTime');
 
-			$this->parseBooleanString($expand);
-			$this->parseDateTimeString($start);
-			$this->parseDateTimeString($end);
+			$returnRawICS = $this->doesClientAcceptRawICS();
 
 			$object = $this->objectBusinessLayer->findByType($calendarId, $objectId, $this->objecttype, $userId);
 
@@ -139,8 +132,7 @@ abstract class ObjectTypeController extends ObjectController {
 			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, Http::STATUS_NOT_FOUND);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 

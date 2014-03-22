@@ -51,9 +51,9 @@ class CalendarCollection extends Collection {
 			$component = $param[1];
 
 			if($object->getComponents() & $component) {
-				$collection->add((clone) $object);
+				$collection->add(clone $object);
 			}
-		}, array(&$newCollection, $component)));
+		}, array(&$newCollection, $component));
 
 		return $newCollection;
 	}
@@ -71,9 +71,9 @@ class CalendarCollection extends Collection {
 			$cruds = $param[1];
 
 			if($object->getCruds() & $cruds) {
-				$collection->add((clone) $object);
+				$collection->add(clone $object);
 			}
-		}, array(&$newCollection, $cruds)));
+		}, array(&$newCollection, $cruds));
 
 		return $newCollection;
 	}

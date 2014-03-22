@@ -40,7 +40,7 @@
  * }
  * ```
  */
-namespace OCA\Calendar\JSON;
+namespace OCA\Calendar\Http\JSON;
 
 use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\ObjectType;

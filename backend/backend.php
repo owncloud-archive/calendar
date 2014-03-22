@@ -129,9 +129,7 @@ abstract class Backend implements CalendarInterface {
 	 * This method returns an array of \OCA\Calendar\Db\Calendar object.
 	 * This method is mandatory!
 	 */
-	public function findCalendar($calendarURI, $userId) {
-		throw new DoesNotExistException();
-	}
+	abstract public function findCalendar($calendarURI, $userId);
 
 	/**
 	 * @brief returns all calendars of the user $userId
@@ -142,8 +140,18 @@ abstract class Backend implements CalendarInterface {
 	 * This method returns an array of \OCA\Calendar\Db\Object objects.
 	 * This method is mandatory!
 	 */
-	public function findCalendars($userId, $limit, $offset) {
-		return new CalendarCollection();
+	abstract public function findCalendars($userId, $limit, $offset);
+
+	public function countCalendars($userId) {
+		$calendarCollection = $this->findCalendars($userId);
+		return $calendarCollection->count();
+	}
+
+	abstract public function doesCalendarExist();
+
+	public function getCalendarsCTag($calendarURI, $userId) {
+		$calendar = $this->findCalendar($calendarURI, $userId);
+		return $calendar->getCTag();
 	}
 
 	/**
@@ -158,9 +166,7 @@ abstract class Backend implements CalendarInterface {
 	 * This method returns an \OCA\Calendar\Db\Object object.
 	 * This method is mandatory!
 	 */
-	public function findObject($calendarURI, $objectURI, $userId) {
-		throw new DoesNotExistException();
-	}
+	abstract public function findObject($calendarURI, $objectURI, $userId);
 
 	/**
 	 * @brief returns all objects in the calendar $calendarURI of the user $userId
@@ -172,8 +178,18 @@ abstract class Backend implements CalendarInterface {
 	 * This method returns an array of \OCA\Calendar\Db\Object objects.
 	 * This method is mandatory!
 	 */
-	public function findObjects($calendarURI, $userId, $limit, $offset) {
-		throw new DoesNotExistException();
+	abstract public function findObjects($calendarURI, $userId, $limit, $offset);
+
+	public function countObjects() {
+		
+	}
+
+	public function doesObjectExist() {
+		
+	}
+
+	public function getObjectsETag() {
+		
 	}
 
 	/**
@@ -229,38 +245,5 @@ abstract class Backend implements CalendarInterface {
 	 */
 	public function canStoreOrder() {
 		return false;
-	}
-
-	/**
-	 * @brief get displayname for backend
-	 * @returns boolean
-	 * 
-	 * This method returns a boolean
-	 * This method is mandatory!
-	 */
-	public function getDisplayName() {
-		return '';
-	}
-
-	/**
-	 * @brief get description for backend
-	 * @returns boolean
-	 * 
-	 * This method returns a boolean
-	 * This method is mandatory!
-	 */
-	public function getDescription() {
-		return '';
-	}
-
-	/**
-	 * @brief get components for backend
-	 * @returns boolean
-	 * 
-	 * This method returns a boolean
-	 * This method is mandatory!
-	 */
-	public function getComponents() {
-		return ObjectType::ALL;
 	}
 }

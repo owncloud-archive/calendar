@@ -5,7 +5,7 @@
  * later.
  * See the COPYING-README file.
  */
-namespace OCA\Calendar\JSON;
+namespace OCA\Calendar\Http\JSON;
 
 use Sabre\VObject\Reader;
 use Sabre\VObject\Component\VEvent;

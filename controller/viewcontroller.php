@@ -35,12 +35,8 @@ class ViewController extends Controller {
 	 * @param API $api: an api wrapper instance
 	 * @param ItemMapper $itemMapper: an itemwrapper instance
 	 */
-	public function __construct(API $api, Request $request,
-								CalendarBusinessLayer $calendarBusinessLayer, 
-								ObjectBusinessLayer $objectBusinessLayer){
+	public function __construct(API $api, Request $request){
 		parent::__construct($api, $request);
-		$this->calendarBusinessLayer = $calendarBusinessLayer;
-		$this->objectBusinessLayer = $objectBusinessLayer;
 
 		// thirdparty javscripts
 		$this->api->add3rdPartyScript('fullCalendarPro/fullcalendar');

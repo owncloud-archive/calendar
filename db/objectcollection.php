@@ -23,7 +23,7 @@ class ObjectCollection extends Collection {
 		$this->iterate(function($object, $param) {
 			$collection = $param[0];
 			if($object->isRepeating() === true) {
-				$collection->add((clone) $object);
+				$collection->add(clone $object);
 			} else {
 				
 				
@@ -50,9 +50,9 @@ class ObjectCollection extends Collection {
 
 
 			} else {
-				$collection->add((clone) $object);
+				$collection->add(clone $object);
 			}
-		}, array(&$expandedObjects)));
+		}, array(&$expandedObjects));
 
 		return $expandedObjects;
 	}
@@ -78,7 +78,7 @@ class ObjectCollection extends Collection {
 			$type = $param[1];
 
 			if($object->getType() & $type) {
-				$collection->add((clone) $object);
+				$collection->add(clone $object);
 			}
 		}, array(&$objectsOfType, $type));
 

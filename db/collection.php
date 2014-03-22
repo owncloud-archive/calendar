@@ -206,7 +206,7 @@ abstract class Collection {
 		if($limit === null) {
 			return $this;
 		} else {
-			$subset = new {$class}();
+			$subset = new $class();
 
 			for($i = $offset; $i < ($offset + $limit); $i++) {
 				if(array_key_exists($i, $this->objects)) {
@@ -268,7 +268,7 @@ abstract class Collection {
 	 */
 	public function search($key, $value, $regex=false) {
 		$class = get_class($this);
-		$matchingObjects = new {$class}();
+		$matchingObjects = new $class();
 
 		$propertyGetter = 'get' . ucfirst($key);
 
@@ -290,7 +290,7 @@ abstract class Collection {
 	 */
 	public function searchData($dataProperty, $regex) {
 		$class = get_class($this);
-		$matchingObjects = new {$class}();
+		$matchingObjects = new $class();
 
 		$dataGetter = 'get' . ucfirst($dataProperty);
 

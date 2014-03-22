@@ -51,39 +51,44 @@ class DIContainer extends AppFrameworkDIContainer {
 		/** 
 		 * CONTROLLERS
 		 */
-		//controller for backends
-		$this['BackendController'] = $this->share(function($c){
-			return new BackendController($c['API'], $c['Request'], $c['BackendBusinessLayer']);
-		});
-
 		//controller for calendars
 		$this['CalendarsController'] = $this->share(function($c){
-			return new CalendarController($c['API'], $c['Request'], $c['CalendarBusinessLayer']);
+			return new CalendarController($c['API'], $c['Request'],
+										$c['CalendarBusinessLayer'],
+										$c['ObjectBusinessLayer']);
 		});
 
 		//controller for objects like events, journals, todos
 		$this['ObjectsController'] = $this->share(function($c){
-			return new ObjectController($c['API'], $c['Request'], $c['ObjectBusinessLayer']);
+			return new ObjectController($c['API'], $c['Request'],
+										$c['CalendarBusinessLayer'],
+										$c['ObjectBusinessLayer']);
 		});
 
 		//controller for events
 		$this['EventsController'] = $this->share(function($c){
-			return new EventsController($c['API'], $c['Request'], $c['ObjectBusinessLayer']);
+			return new EventsController($c['API'], $c['Request'],
+										$c['CalendarBusinessLayer'],
+										$c['ObjectBusinessLayer']);
 		});
 
 		//controller for todos
 		$this['TodosController'] = $this->share(function($c){
-			return new TodosController($c['API'], $c['Request'], $c['ObjectBusinessLayer']);
+			return new TodosController($c['API'], $c['Request'],
+										$c['CalendarBusinessLayer'],
+										$c['ObjectBusinessLayer']);
 		});
 
 		//controller for journals
 		$this['JournalsController'] = $this->share(function($c){
-			return new JournalsController($c['API'], $c['Request'], $c['ObjectBusinessLayer']);
+			return new JournalsController($c['API'], $c['Request'],
+										$c['CalendarBusinessLayer'],
+										$c['ObjectBusinessLayer']);
 		});
 
 		//controller for view
 		$this['ViewController'] = $this->share(function($c){
-			return new ViewController($c['API'], $c['Request'], $c['CalendarBusinessLayer'], $c['ObjectBusinessLayer']);
+			return new ViewController($c['API'], $c['Request']);
 		});
 
 		/**
@@ -96,12 +101,17 @@ class DIContainer extends AppFrameworkDIContainer {
 
 		//mapper for cached calendars
 		$this['CalendarBusinessLayer'] = $this->share(function($c){
-			return new CalendarBusinessLayer($c['CalendarMapper'], $c['BackendBusinessLayer'], $c['API'], $c['TimeFactory']);
+			return new CalendarBusinessLayer($c['CalendarMapper'],
+											$c['ObjectBusinessLayer'],
+											$c['BackendBusinessLayer'],
+											$c['API']);
 		});
 
 		//mapper for cached objects like events, journals, todos
 		$this['ObjectBusinessLayer'] = $this->share(function($c){
-			return new ObjectBusinessLayer($c['ObjectMapper'], $c['CalendarBusinessLayer'], $c['BackendBusinessLayer'], $c['API'], $c['TimeFactory']);
+			return new ObjectBusinessLayer($c['ObjectMapper'],
+											$c['BackendBusinessLayer'],
+											$c['API']);
 		});
 
 		/**

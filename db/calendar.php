@@ -47,7 +47,7 @@ class Calendar extends Entity {
 	 * @brief take data from VObject and put into this Calendar object
 	 * @return VCalendar Object
 	 */
-	public function fromVObject($vobject) {
+	public function fromVObject(VCalendar $vcalendar) {
 		//do some magic
 	}
 
@@ -65,6 +65,21 @@ class Calendar extends Entity {
 	 */
 	public function touch() {
 		$this->ctag++;
+		return $this;
+	}
+
+	public function getCalendarId(){
+		$backend = $this->backend;
+		$calendarURI = $this->uri;
+		return CalendarUtility::getURI($backend, $calendarURI);
+	}
+
+	public function setCalendarId($calendarId) {
+		list($backend, $calendarURI) = CalendarUtility::splitURI($calendarId);
+		if($backend === false || $calendarURI === false) {
+			$this->backend = $backend;
+			$this->uri = $calendarURI;
+		}
 		return $this;
 	}
 

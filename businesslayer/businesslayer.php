@@ -14,14 +14,11 @@ use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
 abstract class BusinessLayer {
 
 	protected $api;
-	protected $mapper;
 	protected $backends;
 
 	public function __construct(API $api,
-								Mapper $mapper,
 								BackendBusinessLayer $backends){
 		$this->api = $api;
-		$this->mapper = $mapper;
 		$this->backends = $backends;
 	}
 
@@ -34,8 +31,8 @@ abstract class BusinessLayer {
 	 * @throws BusinessLayerException if uri is empty
 	 * @throws BusinessLayerException if uri is not valid
 	 */
-	final protected function splitCalendarURI($calendarURI=null) {
-		$split = CalendarUtility::splitURI($calendarURI);
+	final protected function splitCalendarURI($calendarId) {
+		$split = CalendarUtility::splitURI($calendarId);
 
 		if($split[0] === false || $split[1] === false) {
 			throw new BusinessLayerException('calendar uri is not valid');
@@ -111,5 +108,9 @@ abstract class BusinessLayer {
 		}
 
 		return true;
+	}
+
+	final protected function isBackendEnabled($backend) {
+		return $this->backends->find($backend)->getEnabled();
 	}
 }

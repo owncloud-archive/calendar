@@ -49,7 +49,7 @@ class Object extends Entity {
 		}
 	}
 
-	public function fromVObject($vobject) {
+	public function fromVObject(VCalendar $vcalendar) {
 		
 	}
 

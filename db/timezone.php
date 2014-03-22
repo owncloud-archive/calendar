@@ -36,8 +36,7 @@ class Timezone extends Entity {
 	 * @brief take data from VObject and put into this Calendar object
 	 * @return VCalendar Object
 	 */
-	public function fromVObject(VCalendar $vobject) {
-		foreach(
+	public function fromVObject(VCalendar $vcalendar) {
 		
 	}
 

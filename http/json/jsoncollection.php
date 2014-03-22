@@ -5,30 +5,30 @@
  * later.
  * See the COPYING-README file.
  */
-namespace OCA\Calendar\JSON;
+namespace OCA\Calendar\Http\JSON;
 
-use \OCA\Calendar\AppFramework\Db\Entity;
+use \OCA\Calendar\Db\Collection;
 
-abstract class JSON {
+abstract class JSONCollection {
 
-	protected $object;
+	protected $collection;
 
 	/**
 	 * @brief Constructor
 	 */
-	public function __construct($object) {
-		$this->object = $object;
+	public function __construct(Collection $collection) {
+		$this->collection = $collection;
 	}
 
 	/**
 	 * @brief get object JSONObject was initialized with.
 	 */
-	protected function getObject() {
-		return $this->object;
+	public function getCollection() {
+		return $this->collection;
 	}
 
 	/**
 	 * @brief get json-encoded string containing all information
 	 */
-	public function serialize();
+	abstract public function serialize();
 }

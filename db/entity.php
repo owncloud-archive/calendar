@@ -7,13 +7,11 @@
  */
 namespace OCA\Calendar\Db;
 
-abstract class Entity extends use \OCA\Calendar\AppFramework\Db\Entity {
+abstract class Entity extends \OCA\Calendar\AppFramework\Db\Entity {
 
-	public function isValid();
+	abstract public function isValid();
 
+	abstract public function fromVObject(VCalendar $vcalendar);
 
-	public function fromVObject();
-
-
-	public function getVObject();
+	abstract public function getVObject();
 }

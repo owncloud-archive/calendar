@@ -10,6 +10,7 @@ namespace OCA\Calendar\Controller;
 use \OCA\Calendar\AppFramework\Http\Request;
 use \OCA\Calendar\AppFramework\Core\API;
 
+use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
 use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use OCA\Calendar\Db\ObjectType;
 
@@ -21,7 +22,8 @@ class TodosController extends ObjectTypeController {
 	 * @param BusinessLayer $businessLayer: a businessLayer instance
 	 */
 	public function __construct(API $api, Request $request,
-								ObjectBusinessLayer $businessLayer){
+								CalendarBusinessLayer $calendarBusinessLayer,
+								ObjectBusinessLayer $objectBusinessLayer){
 		parent::__construct($api, $request, $businessLayer, ObjectType::TODO);
 	}
 }

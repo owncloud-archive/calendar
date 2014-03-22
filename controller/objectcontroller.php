@@ -10,7 +10,6 @@ namespace OCA\Calendar\Controller;
 use \OCA\Calendar\AppFramework\Core\API;
 use \OCA\Calendar\AppFramework\Http\Http;
 use \OCA\Calendar\AppFramework\Http\Request;
-use \OCA\Calendar\AppFramework\Http\JSONResponse;
 
 use \OCA\Calendar\AppFramework\DoesNotExistException;
 
@@ -19,24 +18,16 @@ use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
 use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
-use OCA\Calendar\Db\Object;
-use OCA\Calendar\JSON\JSONObject;
-use OCA\Calendar\JSON\JSONObjectReader;
+use \OCA\Calendar\Db\Object;
+use \OCA\Calendar\Db\ObjectCollection;
+
+use \OCA\Calendar\Http\JSONResponse;
+
+use \OCA\Calendar\Http\JSON\JSONObject;
+use \OCA\Calendar\Http\JSON\JSONObjectCollection;
+use \OCA\Calendar\Http\JSON\JSONObjectReader;
 
 class ObjectController extends Controller {
-
-	protected $objectBusinessLayer;
-
-	/**
-	 * @param Request $request: an instance of the request
-	 * @param API $api: an api wrapper instance
-	 * @param BusinessLayer $businessLayer: a businessLayer instance
-	 */
-	public function __construct(API $api, Request $request,
-								ObjectBusinessLayer $businessLayer){
-		parent::__construct($api, $request);
-		$this->objectBusinessLayer = $businessLayer;
-	}
 
 	/**
 	 * @IsAdminExemption
@@ -49,16 +40,12 @@ class ObjectController extends Controller {
 			$userId = $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
 
-			$returnRawICS = $this->returnRawICS();
-			$limit = $this->header('X-OC-CAL-LIMIT');
-			$offset = $this->header('X-OC-CAL-OFFSET');
-			$expand = $this->header('X-OC-CAL-EXPAND');
-			$start = $this->header('X-OC-CAL-START');
-			$end = $this->header('X-OC-CAL-END');
-
-			$this->parseBooleanString($expand);
-			$this->parseDateTimeString($start);
-			$this->parseDateTimeString($end);
+			$returnRawICS = $this->doesClientAcceptRawICS();
+			$limit = $this->header('X-OC-CAL-LIMIT', 'integer');
+			$offset = $this->header('X-OC-CAL-OFFSET', 'integer');
+			$expand = $this->header('X-OC-CAL-EXPAND', 'boolean');
+			$start = $this->header('X-OC-CAL-START', 'DateTime');
+			$end = $this->header('X-OC-CAL-END', 'DateTime');
 
 			if($start === null || $end === null) {
 				$objectCollection = $this->objectBusinessLayer
@@ -91,8 +78,7 @@ class ObjectController extends Controller {
 			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, Http::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
@@ -111,14 +97,10 @@ class ObjectController extends Controller {
 			$calendarId = $this->params('calendarId');
 			$objectURI = $this->params('objectId');
 
-			$returnRawICS = $this->returnRawICS();
-			$expand = $this->header('X-OC-CAL-EXPAND');
-			$start = $this->header('X-OC-CAL-START');
-			$end = $this->header('X-OC-CAL-END');
-
-			$this->parseBooleanString($expand);
-			$this->parseDateTimeString($start);
-			$this->parseDateTimeString($end);
+			$returnRawICS = $this->doesClientAcceptRawICS();
+			$expand = $this->header('X-OC-CAL-EXPAND', 'boolean');
+			$start = $this->header('X-OC-CAL-START', 'DateTime');
+			$end = $this->header('X-OC-CAL-END', 'DateTime');
 
 			$object	= $this->objectBusinessLayer->find($calendarId, $objectURI, $userId);
 
@@ -162,8 +144,9 @@ class ObjectController extends Controller {
 		try {
 			$userId = $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
+			$returnRawICS = $this->doesClientAcceptRawICS();
+
 			$requestBody = $this->request->params;
-			$returnRawICS = $this->returnRawICS();
 
 			if($this->isRequestBodyRawICS() === true) {
 				$reader = new ICSObjectReader($requestBody);
@@ -186,8 +169,7 @@ class ObjectController extends Controller {
 			}
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, Http::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
@@ -202,8 +184,10 @@ class ObjectController extends Controller {
 			$userId = $this->api->getUserId();
 			$calendarId = $this->api->params('calendarId');
 			$objectURI = $this->api->params('objectId');
+			$returnRawICS = $this->doesClientAcceptRawICS();
+
 			$requestBody = $this->request->params;
-			$returnRawICS = $this->returnRawICS();
+
 
 			if($this->isRequestBodyRawICS() === true) {
 				$reader = new ICSObjectReader($requestBody);
@@ -226,19 +210,8 @@ class ObjectController extends Controller {
 			}
 		} catch(BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, Http::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
-	}
-
-	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
-	 * @API
-	 */
-	public function patch() {
-		return new JSONResponse(array(), HTTP::STATUS_NOT_IMPLEMENTED);
 	}
 
 	/**
@@ -258,8 +231,7 @@ class ObjectController extends Controller {
 			return new JSONResponse(null, HTTP::STATUS_NO_CONTENT);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
-			$msg = $this->api->isDebug() ? array('message' => $ex->getMessage()) : array();
-			return new JSONResponse($msg, Http::STATUS_BAD_REQUEST);
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 }

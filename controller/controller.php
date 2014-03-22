@@ -14,7 +14,32 @@ use \OCA\Calendar\AppFramework\Http\JSONResponse;
 
 use \OCA\Calendar\AppFramework\DoesNotExistException;
 
+use \OCA\Calendar\BusinessLayer\BusinessLayer;
+
+use \DateTime;
+
 abstract class Controller extends \OCA\Calendar\AppFramework\Controller\Controller{
+
+	protected $calendarBusinessLayer;
+	protected $objectBusinessLayer;
+
+	public function __construct(API $api, Request $request,
+								CalendarBusinessLayer $calendarBusinessLayer,
+								ObjectBusinessLayer $objectBusinessLayer){
+		parent::__construct($api, $request);
+		$this->calendarBusinessLayer = $calendarBusinessLayer;
+		$this->objectBusinessLayer = $objectBusinessLayer;
+	}
+
+	/**
+	 * @IsAdminExemption
+	 * @IsSubAdminExemption
+	 * @CSRFExemption
+	 * @API
+	 */
+	public function patch() {
+		return new JSONResponse(array(), HTTP::STATUS_NOT_IMPLEMENTED);
+	}
 
 	/*
 	 * Lets you access http request header
@@ -22,36 +47,19 @@ abstract class Controller extends \OCA\Calendar\AppFramework\Controller\Controll
 	 * @param mixed $default If the key is not found, this value will be returned
 	 * @return mixed content of header field
 	 */
-	protected function header($key, $default=null){
+	protected function header($key, $type='string', $default=null){
 		$key = 'HTTP_' . strtoupper($key);
 
-		return isset($this->request->server[$key])
-			? $this->request->server[$key]
-			: $default;
-	}
-
-	/**
-	 * parses a string as boolean
-	 * @param pointer to string that should be parsed
-	 */
-	protected function parseBoolean(&$string) {
-		if($string === true || $string === 1 || $string === '1' || $string === 'true') {
-			$string = true;
+		if(isset($this->request->server[$key]) === false) {
+			return $default;
 		} else {
-			$string = false;
-		}
-	}
-
-	/**
-	 * parses a string as DateTime object
-	 * @param pointer to string that should be parsed
-	 */
-	protected function parseDateTime(&$string) {
-		if($string !== null) {
-			$string = DateTime::createFromFormat(\DateTime::RFC2822, $string); //use other format
-			if($string === false) {
-				$string = null;
+			$value = $this->request->server[$key];
+			if(strtolower($type) === 'datetime') {
+				$value = DateTime::createFromFormat(DateTime::ISO8601);
+			} else {
+				settype($value, $type);
 			}
+			return $value;
 		}
 	}
 
@@ -59,51 +67,54 @@ abstract class Controller extends \OCA\Calendar\AppFramework\Controller\Controll
 	 * did user request raw ics instead of json
 	 * @param boolean
 	 */
-	protected function returnRawICS() {
+	protected function doesClientAcceptRawICS() {
 		$accept = $this->header('accept');
-		$textCalPos = strpos($accept, 'text/calendar');
 
-		if($textCalPos === false) {
+		$textCalendarPosition = strpos($accept, 'text/calendar');
+		if($textCalendarPosition === false) {
 			return false;
 		}
 
-		$applJSONPos = strpos($accept, 'application/json');
-		$applCalJSONPos = strpos($accept, 'application/calendar+json');
+		$applicationJSONPosition = strpos($accept, 'application/json');
+		$applicationCalendarJSONPosition = strpos($accept, 'application/calendar+json');
 
-		if($applJSONPos === false && $applCalJSONPos === false) {
+		if($applicationJSONPosition === false && $applicationCalendarJSONPosition === false) {
 			return true;
 		}
 
-		$applPos = min($applJSONPos, $applCalJSONPos);
+		$firstApplicationPosition = min($applicationJSONPosition, $applicationCalendarJSONPosition);
 
-		return ($applPos < $textCalPos) ? false : true;
+		return ($firstApplicationPosition < $textCalendarPosition) ? false : true;
 	}
 
 	/**
 	 * did user request raw ics instead of json
 	 * @param boolean
 	 */
-	protected function isRequestBodyRawICS() {
+	protected function didClientSendRawICS() {
 		$contentType = $this->header('content-type'); 
 
-		//TODO - TAKE CARE OF CHARSET !!!111ONEONEONEELEVEN
+		if(strpos($contentType, ';')) {
+			$explodeContentType = explode(';', $contentType);
+			$contentType = $explodeContentType[0];
+		}
 
-		$isRawICS = false;
+		$didClientSendRawICS = false;
 		switch($contentType) {
 			case 'text/calendar':
-				$isRawICS = true;
+				$didClientSendRawICS = true;
 				break;
 
 			case 'application/json':
 			case 'application/calendar+json':
-				$isRawICS = false;
+				$didClientSendRawICS = false;
 				break;
 
 			default:
-				$isRawICS = false
+				$didClientSendRawICS = false;
 				break;
 		}
 
-		return $isRawICS;
+		return $didClientSendRawICS;
 	}
 }
