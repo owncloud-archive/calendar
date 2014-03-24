@@ -1243,10 +1243,4 @@ $(document).ready(function(){
       });
     }
   })
-  
-  /* sending e-mail */
-  $('.e-mail-form-container share-link-e-mail-send').live('click', function(e){
-    share-link-e-mail-address
-    Calendar.Util.sendmail($(this).attr('data-eventid'), $(this).attr('data-location'), $(this).attr('data-description'), $(this).attr('data-dtstart'), $(this).attr('data-dtend'));
-  })
 });
