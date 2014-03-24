@@ -2,14 +2,14 @@ $(document).ready(function(){
 	$('#timezone').change( function(){
 		var post = $( '#timezone' ).serialize();
 		$.post( OC.filePath('calendar', 'ajax/settings', 'settimezone.php'), post, function(data){
-      // if we have #fullcalendar, reload it
-      if ($('#fullcalendar').length > 0) {
-        $('#fullcalendar').fullCalendar('refetchEvents');
-      } else {
-        location.reload();
-      }
-      return;
-    });
+			// if we have #fullcalendar, reload it
+			if ($('#fullcalendar').length > 0) {
+				$('#fullcalendar').fullCalendar('refetchEvents');
+			} else {
+				location.reload();
+			}
+			return;
+		});
 		return false;
 	});
 	$('#timezone').chosen();
@@ -55,9 +55,9 @@ $(document).ready(function(){
 			calendarcachecheck();
 		});
 	});
-  if ($('#fullcalendar').length > 0) {
-    calendarcachecheck();
-  }
+	if ($('#fullcalendar').length > 0) {
+		calendarcachecheck();
+	}
 
 });
 function calendarcachecheck(){

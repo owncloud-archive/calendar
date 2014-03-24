@@ -9,14 +9,14 @@
 
 // this also checks if we're properly called from share.php
 if (!function_exists('calendar404')) {
-  $errorTemplate = new OCP\Template('calendar', 'part.404', '');
-  $errorContent = $errorTemplate->fetchPage();
+	$errorTemplate = new OCP\Template('calendar', 'part.404', '');
+	$errorContent = $errorTemplate->fetchPage();
 
-  header('HTTP/1.0 404 Not Found');
-  $tmpl = new OCP\Template('', '404', 'guest');
-  $tmpl->assign('content', $errorContent);
-  $tmpl->printPage();
-  exit();
+	header('HTTP/1.0 404 Not Found');
+	$tmpl = new OCP\Template('', '404', 'guest');
+	$tmpl->assign('content', $errorContent);
+	$tmpl->printPage();
+	exit();
 }
 
 $id = $_['link_shared_event']['item_source'];
@@ -50,7 +50,7 @@ switch($dtstart->getDateType()) {
 		$endtime = $dtend->getDateTime()->format('H:i');
 		$allday = false;
 		break;
-  // all-day event
+	// all-day event
 	case Sabre\VObject\Property\DateTime::DATE:
 		$startdate = $dtstart->getDateTime()->format('d-m-Y');
 		$starttime = '';
@@ -140,7 +140,7 @@ if($data['repeating'] == 1) {
 	if(array_key_exists('BYMONTH', $rrulearr)) {
 		$months = OC_Calendar_App::getByMonthOptions();
 		if(substr_count($rrulearr['BYMONTH'], ',') == 0) {
-		      $repeat['bymonth'][] = $months[(string)$rrulearr['BYMONTH']];
+					$repeat['bymonth'][] = $months[(string)$rrulearr['BYMONTH']];
 		}else{
 			$bymonth = explode(',', $rrulearr['BYMONTH']);
 			foreach($bymonth as $month) {

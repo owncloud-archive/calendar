@@ -63,11 +63,11 @@ class OC_Calendar_Export{
 	 }
 
 	 /**
-	  * @brief generates the VEVENT/VTODO/VJOURNAL with UTC dates
-	  * @param array $event
-	  * @param boolean $security true: check access class; false: don't (used mainly with link-sharing)
-	  * @return string
-	  */
+		* @brief generates the VEVENT/VTODO/VJOURNAL with UTC dates
+		* @param array $event
+		* @param boolean $security true: check access class; false: don't (used mainly with link-sharing)
+		* @return string
+		*/
 	 private static function generateEvent($event, $security=true) {
 	 	$object = OC_VObject::parse($event['calendardata']);
 		if(!$object){
@@ -75,22 +75,22 @@ class OC_Calendar_Export{
 		}
 
 		# handle with care! if $security is false, private events can get published
-    # this should be used only with link-shared event (not calendar! *concrete event*!)
+		# this should be used only with link-shared event (not calendar! *concrete event*!)
 		if ($security) {
 
-      // access permissions
-      $sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($object);
-      if(OC_Calendar_Object::getowner($event['id']) !== OCP\User::getUser()){
-        if (!($sharedAccessClassPermissions & OCP\PERMISSION_READ)) {
-          return '';
-        }
-      }
-      
-      // data clean-up
-      $object = OC_Calendar_Object::cleanByAccessClass($event['id'], $object);
-    }
+			// access permissions
+			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($object);
+			if(OC_Calendar_Object::getowner($event['id']) !== OCP\User::getUser()){
+				if (!($sharedAccessClassPermissions & OCP\PERMISSION_READ)) {
+					return '';
+				}
+			}
+			
+			// data clean-up
+			$object = OC_Calendar_Object::cleanByAccessClass($event['id'], $object);
+		}
 
-    // handle the data itself
+		// handle the data itself
 		if($object->VEVENT){
 			$dtstart = $object->VEVENT->DTSTART;
 			$start_dt = $dtstart->getDateTime();

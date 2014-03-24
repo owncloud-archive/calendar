@@ -22,15 +22,15 @@ $eventSources = array();
 
 // only for a logged-in user
 if (OCP\User::isLoggedIn()) {
-  $calendars = OC_Calendar_Calendar::allCalendars(OCP\User::getUser());
-  foreach($calendars as $calendar) {
-    if(!array_key_exists('active', $calendar)){
-      $calendar['active'] = 1;
-    }
-    if($calendar['active'] == 1) {
-      $eventSources[] = OC_Calendar_Calendar::getEventSourceInfo($calendar);
-    }
-  }
+	$calendars = OC_Calendar_Calendar::allCalendars(OCP\User::getUser());
+	foreach($calendars as $calendar) {
+		if(!array_key_exists('active', $calendar)){
+			$calendar['active'] = 1;
+		}
+		if($calendar['active'] == 1) {
+			$eventSources[] = OC_Calendar_Calendar::getEventSourceInfo($calendar);
+		}
+	}
 }
 
 // this is needed also when displaying a link-shared calendar
@@ -43,7 +43,7 @@ $eventSources[] = array('url' => $events_baseURL.'?calendar_id=shared_events',
 
 // only for a logged-in user
 if (OCP\User::isLoggedIn()) {
-  OCP\Util::emitHook('OC_Calendar', 'getSources', array('sources' => &$eventSources));
+	OCP\Util::emitHook('OC_Calendar', 'getSources', array('sources' => &$eventSources));
 }
 
 $firstDay = null;

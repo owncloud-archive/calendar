@@ -4,188 +4,188 @@
 |* | Licensed under AGPL                                                   | *|
 \* +-----------------------------------------------------------------------+ */
 .share-interface-container h3 {
-  font-weight:bold;
+	font-weight:bold;
 }
 .share-interface-container label > h3 {
-  display:inline-block;
+	display:inline-block;
 }
 .share-interface-container input[type="checkbox"] {
-  vertical-align:middle;
+	vertical-align:middle;
 }
 .share-interface-container input[type="text"],
 .share-interface-container input[type="e-mail"],
 .share-interface-container input[type="password"],
 .share-interface-container input[type="submit"],
 .share-interface-container input[type="date"] {
-  color:#333;
-  font-family: "Lucida Grande", Arial, Verdana, sans-serif;
-  font-size: 1em;
-  box-sizing: content-box;
-  background: #fff;
-  cursor: text;
-  margin: .3em 0px;
-  padding: .6em .5em .4em;
-  border: 1px solid #ddd;
-  outline: none;
-  border-radius: 3px;
-  width:100%;
-  min-width:10em;
-  box-sizing:border-box;
+	color:#333;
+	font-family: "Lucida Grande", Arial, Verdana, sans-serif;
+	font-size: 1em;
+	box-sizing: content-box;
+	background: #fff;
+	cursor: text;
+	margin: .3em 0px;
+	padding: .6em .5em .4em;
+	border: 1px solid #ddd;
+	outline: none;
+	border-radius: 3px;
+	width:100%;
+	min-width:10em;
+	box-sizing:border-box;
 }
 .share-interface-container input[type="submit"] {
-  cursor:pointer;
+	cursor:pointer;
 }
 .share-interface-container input:invalid {
-  background:#fee;
+	background:#fee;
 }
 /* by default, in a .displayable-container do not display direct-descending .displayable */
 .displayable-container > .displayable {
-  max-height:0px;
-  overflow:hidden;
-  -moz-transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/; /* BUG? animating/transitioning on opacity makes elemets move just a tiny bit for the duration of the transition; doesn't look good */
-  -webkit-transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
-  transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
-  opacity:0.5;
+	max-height:0px;
+	overflow:hidden;
+	-moz-transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/; /* BUG? animating/transitioning on opacity makes elemets move just a tiny bit for the duration of the transition; doesn't look good */
+	-webkit-transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
+	transition:max-height ease-out 1s/*, opacity ease-out 0.5s*/;
+	opacity:0.5;
 }
 
 /* a hidden control checkbox should be hidden */
 .displayable-container > .displayable-control.hide {
-  display:none;
+	display:none;
 }
 /* a hidden control checkbox should be hidden */
 .displayable-container > .displayable-control.hide {
-  display:none;
+	display:none;
 }
 /* a marker to end a given displayable */
 .displayable-container > .displayable:not(.noafter):last-child::after {
-  width:75%;
-  height:0px;
-  display:block;
-  content:" ";
-  margin:0.2em auto 0.5em auto;
-  border-top:solid 1px #ddd;
+	width:75%;
+	height:0px;
+	display:block;
+	content:" ";
+	margin:0.2em auto 0.5em auto;
+	border-top:solid 1px #ddd;
 }
 .displayable-container > .displayable.displayable-container:last-child > .displayable:last-child::after,
 .displayable-container > .displayable > .displayable-container:last-child > .displayable:last-child::after {
-  content:"";
-  display:none;
+	content:"";
+	display:none;
 }
 /* display the rest once the checkbox is :checked */
 .displayable-container > .displayable-control:checked ~ .displayable {
-  max-height:500px;
-  opacity:1;
-  -moz-transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
-  -webkit-transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
-  transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
+	max-height:500px;
+	opacity:1;
+	-moz-transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
+	-webkit-transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
+	transition:max-height ease-in 1s/* , opacity ease-in 0.5s */;
 }
 /* e-mail form */
 .e-mail-form-container {
-  display:flex;
-  flex-direction:row;
+	display:flex;
+	flex-direction:row;
 }
 .e-mail-form-container > input {
-  flex:auto 1;
+	flex:auto 1;
 }
 .e-mail-form-container > input[type="submit"] {
-  min-width:5em;
-  width:auto;
+	min-width:5em;
+	width:auto;
 }
 /* shared-with list */
 .shared-with-list {
-  padding:0em;
+	padding:0em;
 }
 .shared-with-list > li {
-  text-align:right;
-  margin:0.5em 0em -0.5em 0em;
+	text-align:right;
+	margin:0.5em 0em -0.5em 0em;
 }
 .shared-with-list > li:last-child {
-  margin-bottom:0.5em;
+	margin-bottom:0.5em;
 }
 
 /* that's just a stub to be used by JS later, hid it! */
 .shared-with-list > li.stub {
-  display:none;
+	display:none;
 }
 .shared-with-list > li:last-child {
-  margin-bottom:0.5em;
+	margin-bottom:0.5em;
 }
 
 /* that's just a stub to be used by JS later, hid it! */
 .shared-with-list > li.stub {
-  display:none;
+	display:none;
 }
 .shared-with-list > li img {
-  vertical-align:-20%;
-  opacity:0.5;
+	vertical-align:-20%;
+	opacity:0.5;
 }
 .shared-with-list > li *:hover > img {
-  opacity:1;
+	opacity:1;
 }
 .shared-with-list > li label,
 .shared-with-list > li label img {
-  cursor: pointer;
+	cursor: pointer;
 }
 .shared-with-list > li .unshare {
-  float:right;
-  opacity:1;
+	float:right;
+	opacity:1;
 }
 .shared-with-list .share-options {
-  display: inline-table;
-  text-align: left;
-  position:relative;
+	display: inline-table;
+	text-align: left;
+	position:relative;
 }
 .shared-with-list .share-options .share-label {
-  margin-left:0.5em;
+	margin-left:0.5em;
 }
 .shared-with-list .username {
-  font-weight:bold;
-  float:left;
+	font-weight:bold;
+	float:left;
 }
 .shared-with-list .edit-options {
-  text-align:right;
+	text-align:right;
 }
 /* noscript fun! */
 .shared-with-list .share-options .share-can-edit-checkbox {
-  display:block;
-  width:1px;
-  height:1px;
-  position:absolute;
-  top:0em;
-  left:0em;
+	display:block;
+	width:1px;
+	height:1px;
+	position:absolute;
+	top:0em;
+	left:0em;
 }
 .shared-with-list .share-options .share-can-edit-checkbox::before {
-  content:" ";
-  display:inline-block;
-  font-size:100%;
-  border:solid 0.15em black;
-  color:black;
-  width:0.6em;
-  height:0.6em;
-  line-height:0.6em;
-  border-radius:0.1em;
+	content:" ";
+	display:inline-block;
+	font-size:100%;
+	border:solid 0.15em black;
+	color:black;
+	width:0.6em;
+	height:0.6em;
+	line-height:0.6em;
+	border-radius:0.1em;
 }
 .shared-with-list .share-options .edit-options :checked ~ .share-can-edit-checkbox::before {
-  content:"✔";
+	content:"✔";
 }
 .shared-with-list .share-options .share-can-edit-space {
-  display:inline-block;
-  width:1.5em;
-  height:1em;
+	display:inline-block;
+	width:1.5em;
+	height:1em;
 }
 /* end noscript fun */
 .share-interface-container.internal-share::after {
-  width:75%;
-  height:0px;
-  display:block;
-  content:" ";
-  margin:0.2em auto 0.5em auto;
-  border-top:solid 1px #ddd;
+	width:75%;
+	height:0px;
+	display:block;
+	content:" ";
+	margin:0.2em auto 0.5em auto;
+	border-top:solid 1px #ddd;
 }
 
 hr.elegant-divider {
-  width: 75%;
-  height: 0px;
-  display: block;
-  margin: 0.2em auto 0.5em auto;
-  border-top: solid 1px #ddd;
+	width: 75%;
+	height: 0px;
+	display: block;
+	margin: 0.2em auto 0.5em auto;
+	border-top: solid 1px #ddd;
 }

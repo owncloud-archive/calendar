@@ -2,21 +2,21 @@
 
 <div id="notification" style="display:none;"></div>
 <?php
-  /* 
-   * if the calendar is link-shared -- display the info
-   * the existence of #linksharedinfo is also used in calendar.js to determine if the calendar is link-shared
-   */
-  if (isset($_['link_shared_calendar_name'])) {
+	/* 
+	 * if the calendar is link-shared -- display the info
+	 * the existence of #linksharedinfo is also used in calendar.js to determine if the calendar is link-shared
+	 */
+	if (isset($_['link_shared_calendar_name'])) {
 ?>
 <header id="linksharedinfo">
-    <div class="header-right">
-      <span id="details"><?php p($l->t('shared by %s', array($_['link_shared_calendar_owner']))) ?></span>
-    </div>
-    <a href="<?php print_unescaped(link_to('', 'index.php')); ?>" title="" id="owncloud"><img class="svg"
-      src="<?php print_unescaped(image_path('', 'logo-wide.svg')); ?>" alt="<?php p($theme->getName()); ?>"
-    /></a>
-    <div id="logo-claim" style="display:none;"><?php p($theme->getLogoClaim()); ?></div>
-    <div><?php p($l->t('Calendar')) ?> &quot;<?php p($_['link_shared_calendar_name'])?>&quot;; <?php p($l->t('download or use in your calendar application:'))?> <a class="download-link" href="<?php echo $_['link_shared_calendar_url']; ?>&amp;download"><?php p($l->t('Download'))?></a></div>
+		<div class="header-right">
+			<span id="details"><?php p($l->t('shared by %s', array($_['link_shared_calendar_owner']))) ?></span>
+		</div>
+		<a href="<?php print_unescaped(link_to('', 'index.php')); ?>" title="" id="owncloud"><img class="svg"
+			src="<?php print_unescaped(image_path('', 'logo-wide.svg')); ?>" alt="<?php p($theme->getName()); ?>"
+		/></a>
+		<div id="logo-claim" style="display:none;"><?php p($theme->getLogoClaim()); ?></div>
+		<div><?php p($l->t('Calendar')) ?> &quot;<?php p($_['link_shared_calendar_name'])?>&quot;; <?php p($l->t('download or use in your calendar application:'))?> <a class="download-link" href="<?php echo $_['link_shared_calendar_url']; ?>&amp;download"><?php p($l->t('Download'))?></a></div>
 </header>
 <?php } ?>
 <div id="controls">
@@ -32,27 +32,27 @@
 		<!--<input type="button" id="today_input" value="<?php p($l->t("Today"));?>"/>-->
 		<button class="settings generalsettings" title="<?php p($l->t('Settings')); ?>"><img class="svg" src="<?php print_unescaped(OCP\Util::imagePath('core', 'actions/settings.svg')); ?>" alt="<?php p($l->t('Settings')); ?>" /></button>
 	</form><?php } else {?>
-    <div class="settings timezonesettings">
-      <label for="timezone" title="<?php p($l->t('Timezone settings')); ?>"><?php p($l->t('Timezone'))?></label>
-      <select id="timezone" name="timezone">
-      <?php
-      $continent = '';
-      foreach($_['timezones'] as $timezone):
-        $ex=explode('/', $timezone, 2);//obtain continent,city
-        if (!isset($ex[1])) {
-          $ex[1] = $ex[0];
-          $ex[0] = "Other";
-        }
-        if ($continent!=$ex[0]):
-          if ($continent!="") print_unescaped('</optgroup>');
-          print_unescaped('<optgroup label="'.OC_Util::sanitizeHTML($ex[0]).'">');
-        endif;
-        $city=strtr($ex[1], '_', ' ');
-        $continent=$ex[0];
-        print_unescaped('<option value="'.OC_Util::sanitizeHTML($timezone).'"'.($_['timezone'] == $timezone?' selected="selected"':'').'>'.OC_Util::sanitizeHTML($city).'</option>');
-      endforeach;?>
-      </select>
-    </div>
+		<div class="settings timezonesettings">
+			<label for="timezone" title="<?php p($l->t('Timezone settings')); ?>"><?php p($l->t('Timezone'))?></label>
+			<select id="timezone" name="timezone">
+			<?php
+			$continent = '';
+			foreach($_['timezones'] as $timezone):
+				$ex=explode('/', $timezone, 2);//obtain continent,city
+				if (!isset($ex[1])) {
+					$ex[1] = $ex[0];
+					$ex[0] = "Other";
+				}
+				if ($continent!=$ex[0]):
+					if ($continent!="") print_unescaped('</optgroup>');
+					print_unescaped('<optgroup label="'.OC_Util::sanitizeHTML($ex[0]).'">');
+				endif;
+				$city=strtr($ex[1], '_', ' ');
+				$continent=$ex[0];
+				print_unescaped('<option value="'.OC_Util::sanitizeHTML($timezone).'"'.($_['timezone'] == $timezone?' selected="selected"':'').'>'.OC_Util::sanitizeHTML($city).'</option>');
+			endforeach;?>
+			</select>
+		</div>
 	<?php } ?>
 	<form id="datecontrol">
 		<input type="button" value="&nbsp;&lt;&nbsp;" id="datecontrol_left"/>

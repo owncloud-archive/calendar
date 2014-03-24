@@ -12,69 +12,69 @@ $link_shared = false;
 
 // do we have a logged-in user?
 if(OCP\User::isLoggedIn()) {
-  // yeah, we do. check if the app is enabled
-  OCP\JSON::checkAppEnabled('calendar');
+	// yeah, we do. check if the app is enabled
+	OCP\JSON::checkAppEnabled('calendar');
 
 // no, we do not.
 } else {
 
-  // do we have a token?
-  if (!\OC::$session->exists('public_link_token'))
-    // nope, bail out!
-    OCP\User::checkLoggedIn();
+	// do we have a token?
+	if (!\OC::$session->exists('public_link_token'))
+		// nope, bail out!
+		OCP\User::checkLoggedIn();
 
-  // is the app enabled?
-  OCP\JSON::checkAppEnabled('calendar');
-  session_write_close();
+	// is the app enabled?
+	OCP\JSON::checkAppEnabled('calendar');
+	session_write_close();
 
-  // shareapi enabled?
-  if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
-    header('HTTP/1.0 404 Not Found');
-    exit();
-  }
+	// shareapi enabled?
+	if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
+		header('HTTP/1.0 404 Not Found');
+		exit();
+	}
 
-  // get the data
-  $linkItem = OCP\Share::getShareByToken(
-    \OC::$session->get('public_link_token')
-  );
+	// get the data
+	$linkItem = OCP\Share::getShareByToken(
+		\OC::$session->get('public_link_token')
+	);
 
-  // did we get anything?
-  if (!is_array($linkItem) || !isset($linkItem['uid_owner'])) {
-    // nope! chuck testa!
-    header('HTTP/1.0 404 Not Found');
-    exit();
-  }
+	// did we get anything?
+	if (!is_array($linkItem) || !isset($linkItem['uid_owner'])) {
+		// nope! chuck testa!
+		header('HTTP/1.0 404 Not Found');
+		exit();
+	}
 
-  // resolve all the re-shares
-  $rootLinkItem = OCP\Share::resolveReShare($linkItem);
-  
-  // did we get anything?
-  if (!is_array($rootLinkItem) || !isset($rootLinkItem['uid_owner'])) {
-    // nnnneewp!
-    header('HTTP/1.0 404 Not Found');
-    exit();
-  }
-  
-  // do we have a password on this share?
-  if (isset($linkItem['share_with'])) {
-    // we're not going to check the password here, we're in AJAX mode
-    // what we can do is to check for 'public_link_authenticated' session var
-    if ( ! \OC::$session->exists('public_link_authenticated')
-        || \OC::$session->get('public_link_authenticated') !== $linkItem['id']
-      ) {
-        header('HTTP/1.0 401 Unauthorized');
-        exit();
-      }
-  }
+	// resolve all the re-shares
+	$rootLinkItem = OCP\Share::resolveReShare($linkItem);
+	
+	// did we get anything?
+	if (!is_array($rootLinkItem) || !isset($rootLinkItem['uid_owner'])) {
+		// nnnneewp!
+		header('HTTP/1.0 404 Not Found');
+		exit();
+	}
+	
+	// do we have a password on this share?
+	if (isset($linkItem['share_with'])) {
+		// we're not going to check the password here, we're in AJAX mode
+		// what we can do is to check for 'public_link_authenticated' session var
+		if ( ! \OC::$session->exists('public_link_authenticated')
+				|| \OC::$session->get('public_link_authenticated') !== $linkItem['id']
+			) {
+				header('HTTP/1.0 401 Unauthorized');
+				exit();
+			}
+	}
 
-  // just another check
-  if (!OC_Calendar_App::getCalendar($rootLinkItem['item_source'], true, true)) {
-    header('HTTP/1.0 403 Forbidden');
-    exit();
-  }
-  
-  // set the flag and go
-  $link_shared = true;
+	// just another check
+	if (!OC_Calendar_App::getCalendar($rootLinkItem['item_source'], true, true)) {
+		header('HTTP/1.0 403 Forbidden');
+		exit();
+	}
+	
+	// set the flag and go
+	$link_shared = true;
 }
 
 $id = $_POST['id'];
@@ -198,7 +198,7 @@ if($data['repeating'] == 1) {
 	if(array_key_exists('BYMONTH', $rrulearr)) {
 		$months = OC_Calendar_App::getByMonthOptions();
 		if(substr_count($rrulearr['BYMONTH'], ',') == 0) {
-		      $repeat['bymonth'][] = $months[(string)$rrulearr['BYMONTH']];
+					$repeat['bymonth'][] = $months[(string)$rrulearr['BYMONTH']];
 		}else{
 			$bymonth = explode(',', $rrulearr['BYMONTH']);
 			foreach($bymonth as $month) {

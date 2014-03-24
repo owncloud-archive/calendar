@@ -1,21 +1,21 @@
 <!-- BEGIN -->
 <td width="20px">
-  <?php if($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
-  <input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
-  <?php } ?>
+	<?php if($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
+	<input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
+	<?php } ?>
 </td>
 <td id="<?php p(OCP\USER::getUser()) ?>_<?php p($_['calendar']['id']) ?>">
-  <label for="active_<?php p($_['calendar']['id']) ?>"><?php p($_['calendar']['displayname']) ?></label>
+	<label for="active_<?php p($_['calendar']['id']) ?>"><?php p($_['calendar']['displayname']) ?></label>
 </td>
 <td width="20px">
-  <?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
-  <label
-    for="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"
-    title="<?php p($l->t('Share Calendar')) ?>"
-    class="action permanent"
-    data-tooltip="<?php p($l->t('Share Calendar')) ?>"
-    style="cursor: pointer;"><img class="svg" src="<?php print_unescaped($_['share_icon']); ?>"/></label>
-  <?php endif; ?>
+	<?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
+	<label
+		for="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"
+		title="<?php p($l->t('Share Calendar')) ?>"
+		class="action permanent"
+		data-tooltip="<?php p($l->t('Share Calendar')) ?>"
+		style="cursor: pointer;"><img class="svg" src="<?php print_unescaped($_['share_icon']); ?>"/></label>
+	<?php endif; ?>
 </td>
 <td width="20px">
 <?php
@@ -26,43 +26,43 @@ if($_['calendar']['userid'] == OCP\USER::getUser()){
 	$caldav = rawurlencode(html_entity_decode($_['calendar']['uri'], ENT_QUOTES, 'UTF-8')) . '_shared_by_' . $_['calendar']['userid'];
 }
 ?>
-  <a href="#" id="chooseCalendar-showCalDAVURL" data-user="<?php p(OCP\USER::getUser()) ?>" data-caldav="<?php p($caldav) ?>" title="<?php p($l->t('CalDav Link')) ?>" data-tooltip="<?php p($l->t('CalDav Link')) ?>" class="permanent"><img class="svg" src="<?php p(OCP\Util::imagePath('core', 'actions/public.svg')) ?>"></a>
+	<a href="#" id="chooseCalendar-showCalDAVURL" data-user="<?php p(OCP\USER::getUser()) ?>" data-caldav="<?php p($caldav) ?>" title="<?php p($l->t('CalDav Link')) ?>" data-tooltip="<?php p($l->t('CalDav Link')) ?>" class="permanent"><img class="svg" src="<?php p(OCP\Util::imagePath('core', 'actions/public.svg')) ?>"></a>
 </td>
 <td width="20px">
-  <a href="<?php print_unescaped(OCP\Util::linkTo('calendar', 'export.php') . '?calid=' . $_['calendar']['id']) ?>" title="<?php p($l->t('Download')) ?>" data-tooltip="<?php p($l->t('Download')) ?>"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/download.svg')) ?>"></a>
+	<a href="<?php print_unescaped(OCP\Util::linkTo('calendar', 'export.php') . '?calid=' . $_['calendar']['id']) ?>" title="<?php p($l->t('Download')) ?>" data-tooltip="<?php p($l->t('Download')) ?>"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/download.svg')) ?>"></a>
 </td>
 <td width="20px">
-  <?php if($_['calendar']['permissions'] & OCP\PERMISSION_UPDATE) { ?>
-  <a href="#" id="chooseCalendar-edit" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Edit')) ?>" data-tooltip="<?php p($l->t('Edit')) ?>"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/rename.svg')) ?>"></a>
-  <?php } ?>
+	<?php if($_['calendar']['permissions'] & OCP\PERMISSION_UPDATE) { ?>
+	<a href="#" id="chooseCalendar-edit" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Edit')) ?>" data-tooltip="<?php p($l->t('Edit')) ?>"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/rename.svg')) ?>"></a>
+	<?php } ?>
 </td>
 <td width="20px">
-  <?php if($_['calendar']['permissions'] & OCP\PERMISSION_DELETE) { ?>
-  <a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>" data-tooltip="<?php p($l->t('Delete')) ?>"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')) ?>"></a>
-  <?php } ?>
+	<?php if($_['calendar']['permissions'] & OCP\PERMISSION_DELETE) { ?>
+	<a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>" data-tooltip="<?php p($l->t('Delete')) ?>"><img class="svg action" src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')) ?>"></a>
+	<?php } ?>
 </td>
 <?php /* calendar sharing interface */ ?>
 <?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE): ?>
 </tr><tr>
-  <th class="displayable-container" colspan="7">
-    <input type="checkbox" class="displayable-control hide" id="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"/>
-    <div class="displayable" style="padding-left:0.5em"><?php
-      /* internal calendar sharing interface */
-      $tmpl = new OCP\Template('calendar', 'part.internalshare');
-      $tmpl->assign('item_id', $_['calendar']['id']);
-      $tmpl->assign('item_type', 'calendar');
-      $tmpl->assign('permissions', $_['calendar']['permissions']);
-      $tmpl->assign('shared_with', $_['shared_with']);
-      $tmpl->printpage();
-      /* public calendar link-sharing interface */
-      $tmpl = new OCP\Template('calendar', 'part.linkshare');
-      $tmpl->assign('item_id', $_['calendar']['id']);
-      $tmpl->assign('item_type', 'calendar');
-      $tmpl->assign('permissions', $_['calendar']['permissions']);
-      $tmpl->assign('link_share', $_['link_share']);
-      $tmpl->printpage();
-    ?></div>
-  </th>
+	<th class="displayable-container" colspan="7">
+		<input type="checkbox" class="displayable-control hide" id="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"/>
+		<div class="displayable" style="padding-left:0.5em"><?php
+			/* internal calendar sharing interface */
+			$tmpl = new OCP\Template('calendar', 'part.internalshare');
+			$tmpl->assign('item_id', $_['calendar']['id']);
+			$tmpl->assign('item_type', 'calendar');
+			$tmpl->assign('permissions', $_['calendar']['permissions']);
+			$tmpl->assign('shared_with', $_['shared_with']);
+			$tmpl->printpage();
+			/* public calendar link-sharing interface */
+			$tmpl = new OCP\Template('calendar', 'part.linkshare');
+			$tmpl->assign('item_id', $_['calendar']['id']);
+			$tmpl->assign('item_type', 'calendar');
+			$tmpl->assign('permissions', $_['calendar']['permissions']);
+			$tmpl->assign('link_share', $_['link_share']);
+			$tmpl->printpage();
+		?></div>
+	</th>
 <?php /* end calendar sharing interface */ ?>
 <?php endif; ?>
 <!-- END -->

@@ -8,13 +8,13 @@
 	// let's look at them, one by one
 	for($i = 0; $i < count($option_calendars); $i++) {
 
-    // flags init
-    $shared     = false;   // is the calendar shared at all (with or by the current user, including link-sharing)?
-    $sharedBy   = false;   // is the calendar shared *with* the current user?
-    $linkShare  = array(); // is the calendar publicly link-shared
-    $sharedWith = array(); // with whom is the calendar shared within this ownCloud instance?
+		// flags init
+		$shared     = false;   // is the calendar shared at all (with or by the current user, including link-sharing)?
+		$sharedBy   = false;   // is the calendar shared *with* the current user?
+		$linkShare  = array(); // is the calendar publicly link-shared
+		$sharedWith = array(); // with whom is the calendar shared within this ownCloud instance?
 
-    // starting off the calendar row
+		// starting off the calendar row
 		print_unescaped("<tr data-id='".OC_Util::sanitizeHTML($option_calendars[$i]['id'])."'>");
 
 		// calendar row contents template
@@ -25,45 +25,45 @@
 
 		// is this owned by the user?
 		if ($option_calendars[$i]['userid'] != OCP\User::getUser()) {
-      // nope! apparently shared *with* the user!
+			// nope! apparently shared *with* the user!
 			$sharedBy = OCP\Share::getItemSharedWithBySource('calendar', $option_calendars[$i]['id']);
-    }
+		}
 
-    // check sharing status
-    $sw = OCP\Share::getItemShared('calendar', $option_calendars[$i]['id']);
-    if(is_array($sw)) {
-      foreach($sw as $share) {
-        // sharing with a group or user, are we?
-        if($share['share_type'] == OCP\Share::SHARE_TYPE_USER || $share['share_type'] == OCP\Share::SHARE_TYPE_GROUP) {
-          // noted!
-          $sharedWith[] = $share;
-        // public link-sharing
-        } elseif($share['share_type'] == OCP\Share::SHARE_TYPE_LINK) {
-          // noted also!
-          $linkShare = $share;
-        }
-      }
-    }
-    
-    // set the shared flag -- true if shared by, link-shared, or shared with
-    $shared = ( !empty($sharedBy) or !empty($linkShare) or !empty($sharedWith) );
-    
-    // shared/sharing info passed to the template
+		// check sharing status
+		$sw = OCP\Share::getItemShared('calendar', $option_calendars[$i]['id']);
+		if(is_array($sw)) {
+			foreach($sw as $share) {
+				// sharing with a group or user, are we?
+				if($share['share_type'] == OCP\Share::SHARE_TYPE_USER || $share['share_type'] == OCP\Share::SHARE_TYPE_GROUP) {
+					// noted!
+					$sharedWith[] = $share;
+				// public link-sharing
+				} elseif($share['share_type'] == OCP\Share::SHARE_TYPE_LINK) {
+					// noted also!
+					$linkShare = $share;
+				}
+			}
+		}
+		
+		// set the shared flag -- true if shared by, link-shared, or shared with
+		$shared = ( !empty($sharedBy) or !empty($linkShare) or !empty($sharedWith) );
+		
+		// shared/sharing info passed to the template
 		$tmpl->assign('shared', $shared);
 		$tmpl->assign('shared_by', $sharedBy);
 		$tmpl->assign('link_share', $linkShare);
 		$tmpl->assign('shared_with', $sharedWith);
 		// share status icon
-    if (!$shared) {
-      // not shared
-      $tmpl->assign('share_icon', OCP\Util::imagePath('core', 'actions/share.svg'));
-    // link-shared
-    } elseif (!empty($linkShare)) {
-      $tmpl->assign('share_icon', OCP\Util::imagePath('core', 'actions/public.svg'));
-    // shared
-    } else {
-      $tmpl->assign('share_icon', OCP\Util::imagePath('core', 'actions/shared.svg'));
-    }
+		if (!$shared) {
+			// not shared
+			$tmpl->assign('share_icon', OCP\Util::imagePath('core', 'actions/share.svg'));
+		// link-shared
+		} elseif (!empty($linkShare)) {
+			$tmpl->assign('share_icon', OCP\Util::imagePath('core', 'actions/public.svg'));
+		// shared
+		} else {
+			$tmpl->assign('share_icon', OCP\Util::imagePath('core', 'actions/shared.svg'));
+		}
 		// print the template, yo
 		$tmpl->printpage();
 		// finish the job
