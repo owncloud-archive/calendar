@@ -16,7 +16,7 @@
   -->
   <!-- the checkbox that enables and disables the whole thing -->
   <input type="checkbox" name="share-link" class="share-link displayable-control" value="0" id="share-link-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>" <?php if (isset($_['link_share']['token'])): ?> checked="checked"<?php endif; ?>/>
-  <label for="share-link-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>"><h3><?php p($l->t('Share via link')); ?></h3></label>
+  <label for="share-link-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>" class="share-link-label"><h3><?php p($l->t('Share via link')); ?></h3></label>
   <!-- this should be visible only when the share-link checkbox is :checked -->
   <div class="share-link-enabled-container displayable">
     <!-- link container, contains the share link (duh) -->
@@ -37,14 +37,16 @@
         <input class="expire-date" type="date" placeholder="<?php p($l->t('Expiration date')) ?>" name="expire-date" value="<?php if (isset($_['link_share']['expiration'])) { p(substr($_['link_share']['expiration'], 0, 10)); } ?>"/>
       </div>
     </div>
-    <!-- link email form -->
+    <!-- link email form --><?php /*
+    E-mail send form is disabled at this time, as OC_Calendar_App::sendEmails() is not meant to handle e-mails to non-users
+    Patches welcome.
     <div class="e-mail-form-container">
       <input class="share-link-e-mail-address" value="" placeholder="<?php p($l->t('Email link to person')) ?>" type="e-mail"/>
       <!-- the send e-mail submit button (unneeded and invisible if JS is disabled) -->
       <noscript><!--</noscript>
       <input class="share-link-e-mail-send" type="submit" name="send-e-mail" value="<?php p($l->t('Send')) ?>"/>
       <noscript>--></noscript>
-    </div>
+    </div> */ ?>
     <!-- the submit button (unneeded and invisible if JS is enabled) -->
     <noscript><input class="share-link-form-submit" type="submit" value="<?php p($l->t('Submit link-sharing settings')) ?>"/></noscript>
   </div>

@@ -1127,7 +1127,11 @@ $(document).ready(function(){
           .find('.link-text')
             .val(
               window.location.protocol + '//' + location.host + OC.linkTo('', 'public.php') + '?service=calendar&t='+data.token
-            );
+            )
+            // @tanghus' suggestion
+            // https://github.com/owncloud/calendar/pull/308#issuecomment-38424997
+            .select()
+            .focus();
       })
 
     // nope, un-sharing!
@@ -1238,5 +1242,11 @@ $(document).ready(function(){
         }
       });
     }
+  })
+  
+  /* sending e-mail */
+  $('.e-mail-form-container share-link-e-mail-send').live('click', function(e){
+    share-link-e-mail-address
+    Calendar.Util.sendmail($(this).attr('data-eventid'), $(this).attr('data-location'), $(this).attr('data-description'), $(this).attr('data-dtstart'), $(this).attr('data-dtend'));
   })
 });
