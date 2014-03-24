@@ -80,7 +80,46 @@ Calendar={
 				$('#to').val(movedDate);
 				$('#totime').val(movedTime);
 			}
-		}
+		},
+		getDayOfWeek:function(iDay){
+			var weekArray=['sun','mon','tue','wed','thu','fri','sat'];
+			return weekArray[iDay];
+		},
+		setTimeline : function() {
+			var curTime = new Date();
+			if (curTime.getHours() == 0 && curTime.getMinutes() <= 5)// Because I am calling this function every 5 minutes
+			{
+				// the day has changed
+				var todayElem = $(".fc-today");
+				todayElem.removeClass("fc-today");
+				todayElem.removeClass("fc-state-highlight");
+
+				todayElem.next().addClass("fc-today");
+				todayElem.next().addClass("fc-state-highlight");
+			}
+
+			var parentDiv = $(".fc-agenda-slots:visible").parent();
+			var timeline = parentDiv.children(".timeline");
+			if (timeline.length == 0) {//if timeline isn't there, add it
+				timeline = $("<hr>").addClass("timeline");
+				parentDiv.prepend(timeline);
+			}
+
+			var curCalView = $('#fullcalendar').fullCalendar("getView");
+			if (curCalView.visStart < curTime && curCalView.visEnd > curTime) {
+				timeline.show();
+			} else {
+				timeline.hide();
+			}
+
+			var curSeconds = (curTime.getHours() * 60 * 60) + (curTime.getMinutes() * 60) + curTime.getSeconds();
+			var percentOfDay = curSeconds / 86400;
+			//24 * 60 * 60 = 86400, # of seconds in a day
+			var topLoc = Math.floor(parentDiv.height() * percentOfDay);
+
+			timeline.css("top", topLoc + "px");
+
+		},
 	},
 	UI:{
 		loading: function(isLoading){
@@ -300,38 +339,48 @@ Calendar={
 		},
 		repeat:function(task){
 			if(task=='init'){
+				
+				var byWeekNoTitle = $('#advanced_byweekno').attr('title');
 				$('#byweekno').multiselect({
 					header: false,
-					noneSelectedText: $('#advanced_byweekno').attr('title'),
+					noneSelectedText: byWeekNoTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 60
 				});
+				
+				var weeklyoptionsTitle = $('#weeklyoptions').attr('title');
 				$('#weeklyoptions').multiselect({
 					header: false,
-					noneSelectedText: $('#weeklyoptions').attr('title'),
+					noneSelectedText: weeklyoptionsTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 110
 				});
 				$('input[name="bydate"]').datepicker({
 					dateFormat : 'dd-mm-yy'
 				});
+				
+				var byyeardayTitle = $('#byyearday').attr('title');
 				$('#byyearday').multiselect({
 					header: false,
-					noneSelectedText: $('#byyearday').attr('title'),
+					noneSelectedText: byyeardayTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 60
 				});
+				
+				var bymonthTitle = $('#bymonth').attr('title');
 				$('#bymonth').multiselect({
 					header: false,
-					noneSelectedText: $('#bymonth').attr('title'),
+					noneSelectedText: bymonthTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 110
 				});
+				
+				var bymonthdayTitle = $('#bymonthday').attr('title');
 				$('#bymonthday').multiselect({
 					header: false,
-					noneSelectedText: $('#bymonthday').attr('title'),
+					noneSelectedText: bymonthdayTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 60
 				});
 				Calendar.UI.repeat('end');
 				Calendar.UI.repeat('month');
@@ -913,7 +962,7 @@ $(document).ready(function(){
 		dayNames: dayNames,
 		dayNamesShort: dayNamesShort,
 		allDayText: allDayText,
-		viewDisplay: function(view) {
+		viewRender: function(view) {
 			$('#datecontrol_current').html($('<p>').html(view.title).text());
 			$( "#datecontrol_date" ).datepicker("setDate", $('#fullcalendar').fullCalendar('getDate'));
 			if (view.name != defaultView) {
@@ -931,6 +980,10 @@ $(document).ready(function(){
 			}
 			else {
 				$('#fullcalendar').fullCalendar('option', 'aspectRatio', 1.35);
+			}
+			try {
+				Calendar.Util.setTimeline();
+			} catch(err) {
 			}
 		},
 		columnFormat: {
@@ -962,6 +1015,18 @@ $(document).ready(function(){
 		onSelect: function(value, inst) {
 			var date = inst.input.datepicker('getDate');
 			$('#fullcalendar').fullCalendar('gotoDate', date);
+			
+			var view = $('#fullcalendar').fullCalendar('getView');
+			if(view.name == 'agendaWeek'){
+				$("[class*='fc-col']").removeClass('activeDay');
+				daySel=Calendar.Util.getDayOfWeek(date.getDay());
+				$('td.fc-'+daySel).addClass('activeDay');
+			}
+			if (view.name == 'month') {
+					$('td.fc-day').removeClass('activeDay');
+					prettyDate = $.datepicker.formatDate( 'yy-mm-dd',date);
+					$('td[data-date=' + prettyDate + ']').addClass('activeDay');
+			}
 		}
 	});
 
@@ -1015,9 +1080,7 @@ $(document).ready(function(){
 	});
 	Calendar.UI.Share.init();
 	Calendar.UI.Drop.init();
-	$('#fullcalendar').fullCalendar('option', 'height', function() {
-		return $(window).height() - $('#controls').height() - $('#header').height();
-	});
+	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height());
 	// Save the eventSource for shared events.
 	for (var i in eventSources) {
 		if (eventSources[i].url.substr(-13) === 'shared_events') {
