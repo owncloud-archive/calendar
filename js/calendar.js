@@ -1203,7 +1203,7 @@ $(document).ready(function(){
 	})
 	
 	/* setting the expiration date */
-	$('.share-interface-container.link-share input[type="date"].expire-date').live('change', function(e){
+	$('.share-interface-container.link-share input.expire-date').live('change', function(e){
 		// get the data
 		slcontainer = $(this).parents('.share-interface-container.link-share')
 		itemType = slcontainer.attr('data-item-type')
@@ -1241,6 +1241,28 @@ $(document).ready(function(){
 					OC.dialogs.alert(t('core', 'Error unsetting expiration date'), t('core', 'Error'));
 				}
 			});
+		}
+	})
+
+	/* datepicker, because firefox can't into datepicker control */
+	$('.share-link-enabled-container .expire-date:not(.hasDatepicker)').live('click', function(){
+		$(this)
+			.attr('type', 'text')
+			.datepicker({
+				dateFormat : datepickerFormatDate,
+				minDate : 1
+			})
+			.datepicker('show');
+	});
+	
+	/* clear the expire date picker when expire date checkbox gets unselected */
+	$('.displayable-control.expire').live('change', function(){
+		if (! $(this).is(':checked')) {
+			$(this)
+				.siblings('.expire-date-container')
+					.children('.expire-date')
+						.val('')
+						.change()
 		}
 	})
 });

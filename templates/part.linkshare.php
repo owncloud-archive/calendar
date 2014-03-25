@@ -33,7 +33,7 @@
 		<div class="expire-date-outer-container displayable-container">
 			<input type="checkbox" name="expire" class="expire displayable-control" value="0" id="expire-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>" <?php if (isset($_['link_share']['expiration'])): ?> checked="checked"<?php endif; ?>/>
 			<label for="expire-<?php p($_['item_type']); ?>-<?php p($_['item_id']); ?>" class="expire-label"><?php p($l->t('Set expiration date')) ?></label>
-			<div class="expire-date-container displayable">
+			<div class="expire-date-container displayable noafter">
 				<input class="expire-date" type="date" placeholder="<?php p($l->t('Expiration date')) ?>" name="expire-date" value="<?php if (isset($_['link_share']['expiration'])) { p(substr($_['link_share']['expiration'], 0, 10)); } ?>"/>
 			</div>
 		</div>
