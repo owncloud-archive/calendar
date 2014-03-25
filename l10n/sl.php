@@ -200,6 +200,7 @@
 "at" => "pri",
 "To" => "Do",
 "Your calendars" => "Koledarji",
+"Shared events" => "Dogodki v souporabi",
 "General" => "Splošno",
 "Timezone" => "Časovni pas",
 "Update timezone automatically" => "Samodejno posodobi časovne podatke",

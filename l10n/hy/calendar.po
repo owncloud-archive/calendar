@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-02-05 02:01-0500\n"
-"PO-Revision-Date: 2014-02-05 07:01+0000\n"
+"POT-Creation-Date: 2014-03-25 01:47-0400\n"
+"PO-Revision-Date: 2014-03-24 05:50+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Armenian (http://www.transifex.com/projects/p/owncloud/language/hy/)\n"
 "MIME-Version: 1.0\n"
@@ -89,47 +89,47 @@ msgstr ""
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr ""
 
-#: js/calendar.js:588
+#: js/calendar.js:596
 msgid "group"
 msgstr ""
 
-#: js/calendar.js:590 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr ""
 
-#: js/calendar.js:591 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr ""
 
-#: js/calendar.js:862
+#: js/calendar.js:870
 msgid "ddd"
 msgstr ""
 
-#: js/calendar.js:863
+#: js/calendar.js:871
 msgid "ddd M/d"
 msgstr ""
 
-#: js/calendar.js:864
+#: js/calendar.js:872
 msgid "dddd M/d"
 msgstr ""
 
-#: js/calendar.js:867
+#: js/calendar.js:875
 msgid "MMMM yyyy"
 msgstr ""
 
-#: js/calendar.js:869
+#: js/calendar.js:877
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:871
+#: js/calendar.js:879
 msgid "dddd, MMM d, yyyy"
 msgstr ""
 
-#: js/l10n.php:77 lib/object.php:610 templates/settings.php:93
+#: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
 msgid "Sunday"
 msgstr "Կիրակի"
 
-#: js/l10n.php:77 lib/object.php:604 templates/settings.php:92
+#: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
 msgid "Monday"
 msgstr "Երկուշաբթի"
 
@@ -149,7 +149,7 @@ msgstr "Հինգշաբթի"
 msgid "Friday"
 msgstr "Ուրբաթ"
 
-#: js/l10n.php:77 lib/object.php:609 templates/settings.php:94
+#: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
 msgid "Saturday"
 msgstr "Շաբաթ"
 
@@ -281,7 +281,7 @@ msgstr ""
 msgid "All day"
 msgstr ""
 
-#: js/l10n.php:84 lib/import.php:216 templates/settings.php:23
+#: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
 msgid "New Calendar"
 msgstr ""
 
@@ -377,23 +377,23 @@ msgstr ""
 msgid "Work"
 msgstr ""
 
-#: lib/app.php:411
+#: lib/app.php:423
 msgid "by"
 msgstr ""
 
-#: lib/app.php:474
+#: lib/app.php:486
 msgid "unnamed"
 msgstr ""
 
-#: lib/calendar.php:178 lib/calendar.php:211
+#: lib/calendar.php:190 lib/calendar.php:223
 msgid "You do not have the permissions to update this calendar."
 msgstr ""
 
-#: lib/calendar.php:246
+#: lib/calendar.php:258
 msgid "You do not have the permissions to delete this calendar."
 msgstr ""
 
-#: lib/calendar.php:280
+#: lib/calendar.php:292
 msgid "You do not have the permissions to add to this calendar."
 msgstr ""
 
@@ -517,7 +517,7 @@ msgstr ""
 msgid "by day and month"
 msgstr ""
 
-#: lib/sabre/backend.php:73
+#: lib/sabre/backend.php:74
 msgid "Contact birthdays"
 msgstr ""
 
@@ -553,7 +553,7 @@ msgstr ""
 msgid "Share Calendar"
 msgstr ""
 
-#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:28
+#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
 msgid "CalDav Link"
 msgstr ""
 
@@ -828,62 +828,66 @@ msgstr ""
 msgid "Your calendars"
 msgstr ""
 
-#: templates/settings.php:34
+#: templates/settings.php:26
+msgid "Shared events"
+msgstr ""
+
+#: templates/settings.php:42
 msgid "General"
 msgstr ""
 
-#: templates/settings.php:39
+#: templates/settings.php:47
 msgid "Timezone"
 msgstr ""
 
-#: templates/settings.php:70
+#: templates/settings.php:78
 msgid "Update timezone automatically"
 msgstr ""
 
-#: templates/settings.php:75
+#: templates/settings.php:83
 msgid "Time format"
 msgstr ""
 
-#: templates/settings.php:80
+#: templates/settings.php:88
 msgid "24h"
 msgstr ""
 
-#: templates/settings.php:81
+#: templates/settings.php:89
 msgid "12h"
 msgstr ""
 
-#: templates/settings.php:87
+#: templates/settings.php:95
 msgid "Start week on"
 msgstr ""
 
-#: templates/settings.php:100
+#: templates/settings.php:108
 msgid "Cache"
 msgstr ""
 
-#: templates/settings.php:104
+#: templates/settings.php:112
 msgid "Clear cache for repeating events"
 msgstr ""
 
-#: templates/settings.php:109
+#: templates/settings.php:117
 msgid "URLs"
 msgstr ""
 
-#: templates/settings.php:111
+#: templates/settings.php:119
 msgid "Calendar CalDAV syncing addresses"
 msgstr ""
 
-#: templates/settings.php:111
+#: templates/settings.php:119
 msgid "more info"
 msgstr ""
 
-#: templates/settings.php:113
+#: templates/settings.php:121
 msgid "Primary address (Kontact et al)"
 msgstr ""
 
-#: templates/settings.php:115
+#: templates/settings.php:123
 msgid "iOS/OS X"
 msgstr ""
 
-#: templates/settings.php:117
+#: templates/settings.php:125
 msgid "Read only iCalendar link(s)"
 msgstr ""

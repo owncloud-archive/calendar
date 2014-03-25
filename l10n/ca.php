@@ -200,6 +200,7 @@
 "at" => "a",
 "To" => "Fins a",
 "Your calendars" => "Els vostres calendaris",
+"Shared events" => "Esdeveniments compartits",
 "General" => "General",
 "Timezone" => "Zona horària",
 "Update timezone automatically" => "Actualitza la zona horària automàticament",

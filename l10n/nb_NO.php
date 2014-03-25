@@ -200,6 +200,7 @@
 "at" => "på",
 "To" => "Til",
 "Your calendars" => "Dine kalendere",
+"Shared events" => "Delte hendelser",
 "General" => "Generellt",
 "Timezone" => "Tidssone",
 "Update timezone automatically" => "Oppdater tidssone automatisk",
@@ -214,5 +215,5 @@
 "more info" => "mer info",
 "Primary address (Kontact et al)" => "Primær adresse (kontakt osv)",
 "iOS/OS X" => "iOS/OS X",
-"Read only iCalendar link(s)" => "Kun les iCalender link(er)"
+"Read only iCalendar link(s)" => "iCalender-lenke(r) som bare gir lesetilgang"
 );

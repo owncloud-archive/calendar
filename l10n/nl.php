@@ -200,6 +200,7 @@
 "at" => "op",
 "To" => "Aan",
 "Your calendars" => "Uw agenda's",
+"Shared events" => "Gedeelde afspraken",
 "General" => "Algemeen",
 "Timezone" => "Tijdzone",
 "Update timezone automatically" => "Werk de tijdzone automatisch bij",

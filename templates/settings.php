@@ -19,6 +19,14 @@
 	}
 	?>
 	<tr>
+		<td width="20px">
+			<input type="checkbox" id="active_shared_events" data-id="shared_events" checked="checked">
+		</td>
+		<td id="<?php p(OCP\USER::getUser()) ?>_shared_events">
+			<label for="active_shared_events"><?php p($l->t('Shared events')) ?></label>
+		</td>
+	</tr>
+	<tr>
 		<td colspan="6">
 			<input type="button" value="<?php p($l->t('New Calendar')) ?>" id="newCalendar">
 		</td>
@@ -123,7 +131,7 @@
 				$uri = rawurlencode(html_entity_decode($calendar['uri'], ENT_QUOTES, 'UTF-8')) . '_shared_by_' . $calendar['userid'];
 			}
 			?>
-			<a href="<?php p(OCP\Util::linkToRemote('caldav').'calendars/'.urlencode(OCP\USER::getUser().'/'.$uri)) ?>?export" class="link"><?php p($calendar['displayname']) ?></a><br />
+			<a href="<?php p(OCP\Util::linkToRemote('caldav').'calendars/'.urlencode(OCP\USER::getUser()).'/'.urlencode($uri)) ?>?export" class="link"><?php p($calendar['displayname']) ?></a><br />
 			<?php } ?>
 		</dd>
 		</dl>

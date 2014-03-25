@@ -28,6 +28,9 @@ $('#chooseCalendar').live('click', function () {
 $('.activeCalendar').live('change', function () {
 	Calendar.UI.Calendar.activation(this,$(this).data('id'));
 });
+$('#active_shared_events').live('change', function () {
+	Calendar.UI.Calendar.sharedEventsActivation(this);
+});
 $('#allday_checkbox').live('click', function () {
 	Calendar.UI.lockTime();
 });
@@ -58,4 +61,10 @@ $('#editCalendar-cancel').live('click', function () {
 });
 $('.choosecalendar-rowfield-active').live('click', function () {
 	Calendar.UI.Share.activation($(this), $(this).data('id'));
+});
+$("#event-location:not(.ui-autocomplete-input)").live("focus", function (event) {
+	$(this).autocomplete({
+		source: OC.linkTo('calendar', 'ajax/search-location.php'),
+		minLength: 2
+	});
 });
