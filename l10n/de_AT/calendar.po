@@ -14,13 +14,13 @@
 # Phi Lieb <>, 2012
 # SSL <albkert@gmail.com>, 2012
 # Susi <>, 2012
-# traductor <transifex-3.7.mensaje@spamgourmet.com>, 2012
+# traductor, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-11 06:35-0400\n"
-"PO-Revision-Date: 2014-03-11 06:11+0000\n"
+"POT-Creation-Date: 2014-03-25 01:47-0400\n"
+"PO-Revision-Date: 2014-03-24 05:50+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: German (Austria) (http://www.transifex.com/projects/p/owncloud/language/de_AT/)\n"
 "MIME-Version: 1.0\n"
