@@ -182,9 +182,6 @@ class OC_Calendar_Calendar{
 	public static function editCalendar($id,$name=null,$components=null,$timezone=null,$order=null,$color=null) {
 		// Need these ones for checking uri
 		$calendar = self::find($id);
-		//if ($calendar['userid'] != OCP\User::getUser() && !OC_Group::inGroup(OCP\User::getUser(), 'admin')) {
-		//	$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
-		//	if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
 		if ($calendar['userid'] != OCP\User::getUser())) {{
 				throw new Exception(
 					OC_Calendar_App::$l10n->t(
