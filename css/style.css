@@ -549,3 +549,32 @@ button.category{margin:0 3px;}
 #navigation-list #caldav_url_entry {
 	min-height: 0;
 }
+
+.activeDay{
+	background-color:#D9EDF7;
+}
+
+.timeline {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-top: 1px solid red;
+	width: 100%;
+	
+	z-index: 999;
+}
+
+.fc-event-draggable { cursor: default; }
+
+.fc-agenda .fc-agenda-axis{
+	padding:0;
+	padding-right:4px;
+}
+
+button.ui-multiselect{
+	padding:2px 0 2px 4px;
+	line-height:22px;
+	height:26px;
+	 text-align:left;
+}
