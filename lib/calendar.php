@@ -182,7 +182,7 @@ class OC_Calendar_Calendar{
 	public static function editCalendar($id,$name=null,$components=null,$timezone=null,$order=null,$color=null) {
 		// Need these ones for checking uri
 		$calendar = self::find($id);
-		if ($calendar['userid'] != OCP\User::getUser())) {{
+		if ($calendar['userid'] != OCP\User::getUser()) {{
 				throw new Exception(
 					OC_Calendar_App::$l10n->t(
 						'You do not have the permissions to update this calendar.'
