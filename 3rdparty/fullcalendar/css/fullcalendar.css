@@ -1,5 +1,5 @@
 /*!
- * FullCalendar v1.6.1 Stylesheet
+ * FullCalendar v1.6.4 Stylesheet
  * Docs & License: http://arshaw.com/fullcalendar/
  * (c) 2013 Adam Shaw
  */
@@ -102,10 +102,11 @@ html .fc,
 	
 .fc-content {
 	clear: both;
+	zoom: 1; /* for IE7, gives accurate coordinates for [un]freezeContentHeight */
 	}
 	
 .fc-view {
-	width: 100%; /* needed for view switching (when view is absolute) */
+	width: 100%;
 	overflow: hidden;
 	}
 	
@@ -120,7 +121,7 @@ html .fc,
 	}
 	
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-	background: #ffa;
+	background: #fcf8e3;
 	}
 	
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */
@@ -250,6 +251,15 @@ html .fc,
 
 /* Global Event Styles
 ------------------------------------------------------------------------*/
+
+.fc-event-container > * {
+	z-index: 8;
+	}
+
+.fc-event-container > .ui-draggable-dragging,
+.fc-event-container > .ui-resizable-resizing {
+	z-index: 9;
+	}
 	 
 .fc-event {
 	border: 1px solid #3a87ad; /* default BORDER color */
@@ -263,10 +273,7 @@ a.fc-event {
 	text-decoration: none;
 	}
 	
-a.fc-event,
-.fc-event-draggable {
-	cursor: pointer;
-	}
+
 	
 .fc-rtl .fc-event {
 	text-align: right;
@@ -281,7 +288,15 @@ a.fc-event,
 .fc-event-time,
 .fc-event-title {
 	padding: 0 1px;
-	}
+     cursor: pointer;
+}
+
+
+
+.fc-event-time:hover,
+.fc-event-title:hover {
+	text-decoration: underline;
+}
 	
 .fc .ui-resizable-handle {
 	display: block;

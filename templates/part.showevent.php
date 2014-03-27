@@ -98,7 +98,7 @@
 			<tr>
 				<th width="85px" style="vertical-align: top;"><?php p($l->t("Description"));?>:</th>
 				<td>
-					<?php p(isset($_['description']) ? $_['description'] : '') ?></textarea>
+					<?php p(isset($_['description']) ? $_['description'] : '') ?>
 			</tr>
 		</table>
 	</div>
