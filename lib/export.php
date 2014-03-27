@@ -19,13 +19,14 @@ class OC_Calendar_Export{
 	 * @brief export a calendar or an event
 	 * @param integer $id id of calendar / event
 	 * @param string $type use OC_Calendar_Export constants
+	 * @param boolean $security true: check access class; false: don't (used mainly with link-sharing)
 	 * @return string
 	 */
-	public static function export($id, $type) {
+	public static function export($id, $type, $security=true) {
 		if($type == self::EVENT) {
-			$return = self::event($id);
+			$return = self::event($id, $security);
 		}else{
-			$return = self::calendar($id);
+			$return = self::calendar($id, $security);
 		}
 		return self::fixLineBreaks($return);
 	}
@@ -33,14 +34,15 @@ class OC_Calendar_Export{
 	/**
 	 * @brief exports a calendar and convert all times to UTC
 	 * @param integer $id id of the calendar
+	 * @param boolean $security true: check access class; false: don't (used mainly with link-sharing)
 	 * @return string
 	 */
-	private static function calendar($id) {
+	private static function calendar($id, $security=true) {
 		$events = OC_Calendar_Object::all($id);
 		$calendar = OC_Calendar_Calendar::find($id);
 		$return = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:ownCloud Calendar " . OCP\App::getAppVersion('calendar') . "\nX-WR-CALNAME:" . $calendar['displayname'] . "\n";
 		foreach($events as $event) {
-			$return .= self::generateEvent($event);
+			$return .= self::generateEvent($event, $security);
 		}
 		$return .= "END:VCALENDAR";
 		return $return;
@@ -49,35 +51,46 @@ class OC_Calendar_Export{
 	/**
 	 * @brief exports an event and convert all times to UTC
 	 * @param integer $id id of the event
+	 * @param boolean $security true: check access class; false: don't (used mainly with link-sharing)
 	 * @return string
 	 */
-	private static function event($id) {
+	private static function event($id, $security=true) {
 		$event = OC_Calendar_Object::find($id);
 		$return = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:ownCloud Calendar " . OCP\App::getAppVersion('calendar') . "\nX-WR-CALNAME:" . $event['summary'] . "\n";
-		$return .= self::generateEvent($event);
+		$return .= self::generateEvent($event, $security);
 		$return .= "END:VCALENDAR";
 		return $return;
 	 }
 
 	 /**
-	  * @brief generates the VEVENT/VTODO/VJOURNAL with UTC dates
-	  * @param array $event
-	  * @return string
-	  */
-	 private static function generateEvent($event) {
+		* @brief generates the VEVENT/VTODO/VJOURNAL with UTC dates
+		* @param array $event
+		* @param boolean $security true: check access class; false: don't (used mainly with link-sharing)
+		* @return string
+		*/
+	 private static function generateEvent($event, $security=true) {
 	 	$object = OC_VObject::parse($event['calendardata']);
 		if(!$object){
 			return false;
 		}
 
-		$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($object);
-		if(OC_Calendar_Object::getowner($event['id']) !== OCP\User::getUser()){
-			if (!($sharedAccessClassPermissions & OCP\PERMISSION_READ)) {
-				return '';
-			}
-		}
-		$object = OC_Calendar_Object::cleanByAccessClass($event['id'], $object);
+		# handle with care! if $security is false, private events can get published
+		# this should be used only with link-shared event (not calendar! *concrete event*!)
+		if ($security) {
 
+			// access permissions
+			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($object);
+			if(OC_Calendar_Object::getowner($event['id']) !== OCP\User::getUser()){
+				if (!($sharedAccessClassPermissions & OCP\PERMISSION_READ)) {
+					return '';
+				}
+			}
+			
+			// data clean-up
+			$object = OC_Calendar_Object::cleanByAccessClass($event['id'], $object);
+		}
+
+		// handle the data itself
 		if($object->VEVENT){
 			$dtstart = $object->VEVENT->DTSTART;
 			$start_dt = $dtstart->getDateTime();
