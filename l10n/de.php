@@ -129,6 +129,7 @@
 "Day" => "Tag",
 "Week" => "Woche",
 "Month" => "Monat",
+"4 Weeks" => "4 Wochen",
 "Today" => "Heute",
 "Settings" => "Einstellungen",
 "Share Calendar" => "Kalender freigeben",

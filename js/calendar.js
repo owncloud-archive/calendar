@@ -410,6 +410,9 @@ Calendar={
 				case 'month':
 					id = 'onemonthview_radio';
 					break;
+				case 'fourWeeks':
+					id = 'fourweeksview_radio';
+					break;
 				case 'agendaDay':
 					id = 'onedayview_radio';
 					break;
@@ -948,6 +951,9 @@ $(document).ready(function(){
 	});
 	$('#onemonthview_radio').click(function(){
 		$('#fullcalendar').fullCalendar('changeView', 'month');
+	});
+	$('#fourweeksview_radio').click(function(){
+		$('#fullcalendar').fullCalendar('changeView', 'fourWeeks');
 	});
 	$('#onedayview_radio').click(function(){
 		$('#fullcalendar').fullCalendar('changeView', 'agendaDay');
