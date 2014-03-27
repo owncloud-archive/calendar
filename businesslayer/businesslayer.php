@@ -109,8 +109,4 @@ abstract class BusinessLayer {
 
 		return true;
 	}
-
-	final protected function isBackendEnabled($backend) {
-		return $this->backends->find($backend)->getEnabled();
-	}
 }

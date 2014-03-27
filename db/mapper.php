@@ -1,33 +1,14 @@
 <?php
-
 /**
- * ownCloud - App Framework
- *
- * @author Bernhard Posselt
- * @author Morris Jobke
- * @copyright 2012 Bernhard Posselt nukeawhale@gmail.com
- * @copyright 2013 Morris Jobke morris.jobke@gmail.com
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU AFFERO GENERAL PUBLIC LICENSE for more details.
- *
- * You should have received a copy of the GNU Affero General Public
- * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
- *
+ * Copyright (c) 2014 Bernhard Posselt <dev@bernhard-posselt.com>
+ * Copyright (c) 2014 Morris Jobke <morris.jobke@gmail.com>
+ * This file is licensed under the Affero General Public License version 3 or
+ * later.
+ * See the COPYING-README file.
  */
+namespace OCA\Calendar\Db;
 
-
-namespace OCA\Calendar\AppFramework\Db;
-
-use OCA\Calendar\AppFramework\Core\API;
-
+use \OCP\AppFramework\IAppContainer;
 
 /**
  * Simple parent class for inheriting your data access layer from. This class
@@ -42,7 +23,7 @@ abstract class Mapper {
 	 * @param string $tableName the name of the table. set this to allow entity 
 	 * queries without using sql
 	 */
-	public function __construct(API $api, $tableName){
+	public function __construct(IAppContainer $api, $tableName){
 		$this->api = $api;
 		$this->tableName = '*PREFIX*' . $tableName;
 	}
@@ -58,7 +39,7 @@ abstract class Mapper {
 
 	/**
 	 * Deletes an entity from the table
-	 * @param Entity $enttiy the entity that should be deleted
+	 * @param Entity $entity the entity that should be deleted
 	 */
 	public function delete(Entity $entity){
 		$sql = 'DELETE FROM `' . $this->tableName . '` WHERE `id` = ?';
@@ -96,6 +77,7 @@ abstract class Mapper {
 
 			array_push($params, $entity->$getter());
 			$i++;
+
 		}
 
 		$sql = 'INSERT INTO `' . $this->tableName . '`(' .

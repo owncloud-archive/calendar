@@ -13,7 +13,7 @@ use \OCA\Calendar\Db\Permissions;
 
 use \OCA\Calendar\Utility\CalendarUtility;
 
-class JSONCalendarReader {
+class JSONCalendarReader extends JSONReader{
 
 	public function parse() {
 		$data = &$this->data;
@@ -77,7 +77,17 @@ class JSONCalendarReader {
 		} catch(Exception $ex /* What exception is being thrown??? */) {
 			throw new JSONCalendarReaderException($ex->getMessage());
 		}
-	}	
+	}
+
+	public function sanitize() {
+		$sanitize = array(
+			'userId',
+			'ownerId',
+			'cruds',
+			'ctag',
+		);
+		return parent::sanitize($sanitize);
+	}
 }
 
 class JSONCalendarReaderException extends Exception{}

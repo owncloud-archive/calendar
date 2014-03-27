@@ -19,6 +19,7 @@ abstract class JSONReader {
 	 */
 	public function __construct($json=null) {
 		$this->object = null;
+
 		if(is_array($json) === false) {
 			if($json === null) {
 				throw new JSONReaderException('Given json string is empty!');
@@ -41,6 +42,14 @@ abstract class JSONReader {
 		}
 
 		return $this->object;
+	}
+
+	public function sanitize($properties) {
+		foreach($properties as $property) {
+			$setter = 'set' . ucfirst($property);
+			$this->object->{$setter}(null);
+		}
+		return $this;
 	}
 
 	abstract public function parse();

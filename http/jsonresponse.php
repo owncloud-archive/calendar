@@ -9,6 +9,7 @@ namespace OCA\Calendar\Http;
 
 use \OCA\Calendar\AppFramework\Http\Response;
 use \OCA\Calendar\AppFramework\Http\Http;
+use \OCA\Calendar\Http\IResponse;
 
 class JSONResponse extends Response {
 
@@ -18,8 +19,17 @@ class JSONResponse extends Response {
 	 * @param array|object $data the object or array that should be transformed
 	 * @param int $statusCode the Http status code, defaults to 200
 	 */
-	public function __construct($data=array(), $statusCode=Http::STATUS_OK) {
+	public function __construct(&$data=null, $statusCode=null) {
 		$this->data = $data;
+
+		if($statusCode === null) {
+			if($data instanceof IResponse) {
+				$statusCode = HTTP::STATUS_OK;
+			} else {
+				$statusCode = HTTP::STATUS_NO_CONTENT;
+			}
+		}
+
 		$this->setStatus($statusCode);
 		$this->addHeader('X-Content-Type-Options', 'nosniff');
 		$this->addHeader('Content-type', 'application/json; charset=utf-8');
@@ -30,10 +40,10 @@ class JSONResponse extends Response {
 	 * @return string the rendered json
 	 */
 	public function render(){
-		if(is_array($this->data)) {
-			return json_encode($this->data);
+		if($this->data instanceof IResponse) {
+			return $this->data->serialize();
 		} else {
-			return $this->data;
+			return '';
 		}
 	}
 }

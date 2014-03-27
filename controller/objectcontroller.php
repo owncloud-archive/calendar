@@ -7,21 +7,21 @@
  */
 namespace OCA\Calendar\Controller;
 
-use \OCA\Calendar\AppFramework\Core\API;
-use \OCA\Calendar\AppFramework\Http\Http;
-use \OCA\Calendar\AppFramework\Http\Request;
+use \OCP\AppFramework\Http\Http;
 
-use \OCA\Calendar\AppFramework\DoesNotExistException;
-
-use \OCA\Calendar\BusinessLayer\BackendBusinessLayer;
-use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
-use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
+use \OCA\Calendar\Db\DoesNotExistException;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
 use \OCA\Calendar\Db\Object;
 use \OCA\Calendar\Db\ObjectCollection;
 
+use \OCA\Calendar\Db\Permissions;
+
 use \OCA\Calendar\Http\JSONResponse;
+
+use \OCA\Calendar\Http\ICS\ICSObject;
+use \OCA\Calendar\Http\ICS\ICSObjectCollection;
+use \OCA\Calendar\Http\ICS\ICSObjectReader;
 
 use \OCA\Calendar\Http\JSON\JSONObject;
 use \OCA\Calendar\Http\JSON\JSONObjectCollection;
@@ -40,42 +40,46 @@ class ObjectController extends Controller {
 			$userId = $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
 
-			$returnRawICS = $this->doesClientAcceptRawICS();
 			$limit = $this->header('X-OC-CAL-LIMIT', 'integer');
 			$offset = $this->header('X-OC-CAL-OFFSET', 'integer');
+
 			$expand = $this->header('X-OC-CAL-EXPAND', 'boolean');
 			$start = $this->header('X-OC-CAL-START', 'DateTime');
 			$end = $this->header('X-OC-CAL-END', 'DateTime');
 
+			$doesAcceptRawICS = $this->doesClientAcceptRawICS();
+
+			//check if calendar exists, if not return 404
+			if($this->calendarBusinessLayer->doesExist($calendarId, $userId) === false) {
+				return new JSONResponse(null, HTTP::STATUS_NOT_FOUND);
+			}
+			//check if user is allowed to read calendar, if not return 403
+			if($this->calendarBusinessLayer->doesAllow(Permissions::READ, $calendarId, $userId) === false) {
+				return new JSONResponse(null, HTTP::STATUS_FORBIDDEN);
+			}
+
 			if($start === null || $end === null) {
-				$objectCollection = $this->objectBusinessLayer
-					->findAll($calendarId,
-							  $userId,
-							  $limit,
-							  $offset);
+				$objectCollection = 
+				$this->objectBusinessLayer
+					->findAll($calendarId, $userId,
+							  $limit, $offset);
 			} else {
-				$objectCollection = $this->objectBusinessLayer
-					->findAllInPeriod($calendarId,
-									  $start,
-									  $end,
-									  $userId,
-									  $limit,
-									  $offset);
+				$objectCollection = 
+				$this->objectBusinessLayer
+					->findAllInPeriod($calendarId, $start,
+									  $end, $userId,
+									  $limit, $offset);
 			}
 
 			if($expand === true) {
 				$objectCollection->expand($start, $end);
 			}
 
-			if($returnRawICS === true) {
-				$VObject = $objectCollection->getVObject();
-				$ics = $VObject->serialize();
-				return new Response($ics, Http::STATUS_OK);
-			} else {
-				$jsonObjectCollection = new JSONObjectCollection($objectCollection);
-				$json = $jsonObjectCollection->serialize();
-				return new JSONResponse($json, Http::STATUS_OK);
-			}
+			$serializer = ($doesAcceptRawICS === true) ?
+							new ICSObjectCollection($objectCollection) :
+							new JSONObjectCollection($objectCollection);
+
+			return new JSONResponse($serializer, Http::STATUS_OK);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
@@ -97,35 +101,36 @@ class ObjectController extends Controller {
 			$calendarId = $this->params('calendarId');
 			$objectURI = $this->params('objectId');
 
-			$returnRawICS = $this->doesClientAcceptRawICS();
 			$expand = $this->header('X-OC-CAL-EXPAND', 'boolean');
 			$start = $this->header('X-OC-CAL-START', 'DateTime');
 			$end = $this->header('X-OC-CAL-END', 'DateTime');
+
+			$doesAcceptRawICS = $this->doesClientAcceptRawICS();
+
+			//check if calendar and object exists, if not return 404
+			if($this->calendarBusinessLayer->doesExist($calendarId, $userId) === false || 
+			   $this->objectBusinessLayer->doesExist($calendarId, $objectURI, $userId) === false) {
+				return new JSONResponse(null, HTTP::STATUS_NOT_FOUND);
+			}
+			//check if user is allowed to read calendar, if not return 403
+			if($this->calendarBusinessLayer->doesAllow(Permissions::READ, $calendarId, $userId) === false) {
+				return new JSONResponse(null, HTTP::STATUS_FORBIDDEN);
+			}
 
 			$object	= $this->objectBusinessLayer->find($calendarId, $objectURI, $userId);
 
 			if($expand === true) {
 				$objectCollection = $object->expand($start, $end);
-				if($returnRawICS === true) {
-					$serializer = $objectCollection->getVObject();
-				} else {
-					$serializer = new JSONObjectCollection($objectCollection);
-				}
+				$serializer = ($doesAcceptRawICS === true) ?
+								new ICSObjectCollection($objectCollection) :
+								new JSONObjectCollection($objectCollection);
 			} else {
-				if($returnRawICS === true) {
-					$serializer = $object->getVObject();
-				} else {
-					$serializer = new JSONObject($object);
-				}
+				$serializer = ($doesAcceptRawICS === true) ?
+								new ICSObject($object) :
+								new JSONObject($object);
 			}
 
-			$serialized = $serializer->serialize();
-
-			if($returnRawICS === true) {
-				return new Response($serialized, Http::STATUS_OK);
-			} else {
-				return new JSONResponse($serialized, Http::STATUS_OK);
-			}
+			return new JSONResponse($serializer);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, Http::STATUS_NOT_FOUND);
@@ -144,29 +149,40 @@ class ObjectController extends Controller {
 		try {
 			$userId = $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
-			$returnRawICS = $this->doesClientAcceptRawICS();
+			$data = $this->request->params;
 
-			$requestBody = $this->request->params;
+			//check if calendar exists, if not return 404
+			if($this->calendarBusinessLayer->doesExist($calendarId, $userId) === false) {
+				return new JSONResponse(null, HTTP::STATUS_NOT_FOUND);
+			}
+			//check if user is allowed to create objects, if not return 403
+			if($this->calendarBusinessLayer->doesAllow(PERMISSIONS::CREATE, $calendarId, $userId) === false) {
+				return new JSONResponse(null, HTTP::STATUS_FORBIDDEN);
+			}
 
-			if($this->isRequestBodyRawICS() === true) {
-				$reader = new ICSObjectReader($requestBody);
+			$didSendRawICS = $this->didClientSendRawICS();
+			$doesAcceptRawICS = $this->doesClientAcceptRawICS();
+
+			if($didSendRawICS === true) {
+				$reader = new ICSObjectReader($data);
 			} else {
-				$reader = new JSONObjectReader($requestBody);
+				$reader = new JSONObjectReader($data);
 			}
 
 			$object = $reader->getObject();
 
 			$object = $this->objectBusinessLayer->create($object, $calendarid, $userId);
 
-			if($returnRawICS === true) {
-				$VObject = $object->getVObject();
-				$ics = $VObject->serialize();
-				return new Response($ics, Http::STATUS_CREATED);
-			} else {
-				$jsonObject = new JSONObject($object);
-				$json = $jsonObject->serialize();
-				return new JSONResponse($json, Http::STATUS_CREATED);
+			//return no content if user is not allowed to read
+			if($this->calendarBusinessLayer->doesAllow(Permissions::READ, $calendarId, $userId) === false) {
+				return new JSONResponse(null, Http::STATUS_NO_CONTENT);
 			}
+
+			$serializer = ($doesAcceptRawICS === true) ?
+							new ICSObject($object) : 
+							new JSONObject($object);
+
+			return new JSONResponse($serializer, Http::STATUS_CREATED);
 		} catch (BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
@@ -184,30 +200,41 @@ class ObjectController extends Controller {
 			$userId = $this->api->getUserId();
 			$calendarId = $this->api->params('calendarId');
 			$objectURI = $this->api->params('objectId');
-			$returnRawICS = $this->doesClientAcceptRawICS();
+			$data = $this->request->params;
 
-			$requestBody = $this->request->params;
+			//check if calendar exists, if not return 404
+			if($this->calendarBusinessLayer->doesExist($calendarId, $userId) === false || 
+			   $this->objectBusinessLayer->doesExist($calendarId, $objectURI, $userId) === false) {
+				return new JSONResponse(null, HTTP::STATUS_NOT_FOUND);
+			}
+			//check if user is allowed to update objects, if not return 403
+			if($this->calendarBusinessLayer->doesAllow(PERMISSIONS::UPDATE, $calendarId, $userId) === false) {
+				return new JSONResponse(null, HTTP::STATUS_FORBIDDEN);
+			}
 
+			$didSendRawICS = $this->didClientSendRawICS();
+			$doesAcceptRawICS = $this->doesClientAcceptRawICS();
 
-			if($this->isRequestBodyRawICS() === true) {
-				$reader = new ICSObjectReader($requestBody);
+			if($didSendRawICS === true) {
+				$reader = new ICSObjectReader($data);
 			} else {
-				$reader = new JSONObjectReader($requestBody);
+				$reader = new JSONObjectReader($data);
 			}
 
 			$object = $reader->getObject();
 
 			$object = $this->objectBusinessLayer->update($object, $objectURI, $calendarId, $userId);
 
-			if($returnRawICS === true) {
-				$VObject = $object->getVObject();
-				$ics = $VObject->serialize();
-				return new Response($ics, Http::STATUS_CREATED);
-			} else {
-				$jsonObject = new JSONObject($object);
-				$json = $jsonObject->serialize();
-				return new JSONResponse($json, Http::STATUS_CREATED);
+			//return no content if user is not allowed to read
+			if($this->calendarBusinessLayer->doesAllow(Permissions::READ, $calendarId, $userId) === false) {
+				return new JSONResponse(null, Http::STATUS_NO_CONTENT);
 			}
+
+			$serializer = ($doesAcceptRawICS === true) ?
+							new ICSObject($object) : 
+							new JSONObject($object);
+
+			return new JSONResponse($serializer);
 		} catch(BusinessLayerException $ex) {
 			$this->api->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);

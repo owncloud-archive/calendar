@@ -7,32 +7,39 @@
  */
 namespace OCA\Calendar\BusinessLayer;
 
-use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
-use \OCA\Calendar\AppFramework\Utility\TimeFactory;
-use \OCA\Calendar\AppFramework\Core\API;
+use \OCP\AppFramework\IAppContainer;
 
 use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\CalendarCollection;
 use \OCA\Calendar\Db\CalendarMapper;
 
+use \OCA\Calendar\Db\DoesNotExistException;
+
 use \OCA\Calendar\Utility\CalendarUtility;
 
 class CalendarBusinessLayer extends BusinessLayer {
 
-	private $cache;
+	private $cacheMapper;
+	private $objectBusinessLayer;
 
+	private $runtimeCalendarCache=array();
 	private $remoteCalendarObjectCache=array();
 
 	/**
 	 * @param CalendarMapper $objectMapper: mapper for objects cache
+	 * @param ObjectBusinessLayer $objectBusinessLayer
 	 * @param BackendBusinessLayer $backendBusinessLayer
 	 * @param API $api: an api wrapper instance
 	 */
-	public function __construct(CalendarMapper $calendarMapper,
+	public function __construct(IAppContainer $api,
 								BackendBusinessLayer $backends,
-	                            API $api){
+								CalendarMapper $calendarMapper,
+								ObjectBusinessLayer $objectBusinessLayer){
+
 		parent::__construct($api, $backends);
-		$this->cache = $calendarMapper;
+
+		$this->cacheMapper = $calendarMapper;
+		$this->objectBusinessLayer = $objectBusinessLayer;
 	}
 
 	/**
@@ -45,12 +52,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 */
 	public function findAll($userId, $limit=null, $offset=null) {
 		try {
-			$calendars = $this->cache->findAll($userId, $limit, $offset);
-
-			if($calendars === null || $calendars === false) {
-				//create empty calendar collection
-				$calendars = new CalendarCollection();
-			}
+			$calendars = $this->cacheMapper->findAll($userId, $limit, $offset);
 
 			//check if $calendars is a CalendarCollection, if not throw an exception
 			if(($calendars instanceof CalendarCollection) === false) {
@@ -68,15 +70,44 @@ class CalendarBusinessLayer extends BusinessLayer {
 	}
 
 	/**
-	 * get the number how many calendars a user has
+	 * Find all calendars of user $userId on a backend
+	 * @param string $backend
+	 * @param string $userId
+	 * @param int $limit
+	 * @param int $offset
+	 * @throws BusinessLayerException
+	 * @return CalendarCollection
+	 */
+	public function findAllOnBackend($backend, $userId, $limit=null, $offset=null) {
+		try {
+			$calendars = $this->cacheMapper->findAllOnBackend($backend, $userId, $limit, $offset);
+
+			//check if $calendars is a CalendarCollection, if not throw an exception
+			if(($calendars instanceof CalendarCollection) === false) {
+				$msg  = 'CalendarBusinessLayer::findAll(): Internal Error: ';
+				$msg .= 'CalendarCache returned unrecognised format!';
+				throw new BusinessLayerException($msg);
+			}
+
+			return $calendars;
+		} catch (DoesNotExistException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		} catch (BackendException $ex) {
+			throw new BusinessLayerException($ex->getMessage());
+		}
+	}
+
+	/**
+	 * number of calendars
 	 * @param string $userId
 	 * @throws BusinessLayerException
 	 * @return integer
 	 */
 	public function numberOfAllCalendars($userId) {
 		try {
-			$number = $this->cache->countAll($userId);
+			$number = $this->cacheMapper->countAll($userId);
 
+			//check if number is an integer, if not throw an exception
 			if(gettype($number) !== 'integer') {
 				$msg  = 'CalendarBusinessLayer::numberOfAllCalendars(): Internal Error: ';
 				$msg .= 'CalendarCache returned unrecognised format!';
@@ -90,7 +121,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	}
 
 	/**
-	 * get the number how many calendars a user has on a certian backend
+	 * number of calendars on a backend
 	 * @param string $backend
 	 * @param string $userId
 	 * @throws BusinessLayerException
@@ -98,8 +129,9 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 */
 	public function numberOfAllCalendarsOnBackend($backend, $userId) {
 		try {
-			$number = $this->cache->countOnBackend($backend, $userId);
+			$number = $this->cacheMapper->countOnBackend($backend, $userId);
 
+			//check if number is an integer, if not throw an exception
 			if(gettype($number) !== 'integer') {
 				$msg  = 'CalendarBusinessLayer::numberOfAllCalendarsOnBackend(): Internal Error: ';
 				$msg .= 'CalendarCache returned unrecognised format!';
@@ -123,13 +155,14 @@ class CalendarBusinessLayer extends BusinessLayer {
 	public function find($calendarId, $userId) {
 		try {
 			$this->splitCalendarURI($calendarId, $backend, $calendarURI);
+
 			if($this->isBackendEnabled($backend) !== true) {
 				$msg  = 'CalendarBusinessLayer::find(): User Error: ';
 				$msg .= 'Backend found but not enabled';
 				throw new BusinessLayerException($msg);
 			}
 
-			$calendar = $this->cache->find($backend, $calendarURI, $userId);
+			$calendar = $this->cacheMapper->find($backend, $calendarURI, $userId);
 
 			if(($calendar instanceof Calendar) === false) {
 				$msg  = 'CalendarBusinessLayer::find(): Internal Error: ';
@@ -220,6 +253,11 @@ class CalendarBusinessLayer extends BusinessLayer {
 		try {
 			list($oldBackend, $oldCalendarURI) = $this->splitCalendarURI($oldCalendarId);
 
+			if($calendar->doesContainNullValues() === true) {
+				$oldCalendarObject = $this->find($oldCalendarId, $oldUserId);
+				$calendar->merge($oldCalendarObject);
+			}
+
 			$newCalendarId = $calendar->getCalendarId();
 			$newBackend = $calendar->getBackend();
 			$newCalendarURI = $calendar->getUri();
@@ -242,6 +280,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 			}
 
 			$oldCalendarObject = $this->find($oldCalendarId, $oldUserId);
+			//does ctag change when a calendar property like color or name changes?
 			if($calendar->getCtag() < $oldCalendarObject->getCtag()) {
 				$msg  = 'CalendarBusinessLayer::update(): User Error: ';
 				$msg .= 'A newer version of the calendar is already saved!';
@@ -298,10 +337,10 @@ class CalendarBusinessLayer extends BusinessLayer {
 				//if no exception was thrown,
 				//moving objects finished without any problem
 				$oldBackendsAPI->deleteCalendar($oldCalendarURI, $userId);
-				$this->cache->move($calendar, $calendarId, $userId);
+				$this->cacheMapper->move($calendar, $calendarId, $userId);
 
 				return $calendar;
-			}
+			} else
 			/* Merge calendar with another one when:
 			 *  - [x] the backend changed
 			 *  - [x] uri is not available on the other backend
@@ -326,7 +365,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 	
 					//if no exception was thrown,
 					//moving objects finished without any problem
-					$this->cache->move($calendar, $oldCalendarId, $oldUserId);
+					$this->cacheMapper->move($calendar, $oldCalendarId, $oldUserId);
 					$oldBackendsAPI->deleteCalendar($oldCalendarURI, $oldUserId);
 					$this->updateFromCache($oldCalendarId, $oldUserId);
 				}
@@ -334,15 +373,15 @@ class CalendarBusinessLayer extends BusinessLayer {
 				return $calendar;
 			}
 			/* otherwise just update the calendar */
-			if($this->doesBackendSupport($backend, \OCA\Calendar\Backend\UPDATE_CALENDAR) !== true) {
-				$msg  = 'CalendarBusinessLayer::update(): User Error: ';
-				$msg .= 'Backend does not support updating calendars!';
-				throw new BusinessLayerException($msg);
+			if($this->doesBackendSupport($backend, \OCA\Calendar\Backend\UPDATE_CALENDAR) === true) {
+				$this->backends->find($backend)->api->updateCalendar($calendar, $oldCalendarURI);
+				$this->mapper->updateEntity($calendar, $oldBackend, $oldCalendarURI, $oldUserId);
+				return $calendar;
+			} else {
+				if($oldBackend === $newBackend && $oldCalendarURI === $newCalendarURI) {
+					$this->mapper->updateEntity($calendar, $oldBackend, $oldCalendarURI, $oldUserId);
+				}
 			}
-
-			$this->backends->find($backend)->api->updateCalendar($calendar, $oldCalendarURI);
-			$this->mapper->updateEntity($calendar, $oldBackend, $oldCalendarURI, $oldUserId);
-
 			return $calendar;
 		} catch(DoesNotImplementException $ex) {
 			//write debug note to logfile
@@ -406,7 +445,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 			}
 
 			$this->backends->find($backend)->api->deleteCalendar($calendarURI, $userId);
-			$this->cache->deleteEntity($backend, $calendarURI, $userId);
+			$this->cacheMapper->deleteEntity($backend, $calendarURI, $userId);
 		} catch(DoesNotImplementException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		} catch(BackendException $ex) {
@@ -426,7 +465,7 @@ class CalendarBusinessLayer extends BusinessLayer {
 		try {
 			list($backend, $calendarURI) = $this->splitCalendarURI($calendarId);
 
-			$cacheCalendars = $this->cache->countFind($backend, $calendarURI, $userId);
+			$cacheCalendars = $this->cacheMapper->countFind($backend, $calendarURI, $userId);
 
 			if($cacheCalendars !== 0) {
 				return false;
@@ -438,6 +477,10 @@ class CalendarBusinessLayer extends BusinessLayer {
 		} catch(DoesNotExistException $ex) {
 			throw new BusinessLayerException($ex->getMessage());
 		}
+	}
+
+	public function doesAllow($cruds, $calendarId, $userId) {
+		
 	}
 
 	/**
@@ -502,7 +545,13 @@ class CalendarBusinessLayer extends BusinessLayer {
 	 */
 	public function updateCacheForBackendFromRemote($backend, $userId) {
 		try{
+			$api = &$this->backends->find($backend)->api;
+			$numbersCached = $this->numberOfAllCalendarsOnBackend($backend, $userId);
+			$numbersRemote = $api->countCalendars($userId);
+			$offset = abs($numbersRemote - $numbersCached);
 
+			$calendars = $this->findAllOnBackend($backend, $userId);
+			
 
 
 		} catch(BackendException $ex) {

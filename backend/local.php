@@ -645,11 +645,15 @@ class Local extends Backend {
 				$msg .= 'Received object data is not valid and not fixable! ';
 				$msg .= '(user:"' . $object->getUser() . '"; ';
 				$msg .= 'calendar:"' . $object->getCalendarUri() . '"; ';
-				$msg .= 'object:"' . $object->getObjectUri() . '";)';
+				$msg .= 'object:"' . $object->getObjectUri() . '")';
 				throw new CorruptObjectException($msg);
 			}
 		}
 
 		return $object;
+	}
+
+	public function fetchCalendarPropertiesFromRemote() {
+		return true;
 	}
 }

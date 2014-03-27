@@ -7,8 +7,8 @@
  */
 namespace OCA\Calendar\Controller;
 
-use \OCA\Calendar\AppFramework\Http\Request;
-use \OCA\Calendar\AppFramework\Core\API;
+use \OCP\AppFramework\IAppContainer;
+use \OCP\IRequest;
 
 use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
 use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
@@ -17,11 +17,13 @@ use OCA\Calendar\Db\ObjectType;
 class JournalsController extends ObjectTypeController {
 
 	/**
-	 * @param Request $request: an instance of the request
-	 * @param API $api: an api wrapper instance
-	 * @param BusinessLayer $businessLayer: a businessLayer instance
+	 * constructor
+	 * @param IAppContainer $app interface to the app
+	 * @param IRequest $request an instance of the request
+	 * @param CalendarBusinessLayer $calendarBusinessLayer
+	 * @param ObjectBusinessLayer $objectBusinessLayer
 	 */
-	public function __construct(API $api, Request $request,
+	public function __construct(IAppContainer $api, IRequest $request,
 								CalendarBusinessLayer $calendarBusinessLayer,
 								ObjectBusinessLayer $objectBusinessLayer){
 		parent::__construct($api, $request, $businessLayer, ObjectType::JOURNAL);

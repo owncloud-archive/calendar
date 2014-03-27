@@ -43,6 +43,15 @@ class Calendar extends Entity {
 		}
 	}
 
+	//overwrite nulled values with values from $calendar
+	public function merge(Calendar $calendar) {
+		
+	}
+
+	public function doesContainNullValues() {
+		
+	}
+
 	/**
 	 * @brief take data from VObject and put into this Calendar object
 	 * @return VCalendar Object

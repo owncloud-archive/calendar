@@ -7,38 +7,42 @@
  */
 namespace OCA\Calendar\Controller;
 
-use \OCA\Calendar\AppFramework\Core\API;
-use \OCA\Calendar\AppFramework\Http\Http;
-use \OCA\Calendar\AppFramework\Http\Request;
-use \OCA\Calendar\AppFramework\Http\JSONResponse;
-
-use \OCA\Calendar\AppFramework\DoesNotExistException;
+use \OCP\AppFramework\IAppContainer;
+use \OCP\IRequest;
 
 use \OCA\Calendar\BusinessLayer\BusinessLayer;
+use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
+use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 
-use \DateTime;
-
-abstract class Controller extends \OCA\Calendar\AppFramework\Controller\Controller{
-
-	protected $calendarBusinessLayer;
-	protected $objectBusinessLayer;
-
-	public function __construct(API $api, Request $request,
-								CalendarBusinessLayer $calendarBusinessLayer,
-								ObjectBusinessLayer $objectBusinessLayer){
-		parent::__construct($api, $request);
-		$this->calendarBusinessLayer = $calendarBusinessLayer;
-		$this->objectBusinessLayer = $objectBusinessLayer;
-	}
+abstract class Controller extends \OCP\AppFramework\Controller {
 
 	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
-	 * @API
+	 * calendar business layer
+	 * @var \OCA\Calendar\BusinessLayer\CalendarBusinessLayer
 	 */
-	public function patch() {
-		return new JSONResponse(array(), HTTP::STATUS_NOT_IMPLEMENTED);
+	protected $calendarBusinessLayer;
+
+	/**
+	 * object business layer
+	 * @var \OCA\Calendar\BusinessLayer\ObjectBusinessLayer
+	 */
+	protected $objectBusinessLayer;
+
+	/**
+	 * constructor
+	 * @param IAppContainer $app interface to the app
+	 * @param IRequest $request an instance of the request
+	 * @param CalendarBusinessLayer $calendarBusinessLayer
+	 * @param ObjectBusinessLayer $objectBusinessLayer
+	 */
+	public function __construct(IAppContainer $api, IRequest $request,
+								CalendarBusinessLayer $calendarBusinessLayer,
+								ObjectBusinessLayer $objectBusinessLayer){
+
+		parent::__construct($api, $request);
+
+		$this->calendarBusinessLayer = $calendarBusinessLayer;
+		$this->objectBusinessLayer = $objectBusinessLayer;
 	}
 
 	/*
@@ -55,7 +59,7 @@ abstract class Controller extends \OCA\Calendar\AppFramework\Controller\Controll
 		} else {
 			$value = $this->request->server[$key];
 			if(strtolower($type) === 'datetime') {
-				$value = DateTime::createFromFormat(DateTime::ISO8601);
+				$value = \DateTime::createFromFormat(\DateTime::ISO8601);
 			} else {
 				settype($value, $type);
 			}
@@ -70,11 +74,14 @@ abstract class Controller extends \OCA\Calendar\AppFramework\Controller\Controll
 	protected function doesClientAcceptRawICS() {
 		$accept = $this->header('accept');
 
+		//check if text/calendar is in the text
+		//if not, return false
 		$textCalendarPosition = strpos($accept, 'text/calendar');
 		if($textCalendarPosition === false) {
 			return false;
 		}
 
+		//get posistion of application/json and application/calendar+json
 		$applicationJSONPosition = strpos($accept, 'application/json');
 		$applicationCalendarJSONPosition = strpos($accept, 'application/calendar+json');
 
@@ -94,6 +101,7 @@ abstract class Controller extends \OCA\Calendar\AppFramework\Controller\Controll
 	protected function didClientSendRawICS() {
 		$contentType = $this->header('content-type'); 
 
+		//check if there is some charset info
 		if(strpos($contentType, ';')) {
 			$explodeContentType = explode(';', $contentType);
 			$contentType = $explodeContentType[0];

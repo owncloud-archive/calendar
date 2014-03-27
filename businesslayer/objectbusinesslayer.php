@@ -24,6 +24,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 
 	private $cache;
 
+	private $runTimeCache=array();
 	private $remoteObjectObjectCache=array();
 
 	/**
@@ -61,8 +62,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 
 			$api = &$this->backends->find($backend)->api;
 
-			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
-			if($cacheObjects) {
+			if($this->isObjectCacheEnabled($calendarURI, $userId) === true) {
 				$objects = $this->cache->findAll($backend, $calendarURI, $userId, $limit, $offset);
 			} else {
 				$objects = $api->findObjects($calendarURI, $userId, $limit, $offset);
@@ -122,8 +122,7 @@ class ObjectBusinessLayer extends BusinessLayer {
 
 			$api = &$this->backends->find($backend)->api;
 
-			$cacheObjects = $api->cacheObjects($calendarURI, $userId);
-			if($cacheObjects) {
+			if($this->isObjectCacheEnabled($calendarURI, $userId) === true) {
 				$object = $this->cache->find($backend, $calendarURI, $objectURI, $userId);
 			} else {
 				$object = $api->findObject($calendarURI, $objectURI, $userId);

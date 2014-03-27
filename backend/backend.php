@@ -60,7 +60,7 @@ abstract class Backend implements CalendarInterface {
 	 */
 	public function getSupportedActions() {
 		$actions = 0;
-		foreach($this->possibleActions AS $action => $methodName) {
+		foreach($this->possibleActions as $action => $methodName) {
 			if(method_exists($this, $methodName)) {
 				$actions |= $action;
 			}
