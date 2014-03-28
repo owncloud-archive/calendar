@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-27 01:47-0400\n"
-"PO-Revision-Date: 2014-03-26 06:00+0000\n"
-"Last-Translator: liska_\n"
+"POT-Creation-Date: 2014-03-28 01:47-0400\n"
+"PO-Revision-Date: 2014-03-28 05:47+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,59 +82,59 @@ msgstr "Neplatný požadavek"
 msgid "Calendar"
 msgstr "Kalendář"
 
-#: js/calendar.js:179
+#: js/calendar.js:218
 msgid "Deletion failed"
 msgstr "Mazání selhalo"
 
-#: js/calendar.js:270
+#: js/calendar.js:309
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:272
+#: js/calendar.js:311
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:596
+#: js/calendar.js:679
 msgid "group"
 msgstr "skupina"
 
-#: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:681 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "lze upravovat"
 
-#: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:682 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "může sdílet"
 
-#: js/calendar.js:870
+#: js/calendar.js:947
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:871
+#: js/calendar.js:948
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:872
+#: js/calendar.js:949
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:875
+#: js/calendar.js:952
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:877
+#: js/calendar.js:954
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:879
+#: js/calendar.js:956
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
+#: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
 msgstr "Neděle"
 
-#: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
+#: js/l10n.php:77 lib/object.php:604 templates/calendar.php:92
 msgid "Monday"
 msgstr "Pondělí"
 
@@ -154,7 +154,7 @@ msgstr "Čtvrtek"
 msgid "Friday"
 msgstr "Pátek"
 
-#: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
+#: js/l10n.php:77 lib/object.php:609 templates/calendar.php:94
 msgid "Saturday"
 msgstr "Sobota"
 
@@ -286,7 +286,7 @@ msgstr "prosinec"
 msgid "All day"
 msgstr "Celý den"
 
-#: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
+#: js/l10n.php:84 lib/import.php:216 templates/calendar.php:21
 msgid "New Calendar"
 msgstr "Nový kalendář"
 
@@ -534,43 +534,79 @@ msgstr "Datum"
 msgid "Cal."
 msgstr "Kal."
 
-#: templates/calendar.php:6
+#: templates/calendar.php:16
 msgid "Day"
 msgstr "Den"
 
-#: templates/calendar.php:7
+#: templates/calendar.php:16
 msgid "Week"
 msgstr "Týden"
 
-#: templates/calendar.php:8
+#: templates/calendar.php:16
 msgid "Month"
 msgstr "Měsíc"
 
-#: templates/calendar.php:12 templates/calendar.php:18
+#: templates/calendar.php:17
 msgid "Today"
 msgstr "Dnes"
 
-#: templates/calendar.php:13
-msgid "Settings"
-msgstr "Nastavení"
-
-#: templates/part.choosecalendar.rowfields.php:13
-msgid "Share Calendar"
-msgstr "Sdílet kalendář"
-
-#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
+#: templates/calendar.php:42 templates/part.choosecalendar.rowfields.php:28
 msgid "CalDav Link"
 msgstr "Odkaz CalDav"
 
-#: templates/part.choosecalendar.rowfields.php:27
+#: templates/calendar.php:55
+msgid "Timezone"
+msgstr "Časové pásmo"
+
+#: templates/calendar.php:80
+msgid "Update timezone automatically"
+msgstr "Aktualizovat automaticky časové pásmo"
+
+#: templates/calendar.php:83
+msgid "Time format"
+msgstr "Formát času"
+
+#: templates/calendar.php:85
+msgid "24h"
+msgstr "24h"
+
+#: templates/calendar.php:86
+msgid "12h"
+msgstr "12h"
+
+#: templates/calendar.php:90
+msgid "Start week on"
+msgstr "Týden začíná v"
+
+#: templates/calendar.php:98
+msgid "Cache"
+msgstr "Vyrovnávací paměť"
+
+#: templates/calendar.php:99
+msgid "Clear cache for repeating events"
+msgstr "Vymazat paměť pro opakující se události"
+
+#: templates/calendar.php:102
+msgid "Primary CalDAV address"
+msgstr ""
+
+#: templates/calendar.php:106
+msgid "iOS/OS X CalDAV address"
+msgstr ""
+
+#: templates/part.choosecalendar.rowfields.php:15
+msgid "Share Calendar"
+msgstr "Sdílet kalendář"
+
+#: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
 msgstr "Stáhnout"
 
-#: templates/part.choosecalendar.rowfields.php:31
+#: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
 msgstr "Upravit"
 
-#: templates/part.choosecalendar.rowfields.php:36
+#: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
 msgstr "Smazat"
 
@@ -581,26 +617,6 @@ msgstr "Nový kalendář"
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
 msgstr "Upravit kalendář"
-
-#: templates/part.editcalendar.php:12
-msgid "Displayname"
-msgstr "Zobrazované jméno"
-
-#: templates/part.editcalendar.php:20
-msgid "Calendar color"
-msgstr "Barva kalendáře"
-
-#: templates/part.editcalendar.php:33
-msgid "Save"
-msgstr "Uložit"
-
-#: templates/part.editcalendar.php:33
-msgid "Submit"
-msgstr "Odeslat"
-
-#: templates/part.editcalendar.php:34
-msgid "Cancel"
-msgstr "Zrušit"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
@@ -828,71 +844,3 @@ msgstr "v"
 #: templates/part.showevent.php:78
 msgid "To"
 msgstr "Do"
-
-#: templates/settings.php:2
-msgid "Your calendars"
-msgstr "Vaše kalendáře"
-
-#: templates/settings.php:26
-msgid "Shared events"
-msgstr "Sdílené události"
-
-#: templates/settings.php:42
-msgid "General"
-msgstr "Hlavní"
-
-#: templates/settings.php:47
-msgid "Timezone"
-msgstr "Časové pásmo"
-
-#: templates/settings.php:78
-msgid "Update timezone automatically"
-msgstr "Aktualizovat automaticky časové pásmo"
-
-#: templates/settings.php:83
-msgid "Time format"
-msgstr "Formát času"
-
-#: templates/settings.php:88
-msgid "24h"
-msgstr "24h"
-
-#: templates/settings.php:89
-msgid "12h"
-msgstr "12h"
-
-#: templates/settings.php:95
-msgid "Start week on"
-msgstr "Týden začíná v"
-
-#: templates/settings.php:108
-msgid "Cache"
-msgstr "Vyrovnávací paměť"
-
-#: templates/settings.php:112
-msgid "Clear cache for repeating events"
-msgstr "Vymazat paměť pro opakující se události"
-
-#: templates/settings.php:117
-msgid "URLs"
-msgstr "URL"
-
-#: templates/settings.php:119
-msgid "Calendar CalDAV syncing addresses"
-msgstr "Kalendář CalDAV synchronizuje adresy"
-
-#: templates/settings.php:119
-msgid "more info"
-msgstr "podrobnosti"
-
-#: templates/settings.php:121
-msgid "Primary address (Kontact et al)"
-msgstr "Primární adresa (veřejná)"
-
-#: templates/settings.php:123
-msgid "iOS/OS X"
-msgstr "iOS/OS X"
-
-#: templates/settings.php:125
-msgid "Read only iCalendar link(s)"
-msgstr "Odkaz(y) kalendáře pouze pro čtení"

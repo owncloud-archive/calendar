@@ -72,18 +72,13 @@
 "Week" => "Nedelja",
 "Month" => "Mesec",
 "Today" => "Danas",
-"Settings" => "Podešavanja",
 "CalDav Link" => "KalDav veza",
+"Timezone" => "Vremenska zona",
 "Download" => "Preuzmi",
 "Edit" => "Uredi",
 "Delete" => "Obriši",
 "New calendar" => "Novi kalendar",
 "Edit calendar" => "Uredi kalendar",
-"Displayname" => "Prikazanoime",
-"Calendar color" => "Boja kalendara",
-"Save" => "Snimi",
-"Submit" => "Pošalji",
-"Cancel" => "Otkaži",
 "Share" => "Podeli",
 "Title of the Event" => "Naslov događaja",
 "All Day Event" => "Celodnevni događaj",
@@ -96,7 +91,5 @@
 "Unshare" => "Ukljoni deljenje",
 "Category" => "Kategorija",
 "From" => "Od",
-"To" => "Do",
-"General" => "Opšte",
-"Timezone" => "Vremenska zona"
+"To" => "Do"
 );

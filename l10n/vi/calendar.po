@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-27 01:47-0400\n"
-"PO-Revision-Date: 2014-03-26 06:00+0000\n"
+"POT-Creation-Date: 2014-03-28 01:47-0400\n"
+"PO-Revision-Date: 2014-03-28 05:47+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/owncloud/language/vi/)\n"
 "MIME-Version: 1.0\n"
@@ -86,59 +86,59 @@ msgstr "Yêu cầu không hợp lệ"
 msgid "Calendar"
 msgstr "Lịch"
 
-#: js/calendar.js:179
+#: js/calendar.js:218
 msgid "Deletion failed"
 msgstr "Xóa thất bại"
 
-#: js/calendar.js:270
+#: js/calendar.js:309
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:272
+#: js/calendar.js:311
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:596
+#: js/calendar.js:679
 msgid "group"
 msgstr "nhóm"
 
-#: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:681 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "có thể chỉnh sửa"
 
-#: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:682 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "có thể chia sẽ"
 
-#: js/calendar.js:870
+#: js/calendar.js:947
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:871
+#: js/calendar.js:948
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:872
+#: js/calendar.js:949
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:875
+#: js/calendar.js:952
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:877
+#: js/calendar.js:954
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:879
+#: js/calendar.js:956
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
+#: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
 msgstr "Chủ nhật"
 
-#: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
+#: js/l10n.php:77 lib/object.php:604 templates/calendar.php:92
 msgid "Monday"
 msgstr "Thứ 2"
 
@@ -158,7 +158,7 @@ msgstr "Thứ 5"
 msgid "Friday"
 msgstr "Thứ "
 
-#: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
+#: js/l10n.php:77 lib/object.php:609 templates/calendar.php:94
 msgid "Saturday"
 msgstr "Thứ 7"
 
@@ -290,7 +290,7 @@ msgstr "Tháng 12"
 msgid "All day"
 msgstr "Tất cả các ngày"
 
-#: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
+#: js/l10n.php:84 lib/import.php:216 templates/calendar.php:21
 msgid "New Calendar"
 msgstr "Lịch mới"
 
@@ -538,43 +538,79 @@ msgstr "Ngày"
 msgid "Cal."
 msgstr "Cal."
 
-#: templates/calendar.php:6
+#: templates/calendar.php:16
 msgid "Day"
 msgstr "Ngày"
 
-#: templates/calendar.php:7
+#: templates/calendar.php:16
 msgid "Week"
 msgstr "Tuần"
 
-#: templates/calendar.php:8
+#: templates/calendar.php:16
 msgid "Month"
 msgstr "Tháng"
 
-#: templates/calendar.php:12 templates/calendar.php:18
+#: templates/calendar.php:17
 msgid "Today"
 msgstr "Hôm nay"
 
-#: templates/calendar.php:13
-msgid "Settings"
-msgstr "Tùy chỉnh"
-
-#: templates/part.choosecalendar.rowfields.php:13
-msgid "Share Calendar"
-msgstr "Chia sẻ lịch"
-
-#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
+#: templates/calendar.php:42 templates/part.choosecalendar.rowfields.php:28
 msgid "CalDav Link"
 msgstr "Liên kết CalDav "
 
-#: templates/part.choosecalendar.rowfields.php:27
+#: templates/calendar.php:55
+msgid "Timezone"
+msgstr "Múi giờ"
+
+#: templates/calendar.php:80
+msgid "Update timezone automatically"
+msgstr "Tự động cập nhập múi giờ"
+
+#: templates/calendar.php:83
+msgid "Time format"
+msgstr "Định dạng thời gian"
+
+#: templates/calendar.php:85
+msgid "24h"
+msgstr "24h"
+
+#: templates/calendar.php:86
+msgid "12h"
+msgstr "12h"
+
+#: templates/calendar.php:90
+msgid "Start week on"
+msgstr "Ngày bắt đầu trong tuần"
+
+#: templates/calendar.php:98
+msgid "Cache"
+msgstr "Bộ đệm"
+
+#: templates/calendar.php:99
+msgid "Clear cache for repeating events"
+msgstr "Xóa bộ nhớ đệm cho các sự kiện trùng nhau"
+
+#: templates/calendar.php:102
+msgid "Primary CalDAV address"
+msgstr ""
+
+#: templates/calendar.php:106
+msgid "iOS/OS X CalDAV address"
+msgstr ""
+
+#: templates/part.choosecalendar.rowfields.php:15
+msgid "Share Calendar"
+msgstr "Chia sẻ lịch"
+
+#: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
 msgstr "Tải về"
 
-#: templates/part.choosecalendar.rowfields.php:31
+#: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
 msgstr "Chỉnh sửa"
 
-#: templates/part.choosecalendar.rowfields.php:36
+#: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
 msgstr "Xóa"
 
@@ -585,26 +621,6 @@ msgstr "Lịch mới"
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
 msgstr "sửa Lịch"
-
-#: templates/part.editcalendar.php:12
-msgid "Displayname"
-msgstr "Hiển thị tên"
-
-#: templates/part.editcalendar.php:20
-msgid "Calendar color"
-msgstr "Màu lịch"
-
-#: templates/part.editcalendar.php:33
-msgid "Save"
-msgstr "Lưu"
-
-#: templates/part.editcalendar.php:33
-msgid "Submit"
-msgstr "Xác nhận"
-
-#: templates/part.editcalendar.php:34
-msgid "Cancel"
-msgstr "Hủy"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
@@ -832,71 +848,3 @@ msgstr "tại"
 #: templates/part.showevent.php:78
 msgid "To"
 msgstr "Tới"
-
-#: templates/settings.php:2
-msgid "Your calendars"
-msgstr "Lịch của bạn"
-
-#: templates/settings.php:26
-msgid "Shared events"
-msgstr ""
-
-#: templates/settings.php:42
-msgid "General"
-msgstr "Tổng hợp"
-
-#: templates/settings.php:47
-msgid "Timezone"
-msgstr "Múi giờ"
-
-#: templates/settings.php:78
-msgid "Update timezone automatically"
-msgstr "Tự động cập nhập múi giờ"
-
-#: templates/settings.php:83
-msgid "Time format"
-msgstr "Định dạng thời gian"
-
-#: templates/settings.php:88
-msgid "24h"
-msgstr "24h"
-
-#: templates/settings.php:89
-msgid "12h"
-msgstr "12h"
-
-#: templates/settings.php:95
-msgid "Start week on"
-msgstr "Ngày bắt đầu trong tuần"
-
-#: templates/settings.php:108
-msgid "Cache"
-msgstr "Bộ đệm"
-
-#: templates/settings.php:112
-msgid "Clear cache for repeating events"
-msgstr "Xóa bộ nhớ đệm cho các sự kiện trùng nhau"
-
-#: templates/settings.php:117
-msgid "URLs"
-msgstr "URLs"
-
-#: templates/settings.php:119
-msgid "Calendar CalDAV syncing addresses"
-msgstr "Đồng bộ địa chỉ lịch CalDAV"
-
-#: templates/settings.php:119
-msgid "more info"
-msgstr "thông tin thêm"
-
-#: templates/settings.php:121
-msgid "Primary address (Kontact et al)"
-msgstr "Địa chỉ chính (Kontact et al) "
-
-#: templates/settings.php:123
-msgid "iOS/OS X"
-msgstr "iOS/OS X"
-
-#: templates/settings.php:125
-msgid "Read only iCalendar link(s)"
-msgstr "Chỉ đọc iCalendar link(s)"
