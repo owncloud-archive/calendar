@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-25 01:47-0400\n"
-"PO-Revision-Date: 2014-03-24 05:50+0000\n"
-"Last-Translator: Flávio Veras <flaviove@gmail.com>\n"
+"POT-Creation-Date: 2014-03-28 01:47-0400\n"
+"PO-Revision-Date: 2014-03-28 05:47+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/owncloud/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,59 +86,59 @@ msgstr "Pedido inválido"
 msgid "Calendar"
 msgstr "Calendário"
 
-#: js/calendar.js:179
+#: js/calendar.js:218
 msgid "Deletion failed"
 msgstr "Remoção falhou"
 
-#: js/calendar.js:270
+#: js/calendar.js:309
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ -[ddd d] MMMM yyyy}"
 
-#: js/calendar.js:272
+#: js/calendar.js:311
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:596
+#: js/calendar.js:679
 msgid "group"
 msgstr "grupo"
 
-#: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:681 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "pode editar"
 
-#: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:682 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "pode compartilhar"
 
-#: js/calendar.js:870
+#: js/calendar.js:947
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:871
+#: js/calendar.js:948
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:872
+#: js/calendar.js:949
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:875
+#: js/calendar.js:952
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:877
+#: js/calendar.js:954
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:879
+#: js/calendar.js:956
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
+#: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
 msgstr "Domingo"
 
-#: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
+#: js/l10n.php:77 lib/object.php:604 templates/calendar.php:92
 msgid "Monday"
 msgstr "Segunda-feira"
 
@@ -158,7 +158,7 @@ msgstr "Quinta-feira"
 msgid "Friday"
 msgstr "Sexta-feira"
 
-#: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
+#: js/l10n.php:77 lib/object.php:609 templates/calendar.php:94
 msgid "Saturday"
 msgstr "Sábado"
 
@@ -290,7 +290,7 @@ msgstr "Dez."
 msgid "All day"
 msgstr "Todo o dia"
 
-#: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
+#: js/l10n.php:84 lib/import.php:216 templates/calendar.php:21
 msgid "New Calendar"
 msgstr "Novo Calendário"
 
@@ -538,43 +538,79 @@ msgstr "Data"
 msgid "Cal."
 msgstr "Cal."
 
-#: templates/calendar.php:6
+#: templates/calendar.php:16
 msgid "Day"
 msgstr "Dia"
 
-#: templates/calendar.php:7
+#: templates/calendar.php:16
 msgid "Week"
 msgstr "Semana"
 
-#: templates/calendar.php:8
+#: templates/calendar.php:16
 msgid "Month"
 msgstr "Mês"
 
-#: templates/calendar.php:12 templates/calendar.php:18
+#: templates/calendar.php:17
 msgid "Today"
 msgstr "Hoje"
 
-#: templates/calendar.php:13
-msgid "Settings"
-msgstr "Ajustes"
-
-#: templates/part.choosecalendar.rowfields.php:13
-msgid "Share Calendar"
-msgstr "Compartilhar Calendário"
-
-#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
+#: templates/calendar.php:42 templates/part.choosecalendar.rowfields.php:28
 msgid "CalDav Link"
 msgstr "Link para CalDav"
 
-#: templates/part.choosecalendar.rowfields.php:27
+#: templates/calendar.php:55
+msgid "Timezone"
+msgstr "Fuso horário"
+
+#: templates/calendar.php:80
+msgid "Update timezone automatically"
+msgstr "Atualizar fuso-horário automaticamente"
+
+#: templates/calendar.php:83
+msgid "Time format"
+msgstr "Formato de tempo"
+
+#: templates/calendar.php:85
+msgid "24h"
+msgstr "24h"
+
+#: templates/calendar.php:86
+msgid "12h"
+msgstr "12h"
+
+#: templates/calendar.php:90
+msgid "Start week on"
+msgstr "Começar semana em"
+
+#: templates/calendar.php:98
+msgid "Cache"
+msgstr "Cache"
+
+#: templates/calendar.php:99
+msgid "Clear cache for repeating events"
+msgstr "Apagar cache para eventos contínuos"
+
+#: templates/calendar.php:102
+msgid "Primary CalDAV address"
+msgstr ""
+
+#: templates/calendar.php:106
+msgid "iOS/OS X CalDAV address"
+msgstr ""
+
+#: templates/part.choosecalendar.rowfields.php:15
+msgid "Share Calendar"
+msgstr "Compartilhar Calendário"
+
+#: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
 msgstr "Baixar"
 
-#: templates/part.choosecalendar.rowfields.php:31
+#: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
 msgstr "Editar"
 
-#: templates/part.choosecalendar.rowfields.php:36
+#: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
 msgstr "Excluir"
 
@@ -585,26 +621,6 @@ msgstr "Novo calendário"
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
 msgstr "Editar calendário"
-
-#: templates/part.editcalendar.php:12
-msgid "Displayname"
-msgstr "Mostrar Nome"
-
-#: templates/part.editcalendar.php:20
-msgid "Calendar color"
-msgstr "Cor do Calendário"
-
-#: templates/part.editcalendar.php:33
-msgid "Save"
-msgstr "Salvar"
-
-#: templates/part.editcalendar.php:33
-msgid "Submit"
-msgstr "Submeter"
-
-#: templates/part.editcalendar.php:34
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
@@ -832,71 +848,3 @@ msgstr "para"
 #: templates/part.showevent.php:78
 msgid "To"
 msgstr "Para"
-
-#: templates/settings.php:2
-msgid "Your calendars"
-msgstr "Meus Calendários"
-
-#: templates/settings.php:26
-msgid "Shared events"
-msgstr "Eventos compartilhados"
-
-#: templates/settings.php:42
-msgid "General"
-msgstr "Geral"
-
-#: templates/settings.php:47
-msgid "Timezone"
-msgstr "Fuso horário"
-
-#: templates/settings.php:78
-msgid "Update timezone automatically"
-msgstr "Atualizar fuso-horário automaticamente"
-
-#: templates/settings.php:83
-msgid "Time format"
-msgstr "Formato de tempo"
-
-#: templates/settings.php:88
-msgid "24h"
-msgstr "24h"
-
-#: templates/settings.php:89
-msgid "12h"
-msgstr "12h"
-
-#: templates/settings.php:95
-msgid "Start week on"
-msgstr "Começar semana em"
-
-#: templates/settings.php:108
-msgid "Cache"
-msgstr "Cache"
-
-#: templates/settings.php:112
-msgid "Clear cache for repeating events"
-msgstr "Apagar cache para eventos contínuos"
-
-#: templates/settings.php:117
-msgid "URLs"
-msgstr "URLs"
-
-#: templates/settings.php:119
-msgid "Calendar CalDAV syncing addresses"
-msgstr "Sincronização de endereços do calendário CalDAV"
-
-#: templates/settings.php:119
-msgid "more info"
-msgstr "mais informações"
-
-#: templates/settings.php:121
-msgid "Primary address (Kontact et al)"
-msgstr "Endereço primário (Kontact et al)"
-
-#: templates/settings.php:123
-msgid "iOS/OS X"
-msgstr "iOS/OS X"
-
-#: templates/settings.php:125
-msgid "Read only iCalendar link(s)"
-msgstr "iCalendar link(s) somente leitura"

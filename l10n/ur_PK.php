@@ -13,8 +13,6 @@
 "November" => "نومبر",
 "December" => "دسمبر",
 "Personal" => "ذاتی",
-"Settings" => "سیٹینگز",
-"Cancel" => "منسوخ کریں",
 "Edit categories" => "زمرہ جات کی تدوین کریں",
 "Advanced" => "ایڈوانسڈ",
 "Unshare" => "شئیرنگ ختم کریں"
