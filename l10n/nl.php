@@ -139,6 +139,8 @@
 "Start week on" => "Begin de week op",
 "Cache" => "Cache",
 "Clear cache for repeating events" => "Leeg cache voor repeterende gebeurtenissen",
+"Primary CalDAV address" => "Primair CalDAV adres",
+"iOS/OS X CalDAV address" => "iOS/OS X CalDAV adres",
 "Share Calendar" => "Deel kalender",
 "Download" => "Download",
 "Edit" => "Bewerken",

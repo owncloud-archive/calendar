@@ -139,6 +139,8 @@
 "Start week on" => "Viikon alkamispäivä",
 "Cache" => "Välimuisti",
 "Clear cache for repeating events" => "Tyhjennä välimuisti toistuvista tapahtumista",
+"Primary CalDAV address" => "Ensisijainen CalDAV-osoite",
+"iOS/OS X CalDAV address" => "iOS/OS X CalDAV -osoite",
 "Share Calendar" => "Jaa kalenteri",
 "Download" => "Lataa",
 "Edit" => "Muokkaa",

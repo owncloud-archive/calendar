@@ -139,6 +139,8 @@
 "Start week on" => "Erster Wochentag",
 "Cache" => "Zwischenspeicher",
 "Clear cache for repeating events" => "Lösche den Zwischenspeicher für wiederholende Veranstaltungen",
+"Primary CalDAV address" => "Primäre CalDAV-Adresse",
+"iOS/OS X CalDAV address" => "iOS/OS X CalDAV-Adresse",
 "Share Calendar" => "Kalender freigeben",
 "Download" => "Herunterladen",
 "Edit" => "Bearbeiten",

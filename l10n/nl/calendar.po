@@ -6,7 +6,7 @@
 # André Koot <meneer@tken.net>, 2012-2014
 # isama <bart.formosus@gmail.com>, 2011-2012
 # bartv <transifex@thisnet.nl>, 2011
-# diederikdehaas <didi.debian@cknow.org>, 2012
+# diederikdehaas <inactive+diederikdehaas@transifex.com>, 2012
 # Erik Bent <hj.bent.60@gmail.com>, 2012
 # george <social@georgehrke.com>, 2012
 # jgelauff <jos@gelauff.net>, 2012
@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-28 01:47-0400\n"
-"PO-Revision-Date: 2014-03-28 05:47+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-03-29 01:47-0400\n"
+"PO-Revision-Date: 2014-03-28 06:20+0000\n"
+"Last-Translator: André Koot <meneer@tken.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -591,11 +591,11 @@ msgstr "Leeg cache voor repeterende gebeurtenissen"
 
 #: templates/calendar.php:102
 msgid "Primary CalDAV address"
-msgstr ""
+msgstr "Primair CalDAV adres"
 
 #: templates/calendar.php:106
 msgid "iOS/OS X CalDAV address"
-msgstr ""
+msgstr "iOS/OS X CalDAV adres"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"

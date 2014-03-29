@@ -139,6 +139,8 @@
 "Start week on" => "Zaczynaj tydzień od",
 "Cache" => "Pamięć podręczna",
 "Clear cache for repeating events" => "Wyczyść pamięć podręczną dla powtarzających się zdarzeń",
+"Primary CalDAV address" => "Podstawowy adres CalDAV",
+"iOS/OS X CalDAV address" => "Adres CalDAV dla iOS/OS X",
 "Share Calendar" => "Współdziel kalendarz",
 "Download" => "Pobierz",
 "Edit" => "Edytuj",
