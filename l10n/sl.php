@@ -139,6 +139,8 @@
 "Start week on" => "Začni teden na",
 "Cache" => "Predpomnilnik",
 "Clear cache for repeating events" => "Počisti predpomnilnik ponavljajočih se dogodkov",
+"Primary CalDAV address" => "Osnovni naslov CalDAV",
+"iOS/OS X CalDAV address" => "Naslov CalDAV iOS/OS",
 "Share Calendar" => "Daj koledar v souporabo",
 "Download" => "Prejmi",
 "Edit" => "Uredi",
