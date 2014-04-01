@@ -7,6 +7,8 @@
  */
 namespace OCA\Calendar\Utility;
 
+use \OCA\Calendar\Db\ObjectType;
+
 class JSONUtility extends Utility{
 
 	public static function getUserInformation($userId) {
@@ -20,9 +22,13 @@ class JSONUtility extends Utility{
 		);
 	}
 
-	public static function parseUserArray($value) {
+	public static function parseUserInformation($value) {
+		if(is_array($value) === false) {
+			return null;
+		}
+
 		if(array_key_exists('userid', $value) === false) {
-			return false;
+			return null;
 		} else {
 			return $value['userid'];
 		}
@@ -36,7 +42,7 @@ class JSONUtility extends Utility{
 		);
 	}
 
-	private function parseComponents($value) {
+	public static function parseComponents($value) {
 		if(is_array($value) === false) {
 			return null;
 		}
@@ -96,10 +102,35 @@ class JSONUtility extends Utility{
 		}
 	}
 
-	public function parseCalendarURI($key, $value) {
+	public static function parseCalendarURIForBackend($calendarURI) {
+		list($backend, $uri) = CalendarUtility::splitURI($calendarURI);
+		if($backend === false) {
+			return null;
+		}
+
+		return $backend;
+	}
+
+	public static function parseCalendarURIForURI($calendarURI) {
+		list($backend, $uri) =  CalendarUtility::splitURI($calendarURI);
+		if($uri === false) {
+			return null;
+		}
+
+		return $uri;
+	}
+
+	public static function parseCalendarURI($key, $value) {
 		list($backend, $calendarURI) = CalendarUtility::splitURI($value);
-		$this->calendar->setBackend($backend);
-		$this->calendar->setUri($calendarURI);
+
+		if($backend === false || $calendarURI === false) {
+			return null;
+		}
+
+		return array(
+			$backend,
+			$calendarURI
+		);
 	}
 
 	public static function getTimeZone($timezone, $convenience) {
@@ -107,9 +138,10 @@ class JSONUtility extends Utility{
 		return $jsonTimezone->serialize($convenience);
 	}
 
-	private function parseTimeZone($value) {
-		$timezoneReader = new JSONTimezoneReader($value);
-		return $timezoneReader->getObject();
+	public static function parseTimeZone($value) {
+		//$timezoneReader = new JSONTimezoneReader($value);
+		//return $timezoneReader->getObject();
+		return null;
 	}
 
 	public static function getURL($calendarURI) {
@@ -122,10 +154,50 @@ class JSONUtility extends Utility{
 	}
 
 	public static function addConvenience(&$vobject) {
-		//add ATOM property to all time values
+		//extending SabreDAV's date and datetime jsonSerialize method would probably be easier
+		//iterate over all VALARMs
+		//iterate over all VTIMEZONEs
+		//iterate over all FREEBUSY
+		//DTSTART
+		//DTEND
+		//CREATED
+		//DTSTAMP
+		//LAST-MODIFIED
+		//DUE
+		//COMPLETED
+		//RECCURENCE-ID
+
 		//add X-OC-DTEND if duration exists
+		if(isset($vobject->DTSTART) && !isset($vobject->DTEND)) {
+			$dtend = clone $vobject->DTSTART;
+
+			if(isset($vobject->DURATION)) {
+				$duration = strval($vevent->DURATION);
+				$invert = 0;
+
+				if ($duration[0] == '-') {
+					$duration = substr($duration, 1);
+					$invert = 1;
+				}
+
+				if ($duration[0] == '+') {
+					$duration = substr($duration, 1);
+				}
+	
+				$interval = new DateInterval($duration);
+				$interval->invert = $invert;
+				$dtend->getDateTime()->add($interval);
+			}
+
+			$vobject->{'X-OC-DTEND'} = $dtend;
+		}
+	}
+
+	public static function dropAttachements(&$vobject) {
+		
 	}
 
 	public static function removeConvenience(&$vobject) {
+		
 	}
 }
