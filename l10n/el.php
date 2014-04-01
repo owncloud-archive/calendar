@@ -139,6 +139,8 @@
 "Start week on" => "Πρώτη μέρα της εβδομάδας",
 "Cache" => "Cache",
 "Clear cache for repeating events" => "Εκκαθάριση λανθάνουσας μνήμης για επανάληψη συμβάντων",
+"Primary CalDAV address" => "Κύρια διεύθυνση CalDAV",
+"iOS/OS X CalDAV address" => "Διεύθυνση CalDAV για iOS/OS X",
 "Share Calendar" => "Διαμοιράστε ένα ημερολόγιο",
 "Download" => "Λήψη",
 "Edit" => "Επεξεργασία",
