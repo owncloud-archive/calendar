@@ -139,6 +139,8 @@
 "Start week on" => "Nädal algab päevaga",
 "Cache" => "Puhver",
 "Clear cache for repeating events" => "Tühjenda korduvate ürituste puhver",
+"Primary CalDAV address" => "Primaarne CalDAV aadress",
+"iOS/OS X CalDAV address" => "iOS/OS X CalDAV aadress",
 "Share Calendar" => "Jaga kalendrit",
 "Download" => "Lae alla",
 "Edit" => "Muuda",

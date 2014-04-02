@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-28 01:47-0400\n"
-"PO-Revision-Date: 2014-03-28 05:47+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-04-02 01:47-0400\n"
+"PO-Revision-Date: 2014-04-01 18:01+0000\n"
+"Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -591,11 +591,11 @@ msgstr "Tekrar eden etkinlikler için önbelleği temizle"
 
 #: templates/calendar.php:102
 msgid "Primary CalDAV address"
-msgstr ""
+msgstr "Birincil CalDAV adresi"
 
 #: templates/calendar.php:106
 msgid "iOS/OS X CalDAV address"
-msgstr ""
+msgstr "iOS/OS X CalDAV adresi"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"

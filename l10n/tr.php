@@ -139,6 +139,8 @@
 "Start week on" => "Haftanın ilk günü",
 "Cache" => "Önbellek",
 "Clear cache for repeating events" => "Tekrar eden etkinlikler için önbelleği temizle",
+"Primary CalDAV address" => "Birincil CalDAV adresi",
+"iOS/OS X CalDAV address" => "iOS/OS X CalDAV adresi",
 "Share Calendar" => "Takvimi paylaş",
 "Download" => "İndir",
 "Edit" => "Düzenle",

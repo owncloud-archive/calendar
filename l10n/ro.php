@@ -137,6 +137,8 @@
 "Start week on" => "Începe săptămâna cu",
 "Cache" => "Cache",
 "Clear cache for repeating events" => "Curăță cache pentru evenimente repetate",
+"Primary CalDAV address" => "Adresa primara CalDAV",
+"iOS/OS X CalDAV address" => "Adresa iOS/OS X CalDAV",
 "Share Calendar" => "Partajați calendarul",
 "Download" => "Descarcă",
 "Edit" => "Modifică",
