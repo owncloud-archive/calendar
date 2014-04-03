@@ -1,10 +1,10 @@
 <?php
 
-namespace Sabre\VObject\Splitter;
+namespace OCA\Calendar\Sabre\VObject\Splitter;
 
 use
-    Sabre\VObject,
-    Sabre\VObject\Component\VCalendar;
+    OCA\Calendar\Sabre\VObject,
+    OCA\Calendar\Sabre\VObject\Component\VCalendar;
 
 /**
  * Splitter

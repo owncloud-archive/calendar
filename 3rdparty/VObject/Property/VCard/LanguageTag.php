@@ -1,9 +1,9 @@
 <?php
 
-namespace Sabre\VObject\Property\VCard;
+namespace OCA\Calendar\Sabre\VObject\Property\VCard;
 
 use
-    Sabre\VObject\Property;
+    OCA\Calendar\Sabre\VObject\Property;
 
 /**
  * LanguageTag property

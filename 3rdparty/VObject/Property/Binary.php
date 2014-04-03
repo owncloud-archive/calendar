@@ -1,10 +1,10 @@
 <?php
 
-namespace Sabre\VObject\Property;
+namespace OCA\Calendar\Sabre\VObject\Property;
 
 use
     LogicException,
-    Sabre\VObject\Property;
+    OCA\Calendar\Sabre\VObject\Property;
 
 /**
  * BINARY property

@@ -3,8 +3,8 @@
 namespace OCA\Calendar\Sabre\VObject\Splitter;
 
 use
-    Sabre\VObject,
-    Sabre\VObject\Parser\MimeDir;
+    OCA\Calendar\Sabre\VObject,
+    OCA\Calendar\Sabre\VObject\Parser\MimeDir;
 
 /**
  * Splitter

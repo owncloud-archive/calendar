@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabre\VObject\Property;
+namespace OCA\Calendar\Sabre\VObject\Property;
 
 /**
  * FlatText property

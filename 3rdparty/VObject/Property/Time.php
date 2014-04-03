@@ -1,8 +1,8 @@
 <?php
 
-namespace Sabre\VObject\Property;
+namespace OCA\Calendar\Sabre\VObject\Property;
 
-use Sabre\VObject\DateTimeParser;
+use OCA\Calendar\Sabre\VObject\DateTimeParser;
 
 /**
  * Time property

@@ -1,12 +1,12 @@
 <?php
 
-namespace Sabre\VObject\Property\ICalendar;
+namespace OCA\Calendar\Sabre\VObject\Property\ICalendar;
 
 use
-    Sabre\VObject\Property,
-    Sabre\VObject\Parser\MimeDir,
-    Sabre\VObject\DateTimeParser,
-    Sabre\VObject\TimeZoneUtil;
+    OCA\Calendar\Sabre\VObject\Property,
+    OCA\Calendar\Sabre\VObject\Parser\MimeDir,
+    OCA\Calendar\Sabre\VObject\DateTimeParser,
+    OCA\Calendar\Sabre\VObject\TimeZoneUtil;
 
 /**
  * DateTime property

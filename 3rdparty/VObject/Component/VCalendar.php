@@ -3,8 +3,8 @@
 namespace OCA\Calendar\Sabre\VObject\Component;
 
 use
-    Sabre\VObject,
-    Sabre\VObject\Component;
+    OCA\Calendar\Sabre\VObject,
+    OCA\Calendar\Sabre\VObject\Component;
 
 /**
  * The VCalendar component

@@ -1,10 +1,10 @@
 <?php
 
-namespace Sabre\VObject\Property\VCard;
+namespace OCA\Calendar\Sabre\VObject\Property\VCard;
 
 use
-    Sabre\VObject\DateTimeParser,
-    Sabre\VObject\Property\Text;
+    OCA\Calendar\Sabre\VObject\DateTimeParser,
+    OCA\Calendar\Sabre\VObject\Property\Text;
 
 /**
  * DateAndOrTime property

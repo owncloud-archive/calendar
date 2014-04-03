@@ -1,12 +1,12 @@
 <?php
 
-namespace Sabre\VObject\Parser;
+namespace OCA\Calendar\Sabre\VObject\Parser;
 
 use
-    Sabre\VObject\Component\VCalendar,
-    Sabre\VObject\Component\VCard,
-    Sabre\VObject\ParseException,
-    Sabre\VObject\EofException;
+    OCA\Calendar\Sabre\VObject\Component\VCalendar,
+    OCA\Calendar\Sabre\VObject\Component\VCard,
+    OCA\Calendar\Sabre\VObject\ParseException,
+    OCA\Calendar\Sabre\VObject\EofException;
 
 /**
  * Json Parser.

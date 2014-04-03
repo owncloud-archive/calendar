@@ -1,7 +1,7 @@
 <?php
 
 namespace OCA\Calendar\Sabre\VObject\Component;
-use Sabre\VObject;
+use OCA\Calendar\Sabre\VObject;
 
 /**
  * VAlarm component

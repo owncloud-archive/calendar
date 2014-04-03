@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabre\VObject\Splitter;
+namespace OCA\Calendar\Sabre\VObject\Splitter;
 
 /**
  * VObject splitter

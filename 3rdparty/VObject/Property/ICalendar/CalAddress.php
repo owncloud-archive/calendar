@@ -1,9 +1,9 @@
 <?php
 
-namespace Sabre\VObject\Property\ICalendar;
+namespace OCA\Calendar\Sabre\VObject\Property\ICalendar;
 
 use
-    Sabre\VObject\Property\Text;
+    OCA\Calendar\Sabre\VObject\Property\Text;
 
 /**
  * CalAddress property

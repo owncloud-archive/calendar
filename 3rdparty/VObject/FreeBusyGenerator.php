@@ -2,8 +2,7 @@
 
 namespace OCA\Calendar\Sabre\VObject;
 
-use
-    Sabre\VObject\Component\VCalendar;
+use OCA\Calendar\Sabre\VObject\Component\VCalendar;
 
 /**
  * This class helps with generating FREEBUSY reports based on existing sets of

@@ -1,9 +1,9 @@
 <?php
 
-namespace Sabre\VObject\Property\VCard;
+namespace OCA\Calendar\Sabre\VObject\Property\VCard;
 
 use
-    Sabre\VObject\DateTimeParser;
+    OCA\Calendar\Sabre\VObject\DateTimeParser;
 
 /**
  * Date property

@@ -1,12 +1,12 @@
 <?php
 
-namespace Sabre\VObject\Property;
+namespace OCA\Calendar\Sabre\VObject\Property;
 
 use
-    Sabre\VObject\Property,
-    Sabre\VObject\Component,
-    Sabre\VObject\Parser\MimeDir,
-    Sabre\VObject\Document;
+    OCA\Calendar\Sabre\VObject\Property,
+    OCA\Calendar\Sabre\VObject\Component,
+    OCA\Calendar\Sabre\VObject\Parser\MimeDir,
+    OCA\Calendar\Sabre\VObject\Document;
 
 /**
  * Unknown property

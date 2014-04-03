@@ -1,9 +1,9 @@
 <?php
 
-namespace Sabre\VObject\Property;
+namespace OCA\Calendar\Sabre\VObject\Property;
 
 use
-    Sabre\VObject\Property;
+    OCA\Calendar\Sabre\VObject\Property;
 
 /**
  * Integer property
