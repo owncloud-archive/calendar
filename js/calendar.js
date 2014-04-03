@@ -161,6 +161,11 @@ Calendar={
 			$('#advanced_month').change(function(){
 				Calendar.UI.repeat('month');
 			});
+			$('#event-title').bind('keydown', function(event){
+				if (event.which == 13){
+					$('#event_form #submitNewEvent').click();
+				}
+			});
 			$( "#event" ).tabs({ selected: 0});
 			$('#event').dialog({
 				width : 500,
