@@ -70,7 +70,9 @@
 
 		<textarea id="event-description" placeholder="<?php p($l->t('Description'));?>" name="description"><?php p(isset($_['description']) ? $_['description'] : '') ?></textarea>
 
+		<?php if($_['eventid'] != 'new'){ ?>
 		<input type="button" class="submit" id="editEvent-export"  name="export" value="<?php p($l->t('Export event'));?>" data-link="<?php print_unescaped(OCP\Util::linkTo('calendar', 'export.php')) ?>?eventid=<?php p($_['eventid']) ?>">
+		<?php }?>
 	</div>
 </div>
 
