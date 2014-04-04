@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# dudanogueira <dudanogueira@gmail.com>, 2014
 # dudanogueira <dudanogueira@gmail.com>, 2012
 # Flávio Veras <flaviove@gmail.com>, 2013-2014
 # FredMaranhao <fred.maranhao@gmail.com>, 2012
@@ -17,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-29 01:47-0400\n"
-"PO-Revision-Date: 2014-03-28 10:30+0000\n"
-"Last-Translator: Flávio Veras <flaviove@gmail.com>\n"
+"POT-Creation-Date: 2014-04-04 01:47-0400\n"
+"PO-Revision-Date: 2014-04-03 12:40+0000\n"
+"Last-Translator: dudanogueira <dudanogueira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/owncloud/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +80,7 @@ msgstr "Fuso horário alterado"
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
-msgstr "Pedido inválido"
+msgstr "Requisição Inválida"
 
 #: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
@@ -288,7 +289,7 @@ msgstr "Dez."
 
 #: js/l10n.php:83
 msgid "All day"
-msgstr "Todo o dia"
+msgstr "O dia Inteiro"
 
 #: js/l10n.php:84 lib/import.php:216 templates/calendar.php:21
 msgid "New Calendar"
@@ -436,11 +437,11 @@ msgstr "Esconder evento"
 
 #: lib/object.php:565
 msgid "Does not repeat"
-msgstr "Não repetir"
+msgstr "Não se repete"
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr "Diariamente"
+msgstr "Diário"
 
 #: lib/object.php:567
 msgid "Weekly"
@@ -448,7 +449,7 @@ msgstr "Semanal"
 
 #: lib/object.php:568
 msgid "Every Weekday"
-msgstr "Cada dia da semana"
+msgstr "Todo dia da semana"
 
 #: lib/object.php:569
 msgid "Bi-Weekly"
