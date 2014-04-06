@@ -139,6 +139,8 @@
 "Start week on" => "1週間の初めの曜日",
 "Cache" => "キャッシュ",
 "Clear cache for repeating events" => "繰り返しイベントのキャッシュをクリア",
+"Primary CalDAV address" => "一番目の CalDAV アドレス",
+"iOS/OS X CalDAV address" => "iOS/OS X CalDAV アドレス",
 "Share Calendar" => "カレンダーを共有する",
 "Download" => "ダウンロード",
 "Edit" => "編集",
