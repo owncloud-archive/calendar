@@ -79,16 +79,6 @@ class OC_Calendar_Export{
 		$object = OC_Calendar_Object::cleanByAccessClass($event['id'], $object);
 
 		if($object->VEVENT){
-			$dtstart = $object->VEVENT->DTSTART;
-			$start_dt = $dtstart->getDateTime();
-			$dtend = OC_Calendar_Object::getDTEndFromVEvent($object->VEVENT);
-			$end_dt = $dtend->getDateTime();
-			if($dtstart->getDateType() !== Sabre\VObject\Property\DateTime::DATE) {
-				$start_dt->setTimezone(new DateTimeZone('UTC'));
-				$end_dt->setTimezone(new DateTimeZone('UTC'));
-				$object->VEVENT->setDateTime('DTSTART', $start_dt, Sabre\VObject\Property\DateTime::UTC);
-				$object->VEVENT->setDateTime('DTEND', $end_dt, Sabre\VObject\Property\DateTime::UTC);
-			}
 			return $object->VEVENT->serialize();
 		}
 		if($object->VTODO){
