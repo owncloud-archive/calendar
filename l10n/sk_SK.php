@@ -139,6 +139,8 @@
 "Start week on" => "Týždeň začína v ",
 "Cache" => "Vyrovnávacia pamäť",
 "Clear cache for repeating events" => "Vymazať vyrovnávaciu pamäť pre opakujúce sa udalosti",
+"Primary CalDAV address" => "Primárna CalDAV adresa",
+"iOS/OS X CalDAV address" => "iOS/OS X CalDAV adresa",
 "Share Calendar" => "Zdielať kalendár",
 "Download" => "Stiahnuť",
 "Edit" => "Upraviť",
