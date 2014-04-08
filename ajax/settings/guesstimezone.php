@@ -23,5 +23,5 @@ if($timezone == OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timez
 	exit;
 }
 OCP\Config::setUserValue(OCP\USER::getUser(), 'calendar', 'timezone', $timezone);
-$message = array('message'=> $l->t('New Timezone:') . $timezone);
+$message = array('message'=> $l->t('New Timezone:') . ' ' . $timezone);
 OCP\JSON::success($message);

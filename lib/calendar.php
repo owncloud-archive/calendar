@@ -139,7 +139,7 @@ class OC_Calendar_Calendar{
 			$userid = OCP\USER::getUser();
 		}
 		
-		$id = self::addCalendar($userid,'Personal');
+		$id = self::addCalendar($userid,OC_Calendar_App::$l10n->t('Personal'));
 
 		return true;
 	}
