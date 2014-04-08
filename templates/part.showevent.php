@@ -38,7 +38,7 @@
 			<td>
 			<?php
 			$calendar = OC_Calendar_App::getCalendar($_['calendar'], false, false);
-			p($calendar['displayname']) . ' ' . $l->t('of') . ' ' . $calendar['userid'];
+			p($l->t('%s of %s', array($calendar['displayname'], $calendar['userid'])));
 			?>
 			</td>
 			<th width="75px">&nbsp;</th>
