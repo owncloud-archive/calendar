@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2011 Georg Ehrke <ownclouddev at georgswebsite dot de>
+ * Copyright (c) 2014 Volkan Gezer <volkangezer at gmail dot com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -14,8 +14,8 @@ OCP\JSON::callCheck();
 $cal = isset($_POST["calendarid"]) ? $_POST["calendarid"] : null;
 
 try {
-	$del = OC_Calendar_Calendar::deleteCalendar($cal);
-	if($del == true) {
+	$def = OC_Calendar_Calendar::makeDefault($cal);
+	if($def === true) {
 		OCP\JSON::success();
 	}else{
 		OCP\JSON::error(array('error'=>'dberror'));
