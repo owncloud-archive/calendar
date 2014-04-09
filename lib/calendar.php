@@ -281,6 +281,28 @@ class OC_Calendar_Calendar{
 	}
 
 	/**
+	 * @brief Sets a calendar default and new events are created in it by default
+	 * @param integer $id
+	 * @return boolean
+	 */
+	public static function makeDefault($id) {
+		$calendar = self::find($id);
+		if ($calendar['userid'] != OCP\User::getUser()) {
+			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
+			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_CREATE)) {
+				throw new Exception(
+					OC_Calendar_App::$l10n->t(
+						'You do not have the permissions to update this calendar.'
+					)
+				);
+			}
+		}
+		OCP\Config::setUserValue(OCP\User::getUser(), "calendar", "defaultcalendar", $id);
+
+		return true;
+	}
+
+	/**
 	 * @brief merges two calendars
 	 * @param integer $id1
 	 * @param integer $id2

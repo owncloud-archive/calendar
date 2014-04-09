@@ -59,6 +59,9 @@ $(document).on('click', '#chooseCalendar-edit', function () {
 $(document).on('click', '#chooseCalendar-delete', function () {
 	Calendar.UI.Calendar.deleteCalendar($(this).data('id'));
 });
+$(document).on('click','#chooseCalendar-make-def', function () {
+  Calendar.UI.Calendar.makeDefault($(this).data('id'));
+});
 $(document).on('click', '#editCalendar-submit', function () {
 	Calendar.UI.Calendar.submit($(this), $(this).data('id'));
 });

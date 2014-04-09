@@ -551,6 +551,16 @@ button.category{margin:0 3px;}
 	top: 44px;
 }
 
+.icon-default {
+  background-image: url('../img/star.png');
+}
+
+.not-set {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
+  filter: alpha(opacity = 10);
+  opacity: 0.1;
+}
+
 #navigation-list #caldav_url_entry {
 	min-height: 0;
 }

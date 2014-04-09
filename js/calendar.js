@@ -628,6 +628,20 @@ Calendar={
 					  });
 				}
 			},
+			makeDefault:function(calid){
+
+			    $.post(OC.filePath('calendar', 'ajax/calendar', 'makedefault.php'), { calendarid: calid},
+				   function(data) {
+				     if (data.status == 'success'){
+				       var url = 'ajax/events.php?calendar_id='+calid;
+				       if($('#navigation-list li[data-id="'+calid+'"] span a').hasClass( "icon-default" ))
+				       {
+					 $('#navigation-list li span a[id="chooseCalendar-make-def"]').addClass("not-set");
+					 $('#navigation-list li[data-id="'+calid+'"] span a[id="chooseCalendar-make-def"]').removeClass("not-set");
+				       }
+				     }
+				   });
+			},
 			submit:function(button, calendarid){
 				var displayname = $.trim($("#displayname_"+calendarid).val());
 				var active = $("#active_"+calendarid).attr("checked") ? 1 : 0;
