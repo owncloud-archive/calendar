@@ -30,7 +30,7 @@
 			}
 		}
 		$sortedCalendars = array_merge($enabledCalendars, $disabledCalendars);
-		print_unescaped(OCP\html_select_options($sortedCalendars, $_['calendar'], array('value'=>'id', 'label'=>'displayname'))); ?>
+		print_unescaped(OCP\html_select_options($sortedCalendars, OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'defaultcalendar', $_['calendar']), array('value'=>'id', 'label'=>'displayname'))); ?>
 	</select>
 	<?php } else { ?>
 	<input style="display:none;" type="hidden" name="calendar" value="<?php p($_['calendar_options'][0]['id']); ?>">
