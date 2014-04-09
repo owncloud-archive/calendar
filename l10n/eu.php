@@ -196,7 +196,6 @@
 "View an event" => "Ikusi gertaera bat",
 "Category" => "Kategoria",
 "No categories selected" => "Ez da kategoriarik hautatu",
-"of" => "-ko",
 "Access Class" => "Sarrera mota",
 "From" => "Hasiera",
 "at" => "ordua",

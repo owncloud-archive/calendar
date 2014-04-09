@@ -196,7 +196,6 @@
 "View an event" => "Peržiūrėti įvykį",
 "Category" => "Kategorija",
 "No categories selected" => "Nepasirinktos jokios katagorijos",
-"of" => "iš",
 "Access Class" => "Priėjimo klasė",
 "From" => "Nuo",
 "at" => " ",

@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-02 01:47-0400\n"
-"PO-Revision-Date: 2014-04-01 18:01+0000\n"
-"Last-Translator: volkangezer <volkangezer@gmail.com>\n"
+"POT-Creation-Date: 2014-04-09 01:47-0400\n"
+"PO-Revision-Date: 2014-04-09 05:47+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgstr "Yanlış takvim"
 
 #: ajax/event/edit.form.php:226 lib/object.php:209 lib/object.php:245
 msgid "You do not have the permissions to edit this event."
-msgstr "Bu etkinliğ düzeltme yetkisine sahip değilsiniz."
+msgstr "Bu etkinliği düzeltme yetkisine sahip değilsiniz."
 
 #: ajax/import/dropimport.php:29 ajax/import/import.php:66
 msgid ""
@@ -91,11 +91,11 @@ msgstr "Silme başarısız oldu"
 
 #: js/calendar.js:309
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
-msgstr "ggg g aaaa[ yyyy]{ - [ddd d] MMMM yyyy}"
+msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
 #: js/calendar.js:311
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
-msgstr "ggg g aaaa[ yyyy]{ - [ddd d] MMMM yyyy}"
+msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
 #: js/calendar.js:679
 msgid "group"
@@ -127,11 +127,11 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:954
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr "AAA g[ yyyy]{ '-'[ AAA] g yyyy}"
+msgstr "d[ yyyy]{ '–'[ MMM] d MMM yyyy}"
 
 #: js/calendar.js:956
 msgid "dddd, MMM d, yyyy"
-msgstr "dddd, MMM d, yyyy"
+msgstr "d MMM yyyy dddd"
 
 #: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
@@ -369,7 +369,7 @@ msgstr "Toplantı"
 msgid "Other"
 msgstr "Diğer"
 
-#: lib/app.php:132
+#: lib/app.php:132 lib/calendar.php:142
 msgid "Personal"
 msgstr "Kişisel"
 
@@ -415,7 +415,7 @@ msgstr "Paylaşılmış bir takvime gizli etkinlik ekleyemezsiniz."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
-msgstr "Bu etkinliğ silme yetkisine sahip değilsiniz."
+msgstr "Bu etkinliği silme yetkisine sahip değilsiniz."
 
 #: lib/object.php:503
 msgid "Busy"
@@ -439,15 +439,15 @@ msgstr "Tekrar etmiyor"
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr "Günlük"
+msgstr "Her gü"
 
 #: lib/object.php:567
 msgid "Weekly"
-msgstr "Haftalı"
+msgstr "Her hafta"
 
 #: lib/object.php:568
 msgid "Every Weekday"
-msgstr "Haftaiçi Her gün"
+msgstr "Hafta içi her gün"
 
 #: lib/object.php:569
 msgid "Bi-Weekly"
@@ -455,11 +455,11 @@ msgstr "İki haftada bir"
 
 #: lib/object.php:570
 msgid "Monthly"
-msgstr "Aylık"
+msgstr "Her ay"
 
 #: lib/object.php:571
 msgid "Yearly"
-msgstr "Yıllı"
+msgstr "Her yıl"
 
 #: lib/object.php:581
 msgid "never"
@@ -655,7 +655,7 @@ msgstr "Paylaş"
 
 #: templates/part.eventform.php:15
 msgid "Title of the Event"
-msgstr "Etkinliğin Başlığı"
+msgstr "Etkinlik Başlığı"
 
 #: templates/part.eventform.php:41
 msgid "from"
@@ -671,7 +671,7 @@ msgstr "Tüm Gün Etkinliği"
 
 #: templates/part.eventform.php:57 templates/part.showevent.php:86
 msgid "Advanced options"
-msgstr "Gelişmiş opsiyonlar"
+msgstr "Gelişmiş seçenekler"
 
 #: templates/part.eventform.php:61 templates/part.showevent.php:91
 msgid "Location"
@@ -740,7 +740,7 @@ msgstr "Son"
 
 #: templates/part.eventform.php:213 templates/part.showevent.php:242
 msgid "occurrences"
-msgstr "olaylar"
+msgstr "tekrar"
 
 #: templates/part.eventform.php:232
 msgid "Visibility to people shared with"
@@ -782,7 +782,7 @@ msgstr "İçe Al"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
-msgstr "Diyalogu kapat"
+msgstr "Pencereyi Kapat"
 
 #: templates/part.newevent.php:1
 msgid "Create a new event"
@@ -794,7 +794,7 @@ msgstr "Etkinlik oluştur"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr "Kullanıcı veya grupla payla"
+msgstr "Kullanıcı veya grupla paylaş"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -829,8 +829,9 @@ msgid "No categories selected"
 msgstr "Kategori seçilmedi"
 
 #: templates/part.showevent.php:41
-msgid "of"
-msgstr "nın"
+#, php-format
+msgid "%s of %s"
+msgstr ""
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
@@ -838,12 +839,12 @@ msgstr "Erişim Sınıfı"
 
 #: templates/part.showevent.php:70
 msgid "From"
-msgstr "Kimden"
+msgstr "Başlangıç"
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
-msgstr "üzerinde"
+msgstr "saat"
 
 #: templates/part.showevent.php:78
 msgid "To"
-msgstr "Kime"
+msgstr "Bitiş"

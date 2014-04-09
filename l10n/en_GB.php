@@ -198,7 +198,6 @@
 "View an event" => "View an event",
 "Category" => "Category",
 "No categories selected" => "No categories selected",
-"of" => "of",
 "Access Class" => "Access Class",
 "From" => "From",
 "at" => "at",

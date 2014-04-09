@@ -176,7 +176,6 @@
 "View an event" => "Tampilkan agenda",
 "Category" => "Kategori",
 "No categories selected" => "Tidak ada kategori yang terpilih",
-"of" => "dari",
 "Access Class" => "Kelas Akses",
 "From" => "Dari",
 "at" => "di",

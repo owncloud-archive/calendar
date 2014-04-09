@@ -175,7 +175,6 @@
 "View an event" => "Gweld digwyddiad",
 "Category" => "Categori",
 "No categories selected" => "Dim categorïau wedi'u dewis",
-"of" => "o",
 "Access Class" => "Dosbarth Mynediad",
 "From" => "O",
 "at" => "yn",

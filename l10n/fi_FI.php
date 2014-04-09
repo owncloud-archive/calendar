@@ -198,7 +198,6 @@
 "View an event" => "Avaa tapahtuma",
 "Category" => "Luokka",
 "No categories selected" => "Luokkia ei ole valittu",
-"of" => " ",
 "Access Class" => "Pääsyluokka",
 "From" => "Alkaa",
 "at" => " ",

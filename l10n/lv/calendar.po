@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-28 01:47-0400\n"
-"PO-Revision-Date: 2014-03-28 05:47+0000\n"
+"POT-Creation-Date: 2014-04-09 01:47-0400\n"
+"PO-Revision-Date: 2014-04-09 05:47+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Latvian (http://www.transifex.com/projects/p/owncloud/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -362,7 +362,7 @@ msgstr "Tikšanās"
 msgid "Other"
 msgstr "Cits"
 
-#: lib/app.php:132
+#: lib/app.php:132 lib/calendar.php:142
 msgid "Personal"
 msgstr "Personīgi"
 
@@ -822,8 +822,9 @@ msgid "No categories selected"
 msgstr "Nav izvēlētu kategoriju"
 
 #: templates/part.showevent.php:41
-msgid "of"
-msgstr "no"
+#, php-format
+msgid "%s of %s"
+msgstr ""
 
 #: templates/part.showevent.php:50
 msgid "Access Class"

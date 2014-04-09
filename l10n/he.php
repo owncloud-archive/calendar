@@ -196,7 +196,6 @@
 "View an event" => "צפייה באירוע",
 "Category" => "קטגוריה",
 "No categories selected" => "לא נבחרו קטגוריות",
-"of" => "מתוך",
 "Access Class" => "סיווג גישה",
 "From" => "מאת",
 "at" => "בשנה",

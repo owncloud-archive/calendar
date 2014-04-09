@@ -176,7 +176,6 @@
 "View an event" => "ივენთის ნახვა",
 "Category" => "კატეგორია",
 "No categories selected" => "კატეგორია არ არის არჩეული",
-"of" => "დან",
 "Access Class" => "დაშვების კლასი",
 "From" => "დან",
 "at" => "at",

@@ -180,7 +180,6 @@
 "View an event" => "Vidi okazaĵon",
 "Category" => "Kategorio",
 "No categories selected" => "Neniu kategorio elektita",
-"of" => "de",
 "Access Class" => "Alirpermesa klaso",
 "From" => "Ekde",
 "at" => "ĉe",

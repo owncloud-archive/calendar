@@ -195,7 +195,6 @@
 "View an event" => "일정 보기",
 "Category" => "분류",
 "No categories selected" => "선택된 분류 없음",
-"of" => "의",
 "Access Class" => "접근 등급",
 "From" => "시작",
 "at" => "에서",

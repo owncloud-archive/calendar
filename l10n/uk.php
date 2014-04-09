@@ -196,7 +196,6 @@
 "View an event" => "Подивитися подію",
 "Category" => "Категорія",
 "No categories selected" => "Жодної категорії не вибрано",
-"of" => "з",
 "Access Class" => "Клас Доступу",
 "From" => "З",
 "at" => "в",

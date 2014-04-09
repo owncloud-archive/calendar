@@ -186,7 +186,6 @@
 "View an event" => "查看事件",
 "Category" => "分类",
 "No categories selected" => "无选中分类",
-"of" => "在",
 "Access Class" => "访问分类",
 "From" => "自",
 "at" => "在",

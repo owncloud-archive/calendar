@@ -170,7 +170,6 @@
 "View an event" => "Espiar un eveniment",
 "Category" => "Categoria",
 "No categories selected" => "Cap de categorias seleccionadas",
-"of" => "de",
 "From" => "De",
 "at" => "a",
 "To" => "Per"

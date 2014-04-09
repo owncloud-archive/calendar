@@ -196,7 +196,6 @@
 "View an event" => "Termin ansehen",
 "Category" => "Kategorie",
 "No categories selected" => "Keine Kategorie ausgewählt",
-"of" => "von",
 "Access Class" => "Zugriffsklasse",
 "From" => "von",
 "at" => "um",

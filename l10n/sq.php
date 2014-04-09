@@ -195,7 +195,6 @@
 "View an event" => "Shikoni një gjarje",
 "Category" => "Kategoria",
 "No categories selected" => "Asjë kategori nuk është zgjedhur",
-"of" => "e",
 "Access Class" => "Përdor Klasën",
 "From" => "Nga",
 "at" => "në",

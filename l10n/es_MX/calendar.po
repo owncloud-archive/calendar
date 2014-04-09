@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-28 01:47-0400\n"
-"PO-Revision-Date: 2014-03-28 05:47+0000\n"
+"POT-Creation-Date: 2014-04-09 01:47-0400\n"
+"PO-Revision-Date: 2014-04-09 05:47+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/projects/p/owncloud/language/es_MX/)\n"
 "MIME-Version: 1.0\n"
@@ -360,7 +360,7 @@ msgstr "Reunión"
 msgid "Other"
 msgstr "Otro"
 
-#: lib/app.php:132
+#: lib/app.php:132 lib/calendar.php:142
 msgid "Personal"
 msgstr "Personal"
 
@@ -820,8 +820,9 @@ msgid "No categories selected"
 msgstr "Ninguna categoría seleccionada"
 
 #: templates/part.showevent.php:41
-msgid "of"
-msgstr "de"
+#, php-format
+msgid "%s of %s"
+msgstr ""
 
 #: templates/part.showevent.php:50
 msgid "Access Class"

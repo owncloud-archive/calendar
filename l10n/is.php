@@ -94,7 +94,6 @@
 "Select weeks" => "Veldu vikur",
 "Import" => "Flytja inn",
 "Unshare" => "Hætta deilingu",
-"of" => "af",
 "From" => "Frá",
 "at" => "hjá",
 "To" => "Til"

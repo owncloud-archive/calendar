@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud calendar 5.0.0\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-08 01:47-0400\n"
+"POT-Creation-Date: 2014-04-09 01:47-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,7 +360,7 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: lib/app.php:132
+#: lib/app.php:132 lib/calendar.php:142
 msgid "Personal"
 msgstr ""
 
@@ -820,7 +820,8 @@ msgid "No categories selected"
 msgstr ""
 
 #: templates/part.showevent.php:41
-msgid "of"
+#, php-format
+msgid "%s of %s"
 msgstr ""
 
 #: templates/part.showevent.php:50

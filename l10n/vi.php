@@ -196,7 +196,6 @@
 "View an event" => "Xem một sự kiện",
 "Category" => "Danh mục",
 "No categories selected" => "Không danh sách nào được chọn",
-"of" => "của",
 "Access Class" => "Mức truy cập",
 "From" => "Từ",
 "at" => "tại",

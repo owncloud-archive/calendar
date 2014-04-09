@@ -196,7 +196,6 @@
 "View an event" => "دیدن یک رویداد",
 "Category" => "نوع",
 "No categories selected" => "هیچ گروهی انتخاب نشده",
-"of" => "از",
 "Access Class" => "کلاس دسترسی",
 "From" => "از",
 "at" => "در",

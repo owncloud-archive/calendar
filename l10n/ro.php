@@ -196,7 +196,6 @@
 "View an event" => "Vizualizează un eveniment",
 "Category" => "Categorie",
 "No categories selected" => "Nici o categorie selectată",
-"of" => "din",
 "Access Class" => "Clasa de Acces",
 "From" => "De la",
 "at" => "la",

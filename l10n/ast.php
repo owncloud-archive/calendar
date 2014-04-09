@@ -198,7 +198,6 @@
 "View an event" => "Ver un eventu",
 "Category" => "Categoría",
 "No categories selected" => "Nenguna categoría esbillada",
-"of" => "de",
 "Access Class" => "Clas d'accesu",
 "From" => "Dende",
 "at" => "a les",

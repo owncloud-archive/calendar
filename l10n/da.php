@@ -196,7 +196,6 @@
 "View an event" => "Vis en begivenhed",
 "Category" => "Kategori",
 "No categories selected" => "Ingen categorier valgt",
-"of" => "fra",
 "Access Class" => "Adgangsklasse",
 "From" => "Fra",
 "at" => "kl.",

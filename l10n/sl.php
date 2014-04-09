@@ -198,7 +198,6 @@
 "View an event" => "Poglej dogodek",
 "Category" => "Kategorija",
 "No categories selected" => "Ni izbrane kategorije",
-"of" => "od",
 "Access Class" => "Razred dostopa",
 "From" => "Od",
 "at" => "pri",

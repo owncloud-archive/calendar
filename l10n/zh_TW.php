@@ -195,7 +195,6 @@
 "View an event" => "檢視活動",
 "Category" => "分類",
 "No categories selected" => "沒有選擇分類",
-"of" => "的",
 "Access Class" => "存取群組",
 "From" => "自",
 "at" => "於",

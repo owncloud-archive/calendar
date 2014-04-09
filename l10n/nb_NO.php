@@ -196,7 +196,6 @@
 "View an event" => "Se på hendelse",
 "Category" => "Kategori",
 "No categories selected" => "Ingen kategorier valgt",
-"of" => "av",
 "Access Class" => "Tilgangsklasse",
 "From" => "Fra",
 "at" => "på",

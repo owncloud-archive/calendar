@@ -198,7 +198,6 @@
 "View an event" => "Esemény megtekintése",
 "Category" => "Kategória",
 "No categories selected" => "Nincs kiválasztott kategória",
-"of" => ", tulajdonos",
 "Access Class" => "Hozzáférési osztály",
 "From" => "Ettől",
 "at" => ", ",

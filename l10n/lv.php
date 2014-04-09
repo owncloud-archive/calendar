@@ -175,7 +175,6 @@
 "View an event" => "Skatīt notikumu",
 "Category" => "Kategorija",
 "No categories selected" => "Nav izvēlētu kategoriju",
-"of" => "no",
 "Access Class" => "Pieejas klase",
 "From" => "No",
 "at" => " ",

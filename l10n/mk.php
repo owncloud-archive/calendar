@@ -177,7 +177,6 @@
 "View an event" => "Погледај настан",
 "Category" => "Категорија",
 "No categories selected" => "Нема избрано категории",
-"of" => "од",
 "Access Class" => "Пристапна класа",
 "From" => "Од",
 "at" => "на",

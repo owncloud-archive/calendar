@@ -195,7 +195,6 @@
 "View an event" => "Een Evenement kucken",
 "Category" => "Kategorie",
 "No categories selected" => "Keng Rubriken ausgewielt",
-"of" => "vun",
 "Access Class" => "Zougrëffs-Klass",
 "From" => "Vun",
 "at" => "bei",

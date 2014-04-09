@@ -196,7 +196,6 @@
 "View an event" => "Mostra un esdeveniment",
 "Category" => "Categoria",
 "No categories selected" => "No hi ha categories seleccionades",
-"of" => "de",
 "Access Class" => "Tipus d'accés",
 "From" => "Des de",
 "at" => "a",

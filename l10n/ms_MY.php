@@ -148,7 +148,6 @@
 "View an event" => "Papar peristiwa",
 "Category" => "kategori",
 "No categories selected" => "Tiada kategori dipilih",
-"of" => "dari",
 "From" => "Dari",
 "at" => "di",
 "To" => "ke"

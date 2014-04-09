@@ -176,7 +176,6 @@
 "View an event" => "Syn ei hending",
 "Category" => "Kategori",
 "No categories selected" => "Ingen kategoriar valt",
-"of" => "av",
 "Access Class" => "Tilgangsklasse",
 "From" => "Frå",
 "at" => "på",

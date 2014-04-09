@@ -196,7 +196,6 @@
 "View an event" => "شاهد الحدث",
 "Category" => "تصنيف",
 "No categories selected" => "دون فئة محددة",
-"of" => "من",
 "Access Class" => "الفئة المسموح لها بالدخول",
 "From" => "من",
 "at" => "في",

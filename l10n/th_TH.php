@@ -195,7 +195,6 @@
 "View an event" => "ดูกิจกรรม",
 "Category" => "หมวดหมู่",
 "No categories selected" => "ยังไม่ได้เลือกหมวดหมู่",
-"of" => "ของ",
 "Access Class" => "เข้าเรียน",
 "From" => "จาก",
 "at" => "ที่",

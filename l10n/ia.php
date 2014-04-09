@@ -195,7 +195,6 @@
 "View an event" => "Vide un evento",
 "Category" => "Categoria",
 "No categories selected" => "Nulle categorias seligite",
-"of" => "de",
 "Access Class" => "Classe de accesso",
 "From" => "Ab",
 "at" => "in",

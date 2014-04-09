@@ -198,7 +198,6 @@
 "View an event" => "Ver unha actividade",
 "Category" => "Categoría",
 "No categories selected" => "Non foi seleccionada ningunha categoría",
-"of" => "de",
 "Access Class" => "Clase de acceso",
 "From" => "Desde",
 "at" => "a",

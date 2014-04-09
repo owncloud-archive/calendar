@@ -157,7 +157,6 @@
 "View an event" => "Vidjeti događaj",
 "Category" => "Kategorija",
 "No categories selected" => "Nema odabranih kategorija",
-"of" => "od",
 "From" => "Od",
 "at" => "na",
 "To" => "Za"

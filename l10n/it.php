@@ -198,7 +198,6 @@
 "View an event" => "Visualizza un evento",
 "Category" => "Categoria",
 "No categories selected" => "Nessuna categoria selezionata",
-"of" => "di",
 "Access Class" => "Classe di accesso",
 "From" => "Da",
 "at" => "alle",

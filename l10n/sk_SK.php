@@ -198,7 +198,6 @@
 "View an event" => "Zobraziť udalosť",
 "Category" => "Kategória",
 "No categories selected" => "Žiadne vybraté kategórie",
-"of" => "z",
 "Access Class" => "Prístupová trieda",
 "From" => "Od",
 "at" => "v",
