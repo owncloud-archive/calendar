@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-09 01:47-0400\n"
-"PO-Revision-Date: 2014-04-09 05:47+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-04-10 01:46-0400\n"
+"PO-Revision-Date: 2014-04-09 12:30+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/owncloud/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -828,7 +828,7 @@ msgstr "Luokkia ei ole valittu"
 #: templates/part.showevent.php:41
 #, php-format
 msgid "%s of %s"
-msgstr ""
+msgstr "%s/%s"
 
 #: templates/part.showevent.php:50
 msgid "Access Class"

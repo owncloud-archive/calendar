@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-09 01:47-0400\n"
-"PO-Revision-Date: 2014-04-09 05:47+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-04-10 01:46-0400\n"
+"PO-Revision-Date: 2014-04-09 23:00+0000\n"
+"Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,11 +115,11 @@ msgstr "ddd"
 
 #: js/calendar.js:948
 msgid "ddd M/d"
-msgstr "ddd M/d"
+msgstr "d.M ddd"
 
 #: js/calendar.js:949
 msgid "dddd M/d"
-msgstr "dddd M/d"
+msgstr "d.M dddd"
 
 #: js/calendar.js:952
 msgid "MMMM yyyy"
@@ -439,7 +439,7 @@ msgstr "Tekrar etmiyor"
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr "Her gü"
+msgstr "Her gün"
 
 #: lib/object.php:567
 msgid "Weekly"
@@ -831,7 +831,7 @@ msgstr "Kategori seçilmedi"
 #: templates/part.showevent.php:41
 #, php-format
 msgid "%s of %s"
-msgstr ""
+msgstr "%s, kullanıcı: %s"
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
