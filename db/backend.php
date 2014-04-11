@@ -7,7 +7,8 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OCA\Calendar\Backend\CalendarInterface;
+use \OCA\Calendar\Backend\IBackend;
+use \OCA\Calendar\Sabre\VObject\Component\VCalendar;
 
 class Backend extends Entity {
 
@@ -24,7 +25,7 @@ class Backend extends Entity {
 	 * @param array $fromRow
 	 */
 	public function __construct($fromRow=null){
-		if($fromRow){
+		if(is_array($fromRow)){
 			$this->fromRow($fromRow);
 		}
 
@@ -36,18 +37,18 @@ class Backend extends Entity {
 	 * @param CalendarInterface $api
 	 * @return Backend
 	 */
-	public function registerAPI(CalendarInterface $api){
+	public function registerAPI(IBackend $api){
 		$this->api = $api;
 		return $this;
 	}
-
 
 	/**
 	 * @brief take data from VObject and put into this Calendar object
 	 * @return VCalendar Object
 	 */
 	public function fromVObject(VCalendar $vcalendar) {
-		throw new Exception();
+		$msg = 'Can\'t create backend from vobject!';
+		throw new \BadFunctionCallException($msg);
 	}
 
 	/**
@@ -55,7 +56,8 @@ class Backend extends Entity {
 	 * @return VCalendar Object
 	 */
 	public function getVObject() {
-		throw new Exception();
+		$msg = 'Can\'t create vobject from backend!';
+		throw new \BadFunctionCallException($msg);
 	}
 
 	/**
@@ -95,7 +97,7 @@ class Backend extends Entity {
 			return false;
 		}
 
-		if(is_array($this->arguments) === false || $this->arguments === null) {
+		if(is_array($this->arguments) === false && $this->arguments !== null) {
 			return false;
 		}
 
@@ -103,10 +105,14 @@ class Backend extends Entity {
 			return false;
 		}
 
-		if(($this->api instanceof CalendarInterface) === false || $this->api !== null) {
+		if(($this->api instanceof IBackend) === false  && $this->api !== null) {
 			return false;
 		}
 
 		return true;
+	}
+
+	public function __toString() {
+		return $this->backend . '::' . $this->classname;
 	}
 }

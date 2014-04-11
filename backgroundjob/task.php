@@ -7,14 +7,19 @@
  */
 namespace OCA\Calendar\Backgroundjob;
 
-use \OCA\Calendar\DependencyInjection\DIContainer;
+use \OCA\Calendar\App;
 
 class Task {
 	static public function run() {
-		$container = new DIContainer();
+		$app = new App();
 
-		$container['Updater']->beforeUpdate();
-		$container['Updater']->update();
-		$container['Updater']->afterUpdate();
+
+		//TODO
+		//- [ ] update calendar cache from remote
+		//- [ ] make updater use limit and offset
+		//- [ ] cache repeating objects
+		//- [ ] make repeating objects cacher use limits and offset
+
+		//$app->dispatch('Updater', 'update');
 	}
 }

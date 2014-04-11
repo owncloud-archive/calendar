@@ -28,9 +28,8 @@ use \OCA\Calendar\Http\JSON\JSONCalendarReader;
 class CalendarController extends Controller {
 
 	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @API
 	 */
 	public function index() {
@@ -50,15 +49,14 @@ class CalendarController extends Controller {
 
 			return new JSONResponse($serializer);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'debug');
+			$this->app->log($ex->getMessage(), 'debug');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
 	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @API
 	 */
 	 public function show() {
@@ -70,22 +68,21 @@ class CalendarController extends Controller {
 
 			$calendar = $this->calendarBusinessLayer->find($calendarId, $userId);
 			if($doesAcceptRawICS === true) {
-				$serializer = new ICSCalendar($calendarCollection);
+				$serializer = new ICSCalendar($calendar);
 			} else {
-				$serializer = new JSONCalendar($calendarCollection);
+				$serializer = new JSONCalendar($calendar);
 			}
 
 			return new JSONResponse($serializer);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'debug');
+			$this->app->log($ex->getMessage(), 'debug');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
 	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @API
 	 */
 	public function create() {
@@ -102,6 +99,9 @@ class CalendarController extends Controller {
 				$reader = new JSONCalendarReader($data);
 			}
 
+			var_dump($reader->sanitize()->getObject());
+			exit;
+
 			$calendar = $reader->sanitize()->getCalendar();
 			$calendar->setUser($userId)->setOwner($userId);
 
@@ -115,15 +115,14 @@ class CalendarController extends Controller {
 
 			return new JSONResponse($serializer, HTTP::STATUS_CREATED);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'debug');
+			$this->app->log($ex->getMessage(), 'debug');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
 	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @API
 	 */
 	public function update() {
@@ -159,15 +158,15 @@ class CalendarController extends Controller {
 
 			return new JSONResponse($serializer);
 		} catch(BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'debug');
+			$this->app->log($ex->getMessage(), 'debug');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
 
 	/** 
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @API
 	 */
 	public function destroy() {
@@ -184,7 +183,23 @@ class CalendarController extends Controller {
 
 			return new JSONResponse();
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
+			$this->app->log($ex->getMessage(), 'warn');
+			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
+		}
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @API
+	 */
+	public function forceUpdate() {
+		try {
+			$userId	= $this->api->getUserId();
+			$this->calendarBusinessLayer->updateCacheForAllFromRemote($userId);
+			return new JSONResponse();
+		} catch (BusinessLayerException $ex) {
+			$this->app->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}

@@ -9,6 +9,8 @@ namespace OCA\Calendar\Http;
 
 interface IResponse {
 
+	public function getMimeType();
+
 	public function serialize();
 
 }

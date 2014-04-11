@@ -7,9 +7,7 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OCA\Calendar\AppFramework\Core\API;
-use \OCA\Calendar\AppFramework\Db\Mapper;
-use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
+use \OCP\AppFramework\IAppContainer;
 
 use \OCA\Calendar\Db\Object;
 
@@ -107,7 +105,9 @@ class ObjectMapper extends Mapper {
 	 * @param integer $calendarId
 	 */
 	public function deleteAll($calendarId) {
-		$sql = 'DELETE FROM `' . $this->tableName . '` WHERE `calendarid` = ?';
+		$sql  = 'DELETE FROM `' . $this->getTableName() . '` ';
+		$sql .= 'WHERE `calendarid` = ?';
+
 		$this->execute($sql, array($calendarId));
 	}
 

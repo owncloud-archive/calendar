@@ -10,18 +10,26 @@ namespace OCA\Calendar\Db;
 class BackendCollection extends Collection {
 
 	/**
-	 * @brief get a collection of all enabled calendars within collection
-	 * @return CalendarCollection of all enabled calendars
+	 * @brief get a collection of all enabled backends within collection
+	 * @return BackendCollection of all enabled backends
 	 */
 	public function enabled() {
 		return $this->search('enabled', true);
 	}
 
 	/**
-	 * @brief get a collection of all disabled calendars within collection
-	 * @return CalendarCollection of all disabled calendars
+	 * @brief get a collection of all disabled backends within collection
+	 * @return BackendCollection of all disabled backends
 	 */
 	public function disabled() {
 		return $this->search('enabled', false);
+	}
+
+	/**
+	 * @brief find backend by name
+	 * @return Backend object
+	 */
+	public function find($backendName) {
+		return $this->search('backend', $backendName)->current();
 	}
 }

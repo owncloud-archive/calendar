@@ -7,4 +7,8 @@
  */
 namespace OCA\Calendar\Backend;
 
-class BackendException extends \Exception {}
+class BackendException extends \Exception {
+	const OTHER = -1;
+	const CACHEOUTDATED = 1;
+	const DOESNOTIMPLEMENT = 2;
+}

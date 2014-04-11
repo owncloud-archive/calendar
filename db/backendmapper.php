@@ -7,16 +7,16 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OCA\Calendar\AppFramework\Core\API;
-use \OCA\Calendar\AppFramework\Db\Mapper;
-use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
-use \OCA\Calendar\AppFramework\Db\Entity;
+use \OCP\AppFramework\IAppContainer;
 
 use \OCA\Calendar\Db\Backend;
+use \OCA\Calendar\Db\BackendCollection;
 
-class BackendMapper {
+class BackendMapper extends Mapper {
 
-	private $api;
+	protected $api;
+	protected $configName;
+
 	private $backendCollection;
 	private $didChange;
 
@@ -24,24 +24,25 @@ class BackendMapper {
 	 * @brief Constructor
 	 * @param API $api: Instance of the API abstraction layer
 	 */
-	public function __construct($api){
+	public function __construct(IAppContainer $api, $configName='calendar_backends'){
 		$this->api = $api;
-		$this->didChange(false);
+		$this->configName = $configName;
 
-		$backends = $this->api->getSystemValue('calendar_backends');
-
+		$backends = \OCP\Config::getSystemValue($configName);
 		if($backends === null) {
-			throw new Exception('BackendMapper::__construct(): No calendar backend configuration found!');
+			$backends = $api->query('fallbackBackendConfig');
 		}
 
 		$backendCollection = new BackendCollection();
-		for($i = 0;$i < count($backends); $i++) {
-			$backends[$i]['id'] = $i;
-			$backend = new Backend($backends[$i]);
+		foreach($backends as $id => $backend) {
+			$backend = new Backend($backend);
+			$backend->setId($id);
+
 			$backendCollection->add($backend);
 		}
-
 		$this->backendCollection = $backendCollection;
+
+		$this->didChange = false;
 	}
 
 	/**
@@ -50,7 +51,8 @@ class BackendMapper {
 	 */
 	public function __destruct() {
 		if($this->didChange === true) {
-			$this->api->setSystemValue('calendar_backend', $this->backendCollection->getObjects());
+			$newConfig = $this->backendCollection->getObjects();
+			//\OCP\Config::setSystemValue($this->configName, $newConfig);
 		}
 	}
 
@@ -61,7 +63,7 @@ class BackendMapper {
 	 * @return the backend item
 	 */
 	public function find($backend){
-		return $this->backendCollection->search('backend', $backend)->current();
+		return $this->backendCollection->find($backend);
 	}
 
 	/**
@@ -85,9 +87,10 @@ class BackendMapper {
 	 * @param Item $item: the item to be saved
 	 * @return $this
 	 */
-	public function save(Entity $item){
+	public function insert(Entity $item){
 		$this->backendCollection->add($item);
-		$this->didChange(true);
+
+		$this->didChange = true;
 		return $this;
 	}
 
@@ -97,10 +100,10 @@ class BackendMapper {
 	 * @return $this
 	 */
 	public function update(Entity $item){
-		$oldItem = $this->backendCollection->search('id', $item->getId());
-		$this->backendCollection->removeByEntity($oldItem);
+		$this->backendCollection->removeByProperty('id', $item->getId());
 		$this->backendCollection->add($item);
-		$this->didChange(true);
+
+		$this->didChange = true;
 		return $this;
 	}
 
@@ -111,17 +114,8 @@ class BackendMapper {
 	 */
 	public function delete(Entity $item){
 		$this->backendCollection->removeByEntity($item);
-		$this->didChange(true);
-		return $this;
-	}
 
-	/**
-	 * sets didChange property
-	 * @param boolean $didChange
-	 * @return $this
-	 */
-	private function didChange($didChange) {
-		$this->didChange = $didChange;
+		$this->didChange = true;
 		return $this;
 	}
 }

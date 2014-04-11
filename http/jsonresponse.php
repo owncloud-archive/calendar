@@ -7,8 +7,8 @@
  */
 namespace OCA\Calendar\Http;
 
-use \OCA\Calendar\AppFramework\Http\Response;
-use \OCA\Calendar\AppFramework\Http\Http;
+use \OCP\AppFramework\Http\Response;
+use \OCP\AppFramework\Http;
 use \OCA\Calendar\Http\IResponse;
 
 class JSONResponse extends Response {
@@ -24,9 +24,9 @@ class JSONResponse extends Response {
 
 		if($statusCode === null) {
 			if($data instanceof IResponse) {
-				$statusCode = HTTP::STATUS_OK;
+				$statusCode = Http::STATUS_OK;
 			} else {
-				$statusCode = HTTP::STATUS_NO_CONTENT;
+				$statusCode = Http::STATUS_NO_CONTENT;
 			}
 		}
 
@@ -41,9 +41,14 @@ class JSONResponse extends Response {
 	 */
 	public function render(){
 		if($this->data instanceof IResponse) {
-			return $this->data->serialize();
-		} else {
-			return '';
+			$data = $this->data->serialize();
+
+			if(is_array($data)) {
+				return json_encode($data);
+			} else {
+				return $data;
+			}
 		}
+		return '';
 	}
 }

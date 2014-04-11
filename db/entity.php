@@ -8,12 +8,14 @@
  */
 namespace OCA\Calendar\Db;
 
+use \OCA\Calendar\Sabre\VObject\Component\VCalendar;
+
 abstract class Entity {
 
 	public $id;
 
-	private $updatedFields = array();
-	private $fieldTypes = array('id' => 'int');
+	protected $updatedFields = array();
+	protected $fieldTypes = array('id' => 'int');
 
 
 	/**
@@ -49,14 +51,59 @@ abstract class Entity {
 		return $this;
 	}
 
-	
+	abstract public function fromVObject(VCalendar $vcalendar);
+
+	abstract public function getVObject();
+
+	/**
+	 * @brief overwrite current objects with properties 
+	 *        from $object that are not null
+	 * @param \OCA\Calendar\Db\Entity $object
+	 * @return $this
+	 */
+	public function overwriteWith(Entity $object) {
+		$properties = get_object_vars($this);
+
+		unset($properties['id']);
+
+		foreach($properties as $key => $value) {
+			$getter = 'get' . ucfirst($key);
+			$setter = 'set' . ucfirst($key);
+
+			$newValue = $object->$getter();
+			if($newValue !== null && $newValue !== $value) {
+				$this->$setter($newValue);
+			}
+		}
+
+		return $this;
+	}
+
+
+	/**
+	 * @brief checks if current object contains null values
+	 * @return boolean
+	 */
+	public function doesContainNullValues() {
+		$properties = get_object_vars($this);
+
+		foreach($properties as $property) {
+			$method = 'get' . ucfirst($property);
+
+			if($this->$method() === null) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	/**
 	 * Marks the entity as clean needed for setting the id after the insertion
 	 */
 	public function resetUpdatedFields(){
 		$this->updatedFields = array();
 	}
-
 
 	protected function setter($name, $args) {
 		// setters should only work for existing attributes
@@ -200,8 +247,4 @@ abstract class Entity {
 	}
 
 	abstract public function isValid();
-
-	abstract public function fromVObject(VCalendar $vcalendar);
-
-	abstract public function getVObject();
 }

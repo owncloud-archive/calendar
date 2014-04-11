@@ -7,13 +7,6 @@
  */
 namespace OCA\Calendar\Controller;
 
-use \OCA\Calendar\AppFramework\Core\API;
-use \OCA\Calendar\AppFramework\Http\Http;
-use \OCA\Calendar\AppFramework\Http\Request;
-use \OCA\Calendar\AppFramework\Http\JSONResponse;
-
-use \OCA\Calendar\AppFramework\DoesNotExistException;
-
 use \OCA\Calendar\BusinessLayer\BackendBusinessLayer;
 use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
 use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
@@ -21,60 +14,27 @@ use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 
 use OCA\Calendar\Db\Calendar;
-use OCA\Calendar\Db\JSONCalendar;
+use OCA\Calendar\Db\JSONCalendar; 
 use OCA\Calendar\Db\Object;
 use OCA\Calendar\Db\JSONObject;
 
 class ViewController extends Controller {
-	
-	private $calendarBusinessLayer;
-	private $objectBusinessLayer;
-	
-	/**
-	 * @param Request $request: an instance of the request
-	 * @param API $api: an api wrapper instance
-	 * @param ItemMapper $itemMapper: an itemwrapper instance
-	 */
-	public function __construct(API $api, Request $request){
-		parent::__construct($api, $request);
-
-		// thirdparty javscripts
-		$this->api->add3rdPartyScript('fullCalendarPro/fullcalendar');
-		$this->api->add3rdPartyScript('underscore/underscore');
-		$this->api->add3rdPartyScript('backbone/backbone');
-		//$this->api->add3rdPartyScript('timepicker-min');
-		//$this->api->add3rdPartyScript('tipsy-min');
-		// calendar javascripts
-		$this->api->addScript('application');
-		$this->api->addScript('calendar');
-		$this->api->addScript('settings');
-		// thirdpary stylesheets
-		$this->api->add3rdPartyStyle('fullcalendar');
-		$this->api->add3rdPartyStyle('timepicker');
-		$this->api->add3rdPartyStyle('tipsy.mod');
-		// calendar stylesheets
-		$this->api->addStyle('animations');
-		$this->api->addStyle('datepicker');
-		$this->api->addStyle('fullcalendar');
-		$this->api->addStyle('style');
-	}
 
 	/**
-	 * @CSRFExemption
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 *
 	 * @brief renders the index page
 	 * @return an instance of a Response implementation
 	 */
 	public function index(){
-		return $this->render('app', array());
+		var_dump('index_called');
+		exit;
 	}
 
 	/**
-	 * @CSRFExemption
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 *
 	 * @brief renders \DateTimeZone::listAbbreviations(); as JSON
 	 * @return an instance of a JSONResponse implementation
@@ -85,9 +45,8 @@ class ViewController extends Controller {
 	}
 
 	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @Ajax
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 *
 	 * @brief saves the new view
 	 * @return an instance of a JSONResponse implementation
@@ -100,7 +59,7 @@ class ViewController extends Controller {
 			case 'basic2Weeks':
 			case 'basic4Weeks':
 			case 'list':
-				\OCP\Config::setUserValue($this->api->getUserId(), 'calendar', 'currentview', $newView);
+				\OCP\Config::setUserValue($this->app->getUserId(), 'calendar', 'currentview', $newView);
 				return new JSONResponse(array('newView' => $newView));
 				break;
 			default:

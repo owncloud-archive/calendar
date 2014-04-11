@@ -20,16 +20,15 @@ class ObjectCollection extends Collection {
 	public function inPeriod(DateTime $start, DateTime $end) {
 		$objectsInPeriod = new ObjectCollection();
 
-		$this->iterate(function($object, $param) {
-			$collection = $param[0];
+		$this->iterate(function($object) use (&$objectsInPeriod) {
 			if($object->isRepeating() === true) {
-				$collection->add(clone $object);
+				$objectsInPeriod->add(clone $object);
 			} else {
 				
 				
 				
 			}
-		}, array(&$objectsInPeriod));
+		});
 
 		return $objectsInPeriod;
 	}
@@ -43,16 +42,15 @@ class ObjectCollection extends Collection {
 	public function expand(DateTime $start, DateTime $end) {
 		$expandedObjects = new ObjectCollection();
 
-		$this->iterate(function($object, $param) {
-			$collection = $param[0];
+		$this->iterate(function($object) use (&$expandedObjects) {
 			if($object->isRepeating() === true) {
-
+				
 
 
 			} else {
-				$collection->add(clone $object);
+				$expandedObjects->add(clone $object);
 			}
-		}, array(&$expandedObjects));
+		});
 
 		return $expandedObjects;
 	}
@@ -73,14 +71,11 @@ class ObjectCollection extends Collection {
 	public function ofType($type) {
 		$objectsOfType = new ObjectCollection();
 
-		$this->iterate(function($object, $param) {
-			$collection = $param[0];
-			$type = $param[1];
-
+		$this->iterate(function($object) use (&$objectsOfType, $type) {
 			if($object->getType() & $type) {
 				$collection->add(clone $object);
 			}
-		}, array(&$objectsOfType, $type));
+		});
 
 		return $objectsOfType;
 	}

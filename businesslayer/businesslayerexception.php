@@ -7,4 +7,9 @@
  */
 namespace OCA\Calendar\BusinessLayer;
 
-class BusinessLayerException extends \Exception {}
+class BusinessLayerException extends \Exception {
+	const FORBIDDEN = 403;
+	const NOTFOUND = 404;
+	const CONFLICT = 409;
+	const INTERNAL = 500;
+}

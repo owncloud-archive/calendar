@@ -30,9 +30,8 @@ use \OCA\Calendar\Http\JSON\JSONObjectReader;
 class ObjectController extends Controller {
 
 	/**
-	 * @IsAdminExemption
-	 * @IsSubAdminExemption
-	 * @CSRFExemption
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 * @API
 	 */
 	public function index() {
@@ -81,7 +80,7 @@ class ObjectController extends Controller {
 
 			return new JSONResponse($serializer, Http::STATUS_OK);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
+			$this->app->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
@@ -132,7 +131,7 @@ class ObjectController extends Controller {
 
 			return new JSONResponse($serializer);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
+			$this->app->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, Http::STATUS_NOT_FOUND);
 		} catch (JSONException $ex) {
 			//do smth
@@ -170,6 +169,9 @@ class ObjectController extends Controller {
 			}
 
 			$object = $reader->getObject();
+			$type = $object->getType();
+
+			//check if calendar supports type
 
 			$object = $this->objectBusinessLayer->create($object, $calendarid, $userId);
 
@@ -184,7 +186,7 @@ class ObjectController extends Controller {
 
 			return new JSONResponse($serializer, Http::STATUS_CREATED);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
+			$this->app->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
@@ -198,8 +200,8 @@ class ObjectController extends Controller {
 	public function update() {
 		try {
 			$userId = $this->api->getUserId();
-			$calendarId = $this->api->params('calendarId');
-			$objectURI = $this->api->params('objectId');
+			$calendarId = $this->params('calendarId');
+			$objectURI = $this->params('objectId');
 			$data = $this->request->params;
 
 			//check if calendar exists, if not return 404
@@ -236,7 +238,7 @@ class ObjectController extends Controller {
 
 			return new JSONResponse($serializer);
 		} catch(BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
+			$this->app->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}
@@ -257,7 +259,7 @@ class ObjectController extends Controller {
 
 			return new JSONResponse(null, HTTP::STATUS_NO_CONTENT);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
+			$this->app->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}

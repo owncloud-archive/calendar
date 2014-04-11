@@ -7,17 +7,10 @@
  */
 namespace OCA\Calendar\Backend;
 
-use \OCA\Calendar\AppFramework\Core\API;
-use \OCA\Calendar\AppFramework\Db\Mapper;
-use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
-use \OCA\Calendar\AppFramework\Db\MultipleObjectsReturnedException;
-
 use \OCA\Calendar\Db\Calendar;
 use \OCA\Calendar\Db\Object;
 use \OCA\Calendar\Db\ObjectType;
 
 use \OCA\Calendar\Db\Permissions;
 
-class CalDAV extends Backend {
-	
-}
+class CalDAV extends Backend {}

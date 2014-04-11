@@ -170,6 +170,11 @@ abstract class Document extends Component {
             $class=static::$componentMap[$name];
         }
         if (is_null($children)) $children = array();
+
+		if(strpos($class, 'OCA\\Calendar\\') !== 0) {
+			$class = 'OCA\\Calendar\\' . $class;
+		}
+
         return new $class($this, $name, $children, $defaults);
 
     }
@@ -218,6 +223,10 @@ abstract class Document extends Component {
         }
         if (is_null($parameters)) $parameters = array();
 
+		if(strpos($class, 'OCA\\Calendar\\') !== 0) {
+			$class = 'OCA\\Calendar\\' . $class;
+		}
+
         return new $class($this, $name, $value, $parameters, $group);
 
     }
@@ -251,9 +260,9 @@ abstract class Document extends Component {
     public function getClassNameForPropertyName($propertyName) {
 
         if (isset(static::$propertyMap[$propertyName])) {
-            return static::$propertyMap[$propertyName];
+            return 'OCA\\Calendar\\' . static::$propertyMap[$propertyName];
         } else {
-            return 'Sabre\\VObject\\Property\\Unknown';
+            return 'OCA\\Calendar\\Sabre\\VObject\\Property\\Unknown';
         }
 
     }

@@ -7,6 +7,9 @@
  */
 namespace OCA\Calendar\Controller;
 
+use \OCP\AppFramework\IAppContainer;
+use \OCP\IRequest;
+
 use \OCP\AppFramework\Http\Http;
 
 use \OCA\Calendar\Db\DoesNotExistException;
@@ -15,6 +18,9 @@ use \OCA\Calendar\BusinessLayer\BusinessLayerException;
 use \OCA\Calendar\Db\Object;
 use \OCA\Calendar\Db\ObjectCollection;
 use \OCA\Calendar\Db\ObjectType;
+
+use \OCA\Calendar\BusinessLayer\CalendarBusinessLayer;
+use \OCA\Calendar\BusinessLayer\ObjectBusinessLayer;
 
 use \OCA\Calendar\Http\JSONResponse;
 
@@ -42,12 +48,12 @@ abstract class ObjectTypeController extends ObjectController {
 	 * @param ObjectBusinessLayer $objectBusinessLayer
 	 * @param integer $objectType: type of object, use \OCA\Calendar\Db\ObjectType::...
 	 */
-	public function __construct(IAppContainer $api, IRequest $request,
+	public function __construct(IAppContainer $app, IRequest $request,
 								CalendarBusinessLayer $calendarBusinessLayer,
 								ObjectBusinessLayer $objectBusinessLayer,
 								$type){
 
-		parent::__construct($api, $request,
+		parent::__construct($app, $request,
 							$calendarBusinessLayer,
 							$objectBusinessLayer);
 
@@ -62,6 +68,9 @@ abstract class ObjectTypeController extends ObjectController {
 	 */
 	public function index() {
 		try {
+			var_dump('index called');
+			exit;
+
 			$userId = $this->api->getUserId();
 			$calendarId = $this->params('calendarId');
 
@@ -72,7 +81,13 @@ abstract class ObjectTypeController extends ObjectController {
 			$start = $this->header('X-OC-CAL-START', 'DateTime');
 			$end = $this->header('X-OC-CAL-END', 'DateTime');
 
+			var_dump($doesAcceptRawICS);
+			exit;
+
 			$doesAcceptRawICS = $this->doesClientAcceptRawICS();
+
+			var_dump($doesAcceptRawICS);
+			exit;
 
 			//check if calendar exists, if not return 404
 			if($this->calendarBusinessLayer->doesExist($calendarId, $userId) === false) {
@@ -106,7 +121,7 @@ abstract class ObjectTypeController extends ObjectController {
 
 			return new JSONResponse($serializer, Http::STATUS_OK);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
+			$this->app->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, Http::STATUS_BAD_REQUEST);
 		}
 	}
@@ -156,7 +171,7 @@ abstract class ObjectTypeController extends ObjectController {
 
 			return new JSONResponse($serializer);
 		} catch (BusinessLayerException $ex) {
-			$this->api->log($ex->getMessage(), 'warn');
+			$this->app->log($ex->getMessage(), 'warn');
 			return new JSONResponse(null, HTTP::STATUS_BAD_REQUEST);
 		}
 	}

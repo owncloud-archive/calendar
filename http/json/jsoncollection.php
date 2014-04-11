@@ -8,27 +8,14 @@
 namespace OCA\Calendar\Http\JSON;
 
 use \OCA\Calendar\Db\Collection;
+use \OCA\Calendar\Http\IResponse;
 
-abstract class JSONCollection {
-
-	protected $collection;
+abstract class JSONCollection extends JSON {
 
 	/**
 	 * @brief Constructor
 	 */
-	public function __construct(Collection $collection) {
-		$this->collection = $collection;
+	public function __construct(Collection $object) {
+		$this->object = $object;
 	}
-
-	/**
-	 * @brief get object JSONObject was initialized with.
-	 */
-	public function getCollection() {
-		return $this->collection;
-	}
-
-	/**
-	 * @brief get json-encoded string containing all information
-	 */
-	abstract public function serialize();
 }

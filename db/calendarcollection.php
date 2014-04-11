@@ -7,9 +7,7 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OCA\Calendar\AppFramework\Db\Entity;
-
-use \Sabre\VObject\Component\VCalendar;
+use \OCA\Calendar\Sabre\VObject\Component\VCalendar;
 
 class CalendarCollection extends Collection {
 
@@ -46,14 +44,11 @@ class CalendarCollection extends Collection {
 	public function components($component) {
 		$newCollection = new CalendarCollection();
 
-		$this->iterate(function($object, $param) {
-			$collection = $param[0];
-			$component = $param[1];
-
+		$this->iterate(function($object) use (&$newCollection, $component) {
 			if($object->getComponents() & $component) {
-				$collection->add(clone $object);
+				$newCollection->add(clone $object);
 			}
-		}, array(&$newCollection, $component));
+		});
 
 		return $newCollection;
 	}
@@ -66,15 +61,27 @@ class CalendarCollection extends Collection {
 	public function permissions($cruds) {
 		$newCollection = new CalendarCollection();
 
-		$this->iterate(function($object, $param) {
-			$collection = $param[0];
-			$cruds = $param[1];
-
+		$this->iterate(function($object) use (&$newCollection, $cruds) {
 			if($object->getCruds() & $cruds) {
-				$collection->add(clone $object);
+				$newCollection->add(clone $object);
 			}
-		}, array(&$newCollection, $cruds));
+		});
 
 		return $newCollection;
+	}
+
+	public function filterByBackends(BackendCollection $backends) {
+		$filteredCalendars = new CalendarCollection();
+		$objects = $backends->getObjects();
+
+		$this->iterate(function($object) use (&$filteredCalendars, $objects) {
+			foreach($objects as $backend) {
+				if($object->getBackend() === $backend->getBackend()) {
+					$filteredCalendars->add(clone $object);
+				}
+			}
+		});
+
+		return $filteredCalendars;
 	}
 }

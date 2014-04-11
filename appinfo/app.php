@@ -7,44 +7,16 @@
  */
 namespace OCA\Calendar;
 
-use \OCA\Calendar\AppFramework\Core\API;
+require_once(__DIR__ . '/../3rdparty/VObject/includes.php');
 
-$api = new API('calendar');
+define('OCA\Calendar\JSON_API_VERSION', '1.0');
+define('OCA\Calendar\PHP_API_VERSION', '1.0');
 
-/*
- * Constants for calendar:
- */
-//current version of json api
-define('OCA\Calendar\JSONAPIVERSION', '1.0');
+$app = new App();
+$app->registerNavigation();
 
-//current version of php api
-define('OCA\Calendar\PHPAPIVERSION',  '1.0');
+$app->registerCron();
+$app->registerHooks();
+$app->registerProviders();
 
-/*
- * add navigation entry
- */
-\OCP\App::addNavigationEntry(array(
-	'id' => 'calendar',
-	'order' => 10,
-	'href' => \OCP\Util::linkToRoute('calendar.view.index'),
-	'icon' => \OCP\Util::imagePath('calendar', 'calendar.svg'),
-	'name' => \OC_L10N::get('calendar')->t('Calendar'),
-));
-
-/*
- * register things like cron, admin page, hooks, search, sharing, etc.
- */
-$api->addRegularTask('OCA\Calendar\Cron', 'run');
-$api->registerAdmin('admin/settings');
-$api->connectHook('OC_User', 'post_createUser', '\OC\Calendar\Util\UserHooks', 'create');
-$api->connectHook('OC_User', 'post_deleteUser', '\OC\Calendar\Util\UserHooks', 'delete');
-//$api->connectHook();
-//$api->connectJook();
-//\OC_Search::registerProvider('\OCA\Calendar\SearchProvider');
-//\OCP\Share::registerBackend('calendar', '\OCA\Calendar\Share\Calendar');
-//\OCP\Share::registerBackend('event', '\OCA\Calendar\Share\Event');
-
-/*
- * add a global script for calendar import
- */
-//$api->addScript('fileaction');
+Sabre\VObject\Document::$propertyMap['DateTime'] = '\OCA\Calendar\CustomSabre\Property\DateTime';

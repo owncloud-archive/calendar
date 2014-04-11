@@ -18,14 +18,14 @@
 				<length>4</length>
 			</field>
 			<field>
-				<name>userid</name>
+				<name>user_id</name>
 				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>
 				<length>255</length>
 			</field>
 			<field>
-				<name>ownerid</name>
+				<name>owner_id</name>
 				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>
@@ -98,43 +98,6 @@
 				<type>integer</type>
 				<default>31</default>
 				<notnull>true</notnull>
-			</field>
-		</declaration>
-	</table>
-	<!-- table for calendar key value store -->
-	<table>
-		<name>*dbprefix*clndr_cal_props</name>
-		<declaration>
-			<field>
-				<name>id</name>
-				<type>integer</type>
-				<default>0</default>
-				<notnull>true</notnull>
-				<autoincrement>1</autoincrement>
-				<unsigned>true</unsigned>
-				<length>4</length>
-			</field>
-			<field>
-				<name>calendarid</name>
-				<type>integer</type>
-				<default></default>
-				<notnull>true</notnull>
-				<unsigned>true</unsigned>
-				<length>4</length>
-			</field>
-			<field>
-				<name>key</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>value</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
 			</field>
 		</declaration>
 	</table>
@@ -221,48 +184,11 @@
 				<length>4</length>
 			</field>
 			<field>
-				<name>deleteat</name>
-				<type>integer</type>
-				<default>0</default>
+				<name>etag</name>
+				<type>text</type>
+				<default></default>
 				<notnull>false</notnull>
-				<unsigned>true</unsigned>
-			</field>
-		</declaration>
-	</table>
-	<!-- table for object key value store -->
-	<table>
-		<name>*dbprefix*clndr_obj_props</name>
-		<declaration>
-			<field>
-				<name>id</name>
-				<type>integer</type>
-				<default>0</default>
-				<notnull>true</notnull>
-				<autoincrement>1</autoincrement>
-				<unsigned>true</unsigned>
-				<length>4</length>
-			</field>
-			<field>
-				<name>calendarid</name>
-				<type>integer</type>
-				<default></default>
-				<notnull>true</notnull>
-				<unsigned>true</unsigned>
-				<length>4</length>
-			</field>
-			<field>
-				<name>key</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>value</name>
-				<type>text</type>
-				<default></default>
-				<notnull>true</notnull>
-				<length>255</length>
+				<length>40</length>
 			</field>
 		</declaration>
 	</table>
@@ -288,12 +214,11 @@
 				<length>4</length>
 			</field>
 			<field>
-				<name>objectid</name>
-				<type>integer</type>
+				<name>uri</name>
+				<type>text</type>
 				<default></default>
 				<notnull>true</notnull>
-				<unsigned>true</unsigned>
-				<length>4</length>
+				<length>255</length>
 			</field>
 			<field>
 				<name>startdate</name>
@@ -305,33 +230,6 @@
 				<name>enddate</name>
 				<type>timestamp</type>
 				<default>1970-01-01 00:00:00</default>
-				<notnull>false</notnull>
-			</field>
-		</declaration>
-	</table>
-	<!-- table for calendar properties events -->
-	<table>
-		<name>*dbprefix*clndr_properties</name>
-		<declaration>
-			<field>
-				<name>id</name>
-				<type>integer</type>
-				<default>0</default>
-				<notnull>true</notnull>
-				<autoincrement>1</autoincrement>
-				<unsigned>true</unsigned>
-				<length>4</length>
-			</field>
-			<field>
-				<name>key</name>
-				<type>text</type>
-				<default></default>
-				<notnull>false</notnull>
-				<length>255</length>
-			</field>
-			<field>
-				<name>value</name>
-				<type>clob</type>
 				<notnull>false</notnull>
 			</field>
 		</declaration>

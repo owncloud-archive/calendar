@@ -7,126 +7,162 @@
  */
 namespace OCA\Calendar\Db;
 
-use \OCA\Calendar\AppFramework\Core\API;
-use \OCA\Calendar\AppFramework\Db\Mapper;
-use \OCA\Calendar\AppFramework\Db\DoesNotExistException;
+use \OCP\AppFramework\IAppContainer;
 
 use \OCA\Calendar\Db\Calendar;
 
 class CalendarMapper extends Mapper {
-	private $tableName;
-	private $keyValueTableName;
 
 	/**
 	 * @param API $api: Instance of the API abstraction layer
 	 */
 	public function __construct($api, $tablename='clndr_calcache'){
 		parent::__construct($api, $tablename);
-
-		$this->tableName = '*PREFIX*' . $tablename;
 	}
 
 	/**
-	 * Finds an item from user by it's uri
+	 * find calendar by backend, uri and userId
+	 * @param string $backend
+	 * @param string $uri
+	 * @param string $userId
 	 * @throws DoesNotExistException: if the item does not exist
-	 * @return the item
+	 * @throws MultipleObjectsReturnedException: if more than one item found
+	 * @return calendar object
 	 */
 	public function find($backend, $uri, $userId){
-		$sql = 'SELECT * FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
+		$sql  = 'SELECT * FROM `' . $this->getTableName() . '` ';
+		$sql .= 'WHERE `backend` = ? AND `uri` = ? AND `user_id` = ?';
+
 		$row = $this->findOneQuery($sql, array($backend, $uri, $userId));
+
 		return new Calendar($row);
 	}
 
 	/**
-	 * Finds an item from user by it's uri
-	 * @throws DoesNotExistException: if the item does not exist
-	 * @return the item
-	 */
-	public function countFind($backend, $uri, $userId){
-		$sql = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
-		$row = $this->findOneQuery($sql, array($backend, $uri, $userId));
-		return $row['count'];
-	}
-
-	/**
-	 * Finds all Items from user
-	 * @return array containing all items
+	 * find all calendars of a user
+	 * @param string $userId
+	 * @param integer $limit
+	 * @param integer $offset
+	 * @return CalendarCollection
 	 */
 	public function findAll($userId, $limit, $offset){
-		$sql = 'SELECT * FROM `'. $this->tableName . '` WHERE `userid` = ? ORDER BY `order`';
+		$sql  = 'SELECT * FROM `'. $this->getTableName() . '` ';
+		$sql .= 'WHERE `user_id` = ? ORDER BY `order`';
+
 		return $this->findEntities($sql, array($userId), $limit, $offset);
 	}
 
 	/**
-	 * inserts an item
-	 * @param Calendar $calendar
+	 * find all calendars of a user on a backend
 	 * @param string $backend
-	 * @param string $calendarURI
 	 * @param string $userId
-	 * @return null
+	 * @param integer $limit
+	 * @param integer $offset
+	 * @return CalendarCollection
 	 */
-	public function insertEntity($calendar, $backend, $calendarURI, $userId) {
-		$sql  = 'INSERT INTO `'. $this->tableName . '` ';
-		$sql .= '(`backend`, `uri`, `displayname`, `components`, `ctag`, `timezone`, ';
-		$sql .= '`color`, `order`, `enabled`, `cruds`, `userid`, `ownerid`) ';
-		$sql .= 'VALUES(?,?,?,?,?,?,?,?,?,?,?,?)';
-		$result = $this->api->prepareQuery($sql)->execute(array(
-			$calendar->getBackend(),
-			$calendar->getUri(),
-			$calendar->getDisplayname(),
-			$calendar->getComponents(),
-			$calendar->getCtag(),
-			$calendar->getTimezone(),
-			$calendar->getColor(),
-			$calendar->getOrder(),
-			$calendar->getEnabled(),
-			$calendar->getCruds(),
-			$calendar->getUserId(),
-			$calendar->getOwnerId(),
-		));
+	public function findAllOnBackend($backend, $userId, $limit, $offset) {
+		$sql  = 'SELECT * FROM `'. $this->getTableName() . '` ';
+		$sql .= 'WHERE `backend` = ? AND `user_id` = ? ORDER BY `order`';
+
+		return $this->findEntities($sql, array($backend, $userId), $limit, $offset);
 	}
 
 	/**
-	 * updates an item
-	 * @param Calendar $calendar
-	 * @param string $backend
-	 * @param string $calendarURI
+	 * number of calendars by user
 	 * @param string $userId
-	 * @return null
+	 * @throws DoesNotExistException: if the item does not exist
+	 * @return integer
 	 */
-	public function updateEntity($calendar, $backend, $calendarURI, $userId) {
-		$sql  = 'UPDATE `'. $this->tableName . '` SET ';
-		$sql .= '`backend` = ?, `uri` = ?, `displayname` = ?, `components` = ?, `ctag` = ?, `timezone` = ?, ';
-		$sql .= '`color` = ?, `order` = ?, `enabled` = ?, `cruds` = ?, `userid` = ?, `ownerid` = ? ';
-		$sql .= 'WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
-		$result = $this->api->prepareQuery($sql)->execute(array(
-			$calendar->getBackend(),
-			$calendar->getUri(),
-			$calendar->getDisplayname(),
-			$calendar->getComponents(),
-			$calendar->getCtag(),
-			$calendar->getTimezone(),
-			$calendar->getColor(),
-			$calendar->getOrder(),
-			$calendar->getEnabled(),
-			$calendar->getCruds(),
-			$calendar->getUserId(),
-			$calendar->getOwnerId(),
-			$backend,
-			$calendarURI,
-			$userId,
-		));
+	public function count($userId){
+		$sql  = 'SELECT COUNT(*) AS `count` FROM ';
+		$sql .= '`' . $this->getTableName() . '` WHERE `user_id` = ?';
+
+		$row = $this->findOneQuery($sql, array($userId));
+
+		return intval($row['count']);
 	}
 
 	/**
-	 * deletes an item
+	 * number of calendars by user on a backend
+	 * @param string $backend
+	 * @param string $userId
+	 * @throws DoesNotExistException: if the item does not exist
+	 * @return integer
+	 */
+	public function countOnBackend($backend, $userId) {
+		$sql  = 'SELECT COUNT(*) AS `count` FROM ';
+		$sql .= '`' . $this->getTableName() . '` WHERE `backend` = ? AND `user_id` = ?';
+
+		$row = $this->findOneQuery($sql, array($backend, $userId));
+
+		return intval($row['count']);
+	}
+
+	/**
+	 * does a calendar exist
 	 * @param string $backend
 	 * @param string $calendarURI
 	 * @param string $userId
-	 * @return null
+	 * @throws DoesNotExistException: if the item does not exist
+	 * @return boolean
 	 */
-	public function deleteEntity($backend, $calendarURI, $userId) {
-		$sql = 'DELETE FROM `'. $this->tableName . '` WHERE `backend` = ? AND `uri` = ? AND `userid` = ?';
-		$this->execute($sql, array($backend, $calendarURI, $userId));
+	public function doesExist($backend, $calendarURI, $userId) {
+		$sql  = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '`';
+		$sql .= ' WHERE `backend` = ? AND `uri` = ? AND `user_id` = ?';
+
+		$row = $this->findOneQuery($sql, array($backend, $calendarURI, $userId));
+
+		$count = intval($row['count']);
+		if($count === 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/**
+	 * checks if a calendar allows a certain action
+	 * @param integer $cruds
+	 * @param string $backend
+	 * @param string $calendarURI
+	 * @param string $userId
+	 * @throws DoesNotExistException: if the item does not exist
+	 * @return boolean
+	 */
+	public function doesAllow($cruds, $backend, $calendarURI, $userId) {
+		$sql  = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '`';
+		$sql .= ' WHERE `cruds` & ? AND `backend` = ? AND `uri` = ? AND `user_id` = ?';
+
+		$row = $this->findOneQuery($sql, array($cruds, $backend, $calendarURI, $userId));
+
+		$count = intval($row['count']);
+		if($count === 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/**
+	 * checks if a calendar supports a certian component
+	 * @param integer $component
+	 * @param string $backend
+	 * @param string $calendarURI
+	 * @param string $userId
+	 * @throws DoesNotExistException: if the item does not exist
+	 * @return boolean
+	 */
+	public function doesSupport($component, $backend, $calendarURI, $userId) {
+		$sql  = 'SELECT COUNT(*) AS `count` FROM `' . $this->tableName . '`';
+		$sql .= ' WHERE `components` & ? AND `backend` = ? AND `uri` = ? AND `user_id` = ?';
+
+		$row = $this->findOneQuery($sql, array($component, $backend, $calendarURI, $userId));
+
+		$count = intval($row['count']);
+		if($count === 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

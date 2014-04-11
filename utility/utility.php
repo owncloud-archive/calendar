@@ -7,6 +7,9 @@
  */
 namespace OCA\Calendar\Utility;
 
+use \DateTimeZone;
+use \OCA\Calendar\Sabre\VObject\Component;
+
 class Utility {
 
 	public static function slugify($string) {
@@ -28,5 +31,8 @@ class Utility {
 		return $string;
 	}
 
-	
+	public static function isTimezoneSupported($timezone) {
+		$supportedTimezones = DateTimeZone::listIdentifiers();
+		return in_array($timezone, $supportedTimezones);
+	}
 }

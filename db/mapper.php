@@ -2,6 +2,7 @@
 /**
  * Copyright (c) 2014 Bernhard Posselt <dev@bernhard-posselt.com>
  * Copyright (c) 2014 Morris Jobke <morris.jobke@gmail.com>
+ * Copyright (c) 2014 Georg Ehrke <oc.list@georgehrke.com>
  * This file is licensed under the Affero General Public License version 3 or
  * later.
  * See the COPYING-README file.
@@ -16,7 +17,7 @@ use \OCP\AppFramework\IAppContainer;
  */
 abstract class Mapper {
 
-	private $tableName;
+	protected $tableName;
 
 	/**
 	 * @param API $api Instance of the API abstraction layer
@@ -85,7 +86,7 @@ abstract class Mapper {
 		
 		$this->execute($sql, $params);
 
-		$entity->setId((int) $this->api->getInsertId($this->tableName));
+		$entity->setId((int) \OCP\DB::insertid($this->tableName));
 		return $entity;
 	}
 
@@ -107,8 +108,13 @@ abstract class Mapper {
 		// get updated fields to save, fields have to be set using a setter to
 		// be saved
 		$properties = $entity->getUpdatedFields();
+
 		// dont update the id field
 		unset($properties['id']);
+
+		if(count($properties) === 0) {
+			return;
+		}
 
 		$columns = '';
 		$params = array();
@@ -175,7 +181,7 @@ abstract class Mapper {
 	 * @return \PDOStatement the database query result
 	 */
 	protected function execute($sql, array $params=array(), $limit=null, $offset=null){
-		$query = $this->api->prepareQuery($sql, $limit, $offset);
+		$query = \OCP\DB::prepare($sql, $limit, $offset);
 		return $query->execute($params);
 	}
 
@@ -203,12 +209,15 @@ abstract class Mapper {
 	protected function findEntities($sql, array $params=array(), $limit=null, $offset=null) {
 		$result = $this->execute($sql, $params, $limit, $offset);
 
-		$entities = array();
+		$class = get_class($this);
+		$collectionName = str_replace('Mapper', 'Collection', $class);
+
+		$collection = new $collectionName();
 		while($row = $result->fetchRow()){
 			$entity = $this->mapRowToEntity($row);
-			array_push($entities, $entity);
+			$collection->add($entity);
 		}
-		return $entities;
+		return $collection;
 	}
 
 	/**

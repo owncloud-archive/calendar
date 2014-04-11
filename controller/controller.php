@@ -29,20 +29,31 @@ abstract class Controller extends \OCP\AppFramework\Controller {
 	protected $objectBusinessLayer;
 
 	/**
+	 * core api
+	 * @var \OCP\AppFramework\IApi
+	 */
+	protected $api;
+
+	/**
 	 * constructor
 	 * @param IAppContainer $app interface to the app
 	 * @param IRequest $request an instance of the request
 	 * @param CalendarBusinessLayer $calendarBusinessLayer
 	 * @param ObjectBusinessLayer $objectBusinessLayer
 	 */
-	public function __construct(IAppContainer $api, IRequest $request,
-								CalendarBusinessLayer $calendarBusinessLayer,
-								ObjectBusinessLayer $objectBusinessLayer){
+	public function __construct(IAppContainer $app, IRequest $request,
+								$calendarBusinessLayer=null, $objectBusinessLayer=null){
 
-		parent::__construct($api, $request);
+		parent::__construct($app, $request);
 
-		$this->calendarBusinessLayer = $calendarBusinessLayer;
-		$this->objectBusinessLayer = $objectBusinessLayer;
+		$this->api = $app->getCoreApi();
+
+		if($calendarBusinessLayer instanceof CalendarBusinessLayer) {
+			$this->calendarBusinessLayer = $calendarBusinessLayer;
+		}
+		if($objectBusinessLayer instanceof ObjectBusinessLayer) {
+			$this->objectBusinessLayer = $objectBusinessLayer;		
+		}
 	}
 
 	/*
@@ -76,14 +87,14 @@ abstract class Controller extends \OCP\AppFramework\Controller {
 
 		//check if text/calendar is in the text
 		//if not, return false
-		$textCalendarPosition = strpos($accept, 'text/calendar');
+		$textCalendarPosition = stripos($accept, 'text/calendar');
 		if($textCalendarPosition === false) {
 			return false;
 		}
 
 		//get posistion of application/json and application/calendar+json
-		$applicationJSONPosition = strpos($accept, 'application/json');
-		$applicationCalendarJSONPosition = strpos($accept, 'application/calendar+json');
+		$applicationJSONPosition = stripos($accept, 'application/json');
+		$applicationCalendarJSONPosition = stripos($accept, 'application/calendar+json');
 
 		if($applicationJSONPosition === false && $applicationCalendarJSONPosition === false) {
 			return true;
@@ -102,7 +113,7 @@ abstract class Controller extends \OCP\AppFramework\Controller {
 		$contentType = $this->header('content-type'); 
 
 		//check if there is some charset info
-		if(strpos($contentType, ';')) {
+		if(stripos($contentType, ';')) {
 			$explodeContentType = explode(';', $contentType);
 			$contentType = $explodeContentType[0];
 		}

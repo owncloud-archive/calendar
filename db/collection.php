@@ -224,6 +224,9 @@ abstract class Collection {
 	 * @return boolean
 	 */
 	public function inCollection(Entity $object) {
+		var_dump($object);
+		var_dump($this->objects);
+		exit;
 		return in_array($object, $this->objects);
 	}
 
@@ -342,9 +345,13 @@ abstract class Collection {
 	 * iterate gives you a pointer to the current object. be careful!
 	 * @param array of parameters
 	 */
-	public function iterate($function, $params) {
+	public function iterate($function) {
 		foreach($this->objects as &$object) {
-			$function($object, $params);
+			$function($object);
 		}
+	}
+
+	public function noDuplicates() {
+		$this->objects = array_unique($this->objects);
 	}
 }
