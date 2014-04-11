@@ -8,7 +8,7 @@
 ?>
 <div id="<?php p($_['new'] ? 'new' : 'edit') ?>calendar_dialog" title="<?php p($_['new'] ? $l->t("New calendar") : $l->t("Edit calendar")); ?>" colspan="6">
 	<span>
-		<input id="displayname_<?php p($_['calendar']['id']) ?>" type="text" value="<?php p(OCP\Util::sanitizeHTML($_['calendar']['displayname'])) ?>">
+		<input id="displayname_<?php p($_['calendar']['id']) ?>" type="text" value="<?php print_unescaped($_['calendar']['displayname']) ?>">
 		<input id="editCalendar-submit" class="primary icon-checkmark-white" type="button" data-id="<?php p($_['new'] ? "new" : $_['calendar']['id']) ?>">
 	</span>
 	<select id="calendarcolor_<?php p($_['calendar']['id']) ?>" class="colorpicker">
