@@ -104,7 +104,7 @@
 				</li>
 				<li>
 					<label class="bold"><?php p($l->t('iOS/OS X CalDAV address')); ?></label>
-					<input type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(OCP\USER::getUser()); ?>/" style="width:90%" readonly>
+					<input type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(urlencode(OCP\USER::getUser())); ?>/" style="width:90%" readonly>
 				</li>
 			</ul>
 		</div>
