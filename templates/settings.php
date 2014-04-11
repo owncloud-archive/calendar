@@ -111,7 +111,7 @@
 		<?php p($l->t('Calendar CalDAV syncing addresses')); ?> (<a href="http://owncloud.org/synchronisation/" target="_blank" class="link"><?php p($l->t('more info')); ?></a>)
 		<dl>
 		<dt><?php p($l->t('Primary address (Kontact et al)')); ?></dt>
-		<dd><input type="text" style="width: 90%;float: left;" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); p(urlencode(OCP\USER::getUser())); ?>" readonly></dd>
+		<dd><input type="text" style="width: 90%;float: left;" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>" readonly></dd>
 		<dt><?php p($l->t('iOS/OS X')); ?></dt>
 		<dd><input type="text" style="width: 90%;float: left;" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(urlencode(OCP\USER::getUser())); ?>/" readonly></dd>
 		<dt><?php p($l->t('Read only iCalendar link(s)')); ?></dt>
