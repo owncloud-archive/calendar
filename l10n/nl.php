@@ -198,6 +198,7 @@
 "View an event" => "Bekijk een gebeurtenis",
 "Category" => "Categorie",
 "No categories selected" => "Geen categorieën geselecteerd",
+"%s of %s" => "%s van %s",
 "Access Class" => "Toegangsklasse",
 "From" => "Van",
 "at" => "op",

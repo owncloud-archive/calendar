@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-10 01:46-0400\n"
-"PO-Revision-Date: 2014-04-09 23:00+0000\n"
+"POT-Creation-Date: 2014-04-11 01:46-0400\n"
+"PO-Revision-Date: 2014-04-10 15:31+0000\n"
 "Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "etkinlikler yeni takvime kaydedildi"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
-msgstr "İçeri aktarma başarısız oldu."
+msgstr "İçeri aktarma başarısız"
 
 #: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
@@ -107,7 +107,7 @@ msgstr "düzenleyebilir"
 
 #: js/calendar.js:682 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr "paylaşılabilir"
+msgstr "paylaşabilir"
 
 #: js/calendar.js:947
 msgid "ddd"
@@ -267,7 +267,7 @@ msgstr "Tem."
 
 #: js/l10n.php:80
 msgid "Aug."
-msgstr "Agu."
+msgstr "Ağu."
 
 #: js/l10n.php:80
 msgid "Sep."
@@ -599,7 +599,7 @@ msgstr "iOS/OS X CalDAV adresi"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
-msgstr "Takvimi paylaş"
+msgstr "Takvimi Paylaş"
 
 #: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
@@ -728,7 +728,7 @@ msgstr "Haftaları seç"
 
 #: templates/part.eventform.php:188 templates/part.showevent.php:217
 msgid "and the events week of year."
-msgstr "ve yılın etkinkinlikler haftası."
+msgstr "ve yılın etkinlikler haftası."
 
 #: templates/part.eventform.php:194 templates/part.showevent.php:223
 msgid "Interval"
@@ -748,7 +748,7 @@ msgstr "Paylaşılan insanlara görünürlük"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
-msgstr "Yeni bir takvim oluştur"
+msgstr "yeni bir takvim oluştur"
 
 #: templates/part.import.php:17
 msgid "Import a calendar file"
@@ -764,7 +764,7 @@ msgstr "Yeni takvimin adı"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr "Müsait ismi al !"
+msgstr "Kullanılabilir bir isim alın!"
 
 #: templates/part.import.php:45
 msgid ""
@@ -798,7 +798,7 @@ msgstr "Kullanıcı veya grupla paylaş"
 
 #: templates/part.share.php:53
 msgid "Unshare"
-msgstr "Paylaşılmayan"
+msgstr "Paylaşmayı Kaldır"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
@@ -810,7 +810,7 @@ msgstr "E-posta Gönder"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
-msgstr "Takvimle paylaş"
+msgstr "Takvim ile paylaşıldı"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"

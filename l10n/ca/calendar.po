@@ -8,13 +8,14 @@
 # jmontane <joan@montane.cat>, 2012
 # Josep Tomàs <jtomas.binsoft@gmail.com>, 2012
 # rogerc, 2011-2012
+# aseques <sacoo2@hotmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-09 01:47-0400\n"
-"PO-Revision-Date: 2014-04-09 05:47+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-04-11 01:46-0400\n"
+"PO-Revision-Date: 2014-04-10 08:50+0000\n"
+"Last-Translator: aseques <sacoo2@hotmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/owncloud/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -443,7 +444,7 @@ msgstr "Mensual"
 
 #: lib/object.php:568
 msgid "Every Weekday"
-msgstr "Cada setmana"
+msgstr "Cada dia de la setmana"
 
 #: lib/object.php:569
 msgid "Bi-Weekly"
@@ -511,7 +512,7 @@ msgstr "per data d'esdeveniments"
 
 #: lib/object.php:682
 msgid "by yearday(s)"
-msgstr "per ahir(s)"
+msgstr "per dia(es) de l'any"
 
 #: lib/object.php:683
 msgid "by weeknumber(s)"
@@ -519,7 +520,7 @@ msgstr "per número(s) de la setmana"
 
 #: lib/object.php:684
 msgid "by day and month"
-msgstr "per dia del mes"
+msgstr "per dia i mes"
 
 #: lib/sabre/backend.php:74
 msgid "Contact birthdays"
@@ -587,11 +588,11 @@ msgstr "Neteja la memòria de cau pels esdeveniments amb repetició"
 
 #: templates/calendar.php:102
 msgid "Primary CalDAV address"
-msgstr ""
+msgstr "Adreça primària de caldav"
 
 #: templates/calendar.php:106
 msgid "iOS/OS X CalDAV address"
-msgstr ""
+msgstr "Adreça CalDAV per IOS/OS X"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
@@ -827,7 +828,7 @@ msgstr "No hi ha categories seleccionades"
 #: templates/part.showevent.php:41
 #, php-format
 msgid "%s of %s"
-msgstr ""
+msgstr "%s de %s"
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
