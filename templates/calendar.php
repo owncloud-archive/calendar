@@ -100,11 +100,11 @@
 				</li>
 				<li>
 					<label class="bold"><?php p($l->t('Primary CalDAV address')); ?></label>
-					<input type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>" style="width:90%" readonly>
+					<input id="primarycaldav" type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>" style="width:90%" readonly>
 				</li>
 				<li>
 					<label class="bold"><?php p($l->t('iOS/OS X CalDAV address')); ?></label>
-					<input type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(urlencode(OCP\USER::getUser())); ?>/" style="width:90%" readonly>
+					<input id="ioscaldav" type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(urlencode(OCP\USER::getUser())); ?>/" style="width:90%" readonly>
 				</li>
 			</ul>
 		</div>
