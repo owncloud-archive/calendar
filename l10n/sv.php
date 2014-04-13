@@ -198,6 +198,7 @@
 "View an event" => "Visa en händelse",
 "Category" => "Kategori",
 "No categories selected" => "Inga kategorier valda",
+"%s of %s" => "%s av %s",
 "Access Class" => "Åtkomstklass",
 "From" => "Från",
 "at" => "på",
