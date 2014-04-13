@@ -68,3 +68,13 @@ $("#event-location:not(.ui-autocomplete-input)").live("focus", function (event) 
 		minLength: 2
 	});
 });
+$('#newcalendar_dialog #displayname_new').live('keydown', function(event){
+	if (event.which == 13){
+		$('#newcalendar_dialog #editCalendar-submit').click();
+	}
+});
+$('#editcalendar_dialog > span > input:text').live('keydown', function(event){
+	if (event.which == 13){
+		$('#editcalendar_dialog #editCalendar-submit').click();
+	}
+});
