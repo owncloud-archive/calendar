@@ -1056,7 +1056,6 @@ class OC_Calendar_Object{
 			if($valarm == null) {
 				$valarm = new OC_VObject('VALARM');
 				
-				$valarm->setString('ACTION', 'DISPLAY');
 				$valarm->setString('DESCRIPTION', 'Default Event Notification');
 				$valarm->setString('');
 				
@@ -1065,6 +1064,7 @@ class OC_Calendar_Object{
 				unset($valarm->TRIGGER);
 			}
 			
+                        $valarm->setString('ACTION', self::determineAlarmActionType($request));
 			$valarm->addProperty('TRIGGER', $alarmDuration, array('VALUE' => 'DURATION'));
 		}
 
@@ -1099,6 +1099,14 @@ class OC_Calendar_Object{
 		return $vcalendar;
 	}
 
+        private static function determineAlarmActionType($request) {
+            if(!isset($request['eventalarmaction'])) {
+                return 'DISPLAY';
+            }
+            
+            return $request['eventalarmaction'];
+        }
+        
 	private static function isAlarmSpecified($request) {
 		if(!isset($request['eventalarm'])) {
 			return false;

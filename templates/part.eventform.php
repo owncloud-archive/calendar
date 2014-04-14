@@ -59,38 +59,15 @@
 			<?php if($_['alarmTriggerType'] == "DURATION" || $_['alarmTriggerType'] == "NONE" || empty($_['alarmTriggerType'])) { ?>
 			<select style="width:140px;" name="eventalarm">
 				<option value="NONE"></option>
-				<option value="PT0S" <?php echo ($_['alarmTrigger'] == "PT0S" ? "selected=\"selected\"" : "") ?> ><?php p($l->t("Start of Event")); ?></option>
-				<option value="-PT5M" <?php echo ($_['alarmTrigger'] == "-PT5M" ? "selected=\"selected\"" : "") ?> >5 <?php p($l->t("minutes")); ?></option>
-				<option value="-PT10M" <?php echo ($_['alarmTrigger'] == "-PT10M" ? "selected=\"selected\"" : "") ?>>10 <?php p($l->t("minutes")); ?></option>
-				<option value="-PT15M" <?php echo ($_['alarmTrigger'] == "-PT15M" ? "selected=\"selected\"" : "") ?>>15 <?php p($l->t("minutes")); ?></option>
-				<option value="-PT20M" <?php echo ($_['alarmTrigger'] == "-PT20M" ? "selected=\"selected\"" : "") ?>>20 <?php p($l->t("minutes")); ?></option>
-				<option value="-PT25M" <?php echo ($_['alarmTrigger'] == "-PT25M" ? "selected=\"selected\"" : "") ?>>25 <?php p($l->t("minutes")); ?></option>
-				<option value="-PT30M" <?php echo ($_['alarmTrigger'] == "-PT30M" ? "selected=\"selected\"" : "") ?>>30 <?php p($l->t("minutes")); ?></option>
-				<option value="-PT45M" <?php echo ($_['alarmTrigger'] == "-PT45M" ? "selected=\"selected\"" : "") ?>>45 <?php p($l->t("minutes")); ?></option>
-				<option value="-PT1H" <?php echo ($_['alarmTrigger'] == "-PT1H" ? "selected=\"selected\"" : "") ?>>1 <?php p($l->t("hour")); ?></option>
-				<option value="-PT1H30M" <?php echo ($_['alarmTrigger'] == "-PT1H30M" ? "selected=\"selected\"" : "") ?>>1 <?php p($l->t("hour")); ?> 30 <?php p($l->t("minutes")); ?></option>
-				<option value="-PT2H" <?php echo ($_['alarmTrigger'] == "-PT2H" ? "selected=\"selected\"" : "") ?>>2 <?php p($l->t("hours")); ?></option>
-				<option value="-PT3H" <?php echo ($_['alarmTrigger'] == "-PT3H" ? "selected=\"selected\"" : "") ?>>3 <?php p($l->t("hours")); ?></option>
-				<option value="-PT4H" <?php echo ($_['alarmTrigger'] == "-PT4H" ? "selected=\"selected\"" : "") ?>>4 <?php p($l->t("hours")); ?></option>
-				<option value="-PT5H" <?php echo ($_['alarmTrigger'] == "-PT5H" ? "selected=\"selected\"" : "") ?>>5 <?php p($l->t("hours")); ?></option>
-				<option value="-PT6H" <?php echo ($_['alarmTrigger'] == "-PT6H" ? "selected=\"selected\"" : "") ?>>6 <?php p($l->t("hours")); ?></option>
-				<option value="-PT7H" <?php echo ($_['alarmTrigger'] == "-PT7H" ? "selected=\"selected\"" : "") ?>>7 <?php p($l->t("hours")); ?></option>
-				<option value="-PT8H" <?php echo ($_['alarmTrigger'] == "-PT8H" ? "selected=\"selected\"" : "") ?>>8 <?php p($l->t("hours")); ?></option>
-				<option value="-PT9H" <?php echo ($_['alarmTrigger'] == "-PT9H" ? "selected=\"selected\"" : "") ?>>9 <?php p($l->t("hours")); ?></option>
-				<option value="-PT10H" <?php echo ($_['alarmTrigger'] == "-PT10H" ? "selected=\"selected\"" : "") ?>>10 <?php p($l->t("hours")); ?></option>
-				<option value="-PT11H" <?php echo ($_['alarmTrigger'] == "-PT11H" ? "selected=\"selected\"" : "") ?>>11 <?php p($l->t("hours")); ?></option>
-				<option value="-PT12H" <?php echo ($_['alarmTrigger'] == "-PT12H" ? "selected=\"selected\"" : "") ?>>12 <?php p($l->t("hours")); ?></option>
-				<option value="-PT18H" <?php echo ($_['alarmTrigger'] == "-PT18H" ? "selected=\"selected\"" : "") ?>>18 <?php p($l->t("hours")); ?></option>
-				<option value="-PT24H" <?php echo ($_['alarmTrigger'] == "-PT24H" ? "selected=\"selected\"" : "") ?>>24 <?php p($l->t("hours")); ?></option>
-				<option value="-P2D" <?php echo ($_['alarmTrigger'] == "-P2D" ? "selected=\"selected\"" : "") ?>>2 <?php p($l->t("days")); ?></option>
-				<option value="-P3D" <?php echo ($_['alarmTrigger'] == "-P3D" ? "selected=\"selected\"" : "") ?>>3 <?php p($l->t("days")); ?></option>
-				<option value="-P4D" <?php echo ($_['alarmTrigger'] == "-P4D" ? "selected=\"selected\"" : "") ?>>4 <?php p($l->t("days")); ?></option>
-				<option value="-P5D" <?php echo ($_['alarmTrigger'] == "-P5D" ? "selected=\"selected\"" : "") ?>>5 <?php p($l->t("days")); ?></option>
-				<option value="-P6D" <?php echo ($_['alarmTrigger'] == "-P6D" ? "selected=\"selected\"" : "") ?>>6 <?php p($l->t("days")); ?></option>
-				<option value="-P1W" <?php echo ($_['alarmTrigger'] == "-P1W" ? "selected=\"selected\"" : "") ?>>1 <?php p($l->t("week")); ?></option>
-				<option value="-P2W" <?php echo ($_['alarmTrigger'] == "-P2W" ? "selected=\"selected\"" : "") ?>>2 <?php p($l->t("weeks")); ?></option>
-				<option value="-P3W" <?php echo ($_['alarmTrigger'] == "-P3W" ? "selected=\"selected\"" : "") ?>>3 <?php p($l->t("weeks")); ?></option>
-				<option value="-P4W" <?php echo ($_['alarmTrigger'] == "-P4W" ? "selected=\"selected\"" : "") ?>>4 <?php p($l->t("weeks")); ?></option>
+                                <?php
+                                    foreach ($_['alarmTriggerValues'] as $alarmTriggerValue => $labelData) {
+                                        $selectString = ($alarmTriggerValue == $_['alarmTrigger'] ? "selected=\"selected\"" : "");
+                                        $currentOption = "<option value=\"" . $alarmTriggerValue ."\" " . $selectString . ">" 
+                                                . $labelData[0] . " " . $l->t($labelData[1]) . "</option>";
+                                        
+                                        print_unescaped($currentOption);
+                                    }
+                                ?>
 			</select>
 			<?php
 				} else {
