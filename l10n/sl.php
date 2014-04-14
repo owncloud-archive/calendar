@@ -198,6 +198,7 @@
 "View an event" => "Poglej dogodek",
 "Category" => "Kategorija",
 "No categories selected" => "Ni izbrane kategorije",
+"%s of %s" => "%s od %s",
 "Access Class" => "Razred dostopa",
 "From" => "Od",
 "at" => "pri",

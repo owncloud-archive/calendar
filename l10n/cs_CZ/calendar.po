@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-09 01:47-0400\n"
-"PO-Revision-Date: 2014-04-09 05:47+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-04-14 01:46-0400\n"
+"PO-Revision-Date: 2014-04-14 05:00+0000\n"
+"Last-Translator: pstast <petr@stastny.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -589,7 +589,7 @@ msgstr "Vymazat paměť pro opakující se události"
 
 #: templates/calendar.php:102
 msgid "Primary CalDAV address"
-msgstr "Primární adresa protokolu CalDAV"
+msgstr "Primární adresa CalDAV"
 
 #: templates/calendar.php:106
 msgid "iOS/OS X CalDAV address"
