@@ -56,6 +56,8 @@ switch($dtstart->getDateType()) {
 		break;
 }
 
+
+$alarmTriggerValues = OC_Calendar_App::getAlarmTriggerValues();
 $alarmTrigger = "NONE";
 $alarmTriggerType = "NONE";
 $alarmAction = "DISPLAY";
@@ -269,6 +271,7 @@ $tmpl->assign('description', $description);
 $tmpl->assign('alarmTrigger', $alarmTrigger);
 $tmpl->assign('alarmTriggerType', $alarmTriggerType);
 $tmpl->assign('alarmAction', $alarmAction);
+$tmpl->assign('alarmTriggerValues', $alarmTriggerValues);
 
 $tmpl->assign('repeat', $repeat['repeat']);
 if($repeat['repeat'] != 'doesnotrepeat') {
