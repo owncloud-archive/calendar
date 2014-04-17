@@ -189,7 +189,7 @@
 "Close Dialog" => "Pencereyi Kapat",
 "Create a new event" => "Yeni bir etkinlik oluştur",
 "Create event" => "Etkinlik oluştur",
-"Share with user or group" => "Kullanıcı veya grupla paylaş",
+"Share with user or group" => "Kullanıcı veya grup ile paylaş",
 "Unshare" => "Paylaşmayı Kaldır",
 "Not shared with anyone" => "Kimseyle paylaşılmamış",
 "Send Email" => "E-posta Gönder",
