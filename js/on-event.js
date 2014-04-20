@@ -7,6 +7,12 @@ $('#caldav_url_close').live('click', function () {
 $('#caldav_url').live('mouseover', function () {
 	$('#caldav_url').select();
 });
+$('#primarycaldav').live('click', function () {
+	$('#primarycaldav').select();
+});
+$('#ioscaldav').live('click', function () {
+	$('#ioscaldav').select();
+});
 $('#editCategories').live('click', function () {
 	$(this).tipsy('hide');OC.Tags.edit('event');
 });
