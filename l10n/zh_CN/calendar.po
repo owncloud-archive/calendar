@@ -6,6 +6,7 @@
 # hanfeng <appweb.cn@gmail.com>, 2013
 # hanfeng <appweb.cn@gmail.com>, 2012
 # Dianjin Wang <1132321739qq@gmail.com>, 2012-2013
+# mozillazg <opensource.mozillazg@gmail.com>, 2014
 # Phoenix Nemo <mrphoenixlzx@gmail.com>, 2012
 # leonfeng <chaofeng111@gmail.com>, 2012
 # waterone <suiy02@gmail.com>, 2012
@@ -16,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-16 01:47-0400\n"
-"PO-Revision-Date: 2014-04-16 05:00+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-04-20 01:47-0400\n"
+"PO-Revision-Date: 2014-04-20 00:37+0000\n"
+"Last-Translator: mozillazg <opensource.mozillazg@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/owncloud/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,11 +104,11 @@ msgstr "组"
 
 #: js/calendar.js:681 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr "可以修改"
+msgstr "可编辑"
 
 #: js/calendar.js:682 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "可共享"
 
 #: js/calendar.js:947
 msgid "ddd"
@@ -423,15 +424,15 @@ msgstr "忙碌"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "显示完整事件"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "仅显示繁忙"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "隐藏事件"
 
 #: lib/object.php:565
 msgid "Does not repeat"
@@ -539,7 +540,7 @@ msgstr "日历"
 
 #: templates/calendar.php:16
 msgid "Day"
-msgstr ""
+msgstr "天"
 
 #: templates/calendar.php:16
 msgid "Week"
@@ -591,11 +592,11 @@ msgstr "清理重复事件的缓存"
 
 #: templates/calendar.php:102
 msgid "Primary CalDAV address"
-msgstr ""
+msgstr "主要的 CalDAV 地址"
 
 #: templates/calendar.php:106
 msgid "iOS/OS X CalDAV address"
-msgstr ""
+msgstr "iOS/OS X CalDAV 地址"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
@@ -623,15 +624,15 @@ msgstr "编辑日历"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "编辑事件"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "保存事件"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "删除事件"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -663,7 +664,7 @@ msgstr "来源"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "到"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -679,7 +680,7 @@ msgstr "地点"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "类别(逗号分隔)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
