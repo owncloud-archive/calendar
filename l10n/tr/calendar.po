@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-17 01:47-0400\n"
-"PO-Revision-Date: 2014-04-16 21:49+0000\n"
+"POT-Creation-Date: 2014-04-21 01:47-0400\n"
+"PO-Revision-Date: 2014-04-20 13:16+0000\n"
 "Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -36,11 +36,11 @@ msgstr "Her şey tamamen önbelleğe alınmış görünüyor"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr "Takvim yok."
+msgstr "Takvim bulunamadı."
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr "Etkinlik yok."
+msgstr "Etkinlik bulunamadı."
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
@@ -515,11 +515,11 @@ msgstr "etkinlik tarihine göre"
 
 #: lib/object.php:682
 msgid "by yearday(s)"
-msgstr "yıl gün(ler)ine göre"
+msgstr "yıl günlerine göre"
 
 #: lib/object.php:683
 msgid "by weeknumber(s)"
-msgstr "hafta sayı(lar)ına göre"
+msgstr "hafta sayılarına göre"
 
 #: lib/object.php:684
 msgid "by day and month"
@@ -756,7 +756,7 @@ msgstr "Takvim dosyasını içeri aktar"
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr "Lütfen takvim seçiniz"
+msgstr "Lütfen bir takvim seçin"
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
