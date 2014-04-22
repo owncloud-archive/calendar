@@ -190,7 +190,7 @@
 "Create a new event" => "Δημιουργήστε ένα νέο συμβάν",
 "Create event" => "Δημιουργία συμβάντος",
 "Share with user or group" => "Διαμοιρασμός με χρήστη ή ομάδα",
-"Unshare" => "Διακοπή Διαμοιρασμού",
+"Unshare" => "Διακοπή διαμοιρασμού",
 "Not shared with anyone" => "Δεν διαμοιράζεται με κανέναν",
 "Send Email" => "Αποστολή Email",
 "Shared via calendar" => "Διαμοιράστηκε μέσω ημερολογίου",
