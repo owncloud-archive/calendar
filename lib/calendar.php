@@ -54,8 +54,8 @@ class OC_Calendar_Calendar{
 		// Note, we only need to do this for the calendars owned by the
 		// user, as the shared calendars retrieved below will have their
 		// preferences loaded in OC_Calendar_Calendar::find().
-		foreach ($calendars as $calendar) {
-			self::addPreferencesToCalendarArray($calendar);
+		foreach ($calendars as $key => $calendar) {
+			$calendars[$key] = self::addPreferencesToCalendarArray($calendar);
 		}
 
 		$shared_calendars = OCP\Share::getItemsSharedWith('calendar', OC_Share_Backend_Calendar::FORMAT_CALENDAR);
@@ -69,8 +69,6 @@ class OC_Calendar_Calendar{
 		$calendars = array_merge($calendars, $shared_calendars);
 
 		foreach($calendars as $key => $calendar) {
-		    // Make sure the active property is boolean (as it may have come from a clob preference).
-		    $calendars[$key]['active'] = ($calendar['active'] == 1) ? true : false;
 		    // Remove inactive calendars if we are restricting to active calendars only.
 		    if (!is_null($active) && $active && $calendars[$key]['active'] !== true) {
 		        unset($calendars[$key]);
@@ -114,11 +112,8 @@ class OC_Calendar_Calendar{
 		}
 
 		if ($includePreferences) {
-			self::addPreferencesToCalendarArray($row);
+			$row = self::addPreferencesToCalendarArray($row);
 		}
-
-		// Make sure the active property is boolean (as it may have come from a clob preference).
-		$row['active'] = ($row['active'] == 1) ? true : false;
         
 		return $row; // Even if the user has no permissions, the row must be returned so e.g. OC_Calendar_Object::getowner() works.
 	}
@@ -190,8 +185,9 @@ class OC_Calendar_Calendar{
 	/**
 	 * @brief Adds preferences that override values in a calendar array.
 	 * @param array $calendar
+	 * @return array
 	 */
-	public static function addPreferencesToCalendarArray(&$calendar) {
+	public static function addPreferencesToCalendarArray($calendar) {
 		$userid = OCP\User::getUser();
 		$calendarid = $calendar['id'];
 		$stmt = OCP\DB::prepare( 'SELECT `key`, `value` FROM `*PREFIX*clndr_user_preferences` WHERE `userid` = ? AND `calendarid` = ?' );
@@ -214,6 +210,13 @@ class OC_Calendar_Calendar{
 		while($pref_row = $result->fetchRow()) {
 			$calendar[$pref_row['key']] = $pref_row['value'];
    		}
+
+		// Make sure the active property is boolean (as it may have come from a clob preference).
+		if (isset($calendar['active'])) {
+			$calendar['active'] = ($calendar['active'] == 1) ? true : false;
+		}
+
+		return $calendar;
 	}
 
 	/**
