@@ -198,6 +198,7 @@
 "View an event" => "Vaata üritust",
 "Category" => "Kategooria",
 "No categories selected" => "Ühtegi kategooriat pole valitud",
+"%s of %s" => "%s  %s",
 "Access Class" => "Ligipääsu klass",
 "From" => "Alates",
 "at" => "kell",
