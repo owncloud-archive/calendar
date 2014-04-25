@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-09 01:47-0400\n"
-"PO-Revision-Date: 2014-04-09 05:47+0000\n"
+"POT-Creation-Date: 2014-04-25 01:46-0400\n"
+"PO-Revision-Date: 2014-04-24 13:20+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Spanish (Chile) (http://www.transifex.com/projects/p/owncloud/language/es_CL/)\n"
 "MIME-Version: 1.0\n"
@@ -769,7 +769,7 @@ msgstr ""
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"

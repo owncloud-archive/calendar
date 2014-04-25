@@ -19,5 +19,6 @@
 "November" => "Noviembre",
 "December" => "Diciembre",
 "Download" => "Descargar",
-"Share" => "Compartir"
+"Share" => "Compartir",
+"Import" => "Importar"
 );

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-09 01:47-0400\n"
-"PO-Revision-Date: 2014-04-09 05:47+0000\n"
+"POT-Creation-Date: 2014-04-25 01:46-0400\n"
+"PO-Revision-Date: 2014-04-24 12:51+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Afrikaans (South Africa) (http://www.transifex.com/projects/p/owncloud/language/af_ZA/)\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr ""
 
 #: js/calendar.js:679
 msgid "group"
-msgstr ""
+msgstr "groep"
 
 #: js/calendar.js:681 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"

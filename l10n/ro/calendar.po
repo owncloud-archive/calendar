@@ -3,11 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# mozguletz <__sashok@mail.ru>, 2014
 # andreiacob <andrei.iacob@y7mail.com>, 2014
 # Claudiu, 2011, 2012
 # Dimon Pockemon <>, 2012
 # Eugen Mihalache <eugemjj@gmail.com>, 2012
 # g.ciprian <g.ciprian@osn.ro>, 2012
+# imina <myna_90@yahoo.com>, 2014
 # iuranemo <iuranemo@gmail.com>, 2012
 # laurentiucristescu <laur.cristescu@gmail.com>, 2012
 # Ovidiu Tache <ovidiutache@gmail.com>, 2012
@@ -15,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-19 01:47-0400\n"
-"PO-Revision-Date: 2014-04-18 11:40+0000\n"
-"Last-Translator: andreiacob <andrei.iacob@y7mail.com>\n"
+"POT-Creation-Date: 2014-04-25 01:46-0400\n"
+"PO-Revision-Date: 2014-04-24 18:30+0000\n"
+"Last-Translator: mozguletz <__sashok@mail.ru>\n"
 "Language-Team: Romanian (http://www.transifex.com/projects/p/owncloud/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -426,7 +428,7 @@ msgstr "Arata eveniment complet"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "Arată doar ocupat"
 
 #: lib/object.php:555
 msgid "Hide event"
@@ -446,7 +448,7 @@ msgstr "Săptămânal"
 
 #: lib/object.php:568
 msgid "Every Weekday"
-msgstr "În fiecare zii a săptămânii"
+msgstr "În fiecare zi a săptămânii"
 
 #: lib/object.php:569
 msgid "Bi-Weekly"
@@ -526,7 +528,7 @@ msgstr "după zi și lună"
 
 #: lib/sabre/backend.php:74
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Zile de naștere a persoanelor"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
