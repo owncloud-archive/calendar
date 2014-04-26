@@ -23,6 +23,7 @@
 "Birthday" => "生日",
 "Personal" => "個人",
 "Work" => "工作",
+"Date" => "日期",
 "Download" => "下載",
 "Edit" => "編輯",
 "Delete" => "刪除",
