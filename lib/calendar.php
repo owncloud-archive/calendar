@@ -111,10 +111,10 @@ class OC_Calendar_Calendar{
 			$row['permissions'] = OCP\PERMISSION_ALL;
 		}
 
-		if ($includePreferences) {
+		if ($includePreferences && (isset($row['permissions']) && ($row['permissions'] & OCP\PERMISSION_READ))) {
 			$row = self::addPreferencesToCalendarArray($row);
 		}
-        
+
 		return $row; // Even if the user has no permissions, the row must be returned so e.g. OC_Calendar_Object::getowner() works.
 	}
 
