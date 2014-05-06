@@ -93,15 +93,10 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 */
 	public function createCalendar($principalUri,$calendarUri, array $properties) {
 		
-		$values = array(
-			'principaluri' => $principalUri,
-			'uri' => $calendarUri,
-			'ctag' => 1,
-		);
+		$values = array();
 
 		// Default value
 		$sccs = '{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set';
-		$fieldNames[] = 'components';
 		if (!isset($properties[$sccs])) {
 			$values['components'] = 'VEVENT,VTODO';
 		} else {
