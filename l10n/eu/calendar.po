@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# alexgabilondo <alexgabi@openmailbox.org>, 2014
 # asieriko <asieriko@gmail.com>, 2013-2014
 # asieriko <asieriko@gmail.com>, 2012
 # asieriko <asieriko@gmail.com>, 2011
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-04 01:47-0400\n"
-"PO-Revision-Date: 2014-05-03 06:11+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-05-07 01:47-0400\n"
+"PO-Revision-Date: 2014-05-06 20:40+0000\n"
+"Last-Translator: alexgabilondo <alexgabi@openmailbox.org>\n"
 "Language-Team: Basque (http://www.transifex.com/projects/p/owncloud/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,51 +82,51 @@ msgstr "Baliogabeko eskaera"
 msgid "Calendar"
 msgstr "Egutegia"
 
-#: js/calendar.js:218
+#: js/calendar.js:223
 msgid "Deletion failed"
 msgstr "Ezabaketak huts egin du"
 
-#: js/calendar.js:309
+#: js/calendar.js:314
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "[ yyyy]  MMMM ddd d{ - yyyy MMMM [ddd d] }"
 
-#: js/calendar.js:311
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "[ yyyy]  MMMM ddd d HH:mm{ - yyyy MMMM [ddd d] HH:mm}"
 
-#: js/calendar.js:679
+#: js/calendar.js:684
 msgid "group"
 msgstr "taldea"
 
-#: js/calendar.js:681 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:686 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "editatu dezake"
 
-#: js/calendar.js:682 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:687 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "elkarbana dezake"
 
-#: js/calendar.js:947
+#: js/calendar.js:952
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:948
+#: js/calendar.js:953
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:949
+#: js/calendar.js:954
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:952
+#: js/calendar.js:957
 msgid "MMMM yyyy"
 msgstr "yyyy MMMM"
 
-#: js/calendar.js:954
+#: js/calendar.js:959
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:956
+#: js/calendar.js:961
 msgid "dddd, MMM d, yyyy"
 msgstr "yyyy, MMM d, dddd"
 
@@ -587,11 +588,11 @@ msgstr "Ezabatu gertaera errepikakorren cachea"
 
 #: templates/calendar.php:102
 msgid "Primary CalDAV address"
-msgstr ""
+msgstr "CalDAV helbide nagusia"
 
 #: templates/calendar.php:106
 msgid "iOS/OS X CalDAV address"
-msgstr ""
+msgstr "iOS/OS X CalDAV helbidea"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
@@ -685,60 +686,60 @@ msgstr "Editatu kategoriak"
 msgid "Description"
 msgstr "Deskribapena"
 
-#: templates/part.eventform.php:73
+#: templates/part.eventform.php:74
 msgid "Export event"
 msgstr "Esportatu gertaera"
 
-#: templates/part.eventform.php:80 templates/part.showevent.php:109
+#: templates/part.eventform.php:82 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "Errepikatu"
 
-#: templates/part.eventform.php:87 templates/part.showevent.php:116
+#: templates/part.eventform.php:89 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "Aurreratua"
 
-#: templates/part.eventform.php:131 templates/part.showevent.php:160
+#: templates/part.eventform.php:133 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "Hautatu asteko egunak"
 
-#: templates/part.eventform.php:144 templates/part.eventform.php:157
+#: templates/part.eventform.php:146 templates/part.eventform.php:159
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "Hautatu egunak"
 
-#: templates/part.eventform.php:149 templates/part.showevent.php:178
+#: templates/part.eventform.php:151 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "eta gertaeraren urteko eguna."
 
-#: templates/part.eventform.php:162 templates/part.showevent.php:191
+#: templates/part.eventform.php:164 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "eta gertaeraren hilabeteko eguna."
 
-#: templates/part.eventform.php:170 templates/part.showevent.php:199
+#: templates/part.eventform.php:172 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "Hautatu hilabeteak"
 
-#: templates/part.eventform.php:183 templates/part.showevent.php:212
+#: templates/part.eventform.php:185 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "Hautatu asteak"
 
-#: templates/part.eventform.php:188 templates/part.showevent.php:217
+#: templates/part.eventform.php:190 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "eta gertaeraren urteko astea."
 
-#: templates/part.eventform.php:194 templates/part.showevent.php:223
+#: templates/part.eventform.php:196 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "Tartea"
 
-#: templates/part.eventform.php:200 templates/part.showevent.php:229
+#: templates/part.eventform.php:202 templates/part.showevent.php:229
 msgid "End"
 msgstr "Amaiera"
 
-#: templates/part.eventform.php:213 templates/part.showevent.php:242
+#: templates/part.eventform.php:215 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "errepikapenak"
 
-#: templates/part.eventform.php:232
+#: templates/part.eventform.php:234
 msgid "Visibility to people shared with"
 msgstr "Bistaratzea elkarbanatutako pertsonekin"
 
@@ -827,7 +828,7 @@ msgstr "Ez da kategoriarik hautatu"
 #: templates/part.showevent.php:41
 #, php-format
 msgid "%s of %s"
-msgstr ""
+msgstr "%s / %s"
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
