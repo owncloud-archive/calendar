@@ -8,6 +8,7 @@
 # Dmitry <linuxsquirrel.dev@gmail.com>, 2013
 # jekader <jekader@gmail.com>, 2013
 # jekader <jekader@gmail.com>, 2011-2012
+# tukos <kalyuzhniy@gmail.com>, 2014
 # Mihail Vasiliev <mickvav@gmail.com>, 2012
 # Nick Homolibere <homolibere@gmail.com>, 2012
 # rasperepodvipodvert <rasperepodvipodvert@gmail.com>, 2012
@@ -23,9 +24,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-04 01:47-0400\n"
-"PO-Revision-Date: 2014-05-03 06:10+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-05-10 01:47-0400\n"
+"PO-Revision-Date: 2014-05-09 10:50+0000\n"
+"Last-Translator: tukos <kalyuzhniy@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/owncloud/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -92,51 +93,51 @@ msgstr "Неверный запрос"
 msgid "Calendar"
 msgstr "Календарь"
 
-#: js/calendar.js:218
+#: js/calendar.js:223
 msgid "Deletion failed"
 msgstr "Удаление не удалось"
 
-#: js/calendar.js:309
+#: js/calendar.js:314
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:311
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:679
+#: js/calendar.js:684
 msgid "group"
 msgstr "группа"
 
-#: js/calendar.js:681 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:686 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "может редактировать"
 
-#: js/calendar.js:682 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:687 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "можно дать доступ"
 
-#: js/calendar.js:947
+#: js/calendar.js:952
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:948
+#: js/calendar.js:953
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:949
+#: js/calendar.js:954
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:952
+#: js/calendar.js:957
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:954
+#: js/calendar.js:959
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:956
+#: js/calendar.js:961
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -598,11 +599,11 @@ msgstr "Очистить кэш повторяющихся событий"
 
 #: templates/calendar.php:102
 msgid "Primary CalDAV address"
-msgstr ""
+msgstr "Основной адрес синхронизации CalDAV"
 
 #: templates/calendar.php:106
 msgid "iOS/OS X CalDAV address"
-msgstr ""
+msgstr "Адрес синхронизации iOS/OS X CalDAV"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
@@ -696,60 +697,60 @@ msgstr "Редактировать категории"
 msgid "Description"
 msgstr "Описание"
 
-#: templates/part.eventform.php:73
+#: templates/part.eventform.php:74
 msgid "Export event"
 msgstr "Экспортировать событие"
 
-#: templates/part.eventform.php:80 templates/part.showevent.php:109
+#: templates/part.eventform.php:82 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "Повтор"
 
-#: templates/part.eventform.php:87 templates/part.showevent.php:116
+#: templates/part.eventform.php:89 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "Дополнительно"
 
-#: templates/part.eventform.php:131 templates/part.showevent.php:160
+#: templates/part.eventform.php:133 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "Выбрать дни недели"
 
-#: templates/part.eventform.php:144 templates/part.eventform.php:157
+#: templates/part.eventform.php:146 templates/part.eventform.php:159
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "Выбрать дни"
 
-#: templates/part.eventform.php:149 templates/part.showevent.php:178
+#: templates/part.eventform.php:151 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "и день года события"
 
-#: templates/part.eventform.php:162 templates/part.showevent.php:191
+#: templates/part.eventform.php:164 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "и день месяца события"
 
-#: templates/part.eventform.php:170 templates/part.showevent.php:199
+#: templates/part.eventform.php:172 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "Выбрать месяцы"
 
-#: templates/part.eventform.php:183 templates/part.showevent.php:212
+#: templates/part.eventform.php:185 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "Выбрать недели"
 
-#: templates/part.eventform.php:188 templates/part.showevent.php:217
+#: templates/part.eventform.php:190 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "и номер недели события"
 
-#: templates/part.eventform.php:194 templates/part.showevent.php:223
+#: templates/part.eventform.php:196 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "Интервал"
 
-#: templates/part.eventform.php:200 templates/part.showevent.php:229
+#: templates/part.eventform.php:202 templates/part.showevent.php:229
 msgid "End"
 msgstr "Окончание"
 
-#: templates/part.eventform.php:213 templates/part.showevent.php:242
+#: templates/part.eventform.php:215 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "повторений"
 
-#: templates/part.eventform.php:232
+#: templates/part.eventform.php:234
 msgid "Visibility to people shared with"
 msgstr "Видимость для тех, кто имеет доступ"
 

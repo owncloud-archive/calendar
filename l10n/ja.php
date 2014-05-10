@@ -198,6 +198,7 @@
 "View an event" => "イベントを閲覧",
 "Category" => "カテゴリー",
 "No categories selected" => "カテゴリが選択されていません",
+"%s of %s" => "%s の %s",
 "Access Class" => "公開設定",
 "From" => "開始",
 "at" => "at",
