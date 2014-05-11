@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-04 01:47-0400\n"
-"PO-Revision-Date: 2014-05-03 06:10+0000\n"
+"POT-Creation-Date: 2014-05-11 01:47-0400\n"
+"PO-Revision-Date: 2014-05-11 05:01+0000\n"
 "Last-Translator: bobie <maciej.przybecki@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/owncloud/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -85,51 +85,51 @@ msgstr "Nieprawidłowe żądanie"
 msgid "Calendar"
 msgstr "Kalendarz"
 
-#: js/calendar.js:218
+#: js/calendar.js:223
 msgid "Deletion failed"
 msgstr "Usunięcie nie powiodło się"
 
-#: js/calendar.js:309
+#: js/calendar.js:314
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ rrrr]{ - [ddd d] MMMM rrrr}"
 
-#: js/calendar.js:311
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ rrrr] GG:mm{ - [ ddd d MMMM rrrr] GG:mm}"
 
-#: js/calendar.js:679
+#: js/calendar.js:684
 msgid "group"
 msgstr "grupa"
 
-#: js/calendar.js:681 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:686 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "może edytować"
 
-#: js/calendar.js:682 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:687 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "może współdzielić"
 
-#: js/calendar.js:947
+#: js/calendar.js:952
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:948
+#: js/calendar.js:953
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:949
+#: js/calendar.js:954
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:952
+#: js/calendar.js:957
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:954
+#: js/calendar.js:959
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:956
+#: js/calendar.js:961
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -689,60 +689,60 @@ msgstr "Edytuj kategorie"
 msgid "Description"
 msgstr "Opis"
 
-#: templates/part.eventform.php:73
+#: templates/part.eventform.php:74
 msgid "Export event"
 msgstr "Wyeksportuj zdarzenie"
 
-#: templates/part.eventform.php:80 templates/part.showevent.php:109
+#: templates/part.eventform.php:82 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "Powtarzaj"
 
-#: templates/part.eventform.php:87 templates/part.showevent.php:116
+#: templates/part.eventform.php:89 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "Zaawansowane"
 
-#: templates/part.eventform.php:131 templates/part.showevent.php:160
+#: templates/part.eventform.php:133 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "Wybierz dni powszednie"
 
-#: templates/part.eventform.php:144 templates/part.eventform.php:157
+#: templates/part.eventform.php:146 templates/part.eventform.php:159
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "Wybierz dni"
 
-#: templates/part.eventform.php:149 templates/part.showevent.php:178
+#: templates/part.eventform.php:151 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "oraz wydarzenia w trakcie roku."
 
-#: templates/part.eventform.php:162 templates/part.showevent.php:191
+#: templates/part.eventform.php:164 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "oraz wydarzenia w trakcie miesiąca."
 
-#: templates/part.eventform.php:170 templates/part.showevent.php:199
+#: templates/part.eventform.php:172 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "Wybierz miesiące"
 
-#: templates/part.eventform.php:183 templates/part.showevent.php:212
+#: templates/part.eventform.php:185 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "Wybierz tygodnie"
 
-#: templates/part.eventform.php:188 templates/part.showevent.php:217
+#: templates/part.eventform.php:190 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "oraz wydarzenia w trakcie roku."
 
-#: templates/part.eventform.php:194 templates/part.showevent.php:223
+#: templates/part.eventform.php:196 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "Odstęp"
 
-#: templates/part.eventform.php:200 templates/part.showevent.php:229
+#: templates/part.eventform.php:202 templates/part.showevent.php:229
 msgid "End"
 msgstr "Koniec"
 
-#: templates/part.eventform.php:213 templates/part.showevent.php:242
+#: templates/part.eventform.php:215 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "wystąpienia"
 
-#: templates/part.eventform.php:232
+#: templates/part.eventform.php:234
 msgid "Visibility to people shared with"
 msgstr "Widoczność współdzielona z"
 
