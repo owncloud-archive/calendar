@@ -1,5 +1,12 @@
 <?php $TRANSLATIONS = array(
 "can edit" => "ایڈٹ کر سکے",
+"Sunday" => "اتوار",
+"Monday" => "سوموار",
+"Tuesday" => "منگل",
+"Wednesday" => "بدھ",
+"Thursday" => "جمعرات",
+"Friday" => "جمعہ",
+"Saturday" => "ہفتہ",
 "January" => "جنوری",
 "February" => "فرورئ",
 "March" => "مارچ",
@@ -13,6 +20,7 @@
 "November" => "نومبر",
 "December" => "دسمبر",
 "Personal" => "ذاتی",
+"Share" => "تقسیم",
 "Edit categories" => "زمرہ جات کی تدوین کریں",
 "Advanced" => "ایڈوانسڈ",
 "Unshare" => "شئیرنگ ختم کریں"
