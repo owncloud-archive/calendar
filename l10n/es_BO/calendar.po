@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
 "POT-Creation-Date: 2014-05-17 01:46-0400\n"
-"PO-Revision-Date: 2014-05-16 15:33+0000\n"
-"Last-Translator: I Robot\n"
-"Language-Team: Urdu (Pakistan) (http://www.transifex.com/projects/p/owncloud/language/ur_PK/)\n"
+"PO-Revision-Date: 2011-09-03 16:52+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish (Bolivia) (http://www.transifex.com/projects/p/owncloud/language/es_BO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ur_PK\n"
+"Language: es_BO\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ajax/cache/status.php:19
@@ -94,7 +94,7 @@ msgstr ""
 
 #: js/calendar.js:686 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr "ایڈٹ کر سکے"
+msgstr ""
 
 #: js/calendar.js:687 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
@@ -126,31 +126,31 @@ msgstr ""
 
 #: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
-msgstr "اتوار"
+msgstr ""
 
 #: js/l10n.php:77 lib/object.php:604 templates/calendar.php:92
 msgid "Monday"
-msgstr "سوموار"
+msgstr ""
 
 #: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
-msgstr "منگل"
+msgstr ""
 
 #: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
-msgstr "بدھ"
+msgstr ""
 
 #: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
-msgstr "جمعرات"
+msgstr ""
 
 #: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
-msgstr "جمعہ"
+msgstr ""
 
 #: js/l10n.php:77 lib/object.php:609 templates/calendar.php:94
 msgid "Saturday"
-msgstr "ہفتہ"
+msgstr ""
 
 #: js/l10n.php:78
 msgid "Sun."
@@ -182,51 +182,51 @@ msgstr ""
 
 #: js/l10n.php:79 lib/object.php:660
 msgid "January"
-msgstr "جنوری"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:661
 msgid "February"
-msgstr "فرورئ"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:662
 msgid "March"
-msgstr "مارچ"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:663
 msgid "April"
-msgstr "اپریل"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:664
 msgid "May"
-msgstr "مئی"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:665
 msgid "June"
-msgstr "جون"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:666
 msgid "July"
-msgstr "جولائی"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:667
 msgid "August"
-msgstr "اگست"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:668
 msgid "September"
-msgstr "ستمبر"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:669
 msgid "October"
-msgstr "اکتوبر"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:670
 msgid "November"
-msgstr "نومبر"
+msgstr ""
 
 #: js/l10n.php:79 lib/object.php:671
 msgid "December"
-msgstr "دسمبر"
+msgstr ""
 
 #: js/l10n.php:80
 msgid "Jan."
@@ -362,7 +362,7 @@ msgstr ""
 
 #: lib/app.php:132 lib/calendar.php:142
 msgid "Personal"
-msgstr "ذاتی"
+msgstr ""
 
 #: lib/app.php:133
 msgid "Projects"
@@ -602,7 +602,7 @@ msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
-msgstr "حذف کریں"
+msgstr ""
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
@@ -642,7 +642,7 @@ msgstr ""
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr "تقسیم"
+msgstr ""
 
 #: templates/part.eventform.php:15
 msgid "Title of the Event"
@@ -674,7 +674,7 @@ msgstr ""
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
-msgstr "زمرہ جات کی تدوین کریں"
+msgstr ""
 
 #: templates/part.eventform.php:71 templates/part.showevent.php:99
 msgid "Description"
@@ -690,7 +690,7 @@ msgstr ""
 
 #: templates/part.eventform.php:89 templates/part.showevent.php:116
 msgid "Advanced"
-msgstr "ایڈوانسڈ"
+msgstr ""
 
 #: templates/part.eventform.php:133 templates/part.showevent.php:160
 msgid "Select weekdays"
@@ -789,7 +789,7 @@ msgstr ""
 
 #: templates/part.share.php:53
 msgid "Unshare"
-msgstr "شئیرنگ ختم کریں"
+msgstr ""
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"

@@ -20,6 +20,7 @@
 "November" => "نومبر",
 "December" => "دسمبر",
 "Personal" => "ذاتی",
+"Delete" => "حذف کریں",
 "Share" => "تقسیم",
 "Edit categories" => "زمرہ جات کی تدوین کریں",
 "Advanced" => "ایڈوانسڈ",
