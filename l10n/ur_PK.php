@@ -1,4 +1,5 @@
 <?php $TRANSLATIONS = array(
+"group" => "مجموعہ",
 "can edit" => "ایڈٹ کر سکے",
 "Sunday" => "اتوار",
 "Monday" => "سوموار",
@@ -22,7 +23,9 @@
 "Personal" => "ذاتی",
 "Delete" => "حذف کریں",
 "Share" => "تقسیم",
+"Location" => "مقام",
 "Edit categories" => "زمرہ جات کی تدوین کریں",
 "Advanced" => "ایڈوانسڈ",
-"Unshare" => "شئیرنگ ختم کریں"
+"Unshare" => "شئیرنگ ختم کریں",
+"To" => "طرف"
 );
