@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-11 01:47-0400\n"
-"PO-Revision-Date: 2014-05-11 05:01+0000\n"
+"POT-Creation-Date: 2014-05-20 01:46-0400\n"
+"PO-Revision-Date: 2014-05-19 15:03+0000\n"
 "Last-Translator: volkangezer <volkangezer@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/owncloud/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "Dosya ya hiçbir etkinlik içermiyor ya da bütün etkinlikler takvimini
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
-msgstr "etkinlikler yeni takvime kaydedildi"
+msgstr "etkinlik yeni takvime kaydedildi"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
@@ -66,7 +66,7 @@ msgstr "İçeri aktarma başarısız"
 
 #: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
-msgstr "etkinlikler takviminize kaydedildi"
+msgstr "etkinlik takviminize kaydedildi"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -387,7 +387,7 @@ msgstr "İş"
 
 #: lib/app.php:423
 msgid "by"
-msgstr "hazırlayan"
+msgstr "oluşturan"
 
 #: lib/app.php:486
 msgid "unnamed"
@@ -764,7 +764,7 @@ msgstr "Yeni takvimin adı"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr "Kullanılabilir bir isim alın!"
+msgstr "Mümkün olan bir isim alın!"
 
 #: templates/part.import.php:45
 msgid ""
@@ -810,7 +810,7 @@ msgstr "E-posta Gönder"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
-msgstr "Takvim ile paylaşıldı"
+msgstr "Takvim aracılığıyla paylaşıldı"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
