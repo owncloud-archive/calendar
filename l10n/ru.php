@@ -198,6 +198,7 @@
 "View an event" => "Показать событие",
 "Category" => "Категория",
 "No categories selected" => "Категории не выбраны",
+"%s of %s" => "%s из %s",
 "Access Class" => "Уровень доступа",
 "From" => "От",
 "at" => "на",

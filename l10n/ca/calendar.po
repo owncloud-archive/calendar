@@ -7,15 +7,16 @@
 # gosgroc <gosgroc@gmail.com>, 2013
 # jmontane <joan@montane.cat>, 2012
 # Josep Tomàs <jtomas.binsoft@gmail.com>, 2012
+# Josep Torné <josep@substantiu.com>, 2014
 # rogerc, 2011-2012
 # aseques <sacoo2@hotmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-11 01:47-0400\n"
-"PO-Revision-Date: 2014-05-11 05:01+0000\n"
-"Last-Translator: aseques <sacoo2@hotmail.com>\n"
+"POT-Creation-Date: 2014-05-24 01:46-0400\n"
+"PO-Revision-Date: 2014-05-23 12:23+0000\n"
+"Last-Translator: Josep Torné <josep@substantiu.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/owncloud/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +72,7 @@ msgstr "Nova zona horària:"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
-msgstr "La zona horària ha canviat"
+msgstr "S'ha canviat la zona horària "
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
@@ -580,11 +581,11 @@ msgstr "Comença la setmana en "
 
 #: templates/calendar.php:98
 msgid "Cache"
-msgstr "Memòria de cau"
+msgstr "Memòria cau"
 
 #: templates/calendar.php:99
 msgid "Clear cache for repeating events"
-msgstr "Neteja la memòria de cau pels esdeveniments amb repetició"
+msgstr "Neteja la memòria cau pels esdeveniments amb repetició"
 
 #: templates/calendar.php:102
 msgid "Primary CalDAV address"
