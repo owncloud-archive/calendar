@@ -325,7 +325,7 @@ class OC_Calendar_Calendar{
 	 * @return string
 	 */
 	public static function extractUserID($principaluri) {
-		list($prefix,$userid) = Sabre_DAV_URLUtil::splitPath($principaluri);
+		list($prefix,$userid) = \Sabre\DAV\URLUtil::splitPath($principaluri);
 		return $userid;
 	}
 
