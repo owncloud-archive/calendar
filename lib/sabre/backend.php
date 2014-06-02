@@ -68,6 +68,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 					$ctag = max($ctag, $tmp);
 				}
 			}
+			$ctag++;
 			$calendars[] = array(
 				'id' => 'contact_birthdays',
 				'uri' => 'contact_birthdays',
@@ -280,7 +281,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 					$data[] = $this->OCAddETag(array(
 						'id' => 0,
 						'calendarid' => 'contact_birthdays',
-						'uri' => $addressBook->getBackend()->name.'::'.$addressBook->getId().'::'.$contact->getId(),
+						'uri' => $addressBook->getBackend()->name.'::'.$addressBook->getId().'::'.$contact->getId().'.ics',
 						'lastmodified' => $contact->lastModified(),
 						'summary' => $vevent->SUMMARY,
 						'calendardata' => $vevent->serialize()
@@ -321,7 +322,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 				return $this->OCAddETag(array(
 					'id' => 0,
 					'calendarid' => 'contact_birthdays',
-					'uri' => $contact->getBackend()->name.'::'.$contact->getParent()->getId().'::'.$contact->getId(),
+					'uri' => $contact->getBackend()->name.'::'.$contact->getParent()->getId().'::'.$contact->getId().'.ics',
 					'lastmodified' => $contact->lastModified(),
 					'calendardata' => $vevent->serialize()
 				));
