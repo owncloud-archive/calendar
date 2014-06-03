@@ -38,7 +38,7 @@ class OC_Connector_Sabre_CalDAV_CalendarRoot extends \Sabre\CalDAV\CalendarRootN
 	*/
 	public function getChildForPrincipal(array $principal) {
 
-		return new OC_Connector_Sabre_CalDAV_UserCalendars($this->principalBackend, $this->caldavBackend, $principal['uri']);
+		return new OC_Connector_Sabre_CalDAV_UserCalendars($this->caldavBackend, $principal['uri']);
 
 	}
 
