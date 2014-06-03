@@ -127,7 +127,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:862
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr "MMM d[ jjjj]{ '–'[ MMM] d jjjj}"
+msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:864
 msgid "dddd, MMM d, yyyy"
