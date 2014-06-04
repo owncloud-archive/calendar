@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-27 01:46-0400\n"
-"PO-Revision-Date: 2014-05-26 22:21+0000\n"
+"POT-Creation-Date: 2014-06-04 01:46-0400\n"
+"PO-Revision-Date: 2014-06-03 17:41+0000\n"
 "Last-Translator: mbouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician (http://www.transifex.com/projects/p/owncloud/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -92,97 +92,97 @@ msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:684
+#: js/calendar.js:729
 msgid "group"
 msgstr "grupo"
 
-#: js/calendar.js:686 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:731 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "pode editar"
 
-#: js/calendar.js:687 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:732 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "pode compartir"
 
-#: js/calendar.js:952
+#: js/calendar.js:1000
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:953
+#: js/calendar.js:1001
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:954
+#: js/calendar.js:1002
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:957
+#: js/calendar.js:1005
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:959
+#: js/calendar.js:1007
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:961
+#: js/calendar.js:1009
 msgid "dddd, MMM d, yyyy"
-msgstr "dddd, MMM d,yyyy"
+msgstr "dddd, MMM d, yyyy"
 
 #: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
-msgstr "Domingo"
+msgstr "domingo"
 
 #: js/l10n.php:77 lib/object.php:604 templates/calendar.php:92
 msgid "Monday"
-msgstr "Luns"
+msgstr "luns"
 
 #: js/l10n.php:77 lib/object.php:605
 msgid "Tuesday"
-msgstr "Martes"
+msgstr "martes"
 
 #: js/l10n.php:77 lib/object.php:606
 msgid "Wednesday"
-msgstr "Mércores"
+msgstr "mércores"
 
 #: js/l10n.php:77 lib/object.php:607
 msgid "Thursday"
-msgstr "Xoves"
+msgstr "xoves"
 
 #: js/l10n.php:77 lib/object.php:608
 msgid "Friday"
-msgstr "Venres"
+msgstr "venres"
 
 #: js/l10n.php:77 lib/object.php:609 templates/calendar.php:94
 msgid "Saturday"
-msgstr "Sábado"
+msgstr "sábado"
 
 #: js/l10n.php:78
 msgid "Sun."
-msgstr "Dom."
+msgstr "dom."
 
 #: js/l10n.php:78
 msgid "Mon."
-msgstr "Lun."
+msgstr "lun."
 
 #: js/l10n.php:78
 msgid "Tue."
-msgstr "Mar."
+msgstr "mar."
 
 #: js/l10n.php:78
 msgid "Wed."
-msgstr "Mér."
+msgstr "mér."
 
 #: js/l10n.php:78
 msgid "Thu."
-msgstr "Xov."
+msgstr "xov."
 
 #: js/l10n.php:78
 msgid "Fri."
-msgstr "Ven."
+msgstr "ven."
 
 #: js/l10n.php:78
 msgid "Sat."
-msgstr "Sáb."
+msgstr "sáb."
 
 #: js/l10n.php:79 lib/object.php:660
 msgid "January"
@@ -434,7 +434,7 @@ msgstr "Non se repite"
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr "Diariamente"
+msgstr "A diario"
 
 #: lib/object.php:567
 msgid "Weekly"
@@ -466,15 +466,15 @@ msgstr "por acontecementos"
 
 #: lib/object.php:583
 msgid "by date"
-msgstr "por data"
+msgstr "pola data"
 
 #: lib/object.php:593
 msgid "by monthday"
-msgstr "por día do mes"
+msgstr "polo día do mes"
 
 #: lib/object.php:594
 msgid "by weekday"
-msgstr "por día da semana"
+msgstr "polo día da semana"
 
 #: lib/object.php:620
 msgid "events week of month"
@@ -506,21 +506,21 @@ msgstr "último"
 
 #: lib/object.php:681
 msgid "by events date"
-msgstr "por data das actividades"
+msgstr "pola data das actividades"
 
 #: lib/object.php:682
 msgid "by yearday(s)"
-msgstr "por dia(s) do ano"
+msgstr "polo(s) dia(s) do ano"
 
 #: lib/object.php:683
 msgid "by weeknumber(s)"
-msgstr "por número(s) de semana"
+msgstr "polos(s) número(s) de semana"
 
 #: lib/object.php:684
 msgid "by day and month"
 msgstr "por día e mes"
 
-#: lib/sabre/backend.php:74
+#: lib/sabre/backend.php:75
 msgid "Contact birthdays"
 msgstr "Aniversarios dos contactos"
 
@@ -658,7 +658,7 @@ msgstr "desde"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr "a"
+msgstr "ata"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -698,12 +698,12 @@ msgstr "Avanzado"
 
 #: templates/part.eventform.php:133 templates/part.showevent.php:160
 msgid "Select weekdays"
-msgstr "Seleccionar días da semana"
+msgstr "Seleccionar os días da semana"
 
 #: templates/part.eventform.php:146 templates/part.eventform.php:159
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
-msgstr "Seleccionar días"
+msgstr "Seleccionar os días"
 
 #: templates/part.eventform.php:151 templates/part.showevent.php:178
 msgid "and the events day of year."
@@ -715,11 +715,11 @@ msgstr "e as actividades diarias do mes."
 
 #: templates/part.eventform.php:172 templates/part.showevent.php:199
 msgid "Select months"
-msgstr "Seleccionar meses"
+msgstr "Seleccionar os meses"
 
 #: templates/part.eventform.php:185 templates/part.showevent.php:212
 msgid "Select weeks"
-msgstr "Seleccionar semanas"
+msgstr "Seleccionar as semanas"
 
 #: templates/part.eventform.php:190 templates/part.showevent.php:217
 msgid "and the events week of year."
