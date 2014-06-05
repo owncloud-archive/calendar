@@ -114,3 +114,4 @@
 <div id="fullcalendar"><div id="loading" class="icon-loading"></div></div>
 <div id="dialog_holder"></div>
 <div id="appsettings" class="popup topright hidden"></div>
+<input type="hidden" name="allowShareWithLink" id="allowShareWithLink" value="<?php p($_['allowShareWithLink']) ?>" />

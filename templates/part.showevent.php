@@ -1,15 +1,50 @@
-<div id="event" title="<?php p($l->t("View an event"));?>">
+<?php if (isset($_['link_shared_event'])) { ?>
+<header id="linksharedinfo">
+		<div class="header-right">
+			<span id="details"><?php p($l->t('shared by %s', array($_['link_shared_event']['uid_owner']))) ?></span>
+		</div>
+		<a href="<?php print_unescaped(link_to('', 'index.php')); ?>" title="" id="owncloud"><img class="svg"
+			src="<?php print_unescaped(image_path('', 'logo-wide.svg')); ?>" alt="<?php p($theme->getName()); ?>"
+		/></a>
+		<div id="logo-claim" style="display:none;"><?php p($theme->getLogoClaim()); ?></div>
+		<div><?php p($l->t('Event')) ?> &quot;<?php p($_['link_shared_event']['item_target'])?>&quot;; <?php p($l->t('download or use in your calendar application:'))?> <a class="download-link" href="<?php echo $_['link_shared_event_url']; ?>&amp;download"><?php p($l->t('Download'))?></a></div>
+</header>
+<div class="settings timezonesettings">
+	<label for="timezone" title="<?php p($l->t('Timezone settings')); ?>"><?php p($l->t('Timezone'))?></label>
+	<select id="timezone" name="timezone">
+	<?php
+	$continent = '';
+	foreach($_['timezones'] as $timezone):
+		$ex=explode('/', $timezone, 2);//obtain continent,city
+		if (!isset($ex[1])) {
+			$ex[1] = $ex[0];
+			$ex[0] = "Other";
+		}
+		if ($continent!=$ex[0]):
+			if ($continent!="") print_unescaped('</optgroup>');
+			print_unescaped('<optgroup label="'.OC_Util::sanitizeHTML($ex[0]).'">');
+		endif;
+		$city=strtr($ex[1], '_', ' ');
+		$continent=$ex[0];
+		print_unescaped('<option value="'.OC_Util::sanitizeHTML($timezone).'"'.($_['timezone'] == $timezone?' selected="selected"':'').'>'.OC_Util::sanitizeHTML($city).'</option>');
+	endforeach;?>
+	</select>
+</div>
+<?php } ?>
+<div id="event" class="event <?php if(isset($_['link_shared_event'])): ?>link-shared<?php endif; ?>" title="<?php p($l->t("View an event"));?>">
+<?php if (!isset($_['link_shared_event'])): ?>
 <ul>
 	<li><a href="#tabs-1"><?php p($l->t('Eventinfo')); ?></a></li>
 	<li><a href="#tabs-2"><?php p($l->t('Repeating')); ?></a></li>
 	<!--<li><a href="#tabs-3"><?php p($l->t('Alarm')); ?></a></li>
 	<li><a href="#tabs-4"><?php p($l->t('Attendees')); ?></a></li>-->
 </ul>
+<?php endif; ?>
 <div id="tabs-1">
 	<table width="100%">
 		<tr>
 			<th width="75px"><?php p($l->t("Title"));?>:</th>
-			<td>
+			<td class="title">
 				<?php p(isset($_['title']) ? $_['title'] : '') ?>
 			</td>
 		</tr>
@@ -17,7 +52,7 @@
 	<table width="100%">
 		<tr>
 			<th width="75px"><?php p($l->t("Category"));?>:</th>
-			<td>
+			<td class="categories">
 				<?php
 				if(count($_['categories']) == 0 || $_['categories'] == '') {
 					p($l->t('No categories selected'));
@@ -34,6 +69,7 @@
 				}
 				?>
 			</td>
+			<?php if(!isset($_['link_shared_event'])): ?>
 			<th width="75px">&nbsp;&nbsp;&nbsp;<?php p($l->t("Calendar"));?>:</th>
 			<td>
 			<?php
@@ -45,7 +81,9 @@
 			<td>
 				<input type="hidden" name="calendar" value="<?php p($_['calendar_options'][0]['id']) ?>">
 			</td>
+			<?php endif; ?>
 		</tr>
+		<?php if(!isset($_['link_shared_event'])): ?>
 		<tr>
 			<th width="75px"><?php p($l->t("Access Class"));?>:</th>
 			<td>
@@ -56,6 +94,7 @@
 			</select>
 			</td>
 		</tr>
+		<?php endif; ?>
 	</table>
 	<hr>
 	<table width="100%">
@@ -68,7 +107,7 @@
 		</tr>
 		<tr>
 			<th width="75px"><?php p($l->t("From"));?>:</th>
-			<td>
+			<td class="date from">
 				<?php p($_['startdate']);?>
 				&nbsp;&nbsp; <?php p((!$_['allday'])?$l->t('at'):''); ?> &nbsp;&nbsp;
 				<?php p($_['starttime']);?>
@@ -76,20 +115,24 @@
 		</tr>
 		<tr>
 			<th width="75px"><?php p($l->t("To"));?>:</th>
-			<td>
+			<td class="date from">
 				<?php p($_['enddate']);?>
 				&nbsp;&nbsp; <?php p((!$_['allday'])?$l->t('at'):''); ?> &nbsp;&nbsp;
 				<?php p($_['endtime']);?>
 			</td>
 		</tr>
 	</table>
+	<?php if(!isset($_['link_shared_event'])): ?>
 	<input type="button" class="submit" value="<?php p($l->t("Advanced options")); ?>" id="advanced_options_button">
 	<div id="advanced_options" style="display: none;">
+	<?php else: ?>
+	<div class="event-info">
+	<?php endif; ?>
 		<hr>
 		<table>
 			<tr>
 				<th width="85px"><?php p($l->t("Location"));?>:</th>
-				<td>
+				<td class="location">
 					<?php p(isset($_['location']) ? $_['location'] : '') ?>
 				</td>
 			</tr>
@@ -97,8 +140,10 @@
 		<table>
 			<tr>
 				<th width="85px" style="vertical-align: top;"><?php p($l->t("Description"));?>:</th>
-				<td>
+
+				<td class="description">
 					<?php p(isset($_['description']) ? $_['description'] : '') ?>
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -113,10 +158,13 @@
 					print_unescaped(OCP\html_select_options(array($_['repeat_options'][$_['repeat']]), $_['repeat']));
 					?>
 				</select></td>
+				<?php if(!isset($_['link_shared_event'])): ?>
 				<td><input type="button" style="float:right;" class="submit" value="<?php p($l->t("Advanced")); ?>" id="advanced_options_button_repeat"></td>
+				<?php endif; ?>
 			</tr>
 		</table>
-		<div id="advanced_options_repeating" style="display:none;">
+		<?php if ($_['repeat'] !== 'doesnotrepeat'): ?>
+		<div id="advanced_options_repeating" <?php if(!isset($_['link_shared_event'])): ?> style="display:none;" <?php endif; ?>>
 			<table style="width:100%">
 				<tr id="advanced_month" style="display:none;">
 					<th width="75px"></th>
@@ -250,6 +298,7 @@
 				</tr>
 			</table>
 		</div>
+		<?php endif; ?>
 </div>
 <!--<div id="tabs-3">//Alarm</div>
 <div id="tabs-4">//Attendees</div>-->
