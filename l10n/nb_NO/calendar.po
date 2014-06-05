@@ -5,21 +5,21 @@
 # Translators:
 # anjar <ajarmund@gmail.com>, 2011, 2012
 # Arvid Nornes <arvid.nornes@gmail.com>, 2012
-# onionhead <brthomassen@gmail.com>, 2013
+# Bjørn Roger Thomassen <brthomassen@gmail.com>, 2013
 # Christer Eriksson <post@hceriksson.com>, 2012
 # Hans Nesse <>, 2013
-# hdalgrav <hdalgrav@gmail.com>, 2012
+# Håvard Dalgrav <hdalgrav@gmail.com>, 2012
 # Jukselapp <ingemundskalnes@gmail.com>, 2014
 # owncloud <itssmail@yahoo.no>, 2012
 # vidaren <news@vidartysse.net>, 2014
-# TheLugal <thelugal@gmail.com>, 2014
+# Sander Danielsen <thelugal@gmail.com>, 2014
 # sondre <sondre@nettfrihet.no>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-31 01:46-0400\n"
-"PO-Revision-Date: 2014-05-30 21:51+0000\n"
+"POT-Creation-Date: 2014-06-05 01:46-0400\n"
+"PO-Revision-Date: 2014-06-04 06:11+0000\n"
 "Last-Translator: vidaren <news@vidartysse.net>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/owncloud/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -527,7 +527,7 @@ msgstr "etter ukenummer/-numre"
 msgid "by day and month"
 msgstr "etter dag og måned"
 
-#: lib/sabre/backend.php:74
+#: lib/sabre/backend.php:75
 msgid "Contact birthdays"
 msgstr "Kontakters bursdager"
 

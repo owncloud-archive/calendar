@@ -5,7 +5,7 @@
 # Translators:
 # goeck <admin@s-goecker.de>, 2011, 2012
 # SSL <albkert@gmail.com>, 2012
-# Mirodin <blobbyjj@ymail.com>, 2012
+# Tristan <blobbyjj@ymail.com>, 2012
 # driz <driz@i2pmail.org>, 2012
 # george <social@georgehrke.com>, 2011, 2012
 # I Robot, 2012-2013
@@ -20,13 +20,13 @@
 # Susi <>, 2012
 # I Robot, 2012
 # traductor, 2012
-# Mirodin <blobbyjj@ymail.com>, 2013
+# Tristan <blobbyjj@ymail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-04 01:46-0400\n"
-"PO-Revision-Date: 2014-06-03 08:56+0000\n"
+"POT-Creation-Date: 2014-06-05 01:46-0400\n"
+"PO-Revision-Date: 2014-06-04 06:11+0000\n"
 "Last-Translator: Mario Siegmann <mario_siegmann@web.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/owncloud/language/de/)\n"
 "MIME-Version: 1.0\n"

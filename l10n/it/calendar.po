@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Andrea Scarpino <bash.lnx@gmail.com>, 2011
-# zimba12 <inactive+zimba12@transifex.com>, 2011
+# Alessandro <inactive+zimba12@transifex.com>, 2011
 # formalist <formalist@email.it>, 2012
 # Francesco Apruzzese <cescoap@gmail.com>, 2011
 # HostFat <hostfat@gmail.com>, 2014
@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-29 01:46-0400\n"
-"PO-Revision-Date: 2014-05-28 17:31+0000\n"
+"POT-Creation-Date: 2014-06-05 01:46-0400\n"
+"PO-Revision-Date: 2014-06-04 06:11+0000\n"
 "Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/owncloud/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -528,7 +528,7 @@ msgstr "per numero/i settimana"
 msgid "by day and month"
 msgstr "per giorno e mese"
 
-#: lib/sabre/backend.php:74
+#: lib/sabre/backend.php:75
 msgid "Contact birthdays"
 msgstr "Compleanni dei contatti"
 

@@ -6,15 +6,15 @@
 # Jan-Erik Finlander <janerik.finlander@gmail.com>, 2014
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2012-2014
 # Johannes Korpela <>, 2012
-# Larso <larso@gmx.com>, 2013
+# Lasse Liehu <larso@gmx.com>, 2013
 # teho <tehoratopato@gmail.com>, 2012
 # tscooter <tscooter@hotmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-27 01:46-0400\n"
-"PO-Revision-Date: 2014-05-26 22:21+0000\n"
+"POT-Creation-Date: 2014-06-05 01:46-0400\n"
+"PO-Revision-Date: 2014-06-04 06:11+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/owncloud/language/fi_FI/)\n"
 "MIME-Version: 1.0\n"
@@ -94,39 +94,39 @@ msgstr "ddd d. MMMM'ta'[ yyyy]{ – [ddd d.] MMMM'ta' yyyy}"
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d. MMMM'ta'[ yyyy] klo HH:mm{ – [ ddd d. MMMM'ta' yyyy] klo HH:mm}"
 
-#: js/calendar.js:684
+#: js/calendar.js:729
 msgid "group"
 msgstr "ryhmä"
 
-#: js/calendar.js:686 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:731 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "voi muokata"
 
-#: js/calendar.js:687 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:732 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "jaa"
 
-#: js/calendar.js:952
+#: js/calendar.js:1000
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:953
+#: js/calendar.js:1001
 msgid "ddd M/d"
 msgstr "ddd d.M."
 
-#: js/calendar.js:954
+#: js/calendar.js:1002
 msgid "dddd M/d"
 msgstr "dddd d.M."
 
-#: js/calendar.js:957
+#: js/calendar.js:1005
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:959
+#: js/calendar.js:1007
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "KKK p[ vvvv]{ '–'[ KKK] p vvvv}"
 
-#: js/calendar.js:961
+#: js/calendar.js:1009
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, d. MMMM'ta' yyyy"
 
@@ -522,7 +522,7 @@ msgstr "viikkonumero(ide)n mukaan"
 msgid "by day and month"
 msgstr "päivän ja kuukauden mukaan"
 
-#: lib/sabre/backend.php:74
+#: lib/sabre/backend.php:75
 msgid "Contact birthdays"
 msgstr "Synttärit"
 

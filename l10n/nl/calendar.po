@@ -6,7 +6,7 @@
 # André Koot <meneer@tken.net>, 2012-2014
 # isama <bart.formosus@gmail.com>, 2011-2012
 # bartv <transifex@thisnet.nl>, 2011
-# diederikdehaas <inactive+diederikdehaas@transifex.com>, 2012
+# Diederik <inactive+diederikdehaas@transifex.com>, 2012
 # Erik Bent <hj.bent.60@gmail.com>, 2012
 # george <social@georgehrke.com>, 2012
 # jgelauff <jos@gelauff.net>, 2012
@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-05-27 01:46-0400\n"
-"PO-Revision-Date: 2014-05-26 22:21+0000\n"
+"POT-Creation-Date: 2014-06-05 01:46-0400\n"
+"PO-Revision-Date: 2014-06-04 06:11+0000\n"
 "Last-Translator: george <social@georgehrke.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -98,39 +98,39 @@ msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:684
+#: js/calendar.js:729
 msgid "group"
 msgstr "groep"
 
-#: js/calendar.js:686 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:731 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "kan wijzigen"
 
-#: js/calendar.js:687 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:732 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "kan delen"
 
-#: js/calendar.js:952
+#: js/calendar.js:1000
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:953
+#: js/calendar.js:1001
 msgid "ddd M/d"
 msgstr "ddd d.M"
 
-#: js/calendar.js:954
+#: js/calendar.js:1002
 msgid "dddd M/d"
 msgstr "dddd d.M"
 
-#: js/calendar.js:957
+#: js/calendar.js:1005
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:959
+#: js/calendar.js:1007
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:961
+#: js/calendar.js:1009
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, d. MMM yyyy"
 
@@ -526,7 +526,7 @@ msgstr "volgens weeknummer(s)"
 msgid "by day and month"
 msgstr "per dag en maand"
 
-#: lib/sabre/backend.php:74
+#: lib/sabre/backend.php:75
 msgid "Contact birthdays"
 msgstr "Verjaardagen contactpersonen"
 
