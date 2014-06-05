@@ -47,7 +47,6 @@
 	
 	<span class="action">
 	<?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE) { ?>
-		<input type="checkbox" class="displayable-control hide" id="outer-share-link-calendar-<?php p($_['calendar']['id']) ?>"/>
 		<div class="displayable" style="padding-left:0.5em">
 		<?php
 			/* internal calendar sharing interface */
