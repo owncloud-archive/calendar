@@ -10,7 +10,7 @@
 # mikkel_ilu <mikkelbjerglarsen@gmail.com>, 2011
 # Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2011-2013
 # Ole Holm Frandsen <froksen@gmail.com>, 2012
-# osos <osos@openeyes.dk>, 2012
+# Johannes Hessellund <osos@openeyes.dk>, 2012
 # Pascal d'Hermilly <pascal@dhermilly.dk>, 2011
 # muunsim <simon@rosmi.dk>, 2012
 # ressel <sr@ybnet.dk>, 2012
@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-05 01:46-0400\n"
-"PO-Revision-Date: 2014-06-04 06:11+0000\n"
+"POT-Creation-Date: 2014-06-08 01:46-0400\n"
+"PO-Revision-Date: 2014-06-07 06:11+0000\n"
 "Last-Translator: Anders J. Sørensen\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/owncloud/language/da/)\n"
 "MIME-Version: 1.0\n"
