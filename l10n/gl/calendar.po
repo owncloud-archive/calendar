@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-05 01:46-0400\n"
-"PO-Revision-Date: 2014-06-04 06:11+0000\n"
+"POT-Creation-Date: 2014-06-10 01:46-0400\n"
+"PO-Revision-Date: 2014-06-10 05:00+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician (http://www.transifex.com/projects/p/owncloud/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -110,11 +110,11 @@ msgstr "ddd"
 
 #: js/calendar.js:1001
 msgid "ddd M/d"
-msgstr "ddd M/d"
+msgstr "ddd d/M"
 
 #: js/calendar.js:1002
 msgid "dddd M/d"
-msgstr "dddd M/d"
+msgstr "dddd d/M"
 
 #: js/calendar.js:1005
 msgid "MMMM yyyy"
@@ -126,7 +126,7 @@ msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
 #: js/calendar.js:1009
 msgid "dddd, MMM d, yyyy"
-msgstr "dddd, MMM d, yyyy"
+msgstr "dddd, d MMM, yyyy"
 
 #: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"

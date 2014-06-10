@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-05 01:46-0400\n"
-"PO-Revision-Date: 2014-06-04 06:11+0000\n"
+"POT-Creation-Date: 2014-06-10 01:46-0400\n"
+"PO-Revision-Date: 2014-06-10 05:01+0000\n"
 "Last-Translator: Flávio Veras <flaviove@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/owncloud/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -405,7 +405,7 @@ msgstr "Você não tem permissões para remover esse calendário."
 
 #: lib/calendar.php:292
 msgid "You do not have the permissions to add to this calendar."
-msgstr "Você não tem permissões para adicionar esse calendário."
+msgstr "Você não tem permissões para adicionar a esse calendário."
 
 #: lib/object.php:122 lib/object.php:163 lib/object.php:329
 msgid "You do not have the permissions to add events to this calendar."
@@ -804,7 +804,7 @@ msgstr "Descompartilhar"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr "Não compartilhar com ninguém"
+msgstr "Não compartilhado com ninguém"
 
 #: templates/part.share.php:63
 msgid "Send Email"
@@ -816,7 +816,7 @@ msgstr "Compartilhado via calendário"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr "Não compartilhar com ninguém via calendário"
+msgstr "Não compartilhado com ninguém via calendário"
 
 #: templates/part.showevent.php:1
 msgid "View an event"

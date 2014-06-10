@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-05 01:46-0400\n"
-"PO-Revision-Date: 2014-06-04 06:11+0000\n"
+"POT-Creation-Date: 2014-06-10 01:46-0400\n"
+"PO-Revision-Date: 2014-06-10 05:01+0000\n"
 "Last-Translator: vidaren <news@vidartysse.net>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/owncloud/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -373,7 +373,7 @@ msgstr "Annet"
 
 #: lib/app.php:132 lib/calendar.php:142
 msgid "Personal"
-msgstr "ersonlig"
+msgstr "Personlig"
 
 #: lib/app.php:133
 msgid "Projects"
@@ -601,7 +601,7 @@ msgstr "iOS/OS X CalDAV-adresse"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
-msgstr "Del Kalender"
+msgstr "Del kalender"
 
 #: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
