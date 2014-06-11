@@ -94,7 +94,7 @@
 "You do not have the permissions to delete this calendar." => "您没有权限删除此日历",
 "You do not have the permissions to add to this calendar." => "您没有权限增加到此日历",
 "You do not have the permissions to add events to this calendar." => "您没有权限增加事项到此日历",
-"You cannot add non-public events to a shared calendar." => "你不能添加非公共的事件到共享的日程表",
+"You cannot add non-public events to a shared calendar." => "你不能增加非公共的事件到共享的日程表",
 "You do not have the permissions to delete this event." => "您没有权限删除此事件",
 "Busy" => "忙碌",
 "Show full event" => "显示完整事件",

@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-10 01:46-0400\n"
-"PO-Revision-Date: 2014-06-10 05:01+0000\n"
+"POT-Creation-Date: 2014-06-11 01:46-0400\n"
+"PO-Revision-Date: 2014-06-10 13:01+0000\n"
 "Last-Translator: vidaren <news@vidartysse.net>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/owncloud/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -117,11 +117,11 @@ msgstr "ddd"
 
 #: js/calendar.js:1001
 msgid "ddd M/d"
-msgstr "ddd M/d"
+msgstr "ddd d.M"
 
 #: js/calendar.js:1002
 msgid "dddd M/d"
-msgstr "dddd M/d"
+msgstr "dddd d.M"
 
 #: js/calendar.js:1005
 msgid "MMMM yyyy"
@@ -681,7 +681,7 @@ msgstr "Sted"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr "Kategorier (separer med komma)"
+msgstr "Kategorier (skill med komma)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
