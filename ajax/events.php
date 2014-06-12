@@ -6,17 +6,14 @@
  * later.
  * See the COPYING-README file.
  */
+OCP\JSON::checkAppEnabled('calendar');
+session_write_close();
 
 // is a user logged-in?
 if (OCP\User::isLoggedIn()) {
-
-	// is the app enabled?
-	OCP\JSON::checkAppEnabled('calendar');
-	session_write_close();
-
 	// Look for the calendar id
 	$calendar_id = null;
-	if (strval(intval($_GET['calendar_id'])) == strval($_GET['calendar_id'])) { // integer for sure.
+	if (strval(intval($_GET['calendar_id'])) === strval($_GET['calendar_id'])) { // integer for sure.
 		$id = intval($_GET['calendar_id']);
 		$calendarrow = OC_Calendar_App::getCalendar($id, true, false); // Let's at least security check otherwise we might as well use OC_Calendar_Calendar::find())
 		if($calendarrow !== false) {
@@ -32,11 +29,6 @@ if (OCP\User::isLoggedIn()) {
 
 // no logged-in user? ookaay, do we have a token?
 } elseif (\OC::$session->exists('public_link_token')) {
-
-	// is the app enabled?
-	OCP\JSON::checkAppEnabled('calendar');
-	session_write_close();
-
 	// shareapi enabled?
 	if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
 		header('HTTP/1.0 404 Not Found');

@@ -23,7 +23,9 @@ $id = $_['link_shared_event']['item_source'];
 $data = OC_Calendar_App::getEventObject($id, false, false);
 
 // whoops
-if(!$data) calendar404();
+if(!$data) {
+	calendar404();
+}
 
 $object = OC_VObject::parse($data['calendardata']);
 $vevent = $object->VEVENT;

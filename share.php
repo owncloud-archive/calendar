@@ -10,7 +10,9 @@ OCP\App::checkAppEnabled('calendar');
 
 function calendar404($msg=null) {
 	$errorTemplate = new OCP\Template('calendar', 'part.404', '');
-	if ($msg !== null) $errorTemplate->assign('message', $msg);
+	if ($msg !== null) {
+		$errorTemplate->assign('message', $msg);
+	}
 	$errorContent = $errorTemplate->fetchPage();
 
 	header('HTTP/1.0 404 Not Found');
@@ -27,8 +29,9 @@ function calendar403() {
 	exit();
 }
 
-if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes')
+if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
 	calendar404('Link-sharing is disabled by admin.');
+}
 
 if (isset($_GET['t'])) {
 	$token = $_GET['t'];
@@ -131,7 +134,7 @@ if (isset($rootLinkItem)) {
 		// export the data
 		// if it is a link-shared concrete event, ignore security
 		// calendars should be shared *with* security enabled, so as to not divulge private/busy events
-		echo OC_Calendar_Export::export($rootLinkItem['item_source'], $type, ($type !== OC_Calendar_Export::EVENT) );
+		print_unescaped(OC_Calendar_Export::export($rootLinkItem['item_source'], $type, ($type !== OC_Calendar_Export::EVENT)));
 		exit();
 	 
 	// Display the calendar

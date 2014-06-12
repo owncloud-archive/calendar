@@ -6,25 +6,20 @@
  * later.
  * See the COPYING-README file.
  */
+OCP\JSON::checkAppEnabled('calendar');
 
 // "this is from a link-shared calendar" flag
 $link_shared = false;
 
 // do we have a logged-in user?
-if(OCP\User::isLoggedIn()) {
-	// yeah, we do. check if the app is enabled
-	OCP\JSON::checkAppEnabled('calendar');
-
-// no, we do not.
-} else {
+if(!OCP\User::isLoggedIn()) {
 
 	// do we have a token?
-	if (!\OC::$session->exists('public_link_token'))
+	if (!\OC::$session->exists('public_link_token')) {
 		// nope, bail out!
 		OCP\User::checkLoggedIn();
+	}
 
-	// is the app enabled?
-	OCP\JSON::checkAppEnabled('calendar');
 	session_write_close();
 
 	// shareapi enabled?

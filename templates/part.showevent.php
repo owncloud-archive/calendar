@@ -7,7 +7,7 @@
 			src="<?php print_unescaped(image_path('', 'logo-wide.svg')); ?>" alt="<?php p($theme->getName()); ?>"
 		/></a>
 		<div id="logo-claim" style="display:none;"><?php p($theme->getLogoClaim()); ?></div>
-		<div><?php p($l->t('Event')) ?> &quot;<?php p($_['link_shared_event']['item_target'])?>&quot;; <?php p($l->t('download or use in your calendar application:'))?> <a class="download-link" href="<?php echo $_['link_shared_event_url']; ?>&amp;download"><?php p($l->t('Download'))?></a></div>
+		<div><?php p($l->t('Event')) ?> &quot;<?php p($_['link_shared_event']['item_target'])?>&quot;; <?php p($l->t('download or use in your calendar application:'))?> <a class="download-link" href="<?php echo print_unescaped($_['link_shared_event_url']); ?>&amp;download"><?php p($l->t('Download'))?></a></div>
 </header>
 <div class="settings timezonesettings">
 	<label for="timezone" title="<?php p($l->t('Timezone settings')); ?>"><?php p($l->t('Timezone'))?></label>
@@ -26,7 +26,7 @@
 		endif;
 		$city=strtr($ex[1], '_', ' ');
 		$continent=$ex[0];
-		print_unescaped('<option value="'.OC_Util::sanitizeHTML($timezone).'"'.($_['timezone'] == $timezone?' selected="selected"':'').'>'.OC_Util::sanitizeHTML($city).'</option>');
+		print_unescaped('<option value="' . \OCP\Util::sanitizeHTML($timezone) . '"' . ($_['timezone'] == $timezone?' selected="selected"':'') . '>' . \OCP\Util::sanitizeHTML($city) . '</option>');
 	endforeach;?>
 	</select>
 </div>
