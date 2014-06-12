@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-10 01:46-0400\n"
-"PO-Revision-Date: 2014-06-10 05:00+0000\n"
+"POT-Creation-Date: 2014-06-12 01:46-0400\n"
+"PO-Revision-Date: 2014-06-11 07:54+0000\n"
 "Last-Translator: Marián Hvolka <marian.hvolka@stuba.sk>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/projects/p/owncloud/language/sk_SK/)\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr "Nemáte oprávnenie pre úpravu tejto udalosti."
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr "Súbor neobsahoval žiadne udalosti, alebo už sú všetky udalosti vo Vašom kalendári."
+msgstr "Súbor neobsahoval žiadne udalosti, alebo už sú všetky udalosti vo vašom kalendári."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events has been saved in the new calendar"
@@ -64,7 +64,7 @@ msgstr "Import zlyhal"
 
 #: ajax/import/import.php:71
 msgid "events has been saved in your calendar"
-msgstr "udalosti boli zapísané do kalendára"
+msgstr "udalosti boli zapísané do vášho kalendára"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -577,7 +577,7 @@ msgstr "12h"
 
 #: templates/calendar.php:90
 msgid "Start week on"
-msgstr "Týždeň začína v "
+msgstr "Týždeň sa začína v "
 
 #: templates/calendar.php:98
 msgid "Cache"
@@ -758,7 +758,7 @@ msgstr "Vybrať si kalendár"
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
-msgstr "Meno nového kalendára"
+msgstr "Názov nového kalendára"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
