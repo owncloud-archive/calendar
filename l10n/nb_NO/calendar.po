@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-11 01:46-0400\n"
-"PO-Revision-Date: 2014-06-10 13:01+0000\n"
+"POT-Creation-Date: 2014-06-16 01:46-0400\n"
+"PO-Revision-Date: 2014-06-15 10:10+0000\n"
 "Last-Translator: vidaren <news@vidartysse.net>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/owncloud/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -129,11 +129,11 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:1007
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
+msgstr "d [ MMM][ yyyy]{ '–' d MMM yyyy}"
 
 #: js/calendar.js:1009
 msgid "dddd, MMM d, yyyy"
-msgstr "dddd, MMM d, yyyy"
+msgstr "dddd d. MMM yyyy"
 
 #: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
@@ -289,7 +289,7 @@ msgstr "Des."
 
 #: js/l10n.php:83
 msgid "All day"
-msgstr "Hele dagen "
+msgstr "Heldags"
 
 #: js/l10n.php:84 lib/import.php:216 templates/calendar.php:21
 msgid "New Calendar"
@@ -549,7 +549,7 @@ msgstr "Uke"
 
 #: templates/calendar.php:16
 msgid "Month"
-msgstr "ned"
+msgstr "Måned"
 
 #: templates/calendar.php:17
 msgid "Today"
@@ -657,7 +657,7 @@ msgstr "Del"
 
 #: templates/part.eventform.php:15
 msgid "Title of the Event"
-msgstr "Hendelsestittel"
+msgstr "Tittel for hendelsen"
 
 #: templates/part.eventform.php:41
 msgid "from"
@@ -669,7 +669,7 @@ msgstr "til"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
-msgstr "Hele dagen-hendelse"
+msgstr "Heldagshendelse"
 
 #: templates/part.eventform.php:57 templates/part.showevent.php:86
 msgid "Advanced options"
@@ -766,7 +766,7 @@ msgstr "Navn på ny kalender:"
 
 #: templates/part.import.php:44
 msgid "Take an available name!"
-msgstr "Velg at tilgjengelig navn!"
+msgstr "Velg et tilgjengelig navn!"
 
 #: templates/part.import.php:45
 msgid ""
