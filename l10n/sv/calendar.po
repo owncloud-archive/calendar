@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-10 01:46-0400\n"
-"PO-Revision-Date: 2014-06-10 05:01+0000\n"
+"POT-Creation-Date: 2014-06-17 01:46-0400\n"
+"PO-Revision-Date: 2014-06-16 09:50+0000\n"
 "Last-Translator: Stefan Gagner <stefan@mei-ya.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/owncloud/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -336,7 +336,7 @@ msgstr "Företag"
 
 #: lib/app.php:123
 msgid "Call"
-msgstr "Ringa"
+msgstr "Ring"
 
 #: lib/app.php:124
 msgid "Clients"
@@ -348,7 +348,7 @@ msgstr "Leverantör"
 
 #: lib/app.php:126
 msgid "Holidays"
-msgstr "Semester"
+msgstr "Helgdagar"
 
 #: lib/app.php:127
 msgid "Ideas"
@@ -484,7 +484,7 @@ msgstr "efter veckodag"
 
 #: lib/object.php:620
 msgid "events week of month"
-msgstr "händelse vecka av månad"
+msgstr "händelse vecka i månad"
 
 #: lib/object.php:621
 msgid "first"
@@ -572,11 +572,11 @@ msgstr "Tidformat"
 
 #: templates/calendar.php:85
 msgid "24h"
-msgstr "24h"
+msgstr "24tim"
 
 #: templates/calendar.php:86
 msgid "12h"
-msgstr "12h"
+msgstr "12tim"
 
 #: templates/calendar.php:90
 msgid "Start week on"
@@ -612,11 +612,11 @@ msgstr "Ändra"
 
 #: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
-msgstr "Radera"
+msgstr "Ta bort"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
-msgstr "Nya kalender"
+msgstr "Ny kalender"
 
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
