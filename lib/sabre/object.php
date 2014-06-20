@@ -21,10 +21,10 @@
  */
 
 /**
- * This class overrides Sabre_CalDAV_CalendarObject::getACL()
+ * This class overrides \Sabre\CalDAV\CalendarObject::getACL()
  * to return read/write permissions based on user and shared state.
 */
-class OC_Connector_Sabre_CalDAV_CalendarObject extends Sabre_CalDAV_CalendarObject {
+class OC_Connector_Sabre_CalDAV_CalendarObject extends \Sabre\CalDAV\CalendarObject {
 
 	/**
 	* Returns a list of ACE's for this node.

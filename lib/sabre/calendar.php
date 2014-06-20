@@ -21,12 +21,12 @@
  */
 
 /**
- * This class overrides Sabre_CalDAV_Calendar::getACL() to return read/write
+ * This class overrides \Sabre\CalDAV\Calendar::getACL() to return read/write
  * permissions based on user and shared state and it overrides
- * Sabre_CalDAV_Calendar::getChild() and Sabre_CalDAV_Calendar::getChildren()
+ * \Sabre\CalDAV\Calendar::getChild() and \Sabre\CalDAV\Calendar::getChildren()
  * to instantiate OC_Connector_Sabre_CalDAV_CalendarObjects.
 */
-class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
+class OC_Connector_Sabre_CalDAV_Calendar extends \Sabre\CalDAV\Calendar {
 
 	/**
 	* Returns a list of ACE's for this node.
@@ -87,7 +87,7 @@ class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
 				'protected' => true,
 			),
 			array(
-				'privilege' => '{' . Sabre_CalDAV_Plugin::NS_CALDAV . '}read-free-busy',
+				'privilege' => '{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}read-free-busy',
 				'principal' => '{DAV:}authenticated',
 				'protected' => true,
 			),
@@ -102,12 +102,12 @@ class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
 	* The contained calendar objects are for example Events or Todo's.
 	*
 	* @param string $name
-	* @return Sabre_DAV_ICalendarObject
+	* @return \Sabre\CalDAV\ICalendarObject
 	*/
 	public function getChild($name) {
 		$obj = $this->caldavBackend->getCalendarObject($this->calendarInfo['id'],$name);
 		if (!$obj) {
-			throw new Sabre_DAV_Exception_NotFound('Calendar object not found');
+			throw new \Sabre\DAV\Exception\NotFound('Calendar object not found');
 		}
 		return new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
 

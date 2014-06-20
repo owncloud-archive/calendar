@@ -25,7 +25,7 @@ $caldavBackend    = new OC_Connector_Sabre_CalDAV();
 $requestBackend = new OC_Connector_Sabre_Request();
 
 // Root nodes
-$Sabre_CalDAV_Principal_Collection = new Sabre_CalDAV_Principal_Collection($principalBackend);
+$Sabre_CalDAV_Principal_Collection = new \Sabre\CalDAV\Principal\Collection($principalBackend);
 $Sabre_CalDAV_Principal_Collection->disableListing = true; // Disable listening
 
 $calendarRoot = new OC_Connector_Sabre_CalDAV_CalendarRoot($principalBackend, $caldavBackend);
@@ -37,15 +37,15 @@ $nodes = array(
 	);
 
 // Fire up server
-$server = new Sabre_DAV_Server($nodes);
+$server = new \Sabre\DAV\Server($nodes);
 $server->httpRequest = $requestBackend;
 $server->setBaseUri($baseuri);
 // Add plugins
-$server->addPlugin(new Sabre_DAV_Auth_Plugin($authBackend,'ownCloud'));
-$server->addPlugin(new Sabre_CalDAV_Plugin());
-$server->addPlugin(new Sabre_DAVACL_Plugin());
-$server->addPlugin(new Sabre_DAV_Browser_Plugin(false)); // Show something in the Browser, but no upload
-$server->addPlugin(new Sabre_CalDAV_ICSExportPlugin());
+$server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,'ownCloud'));
+$server->addPlugin(new \Sabre\CalDAV\Plugin());
+$server->addPlugin(new \Sabre\DAVACL\Plugin());
+$server->addPlugin(new \Sabre\DAV\Browser\Plugin(false)); // Show something in the Browser, but no upload
+$server->addPlugin(new \Sabre\CalDAV\ICSExportPlugin());
 
 // And off we go!
 $server->exec();
