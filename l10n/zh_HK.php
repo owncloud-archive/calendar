@@ -23,18 +23,12 @@
 "Birthday" => "生日",
 "Personal" => "個人",
 "Work" => "工作",
-"Settings" => "設定",
+"Date" => "日期",
 "Download" => "下載",
 "Edit" => "編輯",
 "Delete" => "刪除",
-"Save" => "儲存",
-"Cancel" => "取消",
 "Share" => "分享",
 "Advanced" => "進階",
 "Import" => "導入",
-"Unshare" => "取消分享",
-"General" => "一般",
-"more info" => "更多",
-"Primary address (Kontact et al)" => "主要地址",
-"iOS/OS X" => "iOS/OSX"
+"Unshare" => "取消分享"
 );

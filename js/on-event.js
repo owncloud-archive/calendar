@@ -1,70 +1,86 @@
-$('#newCalendar').live('click', function () {
+$(document).on('click', '#newCalendar', function () {
 	Calendar.UI.Calendar.newCalendar(this);
 });
-$('#caldav_url_close').live('click', function () {
+$(document).on('click', '#caldav_url_close', function () {
 	$('#caldav_url').hide();$('#caldav_url_close').hide();
 });
-$('#caldav_url').live('mouseover', function () {
+$(document).on('mouseover', '#caldav_url', function () {
 	$('#caldav_url').select();
 });
-$('#editCategories').live('click', function () {
+$(document).on('click', document).on('click', '#primarycaldav', function () {
+	$('#primarycaldav').select();
+});
+$(document).on('click', '#ioscaldav', function () {
+	$('#ioscaldav').select();
+});
+$(document).on('click', '#editCategories', function () {
 	$(this).tipsy('hide');OC.Tags.edit('event');
 });
-$('#allday_checkbox').live('click', function () {
+$(document).on('click', '#allday_checkbox', function () {
 	Calendar.UI.lockTime();
 });
-$('#advanced_options_button').live('click', function () {
+$(document).on('click', '#advanced_options_button', function () {
 	Calendar.UI.showadvancedoptions();
 });
-$('#advanced_options_button_repeat').live('click', function () {
+$(document).on('click', '#advanced_options_button_repeat', function () {
 	Calendar.UI.showadvancedoptionsforrepeating();
 });
-$('#submitNewEvent').live('click', function () {
+$(document).on('click', '#submitNewEvent', function () {
 	Calendar.UI.validateEventForm($(this).data('link'));
 });
-$('#chooseCalendar').live('click', function () {
+$(document).on('click', '#chooseCalendar', function () {
 	Calendar.UI.Calendar.newCalendar(this);
 });
-$('.activeCalendar').live('change', function () {
+$(document).on('change', '.activeCalendar', function () {
 	Calendar.UI.Calendar.activation(this,$(this).data('id'));
 });
-$('#active_shared_events').live('change', function () {
+$(document).on('change', '#active_shared_events', function () {
 	Calendar.UI.Calendar.sharedEventsActivation(this);
 });
-$('#allday_checkbox').live('click', function () {
+$(document).on('click', '#allday_checkbox', function () {
 	Calendar.UI.lockTime();
 });
-$('#editEvent-submit').live('click', function () {
+$(document).on('click', '#editEvent-submit', function () {
 	console.log('submit-event');
 	Calendar.UI.validateEventForm($(this).data('link'));
 });
-$('#editEvent-delete').live('click', function () {
+$(document).on('click', '#editEvent-delete', function () {
 	Calendar.UI.submitDeleteEventForm($(this).data('link'));
 });
-$('#editEvent-export').live('click', function () {
+$(document).on('click', '#editEvent-export', function () {
 	window.location = $(this).data('link');
 });
-$('#chooseCalendar-showCalDAVURL').live('click', function () {
+$(document).on('click', '#chooseCalendar-showCalDAVURL', function () {
 	Calendar.UI.showCalDAVUrl($(this).data('user'), $(this).data('caldav'));
 });
-$('#chooseCalendar-edit').live('click', function () {
+$(document).on('click', '#chooseCalendar-edit', function () {
 	Calendar.UI.Calendar.edit($(this), $(this).data('id'));
 });
-$('#chooseCalendar-delete').live('click', function () {
+$(document).on('click', '#chooseCalendar-delete', function () {
 	Calendar.UI.Calendar.deleteCalendar($(this).data('id'));
 });
-$('#editCalendar-submit').live('click', function () {
+$(document).on('click', '#editCalendar-submit', function () {
 	Calendar.UI.Calendar.submit($(this), $(this).data('id'));
 });
-$('#editCalendar-cancel').live('click', function () {
+$(document).on('click', '#editCalendar-cancel', function () {
 	Calendar.UI.Calendar.cancel($(this), $(this).data('id'));
 });
-$('.choosecalendar-rowfield-active').live('click', function () {
+$(document).on('click', '.choosecalendar-rowfield-active', function () {
 	Calendar.UI.Share.activation($(this), $(this).data('id'));
 });
-$("#event-location:not(.ui-autocomplete-input)").live("focus", function (event) {
+$(document).on('focus', "#event-location:not(.ui-autocomplete-input)", function (event) {
 	$(this).autocomplete({
 		source: OC.linkTo('calendar', 'ajax/search-location.php'),
 		minLength: 2
 	});
+});
+$(document).on('keydown', '#newcalendar_dialog #displayname_new', function(event){
+	if (event.which == 13){
+		$('#newcalendar_dialog #editCalendar-submit').click();
+	}
+});
+$(document).on('keydown', '#editcalendar_dialog > span > input:text', function(event){
+	if (event.which == 13){
+		$('#editcalendar_dialog #editCalendar-submit').click();
+	}
 });

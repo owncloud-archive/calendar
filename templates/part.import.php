@@ -32,7 +32,7 @@ $defaultcolors = OC_Calendar_Calendar::getCalendarColorOptions();
 		</select>
 		<br><br>
 		<div id="calendar_import_newcalform">
-			<input id="calendar_import_newcalendar_color" class="color-picker" type="hidden" size="6" value="<?php p(substr($calendarcolor,1)); ?>">
+			<input id="calendar_import_newcalendar_color" class="color-picker" type="hidden" value="<?php p(substr($calendarcolor,1)); ?>">
 			<input id="calendar_import_newcalendar"  class="" type="text" placeholder="<?php p($l->t('Name of new calendar')); ?>" value="<?php p($guessedcalendarname) ?>"><br>
 			<div id="calendar_import_defaultcolors">
 				<?php

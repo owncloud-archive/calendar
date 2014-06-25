@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# ubuntucymraeg <owen.llywelyn@gmail.com>, 2013
+# Owen Llywelyn <owen.llywelyn@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-11 06:35-0400\n"
-"PO-Revision-Date: 2014-03-11 06:11+0000\n"
+"POT-Creation-Date: 2014-06-10 01:46-0400\n"
+"PO-Revision-Date: 2014-06-10 05:01+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Welsh (United Kingdom) (http://www.transifex.com/projects/p/owncloud/language/cy_GB/)\n"
 "MIME-Version: 1.0\n"
@@ -77,59 +77,59 @@ msgstr "Cais annilys"
 msgid "Calendar"
 msgstr "Calendr"
 
-#: js/calendar.js:179
+#: js/calendar.js:223
 msgid "Deletion failed"
 msgstr "Methwyd dileu"
 
-#: js/calendar.js:270
+#: js/calendar.js:314
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:272
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:596
+#: js/calendar.js:729
 msgid "group"
 msgstr "grŵp"
 
-#: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:731 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "yn gallu golygu"
 
-#: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:732 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr ""
 
-#: js/calendar.js:870
+#: js/calendar.js:1000
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:871
+#: js/calendar.js:1001
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:872
+#: js/calendar.js:1002
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:875
+#: js/calendar.js:1005
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:877
+#: js/calendar.js:1007
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:879
+#: js/calendar.js:1009
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
+#: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
 msgstr "Sul"
 
-#: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
+#: js/l10n.php:77 lib/object.php:604 templates/calendar.php:92
 msgid "Monday"
 msgstr "Llun"
 
@@ -149,7 +149,7 @@ msgstr "Iau"
 msgid "Friday"
 msgstr "Gwener"
 
-#: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
+#: js/l10n.php:77 lib/object.php:609 templates/calendar.php:94
 msgid "Saturday"
 msgstr "Sadwrn"
 
@@ -281,7 +281,7 @@ msgstr "Rhag."
 msgid "All day"
 msgstr "Drwy'r dydd"
 
-#: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
+#: js/l10n.php:84 lib/import.php:216 templates/calendar.php:21
 msgid "New Calendar"
 msgstr "Calendr Newydd"
 
@@ -361,7 +361,7 @@ msgstr "Cyfarfod"
 msgid "Other"
 msgstr "Arall"
 
-#: lib/app.php:132
+#: lib/app.php:132 lib/calendar.php:142
 msgid "Personal"
 msgstr "Personol"
 
@@ -517,7 +517,7 @@ msgstr "yn ôl rhif yr wythnos"
 msgid "by day and month"
 msgstr "yn ôl dydd a mis"
 
-#: lib/sabre/backend.php:74
+#: lib/sabre/backend.php:75
 msgid "Contact birthdays"
 msgstr ""
 
@@ -529,43 +529,79 @@ msgstr "Dyddiad"
 msgid "Cal."
 msgstr "Cal."
 
-#: templates/calendar.php:6
+#: templates/calendar.php:16
 msgid "Day"
 msgstr ""
 
-#: templates/calendar.php:7
+#: templates/calendar.php:16
 msgid "Week"
 msgstr "Wythnos"
 
-#: templates/calendar.php:8
+#: templates/calendar.php:16
 msgid "Month"
 msgstr "Mis"
 
-#: templates/calendar.php:12 templates/calendar.php:18
+#: templates/calendar.php:17
 msgid "Today"
 msgstr "Heddiw"
 
-#: templates/calendar.php:13
-msgid "Settings"
-msgstr "Gosodiadau"
-
-#: templates/part.choosecalendar.rowfields.php:13
-msgid "Share Calendar"
-msgstr "Rhannu Calendr"
-
-#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
+#: templates/calendar.php:42 templates/part.choosecalendar.rowfields.php:28
 msgid "CalDav Link"
 msgstr "Dolen CalDav"
 
-#: templates/part.choosecalendar.rowfields.php:27
+#: templates/calendar.php:55
+msgid "Timezone"
+msgstr "Cylchfa Amser"
+
+#: templates/calendar.php:80
+msgid "Update timezone automatically"
+msgstr "Diweddaru cylchfa amser yn awtomatig"
+
+#: templates/calendar.php:83
+msgid "Time format"
+msgstr "Fformat amser"
+
+#: templates/calendar.php:85
+msgid "24h"
+msgstr "24a"
+
+#: templates/calendar.php:86
+msgid "12h"
+msgstr "12a"
+
+#: templates/calendar.php:90
+msgid "Start week on"
+msgstr "Wythnos yn dechrau ar"
+
+#: templates/calendar.php:98
+msgid "Cache"
+msgstr "Storfa"
+
+#: templates/calendar.php:99
+msgid "Clear cache for repeating events"
+msgstr "Clirio'r storfa ar gyfer digwyddiadau sy'n ailadrodd"
+
+#: templates/calendar.php:102
+msgid "Primary CalDAV address"
+msgstr ""
+
+#: templates/calendar.php:106
+msgid "iOS/OS X CalDAV address"
+msgstr ""
+
+#: templates/part.choosecalendar.rowfields.php:15
+msgid "Share Calendar"
+msgstr "Rhannu Calendr"
+
+#: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
 msgstr "Llwytho i lawr"
 
-#: templates/part.choosecalendar.rowfields.php:31
+#: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
 msgstr "Golygu"
 
-#: templates/part.choosecalendar.rowfields.php:36
+#: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
 msgstr "Dileu"
 
@@ -576,26 +612,6 @@ msgstr "Calendr newydd"
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
 msgstr "Golygu calendr"
-
-#: templates/part.editcalendar.php:12
-msgid "Displayname"
-msgstr "Enw i'w ddangos"
-
-#: templates/part.editcalendar.php:20
-msgid "Calendar color"
-msgstr "Lliw'r calendr"
-
-#: templates/part.editcalendar.php:33
-msgid "Save"
-msgstr "Cadw"
-
-#: templates/part.editcalendar.php:33
-msgid "Submit"
-msgstr "Cyflwyno"
-
-#: templates/part.editcalendar.php:34
-msgid "Cancel"
-msgstr "Diddymu"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
@@ -665,60 +681,60 @@ msgstr "Golygu categorïau"
 msgid "Description"
 msgstr "Disgrifiad"
 
-#: templates/part.eventform.php:73
+#: templates/part.eventform.php:74
 msgid "Export event"
 msgstr ""
 
-#: templates/part.eventform.php:80 templates/part.showevent.php:109
+#: templates/part.eventform.php:82 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "Ailadrodd"
 
-#: templates/part.eventform.php:87 templates/part.showevent.php:116
+#: templates/part.eventform.php:89 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "Uwch"
 
-#: templates/part.eventform.php:131 templates/part.showevent.php:160
+#: templates/part.eventform.php:133 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "Dewis diwrnodau'r wythnos"
 
-#: templates/part.eventform.php:144 templates/part.eventform.php:157
+#: templates/part.eventform.php:146 templates/part.eventform.php:159
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "Dewis diwrnodau"
 
-#: templates/part.eventform.php:149 templates/part.showevent.php:178
+#: templates/part.eventform.php:151 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "a diwrnod o'r flwyddyn digwyddiadau."
 
-#: templates/part.eventform.php:162 templates/part.showevent.php:191
+#: templates/part.eventform.php:164 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "a diwrnod o'r mis digwyddiadau."
 
-#: templates/part.eventform.php:170 templates/part.showevent.php:199
+#: templates/part.eventform.php:172 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "Dewisiwch misoedd"
 
-#: templates/part.eventform.php:183 templates/part.showevent.php:212
+#: templates/part.eventform.php:185 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "Dewisiwch wythnosau"
 
-#: templates/part.eventform.php:188 templates/part.showevent.php:217
+#: templates/part.eventform.php:190 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "ac wythnos o'r flwyddyn digwyddiadau."
 
-#: templates/part.eventform.php:194 templates/part.showevent.php:223
+#: templates/part.eventform.php:196 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "Ysbaid"
 
-#: templates/part.eventform.php:200 templates/part.showevent.php:229
+#: templates/part.eventform.php:202 templates/part.showevent.php:229
 msgid "End"
 msgstr "Diwedd"
 
-#: templates/part.eventform.php:213 templates/part.showevent.php:242
+#: templates/part.eventform.php:215 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "digwyddiadau"
 
-#: templates/part.eventform.php:232
+#: templates/part.eventform.php:234
 msgid "Visibility to people shared with"
 msgstr ""
 
@@ -805,8 +821,9 @@ msgid "No categories selected"
 msgstr "Dim categorïau wedi'u dewis"
 
 #: templates/part.showevent.php:41
-msgid "of"
-msgstr "o"
+#, php-format
+msgid "%s of %s"
+msgstr ""
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
@@ -823,71 +840,3 @@ msgstr "yn"
 #: templates/part.showevent.php:78
 msgid "To"
 msgstr "I"
-
-#: templates/settings.php:2
-msgid "Your calendars"
-msgstr "Eich calendrau"
-
-#: templates/settings.php:26
-msgid "Shared events"
-msgstr ""
-
-#: templates/settings.php:42
-msgid "General"
-msgstr "Cyffredinol"
-
-#: templates/settings.php:47
-msgid "Timezone"
-msgstr "Cylchfa Amser"
-
-#: templates/settings.php:78
-msgid "Update timezone automatically"
-msgstr "Diweddaru cylchfa amser yn awtomatig"
-
-#: templates/settings.php:83
-msgid "Time format"
-msgstr "Fformat amser"
-
-#: templates/settings.php:88
-msgid "24h"
-msgstr "24a"
-
-#: templates/settings.php:89
-msgid "12h"
-msgstr "12a"
-
-#: templates/settings.php:95
-msgid "Start week on"
-msgstr "Wythnos yn dechrau ar"
-
-#: templates/settings.php:108
-msgid "Cache"
-msgstr "Storfa"
-
-#: templates/settings.php:112
-msgid "Clear cache for repeating events"
-msgstr "Clirio'r storfa ar gyfer digwyddiadau sy'n ailadrodd"
-
-#: templates/settings.php:117
-msgid "URLs"
-msgstr "URLs"
-
-#: templates/settings.php:119
-msgid "Calendar CalDAV syncing addresses"
-msgstr "Cyfeiriadau cydweddu CalDAV calendr"
-
-#: templates/settings.php:119
-msgid "more info"
-msgstr "mwy o wybodaeth"
-
-#: templates/settings.php:121
-msgid "Primary address (Kontact et al)"
-msgstr "Prif gyfeiriad (Kontact et al)"
-
-#: templates/settings.php:123
-msgid "iOS/OS X"
-msgstr "iOS/OS X"
-
-#: templates/settings.php:125
-msgid "Read only iCalendar link(s)"
-msgstr "Dolen(ni) darllen yn unig iCalendar"

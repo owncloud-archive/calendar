@@ -1,5 +1,7 @@
 <?php $TRANSLATIONS = array(
+"group" => "groep",
 "Personal" => "Persoonlik",
-"Settings" => "Instellings",
-"Advanced" => "Gevorderd"
+"Share" => "Deel",
+"Advanced" => "Gevorderd",
+"Unshare" => "Deel terug neem"
 );

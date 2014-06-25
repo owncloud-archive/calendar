@@ -158,7 +158,7 @@ class OC_Calendar_Object{
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_CREATE)) {
-				throw new Sabre_DAV_Exception_Forbidden(
+				throw new \Sabre\DAV\Exception\Forbidden(
 					OC_Calendar_App::$l10n->t(
 						'You do not have the permissions to add events to this calendar.'
 					)
@@ -170,7 +170,7 @@ class OC_Calendar_Object{
 		$vevent = self::getElement($object);
 
 		if($shared && isset($vevent->CLASS) && (string)$vevent->CLASS !== 'PUBLIC') {
-			throw new Sabre_DAV_Exception_PreconditionFailed(
+			throw new \Sabre\DAV\Exception\PreconditionFailed(
 					OC_Calendar_App::$l10n->t(
 						'You cannot add non-public events to a shared calendar.'
 					)
@@ -240,7 +240,7 @@ class OC_Calendar_Object{
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $cid);
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE) || !($sharedAccessClassPermissions & OCP\PERMISSION_UPDATE)) {
-				throw new Sabre_DAV_Exception_Forbidden(
+				throw new \Sabre\DAV\Exception\Forbidden(
 					OC_Calendar_App::$l10n->t(
 						'You do not have the permissions to edit this event.'
 					)
@@ -304,7 +304,7 @@ class OC_Calendar_Object{
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $cid);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_DELETE)) {
-				throw new Sabre_DAV_Exception_Forbidden(
+				throw new \Sabre\DAV\Exception\Forbidden(
 					OC_Calendar_App::$l10n->t(
 						'You do not have the permissions to delete this event.'
 					)

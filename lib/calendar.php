@@ -139,7 +139,7 @@ class OC_Calendar_Calendar{
 			$userid = OCP\USER::getUser();
 		}
 		
-		$id = self::addCalendar($userid,'Personal');
+		$id = self::addCalendar($userid,OC_Calendar_App::$l10n->t('Personal'));
 
 		return true;
 	}
@@ -325,7 +325,7 @@ class OC_Calendar_Calendar{
 	 * @return string
 	 */
 	public static function extractUserID($principaluri) {
-		list($prefix,$userid) = Sabre_DAV_URLUtil::splitPath($principaluri);
+		list($prefix,$userid) = \Sabre\DAV\URLUtil::splitPath($principaluri);
 		return $userid;
 	}
 

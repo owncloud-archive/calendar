@@ -21,10 +21,10 @@
  */
 
 /**
- * This class overrides Sabre_CalDAV_CalendarRootNode::getChildForPrincipal()
+ * This class overrides \Sabre\CalDAV\CalendarRootNode::getChildForPrincipal()
  * to instantiate OC_Connector_Sabre_CalDAV_UserCalendars.
 */
-class OC_Connector_Sabre_CalDAV_CalendarRoot extends Sabre_CalDAV_CalendarRootNode {
+class OC_Connector_Sabre_CalDAV_CalendarRoot extends \Sabre\CalDAV\CalendarRootNode {
 
 	/**
 	* This method returns a node for a principal.
@@ -34,11 +34,11 @@ class OC_Connector_Sabre_CalDAV_CalendarRoot extends Sabre_CalDAV_CalendarRootNo
 	* supplied by the authentication backend.
 	*
 	* @param array $principal
-	* @return Sabre_DAV_INode
+	* @return \Sabre\DAV\INode
 	*/
 	public function getChildForPrincipal(array $principal) {
 
-		return new OC_Connector_Sabre_CalDAV_UserCalendars($this->principalBackend, $this->caldavBackend, $principal['uri']);
+		return new OC_Connector_Sabre_CalDAV_UserCalendars($this->caldavBackend, $principal);
 
 	}
 

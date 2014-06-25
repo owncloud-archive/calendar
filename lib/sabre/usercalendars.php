@@ -21,10 +21,10 @@
  */
 
 /**
- * This class overrides Sabre_CalDAV_UserCalendars::getChildren()
+ * This class overrides \Sabre\CalDAV\UserCalendars::getChildren()
  * to instantiate OC_Connector_Sabre_CalDAV_Calendars.
 */
-class OC_Connector_Sabre_CalDAV_UserCalendars extends Sabre_CalDAV_UserCalendars {
+class OC_Connector_Sabre_CalDAV_UserCalendars extends \Sabre\CalDAV\UserCalendars {
 
 	/**
 	* Returns a list of calendars
@@ -36,9 +36,9 @@ class OC_Connector_Sabre_CalDAV_UserCalendars extends Sabre_CalDAV_UserCalendars
 		$calendars = $this->caldavBackend->getCalendarsForUser($this->principalInfo['uri']);
 		$objs = array();
 		foreach($calendars as $calendar) {
-			$objs[] = new OC_Connector_Sabre_CalDAV_Calendar($this->principalBackend, $this->caldavBackend, $calendar);
+			$objs[] = new OC_Connector_Sabre_CalDAV_Calendar($this->caldavBackend, $calendar);
 		}
-		$objs[] = new Sabre_CalDAV_Schedule_Outbox($this->principalInfo['uri']);
+		$objs[] = new \Sabre\CalDAV\Schedule\Outbox($this->principalInfo['uri']);
 		return $objs;
 
 	}
