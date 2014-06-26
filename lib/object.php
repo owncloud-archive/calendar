@@ -727,7 +727,7 @@ class OC_Calendar_Object{
 			$errnum++;
 		}
 		if($request['repeat'] != 'doesnotrepeat') {
-			if(is_nan($request['interval']) && $request['interval'] != '') {
+			if(($request['interval'] !== strval(intval($request['interval']))) || intval($request['interval']) < 1) {
 				$errarr['interval'] = 'true';
 				$errnum++;
 			}

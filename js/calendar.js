@@ -199,6 +199,9 @@ Calendar={
 						if(data.fromtime == "true"){
 							output = output + missing_field_fromtime + "<br />";
 						}
+						if(data.interval == "true"){
+							output = output + missing_field_interval + "<br />";
+						}
 						if(data.to == "true"){
 							output = output + missing_field_todate + "<br />";
 						}
