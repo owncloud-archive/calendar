@@ -77,7 +77,7 @@
 "Business" => "Бизнес",
 "Call" => "Звонить",
 "Clients" => "Клиенты",
-"Deliverer" => "Посыльный",
+"Deliverer" => "Доставщик",
 "Holidays" => "Праздники",
 "Ideas" => "Идеи",
 "Journey" => "Поездка",
@@ -155,7 +155,7 @@
 "Alarm" => "Сигнал",
 "Attendees" => "Участники",
 "Share" => "Открыть доступ",
-"Title of the Event" => "Название событие",
+"Title of the Event" => "Название события",
 "from" => "от",
 "to" => "к",
 "All Day Event" => "Событие на весь день",
@@ -200,7 +200,7 @@
 "No categories selected" => "Категории не выбраны",
 "%s of %s" => "%s из %s",
 "Access Class" => "Уровень доступа",
-"From" => "От",
+"From" => "С",
 "at" => "на",
 "To" => "До"
 );
