@@ -161,7 +161,7 @@
 "All Day Event" => "Событие на весь день",
 "Advanced options" => "Дополнительные параметры",
 "Location" => "Место",
-"Categories (separate by comma)" => "Категории (разделить запятыми)",
+"Categories (separate by comma)" => "Категории (через запятую)",
 "Edit categories" => "Редактировать категории",
 "Description" => "Описание",
 "Export event" => "Экспортировать событие",
