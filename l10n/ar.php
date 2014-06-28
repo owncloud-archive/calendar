@@ -73,6 +73,7 @@
 "To Time" => "ساعة النهاية",
 "The event ends before it starts" => "هذا الحدث ينتهي قبل أن يبدأ",
 "There was a database fail" => "حدث خطأ في قاعدة البيانات",
+"Interval is not valid. It must be a positive integer!" => "الفاصل الزمني غير صالح. يجب أن يكون عدداً صحيحاً موجباً!",
 "Birthday" => "عيد ميلاد",
 "Business" => "عمل",
 "Call" => "إتصال",

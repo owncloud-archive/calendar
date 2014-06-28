@@ -73,6 +73,7 @@
 "To Time" => "Para a hora",
 "The event ends before it starts" => "A actividade remata antes de iniciarse",
 "There was a database fail" => "Produciuse un erro na base de datos",
+"Interval is not valid. It must be a positive integer!" => "O intervalo é incorrecto. Ten que ser un enteiro positivo!",
 "Birthday" => "Aniversario",
 "Business" => "Traballo",
 "Call" => "Chamada",

@@ -73,6 +73,7 @@
 "To Time" => "Loppuaika",
 "The event ends before it starts" => "Tapahtuma päättyy ennen alkamistaan",
 "There was a database fail" => "Tapahtui tietokantavirhe",
+"Interval is not valid. It must be a positive integer!" => "Aikaväli on virheellinen. Arvon tulee olla positiivinen kokonaisluku!",
 "Birthday" => "Syntymäpäivä",
 "Business" => "Työ",
 "Call" => "Ota yhteyttä",

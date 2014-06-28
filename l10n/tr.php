@@ -73,6 +73,7 @@
 "To Time" => "Bu Saate",
 "The event ends before it starts" => "Etkinlik başlamadan önce bitiyor",
 "There was a database fail" => "Bir veritabanı başarısızlığı oluştu",
+"Interval is not valid. It must be a positive integer!" => "Aralık geçerli değil. Pozitif bir tam sayı olmalı!",
 "Birthday" => "Doğum günü",
 "Business" => "İş",
 "Call" => "Arama",

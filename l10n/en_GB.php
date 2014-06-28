@@ -73,6 +73,7 @@
 "To Time" => "To Time",
 "The event ends before it starts" => "The event ends before it starts",
 "There was a database fail" => "There was a database failure",
+"Interval is not valid. It must be a positive integer!" => "Interval is not valid. It must be a positive integer!",
 "Birthday" => "Birthday",
 "Business" => "Business",
 "Call" => "Call",

@@ -73,6 +73,7 @@
 "To Time" => "Eindtijd",
 "The event ends before it starts" => "De gebeurtenis eindigt voor het begin",
 "There was a database fail" => "Er was een databasefout",
+"Interval is not valid. It must be a positive integer!" => "Interval is niet geldig. Het moet een positief, geheel getal zijn.",
 "Birthday" => "Verjaardag",
 "Business" => "Zakelijk",
 "Call" => "Bellen",
