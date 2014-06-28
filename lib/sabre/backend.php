@@ -310,6 +310,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	 */
 	public function getCalendarObject($calendarId,$objectUri) {
 		if($calendarId === 'contact_birthdays') {
+			$objectUri = substr($objectUri, 0, (strlen($objectUri) - 4));
 			$objectUriArray = explode('::', $objectUri);
 			if(count($objectUriArray) === 3) {
 				$app = new \OCA\Contacts\App();
