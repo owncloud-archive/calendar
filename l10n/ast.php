@@ -73,6 +73,7 @@
 "To Time" => "Hasta la hora",
 "The event ends before it starts" => "L'eventu fina enantes d'entamar",
 "There was a database fail" => "Hebo un fallu na base de datos",
+"Interval is not valid. It must be a positive integer!" => "L'intervalu nun ye válidu. ¡Tien de ser un enteru positivu!",
 "Birthday" => "Data de nacencia",
 "Business" => "Negocios",
 "Call" => "Llamada",

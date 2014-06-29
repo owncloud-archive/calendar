@@ -73,6 +73,7 @@
 "To Time" => "Έως Ώρα",
 "The event ends before it starts" => "Το συμβάν ολοκληρώνεται πριν από την έναρξή του",
 "There was a database fail" => "Υπήρξε σφάλμα στη βάση δεδομένων",
+"Interval is not valid. It must be a positive integer!" => "Το διάστημα δεν είναι έγκυρο. Πρέπει να είναι ένας θετικός ακέραιος αριθμός!",
 "Birthday" => "Γενέθλια",
 "Business" => "Επαγγελματικό",
 "Call" => "Κλήση",
