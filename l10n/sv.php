@@ -71,7 +71,6 @@
 "To Time" => "Till tid",
 "The event ends before it starts" => "Händelsen slutar innan den börjar",
 "There was a database fail" => "Det blev ett databasfel",
-"Interval is not valid. It must be a positive integer!" => "Intervall är inte giltigt. Det måste vara ett positivt heltal!",
 "Birthday" => "Födelsedag",
 "Business" => "Företag",
 "Call" => "Ring",
