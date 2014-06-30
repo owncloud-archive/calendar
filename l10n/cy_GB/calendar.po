@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-27 01:46-0400\n"
-"PO-Revision-Date: 2014-06-27 05:46+0000\n"
+"POT-Creation-Date: 2014-06-30 01:46-0400\n"
+"PO-Revision-Date: 2014-06-30 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Welsh (United Kingdom) (http://www.transifex.com/projects/p/owncloud/language/cy_GB/)\n"
 "MIME-Version: 1.0\n"
@@ -49,16 +49,16 @@ msgid ""
 msgstr "Naill ai doedd dim digwyddiadau yn y ffeil, neu mae'r digwyddiadau eisoes wedi eu cadw yn eich calendr."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
-msgid "events has been saved in the new calendar"
-msgstr "digwyddiadau wedi'u cadw yn eich calendr newydd"
+msgid "events have been saved in the new calendar"
+msgstr ""
 
 #: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "Methwyd mewnforio"
 
 #: ajax/import/import.php:71
-msgid "events has been saved in your calendar"
-msgstr "digwyddiadau wedi'u cadw yn eich calendr"
+msgid "events have been saved in your calendar"
+msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"

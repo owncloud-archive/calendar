@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-28 01:46-0400\n"
-"PO-Revision-Date: 2014-06-27 06:11+0000\n"
+"POT-Creation-Date: 2014-06-30 01:46-0400\n"
+"PO-Revision-Date: 2014-06-30 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Basque (http://www.transifex.com/projects/p/owncloud/language/eu/)\n"
 "MIME-Version: 1.0\n"
@@ -54,16 +54,16 @@ msgid ""
 msgstr "Fitxategiak ez zuen gertaerarik edo gertaera guztiak dagoeneko egutegian gordeta zeuden."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
-msgid "events has been saved in the new calendar"
-msgstr "gertaerak egutegi berrian gorde dira"
+msgid "events have been saved in the new calendar"
+msgstr ""
 
 #: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "Inportazioak huts egin du"
 
 #: ajax/import/import.php:71
-msgid "events has been saved in your calendar"
-msgstr "gertaerak zure egutegian gorde dira"
+msgid "events have been saved in your calendar"
+msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -324,7 +324,7 @@ msgstr "Datu-baseak huts egin du"
 
 #: js/l10n.php:94
 msgid "Interval is not valid. It must be a positive integer!"
-msgstr ""
+msgstr "Tartea ez da egokia. Zenbaki oso positiboa izan behar du!"
 
 #: lib/app.php:121
 msgid "Birthday"

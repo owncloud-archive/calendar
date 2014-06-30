@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-28 01:46-0400\n"
-"PO-Revision-Date: 2014-06-27 06:11+0000\n"
+"POT-Creation-Date: 2014-06-30 01:46-0400\n"
+"PO-Revision-Date: 2014-06-30 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Khmer (http://www.transifex.com/projects/p/owncloud/language/km/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgid ""
 msgstr ""
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
-msgid "events has been saved in the new calendar"
+msgid "events have been saved in the new calendar"
 msgstr ""
 
 #: ajax/import/import.php:58
@@ -58,8 +58,8 @@ msgid "Import failed"
 msgstr "នាំ​ចូល​មិន​បាន​សម្រេច"
 
 #: ajax/import/import.php:71
-msgid "events has been saved in your calendar"
-msgstr "បាន​រក្សា​ទុក​ព្រឹត្តិការណ៍​នៅ​ក្នុង​ប្រតិទិន​របស់​អ្នក"
+msgid "events have been saved in your calendar"
+msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"

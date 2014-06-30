@@ -5,6 +5,7 @@
 # Translators:
 # Jan Krejci <krejca85@gmail.com>, 2011-2012
 # Jan Liska, 2013-2014
+# Jaroslav Lichtblau <jaroslav@lichtblau.cz>, 2014
 # Josef Moravec <josef.moravec@gmail.com>, 2014
 # Martin Skopal <fireball@atlas.cz>, 2011-2012
 # Michal Hrušecký <Michal@hrusecky.net>, 2012
@@ -14,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-28 01:46-0400\n"
-"PO-Revision-Date: 2014-06-27 06:11+0000\n"
+"POT-Creation-Date: 2014-06-30 01:46-0400\n"
+"PO-Revision-Date: 2014-06-30 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -55,16 +56,16 @@ msgid ""
 msgstr "Soubor neobsahoval žádné události, nebo jsou všechny události již ve Vašem kalendáři."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
-msgid "events has been saved in the new calendar"
-msgstr "události byly uloženy v novém kalendáři"
+msgid "events have been saved in the new calendar"
+msgstr ""
 
 #: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "Import selhal"
 
 #: ajax/import/import.php:71
-msgid "events has been saved in your calendar"
-msgstr "událostí bylo uloženo ve Vašem kalendáři"
+msgid "events have been saved in your calendar"
+msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -325,7 +326,7 @@ msgstr "Chyba v databázi"
 
 #: js/l10n.php:94
 msgid "Interval is not valid. It must be a positive integer!"
-msgstr ""
+msgstr "Interval je neplatný. Výsledné číslo nesmí být záporné!"
 
 #: lib/app.php:121
 msgid "Birthday"

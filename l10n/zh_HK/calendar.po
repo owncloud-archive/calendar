@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-27 01:46-0400\n"
-"PO-Revision-Date: 2014-06-27 05:46+0000\n"
+"POT-Creation-Date: 2014-06-30 01:46-0400\n"
+"PO-Revision-Date: 2014-06-30 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Chinese (Hong Kong) (http://www.transifex.com/projects/p/owncloud/language/zh_HK/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgid ""
 msgstr ""
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
-msgid "events has been saved in the new calendar"
+msgid "events have been saved in the new calendar"
 msgstr ""
 
 #: ajax/import/import.php:58
@@ -56,7 +56,7 @@ msgid "Import failed"
 msgstr ""
 
 #: ajax/import/import.php:71
-msgid "events has been saved in your calendar"
+msgid "events have been saved in your calendar"
 msgstr ""
 
 #: ajax/settings/guesstimezone.php:26

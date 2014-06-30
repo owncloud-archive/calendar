@@ -5,7 +5,6 @@
 "Wrong calendar" => "ប្រតិទិន​ខុស",
 "You do not have the permissions to edit this event." => "អ្នក​ពុំ​មាន​សិទ្ធិ​កែប្រែ​ព្រឹត្តិការណ៍​នេះ​ទេ។",
 "Import failed" => "នាំ​ចូល​មិន​បាន​សម្រេច",
-"events has been saved in your calendar" => "បាន​រក្សា​ទុក​ព្រឹត្តិការណ៍​នៅ​ក្នុង​ប្រតិទិន​របស់​អ្នក",
 "New Timezone:" => "ល្វែង​ម៉ោង​ថ្មី៖",
 "Timezone changed" => "បាន​ប្ដូរ​ល្វែង​ម៉ោង",
 "Invalid request" => "សំណើ​មិន​ត្រឹម​ត្រូវ",

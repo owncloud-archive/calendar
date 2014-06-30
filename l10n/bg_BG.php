@@ -3,7 +3,6 @@
 "Everything seems to be completely cached" => "Всияко исглежда напълно кеширано",
 "Wrong calendar" => "Грешен календар",
 "Import failed" => "Внасянето се провали",
-"events has been saved in your calendar" => "събитието беше запазено във вашия календар",
 "New Timezone:" => "Нова Часова Зона:",
 "Timezone changed" => "Часовата зона е сменена",
 "Invalid request" => "Невалидна заявка",

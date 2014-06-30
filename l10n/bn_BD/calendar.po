@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-27 01:46-0400\n"
-"PO-Revision-Date: 2014-06-27 05:46+0000\n"
+"POT-Creation-Date: 2014-06-30 01:46-0400\n"
+"PO-Revision-Date: 2014-06-30 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Bengali (Bangladesh) (http://www.transifex.com/projects/p/owncloud/language/bn_BD/)\n"
 "MIME-Version: 1.0\n"
@@ -48,16 +48,16 @@ msgid ""
 msgstr "The file contained either no events or all events are already saved in your calendar."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
-msgid "events has been saved in the new calendar"
-msgstr "নতুন দিনপঞ্জীতে ইভেন্টগুলো সংরক্ষণ করা হয়েছে "
+msgid "events have been saved in the new calendar"
+msgstr ""
 
 #: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "আমদানি ব্যর্থ"
 
 #: ajax/import/import.php:71
-msgid "events has been saved in your calendar"
-msgstr "আপনার দিনপঞ্জীতে ইভেন্টগুলো সংরক্ষণ করা হয়েছে"
+msgid "events have been saved in your calendar"
+msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"

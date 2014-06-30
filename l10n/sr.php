@@ -6,7 +6,6 @@
 "Wrong calendar" => "Погрешан календар",
 "You do not have the permissions to edit this event." => "Немате дозволу да мењате овај догађај",
 "Import failed" => "Увоз није успео",
-"events has been saved in your calendar" => "догађаји су сачувани у вашем календару",
 "New Timezone:" => "Нова временска зона:",
 "Timezone changed" => "Временска зона је промењена",
 "Invalid request" => "Неисправан захтев",
