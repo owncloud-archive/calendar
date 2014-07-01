@@ -24,9 +24,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-30 01:46-0400\n"
-"PO-Revision-Date: 2014-06-30 05:46+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-07-01 01:46-0400\n"
+"PO-Revision-Date: 2014-06-30 15:41+0000\n"
+"Last-Translator: Art O. Pal <artopal@fastmail.fm>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/owncloud/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,7 @@ msgstr "El archivo no contiene eventos o ya existen en tu calendario."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events have been saved in the new calendar"
-msgstr ""
+msgstr "los eventos han sido guardados en el nuevo calendario"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
@@ -74,7 +74,7 @@ msgstr "Importación falló"
 
 #: ajax/import/import.php:71
 msgid "events have been saved in your calendar"
-msgstr ""
+msgstr "los eventos han sido guardados en su calendario"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
