@@ -9,10 +9,11 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 * @var array
 	 */
 	public $propertyMap = array(
-		'{DAV:}displayname'						  => 'displayname',
+		'{DAV:}displayname'					=> 'displayname',
 		'{urn:ietf:params:xml:ns:caldav}calendar-timezone'	=> 'timezone',
-		'{http://apple.com/ns/ical/}calendar-order'  => 'calendarorder',
-		'{http://apple.com/ns/ical/}calendar-color'  => 'calendarcolor',
+		'{urn:ietf:params:xml:ns:caldav}calendar-description'	=> 'description',
+		'{http://apple.com/ns/ical/}calendar-order'  		=> 'calendarorder',
+		'{http://apple.com/ns/ical/}calendar-color'  		=> 'calendarcolor',
 	);
 
 	/**
@@ -112,16 +113,34 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 			}
 		}
 
-		if(!isset($values['displayname'])) $values['displayname'] = 'unnamed';
-		if(!isset($values['components'])) $values['components'] = 'VEVENT,VTODO';
-		if(!isset($values['timezone'])) $values['timezone'] = null;
-		if(!isset($values['calendarorder'])) $values['calendarorder'] = 0;
-		if(!isset($values['calendarcolor'])) $values['calendarcolor'] = null;
-		if(!is_null($values['calendarcolor']) && strlen($values['calendarcolor']) == 9) {
+		if(!isset($values['displayname'])) {
+			$values['displayname'] = 'unnamed';
+		}
+		if(!isset($values['components'])) {
+			$values['components'] = 'VEVENT,VTODO';
+		}
+		if(!isset($values['timezone'])) {
+			$values['timezone'] = null;
+		}
+		if(!isset($values['calendarorder'])) {
+			$values['calendarorder'] = 0;
+		}
+		if(!isset($values['calendarcolor'])) {
+			$values['calendarcolor'] = null;
+		}
+		if(!is_null($values['calendarcolor']) && strlen($values['calendarcolor']) === 9) {
 			$values['calendarcolor'] = substr($values['calendarcolor'], 0, 7);
 		}
 
-		return OC_Calendar_Calendar::addCalendarFromDAVData($principalUri,$calendarUri,$values['displayname'],$values['components'],$values['timezone'],$values['calendarorder'],$values['calendarcolor']);
+		return OC_Calendar_Calendar::addCalendarFromDAVData(
+			$principalUri,
+			$calendarUri,
+			$values['displayname'],
+			$values['components'],
+			$values['timezone'],
+			$values['calendarorder'],
+			$values['calendarcolor']
+		);
 	}
 
 	/**
