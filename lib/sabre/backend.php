@@ -94,48 +94,36 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	 * @return mixed
 	 */
 	public function createCalendar($principalUri,$calendarUri, array $properties) {
-		$fieldNames = array(
-			'principaluri',
-			'uri',
-			'ctag',
-		);
-		$values = array(
-			':principaluri' => $principalUri,
-			':uri'		  => $calendarUri,
-			':ctag'		 => 1,
-		);
+		
+		$values = array();
 
 		// Default value
 		$sccs = '{urn:ietf:params:xml:ns:caldav}supported-calendar-component-set';
-		$fieldNames[] = 'components';
 		if (!isset($properties[$sccs])) {
-			$values[':components'] = 'VEVENT,VTODO';
+			$values['components'] = 'VEVENT,VTODO';
 		} else {
 			if (!($properties[$sccs] instanceof \Sabre\CalDAV\Property\SupportedCalendarComponentSet)) {
 				throw new \Sabre\DAV\Exception('The ' . $sccs . ' property must be of type: \Sabre\CalDAV\Property\SupportedCalendarComponentSet');
 			}
-			$values[':components'] = implode(',',$properties[$sccs]->getValue());
+			$values['components'] = implode(',',$properties[$sccs]->getValue());
 		}
 
 		foreach($this->propertyMap as $xmlName=>$dbName) {
 			if (isset($properties[$xmlName])) {
-
-				$myValue = $properties[$xmlName];
-				$values[':' . $dbName] = $properties[$xmlName];
-				$fieldNames[] = $dbName;
+				$values[$dbName] = $properties[$xmlName];
 			}
 		}
 
-		if(!isset($newValues['displayname'])) $newValues['displayname'] = 'unnamed';
-		if(!isset($newValues['components'])) $newValues['components'] = 'VEVENT,VTODO';
-		if(!isset($newValues['timezone'])) $newValues['timezone'] = null;
-		if(!isset($newValues['calendarorder'])) $newValues['calendarorder'] = 0;
-		if(!isset($newValues['calendarcolor'])) $newValues['calendarcolor'] = null;
-		if(!is_null($newValues['calendarcolor']) && strlen($newValues['calendarcolor']) == 9) {
-			$newValues['calendarcolor'] = substr($newValues['calendarcolor'], 0, 7);
+		if(!isset($values['displayname'])) $values['displayname'] = 'unnamed';
+		if(!isset($values['components'])) $values['components'] = 'VEVENT,VTODO';
+		if(!isset($values['timezone'])) $values['timezone'] = null;
+		if(!isset($values['calendarorder'])) $values['calendarorder'] = 0;
+		if(!isset($values['calendarcolor'])) $values['calendarcolor'] = null;
+		if(!is_null($values['calendarcolor']) && strlen($values['calendarcolor']) == 9) {
+			$values['calendarcolor'] = substr($values['calendarcolor'], 0, 7);
 		}
 
-		return OC_Calendar_Calendar::addCalendarFromDAVData($principalUri,$calendarUri,$newValues['displayname'],$newValues['components'],$newValues['timezone'],$newValues['calendarorder'],$newValues['calendarcolor']);
+		return OC_Calendar_Calendar::addCalendarFromDAVData($principalUri,$calendarUri,$values['displayname'],$values['components'],$values['timezone'],$values['calendarorder'],$values['calendarcolor']);
 	}
 
 	/**
