@@ -1,0 +1,69 @@
+/* +-----------------------------------------------------------------------+ *\
+|* | tooltips styling                                                      | *|
+|* | (c) 2014 Michał "rysiek" Woźniak <rysiek@hackerspace.pl>              | *|
+|* | Licensed under AGPL                                                   | *|
+\* +-----------------------------------------------------------------------+ */
+
+*[data-tooltip] {
+	position:relative;
+}
+
+*[data-tooltip]::before,
+*[data-tooltip]::after {
+	position:absolute;
+	opacity:0.8;
+	visibility:hidden;
+	font-size:80%;
+	font-family:sans-serif;
+	transition-duration:0s;
+	-moz-transition-duration:0s;
+	-webkit-transition-duration:0s;
+		
+}
+
+*[data-tooltip]::before {
+	content:attr(data-tooltip);
+	top:-3.1em;
+	left:-2em;
+	height:1.5em;
+	min-width:5em;
+	max-width:20em;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	padding:0.5em 0.7em 0.7em 0.7em;
+	display:block;
+	border-radius:0.3em;
+	text-align:center;
+	
+	color:white;
+	background-color:rgba(6,6,6,0);
+}
+
+*[data-tooltip]::after {
+	content:" ";
+	background:transparent;
+	width:1px;
+	height:1px;
+	border:solid 0.4em rgba(6, 6, 6, 0);
+	display:block;
+	border-bottom:none;
+	border-left:solid 0.3em transparent;
+	border-right:solid 0.3em transparent;
+	top:-0.9ex;
+	left:50%;
+	margin-left:-0.3em;
+}
+
+*[data-tooltip]:hover::before,
+*[data-tooltip]:hover::after {
+	border-top-color:rgba(6,6,6,1);
+	visibility:visible;
+	transition:background-color 0.3s ease-out, border-top-color 0.3s ease-out;
+	-moz-transition:background-color 0.3s ease-out, border-top-color 0.3s ease-out;
+	-webkit-transition:background-color 0.3s ease-out, border-top-color 0.3s ease-out;
+}
+
+*[data-tooltip]:hover::before {
+	background-color:rgba(6,6,6,1);
+}

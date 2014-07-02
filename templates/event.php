@@ -6,91 +6,39 @@
  * later.
  * See the COPYING-README file.
  */
-OCP\JSON::checkAppEnabled('calendar');
 
-// "this is from a link-shared calendar" flag
-$link_shared = false;
+// this also checks if we're properly called from share.php
+if (!function_exists('calendar404')) {
+	$errorTemplate = new OCP\Template('calendar', 'part.404', '');
+	$errorContent = $errorTemplate->fetchPage();
 
-// do we have a logged-in user?
-if(!OCP\User::isLoggedIn()) {
-
-	// do we have a token?
-	if (!\OC::$session->exists('public_link_token')) {
-		// nope, bail out!
-		OCP\User::checkLoggedIn();
-	}
-
-	session_write_close();
-
-	// shareapi enabled?
-	if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
-		header('HTTP/1.0 404 Not Found');
-		exit();
-	}
-
-	// get the data
-	$linkItem = OCP\Share::getShareByToken(
-		\OC::$session->get('public_link_token')
-	);
-
-	// did we get anything?
-	if (!is_array($linkItem) || !isset($linkItem['uid_owner'])) {
-		// nope! chuck testa!
-		header('HTTP/1.0 404 Not Found');
-		exit();
-	}
-
-	// resolve all the re-shares
-	$rootLinkItem = OCP\Share::resolveReShare($linkItem);
-	
-	// did we get anything?
-	if (!is_array($rootLinkItem) || !isset($rootLinkItem['uid_owner'])) {
-		// nnnneewp!
-		header('HTTP/1.0 404 Not Found');
-		exit();
-	}
-	
-	// do we have a password on this share?
-	if (isset($linkItem['share_with'])) {
-		// we're not going to check the password here, we're in AJAX mode
-		// what we can do is to check for 'public_link_authenticated' session var
-		if ( ! \OC::$session->exists('public_link_authenticated')
-				|| \OC::$session->get('public_link_authenticated') !== $linkItem['id']
-			) {
-				header('HTTP/1.0 401 Unauthorized');
-				exit();
-			}
-	}
-
-	// just another check
-	if (!OC_Calendar_App::getCalendar($rootLinkItem['item_source'], true, true)) {
-		header('HTTP/1.0 403 Forbidden');
-		exit();
-	}
-	
-	// set the flag and go
-	$link_shared = true;
+	header('HTTP/1.0 404 Not Found');
+	$tmpl = new OCP\Template('', '404', 'guest');
+	$tmpl->assign('content', $errorContent);
+	$tmpl->printPage();
+	exit();
 }
 
-$id = $_POST['id'];
+$id = $_['link_shared_event']['item_source'];
 $data = OC_Calendar_App::getEventObject($id, false, false);
 
+// whoops
 if(!$data) {
-	OCP\JSON::error(array('data' => array('message' => OC_Calendar_App::$l10n->t('Wrong calendar'))));
-	exit;
+	calendar404();
 }
+
 $object = OC_VObject::parse($data['calendardata']);
 $vevent = $object->VEVENT;
-$object = OC_Calendar_Object::cleanByAccessClass($id, $object);
 $accessclass = $vevent->getAsString('CLASS');
 $permissions = OC_Calendar_App::getPermissions($id, OC_Calendar_App::EVENT, $accessclass);
 
 $dtstart = $vevent->DTSTART;
 $dtend = OC_Calendar_Object::getDTEndFromVEvent($vevent);
+
 switch($dtstart->getDateType()) {
 	case Sabre\VObject\Property\DateTime::UTC:
 	case Sabre\VObject\Property\DateTime::LOCALTZ:
-		$timezone = new DateTimeZone(OC_Calendar_App::$tz);
+		$timezone = new DateTimeZone($_['timezone']);
 		$newDT    = $dtstart->getDateTime();
 		$newDT->setTimezone($timezone);
 		$dtstart->setDateTime($newDT);
@@ -104,6 +52,7 @@ switch($dtstart->getDateType()) {
 		$endtime = $dtend->getDateTime()->format('H:i');
 		$allday = false;
 		break;
+	// all-day event
 	case Sabre\VObject\Property\DateTime::DATE:
 		$startdate = $dtstart->getDateTime()->format('d-m-Y');
 		$starttime = '';
@@ -276,18 +225,12 @@ $repeat_bymonth_options = OC_Calendar_App::getByMonthOptions();
 $repeat_byweekno_options = OC_Calendar_App::getByWeekNoOptions();
 $repeat_bymonthday_options = OC_Calendar_App::getByMonthDayOptions();
 
-// edit rights
-if($permissions & OCP\PERMISSION_UPDATE) {
-	$tmpl = new OCP\Template('calendar', 'part.editevent');
+$tmpl = new OCP\Template('calendar', 'part.showevent');
 
-// read-only rights (including lin-shared calendar events)
-} elseif ( ($permissions & OCP\PERMISSION_READ) || ($link_shared === true) ) {
-	$tmpl = new OCP\Template('calendar', 'part.showevent');
-
-} elseif($permissions === 0) {
-	OCP\JSON::error(array('data' => array('message' => OC_Calendar_App::$l10n->t('You do not have the permissions to edit this event.'))));
-	exit;
-}
+$tmpl->assign('link_shared_event', $_['link_shared_event']);
+$tmpl->assign('link_shared_event_url', $_['link_shared_event_url']);
+$tmpl->assign('timezone', $_['timezone']);
+$tmpl->assign('timezones', $_['timezones']);
 
 $tmpl->assign('eventid', $id);
 $tmpl->assign('permissions', $permissions);

@@ -122,6 +122,13 @@ Calendar={
 		},
 	},
 	UI:{
+		/*
+		 * checking if the calendar is link-shared and hence not editable
+		 */
+		isLinkShared: function() {
+			// simple enough, eh?
+			return ( $('#linksharedinfo').length > 0 )
+		},
 		loading: function(isLoading){
 			if (isLoading){
 				$('#loading').show();
@@ -185,6 +192,10 @@ Calendar={
 			$('#event-title').focus().val('').val(val);
 		},
 		newEvent:function(start, end, allday){
+
+			// nothing to do for link-shared public calendars
+			if (Calendar.UI.isLinkShared()) return false;
+
 			start = Math.round(start.getTime()/1000);
 			if (end){
 				end = Math.round(end.getTime()/1000);
@@ -270,10 +281,14 @@ Calendar={
 				},"json");
 		},
 		moveEvent:function(event, dayDelta, minuteDelta, allDay, revertFunc){
+			// nothing to do for link-shared public calendars
+			if (Calendar.UI.isLinkShared()) return false;
+			
 			if($('#event').length != 0) {
 				revertFunc();
 				return;
 			}
+
 			Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'move.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, allDay: allDay?1:0, lastmodified: event.lastmodified},
 			function(data) {
@@ -288,6 +303,10 @@ Calendar={
 			});
 		},
 		resizeEvent:function(event, dayDelta, minuteDelta, revertFunc){
+
+			// nothing to do for link-shared public calendars
+			if (Calendar.UI.isLinkShared()) return false;
+
 			Calendar.UI.loading(true);
 			$.post(OC.filePath('calendar', 'ajax/event', 'resize.php'), { id: event.id, dayDelta: dayDelta, minuteDelta: minuteDelta, lastmodified: event.lastmodified},
 			function(data) {
@@ -551,7 +570,7 @@ Calendar={
 				}
 				Calendar.UI.loading(true);
 				$.post(OC.filePath('calendar', 'ajax/calendar', 'activation.php'), { calendarid: calendarid, active: checkbox.checked?1:0 },
-				  function(data) {
+					function(data) {
 					Calendar.UI.loading(false);
 					if (data.status == 'success'){
 						checkbox.checked = data.active == 1;
@@ -561,7 +580,7 @@ Calendar={
 							$('#fullcalendar').fullCalendar('removeEventSource', data.eventSource.url);
 						}
 					}
-				  });
+					});
 			},
 			sharedEventsActivation:function(checkbox)
 			{
@@ -613,7 +632,7 @@ Calendar={
 					return false;
 				}else{
 					$.post(OC.filePath('calendar', 'ajax/calendar', 'delete.php'), { calendarid: calid},
-					  function(data) {
+						function(data) {
 						if (data.status == 'success'){
 							var url = 'ajax/events.php?calendar_id='+calid;
 							$('#fullcalendar').fullCalendar('removeEventSource', url);
@@ -622,7 +641,7 @@ Calendar={
 							});
 							$('#fullcalendar').fullCalendar('refetchEvents');
 						}
-					  });
+						});
 				}
 			},
 			submit:function(button, calendarid){
@@ -704,80 +723,198 @@ Calendar={
 		Share:{
 			init:function(){
 				if(typeof OC.Share !== typeof undefined){
-					var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP];
-					$('#sharewith').autocomplete({minLength: 1, source: function(search, response) {
-						$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
-							if (result.status == 'success' && result.data.length > 0) {
-								response(result.data);
-							}
+					//var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP]; // huh? what is that supposed to do?..
+					$('.internal-share .share-with.ui-autocomplete-input').live('keydown.autocomplete', function(){
+						// we need itemshares
+						var itemShares = []
+						$(this)
+						  .siblings('.shared-with-list')
+						    .children('li:not(.stub)')
+						      .each(function(){
+						        var stype = $(this).attr('data-share-type')
+						        var swith = $(this).attr('data-share-with')
+						        if (typeof itemShares[stype] == "undefined") itemShares[stype] = []
+						        itemShares[stype].push(swith)
+						      })
+						// now, handle the damn thing!
+						$(this).autocomplete({
+						  minLength: 1,
+						  source: function(search, response) {
+						    $.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
+						      if (result.status == 'success' && result.data.length > 0) {
+						        response(result.data);
+						      } else {
+						        response([t('core', 'No people found')]);
+						      }
+						    });
+						  },
+						  focus: function(event, focused) {
+						    event.preventDefault();
+						  },
+						  select: function(event, selected) {
+						    // checking if we got a valid sharewith partner
+						    if ( (typeof selected.item.value.shareType == "undefined") || (typeof selected.item.value.shareWith == "undefined") )
+						      return false;
+						    // okay, on with the show
+						    var itemType = $(this).data('item-type');
+						    var itemSource = $(this).data('item-source');
+						    var shareType = selected.item.value.shareType;
+						    var shareWith = selected.item.value.shareWith;
+						    $(this).val(shareWith);
+						    var shareWithInput = $(this)
+						    // getting the default permissions from data-permissions
+						    // shouldn't it be OC.PERMISSION_READ | OC.PERMISSION_SHARE instead, as a sensible default?
+						    var permissions = $(this).data('permissions')
+						    OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
+						      // we need to "fix" the share-can-edit-ITEMPTYPE-ITEMSOURCE-0 checkbox and label
+						      var editCheckboxIdStub = {
+						        'can': 'share-can-edit-' + itemType + '-' + itemSource + '-',
+						        'collective': 'share-collective-edit-' + itemType + '-' + itemSource + '-'
+						      }
+						      var permsCheckboxIdStub = {
+						        'create': 'share-permissions-create-' + itemType + '-' + itemSource + '-',
+						        'update': 'share-permissions-update-' + itemType + '-' + itemSource + '-',
+						        'delete': 'share-permissions-delete-' + itemType + '-' + itemSource + '-'
+						      }
+						      var curShareWithId = $(shareWithInput).parents('.share-interface-container.internal-share').find('.shared-with-entry-container').length
+						      // find the stub
+						      var newitem = $(shareWithInput)
+						        .parents('.share-interface-container.internal-share')
+						          .find('.shared-with-entry-container.stub')
+						            // clone it
+						            .clone()
+						              // populate the stub with data
+						              .attr('data-item-type', itemType)
+						              .attr('data-share-with', shareWith)
+						              .attr('data-permissions', permissions)
+						              .attr('data-share-type', shareType)
+						              .attr('data-item-soutce', itemSource)
+						              .attr('title', shareWith)
+						              // populate stub's elements
+						              .find('.username')
+						                .html(shareWith + (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : ''))
+						                .end()
+						              .find('.share-options input[name="create"]')
+						                .prop('checked', permissions & OC.PERMISSION_CREATE)
+						                .end()
+						              .find('.share-options input[name="update"]')
+						                .prop('checked', permissions & OC.PERMISSION_UPDATE)
+						                .end()
+						              .find('.share-options input[name="delete"]')
+						                .prop('checked', permissions & OC.PERMISSION_DELETE)
+						                .end()
+						              .find('.share-options input[name="share"]')
+						                .prop('checked', permissions & OC.PERMISSION_SHARE)
+						                .end()
+						              .find('.share-options input[name="edit"]')
+						                .prop('checked', permissions & ( OC.PERMISSION_CREATE | OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE ) )
+						                .end()
+						              // handle the share-(CAN|COLLECTIVE)-edit-ITEMPTYPE-ITEMSOURCE-0 checkboxes and labels
+						              .find('#' + editCheckboxIdStub['can'] + '0')
+						                .prop('id', editCheckboxIdStub['can'] + curShareWithId)
+						                .end()
+						              .find('label[for=' + editCheckboxIdStub['can'] + '0]')
+						                .prop('for', editCheckboxIdStub['can'] + curShareWithId)
+						                .end()
+						              .find('#' + editCheckboxIdStub['collective'] + '0')
+						                .prop('id', editCheckboxIdStub['collective'] + curShareWithId)
+						                .end()
+						              .find('label[for=' + editCheckboxIdStub['collective'] + '0]')
+						                .prop('for', editCheckboxIdStub['collective'] + curShareWithId)
+						                .end()
+						              // handle the share-permissions-(CREATE|UPDATE|DELETE)-ITEMPTYPE-ITEMSOURCE-0 checkboxes and labels
+						              .find('#' + permsCheckboxIdStub['create'] + '0')
+						                .prop('id', permsCheckboxIdStub['create'] + curShareWithId)
+						                .end()
+						              .find('label[for=' + permsCheckboxIdStub['create'] + '0]')
+						                .prop('for', permsCheckboxIdStub['create'] + curShareWithId)
+						                .end()
+						              .find('#' + permsCheckboxIdStub['update'] + '0')
+						                .prop('id', permsCheckboxIdStub['update'] + curShareWithId)
+						                .end()
+						              .find('label[for=' + permsCheckboxIdStub['update'] + '0]')
+						                .prop('for', permsCheckboxIdStub['update'] + curShareWithId)
+						                .end()
+						              .find('#' + permsCheckboxIdStub['delete'] + '0')
+						                .prop('id', permsCheckboxIdStub['delete'] + curShareWithId)
+						                .end()
+						              .find('label[for=' + permsCheckboxIdStub['delete'] + '0]')
+						                .prop('for', permsCheckboxIdStub['delete'] + curShareWithId)
+						                .end()
+						              // remove the "stub" class
+						              .removeClass('stub')
+						      // append it where it's needed most
+						      $(shareWithInput)
+						        .parents('.share-interface-container.internal-share')
+						          .children('.shared-with-list')
+						            .append(newitem.fadeIn(500))
+						      // clear
+						      $(shareWithInput).val('');
+						    });
+						    return false;
+						  }
 						});
-					},
-					focus: function(event, focused) {
-						event.preventDefault();
-					},
-					select: function(event, selected) {
-						var itemType = 'event';
-						var itemSource = $('#sharewith').data('item-source');
-						var shareType = selected.item.value.shareType;
-						var shareWith = selected.item.value.shareWith;
-						$(this).val(shareWith);
-						// Default permissions are Read and Share
-						var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
-						OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
-							var newitem = '<li data-item-type="event"'
-								+ 'data-share-with="'+shareWith+'" '
-								+ 'data-permissions="'+permissions+'" '
-								+ 'data-share-type="'+shareType+'">'
-								+ shareWith
-								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
-								+ '<span class="shareactions">'
-								+ '<label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
-								+ '<label><input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
-								+ '<img class="svg action delete" title="Unshare"src="'+ OC.imagePath('core', 'actions/delete.svg') +'"></span></li>';
-							$('.sharedby.eventlist').append(newitem);
-							$('#sharedWithNobody').remove();
-							$('#sharewith').val('');
-						});
-						return false;
-					}
 					});
+
+					// using .off() to make sure the event is only attached once
+					$(document)
+						.off('change', '.shared-with-entry-container input:checkbox[data-permissions]')
+						.on('change', '.shared-with-entry-container input:checkbox[data-permissions]', function(){
+						  // get the data
+						  var container = $(this).parents('li').first();
+						  var permissions = parseInt(container.attr('data-permissions'));
+						  var itemType = container.data('item-type');
+						  var shareType = container.data('share-type');
+						  var itemSource = container.data('item');
+						  var shareWith = container.data('share-with');
+						  var permission = $(this).data('permissions');
+
+						  // find the required perms
+						  if($(this).is(':checked')) {
+						    permissions |= permission;
+						  } else {
+						    permissions &= ~permission;
+						  }
+						  
+						  // save current permissions on the container
+						  container.attr('data-permissions', permissions);
+						  
+						  // set statuses of all the checkboxes
+						  switch ($(this).attr('name')) {
+						    case 'create':
+						    case 'update':
+						    case 'delete':
+						      $(this)
+						        .parents('.share-options')
+						          .find('input[type="checkbox"][name="edit"]')
+						            .prop('checked', permissions & ( OC.PERMISSION_CREATE | OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE ) )
+						      break;
+						    case 'edit':
+						      $(this)
+						        .parents('.share-options')
+						          .find('input[type="checkbox"][name="create"]').prop('checked', permissions & OC.PERMISSION_CREATE )
+						          .siblings('input[type="checkbox"][name="update"]').prop('checked', permissions & OC.PERMISSION_UPDATE )
+						          .siblings('input[type="checkbox"][name="delete"]').prop('checked', permissions & OC.PERMISSION_DELETE )
+						      break;
+						  }
+
+						  // run the request
+						  OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
+						});
 	
-					$('.shareactions > input:checkbox').change(function() {
-						var container = $(this).parents('li').first();
-						var permissions = parseInt(container.data('permissions'));
-						var itemType = container.data('item-type');
-						var shareType = container.data('share-type');
-						var itemSource = container.data('item');
-						var shareWith = container.data('share-with');
-						var permission = null;
-						if($(this).hasClass('update')) {
-							permission = OC.PERMISSION_UPDATE;
-							permission = OC.PERMISSION_DELETE;
-						} else if($(this).hasClass('share')) {
-							permission = OC.PERMISSION_SHARE;
-						}
-						// This is probably not the right way, but it works :-P
-						if($(this).is(':checked')) {
-							permissions += permission;
-						} else {
-							permissions -= permission;
-						}
-						
-						container.data('permissions',permissions);
-						
-						OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
-					});
-	
-					$('.shareactions > .delete').click(function() {
-						var container = $(this).parents('li').first();
-						var itemType = container.data('item-type');
-						var shareType = container.data('share-type');
-						var itemSource = container.data('item');
-						var shareWith = container.data('share-with');
-						OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
-							container.remove();
+					// using .off() to make sure the event is only attached once
+					$(document)
+						.off('click', '.shared-with-entry-container .unshare')
+						.on('click', '.shared-with-entry-container .unshare', function(e) {
+						  var container = $(this).parents('li').first();
+						  var itemType = container.data('item-type');
+						  var shareType = container.data('share-type');
+						  var itemSource = container.data('item');
+						  var shareWith = container.data('share-with');
+						  OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
+						    container.fadeOut(500, function(){ $(this).remove() });
+						  });
 						});
-					});
 				}
 			}
 		},
@@ -993,7 +1130,7 @@ $(document).ready(function(){
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
-		editable: true,
+		editable: !Calendar.UI.isLinkShared(),
 		defaultView: defaultView,
 		timeFormat: {
 			agenda: agendatime,
@@ -1043,7 +1180,7 @@ $(document).ready(function(){
 			}
 		},
 		columnFormat: {
-		    week: 'ddd d. MMM'
+				week: 'ddd d. MMM'
 		},
 		selectable: true,
 		selectHelper: true,
@@ -1136,13 +1273,176 @@ $(document).ready(function(){
 	});
 	Calendar.UI.Share.init();
 	Calendar.UI.Drop.init();
-	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height());
+	
 	// Save the eventSource for shared events.
 	for (var i in eventSources) {
 		if (eventSources[i].url.substr(-13) === 'shared_events') {
 			sharedEventSource = eventSources[i];
 		}
 	}
+	
+	$('#choosecalendar .generalsettings').on('click keydown', function(event) {
+		event.preventDefault();
+		OC.appSettings({appid:'calendar', loadJS:true, cache:false, scriptName:'settingswrapper.php'});
+	});
+	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height());
+
+	/* link-sharing/unsharing of single events and calendars done right */
+	$('.share-interface-container.link-share input[type="checkbox"].share-link').live('change', function(e){
+		// get the data
+		slcontainer = $(this).parents('.share-interface-container.link-share')
+		itemType = slcontainer.attr('data-item-type')
+		itemSource = slcontainer.attr('data-item')
+		itemSourceName = slcontainer.attr('data-item-source-name')
+		
+		// sharing?
+		if ($(this).is(':checked')) {
+			// share it!
+			// we're sharing the item for the first time, so no password, no expiration date for sure
+			OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, '', OC.PERMISSION_READ, itemSourceName, function(data) {
+				// update the data
+				$(slcontainer)
+					.find('.link-text')
+						.val(
+						  window.location.protocol + '//' + location.host + OC.linkTo('', 'public.php') + '?service=calendar&t='+data.token
+						)
+						// @tanghus' suggestion
+						// https://github.com/owncloud/calendar/pull/308#issuecomment-38424997
+						.select()
+						.focus();
+			})
+
+		// nope, un-sharing!
+		} else {
+			OC.Share.unshare(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, '', function(data) {
+				// clear data
+				$(slcontainer)
+					.find('.link-text, .share-link-password, .expire-date')
+						.val('')
+				// clear checkboxes
+				$(slcontainer)
+					.find('.password-protect, .expire')
+						.attr('checked', false)
+			});
+		}
+	})
+	
+	/* setting the password */
+	$('.share-interface-container.link-share input[type="password"].share-link-password').live('blur', function(e){
+		// get the data
+		slcontainer = $(this).parents('.share-interface-container.link-share')
+		itemType = slcontainer.attr('data-item-type')
+		itemSource = slcontainer.attr('data-item')
+		itemSourceName = slcontainer.attr('data-item-source-name')
+		itemPassword = $(this).val()
+		
+		// set the password!
+		OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, itemPassword, OC.PERMISSION_READ, itemSourceName, function(data) {
+			console.log(data)
+			$(slcontainer)
+				.find('input.share-link-password')
+					.attr('placeholder', 'Password protected')
+					.val('')
+		})
+	})
+	
+	/* what about Enter and Escape keys? */
+	$('.share-interface-container.link-share input[type="password"].share-link-password').live('keydown', function(e){
+		// Enter? submit!
+		if (e.which == 13) {
+			e.preventDefault();
+			$(this).blur()
+			return false;
+		}
+		// escape? ignore!
+		// if (e.which == 13) { TODO?
+	})
+	
+	/* removing password */
+	$('.share-interface-container.link-share input[type="checkbox"].password-protect').live('change', function(e){
+		// clear the data input
+		$(this)
+			.siblings('.displayable')
+				.children('input')
+					.attr('placeholder', 'Password')
+					.val('')
+		// get the data
+		slcontainer = $(this).parents('.share-interface-container.link-share')
+		itemType = slcontainer.attr('data-item-type')
+		itemSource = slcontainer.attr('data-item')
+		itemSourceName = slcontainer.attr('data-item-source-name')
+		itemPassword = slcontainer.find('input.share-link-password').val()
+		
+		// we only handle removal of password
+		if (!$(this).is(':checked')) {
+			OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, itemPassword, OC.PERMISSION_READ, itemSourceName, function(data) {
+			});
+		}
+	})
+	
+	/* setting the expiration date */
+	$('.share-interface-container.link-share input.expire-date').live('change', function(e){
+		// get the data
+		slcontainer = $(this).parents('.share-interface-container.link-share')
+		itemType = slcontainer.attr('data-item-type')
+		itemSource = slcontainer.attr('data-item')
+		itemSourceName = slcontainer.attr('data-item-source-name')
+		itemPassword = slcontainer.find('input.share-link-password').val()
+		expiryDate = $(this).val()
+		
+		// set the date!
+		$.post(OC.filePath('core', 'ajax', 'share.php'), { action: 'setExpirationDate', itemType: itemType, itemSource: itemSource, date: expiryDate }, function(result) {
+			if (!result || result.status !== 'success') {
+				OC.dialogs.alert(t('core', 'Error setting expiration date'), t('core', 'Error'));
+			}
+		});
+	})
+	
+	/* removing password */
+	$('.share-interface-container.link-share input[type="checkbox"].password-protect').live('change', function(e){
+		// clear the data input
+		$(this)
+			.siblings('.displayable')
+				.children('input')
+					.val('')
+		// get the data
+		slcontainer = $(this).parents('.share-interface-container.link-share')
+		itemType = slcontainer.attr('data-item-type')
+		itemSource = slcontainer.attr('data-item')
+		itemSourceName = slcontainer.attr('data-item-source-name')
+		itemPassword = slcontainer.find('input.share-link-password').val()
+		
+		// we only handle removal of expiry date
+		if (!$(this).is(':checked')) {
+			$.post(OC.filePath('core', 'ajax', 'share.php'), { action: 'setExpirationDate', itemType: itemType, itemSource: itemSource, date: '' }, function(result) {
+				if (!result || result.status !== 'success') {
+					OC.dialogs.alert(t('core', 'Error unsetting expiration date'), t('core', 'Error'));
+				}
+			});
+		}
+	})
+
+	/* datepicker, because firefox can't into datepicker control */
+	$('.share-link-enabled-container .expire-date:not(.hasDatepicker)').live('click', function(){
+		$(this)
+			.attr('type', 'text')
+			.datepicker({
+				dateFormat : datepickerFormatDate,
+				minDate : 1
+			})
+			.datepicker('show');
+	});
+	
+	/* clear the expire date picker when expire date checkbox gets unselected */
+	$('.displayable-control.expire').live('change', function(){
+		if (! $(this).is(':checked')) {
+			$(this)
+				.siblings('.expire-date-container')
+					.children('.expire-date')
+						.val('')
+						.change()
+		}
+	})
 });
 
 var wrongKey = function(event) {

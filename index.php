@@ -35,6 +35,8 @@ if(OCP\Config::getUserValue(OCP\USER::getUser(), "calendar", "timezone") == null
 }
 OCP\Util::addscript('calendar', 'calendar');
 OCP\Util::addStyle('calendar', 'style');
+OCP\Util::addStyle('calendar', 'linkshare');
+OCP\Util::addStyle('calendar', 'tooltips');
 OCP\Util::addscript('', 'jquery.multiselect');
 OCP\Util::addStyle('', 'jquery.multiselect');
 OCP\Util::addscript('calendar','jquery.multi-autocomplete');
@@ -43,10 +45,12 @@ OCP\Util::addscript('calendar','on-event');
 OCP\Util::addscript('calendar','settings');
 OCP\App::setActiveNavigationEntry('calendar_index');
 $tmpl = new OCP\Template('calendar', 'calendar', 'user');
+
 $timezone=OCP\Config::getUserValue(OCP\USER::getUser(),'calendar','timezone','');
 $tmpl->assign('timezone',$timezone);
 $tmpl->assign('timezones',DateTimeZone::listIdentifiers());
-
+$tmpl->assign("allowShareWithLink", \OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes'));
+		
 if(array_key_exists('showevent', $_GET)) {
 	$tmpl->assign('showevent', $_GET['showevent']);
 }
