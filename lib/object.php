@@ -886,7 +886,7 @@ class OC_Calendar_Object{
 	 * @return object updated $vcalendar
 	 */
 	public static function updateVCalendarFromRequest($request, $vcalendar) {
-		$accessclass = $request["accessclass"];
+		$accessclass = isset($request["accessclass"]) ? $request["accessclass"] : null;
 		$title = $request["title"];
 		$location = $request["location"];
 		$categories = $request["categories"];
@@ -1062,7 +1062,9 @@ class OC_Calendar_Object{
 		}
 		unset($vevent->DURATION);
 
-		$vevent->setString('CLASS', $accessclass);
+		if ($accessclass !== null) {
+			$vevent->setString('CLASS', $accessclass);
+		}
 		$vevent->setString('LOCATION', $location);
 		$vevent->setString('DESCRIPTION', $description);
 		$vevent->setString('CATEGORIES', $categories);
