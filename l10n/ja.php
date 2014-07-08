@@ -108,7 +108,7 @@
 "Bi-Weekly" => "2週間ごと",
 "Monthly" => "毎月",
 "Yearly" => "毎年",
-"never" => "無し",
+"never" => "なし",
 "by occurrences" => "回数で指定",
 "by date" => "日付で指定",
 "by monthday" => "日にちで指定",
