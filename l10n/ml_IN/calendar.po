@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-30 01:46-0400\n"
-"PO-Revision-Date: 2014-06-30 05:46+0000\n"
+"POT-Creation-Date: 2014-07-09 01:46-0400\n"
+"PO-Revision-Date: 2014-07-08 13:21+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Malayalam (India) (http://www.transifex.com/projects/p/owncloud/language/ml_IN/)\n"
 "MIME-Version: 1.0\n"
@@ -434,7 +434,7 @@ msgstr ""
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr ""
+msgstr "ദിവസേന"
 
 #: lib/object.php:567
 msgid "Weekly"

@@ -21,13 +21,14 @@
 # Victor Bravo <>, 2012
 # Victor Dubiniuk <victor.dubiniuk@gmail.com>, 2012
 # Vladimir Sapronov <vladimir.sapronov@gmail.com>, 2013
+# Void Ayanami <hex.void@gmail.com>, 2014
 # alex <zaera.alex@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-08 01:46-0400\n"
-"PO-Revision-Date: 2014-07-07 15:21+0000\n"
+"POT-Creation-Date: 2014-07-09 01:46-0400\n"
+"PO-Revision-Date: 2014-07-08 13:31+0000\n"
 "Last-Translator: Void Ayanami <hex.void@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/owncloud/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +69,7 @@ msgstr "Файл либо не собержит событий, либо все 
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events have been saved in the new calendar"
-msgstr ""
+msgstr "события сохранены в новом календаре"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
@@ -76,7 +77,7 @@ msgstr "Ошибка импорта"
 
 #: ajax/import/import.php:71
 msgid "events have been saved in your calendar"
-msgstr ""
+msgstr "события сохранены в вашем календаре"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
