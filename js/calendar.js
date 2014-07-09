@@ -993,7 +993,13 @@ $(document).ready(function(){
 	* Set an interval timer to make the timeline move 
 	*/
 	setInterval(Calendar.Util.setTimeline,60000);	
-	
+	$(window).resize(function(){
+		/**
+		* When i use it instant the timeline is walking behind the facts
+		* A little timeout will make sure that it positions correctly
+		*/
+		setTimeout(Calendar.Util.setTimeline,500);
+	})
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
