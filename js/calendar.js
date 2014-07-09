@@ -116,7 +116,8 @@ Calendar={
 			var percentOfDay = curSeconds / 86400;
 			//24 * 60 * 60 = 86400, # of seconds in a day
 			var topLoc = Math.floor(parentDiv.height() * percentOfDay);
-			timeline.css({'left':($('.fc-today').offset().left-250),'width': $('.fc-today').width(),'top':topLoc + 'px'});
+			
+			timeline.css({'left':($('.fc-today').offset().left-$('#app-navigation').width()),'width': $('.fc-today').width(),'top':topLoc + 'px'});
 		},
 	},
 	UI:{
