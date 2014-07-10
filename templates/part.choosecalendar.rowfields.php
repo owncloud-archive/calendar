@@ -1,11 +1,7 @@
-
-	
 <label for="active_<?php p($_['calendar']['id']) ?>" class="calendarLabel">
 	<div class="calendarCheckbox<?php print_unescaped($_['calendar']['active'] ? '' : ' unchecked') ?>" id="checkbox_<?php p($_['calendar']['id']) ?>" style="background-color:<?php print_unescaped(($_['calendar']['calendarcolor']) ? $_['calendar']['calendarcolor'] : 'rgb(58, 135, 173)') ?>"></div>
 	<?php p($_['calendar']['displayname']) ?>
-	<?php if ($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
 		<input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
-	<?php } ?>
 
 <span class="utils">
 	<span class="action">
@@ -34,7 +30,7 @@
 	</span>
 
 	<span class="action">
-	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_UPDATE) { ?>
+	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_READ) { ?>
 		<a href="#" id="chooseCalendar-edit" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Edit')) ?>" class="icon-rename"></a>
 	<?php } ?>
 

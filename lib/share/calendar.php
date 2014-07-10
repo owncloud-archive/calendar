@@ -54,11 +54,16 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 	*/
 	public function generateTarget($itemSource, $shareWith, $exclude = null) {
 		$calendar = OC_Calendar_App::getCalendar( $itemSource );
+
+		$stmt = OCP\DB::prepare( 'SELECT `displayname` AS default_displayname FROM `*PREFIX*clndr_calendars` WHERE `userid` = ?' );
+		// @TODO If shareWith is a group, then no calendar names will be returned.
+		$result = $stmt->execute(array($shareWith));
 		$user_calendars = array();
-		foreach(OC_Calendar_Calendar::allCalendars($shareWith) as $user_calendar) {
-			$user_calendars[] = $user_calendar['displayname'];
+		while ($user_calendar = $result->fetchRow()) {
+			$user_calendars[] = $user_calendar['default_displayname'];
 		}
-		$name = $calendar['userid']."'s ".$calendar['displayname'];
+        
+		$name = $calendar['userid']."'s ".$calendar['default_displayname'];
 		$suffix = '';
 		while (in_array($name.$suffix, $user_calendars)) {
 			$suffix++;

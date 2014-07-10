@@ -137,14 +137,6 @@
    </field>
 
    <field>
-    <name>active</name>
-    <type>integer</type>
-    <default>1</default>
-    <notnull>true</notnull>
-    <length>4</length>
-   </field>
-
-   <field>
     <name>ctag</name>
     <type>integer</type>
     <default>0</default>
@@ -290,6 +282,70 @@
 
  </table>
  
+ <table>
+
+  <name>*dbprefix*clndr_user_preferences</name>
+
+  <declaration>
+
+   <field>
+    <name>userid</name>
+    <type>text</type>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+   <field>
+    <name>calendarid</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>true</notnull>
+    <unsigned>true</unsigned>
+    <length>11</length>
+   </field>
+
+   <field>
+    <name>key</name>
+    <type>text</type>
+    <notnull>true</notnull>
+    <length>64</length>
+   </field>
+
+   <field>
+     <name>value</name>
+     <type>clob</type>
+     <notnull>false</notnull>
+   </field>
+
+   <index>
+    <name>calendaruserkey</name>
+    <primary>true</primary>
+    <field>
+      <name>calendarid</name>
+    </field>
+    <field>
+      <name>userid</name>
+    </field>
+    <field>
+      <name>key</name>
+    </field>
+   </index>
+
+   <index>
+    <name>calendaruser</name>
+    <primary>false</primary>
+    <field>
+      <name>calendarid</name>
+    </field>
+    <field>
+      <name>userid</name>
+    </field>
+   </index>
+
+  </declaration>
+
+ </table>
+
  <table>
 
   <name>*dbprefix*clndr_repeat</name>
