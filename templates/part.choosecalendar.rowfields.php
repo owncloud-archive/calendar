@@ -6,7 +6,7 @@
 	<?php if ($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
 		<input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
 	<?php } ?>
-
+</label>
 <span class="utils">
 	<span class="action">
 	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_SHARE) { ?>
@@ -46,4 +46,3 @@
 	<?php } ?>
 	</span>
 </span>
-</label>
