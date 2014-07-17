@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-06-30 01:46-0400\n"
-"PO-Revision-Date: 2014-06-30 05:46+0000\n"
+"POT-Creation-Date: 2014-07-17 01:46-0400\n"
+"PO-Revision-Date: 2014-07-16 15:02+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Bengali (India) (http://www.transifex.com/projects/p/owncloud/language/bn_IN/)\n"
 "MIME-Version: 1.0\n"
@@ -434,11 +434,11 @@ msgstr ""
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr ""
+msgstr "প্রতিদিন"
 
 #: lib/object.php:567
 msgid "Weekly"
-msgstr ""
+msgstr "সাপ্তাহিক"
 
 #: lib/object.php:568
 msgid "Every Weekday"
@@ -526,7 +526,7 @@ msgstr ""
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
-msgstr ""
+msgstr "তারিখ"
 
 #: lib/search.php:43
 msgid "Cal."
@@ -602,11 +602,11 @@ msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
-msgstr ""
+msgstr "এডিট"
 
 #: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
-msgstr ""
+msgstr "মুছে ফেলা"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
@@ -646,7 +646,7 @@ msgstr ""
 
 #: templates/part.eventform.php:10
 msgid "Share"
-msgstr ""
+msgstr "শেয়ার"
 
 #: templates/part.eventform.php:15
 msgid "Title of the Event"
@@ -773,7 +773,7 @@ msgstr ""
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr ""
+msgstr "ইম্পোর্ট"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
