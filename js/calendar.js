@@ -116,9 +116,8 @@ Calendar={
 			var percentOfDay = curSeconds / 86400;
 			//24 * 60 * 60 = 86400, # of seconds in a day
 			var topLoc = Math.floor(parentDiv.height() * percentOfDay);
-           
-			timeline.css({'left':($(".fc-agenda-axis").width()+6)+'px','top':topLoc + 'px'});
-
+			var appNavigationWidth = ($(window).width() > 768) ? $('#app-navigation').width() : 0;
+			timeline.css({'left':($('.fc-today').offset().left-appNavigationWidth),'width': $('.fc-today').width(),'top':topLoc + 'px'});
 		},
 	},
 	UI:{
@@ -989,7 +988,18 @@ function ListView(element, calendar) {
 $(document).ready(function(){
 	Calendar.UI.lastView = defaultView;
 	Calendar.UI.changeView('auto_refresh');
-
+	
+	/**
+	* Set an interval timer to make the timeline move 
+	*/
+	setInterval(Calendar.Util.setTimeline,60000);	
+	$(window).resize(_.debounce(function() {
+		/**
+		* When i use it instant the timeline is walking behind the facts
+		* A little timeout will make sure that it positions correctly
+		*/
+		setTimeout(Calendar.Util.setTimeline,500);
+	}));
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
