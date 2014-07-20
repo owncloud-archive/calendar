@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-18 01:46-0400\n"
-"PO-Revision-Date: 2014-07-18 03:19+0000\n"
+"POT-Creation-Date: 2014-07-20 01:46-0400\n"
+"PO-Revision-Date: 2014-07-19 20:50+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Bengali (India) (http://www.transifex.com/projects/p/owncloud/language/bn_IN/)\n"
 "MIME-Version: 1.0\n"
@@ -382,7 +382,7 @@ msgstr ""
 
 #: lib/app.php:423
 msgid "by"
-msgstr ""
+msgstr "দ্বারা"
 
 #: lib/app.php:486
 msgid "unnamed"
@@ -598,7 +598,7 @@ msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
-msgstr ""
+msgstr "ডাউনলোড করুন"
 
 #: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
@@ -654,7 +654,7 @@ msgstr ""
 
 #: templates/part.eventform.php:41
 msgid "from"
-msgstr ""
+msgstr "থেকে"
 
 #: templates/part.eventform.php:46
 msgid "to"
