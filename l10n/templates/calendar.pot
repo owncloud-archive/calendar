@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud calendar 5.0.0\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-20 01:46-0400\n"
+"POT-Creation-Date: 2014-07-21 01:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,51 +76,51 @@ msgstr ""
 msgid "Calendar"
 msgstr ""
 
-#: js/calendar.js:223
+#: js/calendar.js:222
 msgid "Deletion failed"
 msgstr ""
 
-#: js/calendar.js:317
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr ""
 
-#: js/calendar.js:319
+#: js/calendar.js:318
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr ""
 
-#: js/calendar.js:732
+#: js/calendar.js:731
 msgid "group"
 msgstr ""
 
-#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr ""
 
-#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr ""
 
-#: js/calendar.js:1003
+#: js/calendar.js:1013
 msgid "ddd"
 msgstr ""
 
-#: js/calendar.js:1004
+#: js/calendar.js:1014
 msgid "ddd M/d"
 msgstr ""
 
-#: js/calendar.js:1005
+#: js/calendar.js:1015
 msgid "dddd M/d"
 msgstr ""
 
-#: js/calendar.js:1008
+#: js/calendar.js:1018
 msgid "MMMM yyyy"
 msgstr ""
 
-#: js/calendar.js:1010
+#: js/calendar.js:1020
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:1012
+#: js/calendar.js:1022
 msgid "dddd, MMM d, yyyy"
 msgstr ""
 
