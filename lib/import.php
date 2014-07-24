@@ -139,7 +139,7 @@ class OC_Calendar_Import{
 			}
 			$this->updateProgress(intval(($this->abscount / $numofcomponents)*100));
 		}
-		OC_Cache::remove($this->progresskey);
+		\OC\Cache::remove($this->progresskey);
 		return true;
 	}
 
