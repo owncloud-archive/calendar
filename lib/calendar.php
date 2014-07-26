@@ -254,6 +254,7 @@ class OC_Calendar_Calendar{
 	 */
 	public static function deleteCalendar($id) {
 		$calendar = self::find($id);
+		$isShared = ($calendar['userid'] !== OCP\User::getUser());
 		if (!self::isAllowedToDeleteCalendar($calendar)) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_DELETE)) {
@@ -264,15 +265,21 @@ class OC_Calendar_Calendar{
 				);
 			}
 		}
-		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_calendars` WHERE `id` = ?' );
-		$stmt->execute(array($id));
 
-		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ?' );
-		$stmt->execute(array($id));
+		if (!$isShared) {
+			$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_calendars` WHERE `id` = ?' );
+			$stmt->execute(array($id));
 
-		OCP\Share::unshareAll('calendar', $id);
+			$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ?' );
+			$stmt->execute(array($id));
 
-		OCP\Util::emitHook('OC_Calendar', 'deleteCalendar', $id);
+			OCP\Share::unshareAll('calendar', $id);
+
+			OCP\Util::emitHook('OC_Calendar', 'deleteCalendar', $id);
+		} else {
+			OCP\Share::unshareFromSelf('calendar', $id, true);
+		}
+
 		if(OCP\USER::isLoggedIn() and count(self::allCalendars(OCP\USER::getUser())) == 0) {
 			self::addDefaultCalendars(OCP\USER::getUser());
 		}
