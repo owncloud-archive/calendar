@@ -23,6 +23,8 @@
 "Birthday" => "生日",
 "Personal" => "個人",
 "Work" => "工作",
+"Daily" => "日",
+"Weekly" => "星期",
 "Date" => "日期",
 "Download" => "下載",
 "Edit" => "編輯",
