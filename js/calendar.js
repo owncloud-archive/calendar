@@ -726,6 +726,7 @@ Calendar={
 							var newitem = '<li data-item-type="event"'
 								+ 'data-share-with="'+shareWith+'" '
 								+ 'data-permissions="'+permissions+'" '
+								+ 'data-item="'+itemSource+'" '
 								+ 'data-share-type="'+shareType+'">'
 								+ shareWith
 								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
@@ -741,7 +742,7 @@ Calendar={
 					}
 					});
 	
-					$('.shareactions > input:checkbox').change(function() {
+					$('ul.sharedby').on('change', '.shareactions label > input:checkbox', function() {
 						var container = $(this).parents('li').first();
 						var permissions = parseInt(container.data('permissions'));
 						var itemType = container.data('item-type');
@@ -767,7 +768,7 @@ Calendar={
 						OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
 					});
 	
-					$('.shareactions > .delete').click(function() {
+					$('ul.sharedby').on('click', '.shareactions > .delete', function(){
 						var container = $(this).parents('li').first();
 						var itemType = container.data('item-type');
 						var shareType = container.data('share-type');
