@@ -18,6 +18,8 @@
 "October" => "Octubre",
 "November" => "Noviembre",
 "December" => "Diciembre",
+"Daily" => "Diario",
+"Weekly" => "Semanal",
 "Download" => "Descargar",
 "Share" => "Compartir",
 "Import" => "Importar"
