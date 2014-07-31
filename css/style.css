@@ -320,6 +320,10 @@ button.category{margin:0 3px;}
 }
 
 #onemonthview_radio {
+	border-radius: 0;
+}
+
+#fourweeksview_radio {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 	border-left: 0;

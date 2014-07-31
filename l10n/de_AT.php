@@ -126,6 +126,7 @@
 "Cal." => "Kal.",
 "Day" => "Tag",
 "Week" => "Woche",
+"4 Weeks" => "4 Wochen",
 "Month" => "Monat",
 "Today" => "Heute",
 "CalDav Link" => "CalDAV-Link",

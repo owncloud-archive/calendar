@@ -13,7 +13,7 @@
 		</li>
 		<li>
 			<form id="view">
-				<input type="button" value="<?php p($l->t('Day'));?>" id="onedayview_radio"/><input type="button" value="<?php p($l->t('Week'));?>" id="oneweekview_radio"/><input type="button" value="<?php p($l->t('Month'));?>" id="onemonthview_radio"/>&nbsp;&nbsp;
+				<input type="button" value="<?php p($l->t('Day'));?>" id="onedayview_radio"/><input type="button" value="<?php p($l->t('Week'));?>" id="oneweekview_radio"/><input type="button" value="<?php p($l->t('Month'));?>" id="onemonthview_radio"/><input type="button" value="<?php p($l->t('4 Weeks'));?>" id="fourweeksview_radio"/>&nbsp;&nbsp;
 				<input type="button" value="<?php p($l->t('Today'));?>" id="datecontrol_today"/>
 			</form>
 		</li>
