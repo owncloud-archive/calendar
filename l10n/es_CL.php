@@ -18,6 +18,7 @@
 "October" => "Octubre",
 "November" => "Noviembre",
 "December" => "Diciembre",
+"Personal" => "Personal",
 "Daily" => "Diario",
 "Weekly" => "Semanal",
 "Download" => "Descargar",
