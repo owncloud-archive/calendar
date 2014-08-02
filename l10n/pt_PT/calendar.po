@@ -19,9 +19,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-16 01:46-0400\n"
-"PO-Revision-Date: 2014-07-15 06:10+0000\n"
-"Last-Translator: Alexandre Fidalgo <alexandremagnos15@gmail.com>\n"
+"POT-Creation-Date: 2014-08-02 01:46-0400\n"
+"PO-Revision-Date: 2014-08-01 18:51+0000\n"
+"Last-Translator: Helder Meneses <helder.meneses@gmail.com>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/owncloud/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,7 +61,7 @@ msgstr "O ficheiro não continha nenhuns eventos ou então todos os eventos já 
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events have been saved in the new calendar"
-msgstr "Os eventos foram guardados no novo calendário"
+msgstr "os eventos foram guardados no novo calendário"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
@@ -73,7 +73,7 @@ msgstr "os eventos foram guardados no seu calendário"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr "Nova zona horária"
+msgstr "Novo fuso horário:"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
@@ -88,51 +88,51 @@ msgstr "Pedido inválido"
 msgid "Calendar"
 msgstr "Calendário"
 
-#: js/calendar.js:223
+#: js/calendar.js:222
 msgid "Deletion failed"
-msgstr "Erro ao apagar"
+msgstr "Erro ao eliminar"
 
-#: js/calendar.js:317
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:319
+#: js/calendar.js:318
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:732
+#: js/calendar.js:731
 msgid "group"
 msgstr "grupo"
 
-#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "pode editar"
 
-#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "pode partilhar"
 
-#: js/calendar.js:1003
+#: js/calendar.js:1013
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:1004
+#: js/calendar.js:1014
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:1005
+#: js/calendar.js:1015
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:1008
+#: js/calendar.js:1018
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:1010
+#: js/calendar.js:1020
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:1012
+#: js/calendar.js:1022
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -174,7 +174,7 @@ msgstr "Seg."
 
 #: js/l10n.php:78
 msgid "Tue."
-msgstr "ter."
+msgstr "Ter."
 
 #: js/l10n.php:78
 msgid "Wed."
@@ -246,7 +246,7 @@ msgstr "Jan."
 
 #: js/l10n.php:80
 msgid "Feb."
-msgstr "Fev,"
+msgstr "Fev."
 
 #: js/l10n.php:80
 msgid "Mar."
@@ -326,7 +326,7 @@ msgstr "O evento acaba antes de começar"
 
 #: js/l10n.php:93
 msgid "There was a database fail"
-msgstr "Houve uma falha de base de dados"
+msgstr "Houve uma falha na base de dados"
 
 #: js/l10n.php:94
 msgid "Interval is not valid. It must be a positive integer!"
@@ -366,7 +366,7 @@ msgstr "Jornada"
 
 #: lib/app.php:129
 msgid "Jubilee"
-msgstr "Jublieu"
+msgstr "Jubileu"
 
 #: lib/app.php:130
 msgid "Meeting"
@@ -398,7 +398,7 @@ msgstr "por"
 
 #: lib/app.php:486
 msgid "unnamed"
-msgstr "não definido"
+msgstr "sem nome"
 
 #: lib/calendar.php:190 lib/calendar.php:223
 msgid "You do not have the permissions to update this calendar."
@@ -490,7 +490,7 @@ msgstr "por dia da semana"
 
 #: lib/object.php:620
 msgid "events week of month"
-msgstr "Eventos da semana do mês"
+msgstr "eventos da semana do mês"
 
 #: lib/object.php:621
 msgid "first"
@@ -566,7 +566,7 @@ msgstr "Endereço CalDav"
 
 #: templates/calendar.php:55
 msgid "Timezone"
-msgstr "Zona horária"
+msgstr "Fuso horário"
 
 #: templates/calendar.php:80
 msgid "Update timezone automatically"
