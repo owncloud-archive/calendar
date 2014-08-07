@@ -726,6 +726,9 @@ class OC_Calendar_Object{
 			$errarr['to'] = 'true';
 			$errnum++;
 		}
+		
+		// TODO: check validity of eventalarm
+		
 		if($request['repeat'] != 'doesnotrepeat') {
 			if(($request['interval'] !== strval(intval($request['interval']))) || intval($request['interval']) < 1) {
 				$errarr['interval'] = 'true';
@@ -1042,6 +1045,28 @@ class OC_Calendar_Object{
 			$repeat = "false";
 		}
 
+		$valarm = $vevent->VALARM;
+		
+		if(!self::isAlarmSpecified($request)) {
+			if($valarm != null) {
+				unset($vevent->VALARM);
+			}
+		} else {
+			$alarmDuration = $request['eventalarm'];
+			if($valarm == null) {
+				$valarm = new OC_VObject('VALARM');
+				
+				$valarm->setString('DESCRIPTION', 'Default Event Notification');
+				$valarm->setString('');
+				
+				$vevent->add($valarm);
+			} else {
+				unset($valarm->TRIGGER);
+			}
+			
+                        $valarm->setString('ACTION', self::determineAlarmActionType($request));
+			$valarm->addProperty('TRIGGER', $alarmDuration, array('VALUE' => 'DURATION'));
+		}
 
 		$vevent->setDateTime('LAST-MODIFIED', 'now', Sabre\VObject\Property\DateTime::UTC);
 		$vevent->setDateTime('DTSTAMP', 'now', Sabre\VObject\Property\DateTime::UTC);
@@ -1076,6 +1101,25 @@ class OC_Calendar_Object{
 		return $vcalendar;
 	}
 
+        private static function determineAlarmActionType($request) {
+            if(!isset($request['eventalarmaction'])) {
+                return 'DISPLAY';
+            }
+            
+            return $request['eventalarmaction'];
+        }
+        
+	private static function isAlarmSpecified($request) {
+		if(!isset($request['eventalarm'])) {
+			return false;
+		}
+		if($request['eventalarm'] == "NONE") {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * @brief returns the owner of an object
 	 * @param integer $id

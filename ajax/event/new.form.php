@@ -44,6 +44,9 @@ foreach($calendars as $calendar) {
 		array_push($calendar_options, $calendar);
 	}
 }
+
+$alarmTriggerValues = OC_Calendar_App::getAlarmTriggerValues();
+
 $access_class_options = OC_Calendar_App::getAccessClassOptions();
 $repeat_options = OC_Calendar_App::getRepeatOptions();
 $repeat_end_options = OC_Calendar_App::getEndOptions();
@@ -71,6 +74,8 @@ $tmpl->assign('repeat_bymonth_options', $repeat_bymonth_options);
 $tmpl->assign('repeat_byweekno_options', $repeat_byweekno_options);
 $tmpl->assign('repeat_bymonthday_options', $repeat_bymonthday_options);
 $tmpl->assign('repeat_weekofmonth_options', $repeat_weekofmonth_options);
+
+$tmpl->assign('alarmTriggerValues', $alarmTriggerValues);
 
 $tmpl->assign('eventid', 'new');
 $tmpl->assign('startdate', $start->format('d-m-Y'));

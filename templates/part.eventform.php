@@ -53,6 +53,28 @@
 		<input id="allday_checkbox" type="checkbox"<?php if($_['allday']) {print_unescaped('checked="checked"');} ?> name="allday">
 		<?php p($l->t("All Day Event"));?>
 	</label>
+	
+	<div id="simple-alarm">
+		<?php p($l->t("Simple Alarm")); ?>
+			<?php if($_['alarmTriggerType'] == "DURATION" || $_['alarmTriggerType'] == "NONE" || empty($_['alarmTriggerType'])) { ?>
+			<select style="width:140px;" name="eventalarm">
+				<option value="NONE"></option>
+                                <?php
+                                    foreach ($_['alarmTriggerValues'] as $alarmTriggerValue => $labelData) {
+                                        $selectString = ($alarmTriggerValue == $_['alarmTrigger'] ? "selected=\"selected\"" : "");
+                                        $currentOption = "<option value=\"" . $alarmTriggerValue ."\" " . $selectString . ">" 
+                                                . $labelData[0] . " " . $l->t($labelData[1]) . "</option>";
+                                        
+                                        print_unescaped($currentOption);
+                                    }
+                                ?>
+			</select>
+			<?php
+				} else {
+					p($l->t("Custom alarm-settings not supported!"));
+				}
+			?>
+	</div>
 
 	<input id="advanced_options_button" type="button" class="submit" value="<?php p($l->t('Advanced options')); ?>">
 

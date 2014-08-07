@@ -56,6 +56,19 @@ switch($dtstart->getDateType()) {
 		break;
 }
 
+
+$alarmTriggerValues = OC_Calendar_App::getAlarmTriggerValues();
+$alarmTrigger = "NONE";
+$alarmTriggerType = "NONE";
+$alarmAction = "DISPLAY";
+
+if($vevent->VALARM != null) {
+	$valarm = $vevent->VALARM;
+	$alarmTriggerType = $valarm->TRIGGER['VALUE'];
+	$alarmTrigger = $valarm->TRIGGER;
+	$alarmAction = $valarm->getAsString('ACTION');
+}
+
 $summary = strtr($vevent->getAsString('SUMMARY'), array('\,' => ',', '\;' => ';'));
 $location = strtr($vevent->getAsString('LOCATION'), array('\,' => ',', '\;' => ';'));
 $categories = $vevent->getAsString('CATEGORIES');
@@ -254,6 +267,11 @@ $tmpl->assign('starttime', $starttime);
 $tmpl->assign('enddate', $enddate);
 $tmpl->assign('endtime', $endtime);
 $tmpl->assign('description', $description);
+
+$tmpl->assign('alarmTrigger', $alarmTrigger);
+$tmpl->assign('alarmTriggerType', $alarmTriggerType);
+$tmpl->assign('alarmAction', $alarmAction);
+$tmpl->assign('alarmTriggerValues', $alarmTriggerValues);
 
 $tmpl->assign('repeat', $repeat['repeat']);
 if($repeat['repeat'] != 'doesnotrepeat') {
