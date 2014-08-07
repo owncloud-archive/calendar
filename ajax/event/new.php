@@ -21,7 +21,8 @@ if($errarr) {
 	$cal = $_POST['calendar'];
 	$vcalendar = OC_Calendar_Object::createVCalendarFromRequest($_POST);
 	try {
-		OC_Calendar_Object::add($cal, $vcalendar->serialize());
+		$objectId = OC_Calendar_Object::add($cal, $vcalendar->serialize());
+		OC_Calendar_Object::addAlarmsDB($_POST['alarmsDuration'], $_POST['alarmsType'], $_POST['alarmsTimeType'], $vcalendar->VEVENT, $objectId);
 	} catch(Exception $e) {
 		OCP\JSON::error(array('message'=>$e->getMessage()));
 		exit;

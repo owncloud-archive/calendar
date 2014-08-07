@@ -49,9 +49,7 @@ class OC_Calendar_Calendar{
 		$calendars = array();
 		$owned_calendar_ids = array();
 		while( $row = $result->fetchRow()) {
-			$row['permissions'] = OCP\PERMISSION_CREATE
-				| OCP\PERMISSION_READ | OCP\PERMISSION_UPDATE
-				| OCP\PERMISSION_DELETE | OCP\PERMISSION_SHARE;
+			$row['permissions'] = OCP\PERMISSION_CREATE | OCP\PERMISSION_READ | OCP\PERMISSION_UPDATE | OCP\PERMISSION_DELETE | OCP\PERMISSION_SHARE;
 			$row['description'] = '';
 			$calendars[] = $row;
 			$owned_calendar_ids[] = $row['id'];
@@ -198,11 +196,16 @@ class OC_Calendar_Calendar{
 		}
 
 		// Keep old stuff
-		if(is_null($name)) $name = $calendar['displayname'];
-		if(is_null($components)) $components = $calendar['components'];
-		if(is_null($timezone)) $timezone = $calendar['timezone'];
-		if(is_null($order)) $order = $calendar['calendarorder'];
-		if(is_null($color)) $color = $calendar['calendarcolor'];
+		if(is_null($name))
+			$name = $calendar['displayname'];
+		if(is_null($components))
+			$components = $calendar['components'];
+		if(is_null($timezone))
+			$timezone = $calendar['timezone'];
+		if(is_null($order))
+			$order = $calendar['calendarorder'];
+		if(is_null($color))
+			$color = $calendar['calendarcolor'];
 
 		$stmt = OCP\DB::prepare( 'UPDATE `*PREFIX*clndr_calendars` SET `displayname`=?,`calendarorder`=?,`calendarcolor`=?,`timezone`=?,`components`=?,`ctag`=`ctag`+1 WHERE `id`=?' );
 		$result = $stmt->execute(array($name,$order,$color,$timezone,$components,$id));
@@ -265,6 +268,10 @@ class OC_Calendar_Calendar{
 			}
 		}
 		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_calendars` WHERE `id` = ?' );
+		$stmt->execute(array($id));
+
+		$stmt = OCP\DB::prepare('DELETE FROM `*PREFIX*clndr_alarms` WHERE `objid` IN ( '
+						.'SELECT id FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ?)');
 		$stmt->execute(array($id));
 
 		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ?' );

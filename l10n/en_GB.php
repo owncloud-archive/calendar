@@ -232,6 +232,16 @@ $TRANSLATIONS = array(
 "day" => "day",
 "days" => "days",
 "week" => "week",
-"weeks" => "weeks"
+"weeks" => "weeks",
+  "Reminders" => "Reminders",
+  "Reminder: %s" => "Reminder: %s",
+  "Email" => "Email",
+  "Popup" => "Popup",
+  "Add reminder" => "Add reminder",
+  "Reminder (%s): %s is starting at %s" => "Reminder (%s): %s is starting at %s",
+  "Reminder (%s): %s is starting at %s on %s" => "Reminder (%s): %s is starting at %s on %s",
+  "When: " => "When: ",
+  "Calendar: " => "Calendar: ",
+  "Owncloud Event Reminder" => "Owncloud Event Reminder"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

@@ -84,3 +84,11 @@ $(document).on('keydown', '#editcalendar_dialog > span > input:text', function(e
 		$('#editcalendar_dialog #editCalendar-submit').click();
 	}
 });
+$('#add_alarm').live('click', function(e){
+	Calendar.UI.addAlarm();
+	e.preventDefault();
+});
+$('.deleteAlarm').live('click', function(e){
+	Calendar.UI.deleteAlarm(this);
+	e.preventDefault();
+});

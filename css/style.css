@@ -583,3 +583,11 @@ button.ui-multiselect{
 	height:26px;
 	 text-align:left;
 }
+
+#eventAlarms button, #eventAlarms select{
+	font-weight: normal;
+}
+
+.deleteAlarm{
+	display: inline;
+}
