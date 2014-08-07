@@ -96,14 +96,18 @@ Calendar={
 			Calendar.UI.lockTime();
 			$( "#from" ).datepicker({
 				dateFormat : 'dd-mm-yy',
-				onSelect: function(){ Calendar.Util.adjustDate(); }
+				onSelect:function(){
+					Calendar.Util.adjustDate();
+				}
 			});
 			$( "#to" ).datepicker({
 				dateFormat : 'dd-mm-yy'
 			});
 			$('#fromtime').timepicker({
 				showPeriodLabels: false,
-				onSelect: function(){ Calendar.Util.adjustDate(); }
+				onSelect:function(){
+					Calendar.Util.adjustDate();
+				}
 			});
 			$('#totime').timepicker({
 				showPeriodLabels: false
@@ -253,6 +257,34 @@ Calendar={
 					$('#fullcalendar').fullCalendar('refetchEvents');
 				}
 			});
+		},
+		addAlarm:function(){
+			newAlarm = $('#eventAlarms').children().first().clone();
+			newAlarm.attr('id', null);
+			newAlarm.css('display', 'block');
+			newAlarm.find('.alarmDuration').val(10);
+			newAlarm.insertBefore($("#add_alarm"));
+
+			i = 0;
+			$.each($('#eventAlarms .alarm'), function(){
+				$(this).find('.alarmType').attr('name', 'alarmsType[' + i + ']');
+				$(this).find('.alarmDuration').attr('name', 'alarmsDuration[' + i + ']');
+				$(this).find('.alarmTimeType').attr('name', 'alarmsTimeType[' + i + ']');
+				i++;
+			});
+
+		},
+		deleteAlarm:function(deleteButton){
+			if($('#eventAlarms .alarm').length == 1){
+				alarm = $(deleteButton).parent();
+				alarm.css('display', 'none');
+				alarm.find('.alarmType').attr('name', '');
+				alarm.find('.alarmDuration').attr('name', '');
+				alarm.find('.alarmTimeType').attr('name', '');
+			}
+			else{
+				$(deleteButton).parent().remove();
+			}
 		},
 		showadvancedoptions:function(){
 			$("#advanced_options").slideDown('slow');
@@ -417,7 +449,9 @@ Calendar={
 			$('#'+id).addClass('active');
 		},
 		categoriesChanged:function(newcategories){
-			categories = $.map(newcategories, function(v) {return v.name;});
+			categories = $.map(newcategories, function(v){
+				return v.name;
+			});
 			console.log('Calendar categories changed to: ' + categories);
 			$('#category').multiple_autocomplete('option', 'source', categories);
 		},
@@ -466,13 +500,17 @@ Calendar={
 			newCalendar:function(object){
 				var tr = $(document.createElement('tr'))
 					.load(OC.filePath('calendar', 'ajax/calendar', 'new.form.php'),
-						function(){Calendar.UI.Calendar.colorPicker(this)});
+								function(){
+									Calendar.UI.Calendar.colorPicker(this)
+								});
 				$(object).closest('tr').after(tr).hide();
 			},
 			edit:function(object, calendarid){
 				var tr = $(document.createElement('tr'))
 					.load(OC.filePath('calendar', 'ajax/calendar', 'edit.form.php'), {calendarid: calendarid},
-						function(){Calendar.UI.Calendar.colorPicker(this)});
+						function(){
+							Calendar.UI.Calendar.colorPicker(this)
+						});
 				$(object).closest('tr').after(tr).hide();
 			},
 			deleteCalendar:function(calid){
@@ -676,12 +714,16 @@ Calendar={
 						$('#fullcalendar').fullCalendar('addEventSource', result.eventSource);
 						$('#notification').html(result.message);
 						$('#notification').slideDown();
-						window.setTimeout(function(){$('#notification').slideUp();}, 5000);
+						window.setTimeout(function(){
+							$('#notification').slideUp();
+						}, 5000);
 						return true;
 					}else{
 						$('#notification').html(result.message);
 						$('#notification').slideDown();
-						window.setTimeout(function(){$('#notification').slideUp();}, 5000);
+						window.setTimeout(function(){
+							$('#notification').slideUp();
+						}, 5000);
 					}
 				});
 			}
@@ -977,4 +1019,17 @@ $(document).ready(function(){
 			sharedEventSource = eventSources[i];
 		}
 	}
+
+	setInterval(function(){
+		$.post(OC.filePath('calendar', 'ajax', 'alarms.php'), {}, function(data){
+			if(data.status == 'success'){
+				for(i in data.events){
+					alert(data.events[i]);
+				}
+			}
+			else{
+				location.reload();
+			}
+		});
+	}, 60000);
 });

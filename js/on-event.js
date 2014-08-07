@@ -2,16 +2,26 @@ $('#newCalendar').live('click', function () {
 	Calendar.UI.Calendar.newCalendar(this);
 });
 $('#caldav_url_close').live('click', function () {
-	$('#caldav_url').hide();$('#caldav_url_close').hide();
+	$('#caldav_url').hide();
+	$('#caldav_url_close').hide();
 });
 $('#caldav_url').live('mouseover', function () {
 	$('#caldav_url').select();
 });
 $('#editCategories').live('click', function () {
-	$(this).tipsy('hide');OC.Tags.edit('event');
+	$(this).tipsy('hide');
+	OC.Tags.edit('event');
 });
 $('#allday_checkbox').live('click', function () {
 	Calendar.UI.lockTime();
+});
+$('#add_alarm').live('click', function(e){
+	Calendar.UI.addAlarm();
+	e.preventDefault();
+});
+$('.deleteAlarm').live('click', function(e){
+	Calendar.UI.deleteAlarm(this);
+	e.preventDefault();
 });
 $('#advanced_options_button').live('click', function () {
 	Calendar.UI.showadvancedoptions();

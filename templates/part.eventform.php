@@ -54,26 +54,92 @@
 		<?php p($l->t("All Day Event"));?>
 	</label>
 	
-	<div id="simple-alarm">
-		<?php p($l->t("Simple Alarm")); ?>
-			<?php if($_['alarmTriggerType'] == "DURATION" || $_['alarmTriggerType'] == "NONE" || empty($_['alarmTriggerType'])) { ?>
-			<select style="width:140px;" name="eventalarm">
-				<option value="NONE"></option>
+    <div id="eventAlarms">
+		<?php
+		p($l->t("Reminders"));
+
+		if(count($_['alarms']) == 0){
+			?>
+
+			<div class="alarm" style="display:none">
+				<select style="width:80px;" class="alarmType" name="">
+					<option value="EMAIL"><?php p($l->t('Email')); ?></option>
+					<option value="DISPLAY"><?php p($l->t('Popup')); ?></option>
+				</select>
+				<input style="width:25px;" type="text" value="10" class="alarmDuration" name=""/>
+				<select style="width:145px;" class="alarmTimeType" name="">
+					<option value="M"><?php p($l->t('Minutes')); ?></option>
+					<option value="H"><?php p($l->t('Hours')); ?></option>
+					<option value="D"><?php p($l->t('Days')); ?></option>
+					<option value="W"><?php p($l->t('Weeks')); ?></option>
+				</select>
+				<button class="deleteAlarm"><?php p($l->t("Delete")); ?></button>
+			</div>
+
+			<?php
+		}else{
+
+			$i = 0;
+			foreach($_['alarms'] as $row){
+				?>
+
+				<div class="alarm">
+					<select style="width:80px;" class="alarmType" name="alarmsType[<?php p($i); ?>]">
+						<?php
+						if($row['type'] == 'EMAIL'){
+							print_unescaped('<option value="EMAIL" selected="selected">'.$l->t('Email').'</option>');
+							print_unescaped('<option value="DISPLAY">'.$l->t('Popup').'</option>');
+						}else{
+							print_unescaped('<option value="EMAIL">'.$l->t('Email').'</option>');
+							print_unescaped('<option value="DISPLAY" selected="selected">'.$l->t('Popup').'</option>');
+						}
+						?>
+					</select>
+					<input style="width:25px;" type="text" value="<?php p($row['value']) ?>" class="alarmDuration" name="alarmsDuration[<?php p($i); ?>]"/>
+					<select style="width:145px;" class="alarmTimeType" name="alarmsTimeType[<?php p($i); ?>]">
                                 <?php
-                                    foreach ($_['alarmTriggerValues'] as $alarmTriggerValue => $labelData) {
-                                        $selectString = ($alarmTriggerValue == $_['alarmTrigger'] ? "selected=\"selected\"" : "");
-                                        $currentOption = "<option value=\"" . $alarmTriggerValue ."\" " . $selectString . ">" 
-                                                . $labelData[0] . " " . $l->t($labelData[1]) . "</option>";
+						switch($row['timetype']){
+							case 'M':
+
+								print_unescaped('<option value="M" selected="selected">'.$l->t('Minutes').'</option>');
+								print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
+								print_unescaped('<option value="D">'.$l->t('Days').'</option>');
+								print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
+								break;
+							case 'H':
+
+								print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
+								print_unescaped('<option value="H" selected="selected">'.$l->t('Hours').'</option>');
+								print_unescaped('<option value="D">'.$l->t('Days').'</option>');
+								print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
+								break;
+							case 'D':
                                         
-                                        print_unescaped($currentOption);
+								print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
+								print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
+								print_unescaped('<option value="D" selected="selected">'.$l->t('Days').'</option>');
+								print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
+								break;
+							default: // W
+								print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
+								print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
+								print_unescaped('<option value="D">'.$l->t('Days').'</option>');
+								print_unescaped('<option value="W" selected="selected">'.$l->t('Weeks').'</option>');
+								break;
                                     }
                                 ?>
 			</select>
+					<button class="deleteAlarm"><?php p($l->t("Delete")); ?></button>
+				</div>
+
 			<?php
-				} else {
-					p($l->t("Custom alarm-settings not supported!"));
+				$i++;
+			}
 				}
 			?>
+
+		<button id="add_alarm"><?php p($l->t("Add reminder")); ?></button>
+
 	</div>
 
 	<input id="advanced_options_button" type="button" class="submit" value="<?php p($l->t('Advanced options')); ?>">

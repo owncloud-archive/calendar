@@ -1,4 +1,6 @@
-<?php $TRANSLATIONS = array(
+<?php
+
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Not all calendars are completely cached",
 "Everything seems to be completely cached" => "Everything seems to be completely cached",
 "No calendars found." => "No calendars found.",
@@ -216,8 +218,6 @@
 "Primary address (Kontact et al)" => "Primary address (Kontact et al)",
 "iOS/OS X" => "iOS/OS X",
 "Read only iCalendar link(s)" => "Read only iCalendar link(s)",
-"Simple Alarm" => "Simple reminder",
-"Custom alarm-settings not supported!" => "Custom alarm-settings not (yet) supported!",
 "Start of Event" => "Start of Event",
 "minutes" => "minutes",
 "hour" => "hour",
@@ -225,5 +225,15 @@
 "day" => "day",
 "days" => "days",
 "week" => "week",
-"weeks" => "weeks"
+  "weeks" => "weeks",
+  "Reminders" => "Reminders",
+  "Reminder: %s" => "Reminder: %s",
+  "Email" => "Email",
+  "Popup" => "Popup",
+  "Add reminder" => "Add reminder",
+  "Reminder (%s): %s is starting at %s" => "Reminder (%s): %s is starting at %s",
+  "Reminder (%s): %s is starting at %s on %s" => "Reminder (%s): %s is starting at %s on %s",
+  "When: " => "When: ",
+  "Calendar: " => "Calendar: ",
+  "Owncloud Event Reminder" => "Owncloud Event Reminder"
 );

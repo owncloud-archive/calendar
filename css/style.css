@@ -275,3 +275,11 @@ button.category{margin:0 3px;}
 	background-repeat: no-repeat;
 	background-position: center;
 }
+
+#eventAlarms button, #eventAlarms select{
+	font-weight: normal;
+}
+
+.deleteAlarm{
+	display: inline;
+}

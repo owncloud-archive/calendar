@@ -1,4 +1,6 @@
-<?php $TRANSLATIONS = array(
+<?php
+
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Certains calendriers ne sont pas mis en cache",
 "Everything seems to be completely cached" => "Tout semble être en cache",
 "No calendars found." => "Aucun calendrier n'a été trouvé.",
@@ -215,5 +217,23 @@
 "more info" => "plus d'infos",
 "Primary address (Kontact et al)" => "Adresses principales (Kontact et assimilés)",
 "iOS/OS X" => "iOS/OS X",
-"Read only iCalendar link(s)" => "lien(s) iCalendar en lecture seule"
+  "Read only iCalendar link(s)" => "lien(s) iCalendar en lecture seule",
+  "Start of Event" => "Début événement",
+  "minutes" => "minutes",
+  "hour" => "heure",
+  "hours" => "heures",
+  "day" => "jour",
+  "days" => "jours",
+  "week" => "semaine",
+  "weeks" => "semaines",
+  "Reminders" => "Rappels",
+  "Reminder: %s" => "Rappels : %s",
+  "Email" => "Email",
+  "Popup" => "Popup",
+  "Add reminder" => "Ajouter rappel",
+  "Reminder (%s): %s is starting at %s" => "Rappel (%s) : %s commence à %s",
+  "Reminder (%s): %s is starting at %s on %s" => "Rappel (%s) : %s commence à %s le %s",
+  "When: " => "Quand : ",
+  "Calendar: " => "Agenda : ",
+  "Owncloud Event Reminder" => "Owncloud - Rappel d'événement"
 );

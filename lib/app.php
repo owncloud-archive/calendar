@@ -28,42 +28,6 @@ class OC_Calendar_App{
 	 */
 	public static $tz;
 
-        public static function getAlarmTriggerValues() {
-            return array('PT0S' => array('', 'Start of Event'), 
-                '-PT5M' => array('5', 'minutes'), 
-                '-PT10M' => array('10', 'minutes'), 
-                '-PT15M' => array('15', 'minutes'), 
-                '-PT20M' => array('20', 'minutes'), 
-                '-PT25M' => array('25', 'minutes'), 
-                '-PT30M' => array('30', 'minutes'), 
-                '-PT45M' => array('45', 'minutes'), 
-                '-PT1H' => array('1', 'hour'), 
-                '-PT1H30M' => array('1:30', 'hour'), 
-                '-PT2H' => array('2', 'hours'), 
-                '-PT3H' => array('3', 'hours'), 
-                '-PT4H' => array('4', 'hours'), 
-                '-PT5H' => array('5', 'hours'), 
-                '-PT6H' => array('6', 'hours'), 
-                '-PT7H' => array('7', 'hours'), 
-                '-PT8H' => array('8', 'hours'), 
-                '-PT9H' => array('9', 'hours'), 
-                '-PT10H' => array('10', 'hours'), 
-                '-PT11H' => array('11', 'hours'), 
-                '-PT12H' => array('12', 'hours'), 
-                '-PT18H' => array('18', 'hours'), 
-                '-PT24H' => array('24', 'hours'), 
-                '-P2D' => array('2', 'days'), 
-                '-P3D' => array('3', 'days'), 
-                '-P4D' => array('4', 'days'), 
-                '-P5D' => array('5', 'days'), 
-                '-P6D' => array('6', 'days'), 
-                '-P1W' => array('1', 'week'), 
-                '-P2W' => array('2', 'weeks'), 
-                '-P3W' => array('3', 'weeks'), 
-                '-P4W' => array('4', 'weeks')
-            );
-        }
-        
 	/**
 	 * @brief returns informations about a calendar
 	 * @param int $id - id of the calendar
@@ -358,10 +322,7 @@ class OC_Calendar_App{
 	 * @return (string) $timezone as set by user or the default timezone
 	 */
 	public static function getTimezone() {
-		return OCP\Config::getUserValue(OCP\User::getUser(),
-						'calendar',
-						'timezone',
-						date_default_timezone_get());
+		return OCP\Config::getUserValue(OCP\User::getUser(), 'calendar', 'timezone', date_default_timezone_get());
 	}
 
 	/**
@@ -385,8 +346,7 @@ class OC_Calendar_App{
 					return $sharedCalendar['permissions'];
 				}
 			}
-		}
-		elseif($type == self::EVENT) {
+		}elseif($type == self::EVENT){
 			if(OC_Calendar_Object::getowner($id) == OCP\USER::getUser()) {
 				return $permissions_all;
 			} else {
@@ -507,10 +467,7 @@ class OC_Calendar_App{
 			$id = $event['id'];
 			if(OC_Calendar_Object::getowner($id) !== OCP\USER::getUser()) {
 				// do not show events with private or unknown access class
-				if (isset($vevent->CLASS)
-					&& ($vevent->CLASS->value === 'PRIVATE'
-					|| $vevent->CLASS->value === ''))
-				{
+				if(isset($vevent->CLASS) && ($vevent->CLASS->value === 'PRIVATE' || $vevent->CLASS->value === '')){
 					return $output;
 				}
 				$object = OC_Calendar_Object::cleanByAccessClass($id, $object);

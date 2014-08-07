@@ -1,4 +1,6 @@
-<?php $TRANSLATIONS = array(
+<?php
+
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Noch sind nicht alle Kalender zwischengespeichert.",
 "Everything seems to be completely cached" => "Es sieht so aus, als wäre alles vollständig zwischengespeichert.",
 "No calendars found." => "Keine Kalender gefunden.",
@@ -197,8 +199,6 @@
 "Primary address (Kontact et al)" => "Primäre Adresse (Kontakt u.a.)",
 "iOS/OS X" => "iOS/OS X",
 "Read only iCalendar link(s)" => "Nur lesende(r) iCalender-Link(s)",
-"Simple Alarm" => "Einfache Erinnerung",
-"Custom alarm-settings not supported!" => "Individuelle Einstellungen für Erinnerungen werden (noch) nicht unterstützt!",
 "Start of Event" => "Pünktlich",
 "minutes" => "Minuten",
 "hour" => "Stunde",

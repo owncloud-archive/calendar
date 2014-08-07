@@ -140,6 +140,8 @@ class OC_Calendar_Object{
 
 		OC_Calendar_App::loadCategoriesFromVCalendar($object_id, $object);
 
+		self::addAlarmsDBFromData($object->getVObject()->VEVENT, $object_id);
+
 		OC_Calendar_Calendar::touchCalendar($id);
 		OCP\Util::emitHook('OC_Calendar', 'addEvent', $object_id);
 		return $object_id;
@@ -182,6 +184,9 @@ class OC_Calendar_Object{
 		$stmt = OCP\DB::prepare( 'INSERT INTO `*PREFIX*clndr_objects` (`calendarid`,`objecttype`,`startdate`,`enddate`,`repeating`,`summary`,`calendardata`,`uri`,`lastmodified`) VALUES(?,?,?,?,?,?,?,?,?)' );
 		$stmt->execute(array($id,$type,$startdate,$enddate,$repeating,$summary,$data,$uri,time()));
 		$object_id = OCP\DB::insertid('*PREFIX*clndr_objects');
+
+
+		self::addAlarmsDBFromData($object, $object_id);
 
 		OC_Calendar_Calendar::touchCalendar($id);
 		OCP\Util::emitHook('OC_Calendar', 'addEvent', $object_id);
@@ -256,6 +261,8 @@ class OC_Calendar_Object{
 		OC_Calendar_Calendar::touchCalendar($oldobject['calendarid']);
 		OCP\Util::emitHook('OC_Calendar', 'editEvent', $oldobject['id']);
 
+		self::addAlarmsDBFromData($object->VEVENT, $oldobject['id']);
+
 		return true;
 	}
 
@@ -283,6 +290,10 @@ class OC_Calendar_Object{
 		}
 		$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_objects` WHERE `id` = ?' );
 		$stmt->execute(array($id));
+
+		$stmt = OCP\DB::prepare('DELETE FROM `*PREFIX*clndr_alarms` WHERE `objid` = ?');
+		$stmt->execute(array($id));
+
 		OC_Calendar_Calendar::touchCalendar($oldobject['calendarid']);
 
 		OCP\Share::unshareAll('event', $id);
@@ -315,6 +326,8 @@ class OC_Calendar_Object{
 		$stmt->execute(array($cid,$uri));
 		OC_Calendar_Calendar::touchCalendar($cid);
 		OCP\Util::emitHook('OC_Calendar', 'deleteEvent', $oldobject['id']);
+
+		self::removeAllAlarmsDB($oldobject['id']);
 
 		return true;
 	}
@@ -375,14 +388,12 @@ class OC_Calendar_Object{
 				if($thisone) {
 					$use = $property;
 				}
-			}
-			elseif($property->name == 'VTODO' || $property->name == 'VJOURNAL') {
+			}elseif($property->name == 'VTODO' || $property->name == 'VJOURNAL'){
 				$return[0] = $property->name;
 				foreach($property->children as &$element) {
 					if($element->name == 'SUMMARY') {
 						$return[3] = $element->value;
-					}
-					elseif($element->name == 'UID') {
+					}elseif($element->name == 'UID'){
 						$return[5] = $element->value;
 					}
 				};
@@ -400,17 +411,13 @@ class OC_Calendar_Object{
 			foreach($use->children as $property) {
 				if($property->name == 'DTSTART') {
 					$return[1] = self::getUTCforMDB($property->getDateTime());
-				}
-				elseif($property->name == 'DTEND') {
+				}elseif($property->name == 'DTEND'){
 					$return[2] = self::getUTCforMDB($property->getDateTime());
-				}
-				elseif($property->name == 'SUMMARY') {
+				}elseif($property->name == 'SUMMARY'){
 					$return[3] = $property->value;
-				}
-				elseif($property->name == 'RRULE') {
+				}elseif($property->name == 'RRULE'){
 					$return[4] = 1;
-				}
-				elseif($property->name == 'UID') {
+				}elseif($property->name == 'UID'){
 					$return[5] = $property->value;
 				}
 			}
@@ -480,11 +487,9 @@ class OC_Calendar_Object{
 
 		if(isset($vobject->VEVENT)) {
 			$velement = $vobject->VEVENT;
-		}
-		elseif(isset($vobject->VJOURNAL)) {
+		}elseif(isset($vobject->VJOURNAL)){
 			$velement = $vobject->VJOURNAL;
-		}
-		elseif(isset($vobject->VTODO)) {
+		}elseif(isset($vobject->VTODO)){
 			$velement = $vobject->VTODO;
 		}
 
@@ -521,11 +526,9 @@ class OC_Calendar_Object{
 	public static function getElement($vobject) {
 		if(isset($vobject->VEVENT)) {
 			return $vobject->VEVENT;
-		}
-		elseif(isset($vobject->VJOURNAL)) {
+		}elseif(isset($vobject->VJOURNAL)){
 			return $vobject->VJOURNAL;
-		}
-		elseif(isset($vobject->VTODO)) {
+		}elseif(isset($vobject->VTODO)){
 			return $vobject->VTODO;
 		}
 	}
@@ -691,6 +694,42 @@ class OC_Calendar_Object{
 	 */
 	public static function getByWeekNoOptions() {
 		return range(1, 52);
+	}
+
+	public static function getAlarms($objectId) {
+		$sql = 'SELECT type, value, timetype
+                FROM *PREFIX*clndr_alarms
+                WHERE objid = ?
+                ORDER BY senddate';
+
+		$query = \OCP\DB::prepare($sql);
+		$result = $query->execute(array($objectId));
+
+		$resultArray = array();
+		while($row = $result->fetchRow()){
+			$resultArray[] = $row;
+		}
+
+		return $resultArray;
+	}
+
+	public static function getAlarmsToDisplay() {
+		$sql = 'SELECT displayname, summary, startdate, alarms.id
+                FROM *PREFIX*clndr_alarms AS alarms
+                JOIN *PREFIX*clndr_objects AS objects ON objects.id = alarms.objid
+                JOIN *PREFIX*clndr_calendars AS calendars ON (objects.calendarid=calendars.id)
+                WHERE userid = ? AND type = ? AND sended = 0
+                    AND senddate BETWEEN DATE_SUB(UTC_TIMESTAMP(), INTERVAL 2 MINUTE) AND UTC_TIMESTAMP()
+                ORDER BY senddate';
+
+		$query = \OCP\DB::prepare($sql);
+
+		return $query->execute(array(OCP\USER::getUser(), 'DISPLAY'));
+	}
+
+	public static function setAlarmsSended($alarmsIdsSended) {
+		$query = \OCP\DB::prepare('UPDATE `*PREFIX*clndr_alarms` SET sended = 1 WHERE `id` IN(?)');
+		$query->execute(array(implode(',', $alarmsIdsSended)));
 	}
 
 	/**
@@ -1045,29 +1084,6 @@ class OC_Calendar_Object{
 			$repeat = "false";
 		}
 
-		$valarm = $vevent->VALARM;
-		
-		if(!self::isAlarmSpecified($request)) {
-			if($valarm != null) {
-				unset($vevent->VALARM);
-			}
-		} else {
-			$alarmDuration = $request['eventalarm'];
-			if($valarm == null) {
-				$valarm = new OC_VObject('VALARM');
-				
-				$valarm->setString('DESCRIPTION', 'Default Event Notification');
-				$valarm->setString('');
-				
-				$vevent->add($valarm);
-			} else {
-				unset($valarm->TRIGGER);
-			}
-			
-                        $valarm->setString('ACTION', self::determineAlarmActionType($request));
-			$valarm->addProperty('TRIGGER', $alarmDuration, array('VALUE' => 'DURATION'));
-		}
-
 		$vevent->setDateTime('LAST-MODIFIED', 'now', Sabre\VObject\Property\DateTime::UTC);
 		$vevent->setDateTime('DTSTAMP', 'now', Sabre\VObject\Property\DateTime::UTC);
 		$vevent->setString('SUMMARY', $title);
@@ -1087,6 +1103,8 @@ class OC_Calendar_Object{
 		}
 		unset($vevent->DURATION);
 
+		self::addAlarmsData($request, $vcalendar);
+
 		$vevent->setString('CLASS', $accessclass);
 		$vevent->setString('LOCATION', $location);
 		$vevent->setString('DESCRIPTION', $description);
@@ -1099,23 +1117,196 @@ class OC_Calendar_Object{
 		return $vcalendar;
 	}
 
-        private static function determineAlarmActionType($request) {
-            if(!isset($request['eventalarmaction'])) {
-                return 'DISPLAY';
+	private static function addAlarmsData($request, $vcalendar) {
+		$vevent = $vcalendar->VEVENT;
+		unset($vevent->VALARM);
+
+		$alarmsDuration = $request['alarmsDuration'];
+		$alarmsType = $request['alarmsType'];
+		$alarmsTimeType = $request['alarmsTimeType'];
+		if($alarmsDuration != NULL && count($alarmsDuration) > 0){
+
+			foreach($alarmsDuration as $i => $alarmDuration){
+
+				$alarmDuration = intval($alarmDuration);
+				if($alarmDuration > 0){
+					$alarmType = $alarmsType[$i];
+					$alarmTimeType = $alarmsTimeType[$i];
+
+					$interval = self::formatAlarmToInterval($alarmTimeType, $alarmDuration);
+
+					$valarm = new OC_VObject('VALARM');
+					$valarm->setString('DESCRIPTION', 'Default Event Notification');
+					$valarm->setString('ACTION', $alarmType);
+					$valarm->addProperty('TRIGGER', '-'.$interval, array('VALUE' => 'DURATION'));
+
+					$vevent->add($valarm);
+				}
+				$i++;
+			}
+		}
+	}
+
+	/**
+	 * Add alarms for a event.
+	 * If alarms exist then delete and create new alarms
+	 * @param type $alarmsDuration
+	 * @param type $vcalendar
+	 * @param type $eventId
+	 */
+	public static function addAlarmsDB($alarmsDuration, $alarmsType, $alarmsTimeType, $vevent, $eventId) {
+		self::removeAllAlarmsDB($eventId);
+
+		if($alarmsDuration != NULL && count($alarmsDuration) > 0){
+
+			$startDate = $vevent->DTSTART->getDateTime();
+
+			foreach($alarmsDuration as $i => $alarmDuration){
+
+				$alarmDuration = intval($alarmDuration);
+				if($alarmDuration > 0){
+
+					$alarmTimeType = $alarmsTimeType[$i];
+
+					$interval = self::formatAlarmToInterval($alarmTimeType, $alarmDuration);
+
+					$sendate = new \DateTime('@'.$startDate->getTimestamp());
+					$sendate->sub(new \DateInterval($interval));
+
+					$sended = ($sendate->getTimestamp() > time()) ? 0 : 1;
+
+					$sendDateStr = self::getUTCforMDB($sendate);
+
+					$alarmType = $alarmsType[$i];
+					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, timetype, sended) VALUES (null, ?, ?, ?, ?, ?, ?)');
+					$stmt->execute(array($eventId, $sendDateStr, $alarmType, $alarmDuration, $alarmTimeType, $sended));
+				}
+				$i++;
+			}
+		}
+	}
+
+	/**
+	 * Add alarms for a event.
+	 * If alarms exist then delete and create new alarms
+	 * @param type $vcalendar
+	 * @param type $eventId
+	 */
+	public static function addAlarmsDBFromData($vevent, $eventId) {
+		self::removeAllAlarmsDB($eventId);
+
+		$valarm = $vevent->VALARM;
+
+		if($valarm != NULL){
+			$alarms = $valarm->getIterator();
+
+			$startDate = $vevent->DTSTART->getDateTime();
+
+			foreach($alarms as $alarm){
+
+				preg_match('/DURATION:-?(\w*)/', $alarm->TRIGGER->serialize(), $params);
+				if(count($params) == 0 || $params[1] == NULL){
+					preg_match('/TRIGGER:-?(\w*)/', $alarm->TRIGGER->serialize(), $params);
+				}
+
+				if(count($params) > 0 && $params[1] != NULL){
+
+					$result = self::getTimeTypeAndValueFromInterval($params[1]);
+					$timeType = $result['timeType'];
+					$value = $result['value'];
+
+					$sendate = $sendate = new \DateTime('@'.$startDate->getTimestamp());
+					$sendate->sub(new \DateInterval($params[1]));
+
+					$sended = ($sendate->getTimestamp() > time()) ? 0 : 1;
+
+					$sendDateStr = self::getUTCforMDB($sendate);
+
+					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, timetype, sended) VALUES (null, ?, ?, ?, ?, ?, ?)');
+					$stmt->execute(array($eventId, $sendDateStr, $alarm->ACTION, $value, $timeType, $sended));
+				}
+			}
+		}
+	}
+
+	private static function removeAllAlarmsDB($eventId) {
+		$stmt = OCP\DB::prepare('DELETE FROM `*PREFIX*clndr_alarms` WHERE `objid` = ?');
+		$stmt->execute(array($eventId));
+	}
+
+	public static function moveAlarmsDB($eventId, $delta) {
+		$sql = 'SELECT id, senddate
+                FROM *PREFIX*clndr_alarms
+                WHERE objid = ?';
+
+		$query = \OCP\DB::prepare($sql);
+		$result = $query->execute(array($eventId));
+
+		while($row = $result->fetchRow()){
+
+			$newSendDate = new \DateTime($row['senddate']);
+			$newSendDate->add($delta);
+
+			$sended = 0;
+			if($newSendDate->getTimestamp() < time()){
+				$sended = 1;
+			}
+
+			$update = \OCP\DB::prepare('UPDATE *PREFIX*clndr_alarms SET senddate = ?, sended = ? WHERE id = ?');
+			$update->execute(array($newSendDate->format('Y-m-d H:i'), $sended, $row['id']));
+		}
             }
             
-            return $request['eventalarmaction'];
+	private static function getTimeTypeAndValueFromInterval($intervalStr) {
+
+		$interval = new \DateInterval($intervalStr);
+
+		$timeType = 'M';
+		$value = 0;
+		// Weeks
+		if($interval->d > 0 && $interval->d % 7 == 0){
+			$timeType = 'W';
+			$value = $interval->d;
+		}
+		// Days
+		elseif($interval->d > 0){
+			$timeType = 'D';
+			$value = $interval->d;
+		}
+		// Hours
+		elseif($interval->h > 0){
+			$timeType = 'H';
+			$value = $interval->h;
+		}
+		// Minutes
+		elseif($interval->i > 0){
+			$timeType = 'M';
+			$value = $interval->i;
         }
         
-	private static function isAlarmSpecified($request) {
-		if(!isset($request['eventalarm'])) {
-			return false;
+		return array(
+		  'timeType' => $timeType,
+		  'value' => $value);
 		}
-		if($request['eventalarm'] == "NONE") {
-			return false;
+
+	private static function formatAlarmToInterval($alarmTimeType, $alarmDuration) {
+
+		switch($alarmTimeType){
+			case 'M':
+				$interval = 'PT'.$alarmDuration.'M';
+				break;
+			case 'H':
+				$interval = 'PT'.$alarmDuration.'H';
+				break;
+			case 'D':
+				$interval = 'P'.$alarmDuration.'D';
+				break;
+			default: // W
+				$interval = 'P'.$alarmDuration.'W';
+				break;
 		}
 		
-		return true;
+		return $interval;
 	}
 	
 	/**
@@ -1124,7 +1315,8 @@ class OC_Calendar_Object{
 	 * @return string
 	 */
 	public static function getowner($id) {
-		if ($id == 0) return null;
+		if($id == 0)
+			return null;
 		$event = self::find($id);
 		$cal = OC_Calendar_Calendar::find($event['calendarid']);
 		if($cal === false || is_array($cal) === false){
