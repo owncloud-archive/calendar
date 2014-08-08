@@ -796,7 +796,7 @@ class OC_Calendar_Object{
 			}
 			if(array_key_exists('byweekno', $request)) {
 				foreach($request['byweekno'] as $option) {
-					if(!array_key_exists($option, self::getByWeekNoOptions())) {
+					if(!in_array($option, self::getByWeekNoOptions())) {
 						$errarr['byweekno'] = 'true';
 						$errnum++;
 					}
