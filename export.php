@@ -10,7 +10,7 @@ OCP\App::checkAppEnabled('calendar');
 $cal = isset($_GET['calid']) ? $_GET['calid'] : null;
 $event = isset($_GET['eventid']) ? $_GET['eventid'] : null;
 if(!is_null($cal)) {
-	$calendar = OC_Calendar_App::getCalendar($cal, true);
+	$calendar = OC_Calendar_App::getCalendar($cal, true, true);
 	if(!$calendar) {
 		header('HTTP/1.0 403 Forbidden');
 		exit;
@@ -19,7 +19,7 @@ if(!is_null($cal)) {
 	header('Content-Disposition: inline; filename=' . str_replace(' ', '-', $calendar['displayname']) . '.ics');
 	echo OC_Calendar_Export::export($cal, OC_Calendar_Export::CALENDAR);
 }elseif(!is_null($event)) {
-	$data = OC_Calendar_App::getEventObject($_GET['eventid'], true);
+	$data = OC_Calendar_App::getEventObject($_GET['eventid'], true, true);
 	if(!$data) {
 		header('HTTP/1.0 403 Forbidden');
 		exit;
