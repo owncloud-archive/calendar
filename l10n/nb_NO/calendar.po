@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-16 01:46-0400\n"
-"PO-Revision-Date: 2014-07-15 06:10+0000\n"
+"POT-Creation-Date: 2014-08-16 01:46-0400\n"
+"PO-Revision-Date: 2014-08-16 05:22+0000\n"
 "Last-Translator: vidaren <news@vidartysse.net>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/owncloud/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -87,51 +87,51 @@ msgstr "Ugyldig forespørsel"
 msgid "Calendar"
 msgstr "Kalender"
 
-#: js/calendar.js:223
+#: js/calendar.js:222
 msgid "Deletion failed"
 msgstr "Sletting feilet"
 
-#: js/calendar.js:317
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:319
+#: js/calendar.js:318
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:732
+#: js/calendar.js:731
 msgid "group"
 msgstr "gruppe"
 
-#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "kan endre"
 
-#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "kan dele"
 
-#: js/calendar.js:1003
+#: js/calendar.js:1013
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:1004
+#: js/calendar.js:1014
 msgid "ddd M/d"
 msgstr "ddd d.M"
 
-#: js/calendar.js:1005
+#: js/calendar.js:1015
 msgid "dddd M/d"
 msgstr "dddd d.M"
 
-#: js/calendar.js:1008
+#: js/calendar.js:1018
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:1010
+#: js/calendar.js:1020
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "d [ MMM][ yyyy]{ '–' d MMM yyyy}"
 
-#: js/calendar.js:1012
+#: js/calendar.js:1022
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd d. MMM yyyy"
 
@@ -399,15 +399,15 @@ msgstr "av"
 msgid "unnamed"
 msgstr "uten navn"
 
-#: lib/calendar.php:190 lib/calendar.php:223
+#: lib/calendar.php:188 lib/calendar.php:221
 msgid "You do not have the permissions to update this calendar."
 msgstr "Du har ikke tilgang til å oppdatere denne kalenderen"
 
-#: lib/calendar.php:258
+#: lib/calendar.php:256
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Du har ikke tilgang til å slette denne kalenderen"
 
-#: lib/calendar.php:292
+#: lib/calendar.php:290
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Du har ikke tilgang til å legge til noe i denne kalenderen"
 
@@ -587,19 +587,19 @@ msgstr "12 t"
 msgid "Start week on"
 msgstr "Start uke på"
 
-#: templates/calendar.php:98
+#: templates/calendar.php:99
 msgid "Cache"
 msgstr "Buffer"
 
-#: templates/calendar.php:99
+#: templates/calendar.php:100
 msgid "Clear cache for repeating events"
 msgstr "Fjern gjentagende hendelser fra mellomlager"
 
-#: templates/calendar.php:102
+#: templates/calendar.php:104
 msgid "Primary CalDAV address"
 msgstr "Primær CalDAV-adresse"
 
-#: templates/calendar.php:106
+#: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
 msgstr "iOS/OS X CalDAV-adresse"
 

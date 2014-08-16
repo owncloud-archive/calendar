@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-21 01:46-0400\n"
-"PO-Revision-Date: 2014-07-20 18:11+0000\n"
+"POT-Creation-Date: 2014-08-16 01:46-0400\n"
+"PO-Revision-Date: 2014-08-16 05:22+0000\n"
 "Last-Translator: Matej Urbančič <>\n"
 "Language-Team: Slovenian (http://www.transifex.com/projects/p/owncloud/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -395,15 +395,15 @@ msgstr "od"
 msgid "unnamed"
 msgstr "neimenovano"
 
-#: lib/calendar.php:190 lib/calendar.php:223
+#: lib/calendar.php:188 lib/calendar.php:221
 msgid "You do not have the permissions to update this calendar."
 msgstr "Ni ustreznih dovoljenj za posodobitev tega koledarja."
 
-#: lib/calendar.php:258
+#: lib/calendar.php:256
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Ni ustreznih dovoljenj za izbris tega koledarja."
 
-#: lib/calendar.php:292
+#: lib/calendar.php:290
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Ni ustreznih dovoljenj za dodajanje tega koledarja."
 
@@ -583,19 +583,19 @@ msgstr "12 ur"
 msgid "Start week on"
 msgstr "Začni teden na"
 
-#: templates/calendar.php:98
+#: templates/calendar.php:99
 msgid "Cache"
 msgstr "Predpomnilnik"
 
-#: templates/calendar.php:99
+#: templates/calendar.php:100
 msgid "Clear cache for repeating events"
 msgstr "Počisti predpomnilnik ponavljajočih se dogodkov"
 
-#: templates/calendar.php:102
+#: templates/calendar.php:104
 msgid "Primary CalDAV address"
 msgstr "Osnovni naslov CalDAV"
 
-#: templates/calendar.php:106
+#: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
 msgstr "Naslov CalDAV iOS/OS"
 

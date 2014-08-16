@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-31 01:46-0400\n"
-"PO-Revision-Date: 2014-07-30 21:11+0000\n"
+"POT-Creation-Date: 2014-08-16 01:46-0400\n"
+"PO-Revision-Date: 2014-08-16 05:22+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Spanish (Chile) (http://www.transifex.com/projects/p/owncloud/language/es_CL/)\n"
 "MIME-Version: 1.0\n"
@@ -388,15 +388,15 @@ msgstr ""
 msgid "unnamed"
 msgstr ""
 
-#: lib/calendar.php:190 lib/calendar.php:223
+#: lib/calendar.php:188 lib/calendar.php:221
 msgid "You do not have the permissions to update this calendar."
 msgstr ""
 
-#: lib/calendar.php:258
+#: lib/calendar.php:256
 msgid "You do not have the permissions to delete this calendar."
 msgstr ""
 
-#: lib/calendar.php:292
+#: lib/calendar.php:290
 msgid "You do not have the permissions to add to this calendar."
 msgstr ""
 
@@ -576,19 +576,19 @@ msgstr ""
 msgid "Start week on"
 msgstr ""
 
-#: templates/calendar.php:98
+#: templates/calendar.php:99
 msgid "Cache"
 msgstr ""
 
-#: templates/calendar.php:99
+#: templates/calendar.php:100
 msgid "Clear cache for repeating events"
 msgstr ""
 
-#: templates/calendar.php:102
+#: templates/calendar.php:104
 msgid "Primary CalDAV address"
 msgstr ""
 
-#: templates/calendar.php:106
+#: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
 msgstr ""
 

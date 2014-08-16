@@ -27,8 +27,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-26 01:46-0400\n"
-"PO-Revision-Date: 2014-07-25 14:01+0000\n"
+"POT-Creation-Date: 2014-08-16 01:46-0400\n"
+"PO-Revision-Date: 2014-08-16 05:21+0000\n"
 "Last-Translator: Void Ayanami <hex.void@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/owncloud/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -408,15 +408,15 @@ msgstr "до свидания"
 msgid "unnamed"
 msgstr "без имени"
 
-#: lib/calendar.php:190 lib/calendar.php:223
+#: lib/calendar.php:188 lib/calendar.php:221
 msgid "You do not have the permissions to update this calendar."
 msgstr "У вас нет права изменять этот календарь."
 
-#: lib/calendar.php:258
+#: lib/calendar.php:256
 msgid "You do not have the permissions to delete this calendar."
 msgstr "У вас нет права удалять этот календарь"
 
-#: lib/calendar.php:292
+#: lib/calendar.php:290
 msgid "You do not have the permissions to add to this calendar."
 msgstr "У вас нет права добавлять в этот календарь."
 
@@ -596,19 +596,19 @@ msgstr "12ч"
 msgid "Start week on"
 msgstr "Начало недели"
 
-#: templates/calendar.php:98
+#: templates/calendar.php:99
 msgid "Cache"
 msgstr "Кэш"
 
-#: templates/calendar.php:99
+#: templates/calendar.php:100
 msgid "Clear cache for repeating events"
 msgstr "Очистить кэш повторяющихся событий"
 
-#: templates/calendar.php:102
+#: templates/calendar.php:104
 msgid "Primary CalDAV address"
 msgstr "Основной адрес синхронизации CalDAV"
 
-#: templates/calendar.php:106
+#: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
 msgstr "Адрес синхронизации iOS/OS X CalDAV"
 

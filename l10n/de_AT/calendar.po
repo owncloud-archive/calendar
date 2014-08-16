@@ -11,6 +11,7 @@
 # Jan-Christoph Borchardt <hey@jancborchardt.net>, 2011
 # Tristan <blobbyjj@ymail.com>, 2012-2013
 # peddn <public@peddn.net>, 2012
+# Malspherus <pekittenberger@gmx.at>, 2014
 # Phi Lieb <>, 2012
 # SSL <albkert@gmail.com>, 2012
 # Susi <>, 2012
@@ -19,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-16 01:46-0400\n"
-"PO-Revision-Date: 2014-07-15 06:10+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-08-16 01:46-0400\n"
+"PO-Revision-Date: 2014-08-16 05:22+0000\n"
+"Last-Translator: Malspherus <pekittenberger@gmx.at>\n"
 "Language-Team: German (Austria) (http://www.transifex.com/projects/p/owncloud/language/de_AT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,11 +32,11 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "Noch sind nicht alle Kalender zwischengespeichert."
+msgstr "Noch sind nicht alle Kalender zwischengespeichert"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr "Es sieht so aus, als wäre alles vollständig zwischengespeichert."
+msgstr "Es sieht so aus, als wäre alles vollständig zwischengespeichert"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
@@ -61,7 +62,7 @@ msgstr "Entweder enthielt die Datei keine Termine oder alle Termine waren bereit
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events have been saved in the new calendar"
-msgstr ""
+msgstr "Die Termine wurden im neuen Kalender gespeichert"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
@@ -69,7 +70,7 @@ msgstr "Import fehlgeschlagen"
 
 #: ajax/import/import.php:71
 msgid "events have been saved in your calendar"
-msgstr ""
+msgstr "Die Termine wurden in Deinem Kalender gespeichert"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -88,51 +89,51 @@ msgstr "Fehlerhafte Anfrage"
 msgid "Calendar"
 msgstr "Kalender"
 
-#: js/calendar.js:223
+#: js/calendar.js:222
 msgid "Deletion failed"
 msgstr "Löschen fehlgeschlagen"
 
-#: js/calendar.js:317
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:319
+#: js/calendar.js:318
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:732
+#: js/calendar.js:731
 msgid "group"
 msgstr "Gruppe"
 
-#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
-msgstr "kann bearbeiten"
+msgstr "Kann bearbeiten"
 
-#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "Kann teilen"
 
-#: js/calendar.js:1003
+#: js/calendar.js:1013
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:1004
+#: js/calendar.js:1014
 msgid "ddd M/d"
 msgstr "ddd d.M"
 
-#: js/calendar.js:1005
+#: js/calendar.js:1015
 msgid "dddd M/d"
 msgstr "dddd d.M"
 
-#: js/calendar.js:1008
+#: js/calendar.js:1018
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:1010
+#: js/calendar.js:1020
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:1012
+#: js/calendar.js:1022
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, d. MMM yyyy"
 
@@ -330,7 +331,7 @@ msgstr "Es ist ein Datenbankfehler aufgetreten"
 
 #: js/l10n.php:94
 msgid "Interval is not valid. It must be a positive integer!"
-msgstr ""
+msgstr "Zeitraum ungültig. Muss ein ganzzahliger, positiver Wert sein!"
 
 #: lib/app.php:121
 msgid "Birthday"
@@ -400,15 +401,15 @@ msgstr "von"
 msgid "unnamed"
 msgstr "unbenannt"
 
-#: lib/calendar.php:190 lib/calendar.php:223
+#: lib/calendar.php:188 lib/calendar.php:221
 msgid "You do not have the permissions to update this calendar."
 msgstr "Du besitzt nicht die Berechtigung, diesen Kalender zu aktualisieren."
 
-#: lib/calendar.php:258
+#: lib/calendar.php:256
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Du besitzt nicht die Berechtigung, diesen Kalender zu löschen."
 
-#: lib/calendar.php:292
+#: lib/calendar.php:290
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Du besitzt nicht die Berechtigung, diesem Kalender etwas hinzuzufügen."
 
@@ -418,7 +419,7 @@ msgstr "Du besitzt nicht die Berechtigung, diesem Kalender eine Veranstaltung hi
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr "Du kannst einem freigegeben Kalender nicht zu einem nicht-öffentlichen Kalender hinzufügen."
+msgstr "Du kannst private Termine keinem geteilten Kalender hinzufügen."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -438,35 +439,35 @@ msgstr "Nur beschäftigt anzeigen"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr "Veranstaltung ausblenden"
+msgstr "Veranstaltung verstecken"
 
 #: lib/object.php:565
 msgid "Does not repeat"
-msgstr "einmalig"
+msgstr "Einmalig"
 
 #: lib/object.php:566
 msgid "Daily"
-msgstr "täglich"
+msgstr "Täglich"
 
 #: lib/object.php:567
 msgid "Weekly"
-msgstr "wöchentlich"
+msgstr "Wöchentlich"
 
 #: lib/object.php:568
 msgid "Every Weekday"
-msgstr "jeden Wochentag"
+msgstr "Jeden Wochentag"
 
 #: lib/object.php:569
 msgid "Bi-Weekly"
-msgstr "jede zweite Woche"
+msgstr "Jede zweite Woche"
 
 #: lib/object.php:570
 msgid "Monthly"
-msgstr "monatlich"
+msgstr "Monatlich"
 
 #: lib/object.php:571
 msgid "Yearly"
-msgstr "jährlich"
+msgstr "Jährlich"
 
 #: lib/object.php:581
 msgid "never"
@@ -588,21 +589,21 @@ msgstr "12 Stunden"
 msgid "Start week on"
 msgstr "Erster Wochentag"
 
-#: templates/calendar.php:98
+#: templates/calendar.php:99
 msgid "Cache"
 msgstr "Zwischenspeicher"
 
-#: templates/calendar.php:99
+#: templates/calendar.php:100
 msgid "Clear cache for repeating events"
 msgstr "Lösche den Zwischenspeicher für wiederholende Veranstaltungen"
 
-#: templates/calendar.php:102
+#: templates/calendar.php:104
 msgid "Primary CalDAV address"
-msgstr ""
+msgstr "Primäre CalDAV-Adresse"
 
-#: templates/calendar.php:106
+#: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
-msgstr ""
+msgstr "iOS/OS X CalDAV-Adresse"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
@@ -719,11 +720,11 @@ msgstr "Tage auswählen"
 
 #: templates/part.eventform.php:151 templates/part.showevent.php:178
 msgid "and the events day of year."
-msgstr "und den Tag des Jahres des Termins"
+msgstr "und den Tag des Jahres des Termins."
 
 #: templates/part.eventform.php:164 templates/part.showevent.php:191
 msgid "and the events day of month."
-msgstr "und den Tag des Monats des Termins"
+msgstr "und den Tag des Monats des Termins."
 
 #: templates/part.eventform.php:172 templates/part.showevent.php:199
 msgid "Select months"
@@ -735,7 +736,7 @@ msgstr "Wochen auswählen"
 
 #: templates/part.eventform.php:190 templates/part.showevent.php:217
 msgid "and the events week of year."
-msgstr "und den Tag des Jahres des Termins"
+msgstr "und die Woche des Jahres des Termins."
 
 #: templates/part.eventform.php:196 templates/part.showevent.php:223
 msgid "Interval"
@@ -763,7 +764,7 @@ msgstr "Kalenderdatei importieren"
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
-msgstr "Bitte wähle einen Kalender."
+msgstr "Bitte wähle einen Kalender"
 
 #: templates/part.import.php:36
 msgid "Name of new calendar"
@@ -781,7 +782,7 @@ msgstr "Ein Kalender mit diesem Namen existiert bereits. Solltest Du fortfahren,
 
 #: templates/part.import.php:48
 msgid "Remove all events from the selected calendar"
-msgstr "Entferne alle Termine von dem ausgewählten Kalender"
+msgstr "Entferne alle Termine aus dem ausgewählten Kalender"
 
 #: templates/part.import.php:50
 msgid "Import"
@@ -838,7 +839,7 @@ msgstr "Keine Kategorie ausgewählt"
 #: templates/part.showevent.php:41
 #, php-format
 msgid "%s of %s"
-msgstr ""
+msgstr "%s von %s"
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
@@ -846,7 +847,7 @@ msgstr "Zugriffsklasse"
 
 #: templates/part.showevent.php:70
 msgid "From"
-msgstr "von"
+msgstr "Von"
 
 #: templates/part.showevent.php:73 templates/part.showevent.php:81
 msgid "at"
@@ -854,4 +855,4 @@ msgstr "um"
 
 #: templates/part.showevent.php:78
 msgid "To"
-msgstr "bis"
+msgstr "Bis"

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-26 01:46-0400\n"
-"PO-Revision-Date: 2014-07-25 23:50+0000\n"
+"POT-Creation-Date: 2014-08-16 01:46-0400\n"
+"PO-Revision-Date: 2014-08-16 05:22+0000\n"
 "Last-Translator: Thanapon Namjittrong <Thanapon-1994@hotmail.com>\n"
 "Language-Team: Thai (Thailand) (http://www.transifex.com/projects/p/owncloud/language/th_TH/)\n"
 "MIME-Version: 1.0\n"
@@ -392,15 +392,15 @@ msgstr "โดย"
 msgid "unnamed"
 msgstr "ไม่มีชื่อ"
 
-#: lib/calendar.php:190 lib/calendar.php:223
+#: lib/calendar.php:188 lib/calendar.php:221
 msgid "You do not have the permissions to update this calendar."
 msgstr "คุณไม่ได้รับสิทธิ์ให้อัพเดทปฏิทินนี้"
 
-#: lib/calendar.php:258
+#: lib/calendar.php:256
 msgid "You do not have the permissions to delete this calendar."
 msgstr "คุณไม่ได้รับสิทธิ์ให้ลบปฏิทินนี้ทิ้งไป"
 
-#: lib/calendar.php:292
+#: lib/calendar.php:290
 msgid "You do not have the permissions to add to this calendar."
 msgstr "คุณไม่ได้รับสิทธิ์ให้เพิ่มปฏิทินนี้"
 
@@ -580,19 +580,19 @@ msgstr "12 ช.ม."
 msgid "Start week on"
 msgstr "เริ่มต้นสัปดาห์ด้วย"
 
-#: templates/calendar.php:98
+#: templates/calendar.php:99
 msgid "Cache"
 msgstr "หน่วยความจำแคช"
 
-#: templates/calendar.php:99
+#: templates/calendar.php:100
 msgid "Clear cache for repeating events"
 msgstr "ล้างข้อมูลในหน่วยความจำแคชสำหรับกิจกรรมที่ซ้ำซ้อน"
 
-#: templates/calendar.php:102
+#: templates/calendar.php:104
 msgid "Primary CalDAV address"
 msgstr "ที่อยู่ CalDAV หลัก"
 
-#: templates/calendar.php:106
+#: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
 msgstr "ที่อยู่ CalDAV ของ iOS/OS X"
 

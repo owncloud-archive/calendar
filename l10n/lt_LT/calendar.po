@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-18 01:46-0400\n"
-"PO-Revision-Date: 2014-07-17 12:41+0000\n"
+"POT-Creation-Date: 2014-08-16 01:46-0400\n"
+"PO-Revision-Date: 2014-08-16 05:22+0000\n"
 "Last-Translator: Liudas Ališauskas <liudas.alisauskas@gmail.com>\n"
 "Language-Team: Lithuanian (Lithuania) (http://www.transifex.com/projects/p/owncloud/language/lt_LT/)\n"
 "MIME-Version: 1.0\n"
@@ -81,51 +81,51 @@ msgstr "Klaidinga užklausa"
 msgid "Calendar"
 msgstr "Kalendorius"
 
-#: js/calendar.js:223
+#: js/calendar.js:222
 msgid "Deletion failed"
 msgstr "Ištrinti nepavyko"
 
-#: js/calendar.js:317
+#: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:319
+#: js/calendar.js:318
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:732
+#: js/calendar.js:731
 msgid "group"
 msgstr "grupė"
 
-#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "gali redaguoti"
 
-#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "gali dalintis"
 
-#: js/calendar.js:1003
+#: js/calendar.js:1013
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:1004
+#: js/calendar.js:1014
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:1005
+#: js/calendar.js:1015
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:1008
+#: js/calendar.js:1018
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:1010
+#: js/calendar.js:1020
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:1012
+#: js/calendar.js:1022
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -393,15 +393,15 @@ msgstr " "
 msgid "unnamed"
 msgstr "be pavadinimo"
 
-#: lib/calendar.php:190 lib/calendar.php:223
+#: lib/calendar.php:188 lib/calendar.php:221
 msgid "You do not have the permissions to update this calendar."
 msgstr "Jūs neturite leidimo atnaujinti šį kalendorių."
 
-#: lib/calendar.php:258
+#: lib/calendar.php:256
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Jūs neturite leidimo ištrinti šį kalendorių."
 
-#: lib/calendar.php:292
+#: lib/calendar.php:290
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Jūs neturite leidimo prijungti prie šio kalendoriaus."
 
@@ -581,19 +581,19 @@ msgstr "12val"
 msgid "Start week on"
 msgstr "Savaitę pradėti nuo"
 
-#: templates/calendar.php:98
+#: templates/calendar.php:99
 msgid "Cache"
 msgstr "Kešavimas"
 
-#: templates/calendar.php:99
+#: templates/calendar.php:100
 msgid "Clear cache for repeating events"
 msgstr "Išvalyti kešuotus ir pasikartojančius įvykius"
 
-#: templates/calendar.php:102
+#: templates/calendar.php:104
 msgid "Primary CalDAV address"
 msgstr "Pirminis CalDAV adresas"
 
-#: templates/calendar.php:106
+#: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
 msgstr "iOS/OS X CalDAV adresas"
 

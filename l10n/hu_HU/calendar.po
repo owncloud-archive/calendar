@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-07-24 01:46-0400\n"
-"PO-Revision-Date: 2014-07-23 13:51+0000\n"
+"POT-Creation-Date: 2014-08-16 01:46-0400\n"
+"PO-Revision-Date: 2014-08-16 05:21+0000\n"
 "Last-Translator: Szládovics Péter <peti@szladovics.hu>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/owncloud/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
@@ -399,15 +399,15 @@ msgstr "tőle"
 msgid "unnamed"
 msgstr "névtelen"
 
-#: lib/calendar.php:190 lib/calendar.php:223
+#: lib/calendar.php:188 lib/calendar.php:221
 msgid "You do not have the permissions to update this calendar."
 msgstr "Nincs joga ahhoz, hogy frissítse ezt a naptárat."
 
-#: lib/calendar.php:258
+#: lib/calendar.php:256
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Nincs joga ahhoz, hogy törölje ezt a naptárat."
 
-#: lib/calendar.php:292
+#: lib/calendar.php:290
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Nincs joga ahhoz, hogy hozzáadjon ehhez a naptárhoz."
 
@@ -587,19 +587,19 @@ msgstr "12h"
 msgid "Start week on"
 msgstr "A hét első napja"
 
-#: templates/calendar.php:98
+#: templates/calendar.php:99
 msgid "Cache"
 msgstr "Gyorsítótár"
 
-#: templates/calendar.php:99
+#: templates/calendar.php:100
 msgid "Clear cache for repeating events"
 msgstr "Az ismétlődő eseményeknél a gyorsítótár törlése"
 
-#: templates/calendar.php:102
+#: templates/calendar.php:104
 msgid "Primary CalDAV address"
 msgstr "Elsődleges CalDAV cím"
 
-#: templates/calendar.php:106
+#: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
 msgstr "iOS/OS X CalDAV cím"
 
