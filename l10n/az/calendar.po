@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-17 01:46-0400\n"
-"PO-Revision-Date: 2014-08-16 09:50+0000\n"
+"POT-Creation-Date: 2014-08-19 01:46-0400\n"
+"PO-Revision-Date: 2014-08-19 05:01+0000\n"
 "Last-Translator: unixidzero <unixidzero@gmail.com>\n"
 "Language-Team: Azerbaijani (http://www.transifex.com/projects/p/owncloud/language/az/)\n"
 "MIME-Version: 1.0\n"
@@ -50,27 +50,27 @@ msgstr ""
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events have been saved in the new calendar"
-msgstr ""
+msgstr "xəbərdarlıqlar yeni təqvimdə yadda saxlanıldı"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
-msgstr ""
+msgstr "Əlavə mümkün olmadı"
 
 #: ajax/import/import.php:71
 msgid "events have been saved in your calendar"
-msgstr ""
+msgstr "xəbərdalıq sizin kalendarda yadda saxlanıldı"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr ""
+msgstr "Yeni vaxt zonası:"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
-msgstr ""
+msgstr "Vaxt zonası dəyişdirildi"
 
 #: ajax/settings/settimezone.php:25
 msgid "Invalid request"
-msgstr ""
+msgstr "Səhv müraciət"
 
 #: appinfo/app.php:38 js/l10n.php:87 templates/part.eventform.php:20
 #: templates/part.showevent.php:37
@@ -79,7 +79,7 @@ msgstr ""
 
 #: js/calendar.js:222
 msgid "Deletion failed"
-msgstr ""
+msgstr "Silinmədə səhv baş verdi"
 
 #: js/calendar.js:316
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
@@ -607,7 +607,7 @@ msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: templates/part.editcalendar.php:9
 msgid "New calendar"
@@ -671,7 +671,7 @@ msgstr ""
 
 #: templates/part.eventform.php:61 templates/part.showevent.php:91
 msgid "Location"
-msgstr ""
+msgstr "Yerləşdiyiniz ünvan"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"

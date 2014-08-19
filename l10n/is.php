@@ -54,7 +54,7 @@
 "To Date" => "Til dags",
 "To Time" => "Til klukkan",
 "Birthday" => "Afmælisdagur",
-"Clients" => "Notendahugbúnaður",
+"Clients" => "Viðskiptavinir",
 "Other" => "Annað",
 "Personal" => "Um mig",
 "by" => "af",
