@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-19 01:46-0400\n"
-"PO-Revision-Date: 2014-08-19 05:22+0000\n"
+"POT-Creation-Date: 2014-08-20 01:46-0400\n"
+"PO-Revision-Date: 2014-08-20 05:21+0000\n"
 "Last-Translator: kuromabo <md81bird@hitaki.net>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/owncloud/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
@@ -289,7 +289,7 @@ msgstr "終日"
 
 #: js/l10n.php:84 lib/import.php:216 templates/calendar.php:21
 msgid "New Calendar"
-msgstr "新しくカレンダーを作成"
+msgstr "新しいカレンダーを作成"
 
 #: js/l10n.php:85
 msgid "Missing or invalid fields"
@@ -665,7 +665,7 @@ msgstr "から"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr "まで"
+msgstr "終了"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -681,7 +681,7 @@ msgstr "場所"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr "カテゴリ（コンマ区切り）"
+msgstr "カテゴリ(カンマ区切り)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
