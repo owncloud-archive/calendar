@@ -68,6 +68,7 @@ color:#A9A9A9;
 select#category{width:140px;}
 button.category{margin:0 3px;}
 
+.calendar-colorpicker { display: inline-block; }
 .calendar-colorpicker-color{display:inline-block;width:20px;height:20px;margin-right:2px;cursor:pointer;border:2px solid transparent;}
 .calendar-colorpicker-color.active{border:2px solid black;}
 
@@ -295,6 +296,12 @@ button.category{margin:0 3px;}
 	margin-left: 0;
 	margin-right: 0;
 }
+
+#cleancalendarcache {
+	max-width: 95%;
+	white-space: normal;
+}
+
 #navigation-list form {
 	width: 100%;
 }
