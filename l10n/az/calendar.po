@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-21 01:46-0400\n"
-"PO-Revision-Date: 2014-08-21 05:01+0000\n"
+"POT-Creation-Date: 2014-08-22 01:46-0400\n"
+"PO-Revision-Date: 2014-08-22 05:23+0000\n"
 "Last-Translator: unixidzero <unixidzero@gmail.com>\n"
 "Language-Team: Azerbaijani (http://www.transifex.com/projects/p/owncloud/language/az/)\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +91,7 @@ msgstr ""
 
 #: js/calendar.js:731
 msgid "group"
-msgstr ""
+msgstr "qrup"
 
 #: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
@@ -99,7 +99,7 @@ msgstr ""
 
 #: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "yayımlaya bilərsiniz"
 
 #: js/calendar.js:1013
 msgid "ddd"
@@ -547,7 +547,7 @@ msgstr ""
 
 #: templates/calendar.php:17
 msgid "Today"
-msgstr ""
+msgstr "Bu gün"
 
 #: templates/calendar.php:42 templates/part.choosecalendar.rowfields.php:28
 msgid "CalDav Link"
@@ -599,11 +599,11 @@ msgstr ""
 
 #: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
-msgstr ""
+msgstr "Yüklə"
 
 #: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
-msgstr ""
+msgstr "Dəyişiklik et"
 
 #: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
@@ -691,7 +691,7 @@ msgstr ""
 
 #: templates/part.eventform.php:82 templates/part.showevent.php:109
 msgid "Repeat"
-msgstr ""
+msgstr "Təkrar"
 
 #: templates/part.eventform.php:89 templates/part.showevent.php:116
 msgid "Advanced"

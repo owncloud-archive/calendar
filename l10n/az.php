@@ -11,12 +11,18 @@
 "Timezone changed" => "Vaxt zonası dəyişdirildi",
 "Invalid request" => "Səhv müraciət",
 "Deletion failed" => "Silinmədə səhv baş verdi",
+"group" => "qrup",
+"can share" => "yayımlaya bilərsiniz",
 "Daily" => "Günlük",
 "Weekly" => "Həftəlik",
 "Date" => "Tarix",
+"Today" => "Bu gün",
+"Download" => "Yüklə",
+"Edit" => "Dəyişiklik et",
 "Delete" => "Sil",
 "Share" => "Yayımla",
 "Location" => "Yerləşdiyiniz ünvan",
 "Description" => "Açıqlanma",
+"Repeat" => "Təkrar",
 "Import" => "Əlavə et"
 );
