@@ -558,6 +558,7 @@ class OC_Calendar_App{
 			$emails[] = $result;
 		}
 		$useremail = OC_Calendar_Calendar::getUsersEmails($user);
+		$adminmail = \OCP\Util::getDefaultEmailAddress('no-reply');
 		foreach ($emails as $email) {
 			if($email === null) {
 				continue;
@@ -567,7 +568,8 @@ class OC_Calendar_App{
 
 			$headers = 'MIME-Version: 1.0\r\n';
 			$headers .= 'Content-Type: text/html; charset=utf-8\r\n';
-			$headers .= 'From:' . $useremail;
+			$headers .= 'From:' . $adminmail . '\r\n';
+			$headers .= 'Reply-To:' . $useremail;
 
 			$message  = '<html><body>';
 			$message .= '<table style="border:1px solid black;" cellpadding="10">';
