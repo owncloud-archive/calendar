@@ -73,7 +73,7 @@
 "To Time" => "Do",
 "The event ends before it starts" => "Událost končí před svým zahájením",
 "There was a database fail" => "Chyba v databázi",
-"Interval is not valid. It must be a positive integer!" => "Interval je neplatný. Výsledné číslo nesmí být záporné!",
+"Interval is not valid. It must be a positive integer!" => "Interval je neplatný. Musí to být kladné číslo!",
 "Birthday" => "Narozeniny",
 "Business" => "Obchodní",
 "Call" => "Hovor",
