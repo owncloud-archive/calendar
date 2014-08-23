@@ -574,7 +574,7 @@ class OC_Calendar_App{
 			$message .= '</table>';
 			$message .= '</body></html>';
 
-			OCP\Util::sendMail($email, "User", $subject, $message, $adminmail, $user, $html = 1, $altbody = '', $ccaddress = '', $ccname = '', $bcc = '');
+			OCP\Util::sendMail($email, \OCP\User::getDisplayName(), $subject, $message, $adminmail, $user, $html=1);
 		}
 	}
 }
