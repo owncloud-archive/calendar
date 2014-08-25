@@ -9,22 +9,18 @@ Maintainers:
 
 Developer setup info:
 ---------------------
+__Important note__: ownCloud 7 or ownCloud 8 will be last version to ship the master branch's codebase. It will be replaced by the rework branch. If you want to implement new features, please strongly consider implementing them based on the rework branch's codebase.
+
 ### Master branch:
 Just clone this repo into your apps directory.
+Get the lastest version of master:
+```bash
+git clone git://github.com/owncloud/calendar.git
+cd calendar
+```
 
 ### Rework branch:
-
-##### The rework branch is still in development. Do not use it in a productive environment.
-
-
-The calendar rework depends on the appframework.
-Get the latest version of the appframework:
-```bash
-git clone git://github.com/owncloud/appframework.git
-```
-Enable the appframework in the app settings of ownCloud.
-
-Get the lastest version of the rework:
+Get the lastest version of rework:
 ```bash
 git clone git://github.com/owncloud/calendar.git
 cd calendar

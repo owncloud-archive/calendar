@@ -91,6 +91,7 @@ $array = array(
 	"missing_field_totime" => "\"".addslashes($l->t('To Time'))."\"",
 	"missing_field_startsbeforeends" => "\"".addslashes($l->t('The event ends before it starts'))."\"",
 	"missing_field_dberror" => "\"".addslashes($l->t('There was a database fail'))."\"",
+	"missing_field_interval" => "\"".addslashes($l->t('Interval is not valid. It must be a positive integer!'))."\"",
 	"totalurl" => "\"".OCP\Util::linkToRemote('caldav')."calendars"."\"",
 	"firstDay" => $firstDay,
 	);

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-11 06:35-0400\n"
-"PO-Revision-Date: 2014-03-11 06:11+0000\n"
+"POT-Creation-Date: 2014-06-30 01:46-0400\n"
+"PO-Revision-Date: 2014-06-30 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Uighur (http://www.transifex.com/projects/p/owncloud/language/ug/)\n"
 "MIME-Version: 1.0\n"
@@ -49,16 +49,16 @@ msgid ""
 msgstr "ھۆججەتتە پائالىيەت يوق ياكى ھەممە پائالىيەتلەر يىلنامەگە ساقلانغان."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
-msgid "events has been saved in the new calendar"
-msgstr "پائالىيەت يېڭى يىلنامەگە ساقلاندى"
+msgid "events have been saved in the new calendar"
+msgstr ""
 
 #: ajax/import/import.php:58
 msgid "Import failed"
 msgstr "ئىمپورت قىلىش مەغلۇپ بولدى"
 
 #: ajax/import/import.php:71
-msgid "events has been saved in your calendar"
-msgstr "پائالىيەت يىلنامەڭىزگە ساقلاندى"
+msgid "events have been saved in your calendar"
+msgstr ""
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -77,59 +77,59 @@ msgstr "ئىناۋەتسىز ئىلتىماس"
 msgid "Calendar"
 msgstr "يىلنامە"
 
-#: js/calendar.js:179
+#: js/calendar.js:223
 msgid "Deletion failed"
 msgstr "ئۆچۈرۈش مەغلۇپ بولدى"
 
-#: js/calendar.js:270
+#: js/calendar.js:317
 msgid "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 
-#: js/calendar.js:272
+#: js/calendar.js:319
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:596
+#: js/calendar.js:732
 msgid "group"
 msgstr "گۇرۇپپا"
 
-#: js/calendar.js:598 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr ""
 
-#: js/calendar.js:599 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr ""
 
-#: js/calendar.js:870
+#: js/calendar.js:1003
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:871
+#: js/calendar.js:1004
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:872
+#: js/calendar.js:1005
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:875
+#: js/calendar.js:1008
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:877
+#: js/calendar.js:1010
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:879
+#: js/calendar.js:1012
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
-#: js/l10n.php:77 lib/object.php:610 templates/settings.php:101
+#: js/l10n.php:77 lib/object.php:610 templates/calendar.php:93
 msgid "Sunday"
 msgstr "يەكشەنبە"
 
-#: js/l10n.php:77 lib/object.php:604 templates/settings.php:100
+#: js/l10n.php:77 lib/object.php:604 templates/calendar.php:92
 msgid "Monday"
 msgstr "دۈشەنبە"
 
@@ -149,7 +149,7 @@ msgstr "پەيشەنبە"
 msgid "Friday"
 msgstr "جۈمە"
 
-#: js/l10n.php:77 lib/object.php:609 templates/settings.php:102
+#: js/l10n.php:77 lib/object.php:609 templates/calendar.php:94
 msgid "Saturday"
 msgstr "شەنبە"
 
@@ -281,7 +281,7 @@ msgstr "كۆنەك"
 msgid "All day"
 msgstr "پۈتۈن كۈن"
 
-#: js/l10n.php:84 lib/import.php:216 templates/settings.php:31
+#: js/l10n.php:84 lib/import.php:216 templates/calendar.php:21
 msgid "New Calendar"
 msgstr "يېڭى يىلنامە"
 
@@ -316,6 +316,10 @@ msgstr "پائالىيەت باشلىنىشتىن ئىلگىرى ئاخىرلا�
 #: js/l10n.php:93
 msgid "There was a database fail"
 msgstr "سانداننى زىيارەت قىلالمىدى"
+
+#: js/l10n.php:94
+msgid "Interval is not valid. It must be a positive integer!"
+msgstr ""
 
 #: lib/app.php:121
 msgid "Birthday"
@@ -361,7 +365,7 @@ msgstr "يىغىن"
 msgid "Other"
 msgstr "باشقا"
 
-#: lib/app.php:132
+#: lib/app.php:132 lib/calendar.php:142
 msgid "Personal"
 msgstr "شەخسىي"
 
@@ -517,7 +521,7 @@ msgstr "ھەپتە سان(لار)ى بويىچە"
 msgid "by day and month"
 msgstr "كۈن ۋە ئاي بويىچە"
 
-#: lib/sabre/backend.php:74
+#: lib/sabre/backend.php:75
 msgid "Contact birthdays"
 msgstr ""
 
@@ -529,43 +533,79 @@ msgstr "چېسلا"
 msgid "Cal."
 msgstr "يىلنامە"
 
-#: templates/calendar.php:6
+#: templates/calendar.php:16
 msgid "Day"
 msgstr ""
 
-#: templates/calendar.php:7
+#: templates/calendar.php:16
 msgid "Week"
 msgstr "ھەپتە"
 
-#: templates/calendar.php:8
+#: templates/calendar.php:16
 msgid "Month"
 msgstr "ئاي"
 
-#: templates/calendar.php:12 templates/calendar.php:18
+#: templates/calendar.php:17
 msgid "Today"
 msgstr "بۈگۈن"
 
-#: templates/calendar.php:13
-msgid "Settings"
-msgstr "تەڭشەكلەر"
-
-#: templates/part.choosecalendar.rowfields.php:13
-msgid "Share Calendar"
-msgstr "يىلنامە ھەمبەھىر"
-
-#: templates/part.choosecalendar.rowfields.php:24 templates/settings.php:36
+#: templates/calendar.php:42 templates/part.choosecalendar.rowfields.php:28
 msgid "CalDav Link"
 msgstr "CalDav ئۇلانما"
 
-#: templates/part.choosecalendar.rowfields.php:27
+#: templates/calendar.php:55
+msgid "Timezone"
+msgstr "ۋاقىت رايونى"
+
+#: templates/calendar.php:80
+msgid "Update timezone automatically"
+msgstr "ۋاقىت رايونىنى ئۆزلۈكىدىن يېڭىلا"
+
+#: templates/calendar.php:83
+msgid "Time format"
+msgstr "ۋاقىت پىچىمى"
+
+#: templates/calendar.php:85
+msgid "24h"
+msgstr "24h"
+
+#: templates/calendar.php:86
+msgid "12h"
+msgstr "12h"
+
+#: templates/calendar.php:90
+msgid "Start week on"
+msgstr "ھەپتە باشلىنىشى"
+
+#: templates/calendar.php:98
+msgid "Cache"
+msgstr "غەملەك"
+
+#: templates/calendar.php:99
+msgid "Clear cache for repeating events"
+msgstr "تەكرارلانغان پائالىيەتلەرنىڭ غەملىكىنى تازىلا"
+
+#: templates/calendar.php:102
+msgid "Primary CalDAV address"
+msgstr ""
+
+#: templates/calendar.php:106
+msgid "iOS/OS X CalDAV address"
+msgstr ""
+
+#: templates/part.choosecalendar.rowfields.php:15
+msgid "Share Calendar"
+msgstr "يىلنامە ھەمبەھىر"
+
+#: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
 msgstr "چۈشۈر"
 
-#: templates/part.choosecalendar.rowfields.php:31
+#: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
 msgstr "تەھرىر"
 
-#: templates/part.choosecalendar.rowfields.php:36
+#: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
 msgstr "ئۆچۈر"
 
@@ -576,26 +616,6 @@ msgstr "يېڭى يىلنامە"
 #: templates/part.editcalendar.php:9
 msgid "Edit calendar"
 msgstr "يىلنامە تەھرىر"
-
-#: templates/part.editcalendar.php:12
-msgid "Displayname"
-msgstr "كۆرسىتىدىغان ئىسىم"
-
-#: templates/part.editcalendar.php:20
-msgid "Calendar color"
-msgstr "يىلنامە رەڭگى"
-
-#: templates/part.editcalendar.php:33
-msgid "Save"
-msgstr "ساقلا"
-
-#: templates/part.editcalendar.php:33
-msgid "Submit"
-msgstr "تاپشۇر"
-
-#: templates/part.editcalendar.php:34
-msgid "Cancel"
-msgstr "ۋاز كەچ"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
@@ -665,60 +685,60 @@ msgstr "تۈر تەھرىر"
 msgid "Description"
 msgstr "چۈشەندۈرۈش"
 
-#: templates/part.eventform.php:73
+#: templates/part.eventform.php:74
 msgid "Export event"
 msgstr ""
 
-#: templates/part.eventform.php:80 templates/part.showevent.php:109
+#: templates/part.eventform.php:82 templates/part.showevent.php:109
 msgid "Repeat"
 msgstr "قايتىلا"
 
-#: templates/part.eventform.php:87 templates/part.showevent.php:116
+#: templates/part.eventform.php:89 templates/part.showevent.php:116
 msgid "Advanced"
 msgstr "ئالىي"
 
-#: templates/part.eventform.php:131 templates/part.showevent.php:160
+#: templates/part.eventform.php:133 templates/part.showevent.php:160
 msgid "Select weekdays"
 msgstr "مىنھەپتە كۈنىنى تاللاڭ"
 
-#: templates/part.eventform.php:144 templates/part.eventform.php:157
+#: templates/part.eventform.php:146 templates/part.eventform.php:159
 #: templates/part.showevent.php:173 templates/part.showevent.php:186
 msgid "Select days"
 msgstr "كۈن تاللاڭ"
 
-#: templates/part.eventform.php:149 templates/part.showevent.php:178
+#: templates/part.eventform.php:151 templates/part.showevent.php:178
 msgid "and the events day of year."
 msgstr "ھەر يىلدىكى پائالىيەت كۈنى"
 
-#: templates/part.eventform.php:162 templates/part.showevent.php:191
+#: templates/part.eventform.php:164 templates/part.showevent.php:191
 msgid "and the events day of month."
 msgstr "ۋە ئايدىكى پائالىيەت كۈنى"
 
-#: templates/part.eventform.php:170 templates/part.showevent.php:199
+#: templates/part.eventform.php:172 templates/part.showevent.php:199
 msgid "Select months"
 msgstr "ئاي تاللاڭ"
 
-#: templates/part.eventform.php:183 templates/part.showevent.php:212
+#: templates/part.eventform.php:185 templates/part.showevent.php:212
 msgid "Select weeks"
 msgstr "ھەپتە تاللاڭ"
 
-#: templates/part.eventform.php:188 templates/part.showevent.php:217
+#: templates/part.eventform.php:190 templates/part.showevent.php:217
 msgid "and the events week of year."
 msgstr "ۋە ھەر يىلىدىكى پائالىيەت يۈز بېرىدىغان ھەپتە"
 
-#: templates/part.eventform.php:194 templates/part.showevent.php:223
+#: templates/part.eventform.php:196 templates/part.showevent.php:223
 msgid "Interval"
 msgstr "ئارىلىق"
 
-#: templates/part.eventform.php:200 templates/part.showevent.php:229
+#: templates/part.eventform.php:202 templates/part.showevent.php:229
 msgid "End"
 msgstr "تامام"
 
-#: templates/part.eventform.php:213 templates/part.showevent.php:242
+#: templates/part.eventform.php:215 templates/part.showevent.php:242
 msgid "occurrences"
 msgstr "كۆرۈلۈشى"
 
-#: templates/part.eventform.php:232
+#: templates/part.eventform.php:234
 msgid "Visibility to people shared with"
 msgstr ""
 
@@ -805,8 +825,9 @@ msgid "No categories selected"
 msgstr "ھېچقانداق تۈر تاللانمىدى"
 
 #: templates/part.showevent.php:41
-msgid "of"
-msgstr "نىڭ"
+#, php-format
+msgid "%s of %s"
+msgstr ""
 
 #: templates/part.showevent.php:50
 msgid "Access Class"
@@ -823,71 +844,3 @@ msgstr "دا"
 #: templates/part.showevent.php:78
 msgid "To"
 msgstr "قوبۇللىغۇچى"
-
-#: templates/settings.php:2
-msgid "Your calendars"
-msgstr "يىلنامەلىرىڭىز"
-
-#: templates/settings.php:26
-msgid "Shared events"
-msgstr ""
-
-#: templates/settings.php:42
-msgid "General"
-msgstr "ئادەتتىكى"
-
-#: templates/settings.php:47
-msgid "Timezone"
-msgstr "ۋاقىت رايونى"
-
-#: templates/settings.php:78
-msgid "Update timezone automatically"
-msgstr "ۋاقىت رايونىنى ئۆزلۈكىدىن يېڭىلا"
-
-#: templates/settings.php:83
-msgid "Time format"
-msgstr "ۋاقىت پىچىمى"
-
-#: templates/settings.php:88
-msgid "24h"
-msgstr "24h"
-
-#: templates/settings.php:89
-msgid "12h"
-msgstr "12h"
-
-#: templates/settings.php:95
-msgid "Start week on"
-msgstr "ھەپتە باشلىنىشى"
-
-#: templates/settings.php:108
-msgid "Cache"
-msgstr "غەملەك"
-
-#: templates/settings.php:112
-msgid "Clear cache for repeating events"
-msgstr "تەكرارلانغان پائالىيەتلەرنىڭ غەملىكىنى تازىلا"
-
-#: templates/settings.php:117
-msgid "URLs"
-msgstr "URLs"
-
-#: templates/settings.php:119
-msgid "Calendar CalDAV syncing addresses"
-msgstr "يىلنامە CalDAV قەدەمداشلاش ئادرېسى"
-
-#: templates/settings.php:119
-msgid "more info"
-msgstr "تېخىمۇ كۆپ ئۇچۇرلار"
-
-#: templates/settings.php:121
-msgid "Primary address (Kontact et al)"
-msgstr "ئاساسىي ئادرېس (ئالاقە ئۇچۇرى قاتارلىق)"
-
-#: templates/settings.php:123
-msgid "iOS/OS X"
-msgstr "iOS/OS X"
-
-#: templates/settings.php:125
-msgid "Read only iCalendar link(s)"
-msgstr "ئوقۇشقىلا بولىدىغان iCalendar ئۇلانما(لار)"

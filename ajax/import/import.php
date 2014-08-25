@@ -10,7 +10,7 @@ OCP\App::checkAppEnabled('calendar');
 OCP\JSON::callCheck();
 session_write_close();
 if (isset($_POST['progresskey']) && isset($_POST['getprogress'])) {
-	echo OCP\JSON::success(array('percent'=>OC_Cache::get($_POST['progresskey'])));
+	echo OCP\JSON::success(array('percent'=>\OC\Cache::get($_POST['progresskey'])));
 	exit;
 }
 $file = \OC\Files\Filesystem::file_get_contents($_POST['path'] . '/' . $_POST['file']);
@@ -66,8 +66,8 @@ if($count == 0) {
 	OCP\JSON::error(array('message'=>OC_Calendar_App::$l10n->t('The file contained either no events or all events are already saved in your calendar.')));
 }else{
 	if($newcal) {
-		OCP\JSON::success(array('message'=>$count . ' ' . OC_Calendar_App::$l10n->t('events has been saved in the new calendar') . ' ' .  strip_tags($_POST['calname'])));
+		OCP\JSON::success(array('message'=>$count . ' ' . OC_Calendar_App::$l10n->t('events have been saved in the new calendar') . ' ' .  strip_tags($_POST['calname'])));
 	}else{
-		OCP\JSON::success(array('message'=>$count . ' ' . OC_Calendar_App::$l10n->t('events has been saved in your calendar')));
+		OCP\JSON::success(array('message'=>$count . ' ' . OC_Calendar_App::$l10n->t('events have been saved in your calendar')));
 	}
 }

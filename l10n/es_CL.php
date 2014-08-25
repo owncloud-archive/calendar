@@ -18,9 +18,7 @@
 "October" => "Octubre",
 "November" => "Noviembre",
 "December" => "Diciembre",
-"Settings" => "Configuración",
 "Download" => "Descargar",
-"Cancel" => "Cancelar",
 "Share" => "Compartir",
-"General" => "General"
+"Import" => "Importar"
 );

@@ -160,7 +160,7 @@ class OC_Calendar_Object{
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_CREATE)) {
-				throw new Sabre_DAV_Exception_Forbidden(
+				throw new \Sabre\DAV\Exception\Forbidden(
 					OC_Calendar_App::$l10n->t(
 						'You do not have the permissions to add events to this calendar.'
 					)
@@ -172,7 +172,7 @@ class OC_Calendar_Object{
 		$vevent = self::getElement($object);
 
 		if($shared && isset($vevent->CLASS) && (string)$vevent->CLASS !== 'PUBLIC') {
-			throw new Sabre_DAV_Exception_PreconditionFailed(
+			throw new \Sabre\DAV\Exception\PreconditionFailed(
 					OC_Calendar_App::$l10n->t(
 						'You cannot add non-public events to a shared calendar.'
 					)
@@ -245,7 +245,7 @@ class OC_Calendar_Object{
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $cid);
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE) || !($sharedAccessClassPermissions & OCP\PERMISSION_UPDATE)) {
-				throw new Sabre_DAV_Exception_Forbidden(
+				throw new \Sabre\DAV\Exception\Forbidden(
 					OC_Calendar_App::$l10n->t(
 						'You do not have the permissions to edit this event.'
 					)
@@ -315,7 +315,7 @@ class OC_Calendar_Object{
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $cid);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_DELETE)) {
-				throw new Sabre_DAV_Exception_Forbidden(
+				throw new \Sabre\DAV\Exception\Forbidden(
 					OC_Calendar_App::$l10n->t(
 						'You do not have the permissions to delete this event.'
 					)
@@ -388,12 +388,14 @@ class OC_Calendar_Object{
 				if($thisone) {
 					$use = $property;
 				}
-			}elseif($property->name == 'VTODO' || $property->name == 'VJOURNAL'){
+			}
+			elseif($property->name == 'VTODO' || $property->name == 'VJOURNAL') {
 				$return[0] = $property->name;
 				foreach($property->children as &$element) {
 					if($element->name == 'SUMMARY') {
 						$return[3] = $element->value;
-					}elseif($element->name == 'UID'){
+					}
+					elseif($element->name == 'UID') {
 						$return[5] = $element->value;
 					}
 				};
@@ -411,13 +413,17 @@ class OC_Calendar_Object{
 			foreach($use->children as $property) {
 				if($property->name == 'DTSTART') {
 					$return[1] = self::getUTCforMDB($property->getDateTime());
-				}elseif($property->name == 'DTEND'){
+				}
+				elseif($property->name == 'DTEND') {
 					$return[2] = self::getUTCforMDB($property->getDateTime());
-				}elseif($property->name == 'SUMMARY'){
+				}
+				elseif($property->name == 'SUMMARY') {
 					$return[3] = $property->value;
-				}elseif($property->name == 'RRULE'){
+				}
+				elseif($property->name == 'RRULE') {
 					$return[4] = 1;
-				}elseif($property->name == 'UID'){
+				}
+				elseif($property->name == 'UID') {
 					$return[5] = $property->value;
 				}
 			}
@@ -487,9 +493,11 @@ class OC_Calendar_Object{
 
 		if(isset($vobject->VEVENT)) {
 			$velement = $vobject->VEVENT;
-		}elseif(isset($vobject->VJOURNAL)){
+		}
+		elseif(isset($vobject->VJOURNAL)) {
 			$velement = $vobject->VJOURNAL;
-		}elseif(isset($vobject->VTODO)){
+		}
+		elseif(isset($vobject->VTODO)) {
 			$velement = $vobject->VTODO;
 		}
 
@@ -526,9 +534,11 @@ class OC_Calendar_Object{
 	public static function getElement($vobject) {
 		if(isset($vobject->VEVENT)) {
 			return $vobject->VEVENT;
-		}elseif(isset($vobject->VJOURNAL)){
+		}
+		elseif(isset($vobject->VJOURNAL)) {
 			return $vobject->VJOURNAL;
-		}elseif(isset($vobject->VTODO)){
+		}
+		elseif(isset($vobject->VTODO)) {
 			return $vobject->VTODO;
 		}
 	}
@@ -765,11 +775,8 @@ class OC_Calendar_Object{
 			$errarr['to'] = 'true';
 			$errnum++;
 		}
-		
-		// TODO: check validity of eventalarm
-		
 		if($request['repeat'] != 'doesnotrepeat') {
-			if(is_nan($request['interval']) && $request['interval'] != '') {
+			if(($request['interval'] !== strval(intval($request['interval']))) || intval($request['interval']) < 1) {
 				$errarr['interval'] = 'true';
 				$errnum++;
 			}
@@ -838,7 +845,7 @@ class OC_Calendar_Object{
 			}
 			if(array_key_exists('byweekno', $request)) {
 				foreach($request['byweekno'] as $option) {
-					if(!array_key_exists($option, self::getByWeekNoOptions())) {
+					if(!in_array($option, self::getByWeekNoOptions())) {
 						$errarr['byweekno'] = 'true';
 						$errnum++;
 					}
@@ -928,7 +935,7 @@ class OC_Calendar_Object{
 	 * @return object updated $vcalendar
 	 */
 	public static function updateVCalendarFromRequest($request, $vcalendar) {
-		$accessclass = $request["accessclass"];
+		$accessclass = isset($request["accessclass"]) ? $request["accessclass"] : null;
 		$title = $request["title"];
 		$location = $request["location"];
 		$categories = $request["categories"];
@@ -1084,6 +1091,7 @@ class OC_Calendar_Object{
 			$repeat = "false";
 		}
 
+
 		$vevent->setDateTime('LAST-MODIFIED', 'now', Sabre\VObject\Property\DateTime::UTC);
 		$vevent->setDateTime('DTSTAMP', 'now', Sabre\VObject\Property\DateTime::UTC);
 		$vevent->setString('SUMMARY', $title);
@@ -1102,10 +1110,11 @@ class OC_Calendar_Object{
 			$vevent->setDateTime('DTEND', $end, Sabre\VObject\Property\DateTime::LOCALTZ);
 		}
 		unset($vevent->DURATION);
-
 		self::addAlarmsData($request, $vcalendar);
 
-		$vevent->setString('CLASS', $accessclass);
+		if ($accessclass !== null) {
+			$vevent->setString('CLASS', $accessclass);
+		}
 		$vevent->setString('LOCATION', $location);
 		$vevent->setString('DESCRIPTION', $description);
 		$vevent->setString('CATEGORIES', $categories);
@@ -1315,8 +1324,7 @@ class OC_Calendar_Object{
 	 * @return string
 	 */
 	public static function getowner($id) {
-		if($id == 0)
-			return null;
+		if ($id == 0) return null;
 		$event = self::find($id);
 		$cal = OC_Calendar_Calendar::find($event['calendarid']);
 		if($cal === false || is_array($cal) === false){

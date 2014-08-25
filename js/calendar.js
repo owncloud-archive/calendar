@@ -80,7 +80,45 @@ Calendar={
 				$('#to').val(movedDate);
 				$('#totime').val(movedTime);
 			}
-		}
+		},
+		getDayOfWeek:function(iDay){
+			var weekArray=['sun','mon','tue','wed','thu','fri','sat'];
+			return weekArray[iDay];
+		},
+		setTimeline : function() {
+			var curTime = new Date();
+			if (curTime.getHours() == 0 && curTime.getMinutes() <= 5)// Because I am calling this function every 5 minutes
+			{
+				// the day has changed
+				var todayElem = $(".fc-today");
+				todayElem.removeClass("fc-today");
+				todayElem.removeClass("fc-state-highlight");
+
+				todayElem.next().addClass("fc-today");
+				todayElem.next().addClass("fc-state-highlight");
+			}
+
+			var parentDiv = $(".fc-agenda-slots:visible").parent();
+			var timeline = parentDiv.children(".timeline");
+			if (timeline.length == 0) {//if timeline isn't there, add it
+				timeline = $("<hr>").addClass("timeline");
+				parentDiv.prepend(timeline);
+			}
+
+			var curCalView = $('#fullcalendar').fullCalendar("getView");
+			if (curCalView.visStart < curTime && curCalView.visEnd > curTime) {
+				timeline.show();
+			} else {
+				timeline.hide();
+			}
+
+			var curSeconds = (curTime.getHours() * 60 * 60) + (curTime.getMinutes() * 60) + curTime.getSeconds();
+			var percentOfDay = curSeconds / 86400;
+			//24 * 60 * 60 = 86400, # of seconds in a day
+			var topLoc = Math.floor(parentDiv.height() * percentOfDay);
+			var appNavigationWidth = ($(window).width() > 768) ? $('#app-navigation').width() : 0;
+			timeline.css({'left':($('.fc-today').offset().left-appNavigationWidth),'width': $('.fc-today').width(),'top':topLoc + 'px'});
+		},
 	},
 	UI:{
 		loading: function(isLoading){
@@ -96,18 +134,14 @@ Calendar={
 			Calendar.UI.lockTime();
 			$( "#from" ).datepicker({
 				dateFormat : 'dd-mm-yy',
-				onSelect:function(){
-					Calendar.Util.adjustDate();
-				}
+				onSelect: function(){ Calendar.Util.adjustDate(); }
 			});
 			$( "#to" ).datepicker({
 				dateFormat : 'dd-mm-yy'
 			});
 			$('#fromtime').timepicker({
 				showPeriodLabels: false,
-				onSelect:function(){
-					Calendar.Util.adjustDate();
-				}
+				onSelect: function(){ Calendar.Util.adjustDate(); }
 			});
 			$('#totime').timepicker({
 				showPeriodLabels: false
@@ -125,6 +159,11 @@ Calendar={
 			});
 			$('#advanced_month').change(function(){
 				Calendar.UI.repeat('month');
+			});
+			$('#event-title').bind('keydown', function(event){
+				if (event.which == 13){
+					$('#event_form #submitNewEvent').click();
+				}
 			});
 			$( "#event" ).tabs({ selected: 0});
 			$('#event').dialog({
@@ -205,6 +244,9 @@ Calendar={
 						}
 						if(data.fromtime == "true"){
 							output = output + missing_field_fromtime + "<br />";
+						}
+						if(data.interval == "true"){
+							output = output + missing_field_interval + "<br />";
 						}
 						if(data.to == "true"){
 							output = output + missing_field_todate + "<br />";
@@ -326,44 +368,54 @@ Calendar={
 			}
 		},
 		showCalDAVUrl:function(username, calname){
-			$('#caldav_url').val(totalurl + '/' + encodeURIComponent(username) + '/' + encodeURIComponent(calname));
+			$('#caldav_url').val(totalurl + '/' + encodeURIComponent(username) + '/' + calname);
 			$('#caldav_url').show();
 			$("#caldav_url_close").show();
 		},
 		repeat:function(task){
 			if(task=='init'){
+				
+				var byWeekNoTitle = $('#advanced_byweekno').attr('title');
 				$('#byweekno').multiselect({
 					header: false,
-					noneSelectedText: $('#advanced_byweekno').attr('title'),
+					noneSelectedText: byWeekNoTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 60
 				});
+				
+				var weeklyoptionsTitle = $('#weeklyoptions').attr('title');
 				$('#weeklyoptions').multiselect({
 					header: false,
-					noneSelectedText: $('#weeklyoptions').attr('title'),
+					noneSelectedText: weeklyoptionsTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 110
 				});
 				$('input[name="bydate"]').datepicker({
 					dateFormat : 'dd-mm-yy'
 				});
+				
+				var byyeardayTitle = $('#byyearday').attr('title');
 				$('#byyearday').multiselect({
 					header: false,
-					noneSelectedText: $('#byyearday').attr('title'),
+					noneSelectedText: byyeardayTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 60
 				});
+				
+				var bymonthTitle = $('#bymonth').attr('title');
 				$('#bymonth').multiselect({
 					header: false,
-					noneSelectedText: $('#bymonth').attr('title'),
+					noneSelectedText: bymonthTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 110
 				});
+				
+				var bymonthdayTitle = $('#bymonthday').attr('title');
 				$('#bymonthday').multiselect({
 					header: false,
-					noneSelectedText: $('#bymonthday').attr('title'),
+					noneSelectedText: bymonthdayTitle,
 					selectedList: 2,
-					minWidth:'auto'
+					minWidth : 60
 				});
 				Calendar.UI.repeat('end');
 				Calendar.UI.repeat('month');
@@ -449,11 +501,54 @@ Calendar={
 			$('#'+id).addClass('active');
 		},
 		categoriesChanged:function(newcategories){
-			categories = $.map(newcategories, function(v){
-				return v.name;
-			});
+			categories = $.map(newcategories, function(v) {return v.name;});
 			console.log('Calendar categories changed to: ' + categories);
 			$('#category').multiple_autocomplete('option', 'source', categories);
+		},
+		lastView:null,
+		isToday:true,
+		timerHolder:null,
+		timerInterval:300000, // 300000 = 5*60*1000ms = 5 min
+		changeView:function(view){
+			switch (view){
+				case 'today':
+				case 'prev':
+				case 'next':
+					$('#fullcalendar').fullCalendar(view);
+					if (view=='today' && Calendar.UI.isToday) {
+						Calendar.UI.changeView('refresh')
+					}
+					if (view=='today'){
+						Calendar.UI.isToday = true;
+					}else{
+						Calendar.UI.isToday = false;
+					}
+					break;
+
+				case 'agendaDay':
+				case 'agendaWeek':
+				case 'month':
+					$('#fullcalendar').fullCalendar('changeView', view);
+					if (Calendar.UI.lastView == view) {
+						Calendar.UI.changeView('refresh')
+					}
+					Calendar.UI.lastView = view;
+					break;
+
+				case 'refresh':
+					// refetch the events.
+					$('#fullcalendar').fullCalendar('refetchEvents');
+				case 'auto_refresh':
+					// reset the timer not to refetch before new 5 min.
+					if (Calendar.UI.timerHolder){
+						window.clearTimeout(Calendar.UI.timerHolder)
+					}
+					Calendar.UI.timerHolder = window.setTimeout( function(){Calendar.UI.changeView('refresh')}, Calendar.UI.timerInterval);
+					break;
+
+				default:
+					console.error('unsupported change view to:' + view);
+			}
 		},
 		Calendar:{
 			overview:function(){
@@ -475,6 +570,12 @@ Calendar={
 			},
 			activation:function(checkbox, calendarid)
 			{
+				if(checkbox.checked?1:0) {
+					$('#checkbox_'+calendarid).removeClass('unchecked');
+				}
+				else {
+					$('#checkbox_'+calendarid).addClass('unchecked');
+				}
 				Calendar.UI.loading(true);
 				$.post(OC.filePath('calendar', 'ajax/calendar', 'activation.php'), { calendarid: calendarid, active: checkbox.checked?1:0 },
 				  function(data) {
@@ -498,20 +599,40 @@ Calendar={
 				}
 			},
 			newCalendar:function(object){
-				var tr = $(document.createElement('tr'))
+				var div = $('<div />')
 					.load(OC.filePath('calendar', 'ajax/calendar', 'new.form.php'),
-								function(){
-									Calendar.UI.Calendar.colorPicker(this)
-								});
-				$(object).closest('tr').after(tr).hide();
+						function(){
+							Calendar.UI.Calendar.colorPicker(this);
+							$('#displayname_new').focus();
+						});
+				
+				var bodyListener = function(e) {
+					if($('#newcalendar_dialog').find($(e.target)).length === 0) {
+						$('#newcalendar_dialog').parent().remove();
+						$("#newCalendar").css('display', '');
+						$('body').unbind('click', bodyListener);
+					}
+				};
+				$('body').bind('click', bodyListener);
+				
+				$('#newCalendar').after(div);
+				$('#newCalendar').css('display', 'none');
 			},
 			edit:function(object, calendarid){
-				var tr = $(document.createElement('tr'))
+				var li = $(document.createElement('li'))
 					.load(OC.filePath('calendar', 'ajax/calendar', 'edit.form.php'), {calendarid: calendarid},
-						function(){
-							Calendar.UI.Calendar.colorPicker(this)
-						});
-				$(object).closest('tr').after(tr).hide();
+						function(){Calendar.UI.Calendar.colorPicker(this)});
+				
+				var bodyListener = function(e) {
+					if($('#editcalendar_dialog').find($(e.target)).length === 0) {
+						$(object).closest('li').before(li).show();
+						$('#editcalendar_dialog').parent().remove();
+						$('body').unbind('click', bodyListener);
+					}
+				};
+				$('body').bind('click', bodyListener);
+				
+				$(object).closest('li').after(li).hide();
 			},
 			deleteCalendar:function(calid){
 				var check = confirm("Do you really want to delete this calendar?");
@@ -523,10 +644,8 @@ Calendar={
 						if (data.status == 'success'){
 							var url = 'ajax/events.php?calendar_id='+calid;
 							$('#fullcalendar').fullCalendar('removeEventSource', url);
-							$('#choosecalendar_dialog').dialog('destroy').remove();
-							Calendar.UI.Calendar.overview();
-							$('#calendar tr[data-id="'+calid+'"]').fadeOut(400,function(){
-								$('#calendar tr[data-id="'+calid+'"]').remove();
+							$('#navigation-list li[data-id="'+calid+'"]').fadeOut(400,function(){
+								$('#navigation-list li[data-id="'+calid+'"]').remove();
 							});
 							$('#fullcalendar').fullCalendar('refetchEvents');
 						}
@@ -535,11 +654,7 @@ Calendar={
 			},
 			submit:function(button, calendarid){
 				var displayname = $.trim($("#displayname_"+calendarid).val());
-				//var active = $("#edit_active_"+calendarid+":checked").length;
-				var active =0;
-				if( $("#edit_active_"+calendarid).is(':checked') ){
-					 active =1;
-				}
+				var active = $("#active_"+calendarid).attr("checked") ? 1 : 0;
 				
 				var description = $("#description_"+calendarid).val();
 				var calendarcolor = $("#calendarcolor_"+calendarid).val();
@@ -559,11 +674,20 @@ Calendar={
 				$.post(url, { id: calendarid, name: displayname, active: active, description: description, color: calendarcolor },
 					function(data){
 						if(data.status == 'success'){
-							$(button).closest('tr').prev().html(data.page).show().next().remove();
-							$('#fullcalendar').fullCalendar('removeEventSource', data.eventSource.url);
-							$('#fullcalendar').fullCalendar('addEventSource', data.eventSource);
+							if(active) {
+								$('#fullcalendar').fullCalendar('removeEventSource', data.eventSource.url);
+								$('#fullcalendar').fullCalendar('addEventSource', data.eventSource);
+							}
 							if (calendarid == 'new'){
-								$('#calendar > table:first').append('<tr><td colspan="6"><a href="#" id="chooseCalendar"><input type="button" value="' + newcalendar + '"></a></td></tr>');
+								$('#newcalendar_dialog').parent().remove();
+								$("#newCalendar").css('display', '');
+								var li = $(document.createElement('li')).append(data.page);
+								$("#navigation-list").append(li);
+								$('#caldav_url_entry').appendTo("#navigation-list");
+							}
+							else {
+								$('#editcalendar_dialog').parent().remove();
+								$('#navigation-list li[data-id="'+calendarid+'"]').html(data.page).show();
 							}
 						}else{
 							$("#displayname_"+calendarid).css('background-color', '#FF2626');
@@ -574,7 +698,8 @@ Calendar={
 					}, 'json');
 			},
 			cancel:function(button, calendarid){
-				$(button).closest('tr').prev().show().next().remove();
+				$('#newcalendar_dialog').parent().remove();
+				$("#newCalendar").css('display', '');
 			},
 			colorPicker:function(container){
 				// based on jquery-colorpicker at jquery.webspirited.com
@@ -714,16 +839,12 @@ Calendar={
 						$('#fullcalendar').fullCalendar('addEventSource', result.eventSource);
 						$('#notification').html(result.message);
 						$('#notification').slideDown();
-						window.setTimeout(function(){
-							$('#notification').slideUp();
-						}, 5000);
+						window.setTimeout(function(){$('#notification').slideUp();}, 5000);
 						return true;
 					}else{
 						$('#notification').html(result.message);
 						$('#notification').slideDown();
-						window.setTimeout(function(){
-							$('#notification').slideUp();
-						}, 5000);
+						window.setTimeout(function(){$('#notification').slideUp();}, 5000);
 					}
 				});
 			}
@@ -763,12 +884,6 @@ function ListView(element, calendar) {
 	t.setHeight=setHeight;
 	t.setWidth=setWidth;
 	t.clearEvents=clearEvents;
-
-	function setHeight(height, dateChanged) {
-	}
-
-	function setWidth(width) {
-	}
 
 	function clearEvents() {
 		this.reportEventClear();
@@ -899,6 +1014,20 @@ function ListView(element, calendar) {
 	}
 }
 $(document).ready(function(){
+	Calendar.UI.lastView = defaultView;
+	Calendar.UI.changeView('auto_refresh');
+	
+	/**
+	* Set an interval timer to make the timeline move 
+	*/
+	setInterval(Calendar.Util.setTimeline,60000);	
+	$(window).resize(_.debounce(function() {
+		/**
+		* When i use it instant the timeline is walking behind the facts
+		* A little timeout will make sure that it positions correctly
+		*/
+		setTimeout(Calendar.Util.setTimeline,500);
+	}));
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
@@ -927,8 +1056,9 @@ $(document).ready(function(){
 		dayNames: dayNames,
 		dayNamesShort: dayNamesShort,
 		allDayText: allDayText,
-		viewDisplay: function(view) {
-			$('#datecontrol_date').val($('<p>').html(view.title).text());
+		viewRender: function(view) {
+			$('#datecontrol_current').html($('<p>').html(view.title).text());
+			$( "#datecontrol_date" ).datepicker("setDate", $('#fullcalendar').fullCalendar('getDate'));
 			if (view.name != defaultView) {
 				$.post(OC.filePath('calendar', 'ajax', 'changeview.php'), {v:view.name});
 				defaultView = view.name;
@@ -944,6 +1074,10 @@ $(document).ready(function(){
 			}
 			else {
 				$('#fullcalendar').fullCalendar('option', 'aspectRatio', 1.35);
+			}
+			try {
+				Calendar.Util.setTimeline();
+			} catch(err) {
 			}
 		},
 		columnFormat: {
@@ -975,9 +1109,20 @@ $(document).ready(function(){
 		onSelect: function(value, inst) {
 			var date = inst.input.datepicker('getDate');
 			$('#fullcalendar').fullCalendar('gotoDate', date);
+			
+			var view = $('#fullcalendar').fullCalendar('getView');
+			if(view.name == 'agendaWeek'){
+				$("[class*='fc-col']").removeClass('activeDay');
+				daySel=Calendar.Util.getDayOfWeek(date.getDay());
+				$('td.fc-'+daySel).addClass('activeDay');
+			}
+			if (view.name == 'month') {
+					$('td.fc-day').removeClass('activeDay');
+					prettyDate = $.datepicker.formatDate( 'yy-mm-dd',date);
+					$('td[data-date=' + prettyDate + ']').addClass('activeDay');
+			}
 		}
 	});
-	fillWindow($('#content'));
 
 	$(OC.Tags).on('change', function(event, data) {
 		if(data.type === 'event') {
@@ -986,50 +1131,59 @@ $(document).ready(function(){
 	});
 
 	$('#oneweekview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'agendaWeek');
+		Calendar.UI.changeView('agendaWeek');
 	});
 	$('#onemonthview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'month');
+		Calendar.UI.changeView('month');
 	});
 	$('#onedayview_radio').click(function(){
-		$('#fullcalendar').fullCalendar('changeView', 'agendaDay');
+		Calendar.UI.changeView('agendaDay');
 	});
 	$('#today_input').click(function(){
-		$('#fullcalendar').fullCalendar('today');
+		Calendar.UI.changeView('today');
 	});
 	$('#datecontrol_left').click(function(){
-		$('#fullcalendar').fullCalendar('prev');
+		Calendar.UI.changeView('prev');
 	});
 	$('#datecontrol_today').click(function(){
-		$('#fullcalendar').fullCalendar('today');
+		Calendar.UI.changeView('today');
 	});
 	$('#datecontrol_right').click(function(){
-		$('#fullcalendar').fullCalendar('next');
+		Calendar.UI.changeView('next');
+	});
+	$('#datecontrol_current').click(function() {
+		$('#datecontrol_date').slideToggle(500);
+	});
+	$('#datecontrol_date').hide();
+	$('#app-settings-header').on('click keydown',function(event) {
+		if(wrongKey(event)) {
+			return;
+		}
+		var bodyListener = function(e) {
+			if($('#app-settings').find($(e.target)).length === 0) {
+				$('#app-settings').switchClass('open', '');
+			}
+		};
+		if($('#app-settings').hasClass('open')) {
+			$('#app-settings').switchClass('open', '');
+			$('body').unbind('click', bodyListener);
+		} else {
+			$('#app-settings').switchClass('', 'open');
+			$('body').bind('click', bodyListener);
+		}
 	});
 	Calendar.UI.Share.init();
 	Calendar.UI.Drop.init();
-	$('#choosecalendar .generalsettings').on('click keydown', function(event) {
-		event.preventDefault();
-		OC.appSettings({appid:'calendar', loadJS:true, cache:false, scriptName:'settingswrapper.php'});
-	});
-	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height() - 15);
+	$('#fullcalendar').fullCalendar('option', 'height', $(window).height() - $('#controls').height() - $('#header').height());
 	// Save the eventSource for shared events.
 	for (var i in eventSources) {
 		if (eventSources[i].url.substr(-13) === 'shared_events') {
 			sharedEventSource = eventSources[i];
 		}
 	}
-
-	setInterval(function(){
-		$.post(OC.filePath('calendar', 'ajax', 'alarms.php'), {}, function(data){
-			if(data.status == 'success'){
-				for(i in data.events){
-					alert(data.events[i]);
-				}
-			}
-			else{
-				location.reload();
-			}
-		});
-	}, 60000);
 });
+
+var wrongKey = function(event) {
+	return ((event.type === 'keydown' || event.type === 'keypress') 
+		&& (event.keyCode !== 32 && event.keyCode !== 13));
+};

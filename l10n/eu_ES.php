@@ -36,16 +36,12 @@
 "Month" => "Hilabetea",
 "Today" => "Gaur",
 "CalDav Link" => "CalDav Link-a",
+"Timezone" => "Ordu zona",
 "Download" => "Deskargatu",
 "Edit" => "Aldatu",
 "Delete" => "Ezabatu",
 "New calendar" => "egutegi berria",
 "Edit calendar" => "Egutegia aldatu",
-"Displayname" => "izena erakutsi",
-"Calendar color" => "Egutegi kolorea",
-"Save" => "Gorde",
-"Submit" => "Aurkeztu",
-"Cancel" => "Ezeztatu",
 "Title of the Event" => "Ekitaldiraren izenburua",
 "All Day Event" => "Egun osoko ekitaldia",
 "Location" => "kokapena",
@@ -54,6 +50,5 @@
 "Create a new event" => "Ekitaldi berria sortu",
 "Category" => "Maila",
 "From" => "Nongoa",
-"To" => "Arte",
-"Timezone" => "Ordu zona"
+"To" => "Arte"
 );

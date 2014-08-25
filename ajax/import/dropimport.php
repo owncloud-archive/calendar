@@ -28,5 +28,5 @@ if($count == 0) {
 	OC_Calendar_Calendar::deleteCalendar($newid);
 	OCP\JSON::error(array('message'=>OC_Calendar_App::$l10n->t('The file contained either no events or all events are already saved in your calendar.')));
 }else{
-	OCP\JSON::success(array('message'=>$count . ' ' . OC_Calendar_App::$l10n->t('events has been saved in the new calendar') . ' ' . $newcalendarname, 'eventSource'=>OC_Calendar_Calendar::getEventSourceInfo(OC_Calendar_Calendar::find($newid))));
+	OCP\JSON::success(array('message'=>$count . ' ' . OC_Calendar_App::$l10n->t('events have been saved in the new calendar') . ' ' . $newcalendarname, 'eventSource'=>OC_Calendar_Calendar::getEventSourceInfo(OC_Calendar_Calendar::find($newid))));
 }

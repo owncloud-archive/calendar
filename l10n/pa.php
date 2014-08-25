@@ -19,10 +19,7 @@
 "October" => "ਅਕਤੂਬਰ",
 "November" => "ਨਵੰਬ",
 "December" => "ਦਸੰਬਰ",
-"Settings" => "ਸੈਟਿੰਗ",
 "Download" => "ਡਾਊਨਲੋਡ",
 "Delete" => "ਹਟਾਓ",
-"Cancel" => "ਰੱਦ ਕਰੋ",
-"Share" => "ਸਾਂਝਾ ਕਰੋ",
-"General" => "ਆਮ"
+"Share" => "ਸਾਂਝਾ ਕਰੋ"
 );
