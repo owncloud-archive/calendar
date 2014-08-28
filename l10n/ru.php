@@ -5,7 +5,7 @@
 "No events found." => "События не найдены.",
 "Wrong calendar" => "Неверный календарь",
 "You do not have the permissions to edit this event." => "У вас нет права редактировать это событие.",
-"The file contained either no events or all events are already saved in your calendar." => "Файл либо не собержит событий, либо все события уже есть в календаре",
+"The file contained either no events or all events are already saved in your calendar." => "Файл либо не содержит событий, либо все события уже есть в календаре.",
 "events have been saved in the new calendar" => "события сохранены в новом календаре",
 "Import failed" => "Ошибка импорта",
 "events have been saved in your calendar" => "события сохранены в вашем календаре",

@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Kevin Brubeck Unhammer <unhammer+dill@mm.st>, 2013
+# Kevin Brubeck Unhammer <unhammer+dill@mm.st>, 2013-2014
 # Kevin Brubeck Unhammer <unhammer+dill@mm.st>, 2011
 # olealX <post@olealx.net>, 2012
 # Kevin Brubeck Unhammer <unhammer+dill@mm.st>, 2013
@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-26 01:46-0400\n"
-"PO-Revision-Date: 2014-08-26 05:21+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-08-28 01:46-0400\n"
+"PO-Revision-Date: 2014-08-28 05:21+0000\n"
+"Last-Translator: Kevin Brubeck Unhammer <unhammer+dill@mm.st>\n"
 "Language-Team: Norwegian Nynorsk (Norway) (http://www.transifex.com/projects/p/owncloud/language/nn_NO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +53,7 @@ msgstr "Anten hadde fila inga hendingar, eller så var alle hendingane allereie 
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events have been saved in the new calendar"
-msgstr ""
+msgstr "hendingar lagra i den nye kalenderen"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
@@ -61,7 +61,7 @@ msgstr "Feil ved importering"
 
 #: ajax/import/import.php:71
 msgid "events have been saved in your calendar"
-msgstr ""
+msgstr "hendingar lagra i kalenderen"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
@@ -102,7 +102,7 @@ msgstr "kan endra"
 
 #: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
-msgstr ""
+msgstr "kan dela"
 
 #: js/calendar.js:1013
 msgid "ddd"
@@ -122,7 +122,7 @@ msgstr "MMMM yyyy"
 
 #: js/calendar.js:1020
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
-msgstr ""
+msgstr "d. MMM[ yyyy]{ '–'d.[ MMM] yyyy}"
 
 #: js/calendar.js:1022
 msgid "dddd, MMM d, yyyy"
@@ -322,7 +322,7 @@ msgstr "Det oppstod ein databasefeil"
 
 #: js/l10n.php:94
 msgid "Interval is not valid. It must be a positive integer!"
-msgstr ""
+msgstr "Ugyldig intervall. Må vera positivt heiltal!"
 
 #: lib/app.php:121
 msgid "Birthday"
@@ -410,7 +410,7 @@ msgstr "Du har ikkje tilgang til å leggja til hendingar i denne kalenderen."
 
 #: lib/object.php:175
 msgid "You cannot add non-public events to a shared calendar."
-msgstr ""
+msgstr "Du kan ikkje ha ikkje-offentlege hendingar i ein delt kalender."
 
 #: lib/object.php:279 lib/object.php:309
 msgid "You do not have the permissions to delete this event."
@@ -422,15 +422,15 @@ msgstr "Oppteken"
 
 #: lib/object.php:553
 msgid "Show full event"
-msgstr ""
+msgstr "Vil heile hendinga"
 
 #: lib/object.php:554
 msgid "Show only busy"
-msgstr ""
+msgstr "Berre vis oppteken"
 
 #: lib/object.php:555
 msgid "Hide event"
-msgstr ""
+msgstr "Skjul hendinga"
 
 #: lib/object.php:565
 msgid "Does not repeat"
@@ -526,7 +526,7 @@ msgstr "av dag og månad"
 
 #: lib/sabre/backend.php:75
 msgid "Contact birthdays"
-msgstr ""
+msgstr "Kontaktbursdagar"
 
 #: lib/search.php:35 lib/search.php:37 lib/search.php:40
 msgid "Date"
@@ -590,11 +590,11 @@ msgstr "Tøm mellomlager for gjentakande hendingar"
 
 #: templates/calendar.php:104
 msgid "Primary CalDAV address"
-msgstr ""
+msgstr "Primær CalDAV-adresse"
 
 #: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
-msgstr ""
+msgstr "CalDAV-adresse for iOS/OS X"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
@@ -622,15 +622,15 @@ msgstr "Endra kalender"
 
 #: templates/part.editevent.php:1
 msgid "Edit event"
-msgstr ""
+msgstr "Rediger hending"
 
 #: templates/part.editevent.php:8
 msgid "Save event"
-msgstr ""
+msgstr "Lagra hending"
 
 #: templates/part.editevent.php:9
 msgid "Delete event"
-msgstr ""
+msgstr "Slett hending"
 
 #: templates/part.eventform.php:5 templates/part.showevent.php:3
 msgid "Eventinfo"
@@ -658,11 +658,11 @@ msgstr "Tittel på hendinga"
 
 #: templates/part.eventform.php:41
 msgid "from"
-msgstr ""
+msgstr "frå"
 
 #: templates/part.eventform.php:46
 msgid "to"
-msgstr ""
+msgstr "til"
 
 #: templates/part.eventform.php:54 templates/part.showevent.php:66
 msgid "All Day Event"
@@ -678,7 +678,7 @@ msgstr "Stad"
 
 #: templates/part.eventform.php:66
 msgid "Categories (separate by comma)"
-msgstr ""
+msgstr "Kategoriar (skilt med komma)"
 
 #: templates/part.eventform.php:68 templates/part.eventform.php:69
 msgid "Edit categories"
@@ -690,7 +690,7 @@ msgstr "Skildring"
 
 #: templates/part.eventform.php:74
 msgid "Export event"
-msgstr ""
+msgstr "Eksporter hending"
 
 #: templates/part.eventform.php:82 templates/part.showevent.php:109
 msgid "Repeat"
@@ -743,7 +743,7 @@ msgstr "førekomstar"
 
 #: templates/part.eventform.php:234
 msgid "Visibility to people shared with"
-msgstr ""
+msgstr "Vist til folk du deler med"
 
 #: templates/part.import.php:14
 msgid "create a new calendar"
@@ -789,11 +789,11 @@ msgstr "Opprett ei ny hending"
 
 #: templates/part.newevent.php:8
 msgid "Create event"
-msgstr ""
+msgstr "Opprett hending"
 
 #: templates/part.share.php:32
 msgid "Share with user or group"
-msgstr ""
+msgstr "Del med brukar eller gruppe"
 
 #: templates/part.share.php:53
 msgid "Unshare"
@@ -801,11 +801,11 @@ msgstr "Udel"
 
 #: templates/part.share.php:59
 msgid "Not shared with anyone"
-msgstr ""
+msgstr "Ikkje delt med nokon"
 
 #: templates/part.share.php:63
 msgid "Send Email"
-msgstr ""
+msgstr "Send e-post"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
@@ -813,7 +813,7 @@ msgstr "Delt med kalender"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr ""
+msgstr "Ikkje delt med nokon via kalenderen"
 
 #: templates/part.showevent.php:1
 msgid "View an event"
@@ -830,7 +830,7 @@ msgstr "Ingen kategoriar valt"
 #: templates/part.showevent.php:41
 #, php-format
 msgid "%s of %s"
-msgstr ""
+msgstr "%s til %s"
 
 #: templates/part.showevent.php:50
 msgid "Access Class"

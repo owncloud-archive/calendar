@@ -14,6 +14,7 @@
 # Nick Remeslennikov <homolibere@gmail.com>, 2012
 # Glosshead <o44ehb@gmail.com>, 2014
 # rasperepodvipodvert <rasperepodvipodvert@gmail.com>, 2012
+# lifeslice <root@lifeslice.ru>, 2014
 # adol <sharov3@gmail.com>, 2013
 # Сергей Коптев <skoptev@ukr.net>, 2012
 # Swab <swab@i.ua>, 2014
@@ -27,9 +28,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-26 01:46-0400\n"
-"PO-Revision-Date: 2014-08-26 05:21+0000\n"
-"Last-Translator: Void Ayanami <hex.void@gmail.com>\n"
+"POT-Creation-Date: 2014-08-28 01:46-0400\n"
+"PO-Revision-Date: 2014-08-28 05:21+0000\n"
+"Last-Translator: lifeslice <root@lifeslice.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/owncloud/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +66,7 @@ msgstr "У вас нет права редактировать это событ
 msgid ""
 "The file contained either no events or all events are already saved in your "
 "calendar."
-msgstr "Файл либо не собержит событий, либо все события уже есть в календаре"
+msgstr "Файл либо не содержит событий, либо все события уже есть в календаре."
 
 #: ajax/import/dropimport.php:31 ajax/import/import.php:69
 msgid "events have been saved in the new calendar"
