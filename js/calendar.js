@@ -654,6 +654,7 @@ Calendar={
 								$('#newcalendar_dialog').parent().remove();
 								$("#newCalendar").css('display', '');
 								var li = $(document.createElement('li')).append(data.page);
+								li.attr('data-id', data.calendarid);
 								$("#navigation-list").append(li);
 								$('#caldav_url_entry').appendTo("#navigation-list");
 							}
