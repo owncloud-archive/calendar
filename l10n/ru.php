@@ -73,7 +73,7 @@
 "To Time" => "Время окончания",
 "The event ends before it starts" => "Окончание события раньше, чем его начало",
 "There was a database fail" => "Ошибка базы данных",
-"Interval is not valid. It must be a positive integer!" => "Интервал не допустимый. Он должен быть положительным целым числом!",
+"Interval is not valid. It must be a positive integer!" => "Недопустимый интервал. Он должен быть положительным целым числом!",
 "Birthday" => "День рождения",
 "Business" => "Бизнес",
 "Call" => "Звонить",

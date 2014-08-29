@@ -28,8 +28,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-28 01:46-0400\n"
-"PO-Revision-Date: 2014-08-28 05:21+0000\n"
+"POT-Creation-Date: 2014-08-29 01:46-0400\n"
+"PO-Revision-Date: 2014-08-29 05:22+0000\n"
 "Last-Translator: lifeslice <root@lifeslice.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/owncloud/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -339,7 +339,7 @@ msgstr "Ошибка базы данных"
 
 #: js/l10n.php:94
 msgid "Interval is not valid. It must be a positive integer!"
-msgstr "Интервал не допустимый. Он должен быть положительным целым числом!"
+msgstr "Недопустимый интервал. Он должен быть положительным целым числом!"
 
 #: lib/app.php:121
 msgid "Birthday"
