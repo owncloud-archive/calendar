@@ -56,6 +56,11 @@ class OC_Calendar_Calendar{
 			$owned_calendar_ids[] = $row['id'];
 		}
 
+		if ($active === false && count($calendars) === 0) {
+			self::addDefaultCalendars();
+			return self::allCalendars($uid, false);
+		}
+
 		$shared_calendars = OCP\Share::getItemsSharedWith('calendar', OC_Share_Backend_Calendar::FORMAT_CALENDAR);
 		// Remove shared calendars that are already owned by the user.
 		foreach ($shared_calendars as $key => $calendar) {
