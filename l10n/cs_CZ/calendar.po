@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-29 01:46-0400\n"
-"PO-Revision-Date: 2014-08-29 05:22+0000\n"
+"POT-Creation-Date: 2014-08-30 01:46-0400\n"
+"PO-Revision-Date: 2014-08-30 05:22+0000\n"
 "Last-Translator: Petr Šťastný <petr@stastny.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/owncloud/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -372,7 +372,7 @@ msgstr "Schůzka"
 msgid "Other"
 msgstr "Jiné"
 
-#: lib/app.php:132 lib/calendar.php:142
+#: lib/app.php:132 lib/calendar.php:147
 msgid "Personal"
 msgstr "Osobní"
 
@@ -396,15 +396,15 @@ msgstr "od"
 msgid "unnamed"
 msgstr "nepojmenováno"
 
-#: lib/calendar.php:188 lib/calendar.php:221
+#: lib/calendar.php:193 lib/calendar.php:226
 msgid "You do not have the permissions to update this calendar."
 msgstr "Nemáte práva pro aktualizaci tohoto kalendáře."
 
-#: lib/calendar.php:256
+#: lib/calendar.php:261
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Nemáte práva pro smazání tohoto kalendáře."
 
-#: lib/calendar.php:290
+#: lib/calendar.php:295
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Nemáte práva pro přidání do tohoto kalendáře."
 

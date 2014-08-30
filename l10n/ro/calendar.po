@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-29 01:46-0400\n"
-"PO-Revision-Date: 2014-08-29 05:22+0000\n"
+"POT-Creation-Date: 2014-08-30 01:46-0400\n"
+"PO-Revision-Date: 2014-08-30 05:22+0000\n"
 "Last-Translator: Alex <__sashok@mail.ru>\n"
 "Language-Team: Romanian (http://www.transifex.com/projects/p/owncloud/language/ro/)\n"
 "MIME-Version: 1.0\n"
@@ -374,7 +374,7 @@ msgstr "Întâlnire"
 msgid "Other"
 msgstr "Altele"
 
-#: lib/app.php:132 lib/calendar.php:142
+#: lib/app.php:132 lib/calendar.php:147
 msgid "Personal"
 msgstr "Personal"
 
@@ -398,15 +398,15 @@ msgstr "după"
 msgid "unnamed"
 msgstr "fără nume"
 
-#: lib/calendar.php:188 lib/calendar.php:221
+#: lib/calendar.php:193 lib/calendar.php:226
 msgid "You do not have the permissions to update this calendar."
 msgstr "Nu ai permisiunile necesare pentru a actualiza acest calendar."
 
-#: lib/calendar.php:256
+#: lib/calendar.php:261
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Nu ai permisiunile necesare pentru a așterge acest calendar."
 
-#: lib/calendar.php:290
+#: lib/calendar.php:295
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Nu ai permisiuni pentru a face adăugiri în acest calendar."
 

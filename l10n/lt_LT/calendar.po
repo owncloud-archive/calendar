@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-29 01:46-0400\n"
-"PO-Revision-Date: 2014-08-29 05:22+0000\n"
+"POT-Creation-Date: 2014-08-30 01:46-0400\n"
+"PO-Revision-Date: 2014-08-30 05:22+0000\n"
 "Last-Translator: Liudas Ališauskas <liudas.alisauskas@gmail.com>\n"
 "Language-Team: Lithuanian (Lithuania) (http://www.transifex.com/projects/p/owncloud/language/lt_LT/)\n"
 "MIME-Version: 1.0\n"
@@ -369,7 +369,7 @@ msgstr "Susitikimas"
 msgid "Other"
 msgstr "Kiti"
 
-#: lib/app.php:132 lib/calendar.php:142
+#: lib/app.php:132 lib/calendar.php:147
 msgid "Personal"
 msgstr "Asmeniniai"
 
@@ -393,15 +393,15 @@ msgstr " "
 msgid "unnamed"
 msgstr "be pavadinimo"
 
-#: lib/calendar.php:188 lib/calendar.php:221
+#: lib/calendar.php:193 lib/calendar.php:226
 msgid "You do not have the permissions to update this calendar."
 msgstr "Jūs neturite leidimo atnaujinti šį kalendorių."
 
-#: lib/calendar.php:256
+#: lib/calendar.php:261
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Jūs neturite leidimo ištrinti šį kalendorių."
 
-#: lib/calendar.php:290
+#: lib/calendar.php:295
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Jūs neturite leidimo prijungti prie šio kalendoriaus."
 

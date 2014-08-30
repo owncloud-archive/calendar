@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-29 01:46-0400\n"
-"PO-Revision-Date: 2014-08-29 05:22+0000\n"
+"POT-Creation-Date: 2014-08-30 01:46-0400\n"
+"PO-Revision-Date: 2014-08-30 05:22+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Esperanto (http://www.transifex.com/projects/p/owncloud/language/eo/)\n"
 "MIME-Version: 1.0\n"
@@ -368,7 +368,7 @@ msgstr "Rendevuo"
 msgid "Other"
 msgstr "Alia"
 
-#: lib/app.php:132 lib/calendar.php:142
+#: lib/app.php:132 lib/calendar.php:147
 msgid "Personal"
 msgstr "Persona"
 
@@ -392,15 +392,15 @@ msgstr "de"
 msgid "unnamed"
 msgstr "nenomita"
 
-#: lib/calendar.php:188 lib/calendar.php:221
+#: lib/calendar.php:193 lib/calendar.php:226
 msgid "You do not have the permissions to update this calendar."
 msgstr "Vi ne havas la permeson ĝisdatigi ĉi tiun kalendaron."
 
-#: lib/calendar.php:256
+#: lib/calendar.php:261
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Vi ne havas la permeson forigi ĉi tiun kalendaron."
 
-#: lib/calendar.php:290
+#: lib/calendar.php:295
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Vi ne havas la permeson aldoni al ĉi tiu kalendaro."
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-29 01:46-0400\n"
-"PO-Revision-Date: 2014-08-29 05:22+0000\n"
+"POT-Creation-Date: 2014-08-30 01:46-0400\n"
+"PO-Revision-Date: 2014-08-30 05:22+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Tamil (Sri-Lanka) (http://www.transifex.com/projects/p/owncloud/language/ta_LK/)\n"
 "MIME-Version: 1.0\n"
@@ -365,7 +365,7 @@ msgstr "கூட்டம்"
 msgid "Other"
 msgstr "மற்றவை"
 
-#: lib/app.php:132 lib/calendar.php:142
+#: lib/app.php:132 lib/calendar.php:147
 msgid "Personal"
 msgstr "தனிப்பட்ட"
 
@@ -389,15 +389,15 @@ msgstr "மூலம்"
 msgid "unnamed"
 msgstr "பெயரிடப்படவில்லை"
 
-#: lib/calendar.php:188 lib/calendar.php:221
+#: lib/calendar.php:193 lib/calendar.php:226
 msgid "You do not have the permissions to update this calendar."
 msgstr "இந்த நாட்காட்டியை இற்​றைப்படுத்துவதற்கு உங்களுக்கு அனுமதி இல்லை "
 
-#: lib/calendar.php:256
+#: lib/calendar.php:261
 msgid "You do not have the permissions to delete this calendar."
 msgstr "இந்த நாட்காட்டியை நீக்குவதற்கு உங்களுக்கு அனுமதி இல்லை "
 
-#: lib/calendar.php:290
+#: lib/calendar.php:295
 msgid "You do not have the permissions to add to this calendar."
 msgstr "இந்த நாட்காட்டியை சேர்ப்பதற்கு உங்களுக்கு அனுமதி இல்லை"
 
