@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-08-30 01:46-0400\n"
-"PO-Revision-Date: 2014-08-30 05:22+0000\n"
+"POT-Creation-Date: 2014-08-31 01:46-0400\n"
+"PO-Revision-Date: 2014-08-30 16:41+0000\n"
 "Last-Translator: unixidzero <unixidzero@gmail.com>\n"
 "Language-Team: Azerbaijani (http://www.transifex.com/projects/p/owncloud/language/az/)\n"
 "MIME-Version: 1.0\n"
@@ -367,7 +367,7 @@ msgstr ""
 
 #: lib/app.php:132 lib/calendar.php:147
 msgid "Personal"
-msgstr ""
+msgstr "Şəxsi"
 
 #: lib/app.php:133
 msgid "Projects"
@@ -459,7 +459,7 @@ msgstr ""
 
 #: lib/object.php:581
 msgid "never"
-msgstr ""
+msgstr "heç vaxt"
 
 #: lib/object.php:582
 msgid "by occurrences"
