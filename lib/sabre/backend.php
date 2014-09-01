@@ -307,7 +307,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 						$toCheck = array('VEVENT', 'VJOURNAL', 'VTODO');
 						foreach ($toCheck as $type) {
 							foreach ($object->select($type) as $vobject) {
-								if (isset($vobject->{'CLASS'}) && $vobject->{'CLASS'}->getValue() === 'PRIVATE') {
+								if (isset($vobject->{'CLASS'}) && $vobject->{'CLASS'}->value === 'PRIVATE') {
 									$isPrivate = true;
 								}
 							}
