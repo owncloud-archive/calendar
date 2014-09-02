@@ -33,9 +33,10 @@ class OC_Calendar_Calendar{
 	 * @brief Returns the list of calendars for a specific user.
 	 * @param string $uid User ID
 	 * @param boolean $active Only return calendars with this $active state, default(=false) is don't care
+	 * @param boolean $createIfNecessary create calendars if no exist yet
 	 * @return array
 	 */
-	public static function allCalendars($uid, $active=false) {
+	public static function allCalendars($uid, $active=false, $createIfNecessary=true) {
 		$values = array($uid);
 		$active_where = '';
 		if (!is_null($active) && $active) {
@@ -56,7 +57,7 @@ class OC_Calendar_Calendar{
 			$owned_calendar_ids[] = $row['id'];
 		}
 
-		if ($active === false && count($calendars) === 0) {
+		if ($active === false && count($calendars) === 0 && $createIfNecessary === true) {
 			self::addDefaultCalendars($uid);
 			return self::allCalendars($uid, false);
 		}
@@ -117,7 +118,7 @@ class OC_Calendar_Calendar{
 	 * @return insertid
 	 */
 	public static function addCalendar($userid,$name,$components='VEVENT,VTODO,VJOURNAL',$timezone=null,$order=0,$color=null) {
-		$all = self::allCalendars($userid);
+		$all = self::allCalendars($userid, false, false);
 		$uris = array();
 		foreach($all as $i) {
 			$uris[] = $i['uri'];
