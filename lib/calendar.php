@@ -57,7 +57,7 @@ class OC_Calendar_Calendar{
 		}
 
 		if ($active === false && count($calendars) === 0) {
-			self::addDefaultCalendars();
+			self::addDefaultCalendars($uid);
 			return self::allCalendars($uid, false);
 		}
 
