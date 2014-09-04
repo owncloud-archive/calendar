@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-02 01:46-0400\n"
-"PO-Revision-Date: 2014-09-02 05:21+0000\n"
+"POT-Creation-Date: 2014-09-04 01:46-0400\n"
+"PO-Revision-Date: 2014-09-03 16:41+0000\n"
 "Last-Translator: Kaijia Feng <fengkaijia@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/owncloud/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgstr "会议"
 msgid "Other"
 msgstr "其他"
 
-#: lib/app.php:132 lib/calendar.php:147
+#: lib/app.php:132 lib/calendar.php:148
 msgid "Personal"
 msgstr "个人"
 
@@ -401,15 +401,15 @@ msgstr "被"
 msgid "unnamed"
 msgstr "未命名"
 
-#: lib/calendar.php:193 lib/calendar.php:226
+#: lib/calendar.php:194 lib/calendar.php:227
 msgid "You do not have the permissions to update this calendar."
 msgstr "您没有权限更新此日历"
 
-#: lib/calendar.php:261
+#: lib/calendar.php:262
 msgid "You do not have the permissions to delete this calendar."
 msgstr "您没有权限删除此日历"
 
-#: lib/calendar.php:295
+#: lib/calendar.php:296
 msgid "You do not have the permissions to add to this calendar."
 msgstr "您没有权限增加到此日历"
 

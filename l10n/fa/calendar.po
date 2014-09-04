@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-02 01:46-0400\n"
-"PO-Revision-Date: 2014-09-02 05:21+0000\n"
+"POT-Creation-Date: 2014-09-04 01:46-0400\n"
+"PO-Revision-Date: 2014-09-03 16:41+0000\n"
 "Last-Translator: Mohammad <mohammadsharifi666@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/owncloud/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -368,7 +368,7 @@ msgstr "ملاقات"
 msgid "Other"
 msgstr "دیگر"
 
-#: lib/app.php:132 lib/calendar.php:147
+#: lib/app.php:132 lib/calendar.php:148
 msgid "Personal"
 msgstr "شخصی"
 
@@ -392,15 +392,15 @@ msgstr "با"
 msgid "unnamed"
 msgstr "نام گذاری نشده"
 
-#: lib/calendar.php:193 lib/calendar.php:226
+#: lib/calendar.php:194 lib/calendar.php:227
 msgid "You do not have the permissions to update this calendar."
 msgstr "شما دسترسی مجاز برای به روزرسانی این تقویم را ندارید."
 
-#: lib/calendar.php:261
+#: lib/calendar.php:262
 msgid "You do not have the permissions to delete this calendar."
 msgstr "شما دسترسی مجاز برای حذف این تقویم را ندارید."
 
-#: lib/calendar.php:295
+#: lib/calendar.php:296
 msgid "You do not have the permissions to add to this calendar."
 msgstr "شما دسترسی مجاز برای ایجاد این تقویم را ندارید."
 
