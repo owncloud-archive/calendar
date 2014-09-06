@@ -89,7 +89,7 @@
 "Projects" => "Проекты",
 "Questions" => "Вопросы",
 "Work" => "Работа",
-"by" => "до свидания",
+"by" => ":",
 "unnamed" => "без имени",
 "You do not have the permissions to update this calendar." => "У вас нет права изменять этот календарь.",
 "You do not have the permissions to delete this calendar." => "У вас нет права удалять этот календарь",
