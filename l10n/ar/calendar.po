@@ -9,6 +9,7 @@
 # eng1fares <fares_ss202@hotmail.com>, 2014
 # Hussein Atef Salem <hussein-atef@hotmail.com>, 2012
 # Mashael Almohaimeed <M_almohimeed@yahoo.com>, 2013
+# Osama_Elzero <osama.elzero@gmail.com>, 2014
 # Raed667 <shemada@gmail.com>, 2013
 # aboodilankaboot, 2013
 # aboodilankaboot, 2012
@@ -18,9 +19,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-04 01:46-0400\n"
-"PO-Revision-Date: 2014-09-03 16:41+0000\n"
-"Last-Translator: eng1fares <fares_ss202@hotmail.com>\n"
+"POT-Creation-Date: 2014-09-09 01:46-0400\n"
+"PO-Revision-Date: 2014-09-07 09:10+0000\n"
+"Last-Translator: Osama_Elzero <osama.elzero@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/owncloud/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,7 +43,7 @@ msgstr "لم يتم العثور على مفكرات"
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr "لا أحداث موجودة"
+msgstr "لم يتم العثور على احداث"
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"

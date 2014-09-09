@@ -2,7 +2,7 @@
 "Not all calendars are completely cached" => "ليست جميع المفكرات مخزنة في الذاكرة المؤقتة",
 "Everything seems to be completely cached" => "كل شيء يبدو مخزناً في الذاكرة المؤقتة",
 "No calendars found." => "لم يتم العثور على مفكرات",
-"No events found." => "لا أحداث موجودة",
+"No events found." => "لم يتم العثور على احداث",
 "Wrong calendar" => "مفكرة خاطئة",
 "You do not have the permissions to edit this event." => "ليست لديك الصلاحيات لتعديل هذا التقويم.",
 "The file contained either no events or all events are already saved in your calendar." => "الملف إما خالي من الأحداث أو تم حفظ كل أحداثه في مفكرتك",
