@@ -77,6 +77,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 				'{' . \Sabre\CalDAV\Plugin::NS_CALENDARSERVER . '}getctag' => $ctag,
 				'{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}supported-calendar-component-set'
 					=> new \Sabre\CalDAV\Property\SupportedCalendarComponentSet(array('VEVENT')),
+				'{http://apple.com/ns/ical/}calendar-color' => '#CCCCCC',
 			);
 		}
 		return $calendars;
