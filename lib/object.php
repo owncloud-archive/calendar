@@ -961,7 +961,10 @@ class OC_Calendar_Object{
 				case 'yearly':
 					$rrule .= 'FREQ=YEARLY';
 					if($request['advanced_year_select'] == 'bydate') {
-
+						list($_day, $_month, $_year) = explode('-', $from);
+						$bymonth = date('n', mktime(0,0,0, $_month, $_day, $_year));
+						$bymonthday = date('j', mktime(0,0,0, $_month, $_day, $_year));
+						$rrule .= ';BYDAY=MO,TU,WE,TH,FR,SA,SU;BYMONTH=' . $bymonth . ';BYMONTHDAY=' . $bymonthday;
 					}elseif($request['advanced_year_select'] == 'byyearday') {
 						list($_day, $_month, $_year) = explode('-', $from);
 						$byyearday = date('z', mktime(0,0,0, $_month, $_day, $_year)) + 1;
