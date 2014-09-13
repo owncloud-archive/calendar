@@ -43,8 +43,8 @@ body {
 #listview #events .day {width:auto;padding-left:10px;border-bottom: 2px solid #EEEEEE;text-align:left;}
 
 .actions {height: 33px;	min-width: 800px;}
-.actionsfloatleft {float:left;margin-left: 1.4em;}
-.actionsfloatright {float:right;margin-right: 1.4em;}
+.actionsfloatleft {float:left;margin-left: 1.4em !important;}
+.actionsfloatright {float:right;margin-right: 1.4em !important;}
 .controls {min-width: 800px;}
 .center {text-align: center;}
 .dateinfo {height: 20px;width: 100%; overflow: hidden; margin-top: 0; padding: 0; font-size: 12px;background: #F7F7F7;}
