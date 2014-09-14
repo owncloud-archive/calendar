@@ -34,4 +34,5 @@ $tmpl->assign('shared', false);
 OCP\JSON::success(array(
 	'page' => $tmpl->fetchPage(),
 	'eventSource' => OC_Calendar_Calendar::getEventSourceInfo($calendar),
+	'calendarid' => $calendarid
 ));
