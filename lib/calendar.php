@@ -406,6 +406,6 @@ class OC_Calendar_Calendar{
 	 * This method returns the email address of selected user.
 	 */
 	public static function getUsersEmails($names) {
-		return \OCP\Config::getUserValue(\OCP\User::getUser(), 'settings', 'email');
+		return \OCP\Config::getUserValue($names, 'settings', 'email');
 	}
 }

@@ -551,6 +551,18 @@ class OC_Calendar_App{
 			}
 			foreach ($eventsharees as $sharee) {
 				$eventShareesNames[] = $sharee['share_with'];
+				$shwth = $sharee['share_with'];
+                                if(OC_Group::groupExists($shwth)) {
+                                        foreach (OC_Group::usersInGroup($shwth) as $u) {
+                                                if(!in_array($u, $eventShareesNames)) {
+                                                        $eventShareesNames[] = $u;
+                                                }
+                                        }
+                                } else {
+                                        if(!in_array($shwth, $eventShareesNames)) {
+                                                $eventShareesNames[] = $shwth;
+                                        }
+                                }
 			}
 		}
 		foreach ($eventShareesNames as $name) {
