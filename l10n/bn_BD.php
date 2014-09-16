@@ -5,7 +5,7 @@
 "No events found." => "কোন ইভেন্ট খুঁজে পাওয়া গেল না।",
 "Wrong calendar" => "ভুল দিনপঞ্জী",
 "You do not have the permissions to edit this event." => "এই ইভেন্ট সম্পাদনা করতে পারবেননা",
-"The file contained either no events or all events are already saved in your calendar." => "The file contained either no events or all events are already saved in your calendar.",
+"The file contained either no events or all events are already saved in your calendar." => "এই ফাইলে হয়তো কোন ইভেন্ট নেই অথবা সব ইভেন্ট ইতোমধ্যে আপনার দিনপন্জিতে সংরক্ষণ করা হয়েছে।",
 "events have been saved in the new calendar" => "নতুন দিনপন্জীতে ইভেন্টসমূহ সংরক্ষণ করা হয়েছে",
 "Import failed" => "আমদানি ব্যর্থ",
 "events have been saved in your calendar" => "আপনার দিনপন্জীতে ইভেন্ট সংরক্ষিত হয়েছে  ",

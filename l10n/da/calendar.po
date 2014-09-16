@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-04 01:46-0400\n"
-"PO-Revision-Date: 2014-09-03 16:41+0000\n"
+"POT-Creation-Date: 2014-09-16 01:46-0400\n"
+"PO-Revision-Date: 2014-09-15 16:01+0000\n"
 "Last-Translator: Aputsiaĸ Niels Janussen <aj@isit.gl>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/owncloud/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -33,11 +33,11 @@ msgstr ""
 
 #: ajax/cache/status.php:19
 msgid "Not all calendars are completely cached"
-msgstr "Ikke alle kalendere er fuldstændig cached"
+msgstr "Alle kalendere er ikke i cachen"
 
 #: ajax/cache/status.php:21
 msgid "Everything seems to be completely cached"
-msgstr "Alt ser ud til at være cached"
+msgstr "Alt ser ud til at være i cachen"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
@@ -102,39 +102,39 @@ msgstr "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}"
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
-#: js/calendar.js:731
+#: js/calendar.js:732
 msgid "group"
 msgstr "gruppe"
 
-#: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "kan redigere"
 
-#: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "kan dele"
 
-#: js/calendar.js:1013
+#: js/calendar.js:1014
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:1014
+#: js/calendar.js:1015
 msgid "ddd M/d"
 msgstr "ddd M/d"
 
-#: js/calendar.js:1015
+#: js/calendar.js:1016
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:1018
+#: js/calendar.js:1019
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:1020
+#: js/calendar.js:1021
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 
-#: js/calendar.js:1022
+#: js/calendar.js:1023
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -600,11 +600,11 @@ msgstr "Ryd cache for gentagende begivenheder"
 
 #: templates/calendar.php:104
 msgid "Primary CalDAV address"
-msgstr "Primær CalDAV adresse"
+msgstr "Primær CalDAV-adresse"
 
 #: templates/calendar.php:108
 msgid "iOS/OS X CalDAV address"
-msgstr "iOS/OS X CalDAV adresse"
+msgstr "iOS/OS X CalDAV-adresse"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
@@ -616,7 +616,7 @@ msgstr "Hent"
 
 #: templates/part.choosecalendar.rowfields.php:38
 msgid "Edit"
-msgstr "Rediger"
+msgstr "Redigér"
 
 #: templates/part.choosecalendar.rowfields.php:45
 msgid "Delete"
@@ -761,7 +761,7 @@ msgstr "opret en ny kalender"
 
 #: templates/part.import.php:17
 msgid "Import a calendar file"
-msgstr "Importer en kalenderfil"
+msgstr "Importér en kalenderfil"
 
 #: templates/part.import.php:24
 msgid "Please choose a calendar"
@@ -787,7 +787,7 @@ msgstr "Fjern alle events fra den valgte kalender"
 
 #: templates/part.import.php:50
 msgid "Import"
-msgstr "Importer"
+msgstr "Importér"
 
 #: templates/part.import.php:59
 msgid "Close Dialog"
@@ -815,7 +815,7 @@ msgstr "Ikke delt med nogen"
 
 #: templates/part.share.php:63
 msgid "Send Email"
-msgstr "Send Email"
+msgstr "Send email"
 
 #: templates/part.share.php:67
 msgid "Shared via calendar"
@@ -835,7 +835,7 @@ msgstr "Kategori"
 
 #: templates/part.showevent.php:23
 msgid "No categories selected"
-msgstr "Ingen categorier valgt"
+msgstr "Der er ikke valgt kategorier"
 
 #: templates/part.showevent.php:41
 #, php-format
