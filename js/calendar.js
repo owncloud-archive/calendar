@@ -21,7 +21,7 @@ Calendar={
 			},
 			function(result){
 				if(result.status !== 'success'){
-					OC.dialogs.alert(result.data.message, 'Error sending mail');
+					OC.dialogs.alert(result.data.message, t('calendar', 'Error sending mail'));
 				}
 				Calendar.UI.loading(false);
 			}
@@ -607,7 +607,7 @@ Calendar={
 				$(object).closest('li').after(li).hide();
 			},
 			deleteCalendar:function(calid){
-				var check = confirm("Do you really want to delete this calendar?");
+				var check = confirm(t('calendar', 'Do you really want to delete this calendar?'));
 				if(check == false){
 					return false;
 				}else{
