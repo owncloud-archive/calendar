@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-04 01:46-0400\n"
-"PO-Revision-Date: 2014-09-03 16:41+0000\n"
+"POT-Creation-Date: 2014-09-18 01:46-0400\n"
+"PO-Revision-Date: 2014-09-17 22:01+0000\n"
 "Last-Translator: ervinnnchai <synkwall@gmail.com>\n"
 "Language-Team: Malay (Malaysia) (http://www.transifex.com/projects/p/owncloud/language/ms_MY/)\n"
 "MIME-Version: 1.0\n"
@@ -95,39 +95,39 @@ msgstr ""
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr ""
 
-#: js/calendar.js:731
+#: js/calendar.js:732
 msgid "group"
 msgstr "kumpulan"
 
-#: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "boleh mengubah"
 
-#: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr "boleh berkongsi"
 
-#: js/calendar.js:1013
+#: js/calendar.js:1014
 msgid "ddd"
 msgstr "ddd"
 
-#: js/calendar.js:1014
+#: js/calendar.js:1015
 msgid "ddd M/d"
 msgstr "dd M/d"
 
-#: js/calendar.js:1015
+#: js/calendar.js:1016
 msgid "dddd M/d"
 msgstr "dddd M/d"
 
-#: js/calendar.js:1018
+#: js/calendar.js:1019
 msgid "MMMM yyyy"
 msgstr "MMMM yyyy"
 
-#: js/calendar.js:1020
+#: js/calendar.js:1021
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:1022
+#: js/calendar.js:1023
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyy"
 
