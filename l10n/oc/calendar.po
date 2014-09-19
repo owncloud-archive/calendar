@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-02 01:46-0400\n"
-"PO-Revision-Date: 2014-09-02 05:21+0000\n"
+"POT-Creation-Date: 2014-09-19 01:46-0400\n"
+"PO-Revision-Date: 2014-09-19 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/projects/p/owncloud/language/oc/)\n"
 "MIME-Version: 1.0\n"
@@ -77,6 +77,10 @@ msgstr "Demanda invalida"
 msgid "Calendar"
 msgstr "Calendièr"
 
+#: js/calendar.js:24
+msgid "Error sending mail"
+msgstr ""
+
 #: js/calendar.js:222
 msgid "Deletion failed"
 msgstr "Fracàs d'escafatge"
@@ -89,39 +93,43 @@ msgstr ""
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr ""
 
-#: js/calendar.js:731
+#: js/calendar.js:610
+msgid "Do you really want to delete this calendar?"
+msgstr ""
+
+#: js/calendar.js:732
 msgid "group"
 msgstr "grop"
 
-#: js/calendar.js:733 templates/part.share.php:46 templates/part.share.php:81
+#: js/calendar.js:734 templates/part.share.php:46 templates/part.share.php:81
 msgid "can edit"
 msgstr "pòt modificar"
 
-#: js/calendar.js:734 templates/part.share.php:50 templates/part.share.php:87
+#: js/calendar.js:735 templates/part.share.php:50 templates/part.share.php:87
 msgid "can share"
 msgstr ""
 
-#: js/calendar.js:1013
+#: js/calendar.js:1014
 msgid "ddd"
 msgstr "jjj"
 
-#: js/calendar.js:1014
+#: js/calendar.js:1015
 msgid "ddd M/d"
 msgstr "jjj M/j"
 
-#: js/calendar.js:1015
+#: js/calendar.js:1016
 msgid "dddd M/d"
 msgstr "jjjj M/j"
 
-#: js/calendar.js:1018
+#: js/calendar.js:1019
 msgid "MMMM yyyy"
 msgstr "MMMM aaaa"
 
-#: js/calendar.js:1020
+#: js/calendar.js:1021
 msgid "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"
 msgstr ""
 
-#: js/calendar.js:1022
+#: js/calendar.js:1023
 msgid "dddd, MMM d, yyyy"
 msgstr "dddd, MMM d, yyyy"
 
@@ -365,7 +373,7 @@ msgstr "Encontra"
 msgid "Other"
 msgstr "Autres"
 
-#: lib/app.php:132 lib/calendar.php:147
+#: lib/app.php:132 lib/calendar.php:148
 msgid "Personal"
 msgstr "Personal"
 
@@ -389,15 +397,15 @@ msgstr "per"
 msgid "unnamed"
 msgstr "pas nomenat"
 
-#: lib/calendar.php:193 lib/calendar.php:226
+#: lib/calendar.php:194 lib/calendar.php:227
 msgid "You do not have the permissions to update this calendar."
 msgstr "Sias pas permés de metre a jorn aqueste calendièr."
 
-#: lib/calendar.php:261
+#: lib/calendar.php:262
 msgid "You do not have the permissions to delete this calendar."
 msgstr "Sias pas permés d'escafar aqueste calendièr."
 
-#: lib/calendar.php:295
+#: lib/calendar.php:296
 msgid "You do not have the permissions to add to this calendar."
 msgstr "Sias pas permés d'apondre a 'n aqueste calendièr."
 

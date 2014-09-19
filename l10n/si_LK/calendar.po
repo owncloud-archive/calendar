@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-18 01:46-0400\n"
-"PO-Revision-Date: 2014-09-17 22:00+0000\n"
+"POT-Creation-Date: 2014-09-19 01:46-0400\n"
+"PO-Revision-Date: 2014-09-19 05:46+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Sinhala (Sri Lanka) (http://www.transifex.com/projects/p/owncloud/language/si_LK/)\n"
 "MIME-Version: 1.0\n"
@@ -79,6 +79,10 @@ msgstr "අවලංගු අයැදුමක්"
 msgid "Calendar"
 msgstr "දිනදසුන"
 
+#: js/calendar.js:24
+msgid "Error sending mail"
+msgstr ""
+
 #: js/calendar.js:222
 msgid "Deletion failed"
 msgstr "මකාදැමීම අසාර්ථකයි"
@@ -90,6 +94,10 @@ msgstr "දිදිදි දි මාමාමාමා [ වවවව]{ - [�
 #: js/calendar.js:318
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 msgstr "දිදිදි දි මාමාමාමා [ වවවව] පැපැ:මිමි{ - [ දිදිදි දි මාමාමාමා වවවව] පැපැ:මිමි}"
+
+#: js/calendar.js:610
+msgid "Do you really want to delete this calendar?"
+msgstr ""
 
 #: js/calendar.js:732
 msgid "group"

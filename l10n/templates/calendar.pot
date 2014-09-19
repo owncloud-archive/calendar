@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud calendar 5.0.0\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-18 01:46-0400\n"
+"POT-Creation-Date: 2014-09-19 01:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,6 +76,10 @@ msgstr ""
 msgid "Calendar"
 msgstr ""
 
+#: js/calendar.js:24
+msgid "Error sending mail"
+msgstr ""
+
 #: js/calendar.js:222
 msgid "Deletion failed"
 msgstr ""
@@ -86,6 +90,10 @@ msgstr ""
 
 #: js/calendar.js:318
 msgid "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
+msgstr ""
+
+#: js/calendar.js:610
+msgid "Do you really want to delete this calendar?"
 msgstr ""
 
 #: js/calendar.js:732
