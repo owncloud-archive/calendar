@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-19 01:46-0400\n"
-"PO-Revision-Date: 2014-09-19 05:46+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-09-21 01:46-0400\n"
+"PO-Revision-Date: 2014-09-20 07:51+0000\n"
+"Last-Translator: André Koot <meneer@tken.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,7 +63,7 @@ msgstr "afspraken zijn opgeslagen in de nieuwe agenda"
 
 #: ajax/import/import.php:58
 msgid "Import failed"
-msgstr "import is gefaald"
+msgstr "importeren is mislukt"
 
 #: ajax/import/import.php:71
 msgid "events have been saved in your calendar"
@@ -71,7 +71,7 @@ msgstr "afspraken zijn opgeslagen in je agenda"
 
 #: ajax/settings/guesstimezone.php:26
 msgid "New Timezone:"
-msgstr "Nieuwe tijdszone:"
+msgstr "Nieuwe tijdzone:"
 
 #: ajax/settings/settimezone.php:23
 msgid "Timezone changed"
@@ -88,7 +88,7 @@ msgstr "Agenda"
 
 #: js/calendar.js:24
 msgid "Error sending mail"
-msgstr ""
+msgstr "Fout bij versturen mail"
 
 #: js/calendar.js:222
 msgid "Deletion failed"
@@ -104,7 +104,7 @@ msgstr "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}"
 
 #: js/calendar.js:610
 msgid "Do you really want to delete this calendar?"
-msgstr ""
+msgstr "Wilt u deze agenda echt verwijderen?"
 
 #: js/calendar.js:732
 msgid "group"
@@ -172,31 +172,31 @@ msgstr "Zaterdag"
 
 #: js/l10n.php:78
 msgid "Sun."
-msgstr "Zon."
+msgstr "Zo."
 
 #: js/l10n.php:78
 msgid "Mon."
-msgstr "Maa."
+msgstr "Ma."
 
 #: js/l10n.php:78
 msgid "Tue."
-msgstr "Din."
+msgstr "Di."
 
 #: js/l10n.php:78
 msgid "Wed."
-msgstr "Woe."
+msgstr "Wo."
 
 #: js/l10n.php:78
 msgid "Thu."
-msgstr "Don."
+msgstr "Do."
 
 #: js/l10n.php:78
 msgid "Fri."
-msgstr "Vrij."
+msgstr "Vri."
 
 #: js/l10n.php:78
 msgid "Sat."
-msgstr "Zat."
+msgstr "Za."
 
 #: js/l10n.php:79 lib/object.php:660
 msgid "January"
@@ -548,7 +548,7 @@ msgstr "Datum"
 
 #: lib/search.php:43
 msgid "Cal."
-msgstr "Cal."
+msgstr "Kal."
 
 #: templates/calendar.php:16
 msgid "Day"
@@ -612,7 +612,7 @@ msgstr "iOS/OS X CalDAV adres"
 
 #: templates/part.choosecalendar.rowfields.php:15
 msgid "Share Calendar"
-msgstr "Deel kalender"
+msgstr "Delen agenda"
 
 #: templates/part.choosecalendar.rowfields.php:32
 msgid "Download"
@@ -827,7 +827,7 @@ msgstr "Gedeeld via agenda"
 
 #: templates/part.share.php:94
 msgid "Not shared with anyone via calendar"
-msgstr "Niet met iemand gedeeld via de kalender"
+msgstr "Niet met iemand gedeeld via de agenda"
 
 #: templates/part.showevent.php:1
 msgid "View an event"

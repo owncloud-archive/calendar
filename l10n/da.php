@@ -195,7 +195,7 @@
 "Share with user or group" => "Del med bruger eller gruppe",
 "Unshare" => "Fjern deling",
 "Not shared with anyone" => "Ikke delt med nogen",
-"Send Email" => "Send email",
+"Send Email" => "Send e-mail",
 "Shared via calendar" => "Delt via kalender",
 "Not shared with anyone via calendar" => "Ikke delt med nogen via kalender",
 "View an event" => "Vis en begivenhed",
