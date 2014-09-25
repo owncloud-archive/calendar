@@ -13,6 +13,7 @@
 "Timezone changed" => "Часовой пояс изменён",
 "Invalid request" => "Неверный запрос",
 "Calendar" => "Календарь",
+"Error sending mail" => "Ошибка при отсылке почты",
 "Deletion failed" => "Удаление не удалось",
 "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" => "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}",
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
