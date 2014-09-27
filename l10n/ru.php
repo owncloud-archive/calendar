@@ -17,6 +17,7 @@
 "Deletion failed" => "Удаление не удалось",
 "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" => "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}",
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
+"Do you really want to delete this calendar?" => "Вы, действительно, хотите удалить этот календарь?",
 "group" => "группа",
 "can edit" => "может редактировать",
 "can share" => "можно дать доступ",
