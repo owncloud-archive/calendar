@@ -13,7 +13,7 @@
 "Timezone changed" => "Časové pásmo bylo změněno",
 "Invalid request" => "Neplatný požadavek",
 "Calendar" => "Kalendář",
-"Error sending mail" => "Chyba při odesílání e-mailu.",
+"Error sending mail" => "Chyba při odesílání e-mailu",
 "Deletion failed" => "Mazání selhalo",
 "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" => "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}",
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",

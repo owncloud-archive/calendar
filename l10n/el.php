@@ -16,6 +16,7 @@
 "Deletion failed" => "Η διαγραφή απέτυχε",
 "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" => "ddd d MMMM[ yyyy]{ -[ddd d] MMMM yyyy}",
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
+"Do you really want to delete this calendar?" => "Θέλετε να διαγράψετε αυτό το ημερολόγιο;",
 "group" => "ομάδα",
 "can edit" => "δυνατότητα επεξεργασίας",
 "can share" => "δυνατότητα διαμοιρασμού",
