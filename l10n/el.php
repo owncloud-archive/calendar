@@ -13,6 +13,7 @@
 "Timezone changed" => "Η ζώνη ώρας άλλαξε",
 "Invalid request" => "Άκυρο αίτημα",
 "Calendar" => "Ημερολόγιο",
+"Error sending mail" => "Σφάλμα κατα την αποστολή του μηνύματος",
 "Deletion failed" => "Η διαγραφή απέτυχε",
 "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" => "ddd d MMMM[ yyyy]{ -[ddd d] MMMM yyyy}",
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
