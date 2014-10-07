@@ -151,7 +151,7 @@
 "New calendar" => "Nouveau calendrier",
 "Edit calendar" => "Éditer le calendrier",
 "Edit event" => "Modifier l'événement",
-"Save event" => "Enregfistrer l'événement",
+"Save event" => "Enregistrer l'événement",
 "Delete event" => "Supprimer l'événement",
 "Eventinfo" => "Événement",
 "Repeating" => "Occurrences",
