@@ -5,7 +5,7 @@
 "No events found." => "Nenhum evento encontrado.",
 "Wrong calendar" => "Calendário errado",
 "You do not have the permissions to edit this event." => "Não tem permissões para alterar este evento.",
-"The file contained either no events or all events are already saved in your calendar." => "O ficheiro não continha nenhuns eventos ou então todos os eventos já estavam carregados no seu calendário",
+"The file contained either no events or all events are already saved in your calendar." => "O ficheiro não continha nenhuns eventos ou então todos os eventos já estavam carregados no seu calendário.",
 "events have been saved in the new calendar" => "os eventos foram guardados no novo calendário",
 "Import failed" => "Falha na importação",
 "events have been saved in your calendar" => "os eventos foram guardados no seu calendário",
