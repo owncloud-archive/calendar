@@ -550,9 +550,8 @@ class OC_Calendar_App{
 				}
 			}
 			foreach ($eventsharees as $sharee) {
-				$eventShareesNames[] = $sharee['share_with'];
 				$shwth = $sharee['share_with'];
-                                if(OC_Group::groupExists($shwth)) {
+				if($sharee['share_type'] == \OCP\Share::SHARE_TYPE_GROUP) {
                                         foreach (OC_Group::usersInGroup($shwth) as $u) {
                                                 if(!in_array($u, $eventShareesNames)) {
                                                         $eventShareesNames[] = $u;
