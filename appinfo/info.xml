@@ -12,6 +12,9 @@
 		<calendar>appinfo/remote.php</calendar>
 		<caldav>appinfo/remote.php</caldav>
 	</remote>
+	<documentation>
+		<user>http://doc.owncloud.org/server/7.0/user_manual/pim/calendar.html</user>
+	</documentation>
 	<public>
 		<calendar>share.php</calendar>
 		<caldav>share.php</caldav>
