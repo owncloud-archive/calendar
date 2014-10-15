@@ -1,8 +1,8 @@
 <?php $TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Alle kalendere er ikke i cachen",
 "Everything seems to be completely cached" => "Alt ser ud til at være i cachen",
-"No calendars found." => "Der blev ikke fundet nogen kalendere.",
-"No events found." => "Der blev ikke fundet nogen begivenheder.",
+"No calendars found." => "Der blev ikke fundet nogle kalendere.",
+"No events found." => "Der blev ikke fundet nogle begivenheder.",
 "Wrong calendar" => "Forkert kalender",
 "You do not have the permissions to edit this event." => "Du har ikke rettigheder til at redigere denne begivenhed.",
 "The file contained either no events or all events are already saved in your calendar." => "Enten indeholdt filen ingen begivenheder, eller også er alle begivenheder allerede gemt i din kalender.",

@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-09-21 01:46-0400\n"
-"PO-Revision-Date: 2014-09-20 12:30+0000\n"
+"POT-Creation-Date: 2014-10-15 01:46-0400\n"
+"PO-Revision-Date: 2014-10-14 17:01+0000\n"
 "Last-Translator: Aputsiaĸ Niels Janussen <aj@isit.gl>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/owncloud/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -41,11 +41,11 @@ msgstr "Alt ser ud til at være i cachen"
 
 #: ajax/categories/rescan.php:29
 msgid "No calendars found."
-msgstr "Der blev ikke fundet nogen kalendere."
+msgstr "Der blev ikke fundet nogle kalendere."
 
 #: ajax/categories/rescan.php:37
 msgid "No events found."
-msgstr "Der blev ikke fundet nogen begivenheder."
+msgstr "Der blev ikke fundet nogle begivenheder."
 
 #: ajax/event/edit.form.php:21
 msgid "Wrong calendar"
