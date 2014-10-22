@@ -196,7 +196,7 @@
 "Unshare" => "Zrušit sdílení",
 "Not shared with anyone" => "Nesdíleno s nikým",
 "Send Email" => "Odeslat e-mail",
-"Shared via calendar" => "Sdíleno skrze kalendář",
+"Shared via calendar" => "Sdílené přes kalendář",
 "Not shared with anyone via calendar" => "Nesdíleno s nikým skrze kalendář",
 "View an event" => "Zobrazit událost",
 "Category" => "Kategorie",
