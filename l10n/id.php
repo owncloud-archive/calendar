@@ -16,6 +16,7 @@
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
 "group" => "grup",
 "can edit" => "dapat mengedit",
+"can share" => "dapat berbagi",
 "ddd" => "ddd",
 "ddd M/d" => "ddd d/M",
 "dddd M/d" => "dddd d/M",
