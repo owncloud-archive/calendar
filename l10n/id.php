@@ -143,6 +143,7 @@
 "Share" => "Bagikan",
 "Title of the Event" => "Judul Agenda",
 "from" => "dari",
+"to" => "untuk",
 "All Day Event" => "Agenda Sepanjang Hari",
 "Advanced options" => "Opsi lanjutan",
 "Location" => "Lokasi",
