@@ -583,5 +583,10 @@ button.ui-multiselect{
 	padding:2px 0 2px 4px;
 	line-height:22px;
 	height:26px;
-	 text-align:left;
+	text-align:left;
+}
+
+
+.fc-day-number{
+	font-size: 1.5em;
 }
