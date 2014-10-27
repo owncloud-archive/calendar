@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Не всички календари са напълно кеширани",
 "Everything seems to be completely cached" => "Всичко изглежда напълно кеширано",
 "No calendars found." => "Не са открити календари.",
@@ -207,3 +208,4 @@
 "at" => "в",
 "To" => "До"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "모든 달력이 완전히 캐시되지 않았음",
 "Everything seems to be completely cached" => "모든 항목이 완전히 캐시됨",
 "No calendars found." => "달력이 없습니다.",
@@ -198,3 +199,4 @@
 "at" => "에서",
 "To" => "끝"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

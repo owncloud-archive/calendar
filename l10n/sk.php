@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Wrong calendar" => "Nesprávny kalendár",
 "Import failed" => "Importovanie zlyhalo",
 "Timezone changed" => "Časové pásmo bolo zmenené",
@@ -105,3 +106,4 @@
 "From" => "Od",
 "To" => "Do"
 );
+$PLURAL_FORMS = "nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;";

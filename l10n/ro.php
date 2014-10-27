@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Nu toate calendarele sunt salvate in cache",
 "Everything seems to be completely cached" => "Totul pare a fi salvat în  cache",
 "No calendars found." => "Nici un calendar găsit.",
@@ -207,3 +208,4 @@
 "at" => "la",
 "To" => "Către"
 );
+$PLURAL_FORMS = "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));";

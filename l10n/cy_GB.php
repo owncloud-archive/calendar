@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Nid yw storfa pob calendr yn llawn",
 "Everything seems to be completely cached" => "Mae storfa popeth i weld yn iawn",
 "No calendars found." => "Heb ganfod calendrau.",
@@ -178,3 +179,4 @@
 "at" => "yn",
 "To" => "I"
 );
+$PLURAL_FORMS = "nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3;";

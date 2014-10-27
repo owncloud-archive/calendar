@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Niet alle agenda's zijn volledig gecached",
 "Everything seems to be completely cached" => "Alles lijkt volledig gecached te zijn",
 "No calendars found." => "Geen agenda's gevonden.",
@@ -207,3 +208,4 @@
 "at" => "op",
 "To" => "Aan"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

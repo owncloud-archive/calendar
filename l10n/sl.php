@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Vsi koledarji niso popolnoma predpomnjeni",
 "Everything seems to be completely cached" => "Videti je, da so vsi predmeti predpomnjeni",
 "No calendars found." => "Ni najdenih koledarjev.",
@@ -207,3 +208,4 @@
 "at" => "pri",
 "To" => "Do"
 );
+$PLURAL_FORMS = "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);";

@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "ھەممە يىلنامە تولۇق غەملەنمىگەن",
 "Everything seems to be completely cached" => "ھەممە پائالىيەتلەر غەملەنگەندەك قىلىدۇ",
 "No calendars found." => "ھېچقانداق يىلنامە تېپىلمىدى.",
@@ -177,3 +178,4 @@
 "at" => "دا",
 "To" => "قوبۇللىغۇچى"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

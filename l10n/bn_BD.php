@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "সমস্ত দিনপঞ্জী সম্পূর্ণভাবে ক্যাসে রাখা নেই",
 "Everything seems to be completely cached" => "মনে হচ্ছে সমস্ত কিছুই সম্পূর্ণবাবে ক্যাসে করা আছে",
 "No calendars found." => "কোন দিনপঞ্জী খুঁজে পাওয়া গেল না।",
@@ -207,3 +208,4 @@
 "at" => "প্রতি",
 "To" => "শেষের সময়"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

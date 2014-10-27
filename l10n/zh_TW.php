@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "並非所有的日曆都有完整的快取",
 "Everything seems to be completely cached" => "所有東西應該都有快取了",
 "No calendars found." => "沒有日曆",
@@ -202,3 +203,4 @@
 "at" => "於",
 "To" => "至"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Timezone changed" => "အချိန်ဇုံပြောင်းလဲသည်",
 "Invalid request" => "တောင်းဆိုချက်မမှန်ကန်ပါ",
 "Calendar" => "ပြက္ခဒိန်",
@@ -32,3 +33,4 @@
 "From" => "မှ",
 "To" => "သို့"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

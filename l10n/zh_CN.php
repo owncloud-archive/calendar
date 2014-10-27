@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "日程表未全部缓存完成",
 "Everything seems to be completely cached" => "貌似所有事务已被缓存",
 "No calendars found." => "无法找到日历。",
@@ -205,3 +206,4 @@
 "at" => "在",
 "To" => "至"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

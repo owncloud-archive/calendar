@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Tidak semua kalender selesai disimpan pada tembolok",
 "Everything seems to be completely cached" => "Tampaknya proses penyimpanan tembolok selesai",
 "No calendars found." => "Kalender tidak ditemukan.",
@@ -181,3 +182,4 @@
 "at" => "di",
 "To" => "Kepada"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

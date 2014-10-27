@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Không phải tất cả các lịch là hoàn toàn được lưu trong bộ nhớ cache",
 "Everything seems to be completely cached" => "Mọi thứ dường như là hoàn toàn được lưu trong bộ nhớ cache",
 "No calendars found." => "Không tìm thấy lịch.",
@@ -199,3 +200,4 @@
 "at" => "tại",
 "To" => "Tới"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

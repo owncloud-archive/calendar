@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "មិនមែន​រាល់​ប្រតិទិន​ទាំង​អស់​ត្រូវបាន​ស្តុក​ទុកទេ",
 "No calendars found." => "រក​មិន​ឃើញ​ប្រតិទិន។",
 "No events found." => "រក​មិន​ឃើញ​ព្រឹត្តិការណ៍។",
@@ -194,3 +195,4 @@
 "at" => "នៅ",
 "To" => "ទៅ"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

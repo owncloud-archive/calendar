@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "New Timezone:" => "Nýtt tímabelti:",
 "Invalid request" => "Ógild fyrirspurn",
 "Calendar" => "Dagatal",
@@ -98,3 +99,4 @@
 "at" => "hjá",
 "To" => "Til"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

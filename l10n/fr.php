@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Certains calendriers ne sont pas mis en cache",
 "Everything seems to be completely cached" => "Tout semble être en cache",
 "No calendars found." => "Aucun calendrier n'a été trouvé.",
@@ -207,3 +208,4 @@
 "at" => "à",
 "To" => "À"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n > 1);";

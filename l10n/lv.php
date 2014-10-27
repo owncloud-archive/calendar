@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Ne visi kalendāri ir pilnībā pieglabāti",
 "Everything seems to be completely cached" => "Izskatās, ka viss ir pilnībā pieglabāts",
 "No calendars found." => "Nav atrastu kalendāru.",
@@ -178,3 +179,4 @@
 "at" => " ",
 "To" => "Līdz"
 );
+$PLURAL_FORMS = "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);";

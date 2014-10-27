@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Kõik kalendrid pole täielikult puhverdatud",
 "Everything seems to be completely cached" => "Kõik näib olevat puhverdatud",
 "No calendars found." => "Kalendreid ei leitud.",
@@ -207,3 +208,4 @@
 "at" => "kell",
 "To" => "Kuni"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

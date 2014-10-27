@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Noch sind nicht alle Kalender zwischengespeichert.",
 "Everything seems to be completely cached" => "Es sieht so aus, als wäre alles vollständig zwischengespeichert.",
 "No calendars found." => "Keine Kalender gefunden.",
@@ -181,3 +182,4 @@
 "at" => "um",
 "To" => "bis"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

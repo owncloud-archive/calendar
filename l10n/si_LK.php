@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "සියලු දිනදසුන් සම්පූර්ණයෙන් හැඹිලිගත නොකල යුතුයි",
 "Everything seems to be completely cached" => "දිස්වන සියල්ල සම්පූර්ණයෙන්ම හැඹිලිගත කරන්න",
 "No calendars found." => "දිනදසුන් හමුවී නැත.",
@@ -177,3 +178,4 @@
 "at" => "දි",
 "To" => "දකවා"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

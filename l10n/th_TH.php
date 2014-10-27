@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "ไม่ใช่ปฏิทินทั้งหมดที่จะถูกจัดเก็บข้อมูลไว้ในหน่วยความจำแคชอย่างสมบูรณ์",
 "Everything seems to be completely cached" => "ทุกสิ่งทุกอย่างได้ถูกเก็บเข้าไปไว้ในหน่วยความจำแคชอย่างสมบูรณ์แล้ว",
 "No calendars found." => "ไม่พบปฏิทินที่ต้องการ",
@@ -201,3 +202,4 @@
 "at" => "ที่",
 "To" => "ถึง"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Egutegi guztiak ez daude guztiz cacheatuta",
 "Everything seems to be completely cached" => "Dena guztiz cacheatuta dagoela dirudi",
 "No calendars found." => "Ez da egutegirik aurkitu.",
@@ -205,3 +206,4 @@
 "at" => "ordua",
 "To" => "Bukaera"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

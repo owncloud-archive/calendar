@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Sunday" => "Domingo",
 "Monday" => "Lunes",
 "Tuesday" => "Martes",
@@ -25,3 +26,4 @@
 "Share" => "Compartir",
 "Import" => "Importar"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

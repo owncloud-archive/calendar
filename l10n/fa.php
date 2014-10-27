@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "تمامی تقویم ها ذخیره ی موقتی نشده اند",
 "Everything seems to be completely cached" => "همه چیز ذخیره ی موقتی شد.",
 "No calendars found." => "هیچ تقویمی پیدا نشد",
@@ -205,3 +206,4 @@
 "at" => "در",
 "To" => "به"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

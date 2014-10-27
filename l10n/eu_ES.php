@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Wrong calendar" => "Okerreko egutegia",
 "Timezone changed" => "Denbora zoldaldea aldatua",
 "Invalid request" => "Eskakizun baliogabea",
@@ -52,3 +53,4 @@
 "From" => "Nongoa",
 "To" => "Arte"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

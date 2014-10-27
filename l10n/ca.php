@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "No tots els calendaris estan en memòria",
 "Everything seems to be completely cached" => "Sembla que tot està en memòria",
 "No calendars found." => "No s'han trobat calendaris.",
@@ -207,3 +208,4 @@
 "at" => "a",
 "To" => "Fins a"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "எல்லா நாட்காட்டிகளும் முற்றாக இடைமாற்றுநினைவகம் ஆகவில்லை",
 "Everything seems to be completely cached" => "எல்லாம் முற்றாக இடைமாற்றுநினைவகம் ஆகியதாக தென்படுகிறது",
 "No calendars found." => "நாட்காட்டிகள் எதுவும் கண்டறியப்படவில்லை",
@@ -177,3 +178,4 @@
 "at" => "இல்",
 "To" => "இற்கு"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

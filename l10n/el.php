@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Δεν έχουν αποθηκευτεί όλα τα ημερολόγια στην προσωρινή μνήμη",
 "Everything seems to be completely cached" => "Όλα έχουν αποθηκευτεί στην προσωρινή μνήμη",
 "No calendars found." => "Δε βρέθηκαν ημερολόγια.",
@@ -207,3 +208,4 @@
 "at" => "στο",
 "To" => "Προς"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

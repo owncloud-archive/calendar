@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "לא כל לוחות השנה נשמרו בזיכרון המטמון",
 "Everything seems to be completely cached" => "נראה שכל המידע נשמר בזיכרון המטמון",
 "No calendars found." => "לא נמצאו לוחות שנה.",
@@ -199,3 +200,4 @@
 "at" => "בשנה",
 "To" => "עבור"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

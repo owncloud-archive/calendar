@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Nem minden naptár van a gyorsítótárban",
 "Everything seems to be completely cached" => "Úgy tűnik, hogy minden gyorsítótárazva van",
 "No calendars found." => "Nem található naptár",
@@ -207,3 +208,4 @@
 "at" => ", ",
 "To" => "Eddig"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

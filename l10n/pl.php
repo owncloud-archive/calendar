@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Nie wszystkie kalendarze są całkowicie buforowane",
 "Everything seems to be completely cached" => "Wszystko wydaje się być całkowicie buforowane",
 "No calendars found." => "Nie znaleziono kalendarzy.",
@@ -207,3 +208,4 @@
 "at" => "w",
 "To" => "Do"
 );
+$PLURAL_FORMS = "nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);";

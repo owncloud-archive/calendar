@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Bütün takvimler tamamen önbelleğe alınmadı",
 "Everything seems to be completely cached" => "Her şey tamamen önbelleğe alınmış görünüyor",
 "No calendars found." => "Takvim bulunamadı.",
@@ -207,3 +208,4 @@
 "at" => "saat",
 "To" => "Bitiş"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n > 1);";

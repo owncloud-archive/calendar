@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Ikkje alle kalendrar er fullstendig mellomlagra",
 "Everything seems to be completely cached" => "Alt ser ut til å vera fullstendig mellomlagra",
 "No calendars found." => "Fann ingen kalendrar.",
@@ -205,3 +206,4 @@
 "at" => "på",
 "To" => "Til"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

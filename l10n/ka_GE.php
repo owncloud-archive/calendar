@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "ყველა კალენდარი არ არის ქეშირებული",
 "Everything seems to be completely cached" => "ყველაფერი დაქეშირებულია",
 "No calendars found." => "კალენდარი არ იქნა ნაპოვნი.",
@@ -179,3 +180,4 @@
 "at" => "at",
 "To" => "მდე"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

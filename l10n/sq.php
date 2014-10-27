@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Jo të gjithë kalendarët janë pararuajtur tërësisht",
 "Everything seems to be completely cached" => "Ç'do gjë duket të jetë pararuajtur tërësisht",
 "No calendars found." => "Nuk u gjend asnjë kalendar.",
@@ -200,3 +201,4 @@
 "at" => "në",
 "To" => "Për"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "V paměti nejsou úplně uloženy všechny kalendáře",
 "Everything seems to be completely cached" => "Zdá se, že úplně vše je uloženo v paměti",
 "No calendars found." => "Žádné kalendáře nenalezeny.",
@@ -207,3 +208,4 @@
 "at" => "v",
 "To" => "Do"
 );
+$PLURAL_FORMS = "nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;";

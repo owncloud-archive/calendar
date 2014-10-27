@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Calendar" => "日曆",
 "Sunday" => "星期日",
 "Monday" => "星期一",
@@ -34,3 +35,4 @@
 "Import" => "導入",
 "Unshare" => "取消分享"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

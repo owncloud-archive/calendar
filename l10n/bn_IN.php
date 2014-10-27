@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Title" => "পদবি",
 "by" => "দ্বারা",
 "Daily" => "প্রতিদিন",
@@ -13,3 +14,4 @@
 "Repeat" => "পুনরাবৃত্তি",
 "Import" => "ইম্পোর্ট"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

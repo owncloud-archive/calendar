@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "Bütün kalendarlar tamlıqla cache edilməyib",
 "Everything seems to be completely cached" => "Hər çey tam cache-lənmiş görünür",
 "No calendars found." => "Heç bir kalendar tapılmadı",
@@ -34,3 +35,4 @@
 "Repeat" => "Təkrar",
 "Import" => "Əlavə et"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

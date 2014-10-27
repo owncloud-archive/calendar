@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "ليست جميع المفكرات مخزنة في الذاكرة المؤقتة",
 "Everything seems to be completely cached" => "كل شيء يبدو مخزناً في الذاكرة المؤقتة",
 "No calendars found." => "لم يتم العثور على مفكرات",
@@ -205,3 +206,4 @@
 "at" => "في",
 "To" => "إلى"
 );
+$PLURAL_FORMS = "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;";
