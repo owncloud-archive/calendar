@@ -237,8 +237,8 @@ button.category{margin:0 3px;}
 	font-weight: normal;
 }
 /* more space for action buttons below */
-#actions {
-	height: 45px;
+#actions>button{
+	margin: 25px;
 }
 
 
@@ -249,6 +249,8 @@ button.category{margin:0 3px;}
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding: 0;
+	box-shadow: 0 0 20px #000;
+	border: none;
 }
 .ui-dialog .ui-dialog-content {
 	overflow: initial;
