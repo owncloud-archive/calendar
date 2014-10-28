@@ -238,7 +238,7 @@ button.category{margin:0 3px;}
 }
 /* more space for action buttons below */
 #actions>button{
-	margin: 25px;
+	margin: 1em;
 }
 
 
