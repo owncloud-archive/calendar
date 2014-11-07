@@ -28,8 +28,8 @@ if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'mon
 
 OCP\Util::addscript('calendar/3rdparty/fullcalendar', 'fullcalendar');
 OCP\Util::addStyle('calendar/3rdparty/fullcalendar', 'fullcalendar');
-OCP\Util::addscript('3rdparty/timepicker', 'jquery.ui.timepicker');
-OCP\Util::addStyle('3rdparty/timepicker', 'jquery.ui.timepicker');
+OCP\Util::addscript('calendar/3rdparty/timepicker', 'jquery.ui.timepicker');
+OCP\Util::addStyle('calendar/3rdparty/timepicker', 'jquery.ui.timepicker');
 if(OCP\Config::getUserValue(OCP\USER::getUser(), "calendar", "timezone") == null || OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timezonedetection') == 'true') {
 	OCP\Util::addscript('calendar', 'geo');
 }
