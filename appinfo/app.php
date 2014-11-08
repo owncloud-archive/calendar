@@ -26,8 +26,8 @@ OCP\Util::connectHook('OC_Calendar', 'moveEvent', 'OC_Calendar_Repeat', 'update'
 OCP\Util::connectHook('OC_Calendar', 'deleteCalendar', 'OC_Calendar_Repeat', 'cleanCalendar');
 
 OCP\Util::addscript('calendar','loader');
-OCP\Util::addscript("3rdparty", "chosen/chosen.jquery.min");
-OCP\Util::addStyle("3rdparty", "chosen/chosen");
+OCP\Util::addScript('calendar/3rdparty/chosen', 'chosen.jquery.min');
+OCP\Util::addStyle('calendar/3rdparty/chosen', 'chosen');
 OCP\Util::addStyle('calendar/3rdparty/miniColors', 'jquery.miniColors');
 OCP\Util::addscript('calendar/3rdparty/miniColors', 'jquery.miniColors.min');
 OCP\App::addNavigationEntry( array(
