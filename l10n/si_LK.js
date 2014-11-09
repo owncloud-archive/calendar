@@ -117,7 +117,6 @@ OC.L10N.register(
     "by weeknumber(s)" : "සතියේ අංකය අනුව",
     "by day and month" : "දිනය හා මාසය අනුව",
     "Date" : "දිනය",
-    "Cal." : "දිනද.",
     "Week" : "සතිය",
     "Month" : "මාසය",
     "Today" : "අද",

@@ -130,7 +130,6 @@ OC.L10N.register(
     "by day and month" : "pagal dieną ir mėnesį",
     "Contact birthdays" : "Kontaktų gimtadieniai",
     "Date" : "Data",
-    "Cal." : "Kal.",
     "Day" : "Diena",
     "Week" : "Savaitė",
     "Month" : "Mėnuo",

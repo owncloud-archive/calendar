@@ -129,7 +129,6 @@ $TRANSLATIONS = array(
 "by day and month" => "nap és hónap szerint",
 "Contact birthdays" => "Az ismerősök születésnapjai",
 "Date" => "Dátum",
-"Cal." => "Naptár",
 "Day" => "Nap",
 "Week" => "Hét",
 "Month" => "Hónap",

@@ -124,7 +124,6 @@ OC.L10N.register(
     "by weeknumber(s)" : "dari nombor minggu",
     "by day and month" : "dari hari dan bulan",
     "Date" : "Tarikh",
-    "Cal." : "Kalendar",
     "Day" : "Hari",
     "Week" : "Minggu",
     "Month" : "Bulan",

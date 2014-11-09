@@ -130,7 +130,6 @@ OC.L10N.register(
     "by day and month" : "podle dne a měsíce",
     "Contact birthdays" : "Narozeniny kontaktů",
     "Date" : "Datum",
-    "Cal." : "Kal.",
     "Day" : "Den",
     "Week" : "Týden",
     "Month" : "Měsíc",

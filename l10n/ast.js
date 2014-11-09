@@ -130,7 +130,6 @@ OC.L10N.register(
     "by day and month" : "por día y mes",
     "Contact birthdays" : "Cumpleaños de los contautos",
     "Date" : "Data",
-    "Cal." : "Cal.",
     "Day" : "Día",
     "Week" : "Selmana",
     "Month" : "Mes",

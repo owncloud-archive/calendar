@@ -129,7 +129,6 @@ $TRANSLATIONS = array(
 "by day and month" => "după zi și lună",
 "Contact birthdays" => "Zile de naștere a persoanelor",
 "Date" => "Data",
-"Cal." => "Cal.",
 "Day" => "Zi",
 "Week" => "Săptămâna",
 "Month" => "Luna",

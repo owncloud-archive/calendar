@@ -124,7 +124,6 @@ OC.L10N.register(
     "by day and month" : "날짜 순",
     "Contact birthdays" : "연락처에 등록된 생일",
     "Date" : "날짜",
-    "Cal." : "달력",
     "Day" : "날짜",
     "Week" : "주",
     "Month" : "달",

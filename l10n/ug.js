@@ -117,7 +117,6 @@ OC.L10N.register(
     "by weeknumber(s)" : "ھەپتە سان(لار)ى بويىچە",
     "by day and month" : "كۈن ۋە ئاي بويىچە",
     "Date" : "چېسلا",
-    "Cal." : "يىلنامە",
     "Week" : "ھەپتە",
     "Month" : "ئاي",
     "Today" : "بۈگۈن",

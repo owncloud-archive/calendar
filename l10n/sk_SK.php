@@ -127,7 +127,6 @@ $TRANSLATIONS = array(
 "by day and month" => "podľa dňa a mesiaca",
 "Contact birthdays" => "Narodeniny kontaktov",
 "Date" => "Dátum",
-"Cal." => "Kal.",
 "Day" => "Deň",
 "Week" => "Týždeň",
 "Month" => "Mesiac",

@@ -130,7 +130,6 @@ OC.L10N.register(
     "by day and month" : "efter dag og måned",
     "Contact birthdays" : "Kontakt fødselsdage",
     "Date" : "Dato",
-    "Cal." : "Kal.",
     "Day" : "Dag",
     "Week" : "Uge",
     "Month" : "Måned",

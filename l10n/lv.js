@@ -118,7 +118,6 @@ OC.L10N.register(
     "by weeknumber(s)" : "pēc nedēļas numura(-iem)",
     "by day and month" : "pēc dienas un mēneša",
     "Date" : "Datums",
-    "Cal." : "Kal.",
     "Week" : "Nedēļa",
     "Month" : "Mēnesis",
     "Today" : "Šodien",

@@ -128,7 +128,6 @@ OC.L10N.register(
     "by day and month" : "按天和月份",
     "Contact birthdays" : "联系人生日",
     "Date" : "日期",
-    "Cal." : "日历",
     "Day" : "天",
     "Week" : "星期",
     "Month" : "月",

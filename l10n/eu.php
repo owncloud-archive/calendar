@@ -129,7 +129,6 @@ $TRANSLATIONS = array(
 "by day and month" => "eguna eta hilabetearen arabera",
 "Contact birthdays" => "kontaktuen urtebetetze datak",
 "Date" => "Data",
-"Cal." => "Eg.",
 "Day" => "Eguna",
 "Week" => "Astea",
 "Month" => "Hilabetea",

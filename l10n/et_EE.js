@@ -130,7 +130,6 @@ OC.L10N.register(
     "by day and month" : "kuu ja päeva järgi",
     "Contact birthdays" : "Kontakti sünnipäevad",
     "Date" : "Kuupäev",
-    "Cal." : "Kal.",
     "Day" : "Päev",
     "Week" : "Nädal",
     "Month" : "Kuu",

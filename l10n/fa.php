@@ -127,7 +127,6 @@ $TRANSLATIONS = array(
 "by day and month" => "به وسیله روز و ماه",
 "Contact birthdays" => "تاریخ تولد افراد",
 "Date" => "تاریخ",
-"Cal." => "تقویم.",
 "Day" => "روز",
 "Week" => "هفته",
 "Month" => "ماه",

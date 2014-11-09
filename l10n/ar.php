@@ -127,7 +127,6 @@ $TRANSLATIONS = array(
 "by day and month" => "حسب اليوم و الشهر",
 "Contact birthdays" => "إظهار أيام ميلاد جهات الإتصال",
 "Date" => "تاريخ",
-"Cal." => "تقويم",
 "Day" => "يوم",
 "Week" => "أسبوع",
 "Month" => "شهر",

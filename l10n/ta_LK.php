@@ -116,7 +116,6 @@ $TRANSLATIONS = array(
 "by weeknumber(s)" => "வார எண்ணிக்கை (கள்) மூலம்",
 "by day and month" => "நாள் மற்றும் மாதம் மூலம்",
 "Date" => "திகதி",
-"Cal." => "Cal.",
 "Week" => "வாரம்",
 "Month" => "மாதம்",
 "Today" => "இன்று",

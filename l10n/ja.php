@@ -129,7 +129,6 @@ $TRANSLATIONS = array(
 "by day and month" => "月と日で指定",
 "Contact birthdays" => "連絡先の誕生日",
 "Date" => "日付",
-"Cal." => "カレンダー",
 "Day" => "日",
 "Week" => "週",
 "Month" => "月",

@@ -130,7 +130,6 @@ OC.L10N.register(
     "by day and month" : "po dnevu in mesecu",
     "Contact birthdays" : "Rojstni dan stika",
     "Date" : "Datum",
-    "Cal." : "Kol.",
     "Day" : "Dan",
     "Week" : "Teden",
     "Month" : "Mesec",

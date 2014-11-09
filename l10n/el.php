@@ -129,7 +129,6 @@ $TRANSLATIONS = array(
 "by day and month" => "κατά ημέρα και μήνα",
 "Contact birthdays" => "Γενέθλια Επαφής",
 "Date" => "Ημερομηνία",
-"Cal." => "Ημερ.",
 "Day" => "Ημέρα",
 "Week" => "Εβδομάδα",
 "Month" => "Μήνας",

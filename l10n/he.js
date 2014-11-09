@@ -125,7 +125,6 @@ OC.L10N.register(
     "by day and month" : "לפי יום וחודש",
     "Contact birthdays" : "יום הולדת של אנשי קשר",
     "Date" : "תאריך",
-    "Cal." : "לוח שנה",
     "Day" : "יום",
     "Week" : "שבוע",
     "Month" : "חודש",

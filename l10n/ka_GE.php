@@ -117,7 +117,6 @@ $TRANSLATIONS = array(
 "by weeknumber(s)" => "კვირის ნომრების მიხედვით",
 "by day and month" => "დღის ან თვის მიხედვით",
 "Date" => "დრო",
-"Cal." => "Cal.",
 "Week" => "კვირა",
 "Month" => "თვე",
 "Today" => "დღეს",

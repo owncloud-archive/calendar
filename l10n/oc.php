@@ -113,7 +113,6 @@ $TRANSLATIONS = array(
 "by weeknumber(s)" => "per numero(s) de setmana",
 "by day and month" => "per jorn e mes",
 "Date" => "Data",
-"Cal." => "Cal.",
 "Week" => "Setmana",
 "Month" => "Mes",
 "Today" => "Uèi",

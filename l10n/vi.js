@@ -125,7 +125,6 @@ OC.L10N.register(
     "by day and month" : "Theo ngày, tháng",
     "Contact birthdays" : "Danh sách sinh nhật",
     "Date" : "Ngày",
-    "Cal." : "Cal.",
     "Day" : "Ngày",
     "Week" : "Tuần",
     "Month" : "Tháng",

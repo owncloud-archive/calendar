@@ -116,7 +116,6 @@ OC.L10N.register(
     "by weeknumber(s)" : "по недељи(ама)",
     "by day and month" : "по дану и месецу",
     "Date" : "Датум",
-    "Cal." : "Кал.",
     "Day" : "Дан",
     "Week" : "Недеља",
     "Month" : "Месец",

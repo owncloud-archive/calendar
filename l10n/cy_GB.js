@@ -118,7 +118,6 @@ OC.L10N.register(
     "by weeknumber(s)" : "yn ôl rhif yr wythnos",
     "by day and month" : "yn ôl dydd a mis",
     "Date" : "Dyddiad",
-    "Cal." : "Cal.",
     "Week" : "Wythnos",
     "Month" : "Mis",
     "Today" : "Heddiw",

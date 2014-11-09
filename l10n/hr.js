@@ -128,7 +128,6 @@ OC.L10N.register(
     "by day and month" : "prema danu i mjesecu",
     "Contact birthdays" : "Rođendani kontakata",
     "Date" : "Datum",
-    "Cal." : "Kal.",
     "Day" : "Dan",
     "Week" : "tjedan",
     "Month" : "Mjesec",

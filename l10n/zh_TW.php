@@ -124,7 +124,6 @@ $TRANSLATIONS = array(
 "by day and month" => "由日與月",
 "Contact birthdays" => "聯絡人生日",
 "Date" => "日期",
-"Cal." => "行事曆",
 "Day" => "日",
 "Week" => "週",
 "Month" => "月",

@@ -129,7 +129,6 @@ $TRANSLATIONS = array(
 "by day and month" => "দিন এবং মাস অনুসারে",
 "Contact birthdays" => "পরিচিতজনের জন্মদিন",
 "Date" => "তারিখ",
-"Cal." => "দিনপঞ্জী",
 "Day" => "দিবস",
 "Week" => "সপ্তাহ",
 "Month" => "মাস",

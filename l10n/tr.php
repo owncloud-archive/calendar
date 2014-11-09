@@ -129,7 +129,6 @@ $TRANSLATIONS = array(
 "by day and month" => "gün ve aya göre",
 "Contact birthdays" => "Kişi doğum günleri",
 "Date" => "Tarih",
-"Cal." => "Takv.",
 "Day" => "Gün",
 "Week" => "Hafta",
 "Month" => "Ay",

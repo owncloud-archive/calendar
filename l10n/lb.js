@@ -124,7 +124,6 @@ OC.L10N.register(
     "by day and month" : "no Dag a Mount",
     "Contact birthdays" : "Gebuertsdeeg vun de Kontakter",
     "Date" : "Datum",
-    "Cal." : "Kal.",
     "Day" : "Dag",
     "Week" : "Woch",
     "Month" : "Mount",

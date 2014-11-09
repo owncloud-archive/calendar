@@ -118,7 +118,6 @@ $TRANSLATIONS = array(
 "by weeknumber(s)" => "по број на седмицата",
 "by day and month" => "по ден и месец",
 "Date" => "Датум",
-"Cal." => "Кал.",
 "Week" => "Седмица",
 "Month" => "Месец",
 "Today" => "Денеска",

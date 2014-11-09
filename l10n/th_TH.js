@@ -125,7 +125,6 @@ OC.L10N.register(
     "by day and month" : "ตามวันและเดือน",
     "Contact birthdays" : "วันเกิดของผู้ติดต่อ",
     "Date" : "วันที่",
-    "Cal." : "คำนวณ",
     "Day" : "วัน",
     "Week" : "สัปดาห์",
     "Month" : "เดือน",

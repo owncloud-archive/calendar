@@ -124,7 +124,6 @@ $TRANSLATIONS = array(
 "by day and month" => "laŭ tago kaj monato",
 "Contact birthdays" => "Naskiĝotagoj de la kontaktoj",
 "Date" => "Dato",
-"Cal." => "Kal.",
 "Day" => "Tago",
 "Week" => "Semajno",
 "Month" => "Monato",

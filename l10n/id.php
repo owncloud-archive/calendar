@@ -118,7 +118,6 @@ $TRANSLATIONS = array(
 "by weeknumber(s)" => "berdasarkan minggu ke",
 "by day and month" => "berdasarkan hari dan bulan",
 "Date" => "Tanggal",
-"Cal." => "Kalender",
 "Week" => "Minggu",
 "Month" => "Bulan",
 "Today" => "Hari Ini",
