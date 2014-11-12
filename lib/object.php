@@ -775,9 +775,6 @@ class OC_Calendar_Object{
 			$errarr['to'] = 'true';
 			$errnum++;
 		}
-		
-		// TODO: check validity of eventalarm
-		
 		if($request['repeat'] != 'doesnotrepeat') {
 			if(($request['interval'] !== strval(intval($request['interval']))) || intval($request['interval']) < 1) {
 				$errarr['interval'] = 'true';
@@ -1013,10 +1010,7 @@ class OC_Calendar_Object{
 				case 'yearly':
 					$rrule .= 'FREQ=YEARLY';
 					if($request['advanced_year_select'] == 'bydate') {
-						list($_day, $_month, $_year) = explode('-', $from);
-						$bymonth = date('n', mktime(0,0,0, $_month, $_day, $_year));
-						$bymonthday = date('j', mktime(0,0,0, $_month, $_day, $_year));
-						$rrule .= ';BYDAY=MO,TU,WE,TH,FR,SA,SU;BYMONTH=' . $bymonth . ';BYMONTHDAY=' . $bymonthday;
+
 					}elseif($request['advanced_year_select'] == 'byyearday') {
 						list($_day, $_month, $_year) = explode('-', $from);
 						$byyearday = date('z', mktime(0,0,0, $_month, $_day, $_year)) + 1;
@@ -1097,6 +1091,7 @@ class OC_Calendar_Object{
 			$repeat = "false";
 		}
 
+
 		$vevent->setDateTime('LAST-MODIFIED', 'now', Sabre\VObject\Property\DateTime::UTC);
 		$vevent->setDateTime('DTSTAMP', 'now', Sabre\VObject\Property\DateTime::UTC);
 		$vevent->setString('SUMMARY', $title);
@@ -1115,6 +1110,7 @@ class OC_Calendar_Object{
 			$vevent->setDateTime('DTEND', $end, Sabre\VObject\Property\DateTime::LOCALTZ);
 		}
 		unset($vevent->DURATION);
+		self::addAlarmsData($request, $vcalendar);
 
 		self::addAlarmsData($request, $vcalendar);
 
