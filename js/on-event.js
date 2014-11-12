@@ -19,14 +19,6 @@ $(document).on('click', '#editCategories', function () {
 $(document).on('click', '#allday_checkbox', function () {
 	Calendar.UI.lockTime();
 });
-$('#add_alarm').live('click', function(e){
-	Calendar.UI.addAlarm();
-	e.preventDefault();
-});
-$('.deleteAlarm').live('click', function(e){
-	Calendar.UI.deleteAlarm(this);
-	e.preventDefault();
-});
 $(document).on('click', '#advanced_options_button', function () {
 	Calendar.UI.showadvancedoptions();
 });
