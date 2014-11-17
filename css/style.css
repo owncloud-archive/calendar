@@ -575,6 +575,7 @@ button.category{margin:0 3px;}
 .fc-agenda .fc-agenda-axis{
 	padding:0;
 	padding-right:4px;
+	line-height:initial;
 }
 
 button.ui-multiselect{
