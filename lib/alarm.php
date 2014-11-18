@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is licensed under the Affero General Public License version 3 or
  * later.
@@ -55,7 +56,12 @@ class OC_Calendar_Alarm extends \OC\BackgroundJob\TimedJob{
 				$message = $tpl->fetchPage();
 
 				$email = OC_Preferences::getValue($row['userid'], 'settings', 'email');
-				OC_Mail::send($email, $row['userid'], $l->t('Reminder: %s', $row['summary']), $message, OC_Config::getValue('mail_smtpname', ''), $l->t('Owncloud Event Reminder'), true);
+				$fromEmail = OC_Config::getValue('mail_smtpname');
+				if($fromEmail === NULL){
+					$fromEmail = OC_Config::getValue('mail_from_address').'@'.OC_Config::getValue('mail_domain');
+				}
+
+				OC_Mail::send($email, $row['userid'], $l->t('Reminder: %s', $row['summary']), $message, $fromEmail, $l->t('Owncloud Event Reminder'), true);
 
 				$alarmsIdsSended[] = $row['alarmId'];
 			}
