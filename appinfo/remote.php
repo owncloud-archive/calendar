@@ -41,7 +41,9 @@ $server = new \Sabre\DAV\Server($nodes);
 $server->httpRequest = $requestBackend;
 $server->setBaseUri($baseuri);
 // Add plugins
-$server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,'ownCloud'));
+$instName = OC_Config::getValue( 'instancename' );
+if ( empty( $instName ) ) $instName = 'ownCloud';
+$server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,$instName));
 $server->addPlugin(new \Sabre\CalDAV\Plugin());
 $server->addPlugin(new \Sabre\DAVACL\Plugin());
 $server->addPlugin(new \Sabre\DAV\Browser\Plugin(false)); // Show something in the Browser, but no upload
