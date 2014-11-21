@@ -8,6 +8,7 @@
 OC_App::loadApp('calendar');
 class Test_Calendar_Calendars extends PHPUnit_Framework_TestCase {
 	function testBasic() {
+		$this->markTestSkipped('Calendar tests are broken and not used by any CI');
 		$uid=uniqid();
 		$this->assertEquals(OC_Calendar_Calendar::allCalendars($uid),array());
 		OC_User::setUserId($uid);
