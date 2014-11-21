@@ -133,10 +133,14 @@ Calendar={
 			$('#fullcalendar').fullCalendar('unselect');
 			Calendar.UI.lockTime();
 			$( "#from" ).datepicker({
+				minDate: null,
+				maxDate: null,
 				dateFormat : 'dd-mm-yy',
 				onSelect: function(){ Calendar.Util.adjustDate(); }
 			});
 			$( "#to" ).datepicker({
+				minDate: null,
+				maxDate: null,
 				dateFormat : 'dd-mm-yy'
 			});
 			$('#fromtime').timepicker({
