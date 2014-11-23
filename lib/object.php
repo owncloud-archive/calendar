@@ -414,6 +414,10 @@ class OC_Calendar_Object{
 					$return[5] = $property->value;
 				}
 			}
+			// some imported object don't have DTEND but DURATION
+			if(is_null($return[2])) {
+				$return[2] = self::getDTEndFromVEvent($use);
+			}
 		}
 
 		// More than one child means reoccuring!
