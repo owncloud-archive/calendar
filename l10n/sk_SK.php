@@ -14,6 +14,7 @@ $TRANSLATIONS = array(
 "Timezone changed" => "Časové pásmo zmenené",
 "Invalid request" => "Neplatná požiadavka",
 "Calendar" => "Kalendár",
+"Error sending mail" => "Chyba pri odosielaní mailu",
 "Deletion failed" => "Odstránenie zlyhalo",
 "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" => "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}",
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
