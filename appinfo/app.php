@@ -35,7 +35,7 @@ OCP\App::addNavigationEntry( array(
   'href' => OCP\Util::linkToRoute('calendar_index'),
   'icon' => OCP\Util::imagePath( 'calendar', 'calendar.svg' ),
   'name' => $l->t('Calendar')));
-\OC_Search::registerProvider('OCA\Calendar\Search\Provider');
+\OC::$server->getSearch()->registerProvider('OCA\Calendar\Search\Provider', array('apps' => array('calendar')));
 OCP\Share::registerBackend('calendar', 'OC_Share_Backend_Calendar');
 OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
 
