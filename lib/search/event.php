@@ -23,7 +23,7 @@ namespace OCA\Calendar\Search;
 /**
  * A calendar event
  */
-class Event extends \OC\Search\Result {
+class Event extends \OCP\Search\Result {
 
 	/**
 	 * Type name; translated in templates
