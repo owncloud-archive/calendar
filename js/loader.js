@@ -176,8 +176,8 @@ Calendar_Import={
 	}
 }
 $(document).ready(function(){
-	if(typeof FileActions !== 'undefined'){
-		FileActions.register('text/calendar','importCalendar',  OC.PERMISSION_READ, '', Calendar_Import.Dialog.open);
-		FileActions.setDefault('text/calendar','importCalendar');
+	if(OCA.Files && OCA.Files.fileActions) {
+		OCA.Files.fileActions.register('text/calendar','importCalendar',  OC.PERMISSION_READ, '', Calendar_Import.Dialog.open);
+		OCA.Files.fileActions.setDefault('text/calendar','importCalendar');
 	};
 });
