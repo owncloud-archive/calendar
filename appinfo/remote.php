@@ -20,7 +20,10 @@ if(\OCP\App::isEnabled('contacts')) {
 
 // Backends
 $authBackend = new OC_Connector_Sabre_Auth();
-$principalBackend = new OC_Connector_Sabre_Principal();
+$principalBackend = new \OC\Connector\Sabre\Principal(
+	\OC::$server->getConfig(),
+	\OC::$server->getUserManager()
+);
 $caldavBackend    = new OC_Connector_Sabre_CalDAV();
 $requestBackend = new OC_Connector_Sabre_Request();
 
