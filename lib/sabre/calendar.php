@@ -1,6 +1,6 @@
 <?php
 /**
- * ownCloud - OC_Connector_Sabre_Sabre_CalDAV_Calendar
+ * ownCloud - Calendar
  *
  * @author Thomas Tanghus
  * @copyright 2012 Thomas Tanghus (thomas@tanghus.net)
@@ -20,13 +20,15 @@
  *
  */
 
+namespace OCA\Calendar\Sabre;
+
 /**
  * This class overrides \Sabre\CalDAV\Calendar::getACL() to return read/write
  * permissions based on user and shared state and it overrides
  * \Sabre\CalDAV\Calendar::getChild() and \Sabre\CalDAV\Calendar::getChildren()
- * to instantiate OC_Connector_Sabre_CalDAV_CalendarObjects.
+ * to instantiate OCA\Calendar\Sabre\CalendarObjects.
 */
-class OC_Connector_Sabre_CalDAV_Calendar extends \Sabre\CalDAV\Calendar {
+class Calendar extends \Sabre\CalDAV\Calendar {
 
 	/**
 	* Returns a list of ACE's for this node.
@@ -44,18 +46,18 @@ class OC_Connector_Sabre_CalDAV_Calendar extends \Sabre\CalDAV\Calendar {
 
 		$readprincipal = $this->getOwner();
 		$writeprincipal = $this->getOwner();
-		$uid = OC_Calendar_Calendar::extractUserID($this->getOwner());
+		$uid = \OC_Calendar_Calendar::extractUserID($this->getOwner());
 
-		if($uid != OCP\USER::getUser()) {
+		if($uid != \OCP\USER::getUser()) {
 			if($uid === 'contact_birthdays') {
-				$readprincipal = 'principals/' . OCP\User::getUser();
+				$readprincipal = 'principals/' . \OCP\User::getUser();
 			} else {
-				$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
-				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ)) {
-					$readprincipal = 'principals/' . OCP\User::getUser();
+				$sharedCalendar = \OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & \OCP\Constants::PERMISSION_READ)) {
+					$readprincipal = 'principals/' . \OCP\User::getUser();
 				}
-				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
-					$writeprincipal = 'principals/' . OCP\User::getUser();
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & \OCP\Constants::PERMISSION_UPDATE)) {
+					$writeprincipal = 'principals/' . \OCP\User::getUser();
 				}
 			}
 		}
@@ -109,7 +111,7 @@ class OC_Connector_Sabre_CalDAV_Calendar extends \Sabre\CalDAV\Calendar {
 		if (!$obj) {
 			throw new \Sabre\DAV\Exception\NotFound('Calendar object not found');
 		}
-		return new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
+		return new CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
 
 	}
 
@@ -123,7 +125,7 @@ class OC_Connector_Sabre_CalDAV_Calendar extends \Sabre\CalDAV\Calendar {
 		$objs = $this->caldavBackend->getCalendarObjects($this->calendarInfo['id']);
 		$children = array();
 		foreach($objs as $obj) {
-			$children[] = new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
+			$children[] = new CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
 		}
 		return $children;
 

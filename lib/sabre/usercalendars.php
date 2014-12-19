@@ -1,6 +1,6 @@
 <?php
 /**
- * ownCloud - OC_Connector_Sabre_CalDAV_UserCalendars
+ * ownCloud - Calendar
  *
  * @author Thomas Tanghus
  * @copyright 2012 Thomas Tanghus (thomas@tanghus.net)
@@ -20,11 +20,13 @@
  *
  */
 
+namespace OCA\Calendar\Sabre;
+
 /**
  * This class overrides \Sabre\CalDAV\UserCalendars::getChildren()
- * to instantiate OC_Connector_Sabre_CalDAV_Calendars.
+ * to instantiate Calendars.
 */
-class OC_Connector_Sabre_CalDAV_UserCalendars extends \Sabre\CalDAV\UserCalendars {
+class UserCalendars extends \Sabre\CalDAV\UserCalendars {
 
 	/**
 	* Returns a list of calendars
@@ -36,7 +38,7 @@ class OC_Connector_Sabre_CalDAV_UserCalendars extends \Sabre\CalDAV\UserCalendar
 		$calendars = $this->caldavBackend->getCalendarsForUser($this->principalInfo['uri']);
 		$objs = array();
 		foreach($calendars as $calendar) {
-			$objs[] = new OC_Connector_Sabre_CalDAV_Calendar($this->caldavBackend, $calendar);
+			$objs[] = new Calendar($this->caldavBackend, $calendar);
 		}
 		$objs[] = new \Sabre\CalDAV\Schedule\Outbox($this->principalInfo['uri']);
 		return $objs;
