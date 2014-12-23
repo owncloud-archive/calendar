@@ -45,4 +45,8 @@ class OC_Share_Backend_Event implements OCP\Share_Backend {
 		return $events;
 	}
 
+	public function isShareTypeAllowed($shareType) {
+		return true;
+	}
+
 }
