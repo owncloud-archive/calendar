@@ -27,6 +27,7 @@ OC.L10N.register(
     "ddd M/d" : "ddd M/d",
     "dddd M/d" : "dddd M/d",
     "MMMM yyyy" : "MMMM yyyy",
+    "MMM d[ yyyy]{ '–'[ MMM] d yyyy}" : "MMM d[ yyyy]{ '–'[ MMM] d yyyy}",
     "dddd, MMM d, yyyy" : "dddd, MMM d, yyyy",
     "Sunday" : "Svētdiena",
     "Monday" : "Pirmdiena",
