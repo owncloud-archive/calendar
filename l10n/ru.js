@@ -99,7 +99,7 @@ OC.L10N.register(
     "You do not have the permissions to delete this calendar." : "У вас недостаточно прав для удаления этого календаря",
     "You do not have the permissions to add to this calendar." : "У вас недостаточно прав для добавления в этот календарь.",
     "You do not have the permissions to add events to this calendar." : "У вас недостаточно прав для создания событий в этом календаре.",
-    "You cannot add non-public events to a shared calendar." : "Нельзя добавлять приватные события в опубликованный календарь.",
+    "You cannot add non-public events to a shared calendar." : "Нельзя добавлять приватные события в общий календарь.",
     "You do not have the permissions to delete this event." : "У вас недостаточно прав для удаления этого события.",
     "Busy" : "Занято",
     "Show full event" : "Показать событие полностью",
