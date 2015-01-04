@@ -19,16 +19,16 @@ if(\OCP\App::isEnabled('contacts')) {
 }
 
 // Backends
-$authBackend = new OC_Connector_Sabre_Auth();
-$principalBackend = new OC_Connector_Sabre_Principal();
-$caldavBackend    = new OC_Connector_Sabre_CalDAV();
-$requestBackend = new OC_Connector_Sabre_Request();
+$authBackend = new OC\Connector\Sabre\Auth();
+$principalBackend = new OC\Connector\Sabre\Principal();
+$caldavBackend    = new OCA\Calendar\Sabre\CalDAV();
+$requestBackend = new OC\Connector\Sabre\Request();
 
 // Root nodes
 $Sabre_CalDAV_Principal_Collection = new \Sabre\CalDAV\Principal\Collection($principalBackend);
 $Sabre_CalDAV_Principal_Collection->disableListing = true; // Disable listening
 
-$calendarRoot = new OC_Connector_Sabre_CalDAV_CalendarRoot($principalBackend, $caldavBackend);
+$calendarRoot = new OCA\Calendar\Sabre\CalendarRoot($principalBackend, $caldavBackend);
 $calendarRoot->disableListing = true; // Disable listening
 
 $nodes = array(
