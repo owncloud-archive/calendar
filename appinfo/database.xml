@@ -396,7 +396,7 @@
 			</field>
 
 			<field>
-				<name>sended</name>
+				<name>sent</name>
 				<type>integer</type>
 				<default>0</default>
 				<notnull>true</notnull>
