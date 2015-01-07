@@ -7,10 +7,10 @@
 		<input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
 	<?php } ?>
 </label>
-<span class="utils">
+<div class="utils">
 	<span class="action">
 	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_SHARE) { ?>
-		<a href="#" class="share icon-share permanent" data-item-type="calendar" data-item="<?php p($_['calendar']['id']); ?>"
+		<a href="#" class="share icon-shared permanent" data-item-type="calendar" data-item="<?php p($_['calendar']['id']); ?>"
 		   data-possible-permissions="<?php p($_['calendar']['permissions']) ?>"
 		   title="<?php p($l->t('Share Calendar')) ?>"></a>
 	<?php } ?>
@@ -45,4 +45,4 @@
 		<a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>" class="icon-delete"></a>
 	<?php } ?>
 	</span>
-</span>
+</div>
