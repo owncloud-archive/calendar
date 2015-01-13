@@ -46,11 +46,13 @@ var defaults = {
 	// time formats
 	titleFormat: {
 		month: 'MMMM yyyy',
+		fourWeeks: 'MMMM yyyy',
 		week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
 		day: 'dddd, MMM d, yyyy'
 	},
 	columnFormat: {
 		month: 'ddd',
+		fourWeeks: 'ddd',
 		week: 'ddd M/d',
 		day: 'dddd M/d'
 	},
@@ -1990,6 +1992,69 @@ function MonthView(element, calendar) {
 		if (opt('weekMode') == 'fixed') {
 			addDays(visEnd, (6 - rowCnt) * 7); // add weeks to make up for it
 			rowCnt = 6;
+		}
+
+		t.title = formatDate(start, opt('titleFormat'));
+
+		t.start = start;
+		t.end = end;
+		t.visStart = visStart;
+		t.visEnd = visEnd;
+
+		renderBasic(rowCnt, colCnt, true);
+	}
+	
+	
+}
+
+;;
+
+fcViews.fourWeeks = FourWeeksView;
+
+function FourWeeksView(element, calendar) {
+	var t = this;
+	
+	
+	// exports
+	t.render = render;
+	
+	
+	// imports
+	BasicView.call(t, element, calendar, 'fourWeeks');
+	var opt = t.opt;
+	var renderBasic = t.renderBasic;
+	var skipHiddenDays = t.skipHiddenDays;
+	var getCellsPerWeek = t.getCellsPerWeek;
+	var formatDate = calendar.formatDate;
+	
+	
+	function render(date, delta) {
+
+		if (delta) {
+			//addMonths(date, delta);
+			addDays(date, delta *7 *4 );
+		}
+
+		var firstDay = opt('firstDay');
+
+		var start = addDays(cloneDate(date), - ((date.getDay() - firstDay +7 ) % 7));
+
+		var end = addDays(cloneDate(start), 7 * 4);
+
+		var visStart = cloneDate(start);
+		addDays(visStart, -((visStart.getDay() - firstDay + 7) % 7));
+		skipHiddenDays(visStart);
+
+		var visEnd = cloneDate(end);
+		addDays(visEnd, (7 - visEnd.getDay() + firstDay) % 7);
+		skipHiddenDays(visEnd, -1, true);
+
+		var colCnt = getCellsPerWeek();
+		var rowCnt = Math.round(dayDiff(visEnd, visStart) / 7); // should be no need for Math.round
+
+		if (opt('weekMode') == 'fixed') {
+			addDays(visEnd, (4 - rowCnt) * 7); // add weeks to make up for it
+			rowCnt = 4;
 		}
 
 		t.title = formatDate(start, opt('titleFormat'));

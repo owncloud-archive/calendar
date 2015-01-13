@@ -19,6 +19,9 @@ if( count($calendars) == 0) {
 if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'month') == "oneweekview") {
 	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "agendaWeek");
 }
+if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'month') == "fourweeksview") {
+	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "fourweeks");
+}
 if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'month') == "onemonthview") {
 	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "month");
 }

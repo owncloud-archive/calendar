@@ -467,6 +467,9 @@ Calendar={
 				case 'agendaWeek':
 					id = 'oneweekview_radio';
 					break;
+				case 'fourWeeks':
+					id = 'fourweeksview_radio';
+					break;
 				case 'month':
 					id = 'onemonthview_radio';
 					break;
@@ -503,6 +506,7 @@ Calendar={
 
 				case 'agendaDay':
 				case 'agendaWeek':
+				case 'fourWeeks':
 				case 'month':
 					$('#fullcalendar').fullCalendar('changeView', view);
 					if (Calendar.UI.lastView == view) {
@@ -1109,6 +1113,9 @@ $(document).ready(function(){
 
 	$('#oneweekview_radio').click(function(){
 		Calendar.UI.changeView('agendaWeek');
+	});
+	$('#fourweeksview_radio').click(function(){
+		Calendar.UI.changeView('fourWeeks');
 	});
 	$('#onemonthview_radio').click(function(){
 		Calendar.UI.changeView('month');
