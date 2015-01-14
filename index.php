@@ -26,21 +26,27 @@ if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'mon
 	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "list");
 }
 
-OCP\Util::addscript('calendar/3rdparty/fullcalendar', 'fullcalendar');
-OCP\Util::addStyle('calendar/3rdparty/fullcalendar', 'fullcalendar');
-OCP\Util::addscript('calendar/3rdparty/timepicker', 'jquery.ui.timepicker');
-OCP\Util::addStyle('calendar/3rdparty/timepicker', 'jquery.ui.timepicker');
+OCP\Util::addscript('calendar','loader');
+OCP\Util::addScript('calendar', '../3rdparty/chosen/js/chosen.jquery.min');
+OCP\Util::addStyle('calendar', '../3rdparty/chosen/css/chosen');
+OCP\Util::addStyle('calendar', '../3rdparty/miniColors/css/jquery.miniColors');
+OCP\Util::addscript('calendar', '../3rdparty/miniColors/js/jquery.miniColors.min');
+
+OCP\Util::addScript('calendar', '../3rdparty/fullcalendar/js/fullcalendar');
+OCP\Util::addStyle('calendar', '../3rdparty/fullcalendar/css/fullcalendar');
+OCP\Util::addScript('calendar', '../3rdparty/timepicker/js/jquery.ui.timepicker');
+OCP\Util::addStyle('calendar', '../3rdparty/timepicker/css/jquery.ui.timepicker');
 if(OCP\Config::getUserValue(OCP\USER::getUser(), "calendar", "timezone") == null || OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timezonedetection') == 'true') {
-	OCP\Util::addscript('calendar', 'geo');
+	OCP\Util::addScript('calendar', 'geo');
 }
-OCP\Util::addscript('calendar', 'calendar');
+OCP\Util::addScript('calendar', 'calendar');
 OCP\Util::addStyle('calendar', 'style');
-OCP\Util::addscript('calendar/3rdparty/jquery.multiselect', 'jquery.multiselect');
-OCP\Util::addStyle('calendar/3rdparty/jquery.multiselect', 'jquery.multiselect');
-OCP\Util::addscript('calendar','jquery.multi-autocomplete');
-OCP\Util::addscript('','tags');
-OCP\Util::addscript('calendar','on-event');
-OCP\Util::addscript('calendar','settings');
+OCP\Util::addScript('calendar', '../3rdparty/jquery.multiselect/js/jquery.multiselect');
+OCP\Util::addStyle('calendar', '../3rdparty/jquery.multiselect/css/jquery.multiselect');
+OCP\Util::addScript('calendar','jquery.multi-autocomplete');
+OCP\Util::addScript('','tags');
+OCP\Util::addScript('calendar','on-event');
+OCP\Util::addScript('calendar','settings');
 OCP\App::setActiveNavigationEntry('calendar_index');
 $tmpl = new OCP\Template('calendar', 'calendar', 'user');
 $timezone=OCP\Config::getUserValue(OCP\USER::getUser(),'calendar','timezone','');
