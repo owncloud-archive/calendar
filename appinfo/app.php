@@ -37,3 +37,13 @@ OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
 Sabre\VObject\Property::$classMap['SUMMARY'] = 'OC\VObject\StringProperty';
 Sabre\VObject\Property::$classMap['DESCRIPTION'] = 'OC\VObject\StringProperty';
 Sabre\VObject\Property::$classMap['LOCATION'] = 'OC\VObject\StringProperty';
+
+$url = OC::$server->getRequest()->server['REQUEST_URI'];
+
+if (preg_match('%index.php/apps/files/?.*%', $url)) {
+    OCP\Util::addscript('calendar','loader');
+    OCP\Util::addScript('calendar', '../3rdparty/chosen/js/chosen.jquery.min');
+    OCP\Util::addStyle('calendar', '../3rdparty/chosen/css/chosen');
+    OCP\Util::addStyle('calendar', '../3rdparty/miniColors/css/jquery.miniColors');
+    OCP\Util::addscript('calendar', '../3rdparty/miniColors/js/jquery.miniColors.min');
+}

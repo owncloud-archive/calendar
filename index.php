@@ -26,12 +26,6 @@ if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'mon
 	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "list");
 }
 
-OCP\Util::addscript('calendar','loader');
-OCP\Util::addScript('calendar', '../3rdparty/chosen/js/chosen.jquery.min');
-OCP\Util::addStyle('calendar', '../3rdparty/chosen/css/chosen');
-OCP\Util::addStyle('calendar', '../3rdparty/miniColors/css/jquery.miniColors');
-OCP\Util::addscript('calendar', '../3rdparty/miniColors/js/jquery.miniColors.min');
-
 OCP\Util::addScript('calendar', '../3rdparty/fullcalendar/js/fullcalendar');
 OCP\Util::addStyle('calendar', '../3rdparty/fullcalendar/css/fullcalendar');
 OCP\Util::addScript('calendar', '../3rdparty/timepicker/js/jquery.ui.timepicker');
