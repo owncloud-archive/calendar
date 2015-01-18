@@ -23,7 +23,10 @@ if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'mon
 	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "month");
 }
 if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'month') == "listview") {
-	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "list");
+	OCP\Config::setUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'agendaDay');
+}
+if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'month') == 'list') {
+	OCP\Config::setUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'agendaDay');
 }
 
 OCP\Util::addScript('calendar', '../3rdparty/fullcalendar/js/fullcalendar');
