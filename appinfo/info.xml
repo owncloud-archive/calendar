@@ -5,9 +5,7 @@
 	<licence>AGPL</licence>
 	<author>Georg Ehrke, Bart Visscher, Jakob Sack</author>
 	<require>8</require>
-	<shipped>true</shipped>
 	<description>Calendar with CalDAV support</description>
-	<default_enable/>
 	<remote>
 		<calendar>appinfo/remote.php</calendar>
 		<caldav>appinfo/remote.php</caldav>
