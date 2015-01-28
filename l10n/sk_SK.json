@@ -17,6 +17,7 @@
     "Deletion failed" : "Odstránenie zlyhalo",
     "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" : "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}",
     "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" : "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
+    "Do you really want to delete this calendar?" : "Naozaj chcete zmazať tento kalendár?",
     "group" : "skupina",
     "can edit" : "môže upraviť",
     "can share" : "môže zdieľať",
