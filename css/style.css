@@ -187,6 +187,7 @@ button.category{margin:0 3px;}
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
 	margin: 3px 0;
 }
 /* bigger event title in detail view */
