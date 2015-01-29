@@ -60,7 +60,7 @@ Calendar={
 			}
 			return hour + ':' + minute;
 		}, 
-		adjustDate:function(){
+		adjustToDate:function(){
 			var fromTime = $('#fromtime').val();
 			var fromDate = $('#from').val();
 			var fromTimestamp = Calendar.Util.dateTimeToTimestamp(fromDate, fromTime);
@@ -71,7 +71,7 @@ Calendar={
 
 			if(fromTimestamp >= toTimestamp){
 				fromTimestamp += 30*60*1000;
-				
+
 				var date = new Date(fromTimestamp);
 				movedTime = Calendar.Util.formatTime(date.getHours(), date.getMinutes());
 				movedDate = Calendar.Util.formatDate(date.getFullYear(),
@@ -79,6 +79,27 @@ Calendar={
 
 				$('#to').val(movedDate);
 				$('#totime').val(movedTime);
+			}
+		},
+		adjustFromDate:function(){
+			var fromTime = $('#fromtime').val();
+			var fromDate = $('#from').val();
+			var fromTimestamp = Calendar.Util.dateTimeToTimestamp(fromDate, fromTime);
+
+			var toTime = $('#totime').val();
+			var toDate = $('#to').val();
+			var toTimestamp = Calendar.Util.dateTimeToTimestamp(toDate, toTime);
+
+			if(fromTimestamp > toTimestamp){
+				fromTimestamp += 30*60*1000;
+
+				var date = new Date(toTimestamp);
+				movedTime = Calendar.Util.formatTime(date.getHours(), date.getMinutes());
+				movedDate = Calendar.Util.formatDate(date.getFullYear(),
+						date.getMonth()+1, date.getDate());
+
+				$('#from').val(movedDate);
+				$('#fromtime').val(movedTime);
 			}
 		},
 		getDayOfWeek:function(iDay){
@@ -145,10 +166,11 @@ Calendar={
 			});
 			$('#fromtime').timepicker({
 				showPeriodLabels: false,
-				onSelect: function(){ Calendar.Util.adjustDate(); }
+				onSelect: function(){ Calendar.Util.adjustToDate(); }
 			});
 			$('#totime').timepicker({
-				showPeriodLabels: false
+				showPeriodLabels: false,
+				onSelect: function(){ Calendar.Util.adjustFromDate(); }
 			});
 			$('#category').multiple_autocomplete({source: categories});
 			Calendar.UI.repeat('init');
