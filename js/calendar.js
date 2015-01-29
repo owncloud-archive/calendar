@@ -728,10 +728,10 @@ Calendar={
 						var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
 						OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
 							var newitem = '<li data-item-type="event"'
-								+ 'data-share-with="'+shareWith+'" '
-								+ 'data-permissions="'+permissions+'" '
-								+ 'data-share-type="'+shareType+'">'
-								+ shareWith
+								+ 'data-share-with="'+escapeHTML(shareWith)+'" '
+								+ 'data-permissions="'+escapeHTML(permissions)+'" '
+								+ 'data-share-type="'+escapeHTML(shareType)+'">'
+								+ escapeHTML(shareWith)
 								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
 								+ '<span class="shareactions">'
 								+ '<label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
