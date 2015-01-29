@@ -13,6 +13,9 @@ $(document).on('click', '#primarycaldav', function () {
 $(document).on('click', '#ioscaldav', function () {
 	$('#ioscaldav').select();
 });
+$(document).on('click', '#viewOnMap', function () {
+	$(this).tipsy('hide');Calendar.Util.openLocationMap();
+});
 $(document).on('click', '#editCategories', function () {
 	$(this).tipsy('hide');OC.Tags.edit('event');
 });
