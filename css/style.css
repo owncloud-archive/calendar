@@ -217,13 +217,11 @@ button.category{margin:0 3px;}
 	margin: 7px 0;
 	width: 100%;
 }
-/* category input field leaves room for edit button
-   location input field leaves room for map button */
-#category, #event-location {
+/* category input field leaves room for edit button */
+#category {
 	width: 90%;
 }
-
-#editCategories, #viewOnMap {
+#editCategories {
 	display: inline-block;
 	padding: 6px 12px;
 }

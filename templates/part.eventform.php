@@ -62,9 +62,6 @@
 			value="<?php p(isset($_['location']) ? $_['location'] : '') ?>"
 			maxlength="100"  name="location" />
 
-		<a class="action" id="viewOnMap" title="<?php p($l->t('View on map')); ?>">
-		<img alt="<?php p($l->t('View on map')); ?>" src="<?php print_unescaped(OCP\image_path('core','actions/public.svg'))?>" class="svg action" style="width: 16px; height: 16px;"></a>
-
 		<input id="category" name="categories" type="text"
 			placeholder="<?php p($l->t('Categories (separate by comma)')); ?>"
 			value="<?php p(isset($_['categories']) ? $_['categories'] : '') ?>">
