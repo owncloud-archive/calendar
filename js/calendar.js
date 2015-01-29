@@ -60,7 +60,7 @@ Calendar={
 			}
 			return hour + ':' + minute;
 		}, 
-		adjustToDate:function(){
+		adjustDate:function(){
 			var fromTime = $('#fromtime').val();
 			var fromDate = $('#from').val();
 			var fromTimestamp = Calendar.Util.dateTimeToTimestamp(fromDate, fromTime);
@@ -71,7 +71,7 @@ Calendar={
 
 			if(fromTimestamp >= toTimestamp){
 				fromTimestamp += 30*60*1000;
-
+				
 				var date = new Date(fromTimestamp);
 				movedTime = Calendar.Util.formatTime(date.getHours(), date.getMinutes());
 				movedDate = Calendar.Util.formatDate(date.getFullYear(),
@@ -79,27 +79,6 @@ Calendar={
 
 				$('#to').val(movedDate);
 				$('#totime').val(movedTime);
-			}
-		},
-		adjustFromDate:function(){
-			var fromTime = $('#fromtime').val();
-			var fromDate = $('#from').val();
-			var fromTimestamp = Calendar.Util.dateTimeToTimestamp(fromDate, fromTime);
-
-			var toTime = $('#totime').val();
-			var toDate = $('#to').val();
-			var toTimestamp = Calendar.Util.dateTimeToTimestamp(toDate, toTime);
-
-			if(fromTimestamp > toTimestamp){
-				fromTimestamp += 30*60*1000;
-
-				var date = new Date(toTimestamp);
-				movedTime = Calendar.Util.formatTime(date.getHours(), date.getMinutes());
-				movedDate = Calendar.Util.formatDate(date.getFullYear(),
-						date.getMonth()+1, date.getDate());
-
-				$('#from').val(movedDate);
-				$('#fromtime').val(movedTime);
 			}
 		},
 		getDayOfWeek:function(iDay){
@@ -140,6 +119,12 @@ Calendar={
 			var appNavigationWidth = ($(window).width() > 768) ? $('#app-navigation').width() : 0;
 			timeline.css({'left':($('.fc-today').offset().left-appNavigationWidth),'width': $('.fc-today').width(),'top':topLoc + 'px'});
 		},
+		openLocationMap:function(){
+			var address = $('#event-location').val();
+			address = encodeURIComponent(address);
+			var newWindow = window.open('http://open.mapquest.com/?q='+address, '_blank');
+			newWindow.focus();
+		}
 	},
 	UI:{
 		loading: function(isLoading){
@@ -166,11 +151,10 @@ Calendar={
 			});
 			$('#fromtime').timepicker({
 				showPeriodLabels: false,
-				onSelect: function(){ Calendar.Util.adjustToDate(); }
+				onSelect: function(){ Calendar.Util.adjustDate(); }
 			});
 			$('#totime').timepicker({
-				showPeriodLabels: false,
-				onSelect: function(){ Calendar.Util.adjustFromDate(); }
+				showPeriodLabels: false
 			});
 			$('#category').multiple_autocomplete({source: categories});
 			Calendar.UI.repeat('init');
