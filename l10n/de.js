@@ -193,7 +193,7 @@ OC.L10N.register(
     "Close Dialog" : "Dialog schließen",
     "Create a new event" : "Neues Ereignis erstellen",
     "Create event" : "Veranstaltung erstellen",
-    "Share with user or group" : "Mit Nutzer oder Gruppe teilen",
+    "Share with user or group" : "Mit Benutzer oder Gruppe teilen",
     "Unshare" : "Teilung zurücknehmen",
     "Not shared with anyone" : "Mit niemanden geteilt",
     "Send Email" : "E-Mail senden",

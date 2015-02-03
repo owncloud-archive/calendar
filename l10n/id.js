@@ -119,6 +119,7 @@ OC.L10N.register(
     "by weeknumber(s)" : "berdasarkan minggu ke",
     "by day and month" : "berdasarkan hari dan bulan",
     "Date" : "Tanggal",
+    "Day" : "Hari",
     "Week" : "Minggu",
     "Month" : "Bulan",
     "Today" : "Hari Ini",
