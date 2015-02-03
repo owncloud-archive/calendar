@@ -111,7 +111,7 @@ class Event extends \OCP\Search\Result {
 
 	/**
 	 * Cache the user timezone to avoid multiple requests (it looks like it
-	 * uses a DB call in OC_Preferences to return this)
+	 * uses a DB call in config to return this)
 	 *
 	 * @staticvar null $timezone
 	 * @return DateTimeZone
