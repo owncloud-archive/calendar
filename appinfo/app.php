@@ -25,18 +25,13 @@ OCP\Util::connectHook('OC_Calendar', 'deleteEvent', 'OC_Calendar_Repeat', 'clean
 OCP\Util::connectHook('OC_Calendar', 'moveEvent', 'OC_Calendar_Repeat', 'update');
 OCP\Util::connectHook('OC_Calendar', 'deleteCalendar', 'OC_Calendar_Repeat', 'cleanCalendar');
 
-OCP\Util::addscript('calendar','loader');
-OCP\Util::addScript('calendar/3rdparty/chosen', 'chosen.jquery.min');
-OCP\Util::addStyle('calendar/3rdparty/chosen', 'chosen');
-OCP\Util::addStyle('calendar/3rdparty/miniColors', 'jquery.miniColors');
-OCP\Util::addscript('calendar/3rdparty/miniColors', 'jquery.miniColors.min');
 OCP\App::addNavigationEntry( array(
   'id' => 'calendar_index',
   'order' => 10,
   'href' => OCP\Util::linkToRoute('calendar_index'),
   'icon' => OCP\Util::imagePath( 'calendar', 'calendar.svg' ),
   'name' => $l->t('Calendar')));
-\OC_Search::registerProvider('OCA\Calendar\Search\Provider');
+\OC::$server->getSearch()->registerProvider('OCA\Calendar\Search\Provider', array('apps' => array('calendar')));
 OCP\Share::registerBackend('calendar', 'OC_Share_Backend_Calendar');
 OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
 
@@ -45,3 +40,13 @@ OCP\Backgroundjob::registerJob('OC_Calendar_Alarm');
 Sabre\VObject\Property::$classMap['SUMMARY'] = 'OC\VObject\StringProperty';
 Sabre\VObject\Property::$classMap['DESCRIPTION'] = 'OC\VObject\StringProperty';
 Sabre\VObject\Property::$classMap['LOCATION'] = 'OC\VObject\StringProperty';
+
+$url = OC::$server->getRequest()->server['REQUEST_URI'];
+
+if (preg_match('%index.php/apps/files(/.*)?%', $url)) {
+    OCP\Util::addscript('calendar','loader');
+    OCP\Util::addScript('calendar', '../3rdparty/chosen/js/chosen.jquery.min');
+    OCP\Util::addStyle('calendar', '../3rdparty/chosen/css/chosen');
+    OCP\Util::addStyle('calendar', '../3rdparty/miniColors/css/jquery.miniColors');
+    OCP\Util::addscript('calendar', '../3rdparty/miniColors/js/jquery.miniColors.min');
+}

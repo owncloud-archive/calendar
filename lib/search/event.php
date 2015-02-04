@@ -23,7 +23,7 @@ namespace OCA\Calendar\Search;
 /**
  * A calendar event
  */
-class Event extends \OC\Search\Result {
+class Event extends \OCP\Search\Result {
 
 	/**
 	 * Type name; translated in templates
@@ -111,7 +111,7 @@ class Event extends \OC\Search\Result {
 
 	/**
 	 * Cache the user timezone to avoid multiple requests (it looks like it
-	 * uses a DB call in OC_Preferences to return this)
+	 * uses a DB call in config to return this)
 	 *
 	 * @staticvar null $timezone
 	 * @return DateTimeZone

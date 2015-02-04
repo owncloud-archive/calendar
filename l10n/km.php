@@ -1,6 +1,7 @@
 <?php
 $TRANSLATIONS = array(
 "Not all calendars are completely cached" => "មិនមែន​រាល់​ប្រតិទិន​ទាំង​អស់​ត្រូវបាន​ស្តុក​ទុកទេ",
+"Everything seems to be completely cached" => "អ្វីគ្រប់យ៉ាងហាក់ត្រូវ​បាន​ស្តុក​ទុក​រួចរាល់",
 "No calendars found." => "រក​មិន​ឃើញ​ប្រតិទិន។",
 "No events found." => "រក​មិន​ឃើញ​ព្រឹត្តិការណ៍។",
 "Wrong calendar" => "ប្រតិទិន​ខុស",
@@ -10,6 +11,7 @@ $TRANSLATIONS = array(
 "Timezone changed" => "បាន​ប្ដូរ​ល្វែង​ម៉ោង",
 "Invalid request" => "សំណើ​មិន​ត្រឹម​ត្រូវ",
 "Calendar" => "ប្រតិទិន",
+"Error sending mail" => "ផ្ញើអ៊ីម៉ែលមាន​បញ្ហា",
 "Deletion failed" => "លុប​មិន​បាន​សម្រេច",
 "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" => "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}",
 "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" => "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",

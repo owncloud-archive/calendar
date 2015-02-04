@@ -43,8 +43,8 @@ body {
 #listview #events .day {width:auto;padding-left:10px;border-bottom: 2px solid #EEEEEE;text-align:left;}
 
 .actions {height: 33px;	min-width: 800px;}
-.actionsfloatleft {float:left;margin-left: 1.4em;}
-.actionsfloatright {float:right;margin-right: 1.4em;}
+.actionsfloatleft {float:left;margin-left: 1.4em !important;}
+.actionsfloatright {float:right;margin-right: 1.4em !important;}
 .controls {min-width: 800px;}
 .center {text-align: center;}
 .dateinfo {height: 20px;width: 100%; overflow: hidden; margin-top: 0; padding: 0; font-size: 12px;background: #F7F7F7;}
@@ -68,6 +68,7 @@ color:#A9A9A9;
 select#category{width:140px;}
 button.category{margin:0 3px;}
 
+.calendar-colorpicker { display: inline-block; }
 .calendar-colorpicker-color{display:inline-block;width:20px;height:20px;margin-right:2px;cursor:pointer;border:2px solid transparent;}
 .calendar-colorpicker-color.active{border:2px solid black;}
 
@@ -181,6 +182,7 @@ button.category{margin:0 3px;}
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
 	margin: 3px 0;
 }
 /* bigger event title in detail view */
@@ -295,6 +297,12 @@ button.category{margin:0 3px;}
 	margin-left: 0;
 	margin-right: 0;
 }
+
+#cleancalendarcache {
+	max-width: 95%;
+	white-space: normal;
+}
+
 #navigation-list form {
 	width: 100%;
 }

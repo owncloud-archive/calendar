@@ -23,7 +23,7 @@ namespace OCA\Calendar\Search;
 /**
  * The updated calendar search provider
  */
-class Provider extends \OC\Search\Provider {
+class Provider extends \OCP\Search\Provider {
 
 	/**
 	 * Search for query in calendar events
