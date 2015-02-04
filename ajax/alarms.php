@@ -12,7 +12,7 @@ $l = OC_L10N::get('calendar');
 
 $alarms = OC_Calendar_Object::getAlarmsToDisplay();
 
-$alarmsIdsSended = array();
+$alarmsIdsSent = array();
 $ouput = array();
 $timeFormat = OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'H:i' : 'h:i a';
 $dateFormat = OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'dateformat', 'dd-mm-yy') == 'dd-mm-yy' ? 'd-m-Y' : 'm-d-Y';
@@ -43,8 +43,8 @@ while($row = $alarms->fetchRow()){
 	}
 
 
-	$alarmsIdsSended[] = $row['id'];
+	$alarmsIdsSent[] = $row['id'];
 }
 
-OC_Calendar_Object::setAlarmsSended($alarmsIdsSended);
+OC_Calendar_Object::setAlarmsSent($alarmsIdsSent);
 OCP\JSON::success(array('events' => $ouput));

@@ -26,13 +26,13 @@ class OC_Calendar_Alarm extends \OC\BackgroundJob\TimedJob{
                     FROM *PREFIX*clndr_objects AS objects
                     JOIN *PREFIX*clndr_calendars AS calendars ON (objects.calendarid=calendars.id)
                     JOIN *PREFIX*clndr_alarms AS alarms ON (objects.id=alarms.objid)
-                    WHERE alarms.senddate <= UTC_TIMESTAMP() AND alarms.sended = 0 AND alarms.type = ?
+                    WHERE alarms.senddate <= UTC_TIMESTAMP() AND alarms.sent = 0 AND alarms.type = ?
                     ORDER BY userid, startdate, enddate';
 
 			$query = \OCP\DB::prepare($sql);
 			$result = $query->execute(array('EMAIL'));
 
-			$alarmsIdsSended = array();
+			$alarmsIdsSent = array();
 			while($row = $result->fetchRow()){
 				$lang = OC_Preferences::getValue($row['userid'], 'core', 'lang');
 				$l = OC_L10N::get('calendar', $lang);
@@ -63,11 +63,11 @@ class OC_Calendar_Alarm extends \OC\BackgroundJob\TimedJob{
 
 				OC_Mail::send($email, $row['userid'], $l->t('Reminder: %s', $row['summary']), $message, $fromEmail, $l->t('Owncloud Event Reminder'), true);
 
-				$alarmsIdsSended[] = $row['alarmId'];
+				$alarmsIdsSent[] = $row['alarmId'];
 			}
 
-			$stmt = OCP\DB::prepare('UPDATE `*PREFIX*clndr_alarms` SET sended = 1 WHERE `id` IN(?)');
-			$stmt->execute(array(implode(',', $alarmsIdsSended)));
+			$stmt = OCP\DB::prepare('UPDATE `*PREFIX*clndr_alarms` SET sent = 1 WHERE `id` IN(?)');
+			$stmt->execute(array(implode(',', $alarmsIdsSent)));
 		} catch(\Exception $e){
 			OC_Log::write('calendar', __METHOD__.', Exception: '.$e->getMessage(), OCP\Util::DEBUG);
 			return false;

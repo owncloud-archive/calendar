@@ -728,7 +728,7 @@ class OC_Calendar_Object{
                 FROM *PREFIX*clndr_alarms AS alarms
                 JOIN *PREFIX*clndr_objects AS objects ON objects.id = alarms.objid
                 JOIN *PREFIX*clndr_calendars AS calendars ON (objects.calendarid=calendars.id)
-                WHERE userid = ? AND type = ? AND sended = 0
+                WHERE userid = ? AND type = ? AND sent = 0
                     AND senddate BETWEEN DATE_SUB(UTC_TIMESTAMP(), INTERVAL 2 MINUTE) AND UTC_TIMESTAMP()
                 ORDER BY senddate';
 
@@ -737,9 +737,9 @@ class OC_Calendar_Object{
 		return $query->execute(array(OCP\USER::getUser(), 'DISPLAY'));
 	}
 
-	public static function setAlarmsSended($alarmsIdsSended) {
-		$query = \OCP\DB::prepare('UPDATE `*PREFIX*clndr_alarms` SET sended = 1 WHERE `id` IN(?)');
-		$query->execute(array(implode(',', $alarmsIdsSended)));
+	public static function setAlarmsSent($alarmsIdsSent) {
+		$query = \OCP\DB::prepare('UPDATE `*PREFIX*clndr_alarms` SET sent = 1 WHERE `id` IN(?)');
+		$query->execute(array(implode(',', $alarmsIdsSent)));
 	}
 
 	/**
@@ -1200,13 +1200,13 @@ class OC_Calendar_Object{
 					$sendate = new \DateTime('@'.$startDate->getTimestamp());
 					$sendate->sub(new \DateInterval($interval));
 
-					$sended = ($sendate->getTimestamp() > time()) ? 0 : 1;
+					$sent = ($sendate->getTimestamp() > time()) ? 0 : 1;
 
 					$sendDateStr = self::getUTCforMDB($sendate);
 
 					$alarmType = $alarmsType[$i];
-					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, timetype, sended) VALUES (null, ?, ?, ?, ?, ?, ?)');
-					$stmt->execute(array($eventId, $sendDateStr, $alarmType, $alarmDuration, $alarmTimeType, $sended));
+					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, timetype, sent) VALUES (null, ?, ?, ?, ?, ?, ?)');
+					$stmt->execute(array($eventId, $sendDateStr, $alarmType, $alarmDuration, $alarmTimeType, $sent));
 				}
 				$i++;
 			}
@@ -1245,12 +1245,12 @@ class OC_Calendar_Object{
 					$sendate = $sendate = new \DateTime('@'.$startDate->getTimestamp());
 					$sendate->sub(new \DateInterval($params[1]));
 
-					$sended = ($sendate->getTimestamp() > time()) ? 0 : 1;
+					$sent = ($sendate->getTimestamp() > time()) ? 0 : 1;
 
 					$sendDateStr = self::getUTCforMDB($sendate);
 
-					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, timetype, sended) VALUES (null, ?, ?, ?, ?, ?, ?)');
-					$stmt->execute(array($eventId, $sendDateStr, $alarm->ACTION, $value, $timeType, $sended));
+					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, timetype, sent) VALUES (null, ?, ?, ?, ?, ?, ?)');
+					$stmt->execute(array($eventId, $sendDateStr, $alarm->ACTION, $value, $timeType, $sent));
 				}
 			}
 		}
@@ -1274,13 +1274,13 @@ class OC_Calendar_Object{
 			$newSendDate = new \DateTime($row['senddate']);
 			$newSendDate->add($delta);
 
-			$sended = 0;
+			$sent = 0;
 			if($newSendDate->getTimestamp() < time()){
-				$sended = 1;
+				$sent = 1;
 			}
 
-			$update = \OCP\DB::prepare('UPDATE *PREFIX*clndr_alarms SET senddate = ?, sended = ? WHERE id = ?');
-			$update->execute(array($newSendDate->format('Y-m-d H:i'), $sended, $row['id']));
+			$update = \OCP\DB::prepare('UPDATE *PREFIX*clndr_alarms SET senddate = ?, sent = ? WHERE id = ?');
+			$update->execute(array($newSendDate->format('Y-m-d H:i'), $sent, $row['id']));
 		}
             }
             
