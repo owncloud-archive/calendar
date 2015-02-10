@@ -92,7 +92,7 @@ OC.L10N.register(
     "Personal" : "個人",
     "Projects" : "プロジェクト",
     "Questions" : "質問事項",
-    "Work" : "週の始まり",
+    "Work" : "職場",
     "by" : "による",
     "unnamed" : "無名",
     "You do not have the permissions to update this calendar." : "このカレンダーを更新する権限がありません。",
