@@ -10,7 +10,7 @@ OC.L10N.register(
     "The file contained either no events or all events are already saved in your calendar." : "Dosya ya hiçbir etkinlik içermiyor ya da bütün etkinlikler takviminize zaten kaydedilmiş.",
     "events have been saved in the new calendar" : "etkinlikler yeni takvimde saklandı",
     "Import failed" : "İçeri aktarma başarısız",
-    "events have been saved in your calendar" : "etkinlikler takviminizde saklandı",
+    "events have been saved in your calendar" : "etkinlik takviminize kaydedildi",
     "New Timezone:" : "Yeni Zaman Dilimi:",
     "Timezone changed" : "Zaman dilimi değiştirildi",
     "Invalid request" : "Geçersiz istek",
