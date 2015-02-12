@@ -2,7 +2,7 @@ OC.L10N.register(
     "calendar",
     {
     "Not all calendars are completely cached" : "Не все календари полностью кешированы",
-    "Everything seems to be completely cached" : "Видимо все было успешно кэшировано",
+    "Everything seems to be completely cached" : "Видимо, все было успешно кэшировано",
     "No calendars found." : "Календари не найдены.",
     "No events found." : "События не найдены.",
     "Wrong calendar" : "Неверный календарь",
