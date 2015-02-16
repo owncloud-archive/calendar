@@ -34,10 +34,6 @@ OCP\App::addNavigationEntry( array(
 OCP\Share::registerBackend('calendar', 'OC_Share_Backend_Calendar');
 OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
 
-Sabre\VObject\Property::$classMap['SUMMARY'] = 'OC\VObject\StringProperty';
-Sabre\VObject\Property::$classMap['DESCRIPTION'] = 'OC\VObject\StringProperty';
-Sabre\VObject\Property::$classMap['LOCATION'] = 'OC\VObject\StringProperty';
-
 $request = \OC::$server->getRequest();
 if (isset($request->server['REQUEST_URI'])) {
 	$url = $request->server['REQUEST_URI'];
