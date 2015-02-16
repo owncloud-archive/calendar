@@ -96,6 +96,7 @@ class OC_Share_Backend_Calendar implements OCP\Share_Backend_Collection {
 				$calendar['permissions'] = $item['permissions'];
 				$calendar['calendarid'] = $calendar['id'];
 				$calendar['owner'] = $calendar['userid'];
+				$calendar['active'] = true;
 				$calendars[] = $calendar;
 			}
 		}
