@@ -206,12 +206,12 @@ button.category{margin:0 3px;}
 	float: right;
 }
 #from, #to {
-	width: 65px;
+	width: 80px;
 	margin: 0;
 }
 #fromtime, #totime {
 	margin: 0;
-	width: 80px;
+	width: 90px;
 }
 #event-allday {
 	display: inline-block;
