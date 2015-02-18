@@ -578,6 +578,11 @@ button.category{margin:0 3px;}
 	z-index: 999;
 }
 
+/* force minimum height for event so that 15 minute events are visible */
+.fc-event {
+	min-height: 20px;
+}
+
 .fc-event-draggable { cursor: default; }
 
 .fc-agenda .fc-agenda-axis{
