@@ -181,7 +181,7 @@ OC.L10N.register(
     "Interval" : "Intervalle",
     "End" : "Fin",
     "occurrences" : "occurrences",
-    "Visibility to people shared with" : "Visibilité pour les personnes ayant accès au partage",
+    "Visibility to people shared with" : "Visibilité pour les personnes avec lesquelles l'événement est partagé",
     "create a new calendar" : "Créer un nouveau calendrier",
     "Import a calendar file" : "Importer un fichier de calendrier",
     "Please choose a calendar" : "Veuillez sélectionner un calendrier",
