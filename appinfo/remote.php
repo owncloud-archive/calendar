@@ -40,6 +40,7 @@ $nodes = array(
 
 // Fire up server
 $server = new \Sabre\DAV\Server($nodes);
+$server->httpRequest->setUrl(\OC::$server->getRequest()->getRequestUri());
 $server->setBaseUri($baseuri);
 // Add plugins
 $server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,'ownCloud'));

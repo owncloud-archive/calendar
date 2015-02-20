@@ -880,14 +880,16 @@ class OC_Calendar_Object{
 	 * @param array $request
 	 * @return object created $vcalendar
 	 */	public static function createVCalendarFromRequest($request) {
-		$vcalendar = new OC_VObject('VCALENDAR');
+		$vcalendar = new \Sabre\VObject\Component\VCalendar();
 		$vcalendar->add('PRODID', 'ownCloud Calendar');
 		$vcalendar->add('VERSION', '2.0');
 
-		$vevent = new OC_VObject('VEVENT');
+		$vevent = $vcalendar->createComponent('VEVENT');
 		$vcalendar->add($vevent);
 
-		$vevent->setDateTime('CREATED', 'now', Sabre\VObject\Property\DateTime::UTC);
+		$now = new DateTime('now');
+		$now->setTimeZone(\DateTimeZone('UTC'));
+		$vEvent->setValue('CREATED', $now);
 
 		$vevent->setUID();
 		return self::updateVCalendarFromRequest($request, $vcalendar);
