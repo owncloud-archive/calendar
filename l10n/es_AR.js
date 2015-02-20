@@ -15,6 +15,7 @@ OC.L10N.register(
     "Timezone changed" : "Zona horaria cambiada",
     "Invalid request" : "Pedido no válido",
     "Calendar" : "Calendario",
+    "Error sending mail" : "Error enviando correo",
     "Deletion failed" : "Error al borrar",
     "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}" : "ddd d MMMM[ yyyy]{ - [ddd d] MMMM yyyy}",
     "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}" : "ddd d MMMM[ yyyy] HH:mm{ - [ ddd d MMMM yyyy] HH:mm}",
