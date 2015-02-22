@@ -1043,7 +1043,7 @@ $(document).ready(function(){
 			if(view.name === 'agendaDay') {
 				$('td.fc-state-highlight').css('background-color', '#ffffff');
 			} else{
-				$('td.fc-state-highlight').css('background-color', '#ffc');
+				$('td.fc-state-highlight').css('background-color', '#ccc');
 			}
 			Calendar.UI.setViewActive(view.name);
 			if (view.name == 'agendaWeek') {
