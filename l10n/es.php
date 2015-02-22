@@ -2,7 +2,7 @@
 $TRANSLATIONS = array(
 "Not all calendars are completely cached" => "No todos los calendarios se han almacenado completamente",
 "Everything seems to be completely cached" => "Todo parece estar completamente almacenado",
-"No calendars found." => "No se encuentra calendarios.",
+"No calendars found." => "Ningún calendario encontrado.",
 "No events found." => "No se encuentran eventos.",
 "Wrong calendar" => "Calendario erróneo",
 "You do not have the permissions to edit this event." => "No tiene los permisos para editar este evento.",
