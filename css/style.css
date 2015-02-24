@@ -251,6 +251,8 @@ button.category{margin:0 3px;}
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding: 0;
+	z-index: 1000;
+	max-width: 100%;
 }
 .ui-dialog .ui-dialog-content {
 	overflow: initial;
