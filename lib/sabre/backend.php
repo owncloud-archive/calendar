@@ -1,5 +1,7 @@
 <?php
 
+use \Sabre\DAV\PropPatch;
+
 class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	/**
 	 * List of CalDAV properties, and how they map to database fieldnames
@@ -172,10 +174,10 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	 * (424 Failed Dependency) because the request needs to be atomic.
 	 *
 	 * @param string $calendarId
-	 * @param array $properties
+	 * @param PropPatch $propPatch
 	 * @return bool|array
 	 */
-	public function updateCalendar($calendarId, array $properties) {
+	public function updateCalendar($calendarId, PropPatch $propPatch) {
 
 		$newValues = array();
 		$result = array(
@@ -185,6 +187,8 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 		);
 
 		$hasError = false;
+
+		$properties = $propPatch->getRemainingMutations();
 
 		foreach($properties as $propertyName=>$propertyValue) {
 
@@ -409,7 +413,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	/**
 	 * @brief Creates a etag
 	 * @param array $row Database result
-	 * @returns associative array
+	 * @returns array associative array
 	 *
 	 * Adds a key "etag" to the row
 	 */

@@ -47,6 +47,11 @@ $server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,'ownCloud'));
 $server->addPlugin(new \Sabre\CalDAV\Plugin());
 $server->addPlugin(new \Sabre\DAVACL\Plugin());
 $server->addPlugin(new \Sabre\CalDAV\ICSExportPlugin());
+$server->addPlugin(new \OC\Connector\Sabre\ExceptionLoggerPlugin('caldav', \OC::$server->getLogger()));
+$server->addPlugin(new \OC\Connector\Sabre\AppEnabledPlugin(
+	'calendar',
+	OC::$server->getAppManager()
+));
 
 // And off we go!
 $server->exec();
