@@ -708,6 +708,7 @@ Calendar={
 		Share:{
 			init:function(){
 				if(typeof OC.Share !== typeof undefined){
+					self = this;
 					var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP];
 					$('#sharewith').autocomplete({minLength: 1, source: function(search, response) {
 						$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
@@ -731,58 +732,62 @@ Calendar={
 							var newitem = '<li data-item-type="event"'
 								+ 'data-share-with="'+shareWith+'" '
 								+ 'data-permissions="'+permissions+'" '
+								+ 'data-item="'+itemSource+'" '
 								+ 'data-share-type="'+shareType+'">'
 								+ shareWith
 								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
 								+ '<span class="shareactions">'
-								+ '<label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
+								+ '<label><input class="update" type="checkbox">'+t('core', 'can edit')+'</label>'
 								+ '<label><input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
 								+ '<img class="svg action delete" title="Unshare"src="'+ OC.imagePath('core', 'actions/delete.svg') +'"></span></li>';
 							$('.sharedby.eventlist').append(newitem);
+							var appendeditem = $('.sharedby.eventlist li[data-share-with="'+shareWith+'"][data-share-type="'+shareType+'"]');
+							self.bindShareActionHandlers(appendeditem);
 							$('#sharedWithNobody').remove();
 							$('#sharewith').val('');
 						});
 						return false;
 					}
 					});
-	
-					$('.shareactions > input:checkbox').change(function() {
-						var container = $(this).parents('li').first();
-						var permissions = parseInt(container.data('permissions'));
-						var itemType = container.data('item-type');
-						var shareType = container.data('share-type');
-						var itemSource = container.data('item');
-						var shareWith = container.data('share-with');
-						var permission = null;
-						if($(this).hasClass('update')) {
-							permission = OC.PERMISSION_UPDATE;
-							permission = OC.PERMISSION_DELETE;
-						} else if($(this).hasClass('share')) {
-							permission = OC.PERMISSION_SHARE;
-						}
-						// This is probably not the right way, but it works :-P
-						if($(this).is(':checked')) {
-							permissions += permission;
-						} else {
-							permissions -= permission;
-						}
-						
-						container.data('permissions',permissions);
-						
-						OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
-					});
-	
-					$('.shareactions > .delete').click(function() {
-						var container = $(this).parents('li').first();
-						var itemType = container.data('item-type');
-						var shareType = container.data('share-type');
-						var itemSource = container.data('item');
-						var shareWith = container.data('share-with');
-						OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
-							container.remove();
-						});
-					});
+					self.bindShareActionHandlers();
 				}
+			},
+			bindShareActionHandlers:function(context){
+				$('.shareactions > label > input:checkbox', context).change(function() {
+					var container = $(this).parents('li').first();
+					var permissions = parseInt(container.data('permissions'));
+					var itemType = container.data('item-type');
+					var shareType = container.data('share-type');
+					var itemSource = container.data('item');
+					var shareWith = container.data('share-with');
+					var permission = null;
+					if($(this).hasClass('update')) {
+						permission = OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE;
+					} else if($(this).hasClass('share')) {
+						permission = OC.PERMISSION_SHARE;
+					}
+					// This is probably not the right way, but it works :-P
+					if($(this).is(':checked')) {
+						permissions += permission;
+					} else {
+						permissions -= permission;
+					}
+	
+					container.data('permissions',permissions);
+
+					OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
+				});
+
+				$('.shareactions > .delete', context).click(function() {
+					var container = $(this).parents('li').first();
+					var itemType = container.data('item-type');
+					var shareType = container.data('share-type');
+					var itemSource = container.data('item');
+					var shareWith = container.data('share-with');
+					OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
+						container.remove();
+					});
+				});
 			}
 		},
 		Drop:{
