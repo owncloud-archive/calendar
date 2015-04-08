@@ -50,6 +50,7 @@ $server->addPlugin(
 $server->addPlugin(
     new Sabre\CalDAV\Schedule\IMipPlugin($adminmail)
     );
+$server->addPlugin(new \OC\Connector\Sabre\MaintenancePlugin());
 $server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,'ownCloud'));
 $server->addPlugin(new \Sabre\CalDAV\Plugin());
 $server->addPlugin(new \Sabre\DAVACL\Plugin());
