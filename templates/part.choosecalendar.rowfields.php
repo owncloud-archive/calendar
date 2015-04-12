@@ -1,7 +1,14 @@
+<?php
+/** @var array $_ */
 
-	
+$calendarColor = $_['calendar']['calendarcolor'];
+if (!preg_match('/^#([a-fA-F0-9]){3}(([a-fA-F0-9]){3})$/i', $calendarColor)) {
+	$calendarColor = 'rgb(58, 135, 173)';
+}
+?>
+
 <label for="active_<?php p($_['calendar']['id']) ?>" class="calendarLabel">
-	<div class="calendarCheckbox<?php print_unescaped($_['calendar']['active'] ? '' : ' unchecked') ?>" id="checkbox_<?php p($_['calendar']['id']) ?>" style="background-color:<?php print_unescaped(($_['calendar']['calendarcolor']) ? $_['calendar']['calendarcolor'] : 'rgb(58, 135, 173)') ?>"></div>
+	<div class="calendarCheckbox<?php print_unescaped($_['calendar']['active'] ? '' : ' unchecked') ?>" id="checkbox_<?php p($_['calendar']['id']) ?>" style="background-color:<?php print_unescaped($calendarColor) ?>"></div>
 	<?php p($_['calendar']['displayname']) ?>
 	<?php if ($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
 		<input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
