@@ -49,6 +49,14 @@ $server->addPlugin(new \Sabre\CalDAV\Plugin());
 $server->addPlugin(new \Sabre\DAVACL\Plugin());
 $server->addPlugin(new \Sabre\DAV\Browser\Plugin(false)); // Show something in the Browser, but no upload
 $server->addPlugin(new \Sabre\CalDAV\ICSExportPlugin());
+$email = \OCP\Config::getUserValue(\OCP\User::getUser(), 'settings', 'email');
+if($email !== null) {
+	$caldavPlugin = new \Sabre\CalDAV\Plugin();
+	$caldavPlugin->setIMipHandler(
+		new \Sabre\CalDAV\Schedule\IMip($email)
+	);
+	$server->addPlugin($caldavPlugin);
+}
 
 // And off we go!
 $server->exec();
