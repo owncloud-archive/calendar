@@ -297,9 +297,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 				if (!$isShared) {
 					$data[] = $this->OCAddETag($row);
 				} else {
-					if (substr_count($row['calendardata'], 'CLASS') === 0) {
-						$data[] = $this->OCAddETag($row);
-					} else {
+					if (substr_count($row['calendardata'], 'CLASS') !== 0) {
 						$object = OC_VObject::parse($row['calendardata']);
 						if(!$object) {
 							return false;
@@ -315,11 +313,13 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 							}
 						}
 
-						if ($isPrivate === false) {
-							$data[] = $this->OCAddETag($row);
+						if ($isPrivate === true) {
+							continue;
 						}
 					}
 				}
+				$row = $this->clearFromVALARM($calendar, $row);
+				$data[] = $this->OCAddETag($row);
 			}
 		}
 		return $data;
@@ -358,8 +358,15 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 				));
 			}
 		}
+		$calendar = OC_Calendar_Calendar::find($calendarId);
+		$isShared = ($calendar['userid'] !== OCP\USER::getUser());
+
 		$data = OC_Calendar_Object::findWhereDAVDataIs($calendarId,$objectUri);
 		if(is_array($data)) {
+			if ($isShared) {
+				$data = $this->clearFromVALARM($calendar, $data);
+			}
+
 			$data = $this->OCAddETag($data);
 			$object = OC_VObject::parse($data['calendardata']);
 			if(!$object) {
@@ -415,6 +422,37 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	 */
 	private function OCAddETag($row) {
 		$row['etag'] = '"'.md5($row['calendarid'].$row['uri'].$row['calendardata'].$row['lastmodified']).'"';
+		return $row;
+	}
+
+
+	/**
+	 * @param array $calendar
+	 * @param array $row
+	 * @return array
+	 * @return bool
+	 */
+	private function clearFromVALARM($calendar, $row) {
+		if (isset($calendar['permissions']) && !(\OCP\PERMISSION_CREATE & $calendar['permissions'] || \OCP\PERMISSION_UPDATE & $calendar['permissions'])) {
+			if (substr_count($row['calendardata'], 'BEGIN:VALARM') === 0) {
+				$data[] = $this->OCAddETag($row);
+			} else {
+				$object = OC_VObject::parse($row['calendardata']);
+				if(!$object) {
+					return false;
+				}
+
+				$toCheck = array('VEVENT', 'VJOURNAL', 'VTODO');
+				foreach ($toCheck as $type) {
+					foreach ($object->select($type) as $vobject) {
+						unset($vobject->VALARM);
+					}
+				}
+
+				$row['calendardata'] = $object->serialize();
+			}
+		}
+
 		return $row;
 	}
 }
