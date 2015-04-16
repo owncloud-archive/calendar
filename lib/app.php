@@ -426,7 +426,6 @@ class OC_Calendar_App{
 		}else{
 			if (is_numeric($calendarid)) {
 				$calendar = self::getCalendar($calendarid);
-				OCP\Response::enableCaching(0);
 				OCP\Response::setETagHeader($calendar['ctag']);
 				$events = OC_Calendar_Object::allInPeriod($calendarid, $start, $end, $calendar['userid'] !== OCP\User::getUser());
 			} else {
@@ -479,7 +478,7 @@ class OC_Calendar_App{
 				}
 				$object = OC_Calendar_Object::cleanByAccessClass($id, $object);
 			}
-			$allday = $vevent->DTSTART->isFloating();
+			$allday = !$vevent->DTSTART->hasTime();
 			$last_modified = @$vevent->__get('LAST-MODIFIED');
 			$lastmodified = ($last_modified)?$last_modified->getDateTime()->format('U'):0;
 			$staticoutput = array('id'=>(int)$event['id'],
