@@ -888,8 +888,8 @@ class OC_Calendar_Object{
 		$vcalendar->add($vevent);
 
 		$now = new DateTime('now');
-		$now->setTimeZone(\DateTimeZone('UTC'));
-		$vEvent->setValue('CREATED', $now);
+		$now->setTimeZone(new \DateTimeZone('UTC'));
+		$vevent->CREATED = $now;
 
 		$vevent->setUID();
 		return self::updateVCalendarFromRequest($request, $vcalendar);
