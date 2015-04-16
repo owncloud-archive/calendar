@@ -24,7 +24,11 @@ if(!$data) {
 $object = \Sabre\VObject\Reader::read($data['calendardata']);
 $vevent = $object->VEVENT;
 $object = OC_Calendar_Object::cleanByAccessClass($id, $object);
-$accessclass = $vevent->CLASS->getValue();
+if ($vevent->CLASS) {
+	$accessclass = $vevent->CLASS->getValue();
+} else {
+	$accessclass = 'PUBLIC';
+}
 $permissions = OC_Calendar_App::getPermissions($id, OC_Calendar_App::EVENT, $accessclass);
 
 $dtstart = $vevent->DTSTART;
