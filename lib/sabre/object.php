@@ -48,7 +48,7 @@ class OC_Connector_Sabre_CalDAV_CalendarObject extends \Sabre\CalDAV\CalendarObj
 			if($uid === 'contact_birthdays') {
 				$readprincipal = 'principals/' . OCP\User::getUser();
 			} else {
-				$object = OC_VObject::parse($this->objectData['calendardata']);
+				$object = \Sabre\VObject\Reader::read($this->objectData['calendardata']);
 				$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
 				$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($object);
 				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ) && ($sharedAccessClassPermissions & OCP\PERMISSION_READ)) {

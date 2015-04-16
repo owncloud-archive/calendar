@@ -88,7 +88,7 @@ class OC_Calendar_Repeat{
 		if($event['repeating'] == 0) {
 			return false;
 		}
-		$object = OC_VObject::parse($event['calendardata']);
+		$object = \Sabre\VObject\Reader::read($event['calendardata']);
 		$start = new DateTime('01-01-' . date('Y') . ' 00:00:00', new DateTimeZone('UTC'));
 		$start->modify('-5 years');
 		$end = new DateTime('31-12-' . date('Y') . ' 23:59:59', new DateTimeZone('UTC'));
@@ -98,7 +98,12 @@ class OC_Calendar_Repeat{
 			if(!($vevent instanceof Sabre\VObject\Component\VEvent)) {
 				continue;
 			}
-			$startenddate = OC_Calendar_Object::generateStartEndDate($vevent->DTSTART, OC_Calendar_Object::getDTEndFromVEvent($vevent), ($vevent->DTSTART->getDateType() == Sabre\VObject\Property\DateTime::DATE)?true:false, 'UTC');
+			$startenddate = OC_Calendar_Object::generateStartEndDate(
+				$vevent->DTSTART,
+				OC_Calendar_Object::getDTEndFromVEvent($vevent),
+				!$vevent->DTSTART->hasTime(),
+				'UTC'
+			);
 			$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_repeat` (`eventid`,`calid`,`startdate`,`enddate`) VALUES(?,?,?,?)');
 			$stmt->execute(array($id,OC_Calendar_Object::getCalendarid($id),$startenddate['start'],$startenddate['end']));
 		}

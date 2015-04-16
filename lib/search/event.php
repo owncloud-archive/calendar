@@ -80,7 +80,7 @@ class Event extends \OCP\Search\Result {
 		$this->link = \OCP\Util::linkTo('calendar', 'index.php') . '?showevent=' . urlencode($data['id']);
 		// do calendar-specific setup
 		$l = new \OC_l10n('calendar');
-		$calendar_data = \OC_VObject::parse($data['calendardata']);
+		$calendar_data = \Sabre\VObject\Reader::read($data['calendardata']);
 		$vevent = $calendar_data->VEVENT;
 		// get start time
 		$dtstart = $vevent->DTSTART;
@@ -93,7 +93,7 @@ class Event extends \OCP\Search\Result {
 		$end_dt->setTimezone($this->getUserTimezone());
 		$this->end_time = $end_dt->format('r');
 		// create text description
-		if ($dtstart->getDateType() == \Sabre\VObject\Property\DateTime::DATE) {
+		if (!$dtstart->hasTime()) {
 			$end_dt->modify('-1 sec');
 			if ($start_dt->format('d.m.Y') != $end_dt->format('d.m.Y')) {
 				$this->text = $l->t('Date') . ': ' . $start_dt->format('d.m.Y') . ' - ' . $end_dt->format('d.m.Y');
