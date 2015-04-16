@@ -96,7 +96,7 @@ class OC_Calendar_Import{
 		//fix for malformed timestamp in some google calendar events
 		$this->ical = str_replace('CREATED:00001231T000000Z', 'CREATED:19700101T000000Z', $this->ical);
 		try{
-			$this->calobject = OC_VObject::parse($this->ical);
+			$this->calobject = \Sabre\VObject\Reader::read($this->ical);
 		}catch(Exception $e) {
 			//MISSING: write some log
 			$this->error = true;

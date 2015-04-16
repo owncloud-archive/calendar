@@ -167,7 +167,7 @@ class OC_Calendar_Object{
 			}
 			$shared = true;
 		}
-		$object = OC_VObject::parse($data);
+		$object = \Sabre\VObject\Reader::read($data);
 		$vevent = self::getElement($object);
 
 		if($shared && isset($vevent->CLASS) && (string)$vevent->CLASS !== 'PUBLIC') {
@@ -200,7 +200,7 @@ class OC_Calendar_Object{
 		$calid = self::getCalendarid($id);
 		
 		$calendar = OC_Calendar_Calendar::find($calid);
-		$oldvobject = OC_VObject::parse($oldobject['calendardata']);
+		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $calid); //calid, not objectid !!!! 1111 one one one eleven
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
@@ -222,7 +222,7 @@ class OC_Calendar_Object{
 				);
 			}
 		}
-		$object = OC_VObject::parse($data);
+		$object = \Sabre\VObject\Reader::read($data);
 		OC_Calendar_App::loadCategoriesFromVCalendar($id, $object);
 		list($type,$startdate,$enddate,$summary,$repeating,$uid) = self::extractData($object);
 
@@ -246,7 +246,7 @@ class OC_Calendar_Object{
 		$oldobject = self::findWhereDAVDataIs($cid,$uri);
 
 		$calendar = OC_Calendar_Calendar::find($cid);
-		$oldvobject = OC_VObject::parse($oldobject['calendardata']);
+		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $cid);
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
@@ -258,7 +258,7 @@ class OC_Calendar_Object{
 				);
 			}
 		}
-		$object = OC_VObject::parse($data);
+		$object = \Sabre\VObject\Reader::read($data);
 		list($type,$startdate,$enddate,$summary,$repeating,$uid) = self::extractData($object);
 
 		$stmt = OCP\DB::prepare( 'UPDATE `*PREFIX*clndr_objects` SET `objecttype`=?,`startdate`=?,`enddate`=?,`repeating`=?,`summary`=?,`calendardata`=?,`lastmodified`= ? WHERE `id` = ?' );
@@ -280,7 +280,7 @@ class OC_Calendar_Object{
 		$calid = self::getCalendarid($id);
 		
 		$calendar = OC_Calendar_Calendar::find($calid);
-		$oldvobject = OC_VObject::parse($oldobject['calendardata']);
+		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar',  $calid);
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
@@ -391,10 +391,10 @@ class OC_Calendar_Object{
 				$return[0] = $property->name;
 				foreach($property->children as &$element) {
 					if($element->name == 'SUMMARY') {
-						$return[3] = $element->value;
+						$return[3] = $element->getValue();
 					}
 					elseif($element->name == 'UID') {
-						$return[5] = $element->value;
+						$return[5] = $element->getValue();
 					}
 				};
 
@@ -416,13 +416,13 @@ class OC_Calendar_Object{
 					$return[2] = self::getUTCforMDB($property->getDateTime());
 				}
 				elseif($property->name == 'SUMMARY') {
-					$return[3] = $property->value;
+					$return[3] = $property->getValue();
 				}
 				elseif($property->name == 'RRULE') {
 					$return[4] = 1;
 				}
 				elseif($property->name == 'UID') {
-					$return[5] = $property->value;
+					$return[5] = $property->getValue();
 				}
 			}
 			// some imported object don't have DTEND but DURATION
@@ -503,7 +503,7 @@ class OC_Calendar_Object{
 			$velement = $vobject->VTODO;
 		}
 
-		if(isset($velement->CLASS) && $velement->CLASS->value == 'CONFIDENTIAL') {
+		if(isset($velement->CLASS) && $velement->CLASS->getValue() == 'CONFIDENTIAL') {
 			foreach ($velement->children as &$property) {
 				switch($property->name) {
 					case 'CREATED':
@@ -515,7 +515,7 @@ class OC_Calendar_Object{
 					case 'UID':
 						break;
 					case 'SUMMARY':
-						$property->value = OC_Calendar_App::$l10n->t('Busy');
+						$property->setValue(OC_Calendar_App::$l10n->t('Busy'));
 						break;
 					default:
 						$velement->__unset($property->name);
@@ -1065,7 +1065,9 @@ class OC_Calendar_Object{
 
 		$now = new DateTime('now');
 		$now->setTimeZone(new \DateTimeZone('UTC'));
-		$vevent->LAST_MODIFIED = $now;
+		$lastModified = $vcalendar->create('LAST-MODIFIED');
+		$lastModified->setValue($now);
+		$vevent->LAST_MODIFIED = $lastModified;
 		$vevent->DTSTAMP = $now;
 
 		$vevent->SUMMARY = $title;
@@ -1074,11 +1076,13 @@ class OC_Calendar_Object{
 			$start = new DateTime($from);
 			$end = new DateTime($to.' +1 day');
 			$dtstart = $vcalendar->create('DTSTART');
+			$dtstart['VALUE'] = 'date';
 			$vevent->DTSTART = $dtstart;
 			$dtend = $vcalendar->create('DTEND');
+			$dtend['VALUE'] = 'date';
 			$vevent->DTEND = $dtend;
-			$dtstart->setValue($start, $floating = true);
-			$dtend->setValue($end, $floating = true);
+			$dtstart->setValue($start);
+			$dtend->setValue($end);
 		}else{
 			$timezone = OC_Calendar_App::getTimezone();
 			$timezone = new DateTimeZone($timezone);
@@ -1168,7 +1172,7 @@ class OC_Calendar_Object{
 			}
 			$return['end'] = $end_dt->format('Y-m-d');
 		}else{
-			if($dtstart->getDateType() !== Sabre\VObject\Property\DateTime::LOCAL) {
+			if(!$dtstart->isFloating()) {
 				$start_dt->setTimezone(new DateTimeZone($tz));
 				$end_dt->setTimezone(new DateTimeZone($tz));
 			}

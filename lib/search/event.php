@@ -80,7 +80,7 @@ class Event extends \OCP\Search\Result {
 		$this->link = \OCP\Util::linkTo('calendar', 'index.php') . '?showevent=' . urlencode($data['id']);
 		// do calendar-specific setup
 		$l = new \OC_l10n('calendar');
-		$calendar_data = \OC_VObject::parse($data['calendardata']);
+		$calendar_data = \Sabre\VObject\Reader::read($data['calendardata']);
 		$vevent = $calendar_data->VEVENT;
 		// get start time
 		$dtstart = $vevent->DTSTART;

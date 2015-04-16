@@ -304,7 +304,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 					if (substr_count($row['calendardata'], 'CLASS') === 0) {
 						$data[] = $this->OCAddETag($row);
 					} else {
-						$object = OC_VObject::parse($row['calendardata']);
+						$object = \Sabre\VObject\Reader::read($row['calendardata']);
 						if(!$object) {
 							return false;
 						}
@@ -365,7 +365,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 		$data = OC_Calendar_Object::findWhereDAVDataIs($calendarId,$objectUri);
 		if(is_array($data)) {
 			$data = $this->OCAddETag($data);
-			$object = OC_VObject::parse($data['calendardata']);
+			$object = \Sabre\VObject\Reader::read($data['calendardata']);
 			if(!$object) {
 				return false;
 			}

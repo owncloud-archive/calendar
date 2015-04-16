@@ -88,7 +88,7 @@ class OC_Calendar_Repeat{
 		if($event['repeating'] == 0) {
 			return false;
 		}
-		$object = OC_VObject::parse($event['calendardata']);
+		$object = \Sabre\VObject\Reader::read($event['calendardata']);
 		$start = new DateTime('01-01-' . date('Y') . ' 00:00:00', new DateTimeZone('UTC'));
 		$start->modify('-5 years');
 		$end = new DateTime('31-12-' . date('Y') . ' 23:59:59', new DateTimeZone('UTC'));
