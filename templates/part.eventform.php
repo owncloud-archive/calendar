@@ -32,7 +32,7 @@
 		$sortedCalendars = array_merge($enabledCalendars, $disabledCalendars);
 		print_unescaped(OCP\html_select_options($sortedCalendars, $_['calendar'], array('value'=>'id', 'label'=>'displayname'))); ?>
 	</select>
-	<?php } else { ?>
+	<?php } elseif ($_['calendar_options'][0]['userid'] === $_['userid']) { ?>
 	<input style="display:none;" type="hidden" name="calendar" value="<?php p($_['calendar_options'][0]['id']); ?>">
 	<?php } ?>
 
