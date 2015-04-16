@@ -304,5 +304,6 @@ if($repeat['repeat'] != 'doesnotrepeat') {
 	$tmpl->assign('repeat_weekofmonth', 'auto');
 	$tmpl->assign('repeat_date', '');
 	$tmpl->assign('repeat_year', 'bydate');
+	$tmpl->assign('userid', \OC::$server->getUserSession()->getUser()->getUID());
 }
 $tmpl->printpage();
