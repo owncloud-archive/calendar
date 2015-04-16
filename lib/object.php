@@ -124,11 +124,12 @@ class OC_Calendar_Object{
 				);
 			}
 		}
-		$object = OC_VObject::parse($data);
+		$object = Sabre\VObject\Reader::read($data);
 		list($type,$startdate,$enddate,$summary,$repeating,$uid) = self::extractData($object);
 
 		if(is_null($uid)) {
-			$object->setUID();
+			$uid = substr(md5(rand().time()), 0, 10);
+			$object->UID = $uid;
 			$data = $object->serialize();
 		}
 
@@ -891,7 +892,8 @@ class OC_Calendar_Object{
 		$now->setTimeZone(new \DateTimeZone('UTC'));
 		$vevent->CREATED = $now;
 
-		$vevent->setUID();
+		$uid = substr(md5(rand().time()), 0, 10);
+		$vevent->UID = $uid;
 		return self::updateVCalendarFromRequest($request, $vcalendar);
 	}
 
@@ -1061,32 +1063,44 @@ class OC_Calendar_Object{
 			$repeat = "false";
 		}
 
+		$now = new DateTime('now');
+		$now->setTimeZone(new \DateTimeZone('UTC'));
+		$vevent->LAST_MODIFIED = $now;
+		$vevent->DTSTAMP = $now;
 
-		$vevent->setDateTime('LAST-MODIFIED', 'now', Sabre\VObject\Property\DateTime::UTC);
-		$vevent->setDateTime('DTSTAMP', 'now', Sabre\VObject\Property\DateTime::UTC);
-		$vevent->setString('SUMMARY', $title);
+		$vevent->SUMMARY = $title;
 
 		if($allday) {
 			$start = new DateTime($from);
 			$end = new DateTime($to.' +1 day');
-			$vevent->setDateTime('DTSTART', $start, Sabre\VObject\Property\DateTime::DATE);
-			$vevent->setDateTime('DTEND', $end, Sabre\VObject\Property\DateTime::DATE);
+			$dtstart = $vcalendar->create('DTSTART');
+			$vevent->DTSTART = $dtstart;
+			$dtend = $vcalendar->create('DTEND');
+			$vevent->DTEND = $dtend;
+			$dtstart->setValue($start, $floating = true);
+			$dtend->setValue($end, $floating = true);
 		}else{
 			$timezone = OC_Calendar_App::getTimezone();
 			$timezone = new DateTimeZone($timezone);
 			$start = new DateTime($from.' '.$fromtime, $timezone);
 			$end = new DateTime($to.' '.$totime, $timezone);
-			$vevent->setDateTime('DTSTART', $start, Sabre\VObject\Property\DateTime::LOCALTZ);
-			$vevent->setDateTime('DTEND', $end, Sabre\VObject\Property\DateTime::LOCALTZ);
+			$start->setTimeZone($timezone);
+			$end->setTimeZone($timezone);
+			$dtstart = $vcalendar->create('DTSTART');
+			$vevent->DTSTART = $dtstart;
+			$dtend = $vcalendar->create('DTEND');
+			$vevent->DTEND = $dtend;
+			$dtstart->setValue($start);
+			$dtend->setValue($end);
 		}
 		unset($vevent->DURATION);
 
 		if ($accessclass !== null) {
-			$vevent->setString('CLASS', $accessclass);
+			$vevent->CLASS = $accessclass;
 		}
-		$vevent->setString('LOCATION', $location);
-		$vevent->setString('DESCRIPTION', $description);
-		$vevent->setString('CATEGORIES', $categories);
+		$vevent->LOCATION = $location;
+		$vevent->DESCRIPTION = $description;
+		$vevent->CATEGORIES = $categories;
 
 		/*if($repeat == "true") {
 			$vevent->RRULE = $repeat;
