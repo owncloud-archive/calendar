@@ -93,7 +93,7 @@ class Event extends \OCP\Search\Result {
 		$end_dt->setTimezone($this->getUserTimezone());
 		$this->end_time = $end_dt->format('r');
 		// create text description
-		if ($dtstart->getDateType() == \Sabre\VObject\Property\DateTime::DATE) {
+		if (!$dtstart->hasTime()) {
 			$end_dt->modify('-1 sec');
 			if ($start_dt->format('d.m.Y') != $end_dt->format('d.m.Y')) {
 				$this->text = $l->t('Date') . ': ' . $start_dt->format('d.m.Y') . ' - ' . $end_dt->format('d.m.Y');

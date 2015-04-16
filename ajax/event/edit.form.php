@@ -52,7 +52,7 @@ if ($dtstart->hasTime()) {
 	// DATE
 	$startdate = $dtstart->getDateTime()->format('d-m-Y');
 	$starttime = '';
-	$dtend->getDateTime()->modify('-1 day');
+	$dtend->setDateTime($dtend->getDateTime()->modify('-1 day'));
 	$enddate = $dtend->getDateTime()->format('d-m-Y');
 	$endtime = '';
 	$allday = true;

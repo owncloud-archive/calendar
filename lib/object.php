@@ -461,7 +461,7 @@ class OC_Calendar_Object{
 		}else{
 			$dtend = clone $vevent->DTSTART;
 			// clone creates a shallow copy, also clone DateTime
-			$dtend->setDateTime(clone $dtend->getDateTime(), $dtend->getDateType());
+			$dtend->setDateTime(clone $dtend->getDateTime());
 			if ($vevent->DURATION) {
 				$duration = strval($vevent->DURATION);
 				$invert = 0;
@@ -554,7 +554,7 @@ class OC_Calendar_Object{
 	public static function getAccessClassPermissions($vobject) {
 		$velement = self::getElement($vobject);
 
-		$accessclass = $velement->getAsString('CLASS');
+		$accessclass = $velement->CLASS;
 
 		return OC_Calendar_App::getAccessClassPermissions($accessclass);
 	}
@@ -882,8 +882,8 @@ class OC_Calendar_Object{
 	 * @return object created $vcalendar
 	 */	public static function createVCalendarFromRequest($request) {
 		$vcalendar = new \Sabre\VObject\Component\VCalendar();
-		$vcalendar->add('PRODID', 'ownCloud Calendar');
-		$vcalendar->add('VERSION', '2.0');
+		$vcalendar->PRODID = 'ownCloud Calendar';
+		$vcalendar->VERSION = '2.0';
 
 		$vevent = $vcalendar->createComponent('VEVENT');
 		$vcalendar->add($vevent);
@@ -1057,7 +1057,7 @@ class OC_Calendar_Object{
 				list($bydate_day, $bydate_month, $bydate_year) = explode('-', $request['bydate']);
 				$rrule .= ';UNTIL=' . $bydate_year . $bydate_month . $bydate_day;
 			}
-			$vevent->setString('RRULE', $rrule);
+			$vevent->RRULE = $rrule;
 			$repeat = "true";
 		}else{
 			$repeat = "false";
@@ -1065,9 +1065,11 @@ class OC_Calendar_Object{
 
 		$now = new DateTime('now');
 		$now->setTimeZone(new \DateTimeZone('UTC'));
-		$lastModified = $vcalendar->create('LAST-MODIFIED');
+		$lastModified = $vevent->__get('LAST-MODIFIED');
+		if (is_null($lastModified)) {
+			$lastModified = $vevent->add('LAST-MODIFIED');
+		}
 		$lastModified->setValue($now);
-		$vevent->LAST_MODIFIED = $lastModified;
 		$vevent->DTSTAMP = $now;
 
 		$vevent->SUMMARY = $title;
