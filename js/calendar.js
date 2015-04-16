@@ -710,7 +710,7 @@ Calendar={
 				if(typeof OC.Share !== typeof undefined){
 					var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP];
 					$('#sharewith').autocomplete({minLength: 1, source: function(search, response) {
-						$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares, itemType: 'event' }, function(result) {
+						$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getShareWith', search: search.term, itemShares: itemShares }, function(result) {
 							if (result.status == 'success' && result.data.length > 0) {
 								response(result.data);
 							}
@@ -726,8 +726,8 @@ Calendar={
 						var shareWith = selected.item.value.shareWith;
 						$(this).val(shareWith);
 						// Default permissions are Read and Share
-						var permissions = OC.PERMISSION_READ + OC.PERMISSION_SHARE;
-						OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, null, null, function(data) {
+						var permissions = OC.PERMISSION_READ | OC.PERMISSION_SHARE;
+						OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, function(data) {
 							var newitem = '<li data-item-type="event"'
 								+ 'data-share-with="'+shareWith+'" '
 								+ 'data-permissions="'+permissions+'" '
@@ -735,8 +735,8 @@ Calendar={
 								+ shareWith
 								+ (shareType === OC.Share.SHARE_TYPE_GROUP ? ' ('+t('core', 'group')+')' : '')
 								+ '<span class="shareactions">'
-								+ '<label><input class="update sharepermissioncheckbox" type="checkbox">'+t('core', 'can edit')+'</label>'
-								+ '<label><input class="share sharepermissioncheckbox" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
+								+ '<label><input class="update" type="checkbox" checked="checked">'+t('core', 'can edit')+'</label>'
+								+ '<label><input class="share" type="checkbox" checked="checked">'+t('core', 'can share')+'</label>'
 								+ '<img class="svg action delete" title="Unshare"src="'+ OC.imagePath('core', 'actions/delete.svg') +'"></span></li>';
 							$('.sharedby.eventlist').append(newitem);
 							$('#sharedWithNobody').remove();
@@ -746,16 +746,17 @@ Calendar={
 					}
 					});
 	
-					$('.sharedby').on('change', '.sharepermissioncheckbox', function() {
+					$('.shareactions > input:checkbox').change(function() {
 						var container = $(this).parents('li').first();
 						var permissions = parseInt(container.data('permissions'));
-						var itemType = 'event';
+						var itemType = container.data('item-type');
 						var shareType = container.data('share-type');
 						var itemSource = container.data('item');
 						var shareWith = container.data('share-with');
-						var permission = 0;
+						var permission = null;
 						if($(this).hasClass('update')) {
-							permission = OC.PERMISSION_UPDATE + OC.PERMISSION_DELETE;
+							permission = OC.PERMISSION_UPDATE;
+							permission = OC.PERMISSION_DELETE;
 						} else if($(this).hasClass('share')) {
 							permission = OC.PERMISSION_SHARE;
 						}
@@ -765,13 +766,13 @@ Calendar={
 						} else {
 							permissions -= permission;
 						}
-
+						
 						container.data('permissions',permissions);
-
+						
 						OC.Share.setPermissions(itemType, itemSource, shareType, shareWith, permissions);
 					});
-
-					$('.sharedby').on('click', '.shareactions > .delete', function() {
+	
+					$('.shareactions > .delete').click(function() {
 						var container = $(this).parents('li').first();
 						var itemType = container.data('item-type');
 						var shareType = container.data('share-type');
