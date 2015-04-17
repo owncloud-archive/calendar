@@ -128,7 +128,7 @@ class OC_Calendar_Object{
 		list($type,$startdate,$enddate,$summary,$repeating,$uid) = self::extractData($object);
 
 		if(is_null($uid)) {
-			$uid = substr(md5(rand().time()), 0, 10);
+			$uid = \Sabre\VObject\UUIDUtil::getUUID();
 			$object->UID = $uid;
 			$data = $object->serialize();
 		}
@@ -1077,28 +1077,23 @@ class OC_Calendar_Object{
 		if($allday) {
 			$start = new DateTime($from);
 			$end = new DateTime($to.' +1 day');
-			$dtstart = $vcalendar->create('DTSTART');
-			$dtstart['VALUE'] = 'date';
-			$vevent->DTSTART = $dtstart;
-			$dtend = $vcalendar->create('DTEND');
-			$dtend['VALUE'] = 'date';
-			$vevent->DTEND = $dtend;
-			$dtstart->setValue($start);
-			$dtend->setValue($end);
+
+			$vevent->DTSTART = $start;
+			$vevent->DTEND = $end;
+
+			$vevent->DTSTART['VALUE'] = 'DATE';
+			$vevent->DTEND['VALUE'] = 'DATE';
 		}else{
 			$timezone = OC_Calendar_App::getTimezone();
 			$timezone = new DateTimeZone($timezone);
+
 			$start = new DateTime($from.' '.$fromtime, $timezone);
 			$end = new DateTime($to.' '.$totime, $timezone);
-			$start->setTimeZone($timezone);
-			$end->setTimeZone($timezone);
-			$dtstart = $vcalendar->create('DTSTART');
-			$vevent->DTSTART = $dtstart;
-			$dtend = $vcalendar->create('DTEND');
-			$vevent->DTEND = $dtend;
-			$dtstart->setValue($start);
-			$dtend->setValue($end);
+
+			$vevent->DTSTART = $start;
+			$vevent->DTEND = $end;
 		}
+
 		unset($vevent->DURATION);
 
 		if ($accessclass !== null) {

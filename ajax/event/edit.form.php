@@ -62,10 +62,7 @@ if ($dtstart->hasTime()) {
 	$allday = true;
 }
 
-$summary = strtr($vevent->SUMMARY, array('\,' => ',', '\;' => ';'));
-$location = strtr($vevent->LOCATION, array('\,' => ',', '\;' => ';'));
 $categories = $vevent->CATEGORIES;
-$description = strtr($vevent->DESCRIPTION, array('\,' => ',', '\;' => ';'));
 $last_modified = $vevent->__get('LAST-MODIFIED');
 if ($last_modified) {
 	$lastmodified = $last_modified->getDateTime()->format('U');
