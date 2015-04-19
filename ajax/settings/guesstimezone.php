@@ -13,10 +13,13 @@ OCP\JSON::callCheck();
 
 $l = OCP\Util::getL10N('calendar');
 
-$lat = $_POST['lat'];
-$lng = $_POST['lng'];
-
-$timezone =  OC_Geo::timezone($lat, $lng);
+$timezone = $_POST['timezone'];
+try {
+	$tz = new DateTimeZone($timezone);
+} catch(\Exception $ex) {
+	OC_JSON::error();
+	exit;
+}
 
 if($timezone == OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timezone')) {
 	OCP\JSON::success();
