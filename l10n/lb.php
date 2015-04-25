@@ -1,13 +1,13 @@
 <?php
 $TRANSLATIONS = array(
-"Not all calendars are completely cached" => "Net all d'Kalennere sinn vollstänneg gecacht",
-"Everything seems to be completely cached" => "Alles schéngt komplett gecacht ze sinn",
+"Not all calendars are completely cached" => "Net all d'Kalennere si vollstänneg tëschegespäichert",
+"Everything seems to be completely cached" => "Alles schéngt komplett tëschegespäichert ze sinn",
 "No calendars found." => "Keng Kalennere fonnt.",
 "No events found." => "Keng Evenementer fonnt.",
 "Wrong calendar" => "Falsche Kalenner",
 "You do not have the permissions to edit this event." => "Du hues keng Rechter fir d'Evenement ze editéieren.",
 "The file contained either no events or all events are already saved in your calendar." => "De Fichier enthält entweder keen Evenement oder all d'Evenementer si schon an dengem Kalenner gespäichert.",
-"Import failed" => "Import ass feelgeschloen",
+"Import failed" => "Import feelgeschloen",
 "New Timezone:" => "Nei Zäitzon:",
 "Timezone changed" => "Zäitzon geännert",
 "Invalid request" => "Ongëlteg Aktioun",
