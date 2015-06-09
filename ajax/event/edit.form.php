@@ -305,5 +305,6 @@ if($repeat['repeat'] != 'doesnotrepeat') {
 	$tmpl->assign('repeat_weekofmonth', 'auto');
 	$tmpl->assign('repeat_date', '');
 	$tmpl->assign('repeat_year', 'bydate');
+	$tmpl->assign('userid', OC_Calendar_Object::getowner($id));
 }
 $tmpl->printpage();

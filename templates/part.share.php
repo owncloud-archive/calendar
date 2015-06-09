@@ -42,11 +42,11 @@ if(is_array($sharedwithByEvent)) {
 		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>
 		<span class="shareactions">
 			<label>
-				<input class="update" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
+				<input class="update sharepermissioncheckbox" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
 				 <?php p($l->t('can edit')); ?>
 			</label>
 			<label>
-				<input class="share" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
+				<input class="share sharepermissioncheckbox" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
 				 <?php p($l->t('can share')); ?>
 			</label>
 			<img src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')); ?>" class="svg action delete"
