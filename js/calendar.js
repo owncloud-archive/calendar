@@ -1187,7 +1187,7 @@ $(document).ready(function(){
 	}
 
 	setInterval(function(){
-		$.post(OC.filePath('calendar', 'ajax', 'alarms.php'), {}, function(data){
+		$.post(OC.filePath('calendar', 'ajax', 'alarms.php'), function(data){
 			if(data.status == 'success'){
 				for(i in data.events){
 					alert(data.events[i]);
