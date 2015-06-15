@@ -16,6 +16,7 @@ OC.L10N.register(
     "Deletion failed" : "Fracàs d'escafatge",
     "group" : "grop",
     "can edit" : "pòt modificar",
+    "can share" : "pòt partejar",
     "ddd" : "jjj",
     "ddd M/d" : "jjj M/j",
     "dddd M/d" : "jjjj M/j",
