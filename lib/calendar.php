@@ -115,7 +115,7 @@ class OC_Calendar_Calendar{
 	 * @param string $timezone Default: null
 	 * @param integer $order Default: 1
 	 * @param string $color Default: null, format: '#RRGGBB(AA)'
-	 * @return insertid
+	 * @return int
 	 */
 	public static function addCalendar($userid,$name,$components='VEVENT,VTODO,VJOURNAL',$timezone=null,$order=0,$color=null) {
 		$all = self::allCalendars($userid, false, false);
@@ -159,7 +159,7 @@ class OC_Calendar_Calendar{
 	 * @param string $timezone
 	 * @param integer $order
 	 * @param string $color format: '#RRGGBB(AA)'
-	 * @return insertid
+	 * @return int
 	 */
 	public static function addCalendarFromDAVData($principaluri,$uri,$name,$components,$timezone,$order,$color) {
 		$userid = self::extractUserID($principaluri);
