@@ -5,6 +5,9 @@
 	<licence>AGPL</licence>
 	<author>Georg Ehrke, Bart Visscher, Jakob Sack</author>
 	<require>8</require>
+	<dependencies>
+		<owncloud min-version="8.1" max-version="8.1" />
+	</dependencies>
 	<description>Calendar with CalDAV support</description>
 	<remote>
 		<calendar>appinfo/remote.php</calendar>
