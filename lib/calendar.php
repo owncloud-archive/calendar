@@ -418,6 +418,10 @@ class OC_Calendar_Calendar{
 	private static function isAllowedToDeleteCalendar($calendar) {
 		$userId = OCP\User::getUser();
 
+		//in case it is called by command line or cron
+		if($userId == '') {
+			return true;
+		}
 		if ($calendar['userid'] === $userId) {
 			return true;
 		}
