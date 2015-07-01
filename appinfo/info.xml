@@ -1,4 +1,4 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <info>
 	<id>calendar</id>
 	<name>Calendar</name>
@@ -6,7 +6,7 @@
 	<author>Georg Ehrke, Bart Visscher, Jakob Sack</author>
 	<require>8</require>
 	<dependencies>
-		<owncloud min-version="8.1" max-version="8.1" />
+		<owncloud min-version="8.1" max-version="8.2" />
 	</dependencies>
 	<description>Calendar with CalDAV support</description>
 	<remote>
