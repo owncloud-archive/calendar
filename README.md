@@ -4,8 +4,8 @@ Fork from ElieSauveterre/calendar which is a fork from the owncloud/calendar.
 
 Install
 =======
-cd apps
-git clone https://github.com/thend20/calendar.git
+`cd apps`
+`git clone https://github.com/thend20/calendar.git`
 
 In ownCloud:
 Enable the Calendar app.
