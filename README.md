@@ -1,28 +1,28 @@
 Calendar app
 ============
+Fork from ElieSauveterre/calendar which is a fork from the owncloud/calendar.
 
-Maintainers:
-------------
-- [Georg Ehrke](https://github.com/georgehrke)
-- [Thomas Tanghus](https://github.com/tanghus)
-- [Bart Visscher](https://github.com/bartv2)
+Install
+=======
+cd apps
+git clone https://github.com/thend20/calendar.git
 
-Developer setup info:
----------------------
-__Important note__: ownCloud 7 or ownCloud 8 will be last version to ship the master branch's codebase. It will be replaced by the rework branch. If you want to implement new features, please strongly consider implementing them based on the rework branch's codebase.
+In ownCloud:
+Enable the Calendar app.
 
-### Master branch:
-Just clone this repo into your apps directory.
-Get the lastest version of master:
-```bash
-git clone git://github.com/owncloud/calendar.git
-cd calendar
+Database
+========
+If the `oc_clndr_alarms` does not exist after the install, you may manually create the table:
+
 ```
-
-### Rework branch:
-Get the lastest version of rework:
-```bash
-git clone git://github.com/owncloud/calendar.git
-cd calendar
-git checkout rework
+CREATE TABLE `oc_clndr_alarms` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `objid` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) COLLATE utf8_bin NOT NULL,
+  `timetype` varchar(255) COLLATE utf8_bin NOT NULL,
+  `senddate` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
+  `type` varchar(255) COLLATE utf8_bin NOT NULL,
+  `sent` smallint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 ```
