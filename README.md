@@ -1,16 +1,16 @@
 Calendar app
 ============
-Fork from ElieSauveterre/calendar which is a fork from the owncloud/calendar.
+Fork from the owncloud/calendar with Alarm/Reminder/Notifications.
 
 Install
 =======
 ```
 cd apps
-git clone https://github.com/thend20/calendar.git
+git clone https://github.com/ElieSauveterre/calendar.git
 ```
 
 In ownCloud:
-Enable the Calendar app.
+`Enable the Calendar app.`
 
 Database
 ========
