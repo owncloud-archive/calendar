@@ -76,10 +76,6 @@ $tmpl->assign('repeat_weekofmonth_options', $repeat_weekofmonth_options);
 
 $tmpl->assign('alarms', array(
   array(
-	'type' => 'DISPLAY',
-	'value' => 10,
-	'timetype' => 'M'),
-  array(
 	'type' => 'EMAIL',
 	'value' => 10,
 	'timetype' => 'M'
