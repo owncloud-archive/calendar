@@ -7,7 +7,7 @@ OC.L10N.register(
     "No events found." : "イベントが見つかりませんでした。",
     "Wrong calendar" : "誤ったカレンダーです",
     "You do not have the permissions to edit this event." : "このイベントを編集する権限がありません。",
-    "The file contained either no events or all events are already saved in your calendar." : "イベントなしまたはすべてのイベントを含むファイルは、既にあなたのカレンダーに保存されています。",
+    "The file contained either no events or all events are already saved in your calendar." : "イベントなし、またはすべてのイベントを含むファイルは、すでにあなたのカレンダーに保存されています。",
     "events have been saved in the new calendar" : "イベントは新しいカレンダーに保存されました",
     "Import failed" : "インポートに失敗",
     "events have been saved in your calendar" : "イベントはあなたのカレンダーに保存されました",
