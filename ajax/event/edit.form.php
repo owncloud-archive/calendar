@@ -34,6 +34,10 @@ $permissions = OC_Calendar_App::getPermissions($id, OC_Calendar_App::EVENT, $acc
 $dtstart = $vevent->DTSTART;
 $dtend = OC_Calendar_Object::getDTEndFromVEvent($vevent);
 
+$summary = $vevent->SUMMARY;
+$location = $vevent->LOCATION;
+$description = $vevent->DESCRIPTION;
+
 // DATE
 if ($dtstart->hasTime()) {
 	// UTC ?
