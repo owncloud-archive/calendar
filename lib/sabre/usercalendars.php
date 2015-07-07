@@ -19,6 +19,7 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+use Sabre\CalDAV\Calendar;
 
 /**
  * This class overrides \Sabre\CalDAV\UserCalendars::getChildren()
@@ -27,6 +28,24 @@
 class OC_Connector_Sabre_CalDAV_UserCalendars extends \Sabre\CalDAV\UserCalendars {
 
 	/**
+	 * Returns a single calendar, by name
+	 *
+	 * @param string $name
+	 * @return Calendar
+	 */
+	function getChild($name) {
+		$children = $this->getChildren();
+
+		foreach($children as $child) {
+			if ($child->getName() === $name) {
+				return $child;
+			}
+		}
+
+		return parent::getChild($name);
+	}
+
+		/**
 	* Returns a list of calendars
 	*
 	* @return array
