@@ -142,7 +142,7 @@ class OC_Calendar_Import{
 			}
 			$this->updateProgress(intval(($this->abscount / $numofcomponents)*100));
 		}
-		\OC\Cache::remove($this->progresskey);
+		\OC::$server->getCache()->remove($this->progresskey);
 		return true;
 	}
 
@@ -327,7 +327,7 @@ class OC_Calendar_Import{
 	private function updateProgress($percentage) {
 		$this->progress = $percentage;
 		if($this->cacheprogress) {
-			\OC\Cache::set($this->progresskey, $this->progress, 300);
+			\OC::$server->getCache()->set($this->progresskey, $this->progress, 300);
 		}
 		return true;
 	}
