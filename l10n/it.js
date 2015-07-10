@@ -5,7 +5,7 @@ OC.L10N.register(
     "Everything seems to be completely cached" : "Tutto sembra essere mantenuto completamente in cache",
     "No calendars found." : "Nessun calendario trovato.",
     "No events found." : "Nessun evento trovato.",
-    "Wrong calendar" : "Calendario sbagliato",
+    "Wrong calendar" : "Calendario errato",
     "You do not have the permissions to edit this event." : "Non hai i permessi per modificare questo evento.",
     "The file contained either no events or all events are already saved in your calendar." : "Il file non conteneva alcun evento o tutti gli eventi erano già salvati nel tuo calendario.",
     "events have been saved in the new calendar" : "eventi sono stati salvati nel nuovo calendario",
