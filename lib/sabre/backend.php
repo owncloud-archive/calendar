@@ -48,7 +48,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 			$calendar = array(
 				'id' => $row['id'],
 				'uri' => $row['uri'],
-				'principaluri' => 'principals/'.$row['userid'],
+				'principaluri' => 'principals/' . OCP\USER::getUser(),
 				'{' . \Sabre\CalDAV\Plugin::NS_CALENDARSERVER . '}getctag' => $row['ctag']?$row['ctag']:'0',
 				'{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}supported-calendar-component-set'
 					=> new \Sabre\CalDAV\Property\SupportedCalendarComponentSet($components),
@@ -75,7 +75,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 				'id' => 'contact_birthdays',
 				'uri' => 'contact_birthdays',
 				'{DAV:}displayname' => (string)OC_Calendar_App::$l10n->t('Contact birthdays'),
-				'principaluri' => 'principals/contact_birthdays',
+				'principaluri' => 'principals/' . OCP\USER::getUser(),
 				'{' . \Sabre\CalDAV\Plugin::NS_CALENDARSERVER . '}getctag' => $ctag,
 				'{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}supported-calendar-component-set'
 					=> new \Sabre\CalDAV\Property\SupportedCalendarComponentSet(array('VEVENT')),
