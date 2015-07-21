@@ -50,8 +50,10 @@ class OC_Calendar_App{
 			}
 		}
 		if($security === true && $shared === true) {
-			if(OCP\Share::getItemSharedWithBySource('calendar', $id)) {
+			if(OCP\User::getUser() === $calendar['userid'] || OCP\Share::getItemSharedWithBySource('calendar', $id)) {
 				return $calendar;
+			} else {
+				return false;
 			}
 		}
 		return $calendar;
