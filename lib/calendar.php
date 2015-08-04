@@ -43,7 +43,7 @@ class OC_Calendar_Calendar{
 			$active_where = ' AND `active` = ?';
 			$values[] = (int)$active;
 		}
-		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_calendars` WHERE `userid` = ?' . $active_where );
+		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_calendars` WHERE `userid` = ? ORDER BY `calendarorder`' . $active_where );
 		$result = $stmt->execute($values);
 
 		$calendars = array();
