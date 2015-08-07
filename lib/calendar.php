@@ -36,6 +36,11 @@ class OC_Calendar_Calendar{
 	 * @param boolean $createIfNecessary create calendars if no exist yet
 	 * @return array
 	 */
+	 
+	private static function calendar_sort($a,$b) {
+		return $a['calendarorder']>$b['calendarorder'];
+	}
+	 
 	public static function allCalendars($uid, $active=false, $createIfNecessary=true) {
 		$values = array($uid);
 		$active_where = '';
@@ -43,7 +48,7 @@ class OC_Calendar_Calendar{
 			$active_where = ' AND `active` = ?';
 			$values[] = (int)$active;
 		}
-		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_calendars` WHERE `userid` = ? ORDER BY `calendarorder`' . $active_where );
+		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_calendars` WHERE `userid` = ?' . $active_where );
 		$result = $stmt->execute($values);
 
 		$calendars = array();
@@ -71,6 +76,8 @@ class OC_Calendar_Calendar{
 		}
 
 		$calendars = array_merge($calendars, $shared_calendars);
+		
+		usort($calendars, array('OC_Calendar_Calendar','calendar_sort'));
 
 		return $calendars;
 	}
