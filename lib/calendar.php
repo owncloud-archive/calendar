@@ -339,14 +339,39 @@ class OC_Calendar_Calendar{
 	 */
 	public static function getCalendarColorOptions() {
 		return array(
-			'#ff0000', // "Red"
-			'#b3dc6c', // "Green"
-			'#ffff00', // "Yellow"
-			'#808000', // "Olive"
-			'#ffa500', // "Orange"
-			'#ff7f50', // "Coral"
-			'#ee82ee', // "Violet"
-			'#9fc6e7', // "light blue"
+                      '#FFCCCC',
+                      '#FF6666',
+                      '#FF0000',
+                      '#FFE5CC',
+                      '#FFB266',
+                      '#FF8000',
+                      '#FFFFCC',
+                      '#FFFF66',
+                      '#FFFF00',
+                      '#E5FFCC',
+                      '#B2FF66',
+                      '#80FF00',
+                      '#CCFFFF',
+                      '#66FFFF',
+                      '#00FFFF',
+                      '#CCE5FF',
+                      '#66B2FF',
+                      '#0080FF',
+                      '#E5CCFF',
+                      '#B266FF',
+                      '#7F00FF',
+                      '#FFCCFF',
+                      '#FF66FF',
+                      '#FF00FF',
+                      '#FFCCE5',
+                      '#FF66B2',
+                      '#FF007F',
+                      '#E0E0E0',
+                      '#A0A0A0',
+                      '#434343',
+                      '#000000',
+                      '#994C00',
+                      '#663300',
 		);
 	}
 
