@@ -78,7 +78,7 @@ $array = array(
 	"dayNamesShort" =>  json_encode(array((string)$l->t('Sun.'), (string)$l->t('Mon.'), (string)$l->t('Tue.'), (string)$l->t('Wed.'), (string)$l->t('Thu.'), (string)$l->t('Fri.'), (string)$l->t('Sat.'))),
 	"monthNames" =>  json_encode(array((string)$l->t('January'), (string)$l->t('February'), (string)$l->t('March'), (string)$l->t('April'), (string)$l->t('May'), (string)$l->t('June'), (string)$l->t('July'), (string)$l->t('August'), (string)$l->t('September'), (string)$l->t('October'), (string)$l->t('November'), (string)$l->t('December'))),
 	"monthNamesShort" =>  json_encode(array((string)$l->t('Jan.'), (string)$l->t('Feb.'), (string)$l->t('Mar.'), (string)$l->t('Apr.'), (string)$l->t('May.'), (string)$l->t('Jun.'), (string)$l->t('Jul.'), (string)$l->t('Aug.'), (string)$l->t('Sep.'), (string)$l->t('Oct.'), (string)$l->t('Nov.'), (string)$l->t('Dec.'))),
-	"agendatime" =>  "\"".((int) OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt')."{ -".((int) OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt')."}"."\"",
+	"agendatime" =>  "\"".((int) OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt')."{ - ".((int) OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt')."}"."\"",
 	"defaulttime" => "\"".((int) OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timeformat', '24') == 24 ? 'HH:mm' : 'hh:mm tt')."\"",
 	"allDayText" => "\"".addslashes($l->t('All day'))."\"",
 	"newcalendar" => "\"".addslashes($l->t('New Calendar'))."\"",
