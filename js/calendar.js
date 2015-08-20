@@ -117,7 +117,9 @@ Calendar={
 			//24 * 60 * 60 = 86400, # of seconds in a day
 			var topLoc = Math.floor(parentDiv.height() * percentOfDay);
 			var appNavigationWidth = ($(window).width() > 768) ? $('#app-navigation').width() : 0;
-			timeline.css({'left':($('.fc-today').offset().left-appNavigationWidth),'width': $('.fc-today').width(),'top':topLoc + 'px'});
+			if (timeline.is(':visible')) {
+				timeline.css({'left':($('.fc-today').offset().left-appNavigationWidth),'width': $('.fc-today').width(),'top':topLoc + 'px'});
+			}
 		},
 	},
 	UI:{
