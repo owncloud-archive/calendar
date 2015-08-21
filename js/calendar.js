@@ -1056,9 +1056,6 @@ $(document).ready(function(){
 			} catch(err) {
 			}
 		},
-		columnFormat: {
-		    week: 'ddd d. MMM'
-		},
 		selectable: true,
 		selectHelper: true,
 		select: Calendar.UI.newEvent,
