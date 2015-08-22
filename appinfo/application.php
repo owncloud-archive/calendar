@@ -326,6 +326,7 @@ class Application extends App {
 			function() use ($c, $l10n) {
 				return $this->backendFactory->createBackend(
 					'org.ownCloud.local',
+					$this->backends,
 					function() use ($l10n) {
 						return new Calendar\Backend\Local\Backend($l10n);
 					},
@@ -351,6 +352,7 @@ class Application extends App {
 			function() use ($c, $l10n, $contactsManager) {
 				return $this->backendFactory->createBackend(
 					'org.ownCloud.contact',
+					$this->backends,
 					function() use($c, $contactsManager) {
 						$appManager = $c->getServer()->getAppManager();
 
@@ -378,6 +380,7 @@ class Application extends App {
 				function() use ($c, $l10n) {
 					return $this->backendFactory->createBackend(
 						'org.ownCloud.sharing',
+						$this->backends,
 						function () {
 							return new Calendar\Backend\Sharing\Backend();
 						},
@@ -398,6 +401,7 @@ class Application extends App {
 				function() use ($c, $l10n) {
 					return $this->backendFactory->createBackend(
 						'org.ownCloud.webcal',
+						$this->backends,
 						function () use ($c, $l10n) {
 							$subscriptions = $c->query('SubscriptionBusinessLayer');
 							$cacheFactory = $c->getServer()->getMemCacheFactory();

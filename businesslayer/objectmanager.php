@@ -95,6 +95,8 @@ class ObjectManager {
 				->getObjectCache($calendar);
 			$this->updater = $calendar->getBackend()
 				->getObjectUpdater($calendar);
+			$this->watcher = $calendar->getBackend()
+				->getObjectWatcher($calendar);
 
 			$this->isCachingEnabled = $this->api->cache();
 		}

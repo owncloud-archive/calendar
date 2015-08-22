@@ -29,7 +29,7 @@ use OCA\Calendar\IBackend;
 use OCA\Calendar\ICalendar;
 use OCA\Calendar\IObject;
 
-use OCA\Calendar\IObjectAPI;
+use OCA\Calendar\Backend\IObjectAPI;
 use OCP\ILogger;
 
 use OCP\AppFramework\Db\DoesNotExistException as DoesNotExistMapperException;
@@ -50,7 +50,7 @@ class Scanner {
 
 
 	/**
-	 * @var \OCA\Calendar\IObjectAPI
+	 * @var \OCA\Calendar\Backend\IObjectAPI
 	 */
 	protected $objectAPI;
 
@@ -197,4 +197,6 @@ class Scanner {
 	private function isCalendarsBackendValid() {
 		return ($this->objectAPI instanceof IObjectAPI && $this->cache instanceof Cache);
 	}
+
+
 }

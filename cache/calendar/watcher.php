@@ -77,7 +77,7 @@ class Watcher {
 	 */
 	public function checkUpdate($backendId, $privateUri, $userId) {
 		if ($this->watchPolicy === self::CHECK_ALWAYS ||
-			($this->watchPolicy === self::CHECK_ONCE && $this->wasCalendarChecked($backendId, $privateUri, $userId))) {
+			($this->watchPolicy === self::CHECK_ONCE && !$this->wasCalendarChecked($backendId, $privateUri, $userId))) {
 			$backend = $this->backends->find($backendId);
 			if (!($backend instanceof IBackend)) {
 				return false;

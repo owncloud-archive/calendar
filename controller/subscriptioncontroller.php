@@ -57,7 +57,7 @@ class SubscriptionController extends Controller {
 
 		$this->registerReader('json', function(IRequest $request) use ($subscriptionFactory) {
 			$reader = new JSON\SubscriptionReader($request, $subscriptionFactory);
-			return $reader->getObject();
+			return $reader;
 		});
 
 		$this->registerResponder('json', function($value) {

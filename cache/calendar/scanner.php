@@ -207,7 +207,12 @@ class Scanner {
 				$calendars = $backend->getCalendarAPI()->listAll($userId);
 
 				foreach ($calendars as $privateUri) {
-					$this->scanCalendar($backendId, $privateUri, $userId);
+					try {
+						$this->scanCalendar($backendId, $privateUri, $userId);
+					} catch (\Exception $ex) {
+						$this->logger->debug($ex->getMessage());
+						continue;
+					}
 				}
 			} catch(\Exception $ex) {
 				$this->logger->debug($ex->getMessage());
