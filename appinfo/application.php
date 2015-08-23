@@ -157,7 +157,7 @@ class Application extends App {
 			$userSession = $c->getServer()->getUserSession();
 			$subscriptionFactory = $c->query('SubscriptionFactory');
 
-			return new Calendar\Controller\SubscriptionController($c->getAppName(), $request, $userSession, $subscriptions, $subscriptionFactory);
+			return new Calendar\Controller\SubscriptionController($c->getAppName(), $request, $userSession, $subscriptions, $subscriptionFactory, $this->backends);
 		});
 		$container->registerService('TimezoneController', function(IAppContainer $c) {
 			$request = $c->query('Request');
@@ -198,7 +198,7 @@ class Application extends App {
 		$container->registerService('SubscriptionBusinessLayer', function(IAppContainer $c) {
 			$mapper = $c->query('SubscriptionMapper');
 
-			return new Calendar\BusinessLayer\Subscription($mapper);
+			return new Calendar\BusinessLayer\Subscription($mapper, $this->backends);
 		});
 		$container->registerService('TimezoneBusinessLayer', function(IAppContainer $c) {
 			$mapper = $c->query('TimezoneMapper');
