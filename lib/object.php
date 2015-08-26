@@ -62,14 +62,14 @@ class OC_Calendar_Object{
 	 * in ['calendardata']
 	 */
 	public static function allInPeriod($id, $start, $end) {
-		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ? AND `objecttype`= ?' 
+		$stmt = OCP\DB::prepare( 'SELECT * FROM `*PREFIX*clndr_objects` WHERE `calendarid` = ? AND `objecttype`= ?'
 		.' AND ((`startdate` >= ? AND `enddate` <= ? AND `repeating` = 0)'
 		.' OR (`enddate` >= ? AND `startdate` <= ? AND `repeating` = 0)'
 		.' OR (`startdate` <= ? AND `repeating` = 1) )' );
 		$start = self::getUTCforMDB($start);
 		$end = self::getUTCforMDB($end);
 		$result = $stmt->execute(array($id,'VEVENT',
-					$start, $end,					
+					$start, $end,
 					$start, $end,
 					$end));
 
@@ -203,7 +203,7 @@ class OC_Calendar_Object{
 	public static function edit($id, $data) {
 		$oldobject = self::find($id);
 		$calid = self::getCalendarid($id);
-		
+
 		$calendar = OC_Calendar_Calendar::find($calid);
 		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
@@ -285,7 +285,7 @@ class OC_Calendar_Object{
 	public static function delete($id) {
 		$oldobject = self::find($id);
 		$calid = self::getCalendarid($id);
-		
+
 		$calendar = OC_Calendar_Calendar::find($calid);
 		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
@@ -1170,10 +1170,10 @@ class OC_Calendar_Object{
             if(!isset($request['eventalarmaction'])) {
                 return 'DISPLAY';
             }
-            
+
             return $request['eventalarmaction'];
         }
-        
+
 	private static function isAlarmSpecified($request) {
 		if(!isset($request['eventalarm'])) {
 			return false;
@@ -1323,7 +1323,7 @@ class OC_Calendar_Object{
 			$update->execute(array($newSendDate->format('Y-m-d H:i'), $sent, $row['id']));
 		}
             }
-            
+
 	private static function getTimeTypeAndValueFromInterval($intervalStr) {
 
 		$interval = new \DateInterval($intervalStr);
@@ -1350,7 +1350,7 @@ class OC_Calendar_Object{
 			$timeType = 'M';
 			$value = $interval->i;
         }
-        
+
 		return array(
 		  'timeType' => $timeType,
 		  'value' => $value);
@@ -1372,10 +1372,10 @@ class OC_Calendar_Object{
 				$interval = 'P'.$alarmDuration.'W';
 				break;
 		}
-		
+
 		return $interval;
 	}
-	
+
 	/**
 	 * @brief returns the owner of an object
 	 * @param integer $id
