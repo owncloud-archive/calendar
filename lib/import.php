@@ -96,7 +96,7 @@ class OC_Calendar_Import{
 		//fix for malformed timestamp in some google calendar events
 		$this->ical = str_replace('CREATED:00001231T000000Z', 'CREATED:19700101T000000Z', $this->ical);
 		try{
-			$this->calobject = OC_VObject::parse($this->ical);
+			$this->calobject = \Sabre\VObject\Reader::read($this->ical);
 		}catch(Exception $e) {
 			//MISSING: write some log
 			$this->error = true;
@@ -126,7 +126,10 @@ class OC_Calendar_Import{
 			if(!is_null($object->DTSTART)){
 				$dtend = OC_Calendar_Object::getDTEndFromVEvent($object);
 				if($object->DTEND) {
-					$object->DTEND->setDateTime($dtend->getDateTime(), $object->DTSTART->getDateType());
+					$object->DTEND['VALUE'] = $object->DTSTART['VALUE'];
+					$dtend = $dtend->getDateTime();
+					$dtend->setTimeZone($object->DTSTART->getDateTime()->getTimeZone());
+					$object->DTEND->setDateTime($dtend);
 				}
 			}
 			$vcalendar = $this->createVCalendar($object->serialize());
@@ -139,7 +142,7 @@ class OC_Calendar_Import{
 			}
 			$this->updateProgress(intval(($this->abscount / $numofcomponents)*100));
 		}
-		\OC\Cache::remove($this->progresskey);
+		\OC::$server->getCache()->remove($this->progresskey);
 		return true;
 	}
 
@@ -324,7 +327,7 @@ class OC_Calendar_Import{
 	private function updateProgress($percentage) {
 		$this->progress = $percentage;
 		if($this->cacheprogress) {
-			\OC\Cache::set($this->progresskey, $this->progress, 300);
+			\OC::$server->getCache()->set($this->progresskey, $this->progress, 300);
 		}
 		return true;
 	}

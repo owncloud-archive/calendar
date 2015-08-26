@@ -87,7 +87,7 @@ class Provider extends \OCP\Search\Provider {
 	 * @return array [start, end] in Unix time
 	 */
 	private function getDateRange($calendarObject) {
-		$calendarData = \OC_VObject::parse($calendarObject['calendardata']);
+		$calendarData = \Sabre\VObject\Reader::read($calendarObject['calendardata']);
 		// set start
 		$start = $calendarData->VEVENT->DTSTART->getDateTime();
 		$start->setTimezone(Event::getUserTimezone());

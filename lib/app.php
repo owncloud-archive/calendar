@@ -50,8 +50,10 @@ class OC_Calendar_App{
 			}
 		}
 		if($security === true && $shared === true) {
-			if(OCP\Share::getItemSharedWithBySource('calendar', $id)) {
+			if(OCP\User::getUser() === $calendar['userid'] || OCP\Share::getItemSharedWithBySource('calendar', $id)) {
 				return $calendar;
+			} else {
+				return false;
 			}
 		}
 		return $calendar;
@@ -68,7 +70,7 @@ class OC_Calendar_App{
 		$event = OC_Calendar_Object::find($id);
 		if($shared === true || $security === true) {
 			$permissions = self::getPermissions($id, self::EVENT);
-			OCP\Util::writeLog('contacts', __METHOD__.' id: '.$id.', permissions: '.$permissions, OCP\Util::DEBUG);
+			OCP\Util::writeLog('calendar', __METHOD__.' id: '.$id.', permissions: '.$permissions, OCP\Util::DEBUG);
 			if(self::getPermissions($id, self::EVENT)) {
 				return $event;
 			}
@@ -90,7 +92,7 @@ class OC_Calendar_App{
 		if($event_object === false) {
 			return false;
 		}
-		$vobject = OC_VObject::parse($event_object['calendardata']);
+		$vobject = \Sabre\VObject\Reader::read($event_object['calendardata']);
 		if(is_null($vobject)) {
 			return false;
 		}
@@ -190,7 +192,7 @@ class OC_Calendar_App{
 			$tags = array_map($getName, $vcategories->getTags());
 			$vcategories->delete($tags);
 			foreach($events as $event) {
-				$vobject = OC_VObject::parse($event['calendardata']);
+				$vobject = \Sabre\VObject\Reader::read($event['calendardata']);
 				if(!is_null($vobject)) {
 					$object = null;
 					if (isset($calendar->VEVENT)) {
@@ -214,7 +216,7 @@ class OC_Calendar_App{
 	 * check VEvent for new categories.
 	 * @see \OCP\ITags::addMultiple()
 	 */
-	public static function loadCategoriesFromVCalendar($id, OC_VObject $calendar) {
+	public static function loadCategoriesFromVCalendar($id, \Sabre\VObject\Component\VCalendar $calendar) {
 		$object = null;
 		if (isset($calendar->VEVENT)) {
 			$object = $calendar->VEVENT;
@@ -422,7 +424,6 @@ class OC_Calendar_App{
 		}else{
 			if (is_numeric($calendarid)) {
 				$calendar = self::getCalendar($calendarid);
-				OCP\Response::enableCaching(0);
 				OCP\Response::setETagHeader($calendar['ctag']);
 				$events = OC_Calendar_Object::allInPeriod($calendarid, $start, $end, $calendar['userid'] !== OCP\User::getUser());
 			} else {
@@ -448,7 +449,7 @@ class OC_Calendar_App{
 				. $event['vevent']->serialize() .  "END:VCALENDAR";
 		}
 		try{
-			$object = OC_VObject::parse($event['calendardata']);
+			$object = \Sabre\VObject\Reader::read($event['calendardata']);
 			if(!$object) {
 				\OCP\Util::writeLog('calendar', __METHOD__.' Error parsing event: '.print_r($event, true), \OCP\Util::DEBUG);
 				return array();
@@ -467,17 +468,20 @@ class OC_Calendar_App{
 			$id = $event['id'];
 			if(OC_Calendar_Object::getowner($id) !== OCP\USER::getUser()) {
 				// do not show events with private or unknown access class
-				if(isset($vevent->CLASS) && ($vevent->CLASS->value === 'PRIVATE' || $vevent->CLASS->value === '')){
+				if (isset($vevent->CLASS)
+					&& ($vevent->CLASS->getValue() === 'PRIVATE'
+					|| $vevent->CLASS->getValue() === ''))
+				{
 					return $output;
 				}
 				$object = OC_Calendar_Object::cleanByAccessClass($id, $object);
 			}
-			$allday = ($vevent->DTSTART->getDateType() == Sabre\VObject\Property\DateTime::DATE)?true:false;
+			$allday = !$vevent->DTSTART->hasTime();
 			$last_modified = @$vevent->__get('LAST-MODIFIED');
 			$lastmodified = ($last_modified)?$last_modified->getDateTime()->format('U'):0;
 			$staticoutput = array('id'=>(int)$event['id'],
-							'title' => (!is_null($vevent->SUMMARY) && $vevent->SUMMARY->value != '')? strtr($vevent->SUMMARY->value, array('\,' => ',', '\;' => ';')) : self::$l10n->t('unnamed'),
-							'description' => isset($vevent->DESCRIPTION)?strtr($vevent->DESCRIPTION->value, array('\,' => ',', '\;' => ';')):'',
+							'title' => (!is_null($vevent->SUMMARY) && $vevent->SUMMARY->getValue() != '')? strtr($vevent->SUMMARY->getValue(), array('\,' => ',', '\;' => ';')) : self::$l10n->t('unnamed'),
+							'description' => isset($vevent->DESCRIPTION)?strtr($vevent->DESCRIPTION->getValue(), array('\,' => ',', '\;' => ';')):'',
 							'lastmodified'=>$lastmodified,
 							'allDay'=>$allday);
 			if(OC_Calendar_Object::isrepeating($id) && OC_Calendar_Repeat::is_cached_inperiod($event['id'], $start, $end)) {

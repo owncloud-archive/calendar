@@ -41,12 +41,13 @@ OCP\Util::addStyle('calendar', 'style');
 OCP\Util::addScript('calendar', '../3rdparty/jquery.multiselect/js/jquery.multiselect');
 OCP\Util::addStyle('calendar', '../3rdparty/jquery.multiselect/css/jquery.multiselect');
 OCP\Util::addScript('calendar','jquery.multi-autocomplete');
+OCP\Util::addScript('calendar', '../3rdparty/jsTz/jstz-1.0.4.min');
 OCP\Util::addScript('core','tags');
 OCP\Util::addScript('calendar','on-event');
 OCP\Util::addScript('calendar','settings');
 OCP\App::setActiveNavigationEntry('calendar_index');
 $tmpl = new OCP\Template('calendar', 'calendar', 'user');
-$timezone=OCP\Config::getUserValue(OCP\USER::getUser(),'calendar','timezone','');
+$timezone=OCP\Config::getUserValue(OCP\USER::getUser(),'calendar','timezone',date_default_timezone_get());
 $tmpl->assign('timezone',$timezone);
 $tmpl->assign('timezones',DateTimeZone::listIdentifiers());
 

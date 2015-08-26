@@ -19,13 +19,12 @@ if(\OCP\App::isEnabled('contacts')) {
 }
 
 // Backends
-$authBackend = new OC_Connector_Sabre_Auth();
+$authBackend = new \OC\Connector\Sabre\Auth();
 $principalBackend = new \OC\Connector\Sabre\Principal(
 	\OC::$server->getConfig(),
 	\OC::$server->getUserManager()
 );
 $caldavBackend    = new OC_Connector_Sabre_CalDAV();
-$requestBackend = new OC_Connector_Sabre_Request();
 
 // Root nodes
 $Sabre_CalDAV_Principal_Collection = new \Sabre\CalDAV\Principal\Collection($principalBackend);
@@ -41,14 +40,18 @@ $nodes = array(
 
 // Fire up server
 $server = new \Sabre\DAV\Server($nodes);
-$server->httpRequest = $requestBackend;
+$server->httpRequest->setUrl(\OC::$server->getRequest()->getRequestUri());
 $server->setBaseUri($baseuri);
 // Add plugins
 $server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,'ownCloud'));
 $server->addPlugin(new \Sabre\CalDAV\Plugin());
 $server->addPlugin(new \Sabre\DAVACL\Plugin());
-$server->addPlugin(new \Sabre\DAV\Browser\Plugin(false)); // Show something in the Browser, but no upload
 $server->addPlugin(new \Sabre\CalDAV\ICSExportPlugin());
+$server->addPlugin(new \OC\Connector\Sabre\ExceptionLoggerPlugin('caldav', \OC::$server->getLogger()));
+$server->addPlugin(new \OC\Connector\Sabre\AppEnabledPlugin(
+	'calendar',
+	OC::$server->getAppManager()
+));
 
 // And off we go!
 $server->exec();

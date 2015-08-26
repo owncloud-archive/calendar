@@ -129,4 +129,21 @@ class OC_Connector_Sabre_CalDAV_Calendar extends \Sabre\CalDAV\Calendar {
 
 	}
 
+	/**
+	 * This method receives a list of paths in it's first argument.
+	 * It must return an array with Node objects.
+	 *
+	 * If any children are not found, you do not have to return them.
+	 * 
+	 * @return array
+	 */
+	public function getMultipleChildren(array $paths) {
+		$objs = $this->caldavBackend->getMultipleCalendarObjects($this->calendarInfo['id'], $paths);
+		$children = [];
+		foreach($objs as $obj) {
+			$children[] = new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
+		}
+        	return $children;
+        }
+
 }

@@ -201,12 +201,12 @@ button.category{margin:0 3px;}
 	float: right;
 }
 #from, #to {
-	width: 65px;
+	width: 80px;
 	margin: 0;
 }
 #fromtime, #totime {
 	margin: 0;
-	width: 80px;
+	width: 90px;
 }
 #event-allday {
 	display: inline-block;
@@ -246,6 +246,8 @@ button.category{margin:0 3px;}
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding: 0;
+	z-index: 1000;
+	max-width: 100%;
 }
 .ui-dialog .ui-dialog-content {
 	overflow: initial;
@@ -571,6 +573,11 @@ button.category{margin:0 3px;}
 	width: 100%;
 	
 	z-index: 999;
+}
+
+/* force minimum height for event so that 15 minute events are visible */
+.fc-event {
+	min-height: 20px;
 }
 
 .fc-event-draggable { cursor: default; }

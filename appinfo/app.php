@@ -37,10 +37,6 @@ OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
 
 OCP\Backgroundjob::registerJob('OC_Calendar_Alarm');
 
-Sabre\VObject\Property::$classMap['SUMMARY'] = 'OC\VObject\StringProperty';
-Sabre\VObject\Property::$classMap['DESCRIPTION'] = 'OC\VObject\StringProperty';
-Sabre\VObject\Property::$classMap['LOCATION'] = 'OC\VObject\StringProperty';
-
 $request = \OC::$server->getRequest();
 if (isset($request->server['REQUEST_URI'])) {
 	$url = $request->server['REQUEST_URI'];

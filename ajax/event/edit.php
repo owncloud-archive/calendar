@@ -27,7 +27,7 @@ if($errarr) {
 	exit;
 }else{
 	$data = OC_Calendar_App::getEventObject($id, false, false);
-	$vcalendar = OC_VObject::parse($data['calendardata']);
+	$vcalendar = \Sabre\VObject\Reader::read($data['calendardata']);
 
 	OC_Calendar_App::isNotModified($vcalendar->VEVENT, $_POST['lastmodified']);
 	OC_Calendar_Object::updateVCalendarFromRequest($_POST, $vcalendar);

@@ -14,7 +14,7 @@ $id = $_POST['id'];
 $vcalendar = OC_Calendar_App::getVCalendar($id, false, false);
 $vevent = $vcalendar->VEVENT;
 
-$accessclass = $vevent->getAsString('CLASS');
+$accessclass = $vevent->CLASS;
 $permissions = OC_Calendar_App::getPermissions($id, OC_Calendar_App::EVENT, $accessclass);
 if(!$permissions & OCP\PERMISSION_UPDATE) {
 	OCP\JSON::error(array('message'=>'permission denied'));
@@ -28,12 +28,16 @@ $delta->i = $_POST['minuteDelta'];
 OC_Calendar_App::isNotModified($vevent, $_POST['lastmodified']);
 
 $dtend = OC_Calendar_Object::getDTEndFromVEvent($vevent);
-$end_type = $dtend->getDateType();
-$dtend->setDateTime($dtend->getDateTime()->add($delta), $end_type);
+$dtend->getDateTime()->add($delta);
 unset($vevent->DURATION);
 
-$vevent->setDateTime('LAST-MODIFIED', 'now', Sabre\VObject\Property\DateTime::UTC);
-$vevent->setDateTime('DTSTAMP', 'now', Sabre\VObject\Property\DateTime::UTC);
+
+$now = new DateTime('now');
+$now->setTimeZone(new \DateTimeZone('UTC'));
+$lastModified = $vcalendar->create('LAST-MODIFIED');
+$lastModified->setValue($now);
+$vevent->LAST_MODIFIED = $lastModified;
+$vevent->DTSTAMP = $now;
 
 OC_Calendar_Object::edit($id, $vcalendar->serialize());
 $lastmodified = $vevent->__get('LAST-MODIFIED')->getDateTime();

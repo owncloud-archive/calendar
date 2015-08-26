@@ -1,5 +1,7 @@
 <?php
 
+use \Sabre\DAV\PropPatch;
+
 class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	/**
 	 * List of CalDAV properties, and how they map to database fieldnames
@@ -46,7 +48,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 			$calendar = array(
 				'id' => $row['id'],
 				'uri' => $row['uri'],
-				'principaluri' => 'principals/'.$row['userid'],
+				'principaluri' => 'principals/' . OCP\USER::getUser(),
 				'{' . \Sabre\CalDAV\Plugin::NS_CALENDARSERVER . '}getctag' => $row['ctag']?$row['ctag']:'0',
 				'{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}supported-calendar-component-set'
 					=> new \Sabre\CalDAV\Property\SupportedCalendarComponentSet($components),
@@ -73,7 +75,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 				'id' => 'contact_birthdays',
 				'uri' => 'contact_birthdays',
 				'{DAV:}displayname' => (string)OC_Calendar_App::$l10n->t('Contact birthdays'),
-				'principaluri' => 'principals/contact_birthdays',
+				'principaluri' => 'principals/' . OCP\USER::getUser(),
 				'{' . \Sabre\CalDAV\Plugin::NS_CALENDARSERVER . '}getctag' => $ctag,
 				'{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}supported-calendar-component-set'
 					=> new \Sabre\CalDAV\Property\SupportedCalendarComponentSet(array('VEVENT')),
@@ -172,10 +174,10 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	 * (424 Failed Dependency) because the request needs to be atomic.
 	 *
 	 * @param string $calendarId
-	 * @param array $properties
+	 * @param PropPatch $propPatch
 	 * @return bool|array
 	 */
-	public function updateCalendar($calendarId, array $properties) {
+	public function updateCalendar($calendarId, PropPatch $propPatch) {
 
 		$newValues = array();
 		$result = array(
@@ -185,6 +187,8 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 		);
 
 		$hasError = false;
+
+		$properties = $propPatch->getRemainingMutations();
 
 		foreach($properties as $propertyName=>$propertyValue) {
 
@@ -300,7 +304,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 					if (substr_count($row['calendardata'], 'CLASS') === 0) {
 						$data[] = $this->OCAddETag($row);
 					} else {
-						$object = OC_VObject::parse($row['calendardata']);
+						$object = \Sabre\VObject\Reader::read($row['calendardata']);
 						if(!$object) {
 							return false;
 						}
@@ -361,7 +365,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 		$data = OC_Calendar_Object::findWhereDAVDataIs($calendarId,$objectUri);
 		if(is_array($data)) {
 			$data = $this->OCAddETag($data);
-			$object = OC_VObject::parse($data['calendardata']);
+			$object = \Sabre\VObject\Reader::read($data['calendardata']);
 			if(!$object) {
 				return false;
 			}
@@ -409,7 +413,7 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 	/**
 	 * @brief Creates a etag
 	 * @param array $row Database result
-	 * @returns associative array
+	 * @returns array associative array
 	 *
 	 * Adds a key "etag" to the row
 	 */
