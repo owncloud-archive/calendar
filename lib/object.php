@@ -141,7 +141,7 @@ class OC_Calendar_Object{
 
 		OC_Calendar_App::loadCategoriesFromVCalendar($object_id, $object);
 
-		self::addAlarmsDBFromData($object->getVObject()->VEVENT, $object_id);
+		self::addAlarmsDBFromData($object->VEVENT, $object_id);
 
 		OC_Calendar_Calendar::touchCalendar($id);
 		OCP\Util::emitHook('OC_Calendar', 'addEvent', $object_id);
@@ -1143,21 +1143,12 @@ class OC_Calendar_Object{
 		unset($vevent->DURATION);
 		self::addAlarmsData($request, $vcalendar);
 
-<<<<<<< HEAD
-		self::addAlarmsData($request, $vcalendar);
-
-		$vevent->setString('CLASS', $accessclass);
-		$vevent->setString('LOCATION', $location);
-		$vevent->setString('DESCRIPTION', $description);
-		$vevent->setString('CATEGORIES', $categories);
-=======
 		if ($accessclass !== null) {
 			$vevent->CLASS = $accessclass;
 		}
 		$vevent->LOCATION = $location;
 		$vevent->DESCRIPTION = $description;
 		$vevent->CATEGORIES = $categories;
->>>>>>> upstream/stable8.1
 
 		/*if($repeat == "true") {
 			$vevent->RRULE = $repeat;
@@ -1181,7 +1172,7 @@ class OC_Calendar_Object{
 		if($request['eventalarm'] == "NONE") {
 			return false;
 		}
-		
+
 		return true;
 	}
 	private static function addAlarmsData($request, $vcalendar) {
@@ -1202,11 +1193,12 @@ class OC_Calendar_Object{
 
 					$interval = self::formatAlarmToInterval($alarmTimeType, $alarmDuration);
 
-					$valarm = new OC_VObject('VALARM');
-					$valarm->setString('DESCRIPTION', 'Default Event Notification');
-					$valarm->setString('ACTION', $alarmType);
-					$valarm->addProperty('TRIGGER', '-'.$interval, array('VALUE' => 'DURATION'));
-
+					$valarm = new \Sabre\VObject\Component\VAlarm([
+					  'DESCRIPTION' => 'Default Event Notification',
+					  'ACTION' => $alarmType,
+					  'TRIGGER' => '-'.$interval, array('VALUE' => 'DURATION')
+					]);
+					
 					$vevent->add($valarm);
 				}
 				$i++;
