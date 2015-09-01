@@ -30,6 +30,7 @@ use OCA\Calendar\ICalendar;
 use OCA\Calendar\IObject;
 
 use OCA\Calendar\Backend\IObjectAPI;
+use OCA\Calendar\Backend as BackendUtils;
 use OCP\ILogger;
 
 use OCP\AppFramework\Db\DoesNotExistException as DoesNotExistMapperException;
@@ -78,7 +79,11 @@ class Scanner {
 			$this->logger->error('Backend of calendar \'' . $identifier . '\' not found');
 		} else {
 			$this->cache = $backend->getObjectCache($calendar);
-			$this->objectAPI = $backend->getObjectAPI($calendar);
+			try {
+				$this->objectAPI = $backend->getObjectAPI($calendar);
+		 	} catch (BackendUtils\Exception $ex) {
+				//TODO
+			}
 		}
 	}
 
@@ -184,7 +189,12 @@ class Scanner {
 			return;
 		}
 
-		$list = $this->objectAPI->listAll();
+		try {
+			$list = $this->objectAPI->listAll();
+		} catch(BackendUtils\Exception $ex) {
+			return;
+		}
+
 		foreach($list as $l) {
 			$this->scanObject($l);
 		}
