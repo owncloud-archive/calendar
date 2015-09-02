@@ -197,11 +197,14 @@ class Scanner {
 			return;
 		}
 
+		$cachedList = $this->cache->listAll();
 		try {
-			$list = $this->objectAPI->listAll();
+			$remoteList = $this->objectAPI->listAll();
 		} catch(BackendUtils\Exception $ex) {
 			return;
 		}
+
+		$list = array_merge($cachedList, $remoteList);
 
 		foreach($list as $l) {
 			$this->scanObject($l);

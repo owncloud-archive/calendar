@@ -167,13 +167,19 @@ class Cache extends Mapper {
 	 * @return array
 	 */
 	public function listAll($type=ObjectType::ALL){
-		$sql  = 'SELECT `objecturi` FROM `' . $this->getTableName() . '` ';
+		$sql  = 'SELECT `uri` FROM `' . $this->getTableName() . '` ';
 		$sql .= 'WHERE `calendarid` = ?';
 		$params = [$this->calendar->getId()];
 
 		$this->addTypeQuery($type, $sql, $params);
+		$result = $this->execute($sql, $params);
 
-		return $this->findEntities($sql, $params);
+		$list = [];
+		while($row = $result->fetch()){
+			$list[] = $row['uri'];
+		}
+
+		return $list;
 	}
 
 
