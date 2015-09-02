@@ -1196,7 +1196,7 @@ class OC_Calendar_Object{
 					$valarm              = $vcalendar->createComponent('VALARM');
 					$valarm->DESCRIPTION = 'Default Event Notification';
 					$valarm->ACTION      = $alarmType;
-					$valarm->TRIGGER     = 'VALUE=DURATION:-' . $interval;
+					$valarm->TRIGGER     = '-' . $interval;
 					$vevent->add($valarm);
 				}
 				$i++;
