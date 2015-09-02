@@ -101,7 +101,14 @@ class Scanner {
 			return;
 		}
 
-		$cached = $this->getCached($objectUri);
+		try {
+			$cached = $this->getCached($objectUri);
+		} catch (CorruptDataException $ex) {
+			//TODO log $ex->getMessage();
+
+			return;
+		}
+
 		if ($cached) {
 			$object->setId($cached->getId());
 			$this->updateCache($object);
@@ -152,6 +159,7 @@ class Scanner {
 			return null;
 		} catch(MultipleObjectsReturnedMapperException $ex) {
 			//$this->logger->warn($msg);
+
 			return null;
 		}
 	}

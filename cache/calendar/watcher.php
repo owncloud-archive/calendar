@@ -25,8 +25,9 @@ use OCA\Calendar\IBackend;
 use OCA\Calendar\IBackendCollection;
 
 class Watcher {
-	const CHECK_ONCE = 0;
-	const CHECK_ALWAYS = 1;
+	const CHECK_NEVER = 0;
+	const CHECK_ONCE = 1;
+	const CHECK_ALWAYS = 2;
 
 	/**
 	 * @var integer

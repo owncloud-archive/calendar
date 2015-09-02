@@ -102,7 +102,9 @@ class Scanner {
 				return $this->cache->doesExist($newUri, $calendar->getUserId());
 			}, true);
 			$calendar = $this->addToCache($calendar);
-			$usersCalendar->setId($calendar->getId());
+			if ($usersCalendar) {
+				$usersCalendar->setId($calendar->getId());
+			}
 		}
 	}
 
