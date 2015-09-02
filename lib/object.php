@@ -1193,12 +1193,10 @@ class OC_Calendar_Object{
 
 					$interval = self::formatAlarmToInterval($alarmTimeType, $alarmDuration);
 
-					$valarm = new \Sabre\VObject\Component\VAlarm([
-					  'DESCRIPTION' => 'Default Event Notification',
-					  'ACTION' => $alarmType,
-					  'TRIGGER' => '-'.$interval, array('VALUE' => 'DURATION')
-					]);
-					
+					$valarm              = $vcalendar->createComponent('VALARM');
+					$valarm->DESCRIPTION = 'Default Event Notification';
+					$valarm->ACTION      = $alarmType;
+					$valarm->TRIGGER     = 'VALUE=DURATION:-' . $interval;
 					$vevent->add($valarm);
 				}
 				$i++;
