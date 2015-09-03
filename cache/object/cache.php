@@ -85,9 +85,9 @@ class Cache extends Mapper {
 
 		$stmt = $this->execute($sql, [
 			$calendarId, $object->getUri(), $object->getType(),
-			$object->getEtag(true), $object->getStartDate(), $object->getEndDate(),
+			$object->getEtag(true), $this->getUTC($object->getStartDate()), $this->getUTC($object->getEndDate()),
 			$object->getRepeating(), $object->getSummary(), $object->getCalendarData(),
-			$object->getLastModified()
+			$this->getUTC($object->getLastModified())
 		]);
 
 		$object->setId((int) $this->db->lastInsertId($this->getTableName()));
