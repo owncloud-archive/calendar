@@ -45,6 +45,8 @@ OCP\Util::addScript('calendar', '../3rdparty/jsTz/jstz-1.0.4.min');
 OCP\Util::addScript('core','tags');
 OCP\Util::addScript('calendar','on-event');
 OCP\Util::addScript('calendar','settings');
+OCP\Util::addScript('calendar','share');
+OCP\Util::addStyle('calendar','share');
 OCP\App::setActiveNavigationEntry('calendar_index');
 $tmpl = new OCP\Template('calendar', 'calendar', 'user');
 $timezone=OCP\Config::getUserValue(OCP\USER::getUser(),'calendar','timezone',date_default_timezone_get());
