@@ -49,10 +49,8 @@
 		</div>
 	</div>
 
-	<label id="event-allday">
-		<input id="allday_checkbox" type="checkbox"<?php if($_['allday']) {print_unescaped('checked="checked"');} ?> name="allday">
-		<?php p($l->t("All Day Event"));?>
-	</label>
+	<input id="allday_checkbox" class="checkbox" type="checkbox"<?php if($_['allday']) {print_unescaped('checked="checked"');} ?> name="allday">
+	<label id="event-allday" for="allday_checkbox"><?php p($l->t("All Day Event"));?></label>
 
 	<input id="advanced_options_button" type="button" class="submit" value="<?php p($l->t('Advanced options')); ?>">
 

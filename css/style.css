@@ -199,6 +199,11 @@ button.category{margin:0 3px;}
 	display: block;
 	margin: 5px 0;
 }
+#event-time:after {
+	content: "";
+	display: table;
+	clear: both;
+}
 #event-time-from {
 	float: left;
 }
@@ -214,9 +219,7 @@ button.category{margin:0 3px;}
 	width: 90px;
 }
 #event-allday {
-	display: inline-block;
 	margin: 7px 0;
-	width: 100%;
 }
 /* category input field leaves room for edit button */
 #category {
