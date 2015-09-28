@@ -51,6 +51,12 @@
 		</div>
 		<div id="app-settings-content">
 			<ul>
+				<?php if(\OCP\App::isEnabled('contacts')): ?>
+				<li>
+					<input type="checkbox" name="contactbirthdays" id="contactbirthdays">
+					<label class="bold" for="contactbirthdays"><?php p($l->t('Contact birthdays')); ?></label>
+				</li>
+				<?php endif; ?>
 				<li>
 					<label for="timezone" class="bold"><?php p($l->t('Timezone')); ?></label>
 					<select id="timezone" name="timezone">

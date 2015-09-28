@@ -60,7 +60,8 @@ class OC_Connector_Sabre_CalDAV extends \Sabre\CalDAV\Backend\AbstractBackend {
 
 			$calendars[] = $calendar;
 		}
-		if(\OCP\App::isEnabled('contacts')) {
+		if(\OCP\App::isEnabled('contacts') &&
+				OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'contactbirthdays') == 'true') {
 			$ctag = 0;
 			$app = new \OCA\Contacts\App();
 			$addressBooks = $app->getAddressBooksForUser();

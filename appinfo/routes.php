@@ -94,6 +94,14 @@ $this->create('calendar_import_import', 'ajax/import/import.php')
 
 // /ajax/settings
 
+if(\OCP\App::isEnabled('contacts')) {
+	$this->create('calendar_settings_getcontactbirthdays', 'ajax/settings/getcontactbirthdays.php')
+		->actionInclude('calendar/ajax/settings/getcontactbirthdays.php');
+
+	$this->create('calendar_settings_setcontactbirthdays', 'ajax/settings/contactbirthdays.php')
+		->actionInclude('calendar/ajax/settings/contactbirthdays.php');
+}
+
 $this->create('calendar_settings_getfirstday', 'ajax/settings/getfirstday.php')
 	->actionInclude('calendar/ajax/settings/getfirstday.php');
 
