@@ -138,6 +138,7 @@ $TRANSLATIONS = array(
 "Attendees" => "Convidats",
 "Share" => "Parteja",
 "Title of the Event" => "Títol del eveniment",
+"from" => "de",
 "All Day Event" => "Eveniment de cada jorn",
 "Advanced options" => "Opcions avançadas",
 "Location" => "Plaça",
