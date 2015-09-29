@@ -108,6 +108,10 @@
 					<label class="bold"><?php p($l->t('iOS/OS X CalDAV address')); ?></label>
 					<input id="ioscaldav" type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(urlencode(OCP\USER::getUser())); ?>/" style="width:90%" readonly>
 				</li>
+                                <li>
+                                        <label class="bold"><?php p($l->t('Contacts\' birthdays CalDAV address')); ?></label>
+                                        <input id="birthdayaldav" type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav'));?>calendars/<?php p(rawurlencode(html_entity_decode(OCP\USER::getUser(), ENT_QUOTES, 'UTF-8'))); ?>/contact_birthdays" style="width:90%" readonly>
+                                </li>
 			</ul>
 		</div>
 	</div>
