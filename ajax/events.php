@@ -7,7 +7,7 @@
  * See the COPYING-README file.
  */
 OCP\JSON::checkAppEnabled('calendar');
-session_write_close();
+\OC::$server->getSession()->close();
 
 // is a user logged-in?
 if (OCP\User::isLoggedIn()) {
@@ -28,9 +28,9 @@ if (OCP\User::isLoggedIn()) {
 	$calendar_id = (is_null($calendar_id)?strip_tags($_GET['calendar_id']):$calendar_id);
 
 // no logged-in user? ookaay, do we have a token?
-} elseif (\OC::$session->exists('public_link_token')) {
+} elseif (\OC::$server->getSession()->exists('public_link_token')) {
 	// shareapi enabled?
-	if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
+	if (\OC::$server->getAppConfig()->getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
 		header('HTTP/1.0 404 Not Found');
 		exit();
 	}
@@ -43,7 +43,7 @@ if (OCP\User::isLoggedIn()) {
 
 	// get the data
 	$linkItem = OCP\Share::getShareByToken(
-		\OC::$session->get('public_link_token')
+		\OC::$server->getSession()->get('public_link_token')
 	);
 
 	// did we get anything?
@@ -67,8 +67,8 @@ if (OCP\User::isLoggedIn()) {
 	if (isset($linkItem['share_with'])) {
 		// we're not going to check the password here, we're in AJAX mode
 		// what we can do is to check for 'public_link_authenticated' session var
-		if ( ! \OC::$session->exists('public_link_authenticated')
-				|| \OC::$session->get('public_link_authenticated') !== $linkItem['id']
+		if ( ! \OC::$server->getSession()->exists('public_link_authenticated')
+				|| \OC::$server->getSession()->get('public_link_authenticated') !== $linkItem['id']
 			) {
 				header('HTTP/1.0 401 Unauthorized');
 				exit();

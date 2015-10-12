@@ -26,9 +26,9 @@ if( isset( $_POST['timezone'] ) ) {
 		OCP\Config::setUserValue( OCP\USER::getUser(), 'calendar', 'timezone', $_POST['timezone'] );
 
 	// public link-shared calendar
-	} elseif (\OC::$session->exists('public_link_token')) {
+	} elseif (\OC::$server->getSession()->exists('public_link_token')) {
 		// save the value in session
-		\OC::$session->set('public_link_timezone', $_POST['timezone']);
+		\OC::$server->getSession()->set('public_link_timezone', $_POST['timezone']);
 	
 	// this isn't right...
 	} else {

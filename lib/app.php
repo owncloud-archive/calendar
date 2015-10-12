@@ -152,6 +152,9 @@ class OC_Calendar_App{
 	public static function getVCategories() {
 		if (is_null(self::$categories)) {
 			$categories = \OC::$server->getTagManager()->load('event');
+			if (is_null($categories)) {
+				return null;
+			}
 			if($categories->isEmpty('event')) {
 				self::scanCategories();
 			}
@@ -169,6 +172,9 @@ class OC_Calendar_App{
 		$getNames = function($tag) {
 			return $tag['name'];
 		};
+		if (is_null(self::getVCategories())) {
+			return [];
+		}
 		$categories = self::getVCategories()->getTags();
 		$categories = array_map($getNames, $categories);
 		return $categories;
@@ -343,14 +349,14 @@ class OC_Calendar_App{
 		// nope! probably link-shared stuff (no need to check that)
 		} else {
 			// is the timezone set in session vars?
-			if (\OC::$session->exists('public_link_timezone')) {
+			if (\OC::$server->getSession()->exists('public_link_timezone')) {
 				// aye, using that
-				return \OC::$session->get('public_link_timezone');
+				return \OC::$server->getSession()->get('public_link_timezone');
 			
 			// is it a shared calendar or event??
-			} elseif (\OC::$session->exists('public_link_owner')) {
+			} elseif (\OC::$server->getSession()->exists('public_link_owner')) {
 				// let's try to get the shared calendar
-				return OCP\Config::getUserValue(\OC::$session->get('public_link_owner'),
+				return OCP\Config::getUserValue(\OC::$server->getSession()->get('public_link_owner'),
 						  'calendar',
 						  'timezone',
 						  date_default_timezone_get());

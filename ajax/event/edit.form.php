@@ -15,7 +15,7 @@ $link_shared = false;
 if(!OCP\User::isLoggedIn()) {
 
 	// do we have a token?
-	if (!\OC::$session->exists('public_link_token')) {
+	if (!\OC::$server->getSession()->exists('public_link_token')) {
 		// nope, bail out!
 		OCP\User::checkLoggedIn();
 	}
@@ -23,14 +23,14 @@ if(!OCP\User::isLoggedIn()) {
 	session_write_close();
 
 	// shareapi enabled?
-	if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
+	if (\OC::$server->getAppConfig()->getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
 		header('HTTP/1.0 404 Not Found');
 		exit();
 	}
 
 	// get the data
 	$linkItem = OCP\Share::getShareByToken(
-		\OC::$session->get('public_link_token')
+		\OC::$server->getSession()->get('public_link_token')
 	);
 
 	// did we get anything?
@@ -54,8 +54,8 @@ if(!OCP\User::isLoggedIn()) {
 	if (isset($linkItem['share_with'])) {
 		// we're not going to check the password here, we're in AJAX mode
 		// what we can do is to check for 'public_link_authenticated' session var
-		if ( ! \OC::$session->exists('public_link_authenticated')
-				|| \OC::$session->get('public_link_authenticated') !== $linkItem['id']
+		if ( ! \OC::$server->getSession()->exists('public_link_authenticated')
+				|| \OC::$server->getSession()->get('public_link_authenticated') !== $linkItem['id']
 			) {
 				header('HTTP/1.0 401 Unauthorized');
 				exit();

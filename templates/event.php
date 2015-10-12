@@ -27,46 +27,46 @@ if(!$data) {
 	calendar404();
 }
 
-$object = OC_VObject::parse($data['calendardata']);
+$object = \Sabre\VObject\Reader::read($data['calendardata']);
+/** @var \Sabre\VObject\Component\VEvent $vevent */
 $vevent = $object->VEVENT;
-$accessclass = $vevent->getAsString('CLASS');
+$accessclass = $vevent->CLASS;
 $permissions = OC_Calendar_App::getPermissions($id, OC_Calendar_App::EVENT, $accessclass);
 
+/** @var \Sabre\VObject\Property\ICalendar\Date $dtstart */
 $dtstart = $vevent->DTSTART;
 $dtend = OC_Calendar_Object::getDTEndFromVEvent($vevent);
 
-switch($dtstart->getDateType()) {
-	case Sabre\VObject\Property\DateTime::UTC:
-	case Sabre\VObject\Property\DateTime::LOCALTZ:
-		$timezone = new DateTimeZone($_['timezone']);
-		$newDT    = $dtstart->getDateTime();
+if ($dtstart->hasTime()) {
+	// UTC ?
+	if (!$dtstart->isFloating()) {
+		$timezone = new DateTimeZone(OC_Calendar_App::getTimezone());
+		$newDT = $dtstart->getDateTime();
 		$newDT->setTimezone($timezone);
 		$dtstart->setDateTime($newDT);
-		$newDT    = $dtend->getDateTime();
+		$newDT = $dtend->getDateTime();
 		$newDT->setTimezone($timezone);
 		$dtend->setDateTime($newDT);
-	case Sabre\VObject\Property\DateTime::LOCAL:
-		$startdate = $dtstart->getDateTime()->format('d-m-Y');
-		$starttime = $dtstart->getDateTime()->format('H:i');
-		$enddate = $dtend->getDateTime()->format('d-m-Y');
-		$endtime = $dtend->getDateTime()->format('H:i');
-		$allday = false;
-		break;
-	// all-day event
-	case Sabre\VObject\Property\DateTime::DATE:
-		$startdate = $dtstart->getDateTime()->format('d-m-Y');
-		$starttime = '';
-		$dtend->getDateTime()->modify('-1 day');
-		$enddate = $dtend->getDateTime()->format('d-m-Y');
-		$endtime = '';
-		$allday = true;
-		break;
+	} // else it's LOCALTZ/LOCAL
+	$startdate = $dtstart->getDateTime()->format('d-m-Y');
+	$starttime = $dtstart->getDateTime()->format('H:i');
+	$enddate = $dtend->getDateTime()->format('d-m-Y');
+	$endtime = $dtend->getDateTime()->format('H:i');
+	$allday = false;
+} else {
+	// DATE
+	$startdate = $dtstart->getDateTime()->format('d-m-Y');
+	$starttime = '';
+	$dtend->setDateTime($dtend->getDateTime()->modify('-1 day'));
+	$enddate = $dtend->getDateTime()->format('d-m-Y');
+	$endtime = '';
+	$allday = true;
 }
 
-$summary = strtr($vevent->getAsString('SUMMARY'), array('\,' => ',', '\;' => ';'));
-$location = strtr($vevent->getAsString('LOCATION'), array('\,' => ',', '\;' => ';'));
-$categories = $vevent->getAsString('CATEGORIES');
-$description = strtr($vevent->getAsString('DESCRIPTION'), array('\,' => ',', '\;' => ';'));
+$summary = strtr($vevent->SUMMARY, array('\,' => ',', '\;' => ';'));
+$location = strtr($vevent->LOCATION, array('\,' => ',', '\;' => ';'));
+$categories = $vevent->CATEGORIES;
+$description = strtr($vevent->DESCRIPTION, array('\,' => ',', '\;' => ';'));
 $last_modified = $vevent->__get('LAST-MODIFIED');
 if ($last_modified) {
 	$lastmodified = $last_modified->getDateTime()->format('U');
@@ -74,7 +74,7 @@ if ($last_modified) {
 	$lastmodified = 0;
 }
 if($data['repeating'] == 1) {
-	$rrule = explode(';', $vevent->getAsString('RRULE'));
+	$rrule = explode(';', $vevent->RRULE);
 	$rrulearr = array();
 	foreach($rrule as $rule) {
 		list($attr, $val) = explode('=', $rule);

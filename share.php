@@ -29,7 +29,7 @@ function calendar403() {
 	exit();
 }
 
-if (\OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
+if (\OC::$server->getAppConfig()->getValue('core', 'shareapi_allow_links', 'yes') !== 'yes') {
 	calendar404('Link-sharing is disabled by admin.');
 }
 
@@ -55,8 +55,8 @@ if (isset($rootLinkItem)) {
 	// the full URL
 	$url = OCP\Util::linkToPublic('calendar') . '&t=' . $token;
 	// let's set the token in the session for further reference
-	\OC::$session->set('public_link_token', $token);
-	\OC::$session->set('public_link_owner', $linkItem['uid_owner']);
+	\OC::$server->getSession()->set('public_link_token', $token);
+	\OC::$server->getSession()->set('public_link_owner', $linkItem['uid_owner']);
 
 	// do we have a password on this share?
 	if (isset($linkItem['share_with'])) {
@@ -71,10 +71,9 @@ if (isset($rootLinkItem)) {
 			if ($linkItem['share_type'] == OCP\Share::SHARE_TYPE_LINK) {
 
 				// Check Password
-				$hasher = new PasswordHash(8, (CRYPT_BLOWFISH != 1));
+				$hasher = \OC::$server->getHasher();
 				// does the password match?
-				if (!($hasher->CheckPassword($password.OC_Config::getValue('passwordsalt', ''),
-						           $linkItem['share_with']))) {
+				if (!($hasher->verify($password, $linkItem['share_with']))) {
 					// NOPE! Chuck Testa! Log it.
 					OCP\Util::writeLog('share', 'Wrong password!', \OCP\Util::ERROR);
 					// inform the user
@@ -85,7 +84,7 @@ if (isset($rootLinkItem)) {
 					exit();
 				} else {
 					// Save item id in session for future requests
-					\OC::$session->set('public_link_authenticated', $linkItem['id']);
+					\OC::$server->getSession()->set('public_link_authenticated', $linkItem['id']);
 				}
 
 			// this only works for SHARE_TYPE_LINK, hence...
@@ -98,8 +97,8 @@ if (isset($rootLinkItem)) {
 
 		} else {
 			// Check if item id is set in session
-			if ( ! \OC::$session->exists('public_link_authenticated')
-				|| \OC::$session->get('public_link_authenticated') !== $linkItem['id']
+			if ( ! \OC::$server->getSession()->exists('public_link_authenticated')
+				|| \OC::$server->getSession()->get('public_link_authenticated') !== $linkItem['id']
 			) {
 				// Prompt for password
 				$tmpl = new OCP\Template('calendar', 'authenticate', 'guest');
@@ -130,11 +129,17 @@ if (isset($rootLinkItem)) {
 			exit;
 		}
 		header('Content-Type: text/calendar');
-		header('Content-Disposition: inline; filename=' . str_replace(' ', '-', $data['displayname']) . '.ics');
+		$displayName = '';
+		if (isset($data['displayname'])) {
+			$displayName = $data['displayname'];
+		} else {
+			$displayName = $data['summary'];
+		}
+		header('Content-Disposition: inline; filename=' . str_replace(' ', '-', $displayName) . '.ics');
 		// export the data
 		// if it is a link-shared concrete event, ignore security
 		// calendars should be shared *with* security enabled, so as to not divulge private/busy events
-		print_unescaped(OC_Calendar_Export::export($rootLinkItem['item_source'], $type, ($type !== OC_Calendar_Export::EVENT)));
+		print(OC_Calendar_Export::export($rootLinkItem['item_source'], $type, ($type !== OC_Calendar_Export::EVENT)));
 		exit();
 	 
 	// Display the calendar

@@ -857,7 +857,7 @@ Calendar={
 						      $(shareWithInput)
 						        .parents('.share-interface-container.internal-share')
 						          .children('.shared-with-list')
-						            .append(newitem.fadeIn(500))
+						            .append(newitem.fadeIn(500));
 						      // clear
 						      $(shareWithInput).val('');
 						    });
@@ -939,7 +939,7 @@ Calendar={
 				droparea.ondrop = function(e){
 					e.preventDefault();
 					Calendar.UI.Drop.drop(e);
-				}
+				};
 				console.log('Drop initialized successfully');
 			},
 			drop:function(e){
@@ -950,7 +950,7 @@ Calendar={
 					reader.onload = function(event){
 						Calendar.UI.Drop.doImport(event.target.result);
 						$('#fullcalendar').fullCalendar('refetchEvents');
-					}
+					};
 					reader.readAsDataURL(file);
 				}
 			},
@@ -1168,7 +1168,7 @@ $(document).ready(function(){
 					// September 2009
 			week: t('calendar', "MMM d[ yyyy]{ '–'[ MMM] d yyyy}"),
 					// Sep 7 - 13 2009
-			day: t('calendar', 'dddd, MMM d, yyyy'),
+			day: t('calendar', 'dddd, MMM d, yyyy')
 					// Tuesday, Sep 8, 2009
 			},
 		axisFormat: defaulttime,
@@ -1309,10 +1309,10 @@ $(document).ready(function(){
 	/* link-sharing/unsharing of single events and calendars done right */
 	$('.share-interface-container.link-share input[type="checkbox"].share-link').live('change', function(e){
 		// get the data
-		slcontainer = $(this).parents('.share-interface-container.link-share')
-		itemType = slcontainer.attr('data-item-type')
-		itemSource = slcontainer.attr('data-item')
-		itemSourceName = slcontainer.attr('data-item-source-name')
+		slcontainer = $(this).parents('.share-interface-container.link-share');
+		itemType = slcontainer.attr('data-item-type');
+		itemSource = slcontainer.attr('data-item');
+		itemSourceName = slcontainer.attr('data-item-source-name');
 		
 		// sharing?
 		if ($(this).is(':checked')) {
@@ -1329,7 +1329,7 @@ $(document).ready(function(){
 						// https://github.com/owncloud/calendar/pull/308#issuecomment-38424997
 						.select()
 						.focus();
-			})
+			});
 
 		// nope, un-sharing!
 		} else {
@@ -1344,16 +1344,16 @@ $(document).ready(function(){
 						.attr('checked', false)
 			});
 		}
-	})
+	});
 	
 	/* setting the password */
 	$('.share-interface-container.link-share input[type="password"].share-link-password').live('blur', function(e){
 		// get the data
-		slcontainer = $(this).parents('.share-interface-container.link-share')
-		itemType = slcontainer.attr('data-item-type')
-		itemSource = slcontainer.attr('data-item')
-		itemSourceName = slcontainer.attr('data-item-source-name')
-		itemPassword = $(this).val()
+		slcontainer = $(this).parents('.share-interface-container.link-share');
+		itemType = slcontainer.attr('data-item-type');
+		itemSource = slcontainer.attr('data-item');
+		itemSourceName = slcontainer.attr('data-item-source-name');
+		itemPassword = $(this).val();
 		
 		// set the password!
 		OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, itemPassword, OC.PERMISSION_READ, itemSourceName, function(data) {
@@ -1363,14 +1363,14 @@ $(document).ready(function(){
 					.attr('placeholder', 'Password protected')
 					.val('')
 		})
-	})
+	});
 	
 	/* what about Enter and Escape keys? */
 	$('.share-interface-container.link-share input[type="password"].share-link-password').live('keydown', function(e){
 		// Enter? submit!
 		if (e.which == 13) {
 			e.preventDefault();
-			$(this).blur()
+			$(this).blur();
 			return false;
 		}
 		// escape? ignore!
@@ -1384,30 +1384,30 @@ $(document).ready(function(){
 			.siblings('.displayable')
 				.children('input')
 					.attr('placeholder', 'Password')
-					.val('')
+					.val('');
 		// get the data
-		slcontainer = $(this).parents('.share-interface-container.link-share')
-		itemType = slcontainer.attr('data-item-type')
-		itemSource = slcontainer.attr('data-item')
-		itemSourceName = slcontainer.attr('data-item-source-name')
-		itemPassword = slcontainer.find('input.share-link-password').val()
+		slcontainer = $(this).parents('.share-interface-container.link-share');
+		itemType = slcontainer.attr('data-item-type');
+		itemSource = slcontainer.attr('data-item');
+		itemSourceName = slcontainer.attr('data-item-source-name');
+		itemPassword = slcontainer.find('input.share-link-password').val();
 		
 		// we only handle removal of password
 		if (!$(this).is(':checked')) {
 			OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, itemPassword, OC.PERMISSION_READ, itemSourceName, function(data) {
 			});
 		}
-	})
+	});
 	
 	/* setting the expiration date */
 	$('.share-interface-container.link-share input.expire-date').live('change', function(e){
 		// get the data
-		slcontainer = $(this).parents('.share-interface-container.link-share')
-		itemType = slcontainer.attr('data-item-type')
-		itemSource = slcontainer.attr('data-item')
-		itemSourceName = slcontainer.attr('data-item-source-name')
-		itemPassword = slcontainer.find('input.share-link-password').val()
-		expiryDate = $(this).val()
+		slcontainer = $(this).parents('.share-interface-container.link-share');
+		itemType = slcontainer.attr('data-item-type');
+		itemSource = slcontainer.attr('data-item');
+		itemSourceName = slcontainer.attr('data-item-source-name');
+		itemPassword = slcontainer.find('input.share-link-password').val();
+		expiryDate = $(this).val();
 		
 		// set the date!
 		$.post(OC.filePath('core', 'ajax', 'share.php'), { action: 'setExpirationDate', itemType: itemType, itemSource: itemSource, date: expiryDate }, function(result) {
@@ -1415,7 +1415,7 @@ $(document).ready(function(){
 				OC.dialogs.alert(t('core', 'Error setting expiration date'), t('core', 'Error'));
 			}
 		});
-	})
+	});
 	
 	/* removing password */
 	$('.share-interface-container.link-share input[type="checkbox"].password-protect').live('change', function(e){
@@ -1425,11 +1425,11 @@ $(document).ready(function(){
 				.children('input')
 					.val('')
 		// get the data
-		slcontainer = $(this).parents('.share-interface-container.link-share')
-		itemType = slcontainer.attr('data-item-type')
-		itemSource = slcontainer.attr('data-item')
-		itemSourceName = slcontainer.attr('data-item-source-name')
-		itemPassword = slcontainer.find('input.share-link-password').val()
+		slcontainer = $(this).parents('.share-interface-container.link-share');
+		itemType = slcontainer.attr('data-item-type');
+		itemSource = slcontainer.attr('data-item');
+		itemSourceName = slcontainer.attr('data-item-source-name');
+		itemPassword = slcontainer.find('input.share-link-password').val();
 		
 		// we only handle removal of expiry date
 		if (!$(this).is(':checked')) {
@@ -1439,7 +1439,7 @@ $(document).ready(function(){
 				}
 			});
 		}
-	})
+	});
 
 	/* datepicker, because firefox can't into datepicker control */
 	$('.share-link-enabled-container .expire-date:not(.hasDatepicker)').live('click', function(){
