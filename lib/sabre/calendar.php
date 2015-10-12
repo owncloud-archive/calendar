@@ -1,6 +1,6 @@
 <?php
 /**
- * ownCloud - OC_Connector_Sabre_Sabre_CalDAV_Calendar
+ * ownCloud - \OCA\Calendar\Sabre\Calendar
  *
  * @author Thomas Tanghus
  * @copyright 2012 Thomas Tanghus (thomas@tanghus.net)
@@ -20,13 +20,18 @@
  *
  */
 
+namespace OCA\Calendar\Sabre;
+
+use OCP\Constants;
+use OCP\User;
+
 /**
- * This class overrides Sabre_CalDAV_Calendar::getACL() to return read/write
+ * This class overrides \Sabre\CalDAV\Calendar::getACL() to return read/write
  * permissions based on user and shared state and it overrides
- * Sabre_CalDAV_Calendar::getChild() and Sabre_CalDAV_Calendar::getChildren()
- * to instantiate OC_Connector_Sabre_CalDAV_CalendarObjects.
+ * \Sabre\CalDAV\Calendar::getChild() and \Sabre\CalDAV\Calendar::getChildren()
+ * to instantiate \OCA\Calendar\Sabre\Objects.
 */
-class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
+class Calendar extends \Sabre\CalDAV\Calendar {
 
 	/**
 	* Returns a list of ACE's for this node.
@@ -44,18 +49,18 @@ class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
 
 		$readprincipal = $this->getOwner();
 		$writeprincipal = $this->getOwner();
-		$uid = OC_Calendar_Calendar::extractUserID($this->getOwner());
+		$uid = \OC_Calendar_Calendar::extractUserID($this->getOwner());
 
-		if($uid != OCP\USER::getUser()) {
+		if($uid != User::getUser()) {
 			if($uid === 'contact_birthdays') {
-				$readprincipal = 'principals/' . OCP\User::getUser();
+				$readprincipal = 'principals/' . User::getUser();
 			} else {
-				$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
-				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ)) {
-					$readprincipal = 'principals/' . OCP\User::getUser();
+				$sharedCalendar = \OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & Constants::PERMISSION_READ)) {
+					$readprincipal = 'principals/' . User::getUser();
 				}
-				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
-					$writeprincipal = 'principals/' . OCP\User::getUser();
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & Constants::PERMISSION_UPDATE)) {
+					$writeprincipal = 'principals/' . User::getUser();
 				}
 			}
 		}
@@ -87,7 +92,7 @@ class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
 				'protected' => true,
 			),
 			array(
-				'privilege' => '{' . Sabre_CalDAV_Plugin::NS_CALDAV . '}read-free-busy',
+				'privilege' => '{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}read-free-busy',
 				'principal' => '{DAV:}authenticated',
 				'protected' => true,
 			),
@@ -102,14 +107,15 @@ class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
 	* The contained calendar objects are for example Events or Todo's.
 	*
 	* @param string $name
-	* @return Sabre_DAV_ICalendarObject
+	* @return \Sabre\CalDAV\ICalendarObject
+	* @throws \Sabre\DAV\Exception\NotFound
 	*/
 	public function getChild($name) {
 		$obj = $this->caldavBackend->getCalendarObject($this->calendarInfo['id'],$name);
 		if (!$obj) {
-			throw new Sabre_DAV_Exception_NotFound('Calendar object not found');
+			throw new \Sabre\DAV\Exception\NotFound('Calendar object not found');
 		}
-		return new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
+		return new Object($this->caldavBackend,$this->calendarInfo,$obj);
 
 	}
 
@@ -123,10 +129,27 @@ class OC_Connector_Sabre_CalDAV_Calendar extends Sabre_CalDAV_Calendar {
 		$objs = $this->caldavBackend->getCalendarObjects($this->calendarInfo['id']);
 		$children = array();
 		foreach($objs as $obj) {
-			$children[] = new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
+			$children[] = new Object($this->caldavBackend,$this->calendarInfo,$obj);
 		}
 		return $children;
 
 	}
+
+	/**
+	 * This method receives a list of paths in it's first argument.
+	 * It must return an array with Node objects.
+	 *
+	 * If any children are not found, you do not have to return them.
+	 * 
+	 * @return array
+	 */
+	public function getMultipleChildren(array $paths) {
+		$objs = $this->caldavBackend->getMultipleCalendarObjects($this->calendarInfo['id'], $paths);
+		$children = [];
+		foreach($objs as $obj) {
+			$children[] = new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
+		}
+        	return $children;
+        }
 
 }

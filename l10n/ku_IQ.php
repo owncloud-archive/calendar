@@ -1,10 +1,12 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Timezone changed" => "هەرێمی کاتی گۆڕدرا",
 "Invalid request" => "داواکارى نادروستە",
 "Calendar" => "ڕۆژژمێر",
 "All day" => "هەموو ڕۆژ",
 "Title" => "ناونیشان",
 "Birthday" => "ڕۆژی لە دایک بوون",
+"by" => "له‌لایه‌ن",
 "unnamed" => "بێ ناو",
 "Week" => "هەفتە",
 "Month" => "مانگ",
@@ -20,3 +22,4 @@
 "Category" => " هاوپۆلەکان",
 "From" => "لەلایەن"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

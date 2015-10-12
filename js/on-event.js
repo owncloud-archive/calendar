@@ -7,11 +7,14 @@ $(document).on('click', '#caldav_url_close', function () {
 $(document).on('mouseover', '#caldav_url', function () {
 	$('#caldav_url').select();
 });
-$(document).on('click', document).on('click', '#primarycaldav', function () {
+$(document).on('click', '#primarycaldav', function () {
 	$('#primarycaldav').select();
 });
 $(document).on('click', '#ioscaldav', function () {
 	$('#ioscaldav').select();
+});
+$(document).on('click', '#viewOnMap', function () {
+	$(this).tipsy('hide');Calendar.Util.openLocationMap();
 });
 $(document).on('click', '#editCategories', function () {
 	$(this).tipsy('hide');OC.Tags.edit('event');

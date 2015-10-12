@@ -69,7 +69,7 @@ class OC_Calendar_Export{
 		* @return string
 		*/
 	 private static function generateEvent($event, $security=true) {
-	 	$object = OC_VObject::parse($event['calendardata']);
+	 	$object = \Sabre\VObject\Reader::read($event['calendardata']);
 		if(!$object){
 			return false;
 		}

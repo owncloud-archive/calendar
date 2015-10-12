@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Sunday" => "रविवार",
 "Monday" => "सोमवार",
 "Tuesday" => "मंगलवार",
@@ -22,3 +23,4 @@
 "Share" => "साझा करें",
 "Advanced" => "उन्नत"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

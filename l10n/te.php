@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Sunday" => "ఆదివారం",
 "Monday" => "సోమవారం",
 "Tuesday" => "మంగళవారం",
@@ -23,3 +24,4 @@
 "Advanced" => "ఉన్నతం",
 "Import" => "దిగుమతించు"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

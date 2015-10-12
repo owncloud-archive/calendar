@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "ھەممە يىلنامە تولۇق غەملەنمىگەن",
 "Everything seems to be completely cached" => "ھەممە پائالىيەتلەر غەملەنگەندەك قىلىدۇ",
 "No calendars found." => "ھېچقانداق يىلنامە تېپىلمىدى.",
@@ -6,9 +7,7 @@
 "Wrong calendar" => "خاتا يىلنامە",
 "You do not have the permissions to edit this event." => "بۇ يىلنامەنى تەھرىرلەش ھوقۇقىڭىز يوق.",
 "The file contained either no events or all events are already saved in your calendar." => "ھۆججەتتە پائالىيەت يوق ياكى ھەممە پائالىيەتلەر يىلنامەگە ساقلانغان.",
-"events has been saved in the new calendar" => "پائالىيەت يېڭى يىلنامەگە ساقلاندى",
 "Import failed" => "ئىمپورت قىلىش مەغلۇپ بولدى",
-"events has been saved in your calendar" => "پائالىيەت يىلنامەڭىزگە ساقلاندى",
 "New Timezone:" => "يېڭى ۋاقىت رايونى:",
 "Timezone changed" => "ۋاقىت رايونى ئۆزگەردى",
 "Invalid request" => "ئىناۋەتسىز ئىلتىماس",
@@ -117,7 +116,6 @@
 "by weeknumber(s)" => "ھەپتە سان(لار)ى بويىچە",
 "by day and month" => "كۈن ۋە ئاي بويىچە",
 "Date" => "چېسلا",
-"Cal." => "يىلنامە",
 "Week" => "ھەپتە",
 "Month" => "ئاي",
 "Today" => "بۈگۈن",
@@ -179,3 +177,4 @@
 "at" => "دا",
 "To" => "قوبۇللىغۇچى"
 );
+$PLURAL_FORMS = "nplurals=1; plural=0;";

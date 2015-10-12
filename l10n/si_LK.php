@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Not all calendars are completely cached" => "සියලු දිනදසුන් සම්පූර්ණයෙන් හැඹිලිගත නොකල යුතුයි",
 "Everything seems to be completely cached" => "දිස්වන සියල්ල සම්පූර්ණයෙන්ම හැඹිලිගත කරන්න",
 "No calendars found." => "දිනදසුන් හමුවී නැත.",
@@ -6,9 +7,7 @@
 "Wrong calendar" => "වැරදි දිනදසුනක්",
 "You do not have the permissions to edit this event." => "මෙම සිදුවීම සංස්කරණය කිරීම සදහා ඔබට අවසර නොමැත.",
 "The file contained either no events or all events are already saved in your calendar." => "ලිපිගොනුවේ තුල කිසිදු සිදුවීමක් නොමැත හෝ සියලු සිදුවීම් දැනටමත් ඔබගේ දිනදසුනේ සුරැකී පවතී.",
-"events has been saved in the new calendar" => "නව දිනදසුනක සිදුවීම් සුරකින ලදී",
 "Import failed" => "ආයත කිරීම අසාර්ථකයි",
-"events has been saved in your calendar" => "ඔබේ දිනදසුනේ සිදුවීම් සුරකින ලදී",
 "New Timezone:" => "නව වේලා කලාපය:",
 "Timezone changed" => "වේලා කලාපය වෙනස්කරන ලදී.",
 "Invalid request" => "අවලංගු අයැදුමක්",
@@ -70,6 +69,20 @@
 "To Time" => "වේලාව දක්වා",
 "The event ends before it starts" => "සිදුවීම ආරම්භකිරීමට පෙර අවසන්වුනි",
 "There was a database fail" => "දත්ත සමුදායේ දෝෂයක්",
+"Error" => "දෝෂයක්",
+"Share" => "අංශය/පංගුව",
+"Password protect" => "මුර පදයකින් ආරක්ශාකරන්න",
+"Password" => "මුර පදය",
+"Set expiration date" => "කල් ඉකුත් විමේ දිනය දමන්න",
+"Expiration date" => "කල් ඉකුත් විමේ දිනය",
+"Unshare" => "නොබෙදු",
+"access control" => "ප්‍රවේශ පාලනය",
+"create" => "සදන්න",
+"delete" => "මකන්න",
+"Password protected" => "මුර පදයකින් ආරක්ශාකර ඇත",
+"Error unsetting expiration date" => "කල් ඉකුත් දිනය ඉවත් කිරීමේ දෝෂයක්",
+"Error setting expiration date" => "කල් ඉකුත් දිනය ස්ථාපනය කිරීමේ දෝෂයක්",
+"Warning" => "අවවාදය",
 "Birthday" => "උපන්දින",
 "Business" => "ව්‍යාපාරික",
 "Call" => "ඇමතුම",
@@ -117,7 +130,6 @@
 "by weeknumber(s)" => "සතියේ අංකය අනුව",
 "by day and month" => "දිනය හා මාසය අනුව",
 "Date" => "දිනය",
-"Cal." => "දිනද.",
 "Week" => "සතිය",
 "Month" => "මාසය",
 "Today" => "අද",
@@ -140,7 +152,6 @@
 "Repeating" => "පුනරාවර්ථනයන්",
 "Alarm" => "සීනුව",
 "Attendees" => "කැටුව යන්නන්",
-"Share" => "අංශය/පංගුව",
 "Title of the Event" => "සිදුවීමේ මාතෘකාව",
 "from" => "වෙතින්",
 "All Day Event" => "දිනයේ සියලු සිදුවීම්",
@@ -170,7 +181,6 @@
 "Import" => "ආයාත කරන්න",
 "Close Dialog" => "සංවාදය නැවැත්වීම",
 "Create a new event" => "නව සිදුවීමක් නිර්මාණය කරන්න",
-"Unshare" => "නොබෙදු",
 "Shared via calendar" => "දිනදසුන හරහා බෙදාහදා ගැනීම්",
 "View an event" => "සිදුවීම දක්වන්න",
 "Category" => "ප්‍රභේද",
@@ -179,3 +189,4 @@
 "at" => "දි",
 "To" => "දකවා"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

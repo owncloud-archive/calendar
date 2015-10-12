@@ -32,7 +32,6 @@ $calendarid = $_POST['id'];
 
 try {
 	OC_Calendar_Calendar::editCalendar($calendarid, strip_tags($_POST['name']), null, null, null, $_POST['color']);
-	OC_Calendar_Calendar::setCalendarActive($calendarid, $_POST['active']);
 } catch(Exception $e) {
 	OCP\JSON::error(array('message'=>$e->getMessage()));
 	exit;

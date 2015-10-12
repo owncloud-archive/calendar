@@ -110,4 +110,3 @@ $tmpl->assign('permissions', $_['permissions']);
 $tmpl->assign('link_share', $linkShare);
 $tmpl->printpage();
 /* end link-sharing an event */
-?>

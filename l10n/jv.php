@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Timezone changed" => "Papan wektu diganti",
 "Invalid request" => "Panjalukan salah",
 "Calendar" => "Pranata mangsa",
@@ -13,3 +14,4 @@
 "Location" => "Papan panggonan",
 "Category" => "Sajenis"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

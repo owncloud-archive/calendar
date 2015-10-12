@@ -36,6 +36,11 @@ body {
 	right: 0;
 	left: 0;
 	top: 0;
+
+	/* prevent ugly selection effect on accidental selection  */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 #listview {margin: 0; padding: 10px; background: #EEEEEE;}
 #listview #more_before, #listview #more_after {border: 1px solid #1a1a1a; width:25em;padding: 3px;text-align: center;}
@@ -43,8 +48,8 @@ body {
 #listview #events .day {width:auto;padding-left:10px;border-bottom: 2px solid #EEEEEE;text-align:left;}
 
 .actions {height: 33px;	min-width: 800px;}
-.actionsfloatleft {float:left;margin-left: 1.4em;}
-.actionsfloatright {float:right;margin-right: 1.4em;}
+.actionsfloatleft {float:left;margin-left: 1.4em !important;}
+.actionsfloatright {float:right;margin-right: 1.4em !important;}
 .controls {min-width: 800px;}
 .center {text-align: center;}
 .dateinfo {height: 20px;width: 100%; overflow: hidden; margin-top: 0; padding: 0; font-size: 12px;background: #F7F7F7;}
@@ -68,6 +73,7 @@ color:#A9A9A9;
 select#category{width:140px;}
 button.category{margin:0 3px;}
 
+.calendar-colorpicker { display: inline-block; }
 .calendar-colorpicker-color{display:inline-block;width:20px;height:20px;margin-right:2px;cursor:pointer;border:2px solid transparent;}
 .calendar-colorpicker-color.active{border:2px solid black;}
 
@@ -198,6 +204,7 @@ header + .settings.timezonesettings > .chzn-container {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
 	margin: 3px 0;
 }
 /* bigger event title in detail view */
@@ -216,23 +223,25 @@ header + .settings.timezonesettings > .chzn-container {
 	float: right;
 }
 #from, #to {
-	width: 65px;
+	width: 80px;
 	margin: 0;
 }
 #fromtime, #totime {
 	margin: 0;
-	width: 80px;
+	width: 90px;
 }
 #event-allday {
 	display: inline-block;
 	margin: 7px 0;
 	width: 100%;
 }
-/* category input field leaves room for edit button */
-#category {
+/* category input field leaves room for edit button
+   location input field leaves room for map button */
+#category, #event-location {
 	width: 90%;
 }
-#editCategories {
+
+#editCategories, #viewOnMap {
 	display: inline-block;
 	padding: 6px 12px;
 }
@@ -261,6 +270,8 @@ header + .settings.timezonesettings > .chzn-container {
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding: 0;
+	z-index: 1000;
+	max-width: 100%;
 }
 .ui-dialog .ui-dialog-content {
 	overflow: initial;
@@ -312,6 +323,12 @@ header + .settings.timezonesettings > .chzn-container {
 	margin-left: 0;
 	margin-right: 0;
 }
+
+#cleancalendarcache {
+	max-width: 95%;
+	white-space: normal;
+}
+
 #navigation-list form {
 	width: 100%;
 }
@@ -578,8 +595,13 @@ header + .settings.timezonesettings > .chzn-container {
 	border: none;
 	border-top: 1px solid red;
 	width: 100%;
-	
+
 	z-index: 999;
+}
+
+/* force minimum height for event so that 15 minute events are visible */
+.fc-event {
+	min-height: 20px;
 }
 
 .fc-event-draggable { cursor: default; }
@@ -587,6 +609,7 @@ header + .settings.timezonesettings > .chzn-container {
 .fc-agenda .fc-agenda-axis{
 	padding:0;
 	padding-right:4px;
+	line-height:initial;
 }
 
 button.ui-multiselect{

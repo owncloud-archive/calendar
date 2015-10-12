@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Sunday" => "Domingo",
 "Monday" => "Lunes",
 "Tuesday" => "Martes",
@@ -18,7 +19,11 @@
 "October" => "Octubre",
 "November" => "Noviembre",
 "December" => "Diciembre",
+"Personal" => "Personal",
+"Daily" => "Diario",
+"Weekly" => "Semanal",
 "Download" => "Descargar",
 "Share" => "Compartir",
 "Import" => "Importar"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

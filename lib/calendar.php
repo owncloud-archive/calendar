@@ -33,9 +33,10 @@ class OC_Calendar_Calendar{
 	 * @brief Returns the list of calendars for a specific user.
 	 * @param string $uid User ID
 	 * @param boolean $active Only return calendars with this $active state, default(=false) is don't care
+	 * @param boolean $createIfNecessary create calendars if no exist yet
 	 * @return array
 	 */
-	public static function allCalendars($uid, $active=false) {
+	public static function allCalendars($uid, $active=false, $createIfNecessary=true) {
 		$values = array($uid);
 		$active_where = '';
 		if (!is_null($active) && $active) {
@@ -54,6 +55,11 @@ class OC_Calendar_Calendar{
 			$row['description'] = '';
 			$calendars[] = $row;
 			$owned_calendar_ids[] = $row['id'];
+		}
+
+		if ($active === false && count($calendars) === 0 && $createIfNecessary === true) {
+			self::addDefaultCalendars($uid);
+			return self::allCalendars($uid, false);
 		}
 
 		$shared_calendars = OCP\Share::getItemsSharedWith('calendar', OC_Share_Backend_Calendar::FORMAT_CALENDAR);
@@ -109,10 +115,10 @@ class OC_Calendar_Calendar{
 	 * @param string $timezone Default: null
 	 * @param integer $order Default: 1
 	 * @param string $color Default: null, format: '#RRGGBB(AA)'
-	 * @return insertid
+	 * @return int
 	 */
 	public static function addCalendar($userid,$name,$components='VEVENT,VTODO,VJOURNAL',$timezone=null,$order=0,$color=null) {
-		$all = self::allCalendars($userid);
+		$all = self::allCalendars($userid, false, false);
 		$uris = array();
 		foreach($all as $i) {
 			$uris[] = $i['uri'];
@@ -153,7 +159,7 @@ class OC_Calendar_Calendar{
 	 * @param string $timezone
 	 * @param integer $order
 	 * @param string $color format: '#RRGGBB(AA)'
-	 * @return insertid
+	 * @return int
 	 */
 	public static function addCalendarFromDAVData($principaluri,$uri,$name,$components,$timezone,$order,$color) {
 		$userid = self::extractUserID($principaluri);
@@ -182,9 +188,7 @@ class OC_Calendar_Calendar{
 	public static function editCalendar($id,$name=null,$components=null,$timezone=null,$order=null,$color=null) {
 		// Need these ones for checking uri
 		$calendar = self::find($id);
-		if ($calendar['userid'] != OCP\User::getUser() && !OC_Group::inGroup(OCP\User::getUser(), 'admin')) {
-			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
-			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE)) {
+		if ($calendar['userid'] != OCP\User::getUser()) {{
 				throw new Exception(
 					OC_Calendar_App::$l10n->t(
 						'You do not have the permissions to update this calendar.'
@@ -250,7 +254,7 @@ class OC_Calendar_Calendar{
 	 */
 	public static function deleteCalendar($id) {
 		$calendar = self::find($id);
-		if ($calendar['userid'] != OCP\User::getUser() && !OC_Group::inGroup(OCP\User::getUser(), 'admin')) {
+		if (!self::isAllowedToDeleteCalendar($calendar)) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $id);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_DELETE)) {
 				throw new Exception(
@@ -325,7 +329,7 @@ class OC_Calendar_Calendar{
 	 * @return string
 	 */
 	public static function extractUserID($principaluri) {
-		list($prefix,$userid) = Sabre_DAV_URLUtil::splitPath($principaluri);
+		list($prefix,$userid) = \Sabre\DAV\URLUtil::splitPath($principaluri);
 		return $userid;
 	}
 
@@ -335,14 +339,39 @@ class OC_Calendar_Calendar{
 	 */
 	public static function getCalendarColorOptions() {
 		return array(
-			'#ff0000', // "Red"
-			'#b3dc6c', // "Green"
-			'#ffff00', // "Yellow"
-			'#808000', // "Olive"
-			'#ffa500', // "Orange"
-			'#ff7f50', // "Coral"
-			'#ee82ee', // "Violet"
-			'#9fc6e7', // "light blue"
+                      '#FFCCCC',
+                      '#FF6666',
+                      '#FF0000',
+                      '#FFE5CC',
+                      '#FFB266',
+                      '#FF8000',
+                      '#FFFFCC',
+                      '#FFFF66',
+                      '#FFFF00',
+                      '#E5FFCC',
+                      '#B2FF66',
+                      '#80FF00',
+                      '#CCFFFF',
+                      '#66FFFF',
+                      '#00FFFF',
+                      '#CCE5FF',
+                      '#66B2FF',
+                      '#0080FF',
+                      '#E5CCFF',
+                      '#B266FF',
+                      '#7F00FF',
+                      '#FFCCFF',
+                      '#FF66FF',
+                      '#FF00FF',
+                      '#FFCCE5',
+                      '#FF66B2',
+                      '#FF007F',
+                      '#E0E0E0',
+                      '#A0A0A0',
+                      '#434343',
+                      '#000000',
+                      '#994C00',
+                      '#663300',
 		);
 	}
 
@@ -402,6 +431,32 @@ class OC_Calendar_Calendar{
 	 * This method returns the email address of selected user.
 	 */
 	public static function getUsersEmails($names) {
-		return \OCP\Config::getUserValue(\OCP\User::getUser(), 'settings', 'email');
+		return \OCP\Config::getUserValue($names, 'settings', 'email');
+	}
+
+
+	/**
+	 * @param array $calendar
+	 * @param string $userId
+	 * @return boolean
+	 */
+	private static function isAllowedToDeleteCalendar($calendar) {
+		$userId = OCP\User::getUser();
+
+		//in case it is called by command line or cron
+		if($userId == '') {
+			return true;
+		}
+		if ($calendar['userid'] === $userId) {
+			return true;
+		}
+		if (OC_User::isAdminUser($userId)) {
+			return true;
+		}
+		if (OC_SubAdmin::isUserAccessible($userId, $calendar['userid'])) {
+			return true;
+		}
+
+		return false;
 	}
 }

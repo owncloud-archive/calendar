@@ -1,4 +1,5 @@
-<?php $TRANSLATIONS = array(
+<?php
+$TRANSLATIONS = array(
 "Wrong calendar" => "غلط کیلنڈر",
 "Timezone changed" => " ٹایم زون تبدیل کر دیا گیا",
 "Invalid request" => "غلط درخواست",
@@ -77,3 +78,4 @@
 "From" => "طرف سے",
 "To" => "کی طرف"
 );
+$PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

@@ -23,34 +23,39 @@ if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'mon
 	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "month");
 }
 if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'month') == "listview") {
-	OCP\Config::setUserValue(OCP\USER::getUser(), "calendar", "currentview", "list");
+	OCP\Config::setUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'agendaDay');
+}
+if(OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'month') == 'list') {
+	OCP\Config::setUserValue(OCP\USER::getUser(), 'calendar', 'currentview', 'agendaDay');
 }
 
-OCP\Util::addscript('calendar/3rdparty/fullcalendar', 'fullcalendar');
-OCP\Util::addStyle('calendar/3rdparty/fullcalendar', 'fullcalendar');
-OCP\Util::addscript('3rdparty/timepicker', 'jquery.ui.timepicker');
-OCP\Util::addStyle('3rdparty/timepicker', 'jquery.ui.timepicker');
+OCP\Util::addScript('calendar', '../3rdparty/fullcalendar/js/fullcalendar');
+OCP\Util::addStyle('calendar', '../3rdparty/fullcalendar/css/fullcalendar');
+OCP\Util::addScript('calendar', '../3rdparty/timepicker/js/jquery.ui.timepicker');
+OCP\Util::addStyle('calendar', '../3rdparty/timepicker/css/jquery.ui.timepicker');
 if(OCP\Config::getUserValue(OCP\USER::getUser(), "calendar", "timezone") == null || OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'timezonedetection') == 'true') {
-	OCP\Util::addscript('calendar', 'geo');
+	OCP\Util::addScript('calendar', 'geo');
 }
-OCP\Util::addscript('calendar', 'calendar');
+OCP\Util::addScript('calendar', 'calendar');
 OCP\Util::addStyle('calendar', 'style');
 OCP\Util::addStyle('calendar', 'linkshare');
 OCP\Util::addStyle('calendar', 'tooltips');
-OCP\Util::addscript('', 'jquery.multiselect');
-OCP\Util::addStyle('', 'jquery.multiselect');
-OCP\Util::addscript('calendar','jquery.multi-autocomplete');
-OCP\Util::addscript('','tags');
-OCP\Util::addscript('calendar','on-event');
-OCP\Util::addscript('calendar','settings');
+OCP\Util::addScript('calendar', '../3rdparty/jquery.multiselect/js/jquery.multiselect');
+OCP\Util::addStyle('calendar', '../3rdparty/jquery.multiselect/css/jquery.multiselect');
+OCP\Util::addScript('calendar','jquery.multi-autocomplete');
+OCP\Util::addScript('calendar', '../3rdparty/jsTz/jstz-1.0.4.min');
+OCP\Util::addScript('core','tags');
+OCP\Util::addScript('calendar','on-event');
+OCP\Util::addScript('calendar','settings');
+OCP\Util::addScript('calendar','share');
+OCP\Util::addStyle('calendar','share');
 OCP\App::setActiveNavigationEntry('calendar_index');
 $tmpl = new OCP\Template('calendar', 'calendar', 'user');
-
-$timezone=OCP\Config::getUserValue(OCP\USER::getUser(),'calendar','timezone','');
+$timezone=OCP\Config::getUserValue(OCP\USER::getUser(),'calendar','timezone',date_default_timezone_get());
 $tmpl->assign('timezone',$timezone);
 $tmpl->assign('timezones',DateTimeZone::listIdentifiers());
-$tmpl->assign("allowShareWithLink", \OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes'));
-		
+$tmpl->assign("allowShareWithLink", \OC::$server->getAppConfig()->getValue('core', 'shareapi_allow_links', 'yes'));
+
 if(array_key_exists('showevent', $_GET)) {
 	$tmpl->assign('showevent', $_GET['showevent']);
 }

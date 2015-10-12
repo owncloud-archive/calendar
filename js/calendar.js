@@ -21,7 +21,7 @@ Calendar={
 			},
 			function(result){
 				if(result.status !== 'success'){
-					OC.dialogs.alert(result.data.message, 'Error sending mail');
+					OC.dialogs.alert(result.data.message, t('calendar', 'Error sending mail'));
 				}
 				Calendar.UI.loading(false);
 			}
@@ -116,10 +116,15 @@ Calendar={
 			var percentOfDay = curSeconds / 86400;
 			//24 * 60 * 60 = 86400, # of seconds in a day
 			var topLoc = Math.floor(parentDiv.height() * percentOfDay);
-           
-			timeline.css({'left':($(".fc-agenda-axis").width()+6)+'px','top':topLoc + 'px'});
-
+			var appNavigationWidth = ($(window).width() > 768) ? $('#app-navigation').width() : 0;
+			timeline.css({'left':($('.fc-today').offset().left-appNavigationWidth),'width': $('.fc-today').width(),'top':topLoc + 'px'});
 		},
+		openLocationMap:function(){
+			var address = $('#event-location').val();
+			address = encodeURIComponent(address);
+			var newWindow = window.open('http://open.mapquest.com/?q='+address, '_blank');
+			newWindow.focus();
+		}
 	},
 	UI:{
 		/*
@@ -141,10 +146,14 @@ Calendar={
 			$('#fullcalendar').fullCalendar('unselect');
 			Calendar.UI.lockTime();
 			$( "#from" ).datepicker({
+				minDate: null,
+				maxDate: null,
 				dateFormat : 'dd-mm-yy',
 				onSelect: function(){ Calendar.Util.adjustDate(); }
 			});
 			$( "#to" ).datepicker({
+				minDate: null,
+				maxDate: null,
 				dateFormat : 'dd-mm-yy'
 			});
 			$('#fromtime').timepicker({
@@ -256,6 +265,9 @@ Calendar={
 						}
 						if(data.fromtime == "true"){
 							output = output + missing_field_fromtime + "<br />";
+						}
+						if(data.interval == "true"){
+							output = output + missing_field_interval + "<br />";
 						}
 						if(data.to == "true"){
 							output = output + missing_field_todate + "<br />";
@@ -624,7 +636,7 @@ Calendar={
 				$(object).closest('li').after(li).hide();
 			},
 			deleteCalendar:function(calid){
-				var check = confirm("Do you really want to delete this calendar?");
+				var check = confirm(t('calendar', 'Do you really want to delete this calendar?'));
 				if(check == false){
 					return false;
 				}else{
@@ -671,6 +683,7 @@ Calendar={
 								$('#newcalendar_dialog').parent().remove();
 								$("#newCalendar").css('display', '');
 								var li = $(document.createElement('li')).append(data.page);
+								li.attr('data-id', data.calendarid);
 								$("#navigation-list").append(li);
 								$('#caldav_url_entry').appendTo("#navigation-list");
 							}
@@ -723,7 +736,7 @@ Calendar={
 					//var itemShares = [OC.Share.SHARE_TYPE_USER, OC.Share.SHARE_TYPE_GROUP]; // huh? what is that supposed to do?..
 					$('.internal-share .share-with.ui-autocomplete-input').live('keydown.autocomplete', function(){
 						// we need itemshares
-						var itemShares = []
+						var itemShares = [];
 						$(this)
 						  .siblings('.shared-with-list')
 						    .children('li:not(.stub)')
@@ -911,6 +924,7 @@ Calendar={
 						  OC.Share.unshare(itemType, itemSource, shareType, shareWith, function() {
 						    container.fadeOut(500, function(){ $(this).remove() });
 						  });
+
 						});
 				}
 			}
@@ -1123,7 +1137,18 @@ function ListView(element, calendar) {
 $(document).ready(function(){
 	Calendar.UI.lastView = defaultView;
 	Calendar.UI.changeView('auto_refresh');
-
+	
+	/**
+	* Set an interval timer to make the timeline move 
+	*/
+	setInterval(Calendar.Util.setTimeline,60000);	
+	$(window).resize(_.debounce(function() {
+		/**
+		* When i use it instant the timeline is walking behind the facts
+		* A little timeout will make sure that it positions correctly
+		*/
+		setTimeout(Calendar.Util.setTimeline,500);
+	}));
 	$('#fullcalendar').fullCalendar({
 		header: false,
 		firstDay: firstDay,
@@ -1175,9 +1200,6 @@ $(document).ready(function(){
 				Calendar.Util.setTimeline();
 			} catch(err) {
 			}
-		},
-		columnFormat: {
-				week: 'ddd d. MMM'
 		},
 		selectable: true,
 		selectHelper: true,

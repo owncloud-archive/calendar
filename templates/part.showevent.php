@@ -87,11 +87,7 @@
 		<tr>
 			<th width="75px"><?php p($l->t("Access Class"));?>:</th>
 			<td>
-			<select id="accessclass" name="accessclass">
-				<?php
-				print_unescaped(OCP\html_select_options(array($_['access_class_options'][$_['accessclass']]), $_['accessclass']));
-				?>
-			</select>
+			<?php p($_['access_class_options'][$_['accessclass']]); ?>
 			</td>
 		</tr>
 		<?php endif; ?>

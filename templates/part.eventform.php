@@ -32,7 +32,7 @@
 		$sortedCalendars = array_merge($enabledCalendars, $disabledCalendars);
 		print_unescaped(OCP\html_select_options($sortedCalendars, $_['calendar'], array('value'=>'id', 'label'=>'displayname'))); ?>
 	</select>
-	<?php } else { ?>
+	<?php } elseif ($_['calendar_options'][0]['userid'] === $_['userid']) { ?>
 	<input style="display:none;" type="hidden" name="calendar" value="<?php p($_['calendar_options'][0]['id']); ?>">
 	<?php } ?>
 
@@ -61,6 +61,9 @@
 			placeholder="<?php p($l->t('Location'));?>"
 			value="<?php p(isset($_['location']) ? $_['location'] : '') ?>"
 			maxlength="100"  name="location" />
+
+		<a class="action" id="viewOnMap" title="<?php p($l->t('View on map')); ?>">
+		<img alt="<?php p($l->t('View on map')); ?>" src="<?php print_unescaped(OCP\image_path('core','actions/public.svg'))?>" class="svg action" style="width: 16px; height: 16px;"></a>
 
 		<input id="category" name="categories" type="text"
 			placeholder="<?php p($l->t('Categories (separate by comma)')); ?>"

@@ -1,6 +1,11 @@
 <?php
 
-class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
+namespace OCA\Calendar\Sabre;
+
+use OCP\User;
+use \Sabre\DAV\PropPatch;
+
+class Backend extends \Sabre\CalDAV\Backend\AbstractBackend {
 	/**
 	 * List of CalDAV properties, and how they map to database fieldnames
 	 *
@@ -34,22 +39,22 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 * @return array
 	 */
 	public function getCalendarsForUser($principalUri) {
-		$raw = OC_Calendar_Calendar::allCalendarsWherePrincipalURIIs($principalUri);
+		$raw = \OC_Calendar_Calendar::allCalendarsWherePrincipalURIIs($principalUri);
 
 		$calendars = array();
 		foreach( $raw as $row ) {
 			$components = explode(',',$row['components']);
 
-			if($row['userid'] != OCP\USER::getUser()) {
+			if($row['userid'] != User::getUser()) {
 				$row['uri'] = $row['uri'] . '_shared_by_' . $row['userid'];
 			}
 			$calendar = array(
 				'id' => $row['id'],
 				'uri' => $row['uri'],
-				'principaluri' => 'principals/'.$row['userid'],
-				'{' . Sabre_CalDAV_Plugin::NS_CALENDARSERVER . '}getctag' => $row['ctag']?$row['ctag']:'0',
-				'{' . Sabre_CalDAV_Plugin::NS_CALDAV . '}supported-calendar-component-set'
-					=> new Sabre_CalDAV_Property_SupportedCalendarComponentSet($components),
+				'principaluri' => 'principals/' . \OCP\User::getUser(),
+				'{' . \Sabre\CalDAV\Plugin::NS_CALENDARSERVER . '}getctag' => $row['ctag']?$row['ctag']:'0',
+				'{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}supported-calendar-component-set'
+					=> new \Sabre\CalDAV\Property\SupportedCalendarComponentSet($components),
 			);
 
 			foreach($this->propertyMap as $xmlName=>$dbName) {
@@ -72,11 +77,12 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 			$calendars[] = array(
 				'id' => 'contact_birthdays',
 				'uri' => 'contact_birthdays',
-				'{DAV:}displayname' => (string)OC_Calendar_App::$l10n->t('Contact birthdays'),
-				'principaluri' => 'principals/contact_birthdays',
-				'{' . Sabre_CalDAV_Plugin::NS_CALENDARSERVER . '}getctag' => $ctag,
-				'{' . Sabre_CalDAV_Plugin::NS_CALDAV . '}supported-calendar-component-set'
-					=> new Sabre_CalDAV_Property_SupportedCalendarComponentSet(array('VEVENT')),
+				'{DAV:}displayname' => (string)\OC_Calendar_App::$l10n->t('Contact birthdays'),
+				'principaluri' => 'principals/' . \OCP\User::getUser(),
+				'{' . \Sabre\CalDAV\Plugin::NS_CALENDARSERVER . '}getctag' => $ctag,
+				'{' . \Sabre\CalDAV\Plugin::NS_CALDAV . '}supported-calendar-component-set'
+					=> new \Sabre\CalDAV\Property\SupportedCalendarComponentSet(array('VEVENT')),
+				'{http://apple.com/ns/ical/}calendar-color' => '#CCCCCC',
 			);
 		}
 		return $calendars;
@@ -92,6 +98,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 * @param string $calendarUri
 	 * @param array $properties
 	 * @return mixed
+	 * @throws \Sabre\DAV\Exception
 	 */
 	public function createCalendar($principalUri,$calendarUri, array $properties) {
 		$fieldNames = array(
@@ -111,8 +118,8 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 		if (!isset($properties[$sccs])) {
 			$values[':components'] = 'VEVENT,VTODO';
 		} else {
-			if (!($properties[$sccs] instanceof Sabre_CalDAV_Property_SupportedCalendarComponentSet)) {
-				throw new Sabre_DAV_Exception('The ' . $sccs . ' property must be of type: Sabre_CalDAV_Property_SupportedCalendarComponentSet');
+			if (!($properties[$sccs] instanceof \Sabre\CalDAV\Property\SupportedCalendarComponentSet)) {
+				throw new \Sabre\DAV\Exception('The ' . $sccs . ' property must be of type: \Sabre\CalDAV\Property\SupportedCalendarComponentSet');
 			}
 			$values[':components'] = implode(',',$properties[$sccs]->getValue());
 		}
@@ -135,7 +142,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 			$newValues['calendarcolor'] = substr($newValues['calendarcolor'], 0, 7);
 		}
 
-		return OC_Calendar_Calendar::addCalendarFromDAVData($principalUri,$calendarUri,$newValues['displayname'],$newValues['components'],$newValues['timezone'],$newValues['calendarorder'],$newValues['calendarcolor']);
+		return \OC_Calendar_Calendar::addCalendarFromDAVData($principalUri,$calendarUri,$newValues['displayname'],$newValues['components'],$newValues['timezone'],$newValues['calendarorder'],$newValues['calendarcolor']);
 	}
 
 	/**
@@ -171,10 +178,10 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 * (424 Failed Dependency) because the request needs to be atomic.
 	 *
 	 * @param string $calendarId
-	 * @param array $properties
+	 * @param PropPatch $propPatch
 	 * @return bool|array
 	 */
-	public function updateCalendar($calendarId, array $properties) {
+	public function updateCalendar($calendarId, PropPatch $propPatch) {
 
 		$newValues = array();
 		$result = array(
@@ -184,6 +191,8 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 		);
 
 		$hasError = false;
+
+		$properties = $propPatch->getRemainingMutations();
 
 		foreach($properties as $propertyName=>$propertyValue) {
 
@@ -225,7 +234,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 			$newValues['calendarcolor'] = substr($newValues['calendarcolor'], 0, 7);
 		}
 
-		OC_Calendar_Calendar::editCalendar($calendarId,$newValues['displayname'],null,$newValues['timezone'],$newValues['calendarorder'],$newValues['calendarcolor']);
+		\OC_Calendar_Calendar::editCalendar($calendarId,$newValues['displayname'],null,$newValues['timezone'],$newValues['calendarorder'],$newValues['calendarcolor']);
 
 		return true;
 
@@ -236,13 +245,14 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 *
 	 * @param string $calendarId
 	 * @return void
+	 * @throws \Sabre\DAV\Exception\Forbidden
 	 */
 	public function deleteCalendar($calendarId) {
-	    if(preg_match( '=iCal/[1-4]?.*Mac OS X/10.[1-6](.[0-9])?=', $_SERVER['HTTP_USER_AGENT'] )) {
-	    	throw new Sabre_DAV_Exception_Forbidden("Action is not possible with OSX 10.6.x", 403);
+		if(preg_match( '=iCal/[1-4]?.*Mac OS X/10.[1-6](.[0-9])?=', $_SERVER['HTTP_USER_AGENT'] )) {
+			throw new \Sabre\DAV\Exception\Forbidden("Action is not possible with OSX 10.6.x", 403);
 		}
 
-		OC_Calendar_Calendar::deleteCalendar($calendarId);
+		\OC_Calendar_Calendar::deleteCalendar($calendarId);
 	}
 
 	/**
@@ -289,8 +299,36 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 				}
 			}
 		} else {
-			foreach(OC_Calendar_Object::all($calendarId) as $row) {
-				$data[] = $this->OCAddETag($row);
+			$calendar = \OC_Calendar_Calendar::find($calendarId);
+			$isShared = ($calendar['userid'] !== User::getUser());
+
+			foreach(\OC_Calendar_Object::all($calendarId) as $row) {
+				if (!$isShared) {
+					$data[] = $this->OCAddETag($row);
+				} else {
+					if (substr_count($row['calendardata'], 'CLASS') === 0) {
+						$data[] = $this->OCAddETag($row);
+					} else {
+						$object = \Sabre\VObject\Reader::read($row['calendardata']);
+						if(!$object) {
+							return false;
+						}
+
+						$isPrivate = false;
+						$toCheck = array('VEVENT', 'VJOURNAL', 'VTODO');
+						foreach ($toCheck as $type) {
+							foreach ($object->select($type) as $vobject) {
+								if (isset($vobject->{'CLASS'}) && $vobject->{'CLASS'}->getValue() === 'PRIVATE') {
+									$isPrivate = true;
+								}
+							}
+						}
+
+						if ($isPrivate === false) {
+							$data[] = $this->OCAddETag($row);
+						}
+					}
+				}
 			}
 		}
 		return $data;
@@ -310,6 +348,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 */
 	public function getCalendarObject($calendarId,$objectUri) {
 		if($calendarId === 'contact_birthdays') {
+			$objectUri = substr($objectUri, 0, (strlen($objectUri) - 4));
 			$objectUriArray = explode('::', $objectUri);
 			if(count($objectUriArray) === 3) {
 				$app = new \OCA\Contacts\App();
@@ -328,14 +367,14 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 				));
 			}
 		}
-		$data = OC_Calendar_Object::findWhereDAVDataIs($calendarId,$objectUri);
+		$data = \OC_Calendar_Object::findWhereDAVDataIs($calendarId,$objectUri);
 		if(is_array($data)) {
 			$data = $this->OCAddETag($data);
-			$object = OC_VObject::parse($data['calendardata']);
+			$object = \Sabre\VObject\Reader::read($data['calendardata']);
 			if(!$object) {
 				return false;
 			}
-			$object = OC_Calendar_Object::cleanByAccessClass($data['id'], $object);
+			$object = \OC_Calendar_Object::cleanByAccessClass($data['id'], $object);
 			$data['calendardata'] = $object->serialize();
 		}
 		return $data;
@@ -350,7 +389,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 * @return void
 	 */
 	public function createCalendarObject($calendarId,$objectUri,$calendarData) {
-		OC_Calendar_Object::addFromDAVData($calendarId,$objectUri,$calendarData);
+		\OC_Calendar_Object::addFromDAVData($calendarId,$objectUri,$calendarData);
 	}
 
 	/**
@@ -362,7 +401,7 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 * @return void
 	 */
 	public function updateCalendarObject($calendarId,$objectUri,$calendarData) {
-		OC_Calendar_Object::editFromDAVData($calendarId,$objectUri,$calendarData);
+		\OC_Calendar_Object::editFromDAVData($calendarId,$objectUri,$calendarData);
 	}
 
 	/**
@@ -373,13 +412,13 @@ class OC_Connector_Sabre_CalDAV extends Sabre_CalDAV_Backend_Abstract {
 	 * @return void
 	 */
 	public function deleteCalendarObject($calendarId,$objectUri) {
-		OC_Calendar_Object::deleteFromDAVData($calendarId,$objectUri);
+		\OC_Calendar_Object::deleteFromDAVData($calendarId,$objectUri);
 	}
 
 	/**
 	 * @brief Creates a etag
 	 * @param array $row Database result
-	 * @returns associative array
+	 * @returns array associative array
 	 *
 	 * Adds a key "etag" to the row
 	 */
