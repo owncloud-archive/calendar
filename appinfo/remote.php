@@ -5,16 +5,18 @@
  * later.
  * See the COPYING-README file.
  */
-OCP\App::checkAppEnabled('calendar');
+if (!\OC::$server->getAppManager()->isInstalled('calendar')) {
+	throw new Exception('App not installed: calendar');
+}
 
-if(substr(OCP\Util::getRequestUri(),0,strlen(OC_App::getAppWebPath('calendar').'/caldav.php')) == OC_App::getAppWebPath('calendar'). '/caldav.php') {
-	$baseuri = OC_App::getAppWebPath('calendar').'/caldav.php';
+if (substr(OCP\Util::getRequestUri(), 0, strlen(OC_App::getAppWebPath('calendar') . '/caldav.php')) == OC_App::getAppWebPath('calendar') . '/caldav.php') {
+	$baseuri = OC_App::getAppWebPath('calendar') . '/caldav.php';
 }
 
 // only need authentication apps
-$RUNTIME_APPTYPES=array('authentication');
+$RUNTIME_APPTYPES = array('authentication');
 OC_App::loadApps($RUNTIME_APPTYPES);
-if(\OCP\App::isEnabled('contacts')) {
+if (\OC::$server->getAppManager()->isInstalled('contacts')) {
 	\OCP\Share::registerBackend('addressbook', 'OCA\Contacts\Share\Addressbook', 'contact');
 }
 
@@ -36,7 +38,7 @@ $calendarRoot->disableListing = true; // Disable listening
 $nodes = array(
 	$Sabre_CalDAV_Principal_Collection,
 	$calendarRoot,
-	);
+);
 
 // Fire up server
 $server = new \Sabre\DAV\Server($nodes);
