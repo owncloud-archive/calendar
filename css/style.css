@@ -114,46 +114,46 @@ button.category{margin:0 3px;}
 
 .fc-list-table
 {
-    margin: 10px;
-    border-style: hidden;
-    border-width: 10px;
-    padding: 10px;
-    vertical-align: top;
-    width: 100%;
+		margin: 10px;
+		border-style: hidden;
+		border-width: 10px;
+		padding: 10px;
+		vertical-align: top;
+		width: 100%;
 }
 .fc-list-table tr:hover
 {
-    color: #0000FF;
-    background-color: #CCFFCC;
+		color: #0000FF;
+		background-color: #CCFFCC;
 }
 
 
 .fc-list-date
 {
-    margin: 16px;
-    white-space: nowrap;
-    text-align: left;
-    width: 100%;
-    background-color: #808080;
-    color: #FFFFFF;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+		margin: 16px;
+		white-space: nowrap;
+		text-align: left;
+		width: 100%;
+		background-color: #808080;
+		color: #FFFFFF;
+		font-weight: bold;
+		font-family: Arial, Helvetica, sans-serif;
 }
 .fc-list-time
 {
-    text-align: center;
-    white-space: nowrap;
-    width: 1%;
+		text-align: center;
+		white-space: nowrap;
+		width: 1%;
 }
 
 .fc-list-event
 {
-     text-align: left;
+		 text-align: left;
 }
 
 .fc-list-event .fc-event-title
 {
-     cursor: pointer;
+		 cursor: pointer;
 }
 
 .ui-timepicker-hour-cell *, .ui-timepicker-minute-cell *{
@@ -177,6 +177,23 @@ button.category{margin:0 3px;}
 #controls #datecontrol_date,
 #controls input[type="button"].active {
 	font-weight: bold;
+}
+
+#controls .settings.timezonesettings {
+	float:right;
+}
+
+#controls .settings.timezonesettings > .chzn-container {
+	position:relative;
+	top:0.5em;
+}
+header + .settings.timezonesettings {
+	float:right;
+	margin-top:-1.2em;
+}
+header + .settings.timezonesettings > .chzn-container {
+	position:relative;
+	top:0.5em;
 }
 
 /* input fields take whole width */
@@ -600,4 +617,82 @@ button.ui-multiselect{
 	line-height:22px;
 	height:26px;
 	 text-align:left;
+}
+
+#linksharedinfo {
+	text-align:center;
+	font-weight:bold;
+	background: #1d2d44;
+	color:#ddd;
+	padding:1.2em 0.7em 0.7em 0.7em;
+	position:fixed;
+	top:0px;
+	width:100%;
+	font-size:90%;
+}
+
+#linksharedinfo .header-right {
+	float:right;
+	margin-right:1em;
+}
+
+#linksharedinfo a {
+	color:inherit;
+}
+
+#linksharedinfo a:hover {
+	text-decoration:underline;
+	color:white;
+}
+
+#linksharedinfo .download-link {
+	display:inline-block;
+	background: #1d2d44;
+	border:solid 0.1em #ddd;
+	border-radius:0.2em;
+	padding:0.3em 1em;
+	color:#ddd;
+	text-decoration:none;
+}
+
+#linksharedinfo .download-link:hover {
+	background:#ddd;
+	border-color:#555;
+	color:#777;
+	text-decoration:none;
+}
+
+#linksharedinfo + #controls {
+	top:50px;
+}
+
+#linksharedinfo + #controls + #fullcalendar {
+	top:50px;
+}
+
+#event.event.link-shared {
+	max-width:30em;
+	margin:70px auto auto auto;
+	padding:0.5em 1em;
+}
+
+#event.event.link-shared table, 
+#event.event.link-shared table * {
+	white-space:normal;
+}
+
+#event.event.link-shared .title {
+	font-size:200%;
+	font-weight:bold;
+}
+
+#event.event.link-shared .categories {
+	font-weight:bold;
+	font-style:italic;
+}
+
+#event.event.link-shared .date,
+#event.event.link-shared .location,
+#event.event.link-shared .description {
+	font-weight: bold;
 }

@@ -8,6 +8,7 @@
  *
  * This class manages our app actions
  */
+ 
 OC_Calendar_App::$l10n = OCP\Util::getL10N('calendar');
 OC_Calendar_App::$tz = OC_Calendar_App::getTimezone();
 class OC_Calendar_App{
@@ -67,8 +68,14 @@ class OC_Calendar_App{
 	 * @return mixed - bool / array
 	 */
 	public static function getEventObject($id, $security = true, $shared = false) {
+		if(! is_numeric($id)) {
+			return false;
+		}
 		$event = OC_Calendar_Object::find($id);
-		if($shared === true || $security === true) {
+		// link-shared event
+		if ( ($shared === true) && ($security === true) ) {
+			return $event;
+		} elseif($shared === true || $security === true) {
 			$permissions = self::getPermissions($id, self::EVENT);
 			OCP\Util::writeLog('calendar', __METHOD__.' id: '.$id.', permissions: '.$permissions, OCP\Util::DEBUG);
 			if(self::getPermissions($id, self::EVENT)) {
@@ -324,10 +331,36 @@ class OC_Calendar_App{
 	 * @return (string) $timezone as set by user or the default timezone
 	 */
 	public static function getTimezone() {
-		return OCP\Config::getUserValue(OCP\User::getUser(),
-						'calendar',
-						'timezone',
-						date_default_timezone_get());
+
+		// are we in a user session?
+		if (OCP\User::isLoggedIn()) {
+			// aye, let's use the normal infrastructure
+			return OCP\Config::getUserValue(OCP\User::getUser(),
+						  'calendar',
+						  'timezone',
+						  date_default_timezone_get());
+
+		// nope! probably link-shared stuff (no need to check that)
+		} else {
+			// is the timezone set in session vars?
+			if (\OC::$session->exists('public_link_timezone')) {
+				// aye, using that
+				return \OC::$session->get('public_link_timezone');
+			
+			// is it a shared calendar or event??
+			} elseif (\OC::$session->exists('public_link_owner')) {
+				// let's try to get the shared calendar
+				return OCP\Config::getUserValue(\OC::$session->get('public_link_owner'),
+						  'calendar',
+						  'timezone',
+						  date_default_timezone_get());
+			
+			// nope!
+			} else {
+				// use the default already!
+				return date_default_timezone_get();
+			}
+		}
 	}
 
 	/**

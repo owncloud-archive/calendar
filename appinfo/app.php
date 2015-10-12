@@ -7,8 +7,11 @@ OC::$CLASSPATH['OC_Calendar_Hooks'] = 'calendar/lib/hooks.php';
 OC::$CLASSPATH['OC_Calendar_Repeat'] = 'calendar/lib/repeat.php';
 OC::$CLASSPATH['OC_Calendar_Export'] = 'calendar/lib/export.php';
 OC::$CLASSPATH['OC_Calendar_Import'] = 'calendar/lib/import.php';
+
+// sharing -- classpaths
 OC::$CLASSPATH['OC_Share_Backend_Calendar'] = 'calendar/lib/share/calendar.php';
 OC::$CLASSPATH['OC_Share_Backend_Event'] = 'calendar/lib/share/event.php';
+
 //General Hooks
 OCP\Util::connectHook('OC_User', 'post_createUser', 'OC_Calendar_Hooks', 'createUser');
 OCP\Util::connectHook('OC_User', 'post_deleteUser', 'OC_Calendar_Hooks', 'deleteUser');
@@ -20,11 +23,11 @@ OCP\Util::connectHook('OC_Calendar', 'moveEvent', 'OC_Calendar_Repeat', 'update'
 OCP\Util::connectHook('OC_Calendar', 'deleteCalendar', 'OC_Calendar_Repeat', 'cleanCalendar');
 
 OCP\App::addNavigationEntry( array(
-  'id' => 'calendar_index',
-  'order' => 10,
-  'href' => OCP\Util::linkToRoute('calendar_index'),
-  'icon' => OCP\Util::imagePath( 'calendar', 'calendar.svg' ),
-  'name' => $l->t('Calendar')));
+	'id' => 'calendar_index',
+	'order' => 10,
+	'href' => OCP\Util::linkTo( 'calendar', 'index.php' ),
+	'icon' => OCP\Util::imagePath( 'calendar', 'calendar.svg' ),
+	'name' => $l->t('Calendar')));
 \OC::$server->getSearch()->registerProvider('OCA\Calendar\Search\Provider', array('apps' => array('calendar')));
 OCP\Share::registerBackend('calendar', 'OC_Share_Backend_Calendar');
 OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
