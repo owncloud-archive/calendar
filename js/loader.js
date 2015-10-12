@@ -17,10 +17,10 @@ Calendar_Import={
 		percentage: 0
 	},
 	Dialog:{
-		open: function(filename){
+		open: function(filename, context){
 			OC.addStyle('calendar', 'import');
 			Calendar_Import.Store.file = filename;
-			Calendar_Import.Store.path = $('#dir').val();
+			Calendar_Import.Store.path = context.dir;
 			$('body').append('<div id="calendar_import"></div>');
 			$('#calendar_import').load(OC.filePath('calendar', 'ajax/import', 'dialog.php'), {filename:Calendar_Import.Store.file, path:Calendar_Import.Store.path},function(){
 					Calendar_Import.Dialog.init();
@@ -174,10 +174,23 @@ Calendar_Import={
 		Calendar_Import.Store.progresskey = '';
 		Calendar_Import.Store.percentage = 0;
 	}
-}
+};
+
 $(document).ready(function(){
-	if(typeof FileActions !== 'undefined'){
-		FileActions.register('text/calendar','importCalendar',  OC.PERMISSION_READ, '', Calendar_Import.Dialog.open);
-		FileActions.setDefault('text/calendar','importCalendar');
-	};
+	if(OCA.Files && OCA.Files.fileActions) {
+		OCA.Files.fileActions.registerAction({
+			name: 'importCalendar',
+			displayName: t('calendar', 'Import'),
+			mime: 'text/calendar',
+			permissions: OC.PERMISSION_READ,
+			icon: function () {
+				return OC.imagePath('core', 'filetypes/text-calendar');
+			},
+			actionHandler: function (filename, context) {
+				Calendar_Import.Dialog.open(filename, context);
+			}
+		});
+
+		OCA.Files.fileActions.setDefault('text/calendar','importCalendar');
+	}
 });
