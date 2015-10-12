@@ -52,4 +52,29 @@ if (!preg_match('/^#([a-fA-F0-9]){3}(([a-fA-F0-9]){3})$/i', $calendarColor)) {
 		<a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>" class="icon-delete"></a>
 	<?php } ?>
 	</span>
+	
+	
+	<span class="action">
+	<?php if($_['calendar']['permissions'] & OCP\PERMISSION_SHARE) { ?>
+		<div class="displayable" style="padding-left:0.5em">
+		<?php
+			/* internal calendar sharing interface */
+			$tmpl = new OCP\Template('calendar', 'part.internalshare');
+			$tmpl->assign('item_id', $_['calendar']['id']);
+			$tmpl->assign('item_type', 'calendar');
+			$tmpl->assign('permissions', $_['calendar']['permissions']);
+			$tmpl->assign('shared_with', $_['shared_with']);
+			$tmpl->printpage();
+			/* public calendar link-sharing interface */
+			$tmpl = new OCP\Template('calendar', 'part.linkshare');
+			$tmpl->assign('item_id', $_['calendar']['id']);
+			$tmpl->assign('item_type', 'calendar');
+			$tmpl->assign('permissions', $_['calendar']['permissions']);
+			$tmpl->assign('link_share', $_['link_share']);
+			$tmpl->printpage();
+		?>
+		</div>
+	<?php } ?>
+	</span>
+	
 </span>

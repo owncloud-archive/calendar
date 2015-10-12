@@ -352,12 +352,12 @@ class OC_Calendar_Object{
 	}
 
 	/**
-     * @brief Creates a UID
-     * @return string
-     */
-    protected static function createUID() {
-        return substr(md5(rand().time()),0,10);
-    }
+		 * @brief Creates a UID
+		 * @return string
+		 */
+		protected static function createUID() {
+				return substr(md5(rand().time()),0,10);
+		}
 
 	/**
 	 * @brief Extracts data from a vObject-Object
@@ -1010,9 +1010,9 @@ class OC_Calendar_Object{
 							$byday = '';
 							foreach($request['weeklyoptions'] as $day) {
 								if($byday == '') {
-								      $byday .= $days[$day];
+											$byday .= $days[$day];
 								}else{
-								      $byday .= ',' . $days[$day];
+											$byday .= ',' . $days[$day];
 								}
 							}
 							$rrule .= ';BYDAY=' . $byday;
@@ -1022,9 +1022,9 @@ class OC_Calendar_Object{
 							$bymonth = '';
 							foreach($request['bymonth'] as $month) {
 								if($bymonth == '') {
-								      $bymonth .= $monthes[$month];
+											$bymonth .= $monthes[$month];
 								}else{
-								      $bymonth .= ',' . $monthes[$month];
+											$bymonth .= ',' . $monthes[$month];
 								}
 							}
 							$rrule .= ';BYMONTH=' . $bymonth;
@@ -1034,9 +1034,9 @@ class OC_Calendar_Object{
 							$bymonthday = '';
 							foreach($request['bymonthday'] as $monthday) {
 								if($bymonthday == '') {
-								      $bymonthday .= $monthday;
+											$bymonthday .= $monthday;
 								}else{
-								      $bymonthday .= ',' . $monthday;
+											$bymonthday .= ',' . $monthday;
 								}
 							}
 							$rrule .= ';BYMONTHDAY=' . $bymonthday;

@@ -19,16 +19,21 @@ $l = OCP\Util::getL10N('calendar');
 
 // Get the event sources
 $eventSources = array();
-$calendars = OC_Calendar_Calendar::allCalendars(OCP\User::getUser());
-foreach($calendars as $calendar) {
-	if(!array_key_exists('active', $calendar)){
-		$calendar['active'] = 1;
-	}
-	if($calendar['active'] == 1) {
-		$eventSources[] = OC_Calendar_Calendar::getEventSourceInfo($calendar);
+
+// only for a logged-in user
+if (OCP\User::isLoggedIn()) {
+	$calendars = OC_Calendar_Calendar::allCalendars(OCP\User::getUser());
+	foreach($calendars as $calendar) {
+		if(!array_key_exists('active', $calendar)){
+			$calendar['active'] = 1;
+		}
+		if($calendar['active'] == 1) {
+			$eventSources[] = OC_Calendar_Calendar::getEventSourceInfo($calendar);
+		}
 	}
 }
 
+// this is needed also when displaying a link-shared calendar
 $events_baseURL = OCP\Util::linkTo('calendar', 'ajax/events.php');
 $eventSources[] = array('url' => $events_baseURL.'?calendar_id=shared_events',
 		'backgroundColor' => '#1D2D44',
@@ -36,7 +41,10 @@ $eventSources[] = array('url' => $events_baseURL.'?calendar_id=shared_events',
 		'textColor' => 'white',
 		'editable' => 'false');
 
-OCP\Util::emitHook('OC_Calendar', 'getSources', array('sources' => &$eventSources));
+// only for a logged-in user
+if (OCP\User::isLoggedIn()) {
+	OCP\Util::emitHook('OC_Calendar', 'getSources', array('sources' => &$eventSources));
+}
 
 $firstDay = null;
 $firstDayConfig = OCP\Config::getUserValue(OCP\USER::getUser(), 'calendar', 'firstday', 'mo');

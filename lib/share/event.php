@@ -5,7 +5,7 @@
  * later.
  * See the COPYING-README file.
  */
-
+ 
 class OC_Share_Backend_Event implements OCP\Share_Backend {
 
 	const FORMAT_EVENT = 0;
