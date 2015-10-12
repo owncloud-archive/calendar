@@ -1,6 +1,6 @@
 <?php
 /**
- * ownCloud - OC_Connector_Sabre_CalDAV_CalendarObject
+ * ownCloud - \OCA\Calendar\Sabre\Object
  *
  * @author Thomas Tanghus
  * @copyright 2012 Thomas Tanghus (thomas@tanghus.net)
@@ -20,11 +20,16 @@
  *
  */
 
+namespace OCA\Calendar\Sabre;
+
+use OCP\Constants;
+use OCP\User;
+
 /**
  * This class overrides \Sabre\CalDAV\CalendarObject::getACL()
  * to return read/write permissions based on user and shared state.
 */
-class OC_Connector_Sabre_CalDAV_CalendarObject extends \Sabre\CalDAV\CalendarObject {
+class Object extends \Sabre\CalDAV\CalendarObject {
 
 	/**
 	* Returns a list of ACE's for this node.
@@ -42,20 +47,20 @@ class OC_Connector_Sabre_CalDAV_CalendarObject extends \Sabre\CalDAV\CalendarObj
 
 		$readprincipal = $this->getOwner();
 		$writeprincipal = $this->getOwner();
-		$uid = OC_Calendar_Calendar::extractUserID($this->getOwner());
+		$uid = \OC_Calendar_Calendar::extractUserID($this->getOwner());
 
-		if($uid != OCP\USER::getUser()) {
+		if($uid != User::getUser()) {
 			if($uid === 'contact_birthdays') {
-				$readprincipal = 'principals/' . OCP\User::getUser();
+				$readprincipal = 'principals/' . User::getUser();
 			} else {
 				$object = \Sabre\VObject\Reader::read($this->objectData['calendardata']);
-				$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
-				$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($object);
-				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_READ) && ($sharedAccessClassPermissions & OCP\PERMISSION_READ)) {
-					$readprincipal = 'principals/' . OCP\USER::getUser();
+				$sharedCalendar = \OCP\Share::getItemSharedWithBySource('calendar', $this->calendarInfo['id']);
+				$sharedAccessClassPermissions = \OC_Calendar_Object::getAccessClassPermissions($object);
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & Constants::PERMISSION_READ) && ($sharedAccessClassPermissions & Constants::PERMISSION_READ)) {
+					$readprincipal = 'principals/' . User::getUser();
 				}
-				if ($sharedCalendar && ($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE) && ($sharedAccessClassPermissions & OCP\PERMISSION_UPDATE)) {
-					$writeprincipal = 'principals/' . OCP\USER::getUser();
+				if ($sharedCalendar && ($sharedCalendar['permissions'] & Constants::PERMISSION_UPDATE) && ($sharedAccessClassPermissions & Constants::PERMISSION_UPDATE)) {
+					$writeprincipal = 'principals/' . User::getUser();
 				}
 			}
 		}

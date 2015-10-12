@@ -1,6 +1,6 @@
 <?php
 /**
- * ownCloud - OC_Connector_Sabre_CalDAV_CalendarRoot
+ * ownCloud - \OCA\Calendar\Sabre\CalendarRoot
  *
  * @author Thomas Tanghus
  * @copyright 2012 Thomas Tanghus (thomas@tanghus.net)
@@ -20,11 +20,13 @@
  *
  */
 
+namespace OCA\Calendar\Sabre;
+
 /**
- * This class overrides \Sabre\CalDAV\CalendarRootNode::getChildForPrincipal()
- * to instantiate OC_Connector_Sabre_CalDAV_UserCalendars.
+ * This class overrides \Sabre\CalDAV\CalendarRoot::getChildForPrincipal()
+ * to instantiate \OCA\Calendar\Sabre\UserCalendars.
 */
-class OC_Connector_Sabre_CalDAV_CalendarRoot extends \Sabre\CalDAV\CalendarRootNode {
+class CalendarRoot extends \Sabre\CalDAV\CalendarRoot {
 
 	/**
 	* This method returns a node for a principal.
@@ -38,7 +40,7 @@ class OC_Connector_Sabre_CalDAV_CalendarRoot extends \Sabre\CalDAV\CalendarRootN
 	*/
 	public function getChildForPrincipal(array $principal) {
 
-		return new OC_Connector_Sabre_CalDAV_UserCalendars($this->caldavBackend, $principal);
+		return new UserCalendars($this->caldavBackend, $principal);
 
 	}
 

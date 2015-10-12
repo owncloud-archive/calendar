@@ -24,13 +24,13 @@ $principalBackend = new \OC\Connector\Sabre\Principal(
 	\OC::$server->getConfig(),
 	\OC::$server->getUserManager()
 );
-$caldavBackend    = new OC_Connector_Sabre_CalDAV();
+$caldavBackend    = new \OCA\Calendar\Sabre\Backend();
 
 // Root nodes
 $Sabre_CalDAV_Principal_Collection = new \Sabre\CalDAV\Principal\Collection($principalBackend);
 $Sabre_CalDAV_Principal_Collection->disableListing = true; // Disable listening
 
-$calendarRoot = new OC_Connector_Sabre_CalDAV_CalendarRoot($principalBackend, $caldavBackend);
+$calendarRoot = new \OCA\Calendar\Sabre\CalendarRoot($principalBackend, $caldavBackend);
 $calendarRoot->disableListing = true; // Disable listening
 
 $nodes = array(
