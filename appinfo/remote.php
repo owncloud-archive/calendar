@@ -43,6 +43,13 @@ $server = new \Sabre\DAV\Server($nodes);
 $server->httpRequest->setUrl(\OC::$server->getRequest()->getRequestUri());
 $server->setBaseUri($baseuri);
 // Add plugins
+$adminmail = \OCP\Util::getDefaultEmailAddress('no-reply');
+$server->addPlugin(
+    new Sabre\CalDAV\Schedule\Plugin()
+    );
+$server->addPlugin(
+    new Sabre\CalDAV\Schedule\IMipPlugin($adminmail)
+    );
 $server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,'ownCloud'));
 $server->addPlugin(new \Sabre\CalDAV\Plugin());
 $server->addPlugin(new \Sabre\DAVACL\Plugin());
