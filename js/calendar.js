@@ -304,6 +304,34 @@ Calendar={
 				}
 			});
 		},
+		addAlarm:function(){
+			newAlarm = $('#eventAlarms').children().first().clone();
+			newAlarm.attr('id', null);
+			newAlarm.css('display', 'block');
+			newAlarm.find('.alarmDuration').val(10);
+			newAlarm.insertBefore($("#add_alarm"));
+
+			i = 0;
+			$.each($('#eventAlarms .alarm'), function(){
+				$(this).find('.alarmType').attr('name', 'alarmsType[' + i + ']');
+				$(this).find('.alarmDuration').attr('name', 'alarmsDuration[' + i + ']');
+				$(this).find('.alarmTimeType').attr('name', 'alarmsTimeType[' + i + ']');
+				i++;
+			});
+
+		},
+		deleteAlarm:function(deleteButton){
+			if($('#eventAlarms .alarm').length == 1){
+				alarm = $(deleteButton).parent();
+				alarm.css('display', 'none');
+				alarm.find('.alarmType').attr('name', '');
+				alarm.find('.alarmDuration').attr('name', '');
+				alarm.find('.alarmTimeType').attr('name', '');
+			}
+			else{
+				$(deleteButton).parent().remove();
+			}
+		},
 		showadvancedoptions:function(){
 			$("#advanced_options").slideDown('slow');
 			$("#advanced_options_button").css("display", "none");
@@ -1154,6 +1182,19 @@ $(document).ready(function(){
 			sharedEventSource = eventSources[i];
 		}
 	}
+
+	setInterval(function(){
+		$.post(OC.filePath('calendar', 'ajax', 'alarms.php'), function(data){
+			if(data.status == 'success'){
+				for(i in data.events){
+					alert(data.events[i]);
+				}
+			}
+			else{
+				location.reload();
+			}
+		});
+	}, 60000);
 });
 
 var wrongKey = function(event) {

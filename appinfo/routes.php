@@ -130,6 +130,10 @@ $this->create('calendar_root_export', 'export.php')
 $this->create('calendar_root_settingswrapper', 'settingswrapper.php')
 	->actionInclude('calendar/settingswrapper.php');
 
+// /ajax/event
+$this->create('calendar_alarms_check', 'ajax/alarms.php')
+	->actionInclude('calendar/ajax/alarms.php');
+
 // /js
 $this->create('calendar_js_idtype', 'js/idtype.php')
 	->actionInclude('calendar/js/idtype.php');

@@ -36,11 +36,6 @@ body {
 	right: 0;
 	left: 0;
 	top: 0;
-
-	/* prevent ugly selection effect on accidental selection  */
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 }
 #listview {margin: 0; padding: 10px; background: #EEEEEE;}
 #listview #more_before, #listview #more_after {border: 1px solid #1a1a1a; width:25em;padding: 3px;text-align: center;}
@@ -576,7 +571,7 @@ button.category{margin:0 3px;}
 	border: none;
 	border-top: 1px solid red;
 	width: 100%;
-
+	
 	z-index: 999;
 }
 
@@ -598,3 +593,11 @@ button.ui-multiselect{
 	height:26px;
 	 text-align:left;
 }
+#eventAlarms button, #eventAlarms select{
+	font-weight: normal;
+}
+
+.deleteAlarm{
+	display: inline;
+}
+

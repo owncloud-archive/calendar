@@ -324,10 +324,7 @@ class OC_Calendar_App{
 	 * @return (string) $timezone as set by user or the default timezone
 	 */
 	public static function getTimezone() {
-		return OCP\Config::getUserValue(OCP\User::getUser(),
-						'calendar',
-						'timezone',
-						date_default_timezone_get());
+		return OCP\Config::getUserValue(OCP\User::getUser(), 'calendar', 'timezone', date_default_timezone_get());
 	}
 
 	/**
@@ -351,8 +348,7 @@ class OC_Calendar_App{
 					return $sharedCalendar['permissions'];
 				}
 			}
-		}
-		elseif($type == self::EVENT) {
+		}elseif($type == self::EVENT){
 			if(OC_Calendar_Object::getowner($id) == OCP\USER::getUser()) {
 				return $permissions_all;
 			} else {

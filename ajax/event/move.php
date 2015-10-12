@@ -40,6 +40,7 @@ $vevent->DTSTAMP = $now;
 
 try {
 	OC_Calendar_Object::edit($id, $vcalendar->serialize());
+	OC_Calendar_Object::moveAlarmsDB($id, $delta);
 } catch(Exception $e) {
 	OCP\JSON::error(array('message'=>$e->getMessage()));
 	exit;

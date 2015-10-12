@@ -262,6 +262,9 @@ $tmpl->assign('enddate', $enddate);
 $tmpl->assign('endtime', $endtime);
 $tmpl->assign('description', $description);
 
+$alarms = OC_Calendar_Object::getAlarms($id);
+$tmpl->assign('alarms', $alarms);
+
 $tmpl->assign('repeat', $repeat['repeat']);
 if($repeat['repeat'] != 'doesnotrepeat') {
 	if(array_key_exists('weekofmonth', $repeat) === false) {
