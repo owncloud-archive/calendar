@@ -119,6 +119,12 @@ Calendar={
 			var appNavigationWidth = ($(window).width() > 768) ? $('#app-navigation').width() : 0;
 			timeline.css({'left':($('.fc-today').offset().left-appNavigationWidth),'width': $('.fc-today').width(),'top':topLoc + 'px'});
 		},
+		openLocationMap:function(){
+			var address = $('#event-location').val();
+			address = encodeURIComponent(address);
+			var newWindow = window.open('http://open.mapquest.com/?q='+address, '_blank');
+			newWindow.focus();
+		}
 	},
 	UI:{
 		loading: function(isLoading){
