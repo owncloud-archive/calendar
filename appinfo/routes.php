@@ -46,6 +46,9 @@ $this->create('calendar_calendar_overview', 'ajax/calendar/overview.php')
 $this->create('calendar_calendar_update', 'ajax/calendar/update.php')
 	->actionInclude('calendar/ajax/calendar/update.php');
 
+$this->create('calendar_calendar_makedefault', 'ajax/calendar/makedefault.php')
+	->actionInclude('calendar/ajax/calendar/makedefault.php');
+
 
 // /ajax/categories
 $this->create('calendar_categories_rescan', 'ajax/categories/rescan.php')
