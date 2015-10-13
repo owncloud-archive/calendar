@@ -28,7 +28,7 @@ $delta->i = $_POST['minuteDelta'];
 OC_Calendar_App::isNotModified($vevent, $_POST['lastmodified']);
 
 $dtend = OC_Calendar_Object::getDTEndFromVEvent($vevent);
-$dtend->getDateTime()->add($delta);
+$dtend->setDateTime($dtend->getDateTime()->add($delta));
 unset($vevent->DURATION);
 
 
