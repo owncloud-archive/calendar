@@ -41,14 +41,12 @@ if(is_array($sharedwithByEvent)) {
 		data-share-type="<?php p($sharee['share_type']); ?>">
 		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>
 		<span class="shareactions">
-			<label>
-				<input class="update sharepermissioncheckbox" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
-				 <?php p($l->t('can edit')); ?>
-			</label>
-			<label>
-				<input class="share sharepermissioncheckbox" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
-				 <?php p($l->t('can share')); ?>
-			</label>
+			<input id="checkbox-<?php p($sharee['share_with']) ?>-update" class="update sharepermissioncheckbox" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>>
+			<label for="checkbox-<?php p($sharee['share_with']) ?>-update"><?php p($l->t('can edit')); ?></label>
+
+			<input id="checkbox-<?php p($sharee['share_with']) ?>-share" class="share sharepermissioncheckbox" type="checkbox" <?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>>
+			<label for="checkbox-<?php p($sharee['share_with']) ?>-share"><?php p($l->t('can share')); ?></label>
+
 			<img src="<?php p(OCP\Util::imagePath('core', 'actions/delete.svg')); ?>" class="svg action delete"
 				title="<?php p($l->t('Unshare')); ?>">
 		</span>
@@ -74,18 +72,14 @@ if(is_array($sharedwithByEvent)) {
 		data-share-type="<?php p($sharee['share_type']); ?>">
 		<?php p($sharee['share_with'] . ($sharee['share_type'] == OCP\Share::SHARE_TYPE_GROUP ? ' (group)' : '')); ?>
 		<span class="shareactions">
-			<label>
-				<input class="update" type="checkbox"
-					<?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>
-					disabled="disabled">
-				<?php p($l->t('can edit')); ?>
-			</label>
-			<label>
-				<input class="share" type="checkbox"
-					<?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>
-					disabled="disabled">
-				<?php p($l->t('can share')); ?>
-			</label>
+			<input class="update" type="checkbox"
+				<?php p(($sharee['permissions'] & OCP\PERMISSION_UPDATE?'checked="checked"':''))?>
+				disabled="disabled">
+			<label><?php p($l->t('can edit')); ?></label>
+			<input class="share" type="checkbox"
+				<?php p(($sharee['permissions'] & OCP\PERMISSION_SHARE?'checked="checked"':''))?>
+				disabled="disabled">
+			<label><?php p($l->t('can share')); ?></label>
 		</span>
 	</li>
 <?php endforeach; ?>
