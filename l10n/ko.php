@@ -203,6 +203,7 @@ $TRANSLATIONS = array(
 "All Day Event" => "종일 행사",
 "Advanced options" => "고급 설정",
 "Location" => "위치",
+"View on map" => "지도에서 보기",
 "Categories (separate by comma)" => "분류 (쉼표로 구분됨)",
 "Edit categories" => "분류 수정",
 "Description" => "설명",

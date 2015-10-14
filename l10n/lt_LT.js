@@ -204,6 +204,7 @@ OC.L10N.register(
     "All Day Event" : "Visos dienos įvykis",
     "Advanced options" : "Papildomi nustatymai",
     "Location" : "Vieta",
+    "View on map" : "Žiūrėti žemėlapyje",
     "Categories (separate by comma)" : "Kategorijos (atskirtos kableliais)",
     "Edit categories" : "Redaguoti kategorijas",
     "Description" : "Aprašymas",

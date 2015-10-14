@@ -199,6 +199,7 @@ $TRANSLATIONS = array(
 "All Day Event" => "Egun osoko gertaera",
 "Advanced options" => "Aukera aurreratuak",
 "Location" => "Kokalekua",
+"View on map" => "Ikusi mapan",
 "Categories (separate by comma)" => "Kategoriak (komaz banatuta)",
 "Edit categories" => "Editatu kategoriak",
 "Description" => "Deskribapena",

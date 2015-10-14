@@ -203,6 +203,7 @@ $TRANSLATIONS = array(
 "All Day Event" => "Ολοήμερο Συμβάν",
 "Advanced options" => "Προχωρημένες επιλογές",
 "Location" => "Τοποθεσία",
+"View on map" => "Προβολή στο χάρτη",
 "Categories (separate by comma)" => "Κατηγορίες (διαχωρισμένες με κόμμα)",
 "Edit categories" => "Επεξεργασία κατηγοριών",
 "Description" => "Περιγραφή",

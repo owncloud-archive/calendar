@@ -191,6 +191,7 @@ $TRANSLATIONS = array(
 "All Day Event" => "Sự kiện trong ngày",
 "Advanced options" => "Tùy chọn nâng cao",
 "Location" => "Nơi",
+"View on map" => "Xem trên bản đồ",
 "Categories (separate by comma)" => "Thể loại (phân cách bằng dấu phẩy)",
 "Edit categories" => "Sửa chuyên mục",
 "Description" => "Mô tả",

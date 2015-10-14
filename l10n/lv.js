@@ -190,6 +190,7 @@ OC.L10N.register(
     "All Day Event" : "Visas dienas notikums",
     "Advanced options" : "Paplašinātās opcijas",
     "Location" : "Vieta",
+    "View on map" : "Skatīt kartē",
     "Categories (separate by comma)" : "Kategorijas (atdalīt ar komatu)",
     "Edit categories" : "Rediģēt kategoriju",
     "Description" : "Apraksts",

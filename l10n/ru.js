@@ -204,6 +204,7 @@ OC.L10N.register(
     "All Day Event" : "Событие на весь день",
     "Advanced options" : "Дополнительные параметры",
     "Location" : "Место",
+    "View on map" : "Показать на карте",
     "Categories (separate by comma)" : "Категории (через запятую)",
     "Edit categories" : "Редактировать категории",
     "Description" : "Описание",

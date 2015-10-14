@@ -204,7 +204,7 @@ OC.L10N.register(
     "All Day Event" : "Journée entière",
     "Advanced options" : "Options avancées",
     "Location" : "Emplacement",
-    "View on map" : "Voir sur une carte",
+    "View on map" : "Voir sur la carte",
     "Categories (separate by comma)" : "Catégories (séparées par une virgule)",
     "Edit categories" : "Modifier les catégories",
     "Description" : "Description",

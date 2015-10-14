@@ -188,6 +188,7 @@ $TRANSLATIONS = array(
 "All Day Event" => "La tuta tago",
 "Advanced options" => "Altnivela agordo",
 "Location" => "Loko",
+"View on map" => "Vidi en mapo",
 "Categories (separate by comma)" => "Kategorioj (apartigu per komo)",
 "Edit categories" => "Redakti kategoriojn",
 "Description" => "Priskribo",

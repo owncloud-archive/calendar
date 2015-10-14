@@ -193,6 +193,7 @@ $TRANSLATIONS = array(
 "All Day Event" => "Evento de toto le die",
 "Advanced options" => "Optiones avantiate",
 "Location" => "Loco",
+"View on map" => "Vider in un carta",
 "Categories (separate by comma)" => "Categorias (separate per virgulas)",
 "Edit categories" => "Modificar categorias",
 "Description" => "Description",

@@ -204,6 +204,7 @@ OC.L10N.register(
     "All Day Event" : "เป็นกิจกรรมตลอดทั้งวัน",
     "Advanced options" : "ตัวเลือกขั้นสูง",
     "Location" : "สถานที่",
+    "View on map" : "ดูบนแผนที่",
     "Categories (separate by comma)" : "ประเภท (แยกด้วยเครื่องหมายคอมม่า)",
     "Edit categories" : "แก้ไขหมวดหมู่",
     "Description" : "คำอธิบาย",

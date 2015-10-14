@@ -171,6 +171,7 @@ OC.L10N.register(
     "All Day Event" : "Digwyddiad Drwy'r Dydd",
     "Advanced options" : "Gosodiadau uwch",
     "Location" : "Lleoliad",
+    "View on map" : "Gweld ar fap",
     "Edit categories" : "Golygu categorïau",
     "Description" : "Disgrifiad",
     "Repeat" : "Ailadrodd",

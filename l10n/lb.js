@@ -192,6 +192,7 @@ OC.L10N.register(
     "All Day Event" : "Ganzdaags-Evenement",
     "Advanced options" : "Erweidert Optiounen",
     "Location" : "Uert",
+    "View on map" : "Op da Kaart uweisen",
     "Categories (separate by comma)" : "Rubriken (mat Komma getrennt)",
     "Edit categories" : "Rubriken editéieren",
     "Description" : "Beschreiwung",

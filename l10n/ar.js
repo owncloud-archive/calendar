@@ -199,6 +199,7 @@ OC.L10N.register(
     "All Day Event" : "حدث طيلة اليوم",
     "Advanced options" : "خيارات متقدمة",
     "Location" : "المكان",
+    "View on map" : "مشاهدة على الخريطة.",
     "Categories (separate by comma)" : "الفئات (مفصولة بعلامة الفاصلة)",
     "Edit categories" : "عدل الفئة",
     "Description" : "وصف",

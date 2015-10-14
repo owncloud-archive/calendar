@@ -173,6 +173,7 @@ OC.L10N.register(
     "All Day Event" : "ყოველდღიური ივენთი",
     "Advanced options" : "დამატებითი ფუნქციები",
     "Location" : "ადგილმდებარეობა",
+    "View on map" : "ნახეთ რუქაზე",
     "Edit categories" : "კატეგორიების რედაქტირება",
     "Description" : "გვერდის დახასიათება",
     "Repeat" : "გამეორება",

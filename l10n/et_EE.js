@@ -202,6 +202,7 @@ OC.L10N.register(
     "All Day Event" : "Kogu päeva sündmus",
     "Advanced options" : "Lisavalikud",
     "Location" : "Asukoht",
+    "View on map" : "Vaata kaardil",
     "Categories (separate by comma)" : "Kategooriad (eralda komaga)",
     "Edit categories" : "Muuda kategooriaid",
     "Description" : "Kirjeldus",

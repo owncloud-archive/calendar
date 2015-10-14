@@ -204,6 +204,7 @@ OC.L10N.register(
     "All Day Event" : "Egész napos esemény",
     "Advanced options" : "Haladó beállítások",
     "Location" : "Hely",
+    "View on map" : "Megtekintés a térképen",
     "Categories (separate by comma)" : "Kategóriák (vesszővel elválasztva)",
     "Edit categories" : "Kategóriák szerkesztése",
     "Description" : "Leírás",

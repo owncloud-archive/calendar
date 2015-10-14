@@ -200,6 +200,7 @@ OC.L10N.register(
     "All Day Event" : "Heldags evenemang",
     "Advanced options" : "Avancerade alternativ",
     "Location" : "Plats",
+    "View on map" : "Visa på karta",
     "Categories (separate by comma)" : "Kategorier (kommaseparerade)",
     "Edit categories" : "Redigera kategorier",
     "Description" : "Beskrivning",

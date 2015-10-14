@@ -204,6 +204,7 @@ OC.L10N.register(
     "All Day Event" : "終日イベント",
     "Advanced options" : "詳細設定",
     "Location" : "場所",
+    "View on map" : "地図で表示",
     "Categories (separate by comma)" : "カテゴリ(カンマ区切り)",
     "Edit categories" : "カテゴリを編集",
     "Description" : "メモ",

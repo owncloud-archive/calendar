@@ -204,6 +204,7 @@ OC.L10N.register(
     "All Day Event" : "Tüm Gün Etkinliği",
     "Advanced options" : "Gelişmiş seçenekler",
     "Location" : "Konum",
+    "View on map" : "Haritada gör",
     "Categories (separate by comma)" : "Kategoriler (virgül ile ayırın)",
     "Edit categories" : "Kategorileri düzenle",
     "Description" : "Açıklama",

@@ -203,6 +203,7 @@ $TRANSLATIONS = array(
 "All Day Event" => "Actividades de todo o día",
 "Advanced options" => "Opcións avanzadas",
 "Location" => "Lugar",
+"View on map" => "Ver no mapa",
 "Categories (separate by comma)" => "Categorías (separadas por comas)",
 "Edit categories" => "Editar as categorías",
 "Description" => "Descrición",
