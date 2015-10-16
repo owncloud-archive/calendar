@@ -15,10 +15,12 @@ class OC_Calendar_Alarm extends \OC\BackgroundJob\TimedJob{
 	}
 
 	public function run($argument) {
+	        OCP\Util::writeLog('calendar background job', 'Started', OCP\Util::DEBUG);
 		self::sendEmailAlarm();
+		OCP\Util::writeLog('calendar background job', 'Finished', OCP\Util::DEBUG);
 	}
 
-	public function sendEmailAlarm() {
+	private static function sendEmailAlarm() {
 		try{
 			$tz = OC_Calendar_App::getTimezone();
 
@@ -31,10 +33,10 @@ class OC_Calendar_Alarm extends \OC\BackgroundJob\TimedJob{
 
 			$query = \OCP\DB::prepare($sql);
 			$result = $query->execute(array('EMAIL'));
-
-			$alarmsIdsSent = array();
+			
+			OCP\Util::writeLog('calendar background job', 'Will send '.$result->rowCount().' emails', OCP\Util::DEBUG);
 			while($row = $result->fetchRow()){
-				$lang = OC_Preferences::getValue($row['userid'], 'core', 'lang');
+				$lang = OCP\Config::getUserValue($row['userid'], 'calendar', 'lang');
 				$l = OC_L10N::get('calendar', $lang);
 
 				$startDate = new DateTime($row['startdate'], new DateTimeZone('UTC'));
@@ -53,26 +55,31 @@ class OC_Calendar_Alarm extends \OC\BackgroundJob\TimedJob{
 				$tpl->assign('when', $l->t('When: '));
 				$tpl->assign('calendar', $l->t('Calendar: '));
 
-				$message = $tpl->fetchPage();
+				$content = $tpl->fetchPage();
 
-				$email = OC_Preferences::getValue($row['userid'], 'settings', 'email');
+				$email = OCP\Config::getUserValue($row['userid'], 'settings', 'email');
 				$fromEmail = OC_Config::getValue('mail_smtpname');
 				if($fromEmail === NULL){
 					$fromEmail = OC_Config::getValue('mail_from_address').'@'.OC_Config::getValue('mail_domain');
 				}
-
-				OC_Mail::send($email, $row['userid'], $l->t('Reminder: %s', $row['summary']), $message, $fromEmail, $l->t('Owncloud Event Reminder'), true);
-
-				$alarmsIdsSent[] = $row['alarmId'];
+				
+				//OCP\Util::writeLog('calendar background job', 'Send mail to '.$email, OCP\Util::DEBUG);
+				$mailer = \OC::$server->getMailer();
+				$message = $mailer->createMessage();
+				$message->setSubject($l->t('Reminder: %s', $row['summary']));
+				$message->setFrom(array($fromEmail => 'Owncloud Calendar'));
+				$message->setTo(array($email => $row['userid']));
+				$message->setPlainBody($content);
+				$mailer->send($message);
+				
+				//OCP\Util::writeLog('calendar background job', 'Mail sent to '.$email, OCP\Util::DEBUG);							
+				$stmt = OCP\DB::prepare('UPDATE `*PREFIX*clndr_alarms` SET sent = 1 WHERE `id` = ?');
+				$stmt->execute(array($row['alarmId']));
 			}
-
-			$stmt = OCP\DB::prepare('UPDATE `*PREFIX*clndr_alarms` SET sent = 1 WHERE `id` IN(?)');
-			$stmt->execute(array(implode(',', $alarmsIdsSent)));
 		} catch(\Exception $e){
-			OC_Log::write('calendar', __METHOD__.', Exception: '.$e->getMessage(), OCP\Util::DEBUG);
+			OC_Log::write('calendar background job', 'Exception: '.$e->getMessage(), OCP\Util::DEBUG);		
 			return false;
 		}
-
 		return true;
 	}
 

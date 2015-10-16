@@ -35,7 +35,7 @@ OCP\App::addNavigationEntry( array(
 OCP\Share::registerBackend('calendar', 'OC_Share_Backend_Calendar');
 OCP\Share::registerBackend('event', 'OC_Share_Backend_Event');
 
-OCP\Backgroundjob::registerJob('OC_Calendar_Alarm');
+OCP\Backgroundjob::addRegularTask('OC_Calendar_Alarm', 'run');
 
 $request = \OC::$server->getRequest();
 if (isset($request->server['REQUEST_URI'])) {
