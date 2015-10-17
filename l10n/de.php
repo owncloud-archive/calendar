@@ -9,6 +9,7 @@ $TRANSLATIONS = array(
 "The file contained either no events or all events are already saved in your calendar." => "Entweder enthielt die Datei keine Termine oder alle Termine waren bereits im Kalender gespeichert.",
 "events have been saved in the new calendar" => "Termine wurden im neuen Kalender gespeichert",
 "Import failed" => "Import fehlgeschlagen",
+"_%n event has been saved in the new calendar %s._::_%n events have been saved in the new calendar %s._" => array("%n Termin wurde im neuen Kalender %s gespeichert.","%n Termine wurden im neuen Kalender %s gespeichert."),
 "New Timezone:" => "Neue Zeitzone:",
 "Timezone changed" => "Zeitzone geändert",
 "Invalid request" => "Fehlerhafte Anfrage",
