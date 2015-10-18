@@ -57,86 +57,84 @@
     <div id="eventAlarms">
 		<?php
 		p($l->t("Reminders"));
+		$i = 0;
+		foreach($_['alarms'] as $row): ?>
 
-		if(count($_['alarms']) == 0){
-			?>
-
-			<div class="alarm" style="display:none">
-				<select style="width:80px;" class="alarmType" name="">
-					<option value="EMAIL"><?php p($l->t('Email')); ?></option>
-					<option value="DISPLAY"><?php p($l->t('Popup')); ?></option>
+			<div class="alarm">
+				<select style="width:95px;" class="alarmType" name="alarmsType[<?php p($i); ?>]">
+					<?php
+					print_unescaped('<option value="EMAIL" '.($row['type']=='EMAIL'?'selected="selected"':'').'>'.$l->t('Email').'</option>');
+					print_unescaped('<option value="DISPLAY" '.($row['type']=='DISPLAY'?'selected="selected"':'').'>'.$l->t('Popup').'</option>');
+					print_unescaped('<option value="WEBHOOK" '.($row['type']=='WEBHOOK'?'selected="selected"':'').'>'.$l->t('Webhook').'</option>');
+					?>
 				</select>
-				<input style="width:25px;" type="text" value="10" class="alarmDuration" name=""/>
-				<select style="width:145px;" class="alarmTimeType" name="">
-					<option value="M"><?php p($l->t('Minutes')); ?></option>
-					<option value="H"><?php p($l->t('Hours')); ?></option>
-					<option value="D"><?php p($l->t('Days')); ?></option>
-					<option value="W"><?php p($l->t('Weeks')); ?></option>
+				<input style="width:25px;" type="text" value="<?php p($row['value']) ?>" class="alarmDuration" name="alarmsDuration[<?php p($i); ?>]"/>
+				<select style="width:145px;" class="alarmTimeType" name="alarmsTimeType[<?php p($i); ?>]">
+					<?php switch($row['timetype']) {
+						case 'M':
+
+							print_unescaped('<option value="M" selected="selected">'.$l->t('Minutes').'</option>');
+							print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
+							print_unescaped('<option value="D">'.$l->t('Days').'</option>');
+							print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
+							break;
+						case 'H':
+
+							print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
+							print_unescaped('<option value="H" selected="selected">'.$l->t('Hours').'</option>');
+							print_unescaped('<option value="D">'.$l->t('Days').'</option>');
+							print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
+							break;
+						case 'D':
+
+							print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
+							print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
+							print_unescaped('<option value="D" selected="selected">'.$l->t('Days').'</option>');
+							print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
+							break;
+						default: // W
+							print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
+							print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
+							print_unescaped('<option value="D">'.$l->t('Days').'</option>');
+							print_unescaped('<option value="W" selected="selected">'.$l->t('Weeks').'</option>');
+							break;
+                    }?>
 				</select>
 				<button class="deleteAlarm"><?php p($l->t("Delete")); ?></button>
+				<label class="alarmOptionField" <?php print_unescaped($row['type']!='WEBHOOK'?'style="display: none;"':'') ?>>
+					<span style="width: 35%;">Url eg: uri&amp;m=<b>$message</b>:</span>
+					<?php $_dv = OCP\Config::getUserValue( OCP\USER::getUser(), 'calendar', 'webhookdefaulturl' ); ?>
+					<?php if (!empty($row['optionfield'])): ?>
+						<input style="width: 60%;" type="text" value="<?php p($row['optionfield']) ?>" class="alarmOptionField" name="alarmsOptionField[<?php p($i); ?>]"/>
+					<?php else: ?>
+						<input style="width: 60%;" type="text" value="<?php echo $_dv ?>" class="alarmOptionField" name="alarmsOptionField[<?php p($i); ?>]"/>
+					<?php endif; ?>
+				</label>
 			</div>
 
-			<?php
-		}else{
+			<?php $i++;
+		endforeach; ?>
 
-			$i = 0;
-			foreach($_['alarms'] as $row){
-				?>
-
-				<div class="alarm">
-					<select style="width:80px;" class="alarmType" name="alarmsType[<?php p($i); ?>]">
-						<?php
-						if($row['type'] == 'EMAIL'){
-							print_unescaped('<option value="EMAIL" selected="selected">'.$l->t('Email').'</option>');
-							print_unescaped('<option value="DISPLAY">'.$l->t('Popup').'</option>');
-						}else{
-							print_unescaped('<option value="EMAIL">'.$l->t('Email').'</option>');
-							print_unescaped('<option value="DISPLAY" selected="selected">'.$l->t('Popup').'</option>');
-						}
-						?>
-					</select>
-					<input style="width:25px;" type="text" value="<?php p($row['value']) ?>" class="alarmDuration" name="alarmsDuration[<?php p($i); ?>]"/>
-					<select style="width:145px;" class="alarmTimeType" name="alarmsTimeType[<?php p($i); ?>]">
-                                <?php
-						switch($row['timetype']){
-							case 'M':
-
-								print_unescaped('<option value="M" selected="selected">'.$l->t('Minutes').'</option>');
-								print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
-								print_unescaped('<option value="D">'.$l->t('Days').'</option>');
-								print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
-								break;
-							case 'H':
-
-								print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
-								print_unescaped('<option value="H" selected="selected">'.$l->t('Hours').'</option>');
-								print_unescaped('<option value="D">'.$l->t('Days').'</option>');
-								print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
-								break;
-							case 'D':
-                                        
-								print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
-								print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
-								print_unescaped('<option value="D" selected="selected">'.$l->t('Days').'</option>');
-								print_unescaped('<option value="W">'.$l->t('Weeks').'</option>');
-								break;
-							default: // W
-								print_unescaped('<option value="M">'.$l->t('Minutes').'</option>');
-								print_unescaped('<option value="H">'.$l->t('Hours').'</option>');
-								print_unescaped('<option value="D">'.$l->t('Days').'</option>');
-								print_unescaped('<option value="W" selected="selected">'.$l->t('Weeks').'</option>');
-								break;
-                                    }
-                                ?>
+		<div id="baseEventAlarm" class="alarm" style="display:none">
+			<select style="width:95px;" class="alarmType" name="">
+				<option value="EMAIL"><?php p($l->t('Email')); ?></option>
+				<option value="DISPLAY"><?php p($l->t('Popup')); ?></option>
+				<option value="WEBHOOK"><?php p($l->t('Webhook')); ?></option>
 			</select>
-					<button class="deleteAlarm"><?php p($l->t("Delete")); ?></button>
-				</div>
-
-			<?php
-				$i++;
-			}
-				}
-			?>
+			<input style="width:25px;" type="text" value="10" class="alarmDuration" name=""/>
+			<select style="width:145px;" class="alarmTimeType" name="">
+				<option value="M"><?php p($l->t('Minutes')); ?></option>
+				<option value="H"><?php p($l->t('Hours')); ?></option>
+				<option value="D"><?php p($l->t('Days')); ?></option>
+				<option value="W"><?php p($l->t('Weeks')); ?></option>
+			</select>
+			<button class="deleteAlarm"><?php p($l->t("Delete")); ?></button>
+			<label class="alarmOptionField" style="display: none;">
+				<span style="width: 35%;">Url eg: uri&amp;m=<b>$message</b>:</span>
+				<input style="width: 60%;" class="alarmOptionField" type="text" name="" value="<?php echo OCP\Config::getUserValue( OCP\USER::getUser(), 'calendar', 'webhookdefaulturl' ) ?>" />
+			</label>
+		</div>
+		<script>var __b = $('#baseEventAlarm'); Calendar.UI.ALARMBASETPL = __b.attr('id','').prop('outerHTML'); __b.remove();</script>
 
 		<button id="add_alarm"><?php p($l->t("Add reminder")); ?></button>
 

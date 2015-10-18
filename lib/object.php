@@ -722,7 +722,7 @@ class OC_Calendar_Object{
 	}
 
 	public static function getAlarms($objectId) {
-		$sql = 'SELECT type, value, timetype
+		$sql = 'SELECT type, value, optionfield, timetype
                 FROM *PREFIX*clndr_alarms
                 WHERE objid = ?
                 ORDER BY senddate';
@@ -744,12 +744,12 @@ class OC_Calendar_Object{
                 JOIN *PREFIX*clndr_objects AS objects ON objects.id = alarms.objid
                 JOIN *PREFIX*clndr_calendars AS calendars ON (objects.calendarid=calendars.id)
                 WHERE userid = ? AND type = ? AND sent = 0
-                    AND senddate BETWEEN DATE_SUB(UTC_TIMESTAMP(), INTERVAL 2 MINUTE) AND UTC_TIMESTAMP()
+                    AND senddate BETWEEN ? AND ?
                 ORDER BY senddate';
 
 		$query = \OCP\DB::prepare($sql);
 
-		return $query->execute(array(OCP\USER::getUser(), 'DISPLAY'));
+		return $query->execute(array(OCP\USER::getUser(), 'DISPLAY', gmdate('Y-m-d H:i:s', strtotime("-2 minutes", strtotime(gmdate('Y-m-d H:i:s')))), gmdate('Y-m-d H:i:s')));
 	}
 
 	public static function setAlarmsSent($alarmsIdsSent) {
@@ -1180,7 +1180,7 @@ class OC_Calendar_Object{
 		unset($vevent->VALARM);
 
 		$alarmsDuration = $request['alarmsDuration'];
-		$alarmsType = $request['alarmsType'];
+		$alarmsType = $request['alarmsType'] == 'WEBHOOK'?'AUDIO':$request['alarmsType'];
 		$alarmsTimeType = $request['alarmsTimeType'];
 		if($alarmsDuration != NULL && count($alarmsDuration) > 0){
 
@@ -1211,7 +1211,7 @@ class OC_Calendar_Object{
 	 * @param type $vcalendar
 	 * @param type $eventId
 	 */
-	public static function addAlarmsDB($alarmsDuration, $alarmsType, $alarmsTimeType, $vevent, $eventId) {
+	public static function addAlarmsDB($alarmsDuration, $alarmsOptionField, $alarmsType, $alarmsTimeType, $vevent, $eventId) {
 		self::removeAllAlarmsDB($eventId);
 
 		if($alarmsDuration != NULL && count($alarmsDuration) > 0){
@@ -1235,8 +1235,9 @@ class OC_Calendar_Object{
 					$sendDateStr = self::getUTCforMDB($sendate);
 
 					$alarmType = $alarmsType[$i];
-					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, timetype, sent) VALUES (null, ?, ?, ?, ?, ?, ?)');
-					$stmt->execute(array($eventId, $sendDateStr, $alarmType, $alarmDuration, $alarmTimeType, $sent));
+					$alarmOptionField = strtoupper($alarmType)=='WEBHOOK'?$alarmsOptionField[$i]:'';
+					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, optionfield, timetype, sent) VALUES (null, ?, ?, ?, ?, ?, ?, ?)');
+					$stmt->execute(array($eventId, $sendDateStr, $alarmType, $alarmDuration, $alarmOptionField, $alarmTimeType, $sent));
 				}
 				$i++;
 			}
@@ -1269,7 +1270,7 @@ class OC_Calendar_Object{
 				if(count($params) > 0 && $params[1] != NULL){
 
 					$result = self::getTimeTypeAndValueFromInterval($params[1]);
-					$timeType = $result['timeType'];
+					$timeType = $result['timeType'] == 'AUDIO' ? 'WEBHOOK' : $result['timeType'];
 					$value = $result['value'];
 
 					$sendate = $sendate = new \DateTime('@'.$startDate->getTimestamp());
@@ -1279,8 +1280,8 @@ class OC_Calendar_Object{
 
 					$sendDateStr = self::getUTCforMDB($sendate);
 
-					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, timetype, sent) VALUES (null, ?, ?, ?, ?, ?, ?)');
-					$stmt->execute(array($eventId, $sendDateStr, $alarm->ACTION, $value, $timeType, $sent));
+					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, optionfield, timetype, sent) VALUES (null, ?, ?, ?, ?, ?, ?, ?)');
+					$stmt->execute(array($eventId, $sendDateStr, $alarm->ACTION, $value, '', $timeType, $sent));
 				}
 			}
 		}

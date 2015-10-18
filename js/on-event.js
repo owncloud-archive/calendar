@@ -92,3 +92,7 @@ $('.deleteAlarm').live('click', function(e){
 	Calendar.UI.deleteAlarm(this);
 	e.preventDefault();
 });
+$('.alarmType').live('change', function(e){
+	Calendar.UI.switchAlarmType.apply(this);
+	e.preventDefault();
+});

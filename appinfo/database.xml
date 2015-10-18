@@ -374,6 +374,13 @@
 				<length>255</length>
 			</field>
 
+      <field>
+        <name>optionfield</name>
+        <type>text</type>
+        <notnull>false</notnull>
+        <length>1024</length>
+      </field>
+
 			<field>
 				<name>timetype</name>
 				<type>text</type>

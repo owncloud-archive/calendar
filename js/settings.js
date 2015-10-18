@@ -45,6 +45,25 @@ $(document).ready(function(){
 		});
 	});
 	calendarcachecheck();
+	$('input.alarmDefault').on('change', function() {
+		var checked = '';
+		$('input.alarmDefault').each(function() {
+			if ($(this).prop('checked')) {
+				checked += (checked.length?'|':'')+$(this).prop('name');
+			};
+		});
+		$.post( OC.filePath('calendar', 'ajax/settings', 'setdefaultalarms.php'), 'defaultalarms='+checked);
+	});
+	$('#alarmDefaultWebhookURL').on('change', function() {
+		$.post( OC.filePath('calendar', 'ajax/settings', 'setwebhookdefaulturl.php'), 'webhookdefaulturl='+encodeURIComponent($(this).val()),
+			function(jsondata, status) {
+				var label = $('<b class="webhookUrlEvent"></b>');
+				label.addClass(jsondata.status === "success"?'webhookUrlEventSuccess':'webhookUrlEventError');
+				label.text(jsondata.data.message);
+				$("#alarmDefaultWebhookURL").before(label)
+				label.fadeOut(10000, 'easeInExpo', function() { $(this).remove() });
+		});
+	});
 
 });
 function calendarcachecheck(){

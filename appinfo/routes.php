@@ -118,6 +118,11 @@ $this->create('calendar_settings_timeformat', 'ajax/settings/timeformat.php')
 $this->create('calendar_settings_timezonedetection', 'ajax/settings/timezonedetection.php')
 	->actionInclude('calendar/ajax/settings/timezonedetection.php');
 
+$this->create('calendar_settings_setdefaultalarms', 'ajax/settings/setdefaultalarms.php')
+	->actionInclude('calendar/ajax/settings/setdefaultalarms.php');
+
+$this->create('calendar_settings_setwebhookdefaulturls', 'ajax/settings/setwebhookdefaulturl.php')
+	->actionInclude('calendar/ajax/settings/setwebhookdefaulturl.php');
 
 $this->create('calendar_root_calendar', 'calendar.php')
 	->actionInclude('calendar/calendar.php');
