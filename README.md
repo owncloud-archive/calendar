@@ -21,6 +21,7 @@ CREATE TABLE `oc_clndr_alarms` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `objid` int(10) unsigned NOT NULL DEFAULT '0',
   `value` varchar(255) COLLATE utf8_bin NOT NULL,
+  `optionfield` varchar(1024) COLLATE utf8_bin NOT NULL,
   `timetype` varchar(255) COLLATE utf8_bin NOT NULL,
   `senddate` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
   `type` varchar(255) COLLATE utf8_bin NOT NULL,

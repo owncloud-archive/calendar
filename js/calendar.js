@@ -305,7 +305,7 @@ Calendar={
 			});
 		},
 		addAlarm:function(){
-			newAlarm = $('#eventAlarms').children().first().clone();
+			newAlarm = $(Calendar.UI.ALARMBASETPL);
 			newAlarm.attr('id', null);
 			newAlarm.css('display', 'block');
 			newAlarm.find('.alarmDuration').val(10);
@@ -316,20 +316,19 @@ Calendar={
 				$(this).find('.alarmType').attr('name', 'alarmsType[' + i + ']');
 				$(this).find('.alarmDuration').attr('name', 'alarmsDuration[' + i + ']');
 				$(this).find('.alarmTimeType').attr('name', 'alarmsTimeType[' + i + ']');
+				$(this).find('.alarmOptionField').attr('name', 'alarmsOptionField[' + i + ']');
 				i++;
 			});
 
 		},
-		deleteAlarm:function(deleteButton){
-			if($('#eventAlarms .alarm').length == 1){
-				alarm = $(deleteButton).parent();
-				alarm.css('display', 'none');
-				alarm.find('.alarmType').attr('name', '');
-				alarm.find('.alarmDuration').attr('name', '');
-				alarm.find('.alarmTimeType').attr('name', '');
-			}
-			else{
-				$(deleteButton).parent().remove();
+		deleteAlarm:function(deleteButton) {
+			$(deleteButton).parent().remove();
+		},
+		switchAlarmType:function() {
+			if($(this).val() === 'WEBHOOK') {
+				$(this).parent().find('.alarmOptionField').show();
+			} else {
+				$(this).parent().find('.alarmOptionField').hide();
 			}
 		},
 		showadvancedoptions:function(){

@@ -31,7 +31,7 @@ if($errarr) {
 
 	OC_Calendar_App::isNotModified($vcalendar->VEVENT, $_POST['lastmodified']);
 	OC_Calendar_Object::updateVCalendarFromRequest($_POST, $vcalendar);
-	OC_Calendar_Object::addAlarmsDB($_POST['alarmsDuration'], $_POST['alarmsType'], $_POST['alarmsTimeType'], $vcalendar->VEVENT, $id);
+	OC_Calendar_Object::addAlarmsDB($_POST['alarmsDuration'], $_POST['alarmsOptionField'], $_POST['alarmsType'], $_POST['alarmsTimeType'], $vcalendar->VEVENT, $id);
 
 	try {
 		OC_Calendar_Object::edit($id, $vcalendar->serialize());

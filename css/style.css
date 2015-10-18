@@ -601,3 +601,44 @@ button.ui-multiselect{
 	display: inline;
 }
 
+.alarmOptionField {
+       display: block;
+}
+
+label.alarmOptionField {
+       margin-top: -4px;
+}
+
+label.alarmOptionField > span,
+label.alarmOptionField > input {
+       display: inline-block;
+}
+
+span.alarmDefault {
+	display: block;
+}
+input.alarmDefault {
+	display: inline-block;
+	width: 14%;
+}
+.alarmDefault + label {
+	display: inline-block;
+	width: 80%;
+}
+
+.webhookUrlEvent {
+	color: whitesmoke;
+	width: 80%;
+	display: block;
+	padding: 2px;
+	text-align: center;
+}
+
+.webhookUrlEvent.webhookUrlEventSuccess {
+	background-color: #007700;
+}
+
+.webhookUrlEvent.webhookUrlEventError {
+	background-color: #C20000;
+}
+

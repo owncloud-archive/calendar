@@ -74,17 +74,37 @@ $tmpl->assign('repeat_byweekno_options', $repeat_byweekno_options);
 $tmpl->assign('repeat_bymonthday_options', $repeat_bymonthday_options);
 $tmpl->assign('repeat_weekofmonth_options', $repeat_weekofmonth_options);
 
-$tmpl->assign('alarms', array(
-  array(
-	'type' => 'DISPLAY',
-	'value' => 10,
-	'timetype' => 'M'),
-  array(
-	'type' => 'EMAIL',
-	'value' => 10,
-	'timetype' => 'M'
-  )
-));
+$_alarms = array();
+$_alarmsType = explode('|', OCP\Config::getUserValue( OCP\USER::getUser(), 'calendar', 'defaultalarms' ));
+
+if (in_array('DISPLAY', $_alarmsType)) {
+	$_alarms[] =   array(
+		'type' => 'DISPLAY',
+		'value' => 10,
+		'optionfield' => '',
+		'timetype' => 'M'
+	);
+}
+
+if (in_array('EMAIL', $_alarmsType)) {
+	$_alarms[] =   array(
+		'type' => 'EMAIL',
+		'value' => 10,
+		'optionfield' => '',
+		'timetype' => 'M'
+	);
+}
+
+if (in_array('WEBHOOK', $_alarmsType)) {
+	$_alarms[] =   array(
+		'type' => 'WEBHOOK',
+		'value' => 10,
+		'optionfield' => OCP\Config::getUserValue( OCP\USER::getUser(), 'calendar', 'webhookdefaulturl' ),
+		'timetype' => 'M'
+	);
+}
+
+$tmpl->assign('alarms', $_alarms);
 
 $tmpl->assign('eventid', 'new');
 $tmpl->assign('startdate', $start->format('d-m-Y'));

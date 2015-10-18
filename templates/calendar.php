@@ -108,6 +108,20 @@
 					<label class="bold"><?php p($l->t('iOS/OS X CalDAV address')); ?></label>
 					<input id="ioscaldav" type="text" value="<?php print_unescaped(OCP\Util::linkToRemote('caldav')); ?>principals/<?php p(urlencode(OCP\USER::getUser())); ?>/" style="width:90%" readonly>
 				</li>
+				<li>
+					<?php $_alarmsType = explode('|', OCP\Config::getUserValue( OCP\USER::getUser(), 'calendar', 'defaultalarms' )) ?>
+					<span class="bold alarmDefault"><?php p($l->t('Default Alarms')); ?></span>
+					<input id="alarmDefaultPopup" class="alarmDefault" type="checkbox" name="DISPLAY" value="" <?php echo in_array('DISPLAY', $_alarmsType)?'checked="checked"':''?>>
+					<label for="alarmDefaultPopup"><?php p($l->t('Popup')); ?></label>
+					<input id="alarmDefaultMail" class="alarmDefault" type="checkbox" name="EMAIL" value="" <?php echo in_array('EMAIL', $_alarmsType)?'checked="checked"':''?>>
+					<label for="alarmDefaultMail"><?php p($l->t('Mail')); ?></label>
+					<input id="alarmDefaultWebhook" class="alarmDefault" type="checkbox" name="WEBHOOK" value="" <?php echo in_array('WEBHOOK', $_alarmsType)?'checked="checked"':''?>>
+					<label for="alarmDefaultWebhook"><?php p($l->t('Webhook')); ?></label>
+				</li>
+				<li>
+					<label for="alarmDefaultWebhookURL" class="bold"><?php p($l->t('Webhook default URL')); ?></label>
+					<input id="alarmDefaultWebhookURL" type="text" value="<?php echo OCP\Config::getUserValue( OCP\USER::getUser(), 'calendar', 'webhookdefaulturl' ) ?>" style="width:90%">
+				</li>
 			</ul>
 		</div>
 	</div>
