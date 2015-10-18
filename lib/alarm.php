@@ -157,7 +157,7 @@ class OC_Calendar_Alarm extends \OC\BackgroundJob\TimedJob
             $mailer->send($message);
             //OCP\Util::writeLog('calendar background job', 'Mail sent to '.$email, OCP\Util::DEBUG);
 
-            // static::setAlarmSent($alarm['alarmId']);
+            static::setAlarmSent($alarm['alarmId']);
         }
 
         return true;
