@@ -8,6 +8,8 @@
     "The file contained either no events or all events are already saved in your calendar." : "O arquivo não continha nenhum evento ou todos os eventos já estão guardados no seu calendário.",
     "events have been saved in the new calendar" : "eventos foram salvos no novo calendário",
     "Import failed" : "Falha na importação",
+    "_%n event has been saved in the new calendar %s._::_%n events have been saved in the new calendar %s._" : ["o evento %n foi gravado no novo calendário %s.","os eventos %n foram salvos no novo calendário %s."],
+    "_%n event has been saved in your calendar._::_%n events have been saved in your calendar._" : ["o evento %n foi salvo no seu calendário.","os eventos %n foram salvos no seu calendário."],
     "New Timezone:" : "Novo fuso horário",
     "Timezone changed" : "Fuso horário alterado",
     "Invalid request" : "Requisição Inválida",
@@ -242,7 +244,7 @@
     "%s of %s" : "%s de %s",
     "Access Class" : "Classe de Acesso",
     "From" : "De",
-    "at" : "para",
+    "at" : "em",
     "To" : "Para"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }
