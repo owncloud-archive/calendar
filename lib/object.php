@@ -1180,7 +1180,7 @@ class OC_Calendar_Object{
 		unset($vevent->VALARM);
 
 		$alarmsDuration = $request['alarmsDuration'];
-		$alarmsType = $request['alarmsType'] == 'WEBHOOK'?'AUDIO':$request['alarmsType'];
+		$alarmsType = $request['alarmsType'];
 		$alarmsTimeType = $request['alarmsTimeType'];
 		if($alarmsDuration != NULL && count($alarmsDuration) > 0){
 
@@ -1270,7 +1270,7 @@ class OC_Calendar_Object{
 				if(count($params) > 0 && $params[1] != NULL){
 
 					$result = self::getTimeTypeAndValueFromInterval($params[1]);
-					$timeType = $result['timeType'] == 'AUDIO' ? 'WEBHOOK' : $result['timeType'];
+					$timeType = $result['timeType'];
 					$value = $result['value'];
 
 					$sendate = $sendate = new \DateTime('@'.$startDate->getTimestamp());
@@ -1280,8 +1280,11 @@ class OC_Calendar_Object{
 
 					$sendDateStr = self::getUTCforMDB($sendate);
 
+					$action = $alarm->ACTION == 'PROCEDURE' ? 'WEBHOOK' : $alarm->ACTION;
+					$optionfield = $action == 'WEBHOOK' ? OCP\Config::getUserValue( OCP\USER::getUser(), 'calendar', 'webhookdefaulturl' ) : '';
+
 					$stmt = OCP\DB::prepare('INSERT INTO `*PREFIX*clndr_alarms` (id, objid, senddate, type, value, optionfield, timetype, sent) VALUES (null, ?, ?, ?, ?, ?, ?, ?)');
-					$stmt->execute(array($eventId, $sendDateStr, $alarm->ACTION, $value, '', $timeType, $sent));
+					$stmt->execute(array($eventId, $sendDateStr, $action, $value, $optionfield, $timeType, $sent));
 				}
 			}
 		}
