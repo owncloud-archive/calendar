@@ -24,6 +24,7 @@ namespace OCA\Calendar\Sabre;
 
 use OCP\Constants;
 use OCP\User;
+use Sabre\CalDAV\CalendarObject;
 
 /**
  * This class overrides \Sabre\CalDAV\Calendar::getACL() to return read/write
@@ -147,7 +148,7 @@ class Calendar extends \Sabre\CalDAV\Calendar {
 		$objs = $this->caldavBackend->getMultipleCalendarObjects($this->calendarInfo['id'], $paths);
 		$children = [];
 		foreach($objs as $obj) {
-			$children[] = new OC_Connector_Sabre_CalDAV_CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
+			$children[] = new CalendarObject($this->caldavBackend,$this->calendarInfo,$obj);
 		}
         	return $children;
         }
