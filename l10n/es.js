@@ -10,6 +10,8 @@ OC.L10N.register(
     "The file contained either no events or all events are already saved in your calendar." : "El archivo no contiene eventos o ya existen en su calendario.",
     "events have been saved in the new calendar" : "los eventos han sido guardados en el nuevo calendario",
     "Import failed" : "La importación falló",
+    "_%n event has been saved in the new calendar %s._::_%n events have been saved in the new calendar %s._" : ["%n eventos han sido guardados en el nuevo calendario %s.","%n eventos han sido guardados en el nuevo calendario %s."],
+    "_%n event has been saved in your calendar._::_%n events have been saved in your calendar._" : ["%n eventos han sido guardados en su calendario.","%n eventos han sido guardados en su calendario."],
     "New Timezone:" : "Nueva zona horaria:",
     "Timezone changed" : "Zona horaria cambiada",
     "Invalid request" : "Petición no válida",
