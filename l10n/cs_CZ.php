@@ -1,6 +1,6 @@
 <?php
 $TRANSLATIONS = array(
-"Not all calendars are completely cached" => "V paměti nejsou úplně uloženy všechny kalendáře",
+"Not all calendars are completely cached" => "V paměti nejsou plně načteny všechny kalendáře",
 "Everything seems to be completely cached" => "Zdá se, že úplně vše je uloženo v paměti",
 "No calendars found." => "Žádné kalendáře nenalezeny.",
 "No events found." => "Žádné události nenalezeny.",
