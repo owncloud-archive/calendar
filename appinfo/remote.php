@@ -21,8 +21,11 @@ if (\OC::$server->getAppManager()->isInstalled('contacts')) {
 }
 
 // Backends
-$authBackend = new \OC\Connector\Sabre\Auth();
-$principalBackend = new \OC\Connector\Sabre\Principal(
+$authBackend = new \OCA\Calendar\Sabre\Auth(
+	\OC::$server->getSession(),
+	\OC::$server->getUserSession()
+);
+$principalBackend = new \OCA\Calendar\Sabre\Principal(
 	\OC::$server->getConfig(),
 	\OC::$server->getUserManager()
 );
@@ -52,13 +55,13 @@ $server->addPlugin(
 $server->addPlugin(
     new Sabre\CalDAV\Schedule\IMipPlugin($adminmail)
     );
-$server->addPlugin(new \OC\Connector\Sabre\MaintenancePlugin());
+$server->addPlugin(new \OCA\Calendar\Sabre\MaintenancePlugin());
 $server->addPlugin(new \Sabre\DAV\Auth\Plugin($authBackend,'ownCloud'));
 $server->addPlugin(new \Sabre\CalDAV\Plugin());
 $server->addPlugin(new \Sabre\DAVACL\Plugin());
 $server->addPlugin(new \Sabre\CalDAV\ICSExportPlugin());
-$server->addPlugin(new \OC\Connector\Sabre\ExceptionLoggerPlugin('caldav', \OC::$server->getLogger()));
-$server->addPlugin(new \OC\Connector\Sabre\AppEnabledPlugin(
+$server->addPlugin(new \OCA\Calendar\Sabre\ExceptionLoggerPlugin('caldav', \OC::$server->getLogger()));
+$server->addPlugin(new \OCA\Calendar\Sabre\AppEnabledPlugin(
 	'calendar',
 	OC::$server->getAppManager()
 ));
