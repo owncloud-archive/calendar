@@ -10,6 +10,7 @@ OC.L10N.register(
     "The file contained either no events or all events are already saved in your calendar." : "檔案中沒有包含任何活動，或是所有的活動都已經儲存至您的日曆中了。",
     "events have been saved in the new calendar" : "行程已經存到新的行事曆了",
     "Import failed" : "匯入失敗",
+    "_%n event has been saved in your calendar._::_%n events have been saved in your calendar._" : ["%n 活動已經存到您的行事曆了。"],
     "New Timezone:" : "新時區：",
     "Timezone changed" : "時區已變更",
     "Invalid request" : "無效請求",
