@@ -85,6 +85,7 @@ $TRANSLATIONS = array(
 "Shared with you and the group {group} by {owner}" => "{owner} dalījās ar jums un grupu {group}",
 "Shared with you by {owner}" => "{owner} dalījās ar jums",
 "Share" => "Dalīties",
+"Share link" => "Dalīt saiti",
 "Password protect" => "Aizsargāt ar paroli",
 "Password" => "Parole",
 "Email link to person" => "Sūtīt saiti personai pa e-pastu",
