@@ -187,7 +187,7 @@ OC.L10N.register(
     "Clear cache for repeating events" : "Nettoyer le cache des événements répétitifs",
     "Primary CalDAV address" : "Adresse CalDAV principale",
     "iOS/OS X CalDAV address" : "Adresse CalDAV pour iOS/OS X",
-    "Contacts' birthdays CalDAV address" : "Adresse CalDav des anniversaires des contacts",
+    "Contacts' birthdays CalDAV address" : "Adresse CalDAV des anniversaires des contacts",
     "Share Calendar" : "Partager le calendrier",
     "Download" : "Télécharger",
     "Edit" : "Éditer",
