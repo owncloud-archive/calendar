@@ -200,9 +200,9 @@ class OC_Calendar_Object{
 		$calid = self::getCalendarid($id);
 		
 		$calendar = OC_Calendar_Calendar::find($calid);
-		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $calid); //calid, not objectid !!!! 1111 one one one eleven
+		    $oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
 			$sharedObject = OCP\Share::getItemSharedWithBySource('event', $id);
 			$isActionAllowed = false;
@@ -246,9 +246,9 @@ class OC_Calendar_Object{
 		$oldobject = self::findWhereDAVDataIs($cid,$uri);
 
 		$calendar = OC_Calendar_Calendar::find($cid);
-		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $cid);
+		    $oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE) || !($sharedAccessClassPermissions & OCP\PERMISSION_UPDATE)) {
 				throw new \Sabre\DAV\Exception\Forbidden(
@@ -280,9 +280,9 @@ class OC_Calendar_Object{
 		$calid = self::getCalendarid($id);
 		
 		$calendar = OC_Calendar_Calendar::find($calid);
-		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 		if ($calendar['userid'] != OCP\User::getUser()) {
 			$sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar',  $calid);
+    		$oldvobject = \Sabre\VObject\Reader::read($oldobject['calendardata']);
 			$sharedAccessClassPermissions = OC_Calendar_Object::getAccessClassPermissions($oldvobject);
 			if (!$sharedCalendar || !($sharedCalendar['permissions'] & OCP\PERMISSION_DELETE) || !($sharedAccessClassPermissions & OCP\PERMISSION_DELETE)) {
 				throw new Exception(
