@@ -572,8 +572,8 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for the repeat rule of an repeating event
-	 * @return array - valid inputs for the repeat rule of an repeating event
+	 * @brief returns the options for the repeat rule of a repeating event
+	 * @return array - valid inputs for the repeat rule of a repeating event
 	 */
 	public static function getRepeatOptions($l10n) {
 		return array(
@@ -588,8 +588,8 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for the end of an repeating event
-	 * @return array - valid inputs for the end of an repeating events
+	 * @brief returns the options for the end of a repeating event
+	 * @return array - valid inputs for the end of a repeating event
 	 */
 	public static function getEndOptions($l10n) {
 		return array(
@@ -600,7 +600,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for an monthly repeating event
+	 * @brief returns the options for a monthly repeating event
 	 * @return array - valid inputs for monthly repeating events
 	 */
 	public static function getMonthOptions($l10n) {
@@ -611,7 +611,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for an weekly repeating event
+	 * @brief returns the options for a weekly repeating event
 	 * @return array - valid inputs for weekly repeating events
 	 */
 	public static function getWeeklyOptions($l10n) {
@@ -627,7 +627,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for an monthly repeating event which occurs on specific weeks of the month
+	 * @brief returns the options for a monthly repeating event which occurs on specific weeks of the month
 	 * @return array - valid inputs for monthly repeating events
 	 */
 	public static function getWeekofMonth($l10n) {
@@ -643,7 +643,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for an yearly repeating event which occurs on specific days of the year
+	 * @brief returns the options for a yearly repeating event which occurs on specific days of the year
 	 * @return array - valid inputs for yearly repeating events
 	 */
 	public static function getByYearDayOptions() {
@@ -655,7 +655,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for an yearly or monthly repeating event which occurs on specific days of the month
+	 * @brief returns the options for a yearly or monthly repeating event which occurs on specific days of the month
 	 * @return array - valid inputs for yearly or monthly repeating events
 	 */
 	public static function getByMonthDayOptions() {
@@ -667,7 +667,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for an yearly repeating event which occurs on specific month of the year
+	 * @brief returns the options for a yearly repeating event which occurs on specific months of the year
 	 * @return array - valid inputs for yearly repeating events
 	 */
 	public static function getByMonthOptions($l10n) {
@@ -688,7 +688,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for an yearly repeating event
+	 * @brief returns the options for a yearly repeating event
 	 * @return array - valid inputs for yearly repeating events
 	 */
 	public static function getYearOptions($l10n) {
@@ -701,7 +701,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief returns the options for an yearly repeating event which occurs on specific week numbers of the year
+	 * @brief returns the options for a yearly repeating event which occurs on specific week numbers of the year
 	 * @return array - valid inputs for yearly repeating events
 	 */
 	public static function getByWeekNoOptions() {
@@ -877,7 +877,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief creates an VCalendar Object from the request data
+	 * @brief creates a VCalendar Object from the request data
 	 * @param array $request
 	 * @return object created $vcalendar
 	 */	public static function createVCalendarFromRequest($request) {
@@ -898,7 +898,7 @@ class OC_Calendar_Object{
 	}
 
 	/**
-	 * @brief updates an VCalendar Object from the request data
+	 * @brief updates a VCalendar Object from the request data
 	 * @param array $request
 	 * @param object $vcalendar
 	 * @return object updated $vcalendar

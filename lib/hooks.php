@@ -12,7 +12,7 @@
 class OC_Calendar_Hooks{
 	/**
 	 * @brief Creates default calendar for a user
-	 * @param paramters parameters from postCreateUser-Hook
+	 * @param parameters parameters from postCreateUser-Hook
 	 * @return array
 	 */
 	public static function createUser($parameters) {
@@ -23,7 +23,7 @@ class OC_Calendar_Hooks{
 
 	/**
 	 * @brief Deletes all calendars of a certain user
-	 * @param paramters parameters from postDeleteUser-Hook
+	 * @param parameters parameters from postDeleteUser-Hook
 	 * @return array
 	 */
 	public static function deleteUser($parameters) {

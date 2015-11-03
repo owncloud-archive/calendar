@@ -265,7 +265,7 @@ Calendar={
 							output = output + missing_field_totime + "<br />";
 						}
 						if(data.endbeforestart == "true"){
-							output = output + missing_field_startsbeforeends + "!<br/>";
+							output = output + missing_field_endsbeforestarts + "!<br/>";
 						}
 						if(data.dberror == "true"){
 							output = "There was a database fail!";

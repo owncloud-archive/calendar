@@ -164,7 +164,7 @@ class Backend extends \Sabre\CalDAV\Backend\AbstractBackend {
 	 * If the operation was successful, true can be returned.
 	 * If the operation failed, false can be returned.
 	 *
-	 * Deletion of a non-existant property is always succesful.
+	 * Deletion of a non-existant property is always successful.
 	 *
 	 * Lastly, it is optional to return detailed information about any
 	 * failures. In this case an array should be returned with the following
@@ -266,7 +266,7 @@ class Backend extends \Sabre\CalDAV\Backend\AbstractBackend {
 	 *
 	 * Every item contains an array with the following keys:
 	 *   * id - unique identifier which will be used for subsequent updates
-	 *   * calendardata - The iCalendar-compatible calnedar data
+	 *   * calendardata - The iCalendar-compatible calendar data
 	 *   * uri - a unique key which will be used to construct the uri. This can be any arbitrary string.
 	 *   * lastmodified - a timestamp of the last modification time
 	 *   * etag - An arbitrary string, surrounded by double-quotes. (e.g.:

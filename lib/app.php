@@ -29,7 +29,7 @@ class OC_Calendar_App{
 	public static $tz;
 
 	/**
-	 * @brief returns informations about a calendar
+	 * @brief returns information about a calendar
 	 * @param int $id - id of the calendar
 	 * @param bool $security - check access rights or not
 	 * @param bool $shared - check if the user got access via sharing
@@ -241,23 +241,23 @@ class OC_Calendar_App{
 	}
 
 	/**
-	 * @brief returns the options for the repeat rule of an repeating event
-	 * @return array - valid inputs for the repeat rule of an repeating event
+	 * @brief returns the options for the repeat rule of a repeating event
+	 * @return array - valid inputs for the repeat rule of a repeating event
 	 */
 	public static function getRepeatOptions() {
 		return OC_Calendar_Object::getRepeatOptions(self::$l10n);
 	}
 
 	/**
-	 * @brief returns the options for the end of an repeating event
-	 * @return array - valid inputs for the end of an repeating events
+	 * @brief returns the options for the end of a repeating event
+	 * @return array - valid inputs for the end of a repeating event
 	 */
 	public static function getEndOptions() {
 		return OC_Calendar_Object::getEndOptions(self::$l10n);
 	}
 
 	/**
-	 * @brief returns the options for an monthly repeating event
+	 * @brief returns the options for a monthly repeating event
 	 * @return array - valid inputs for monthly repeating events
 	 */
 	public static function getMonthOptions() {
@@ -265,7 +265,7 @@ class OC_Calendar_App{
 	}
 
 	/**
-	 * @brief returns the options for an weekly repeating event
+	 * @brief returns the options for a weekly repeating event
 	 * @return array - valid inputs for weekly repeating events
 	 */
 	public static function getWeeklyOptions() {
@@ -273,7 +273,7 @@ class OC_Calendar_App{
 	}
 
 	/**
-	 * @brief returns the options for an yearly repeating event
+	 * @brief returns the options for a yearly repeating event
 	 * @return array - valid inputs for yearly repeating events
 	 */
 	public static function getYearOptions() {
@@ -281,7 +281,7 @@ class OC_Calendar_App{
 	}
 
 	/**
-	 * @brief returns the options for an yearly repeating event which occurs on specific days of the year
+	 * @brief returns the options for a yearly repeating event which occurs on specific days of the year
 	 * @return array - valid inputs for yearly repeating events
 	 */
 	public static function getByYearDayOptions() {
@@ -289,7 +289,7 @@ class OC_Calendar_App{
 	}
 
 	/**
-	 * @brief returns the options for an yearly repeating event which occurs on specific month of the year
+	 * @brief returns the options for a yearly repeating event which occurs on specific months of the year
 	 * @return array - valid inputs for yearly repeating events
 	 */
 	public static function getByMonthOptions() {
@@ -297,7 +297,7 @@ class OC_Calendar_App{
 	}
 
 	/**
-	 * @brief returns the options for an yearly repeating event which occurs on specific week numbers of the year
+	 * @brief returns the options for a yearly repeating event which occurs on specific week numbers of the year
 	 * @return array - valid inputs for yearly repeating events
 	 */
 	public static function getByWeekNoOptions() {
@@ -305,7 +305,7 @@ class OC_Calendar_App{
 	}
 
 	/**
-	 * @brief returns the options for an yearly or monthly repeating event which occurs on specific days of the month
+	 * @brief returns the options for a yearly or monthly repeating event which occurs on specific days of the month
 	 * @return array - valid inputs for yearly or monthly repeating events
 	 */
 	public static function getByMonthDayOptions() {
@@ -313,7 +313,7 @@ class OC_Calendar_App{
 	}
 
 	/**
-	 * @brief returns the options for an monthly repeating event which occurs on specific weeks of the month
+	 * @brief returns the options for a monthly repeating event which occurs on specific weeks of the month
 	 * @return array - valid inputs for monthly repeating events
 	 */
 	public static function getWeekofMonth() {
@@ -466,7 +466,7 @@ class OC_Calendar_App{
 			} elseif(isset($object->VEVENT)) {
 				$vevent = $object->VEVENT;
 			} else {
-				\OCP\Util::writeLog('calendar', __METHOD__.' Object contains not event: '.print_r($event, true), \OCP\Util::DEBUG);
+				\OCP\Util::writeLog('calendar', __METHOD__.' Object does not contain event: '.print_r($event, true), \OCP\Util::DEBUG);
 				return $output;
 			}
 			$id = $event['id'];
@@ -579,7 +579,7 @@ class OC_Calendar_App{
 
 			$message  = '<html><body>';
 			$message .= '<table style="border:1px solid black;" cellpadding="10">';
-			$message .= "<tr style='background: #eee;'><td colspan='2'><strong>" . $user . '</strong><strong> has shared with you an event</strong></td></tr>';
+			$message .= "<tr style='background: #eee;'><td colspan='2'><strong>" . $user . '</strong><strong> has shared an event with you</strong></td></tr>';
 			$message .= '<tr><td><strong>Summary:</strong> </td><td>' . \OCP\Util::sanitizeHTML($summary) . '</td></tr>';
 			$message .= '<tr><td><strong>Location:</strong> </td><td>' . \OCP\Util::sanitizeHTML($location) . '</td></tr>';
 			$message .= '<tr><td><strong>Description:</strong> </td><td>' . \OCP\Util::sanitizeHTML($description) . '</td></tr>';

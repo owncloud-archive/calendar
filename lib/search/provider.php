@@ -33,7 +33,7 @@ class Provider extends \OCP\Search\Provider {
 	 */
 	function search($query) {
 		$calendars = \OC_Calendar_Calendar::allCalendars(\OCP\USER::getUser(), true);
-		// check if the calenar is enabled
+		// check if the calendar is enabled
 		if (count($calendars) == 0 || !\OCP\App::isEnabled('calendar')) {
 			return array();
 		}

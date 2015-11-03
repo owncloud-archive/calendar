@@ -30,7 +30,7 @@ class OC_Calendar_Import{
 	private $count;
 
 	/*
-	 * @brief var to check if errors happend while initialization
+	 * @brief var to check if errors happened during initialization
 	 */
 	private $error;
 
@@ -174,7 +174,7 @@ class OC_Calendar_Import{
 	}
 
 	/*
-	 * @brief checks if something went wrong while initialization
+	 * @brief checks if something went wrong during initialization
 	 * @return boolean
 	 */
 	public function isValid() {
@@ -257,9 +257,8 @@ class OC_Calendar_Import{
 	}
 
 	/*
-	 * @brief returns the private
-	 * @param string $id of the user
-	 * @return boolean
+	 * @brief returns the number of events imported
+	 * @return integer
 	 */
 	public function getCount() {
 		return $this->count;
@@ -278,7 +277,7 @@ class OC_Calendar_Import{
 	//}
 
 	/*
-	 * @brief checks is the UID is already in use for another event
+	 * @brief checks if the UID is already in use for another event
 	 * @param string $uid uid to check
 	 * @return boolean
 	 */
