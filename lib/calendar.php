@@ -144,7 +144,7 @@ class OC_Calendar_Calendar{
 		if(is_null($userid)) {
 			$userid = OCP\USER::getUser();
 		}
-		
+
 		$id = self::addCalendar($userid,OC_Calendar_App::$l10n->t('Personal'));
 
 		return true;
@@ -339,39 +339,84 @@ class OC_Calendar_Calendar{
 	 */
 	public static function getCalendarColorOptions() {
 		return array(
-                      '#FFCCCC',
-                      '#FF6666',
-                      '#FF0000',
-                      '#FFE5CC',
-                      '#FFB266',
-                      '#FF8000',
-                      '#FFFFCC',
-                      '#FFFF66',
-                      '#FFFF00',
-                      '#E5FFCC',
-                      '#B2FF66',
-                      '#80FF00',
-                      '#CCFFFF',
-                      '#66FFFF',
-                      '#00FFFF',
-                      '#CCE5FF',
-                      '#66B2FF',
-                      '#0080FF',
-                      '#E5CCFF',
-                      '#B266FF',
-                      '#7F00FF',
-                      '#FFCCFF',
-                      '#FF66FF',
-                      '#FF00FF',
-                      '#FFCCE5',
-                      '#FF66B2',
-                      '#FF007F',
-                      '#E0E0E0',
-                      '#A0A0A0',
-                      '#434343',
-                      '#000000',
-                      '#994C00',
-                      '#663300',
+			'#990000', // Red              dark 40%
+			'#994C00', // Orange           dark 40%
+			'#999900', // Yellow           dark 40%
+			'#4C9900', // Chartreuse Green dark 40%
+			'#009900', // Green            dark 40%
+			'#00994C', // Spring Green     dark 40%
+			'#009999', // Cyan             dark 40%
+			'#004C99', // Azure Blue       dark 40%
+			'#000099', // Blue             dark 40%
+			'#4C0099', // Violet           dark 40%
+			'#990099', // Magenta          dark 40%
+			'#99004C', // Rose             dark 40%
+			'#303030', // Gray 48
+			'#CC0000', // Red              dark 20%
+			'#CC6500', // Orange           dark 20%
+			'#CCCC00', // Yellow           dark 20%
+			'#65CC00', // Chartreuse Green dark 20%
+			'#00CC00', // Green            dark 20%
+			'#00CC65', // Spring Green     dark 20%
+			'#00CCCC', // Cyan             dark 20%
+			'#0065CC', // Azure Blue       dark 20%
+			'#0000CC', // Blue             dark 20%
+			'#6500CC', // Violet           dark 20%
+			'#CC00CC', // Magenta          dark 20%
+			'#CC0065', // Rose             dark 20%
+			'#505050', // Gray 80
+			'#FF0000', // Red
+			'#FF7F00', // Orange
+			'#FFFF00', // Yellow
+			'#7FFF00', // Chartreuse Green
+			'#00FF00', // Green
+			'#00FF7F', // Spring Green
+			'#00FFFF', // Cyan
+			'#007FFF', // Azure Blue
+			'#0000FF', // Blue
+			'#7F00FF', // Violet
+			'#FF00FF', // Magenta
+			'#FF007F', // Rose
+			'#707070', // Gray 112
+			'#FF3333', // Red              tint 20%
+			'#FF9833', // Orange           tint 20%
+			'#FFFF33', // Yellow           tint 20%
+			'#98FF33', // Chartreuse Green tint 20%
+			'#33FF33', // Green            tint 20%
+			'#33FF98', // Spring Green     tint 20%
+			'#33FFFF', // Cyan             tint 20%
+			'#3398FF', // Azure Blue       tint 20%
+			'#3333FF', // Blue             tint 20%
+			'#9833FF', // Violet           tint 20%
+			'#FF33FF', // Magenta          tint 20%
+			'#FF3398', // Rose             tint 20%
+			'#909090', // Gray 144
+			'#FF6666', // Red              tint 40%
+			'#FFB266', // Orange           tint 40%
+			'#FFFF66', // Yellow           tint 40%
+			'#B2FF66', // Chartreuse Green tint 40%
+			'#66FF66', // Green            tint 40%
+			'#66FFB2', // Spring Green     tint 40%
+			'#66FFFF', // Cyan             tint 40%
+			'#66B2FF', // Azure Blue       tint 40%
+			'#6666FF', // Blue             tint 40%
+			'#B266FF', // Violet           tint 40%
+			'#FF66FF', // Magenta          tint 40%
+			'#FF66B2', // Rose             tint 40%
+			'#B0B0B0', // Gray 176
+			'#FF9999', // Red              tint 60%
+			'#FFCB99', // Orange           tint 60%
+			'#FFFF99', // Yellow           tint 60%
+			'#CBFF99', // Chartreuse Green tint 60%
+			'#99FF99', // Green            tint 60%
+			'#99FFCB', // Spring Green     tint 60%
+			'#99FFFF', // Cyan             tint 60%
+			'#99CBFF', // Azure Blue       tint 60%
+			'#9999FF', // Blue             tint 60%
+			'#CB99FF', // Violet           tint 60%
+			'#FF99FF', // Magenta          tint 60%
+			'#FF99CB', // Rose             tint 60%
+			'#D0D0D0', // Gray 208
 		);
 	}
 
