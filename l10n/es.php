@@ -186,6 +186,7 @@ $TRANSLATIONS = array(
 "Clear cache for repeating events" => "Limpiar caché de eventos recurrentes",
 "Primary CalDAV address" => "Direccion de calendario CalDAV primario",
 "iOS/OS X CalDAV address" => "Direccion de calendario CalDAV iOS/OSX",
+"Contacts' birthdays CalDAV address" => "Dirección CalDAV de cumpleaños del contacto",
 "Share Calendar" => "Compartir calendario",
 "Download" => "Descargar",
 "Edit" => "Editar",
