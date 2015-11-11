@@ -86,6 +86,7 @@
     "Share with users or groups …" : "Zdieľať s používateľmi alebo skupinami ...",
     "Share with users, groups or remote users …" : "Zdieľať s používateľmi, skupinami alebo vzdialenými používateľmi ...",
     "Share" : "Zdielať",
+    "Share with people on other ownClouds using the syntax username@example.com/owncloud" : "Zdieľať s ľuďmi na iných serveroch ownClouds pomocou syntaxe používateľ@doména.com/owncloud",
     "Share link" : "Zdieľať linku",
     "The public link will expire no later than {days} days after it is created" : "Verejný odkaz nevyprší skôr než za {days} dní po vytvorení",
     "Link" : "Odkaz",
