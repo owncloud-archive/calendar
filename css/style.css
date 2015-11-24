@@ -73,9 +73,22 @@ color:#A9A9A9;
 select#category{width:140px;}
 button.category{margin:0 3px;}
 
-.calendar-colorpicker { display: inline-block; }
-.calendar-colorpicker-color{display:inline-block;width:20px;height:20px;margin-right:2px;cursor:pointer;border:2px solid transparent;}
-.calendar-colorpicker-color.active{border:2px solid black;}
+.calendar-colorpicker {
+	display:inline-block;
+	line-height:0;
+}
+.calendar-colorpicker-color {
+	display:inline-block;
+	width:13px;
+	height:13px;
+	margin-right:1px;
+	margin-bottom:1px;
+	cursor:pointer;
+	border:2px solid transparent;
+}
+.calendar-colorpicker-color.active {
+	border:2px solid black;
+}
 
 #event {
 	height: initial !important;
