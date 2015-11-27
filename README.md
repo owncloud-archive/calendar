@@ -9,7 +9,7 @@ Maintainers:
 
 Super urgent developer info:
 ============================
-ownCloud 7 or ownCloud 8 will be last version to ship the master branch's codebase. It will be replaced by the rework branch. If you want to implement new features, please strongly consider implementing them based on the rework branch's codebase.
+ownCloud 8.2 will be last version to ship this codebase. It will be replaced by the [rework](https://github.com/owncloud/calendar-rework). If you want to implement new features, please strongly consider implementing them in the [calendar-rework](https://github.com/owncloud/calendar-rework)
 
 ### Master branch:
 Just clone this repo into your apps directory.
