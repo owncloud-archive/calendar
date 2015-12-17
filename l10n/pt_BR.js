@@ -80,7 +80,7 @@ OC.L10N.register(
     "There was a database fail" : "Houve uma falha de banco de dados",
     "Interval is not valid. It must be a positive integer!" : "O intervalo não é válido. Deve ser um número inteiro positivo!",
     "Import" : "Importar",
-    "Shared" : "Compartilhados",
+    "Shared" : "Compartilhado",
     "Error" : "Erro",
     "Error while sharing" : "Erro ao compartilhar",
     "Error while unsharing" : "Erro ao descompartilhar",
