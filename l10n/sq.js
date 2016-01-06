@@ -223,7 +223,7 @@ OC.L10N.register(
     "and the events week of year." : "dhe javë viti të veprimtarisë.",
     "Interval" : "Interval",
     "End" : "Fund",
-    "occurrences" : "rastisjet",
+    "occurrences" : "hasje",
     "Visibility to people shared with" : "Dukshmëri për persona me të cilët është ndarë",
     "create a new calendar" : "krijoni një kalendar të ri",
     "Import a calendar file" : "Importoni një kartelë kalendari",
