@@ -31,7 +31,7 @@ class OC_Calendar_Hooks{
 
 		foreach($calendars as $calendar) {
 			if($parameters['uid'] === $calendar['userid']) {
-				OC_Calendar_Calendar::deleteCalendar($calendar['id']);
+				OC_Calendar_Calendar::deleteCalendar($calendar['id'], true);
 			}
 		}
 

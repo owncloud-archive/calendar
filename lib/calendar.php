@@ -252,7 +252,7 @@ class OC_Calendar_Calendar{
 	 * @param integer $id
 	 * @return boolean
 	 */
-	public static function deleteCalendar($id) {
+	public static function deleteCalendar($id, $force=false) {
 		$calendar = self::find($id);
 		$isShared = ($calendar['userid'] !== OCP\User::getUser());
 		if (!self::isAllowedToDeleteCalendar($calendar)) {
@@ -266,7 +266,7 @@ class OC_Calendar_Calendar{
 			}
 		}
 
-		if (!$isShared) {
+		if (!$isShared || $force) {
 			$stmt = OCP\DB::prepare( 'DELETE FROM `*PREFIX*clndr_calendars` WHERE `id` = ?' );
 			$stmt->execute(array($id));
 
