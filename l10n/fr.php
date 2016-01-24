@@ -1,6 +1,6 @@
 <?php
 $TRANSLATIONS = array(
-"Not all calendars are completely cached" => "Certains calendriers ne sont pas mis en cache",
+"Not all calendars are completely cached" => "Tous les calendriers ne sont pas complètement mis en cache",
 "Everything seems to be completely cached" => "Tout semble être en cache",
 "No calendars found." => "Aucun calendrier n'a été trouvé.",
 "No events found." => "Aucun événement n'a été trouvé.",
