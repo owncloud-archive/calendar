@@ -126,7 +126,9 @@ class OC_Calendar_Import{
 			if(!is_null($object->DTSTART)){
 				$dtend = OC_Calendar_Object::getDTEndFromVEvent($object);
 				if($object->DTEND) {
-					$object->DTEND['VALUE'] = $object->DTSTART['VALUE'];
+					if ( !empty($object->DTSTART['VALUE']) ) {
+						$object->DTEND['VALUE'] = $object->DTSTART['VALUE'];
+					}
 					$dtend = $dtend->getDateTime();
 					$dtend->setTimeZone($object->DTSTART->getDateTime()->getTimeZone());
 					$object->DTEND->setDateTime($dtend);
