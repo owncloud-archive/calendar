@@ -11,6 +11,7 @@ OC.L10N.register(
     "events have been saved in the new calendar" : "Termine wurden im neuen Kalender gespeichert",
     "Import failed" : "Import fehlgeschlagen",
     "_%n event has been saved in the new calendar %s._::_%n events have been saved in the new calendar %s._" : ["%n Termin wurde im neuen Kalender gespeichert %s.","%n Termine wurden im neuen Kalender gespeichert %s."],
+    "_%n event has been saved in your calendar._::_%n events have been saved in your calendar._" : ["%n Termin wurden in Ihrem Kalender gespeichert.","%n Termine wurden in Ihrem Kalender gespeichert."],
     "New Timezone:" : "Neue Zeitzone:",
     "Timezone changed" : "Zeitzone geändert",
     "Invalid request" : "Fehlerhafte Anfrage",
