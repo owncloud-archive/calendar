@@ -9,6 +9,7 @@ $TRANSLATIONS = array(
 "The file contained either no events or all events are already saved in your calendar." => "الملف إما خالي من الأحداث أو تم حفظ كل أحداثه في مفكرتك",
 "events have been saved in the new calendar" => "تم حفظ الأحداث فى التقويم الجديد",
 "Import failed" => "فشل الإستيراد",
+"_%n event has been saved in the new calendar %s._::_%n events have been saved in the new calendar %s._" => array("تم حفظ %n  أحداث فى المفكرة الجديدة %s","تم حفظ الحدث فى المفكرة الجديدة %s","تم حفظ  حدثين فى المفكرة الجديدة %s","تم حفظ %n  أحداث فى المفكرة الجديدة %s","تم حفظ %n  أحداث فى المفكرة الجديدة %s","تم حفظ %n  أحداث فى المفكرة الجديدة %s"),
 "New Timezone:" => "منطقة زمنية الجديدة",
 "Timezone changed" => "تم تغيير المنطقة الزمنية",
 "Invalid request" => "طلب غير مفهوم",
