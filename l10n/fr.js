@@ -145,7 +145,7 @@ OC.L10N.register(
     "You do not have the permissions to delete this event." : "Vous n'avez pas les droits suffisants pour supprimer cet événement.",
     "Busy" : "Occupé",
     "Show full event" : "Afficher l'événement complet",
-    "Show only busy" : "Afficher seulement les événements occupés",
+    "Show only busy" : "Afficher seulement la plage horaire occupée",
     "Hide event" : "Masquer l'événement",
     "Does not repeat" : "Pas de répétition",
     "Daily" : "Quotidien",
