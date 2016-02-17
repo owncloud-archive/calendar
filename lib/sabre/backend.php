@@ -45,6 +45,11 @@ class Backend extends \Sabre\CalDAV\Backend\AbstractBackend {
 		foreach( $raw as $row ) {
 			$components = explode(',',$row['components']);
 
+			$sharedCalendar = \OCP\Share::getItemSharedWithBySource('calendar', $row['id']);
+			if ($row['userid'] !== User::getUser() && empty($sharedCalendar)) {
+				continue;
+			}
+
 			if($row['userid'] != User::getUser()) {
 				$row['uri'] = $row['uri'] . '_shared_by_' . $row['userid'];
 			}
