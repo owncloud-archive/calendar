@@ -112,7 +112,7 @@ OC.L10N.register(
     "notify by email" : "notifica per correu electrònic",
     "access control" : "control d'accés",
     "create" : "crea",
-    "change" : "cambi",
+    "change" : "canvi",
     "delete" : "elimina",
     "Password protected" : "Protegeix amb contrasenya",
     "Error unsetting expiration date" : "Error en eliminar la data de venciment",

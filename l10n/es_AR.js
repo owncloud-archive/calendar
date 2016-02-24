@@ -1,7 +1,7 @@
 OC.L10N.register(
     "calendar",
     {
-    "Not all calendars are completely cached" : "Todavía no se guardaron en caché todos los calendarios",
+    "Not all calendars are completely cached" : "No todos los calendarios se han guardado en caché por completo",
     "Everything seems to be completely cached" : "Parece que se guardó todo en el caché",
     "No calendars found." : "No se encontraron calendarios.",
     "No events found." : "No se encontraron eventos.",
