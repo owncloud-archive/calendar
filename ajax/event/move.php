@@ -35,7 +35,7 @@ unset($vevent->DURATION);
 
 $now = new DateTime('now');
 $now->setTimeZone(new \DateTimeZone('UTC'));
-$vevent->__get('LAST-MODIFIED')->setDateTime($now);
+$vevent->__set('LAST-MODIFIED', clone $now);
 $vevent->DTSTAMP = $now;
 
 try {
