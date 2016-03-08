@@ -24,7 +24,7 @@
 		<?php
 			$option_calendars = OC_Calendar_Calendar::allCalendars(OCP\USER::getUser());
 			for($i = 0; $i < count($option_calendars); $i++) {
-				print_unescaped("<li data-id='".OC_Util::sanitizeHTML($option_calendars[$i]['id'])."'>");
+				print_unescaped("<li class='with-counter with-menu' data-id='".OC_Util::sanitizeHTML($option_calendars[$i]['id'])."'>");
 				$tmpl = new OCP\Template('calendar', 'part.choosecalendar.rowfields');
 				$tmpl->assign('calendar', $option_calendars[$i]);
 				if ($option_calendars[$i]['userid'] != OCP\User::getUser()) {
