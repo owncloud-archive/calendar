@@ -48,6 +48,13 @@ if (!preg_match('/^#([a-fA-F0-9]){3}(([a-fA-F0-9]){3})$/i', $calendarColor)) {
 	</span>
 
 	<span class="action">
+	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_CREATE) { ?>
+		<a href="#" id="chooseCalendar-make-def" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Set as Default Calendar')) ?>" <?php OCP\Config::getUserValue(OCP\User::getUser(), 'calendar', 'defaultcalendar')==$_['calendar']['id']? print_unescaped('class="icon-default"') : print_unescaped('class="icon-default not-set"')?>></a>
+	<?php } ?>
+
+	</span>
+
+	<span class="action">
 	<?php if ($_['calendar']['permissions'] & OCP\PERMISSION_DELETE) { ?>
 		<a href="#"  id="chooseCalendar-delete" data-id="<?php p($_['calendar']['id']) ?>" title="<?php p($l->t('Delete')) ?>" class="icon-delete"></a>
 	<?php } ?>
