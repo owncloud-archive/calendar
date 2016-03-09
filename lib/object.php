@@ -872,8 +872,8 @@ class OC_Calendar_Object{
 		}
 		list($hours, $minutes) = explode(':', $time);
 		return empty($time)
-			|| $hours < 0 || $hours > 24
-			|| $minutes < 0 || $minutes > 60;
+			|| $hours < 0 || $hours > 23
+			|| $minutes < 0 || $minutes > 59;
 	}
 
 	/**
