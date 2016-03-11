@@ -664,7 +664,7 @@
 					if (shareType === OC.Share.SHARE_TYPE_USER) {
 						html.find('.avatar').avatar(escapeHTML(shareWith), 32);
 					} else {
-						//Add sharetype to generate different seed if there is a group and use with the same name
+						//Add sharetype to generate different seed if there is a group and user with the same name
 						html.find('.avatar').imageplaceholder(escapeHTML(shareWith) + ' ' + shareType);
 					}
 				}

@@ -25,7 +25,7 @@ class OC_Calendar_Repeat{
 		return $return;
 	}
 	/**
-	 * @brief returns the cache of an event in a specific peroid
+	 * @brief returns the cache of an event in a specific period
 	 * @param (int) $id - id of the event
 	 * @param (DateTime) $from - start for period in UTC
 	 * @param (DateTime) $until - end for period in UTC
@@ -110,7 +110,7 @@ class OC_Calendar_Repeat{
 		return true;
 	}
 	/**
-	 * @brief generates the cache the first time for all repeating event of an calendar
+	 * @brief generates the cache the first time for all repeating events of an calendar
 	 * @param (int) id - id of the calendar
 	 * @return (bool)
 	 */
@@ -132,7 +132,7 @@ class OC_Calendar_Repeat{
 		return true;
 	}
 	/**
-	 * @brief updates all repating events of a calendar that are already cached
+	 * @brief updates all repeating events of a calendar that are already cached
 	 * @param (int) id - id of the calendar
 	 * @return (bool)
 	 */

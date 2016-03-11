@@ -13,14 +13,14 @@ ownCloud 8.2 will be last version to ship this codebase. It will be replaced by 
 
 ### Master branch:
 Just clone this repo into your apps directory.
-Get the lastest version of master:
+Get the latest version of master:
 ```bash
 git clone git://github.com/owncloud/calendar.git
 cd calendar
 ```
 
 ### Rework branch:
-Get the lastest version of rework:
+Get the latest version of rework:
 ```bash
 git clone git://github.com/owncloud/calendar.git
 cd calendar

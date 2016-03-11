@@ -33,7 +33,7 @@ class OC_Calendar_Calendar{
 	 * @brief Returns the list of calendars for a specific user.
 	 * @param string $uid User ID
 	 * @param boolean $active Only return calendars with this $active state, default(=false) is don't care
-	 * @param boolean $createIfNecessary create calendars if no exist yet
+	 * @param boolean $createIfNecessary create calendars if they do not exist yet
 	 * @return array
 	 */
 	public static function allCalendars($uid, $active=false, $createIfNecessary=true) {
@@ -409,7 +409,7 @@ class OC_Calendar_Calendar{
 	/*
 	 * @brief generates the text color for the calendar
 	 * @param string $calendarcolor rgb calendar color code in hex format (with or without the leading #)
-	 * (this function doesn't pay attention on the alpha value of rgba color codes)
+	 * (this function doesn't pay attention to the alpha value of rgba color codes)
 	 * @return boolean
 	 */
 	public static function generateTextColor($calendarcolor) {
