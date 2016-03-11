@@ -29,6 +29,11 @@
  * This class manages our calendars
  */
 class OC_Calendar_Calendar{
+
+	private static function calendar_sort($a,$b) {
+		return $a['calendarorder']>$b['calendarorder'];
+	}
+	 
 	/**
 	 * @brief Returns the list of calendars for a specific user.
 	 * @param string $uid User ID
@@ -36,7 +41,7 @@ class OC_Calendar_Calendar{
 	 * @param boolean $createIfNecessary create calendars if no exist yet
 	 * @return array
 	 */
-	public static function allCalendars($uid, $active=false, $createIfNecessary=true) {
+	 public static function allCalendars($uid, $active=false, $createIfNecessary=true) {
 		$values = array($uid);
 		$active_where = '';
 		if (!is_null($active) && $active) {
@@ -71,6 +76,8 @@ class OC_Calendar_Calendar{
 		}
 
 		$calendars = array_merge($calendars, $shared_calendars);
+		
+		usort($calendars, array('OC_Calendar_Calendar','calendar_sort'));
 
 		return $calendars;
 	}
