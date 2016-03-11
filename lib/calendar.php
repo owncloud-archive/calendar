@@ -144,7 +144,7 @@ class OC_Calendar_Calendar{
 		if(is_null($userid)) {
 			$userid = OCP\USER::getUser();
 		}
-		
+
 		$id = self::addCalendar($userid,OC_Calendar_App::$l10n->t('Personal'));
 
 		return true;
@@ -339,39 +339,42 @@ class OC_Calendar_Calendar{
 	 */
 	public static function getCalendarColorOptions() {
 		return array(
-                      '#FFCCCC',
-                      '#FF6666',
-                      '#FF0000',
-                      '#FFE5CC',
-                      '#FFB266',
-                      '#FF8000',
-                      '#FFFFCC',
-                      '#FFFF66',
-                      '#FFFF00',
-                      '#E5FFCC',
-                      '#B2FF66',
-                      '#80FF00',
-                      '#CCFFFF',
-                      '#66FFFF',
-                      '#00FFFF',
-                      '#CCE5FF',
-                      '#66B2FF',
-                      '#0080FF',
-                      '#E5CCFF',
-                      '#B266FF',
-                      '#7F00FF',
-                      '#FFCCFF',
-                      '#FF66FF',
-                      '#FF00FF',
-                      '#FFCCE5',
-                      '#FF66B2',
-                      '#FF007F',
-                      '#E0E0E0',
-                      '#A0A0A0',
-                      '#434343',
-                      '#000000',
-                      '#994C00',
-                      '#663300',
+			'#FF0000', // Red
+			'#FF8000', // Orange
+			'#FFFF00', // Yellow
+			'#00FF00', // Green
+			'#00FFFF', // Cyan
+			'#0000FF', // Blue
+			'#8000FF', // Violet
+			'#80007F', // Purple
+			'#404040', // Gray64
+			'#FF3333', // Red    tint 20%
+			'#FF9933', // Orange tint 20%
+			'#FFFF33', // Yellow tint 20%
+			'#33FF33', // Green  tint 20%
+			'#33FFFF', // Cyan   tint 20%
+			'#3333FF', // Blue   tint 20%
+			'#9933FF', // Violet tint 20%
+			'#993398', // Purple tint 20%
+			'#707070', // Gray112
+			'#FF6666', // Red    tint 40%
+			'#FFB266', // Orange tint 40%
+			'#FFFF66', // Yellow tint 40%
+			'#66FF66', // Green  tint 40%
+			'#66FFFF', // Cyan   tint 40%
+			'#6666FF', // Blue   tint 40%
+			'#B266FF', // Violet tint 40%
+			'#B266B2', // Purple tint 40%
+			'#A0A0A0', // Gray160
+			'#FF9999', // Red    tint 60%
+			'#FFCC99', // Orange tint 60%
+			'#FFFF99', // Yellow tint 60%
+			'#99FF99', // Green  tint 60%
+			'#99FFFF', // Cyan   tint 60%
+			'#9999FF', // Blue   tint 60%
+			'#CC99FF', // Violet tint 60%
+			'#CC99CB', // Purple tint 60%
+			'#D0D0D0', // Gray208
 		);
 	}
 
