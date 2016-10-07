@@ -10,7 +10,7 @@ if (!preg_match('/^#([a-fA-F0-9]){3}(([a-fA-F0-9]){3})$/i', $calendarColor)) {
 <label for="active_<?php p($_['calendar']['id']) ?>" class="calendarLabel">
 	<div class="calendarCheckbox<?php print_unescaped($_['calendar']['active'] ? '' : ' unchecked') ?>" id="checkbox_<?php p($_['calendar']['id']) ?>" style="background-color:<?php print_unescaped($calendarColor) ?>"></div>
 	<?php p($_['calendar']['displayname']) ?>
-	<?php if ($_['calendar']['userid'] == OCP\USER::getUser()) { ?>
+	<?php if ($_['calendar']['userid'] == OCP\USER::getUser() || (($sharedCalendar = OCP\Share::getItemSharedWithBySource('calendar', $_['calendar']['id'])) && ($sharedCalendar['permissions'] & OCP\PERMISSION_UPDATE))) { ?>
 		<input type="checkbox" id="active_<?php p($_['calendar']['id']) ?>" class="activeCalendar" data-id="<?php p($_['calendar']['id']) ?>" <?php print_unescaped($_['calendar']['active'] ? ' checked="checked"' : '') ?>>
 	<?php } ?>
 </label>
