@@ -244,8 +244,8 @@ button.category{margin:0 3px;}
 	font-weight: normal;
 }
 /* more space for action buttons below */
-#actions {
-	height: 45px;
+#actions>button{
+	margin: 1em;
 }
 
 
@@ -258,6 +258,8 @@ button.category{margin:0 3px;}
 	padding: 0;
 	z-index: 1000;
 	max-width: 100%;
+	box-shadow: 0 0 20px #000;
+	border: none;
 }
 .ui-dialog .ui-dialog-content {
 	overflow: initial;
@@ -602,5 +604,10 @@ button.ui-multiselect{
 	padding:2px 0 2px 4px;
 	line-height:22px;
 	height:26px;
-	 text-align:left;
+	text-align:left;
+}
+
+
+.fc-day-number{
+	font-size: 1.5em;
 }
