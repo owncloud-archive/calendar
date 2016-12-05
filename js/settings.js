@@ -26,6 +26,12 @@ $(document).ready(function(){
 
 		});
 	});
+	$('#contactbirthdays').change( function(){
+		var post = $('#contactbirthdays').serialize();
+		$.post( OC.filePath('calendar', 'ajax/settings', 'contactbirthdays.php'), post, function(data){
+
+		});
+	});
 	$.getJSON(OC.filePath('calendar', 'ajax/settings', 'timeformat.php'), function(jsondata, status) {
 		$('#' + jsondata.timeformat).attr('selected',true);
 		$('#timeformat_chzn').css('width', '100px');
@@ -38,6 +44,11 @@ $(document).ready(function(){
 	$.getJSON(OC.filePath('calendar', 'ajax/settings', 'getfirstday.php'), function(jsondata, status) {
 		$('#' + jsondata.firstday).attr('selected',true);
 		$('#firstday_chzn').css('width', '100px');
+	});
+	$.getJSON(OC.filePath('calendar', 'ajax/settings', 'getcontactbirthdays.php'), function(jsondata, status) {
+		if(jsondata.birthdays == 'true'){
+			$('#contactbirthdays').attr('checked', 'checked');
+		}
 	});
 	$('#cleancalendarcache').click(function(){
 		$.getJSON(OC.filePath('calendar', 'ajax/cache', 'rescan.php'), function(){
