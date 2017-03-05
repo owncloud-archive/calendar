@@ -124,7 +124,6 @@ Calendar_Import={
 				$('#calendar_import_process').css('display', 'block');
 				$('#calendar_import_newcalendar').attr('readonly', 'readonly');
 				$('#calendar_import_calendar').attr('disabled', 'disabled');
-				$('#calendar_import_overwrite').attr('disabled', 'disabled');
 				Calendar_Import.Core.send();
 				window.setTimeout('Calendar_Import.Dialog.update()', 250);
 			}
@@ -159,7 +158,6 @@ Calendar_Import={
 				}
 			}else{
 				Calendar_Import.Store.method = 'old';
-				Calendar_Import.Store.overwrite = $('#calendar_import_overwrite').is(':checked') ? 1 : 0;
 			}
 			return true;
 		}
